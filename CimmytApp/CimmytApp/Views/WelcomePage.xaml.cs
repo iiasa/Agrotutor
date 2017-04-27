@@ -2,9 +2,9 @@
 
 namespace CimmytApp.Views
 {
-    public partial class MainPage : TabbedPage
+    public partial class WelcomePage : TabbedPage
     {
-        public MainPage()
+        public WelcomePage()
         {
             InitializeComponent();
         }
