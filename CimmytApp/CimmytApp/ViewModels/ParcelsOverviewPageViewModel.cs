@@ -10,7 +10,7 @@ namespace CimmytApp.ViewModels
     {
         public ParcelsOverviewPageViewModel()
         {
-
+            //List<Parcel>
         }
     }
 }
