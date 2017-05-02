@@ -35,10 +35,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BusinessContract\ICimmytDbOperations.cs" />
+    <Compile Include="BusinessContract\IDataset.cs" />
+    <Compile Include="DTO\Parcel.cs" />
+    <Compile Include="Localization\PlatformCulture.cs" />
+    <Compile Include="Localization\TranslateExtension.cs" />
+    <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resx\AppResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resx\AppResources.es.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppResources.es.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\LocalizedPicker.cs" />
+    <Compile Include="ViewModels\AddParcelPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\ParcelsOverviewPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
+    <Compile Include="Views\AddParcelPage.xaml.cs">
+      <DependentUpon>AddParcelPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ParcelsOverviewPage.xaml.cs">
       <DependentUpon>ParcelsOverviewPage.xaml</DependentUpon>
     </Compile>
@@ -56,6 +77,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Resx\AppResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resx\AppResources.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -73,6 +102,15 @@
     </Reference>
     <Reference Include="ComponentTrakSQLite, Version=1.0.12.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\ComponentTrak.SQLite.NET.1.0.12\lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10+xamarinmac20\ComponentTrakSQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="Helper.Base.Contract">
+      <HintPath>Libs\Helper.Base.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Helper.Base.DTO">
+      <HintPath>Libs\Helper.Base.DTO.dll</HintPath>
+    </Reference>
+    <Reference Include="Helper.Base.PublishSubscriberEvents">
+      <HintPath>Libs\Helper.Base.PublishSubscriberEvents.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
@@ -147,6 +185,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ParcelsOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\AddParcelPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
