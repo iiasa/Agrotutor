@@ -62,6 +62,33 @@ namespace CimmytApp.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Spring-Summer.
+        /// </summary>
+        internal static string agricultural_cycle_1 {
+            get {
+                return ResourceManager.GetString("agricultural_cycle_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autumn-Winter.
+        /// </summary>
+        internal static string agricultural_cycle_2 {
+            get {
+                return ResourceManager.GetString("agricultural_cycle_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parcels.
+        /// </summary>
+        internal static string parcels_overview_title {
+            get {
+                return ResourceManager.GetString("parcels_overview_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
         internal static string welcome {

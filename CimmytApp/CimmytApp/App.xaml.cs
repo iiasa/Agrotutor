@@ -29,7 +29,7 @@
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
+            NavigationService.NavigateAsync("MainPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
@@ -47,6 +47,7 @@
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<WelcomePage>();
             Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
+            Container.RegisterTypeForNavigation<AddParcelPage>();
         }
     }
 }

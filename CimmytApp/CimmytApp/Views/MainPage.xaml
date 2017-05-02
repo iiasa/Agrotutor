@@ -7,10 +7,10 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
              Title="MainPage">
+    <views:ParcelsOverviewPage />
     <ContentPage Title="{localization:Translate welcome}">
         <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
             <Label Text="{Binding Title}" />
         </StackLayout>
     </ContentPage>
-    <views:ParcelsOverviewPage />
 </TabbedPage>
