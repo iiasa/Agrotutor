@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Xamarin.Forms;
 
-namespace CimmytApp.UI
+namespace Helper.UI
 {
     public class LocalizedPicker : Picker
     {
