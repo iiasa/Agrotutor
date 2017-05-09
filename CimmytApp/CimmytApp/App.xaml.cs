@@ -30,7 +30,7 @@
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("MainPage");
+            NavigationService.NavigateAsync("LoginPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
@@ -52,6 +52,9 @@
             Container.RegisterTypeForNavigation<RegistrationPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<WeatherForecastPage>();
+            Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
+            Container.RegisterTypeForNavigation<LinksPage>();
+            Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
         }
     }
 }

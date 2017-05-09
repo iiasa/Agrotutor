@@ -2,7 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.RegistrationPage">
-  
+             x:Class="CimmytApp.Views.RegistrationPage"
+             Title="{localization:Translate page_title_registration}">
+
+    <StackLayout>
+        <Entry Text="{Binding Username}" Placeholder="{localization:Translate placeholder_username}" />
+        <Entry Text="{Binding Email}" Placeholder="{localization:Translate placeholder_email}" />
+        <Entry IsPassword="True" Text="{Binding Password}" Placeholder="{localization:Translate placeholder_password}" />
+        <Entry IsPassword="True" Text="{Binding PasswordVerification}" Placeholder="{localization:Translate placeholder_password_verification}" />
+        <Button Text="{localization:Translate btn_register_text}" Command="{Binding RegistrationCommand}" />
+    </StackLayout>
 </ContentPage>
