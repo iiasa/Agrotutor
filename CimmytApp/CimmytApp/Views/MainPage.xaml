@@ -4,13 +4,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
              xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
+             xmlns:viewsMap="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
              Title="MainPage">
     <views:ParcelsOverviewPage />
-    <ContentPage Title="{localization:Translate welcome}">
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-            <Label Text="{Binding Title}" />
-        </StackLayout>
-    </ContentPage>
+    <viewsMap:GenericMap />
+    <views:WeatherForecastPage />
+    <views:LocalAgronomicalRecommendationsPage />
 </TabbedPage>

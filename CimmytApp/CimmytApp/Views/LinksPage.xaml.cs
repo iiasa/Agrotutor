@@ -2,9 +2,9 @@
 
 namespace CimmytApp.Views
 {
-    public partial class WelcomePage : ContentPage
+    public partial class LinksPage : ContentPage
     {
-        public WelcomePage()
+        public LinksPage()
         {
             InitializeComponent();
         }

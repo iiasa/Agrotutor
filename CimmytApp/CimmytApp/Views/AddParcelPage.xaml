@@ -5,8 +5,7 @@
                 prism:ViewModelLocator.AutowireViewModel="True"
                 xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
                 xmlns:system="clr-namespace:System;assembly=System.Runtime"
-                xmlns:ui="clr-namespace:CimmytApp.UI;assembly=CimmytApp"
                 xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
                 x:Class="CimmytApp.Views.AddParcelPage">
-    <ui:LocalizedPicker Items="{Binding AgriculturalCycles}" />
+    <Picker SelectedIndex="{Binding AgriculturalCyclesSelectedIndex}" Items="{Binding AgriculturalCycles}" />
 </ContentPage>

@@ -21,7 +21,7 @@ namespace CimmytApp.UWP
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
 
             LoadApplication(new CimmytApp.App(new UwpInitializer()));
         }
@@ -31,8 +31,6 @@ namespace CimmytApp.UWP
     {
         public void RegisterTypes(IUnityContainer container)
         {
-
         }
     }
-
 }

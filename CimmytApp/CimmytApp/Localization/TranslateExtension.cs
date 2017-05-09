@@ -17,6 +17,7 @@
 
         public TranslateExtension()
         {
+            //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
             if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
             {
                 _ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();

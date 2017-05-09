@@ -177,6 +177,10 @@
       <Project>{8fa589b1-356e-4a97-b4c9-c1681a8906d7}</Project>
       <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.DTO\CimmytApp.DTO.csproj">
+      <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
+      <Name>CimmytApp.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Helper.Map\Helper.Map.csproj">
       <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
       <Name>Helper.Map</Name>
