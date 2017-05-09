@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.LoginPage">
-  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+            xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
+            prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Views.LoginPage"
+             Title="{localization:Translate page_title_login}">
+    <StackLayout>
+        <Entry Text="{Binding email}" Placeholder="{localization:Translate email}" />
+        <Entry IsPassword="True" Text="{Binding password}" Placeholder="{localization:Translate password}" />
+        <Button Text="{localization:Translate btn_login_text}" Command="{Binding LoginCommand}" />
+    </StackLayout>
 </ContentPage>

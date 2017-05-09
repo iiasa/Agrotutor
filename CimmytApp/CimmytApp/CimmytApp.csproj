@@ -50,14 +50,38 @@
       <DependentUpon>AppResources.es.resx</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\AddParcelPageViewModel.cs" />
+    <Compile Include="ViewModels\LinksPageViewModel.cs" />
+    <Compile Include="ViewModels\LocalAgronomicalRecommendationsPageViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\OfflineTilesDownloadPageViewModel.cs" />
     <Compile Include="ViewModels\ParcelsOverviewPageViewModel.cs" />
+    <Compile Include="ViewModels\RegistrationPageViewModel.cs" />
+    <Compile Include="ViewModels\WeatherForecastPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\AddParcelPage.xaml.cs">
       <DependentUpon>AddParcelPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\LinksPage.xaml.cs">
+      <DependentUpon>LinksPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LocalAgronomicalRecommendationsPage.xaml.cs">
+      <DependentUpon>LocalAgronomicalRecommendationsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OfflineTilesDownloadPage.xaml.cs">
+      <DependentUpon>OfflineTilesDownloadPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ParcelsOverviewPage.xaml.cs">
       <DependentUpon>ParcelsOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationPage.xaml.cs">
+      <DependentUpon>RegistrationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WeatherForecastPage.xaml.cs">
+      <DependentUpon>WeatherForecastPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -151,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="bin\Debug\CimmytApp.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -186,61 +209,42 @@
       <Name>Helper.Map</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="bin\Debug\CimmytApp.dll" />
-    <Content Include="bin\Debug\CimmytApp.dll.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bin\Debug\CimmytApp.pdb" />
-    <Content Include="bin\Debug\ComponentTrakCrypto.dll" />
-    <Content Include="bin\Debug\ComponentTrakMVVM.dll" />
-    <Content Include="bin\Debug\ComponentTrakSQLite.dll" />
-    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.dll" />
-    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.pdb" />
-    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.xml" />
-    <Content Include="bin\Debug\Microsoft.Practices.Unity.dll" />
-    <Content Include="bin\Debug\Microsoft.Practices.Unity.xml" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
-    <Content Include="bin\Debug\PCLCrypto.dll" />
-    <Content Include="bin\Debug\PCLCrypto.xml" />
-    <Content Include="bin\Debug\PCLStorage.Abstractions.dll" />
-    <Content Include="bin\Debug\PCLStorage.Abstractions.xml" />
-    <Content Include="bin\Debug\PCLStorage.dll" />
-    <Content Include="bin\Debug\PCLStorage.xml" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.Abstractions.dll" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.Abstractions.pdb" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.Abstractions.xml" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.dll" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.pdb" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.xml" />
-    <Content Include="bin\Debug\Prism.dll" />
-    <Content Include="bin\Debug\Prism.Forms.dll" />
-    <Content Include="bin\Debug\Prism.Forms.xml" />
-    <Content Include="bin\Debug\Prism.Unity.Forms.dll" />
-    <Content Include="bin\Debug\Prism.Unity.Forms.xml" />
-    <Content Include="bin\Debug\Prism.xml" />
-    <Content Include="bin\Debug\SQLite.Net.dll" />
-    <Content Include="bin\Debug\SQLiteNetExtensions.dll" />
-    <Content Include="bin\Debug\System.Net.Http.dll" />
-    <Content Include="bin\Debug\System.Net.Http.Extensions.dll" />
-    <Content Include="bin\Debug\System.Net.Http.Extensions.xml" />
-    <Content Include="bin\Debug\System.Net.Http.Primitives.dll" />
-    <Content Include="bin\Debug\System.Net.Http.Primitives.xml" />
-    <Content Include="bin\Debug\System.Net.Http.xml" />
-    <Content Include="bin\Debug\Validation.dll" />
-    <Content Include="bin\Debug\Validation.xml" />
-    <Content Include="bin\Debug\Xamarin.Forms.Core.dll" />
-    <Content Include="bin\Debug\Xamarin.Forms.Core.pdb" />
-    <Content Include="bin\Debug\Xamarin.Forms.Core.xml" />
-    <Content Include="bin\Debug\Xamarin.Forms.Platform.dll" />
-    <Content Include="bin\Debug\Xamarin.Forms.Platform.pdb" />
-    <Content Include="bin\Debug\Xamarin.Forms.Xaml.dll" />
-    <Content Include="bin\Debug\Xamarin.Forms.Xaml.pdb" />
-    <Content Include="bin\Debug\Xamarin.Forms.Xaml.xml" />
+    <EmbeddedResource Include="Views\RegistrationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="bin\Release\" />
+    <EmbeddedResource Include="Views\LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\WeatherForecastPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LocalAgronomicalRecommendationsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\LinksPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\OfflineTilesDownloadPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

@@ -123,8 +123,20 @@
   <data name="agricultural_cycle_2" xml:space="preserve">
     <value>Otoño-Invierno</value>
   </data>
+  <data name="btn_login_text" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="page_title_login" xml:space="preserve">
+    <value>Iniciar sesión</value>
+  </data>
   <data name="parcels_overview_title" xml:space="preserve">
     <value>Parcelas</value>
+  </data>
+  <data name="password" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Bienvenido</value>
