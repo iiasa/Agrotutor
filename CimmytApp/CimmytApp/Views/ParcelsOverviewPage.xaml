@@ -5,7 +5,10 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
+             xmlns:views="clr-namespace:Helper.UI.DatasetOverview.Views;assembly=Helper.UI.DatasetOverview"
              Title="{localization:Translate parcels_overview_title}">
-    <ListView BindingContext=""></ListView>
-    <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" />
+    <StackLayout>
+        <views:DatasetOverview Datasets="{Binding Parcels}" />
+        <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" />
+    </StackLayout>
 </ContentPage>

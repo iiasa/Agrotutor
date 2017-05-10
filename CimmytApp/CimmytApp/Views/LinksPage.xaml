@@ -4,5 +4,26 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.LinksPage">
-  
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="0" />
+        <Image Source="imageSource">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="{Binding TapLinkCommand}" CommandParameter="http://link.com" />
+            </Image.GestureRecognizers>
+        </Image>
+        <Label Text="How to grow with Don Grower" Grid.Row="1" Grid.Column="0" />
+        <Image Source="imageSource">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="{Binding TapLinkCommand}" CommandParameter="http://link2.org" />
+            </Image.GestureRecognizers>
+        </Image>
+    </Grid>
 </ContentPage>
