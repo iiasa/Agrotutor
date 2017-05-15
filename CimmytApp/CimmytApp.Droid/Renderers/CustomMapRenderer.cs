@@ -1,14 +1,14 @@
-﻿namespace CimmytApp.Droid.Renderers
+﻿using CimmytApp.Droid.Renderers;
+using CimmytApp.Map;
+using Xamarin.Forms;
+
+[assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
+
+namespace CimmytApp.Droid.Renderers
 {
-    using System;
     using Xamarin.Forms.Maps.Android;
     using Android.Gms.Maps;
     using Android.Gms.Maps.Model;
-    using Xamarin.Forms;
-    using CimmytApp.Map;
-    using CimmytApp.Droid.Renderers;
-
-    [assembly: ExportRenderer (typeof (CustomMap), typeof (CustomMapRenderer))]
 
     public class CustomMapRenderer : MapRenderer
     {
@@ -29,7 +29,7 @@
                 var tileProvider = new CustomTileProvider(512, 512, customMap.MapTileTemplate);
                 var options = new TileOverlayOptions().InvokeTileProvider(tileProvider);
 
-                map.Map.AddTileOverlay(options);
+                //map.Map.AddTileOverlay(options);
             }
         }
     }

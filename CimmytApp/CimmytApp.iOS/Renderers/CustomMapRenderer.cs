@@ -1,13 +1,13 @@
-﻿namespace CimmytApp.iOS.Renderers
-{
-    using System;
-    using Xamarin.Forms.Maps.iOS;
-    using Xamarin.Forms;
-    using CimmytApp.Map;
-    using CimmytApp.iOS.Renderers;
-    using MapKit;
+﻿using CimmytApp.iOS.Renderers;
+using CimmytApp.Map;
+using Xamarin.Forms;
 
-    [assembly: ExportRenderer (typeof (CustomMap), typeof (CustomMapRenderer))]
+[assembly: ExportRenderer(typeof(CustomMap), typeof(CustomMapRenderer))]
+
+namespace CimmytApp.iOS.Renderers
+{
+    using Xamarin.Forms.Maps.iOS;
+    using MapKit;
 
     public class CustomMapRenderer : MapRenderer
     {
@@ -18,18 +18,21 @@
         {
             base.OnElementChanged(e);
 
-            if (e.OldElement == null)
+            if (e.OldElement != null) return;
+            mapView = Control as MKMapView;
+            customMap = e.NewElement as CustomMap;
+
+            var overlay = new MKTileOverlay(customMap.MapTileTemplate)
             {
-                mapView = Control as MKMapView;
-                customMap = e.NewElement as CustomMap;
+                CanReplaceMapContent = false,
+                GeometryFlipped = false
+            };
 
-                var overlay = new MKTileOverlay(customMap.MapTileTemplate);
-                overlay.CanReplaceMapContent = false;
-                overlay.GeometryFlipped = false;
+            if (mapView != null)
+            {
                 mapView.AddOverlay(overlay, MKOverlayLevel.AboveLabels);
-
                 mapView.OverlayRenderer = (mv, o) =>
-                new MKTileOverlayRenderer((MKTileOverlay)o);
+                    new MKTileOverlayRenderer((MKTileOverlay)o);
             }
         }
     }
