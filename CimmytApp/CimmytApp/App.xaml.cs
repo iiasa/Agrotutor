@@ -55,6 +55,7 @@
             Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
             Container.RegisterTypeForNavigation<LinksPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
+            Container.RegisterTypeForNavigation<MapPage>();
         }
     }
 }
