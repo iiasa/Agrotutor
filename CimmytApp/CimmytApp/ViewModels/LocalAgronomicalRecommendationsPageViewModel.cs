@@ -10,7 +10,6 @@ namespace CimmytApp.ViewModels
     {
         public LocalAgronomicalRecommendationsPageViewModel()
         {
-
         }
     }
 }

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
-             xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
              xmlns:viewsMap="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
@@ -12,4 +11,5 @@
     <viewsMap:GenericMap />
     <views:WeatherForecastPage />
     <views:LocalAgronomicalRecommendationsPage />
+    <views:LinksPage />
 </TabbedPage>

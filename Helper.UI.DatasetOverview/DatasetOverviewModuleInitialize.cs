@@ -15,7 +15,7 @@
 
         public void Initialize()
         {
-            _unityContainer.RegisterTypeForNavigation<Views.DatasetOverview>();
+            //_unityContainer.RegisterTypeForNavigation<Views.DatasetOverview>();
         }
     }
 }

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.LinksPage">
+             x:Class="CimmytApp.Views.LinksPage"
+             Title="Links">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -13,17 +14,24 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
         <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="0" />
-        <Image Source="imageSource">
+        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="1" />
+        <Label Text="CIMMYT Soil Protocols" Grid.Row="1" Grid.Column="0" />
+        <Label Text="CIMMYT Soil Protocols" Grid.Row="1" Grid.Column="1" />
+        <!--
+        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="0" />
+        <Image Source="imageSource" Grid.Row="0" Grid.Column="1">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="{Binding TapLinkCommand}" CommandParameter="http://link.com" />
             </Image.GestureRecognizers>
         </Image>
         <Label Text="How to grow with Don Grower" Grid.Row="1" Grid.Column="0" />
-        <Image Source="imageSource">
+        <Image Source="imageSource" Grid.Row="1" Grid.Column="1">
             <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="{Binding TapLinkCommand}" CommandParameter="http://link2.org" />
             </Image.GestureRecognizers>
         </Image>
+        -->
     </Grid>
 </ContentPage>

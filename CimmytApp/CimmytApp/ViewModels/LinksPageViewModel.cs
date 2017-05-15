@@ -20,8 +20,9 @@ namespace CimmytApp.ViewModels
             TapLinkCommand = new DelegateCommand(OpenLink);
         }
 
-        private static void OpenLink(string uri)
+        private static void OpenLink()//string uri)
         {
+            var uri = "fdsa";
             Device.OpenUri(new Uri(uri));
         }
     }

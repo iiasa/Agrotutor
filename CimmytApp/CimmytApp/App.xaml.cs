@@ -30,7 +30,7 @@
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("LoginPage");
+            NavigationService.NavigateAsync("WelcomePage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {

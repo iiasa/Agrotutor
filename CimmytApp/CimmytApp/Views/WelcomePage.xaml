@@ -1,12 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-            xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-            xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
-            prism:ViewModelLocator.AutowireViewModel="True"
-            x:Class="CimmytApp.Views.WelcomePage"
-            Title="{localization:Translate welcome}">
-    <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-        <Label Text="{Binding Title}" />
-    </StackLayout>
-</ContentPage>
+﻿<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
+             xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
+             xmlns:viewsMap="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Views.WelcomePage"
+             Title="MainPage">
+    <ContentPage>
+        <Label Text="Blablabla" />
+    </ContentPage>
+    <ContentPage>
+        <Button Text="OK" Command="{Binding NavigateToMainPageCommand}" />
+    </ContentPage>
+</CarouselPage>
