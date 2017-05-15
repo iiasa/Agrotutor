@@ -6,6 +6,10 @@
              x:Class="CimmytApp.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
              Title="{localization:Translate parcels_overview_title}">
-    <ListView BindingContext=""></ListView>
-    <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" />
+    <StackLayout>
+        <!--
+        <views:DatasetOverview Datasets="{Binding Parcels}" />
+        -->
+        <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" />
+    </StackLayout>
 </ContentPage>

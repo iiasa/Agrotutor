@@ -123,8 +123,38 @@
   <data name="agricultural_cycle_2" xml:space="preserve">
     <value>Autumn-Winter</value>
   </data>
+  <data name="btn_go_to_registration_text" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="btn_login_text" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="btn_register_text" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="hint_register" xml:space="preserve">
+    <value>You don't have a user yet? Then please register here:</value>
+  </data>
+  <data name="page_title_login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="page_title_registration" xml:space="preserve">
+    <value>Registration</value>
+  </data>
   <data name="parcels_overview_title" xml:space="preserve">
     <value>Parcels</value>
+  </data>
+  <data name="placeholder_email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="placeholder_password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="placeholder_password_verification" xml:space="preserve">
+    <value>Verify Password</value>
+  </data>
+  <data name="placeholder_username" xml:space="preserve">
+    <value>Username</value>
   </data>
   <data name="welcome" xml:space="preserve">
     <value>Welcome</value>

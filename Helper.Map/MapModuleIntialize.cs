@@ -9,6 +9,7 @@ namespace Helper.Map
     public class PictureModuleIntialize : IModule
     {
         private readonly IUnityContainer _unityContainer;
+
         public PictureModuleIntialize(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
@@ -16,8 +17,7 @@ namespace Helper.Map
 
         public void Initialize()
         {
-           _unityContainer.RegisterTypeForNavigation<GenericMap>();
-
+            _unityContainer.RegisterTypeForNavigation<GenericMap>();
         }
     }
 }

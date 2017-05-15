@@ -17,6 +17,7 @@
                 System.Diagnostics.Debug.WriteLine("found resource: " + res);
             System.Diagnostics.Debug.WriteLine("====================================");
 
+            //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
             if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
             {
                 var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
@@ -29,7 +30,7 @@
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("MainPage");
+            NavigationService.NavigateAsync("WelcomePage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
@@ -48,6 +49,13 @@
             Container.RegisterTypeForNavigation<WelcomePage>();
             Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
             Container.RegisterTypeForNavigation<AddParcelPage>();
+            Container.RegisterTypeForNavigation<RegistrationPage>();
+            Container.RegisterTypeForNavigation<LoginPage>();
+            Container.RegisterTypeForNavigation<WeatherForecastPage>();
+            Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
+            Container.RegisterTypeForNavigation<LinksPage>();
+            Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
+            Container.RegisterTypeForNavigation<MapPage>();
         }
     }
 }

@@ -1,8 +1,8 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.Views
+﻿namespace CimmytApp.Views
 {
-    public partial class WelcomePage : TabbedPage
+    using Xamarin.Forms;
+
+    public partial class WelcomePage : CarouselPage
     {
         public WelcomePage()
         {
