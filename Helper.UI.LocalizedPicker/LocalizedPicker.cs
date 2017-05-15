@@ -8,12 +8,12 @@ namespace Helper.UI
     public class LocalizedPicker : Picker
     {
         public Picker Picker { get; private set; }
-        public BindableProperty Items { get; }
+        public BindableProperty LocalizedItems { get; }
         //public Dictionary<string, string> Items { get; set; }
 
         public LocalizedPicker()
         {
-            this.SelectedIndexChanged += OnSelectedIndexChanged;
+            SelectedIndexChanged += OnSelectedIndexChanged;
         }
 
         private void OnSelectedIndexChanged(object sender, EventArgs eventArgs)

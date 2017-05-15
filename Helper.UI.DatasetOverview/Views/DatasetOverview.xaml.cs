@@ -1,12 +1,11 @@
-﻿using Xamarin.Forms;
-
-namespace Helper.UI.DatasetOverview.Views
+﻿namespace Helper.UI.DatasetOverview.Views
 {
-    public partial class DatasetOverview : ContentPage
+    using Xamarin.Forms;
+
+    public class DatasetOverview : View
     {
         public DatasetOverview()
         {
-            InitializeComponent();
         }
     }
 }
