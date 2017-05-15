@@ -12,18 +12,17 @@ namespace CimmytApp.ViewModels
     public class LinksPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
-        private ICommand TapLinkCommand { get; set; }
+        public ICommand TapLinkCommand { get; set; }
 
         public LinksPageViewModel(INavigationService navigationService)
         {
+            TapLinkCommand = new Command(OpenLink);
             _navigationService = navigationService;
-            TapLinkCommand = new DelegateCommand(OpenLink);
         }
 
-        private static void OpenLink()//string uri)
+        private static void OpenLink(object url)
         {
-            var uri = "fdsa";
-            Device.OpenUri(new Uri(uri));
+            Device.OpenUri(new Uri((string)url));
         }
     }
 }
