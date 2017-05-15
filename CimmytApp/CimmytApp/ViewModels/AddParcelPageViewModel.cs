@@ -16,8 +16,8 @@ namespace CimmytApp.ViewModels
         {
             AgriculturalCycles = new Dictionary<string, string>
             {
-                {"agricultural_cycle_1", Resx.AppResources.agricultural_cycle_1 },
-                {"agricultural_cycle_2", Resx.AppResources.agricultural_cycle_2 }
+                /* {"agricultural_cycle_1", Resx.AppResources.agricultural_cycle_1 },
+                 {"agricultural_cycle_2", Resx.AppResources.agricultural_cycle_2 }*/
             };
         }
     }

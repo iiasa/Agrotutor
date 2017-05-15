@@ -13,17 +13,17 @@ namespace CimmytApp.ViewModels
     public class ParcelsOverviewPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
-        private ICommand AddParcelCommand { get; set; }
+        public ICommand AddParcelCommand { get; set; }
         private ObservableCollection<IDataset> Parcels;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            AddParcelCommand = new DelegateCommand(AddParcelClick);
+            AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             // Todo: get parcels from sqlite
         }
 
-        private void AddParcelClick()
+        private void NavigateToAddParcelPage()
         {
             _navigationService.NavigateAsync("AddParcelPage");
         }
