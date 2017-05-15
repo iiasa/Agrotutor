@@ -148,10 +148,13 @@
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.231\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.Xaml.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="XamForms.Controls.Calendar, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.0\lib\portable-net45+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10+UAP10\XamForms.Controls.Calendar.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="bin\Debug\CimmytApp.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -177,67 +180,16 @@
       <Project>{8fa589b1-356e-4a97-b4c9-c1681a8906d7}</Project>
       <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.DTO\CimmytApp.DTO.csproj">
+      <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
+      <Name>CimmytApp.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Helper.Map\Helper.Map.csproj">
       <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
       <Name>Helper.Map</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="bin\Debug\CimmytApp.dll" />
-    <Content Include="bin\Debug\CimmytApp.dll.mdb">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="bin\Debug\CimmytApp.pdb" />
-    <Content Include="bin\Debug\ComponentTrakCrypto.dll" />
-    <Content Include="bin\Debug\ComponentTrakMVVM.dll" />
-    <Content Include="bin\Debug\ComponentTrakSQLite.dll" />
-    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.dll" />
-    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.pdb" />
-    <Content Include="bin\Debug\Microsoft.Practices.ServiceLocation.xml" />
-    <Content Include="bin\Debug\Microsoft.Practices.Unity.dll" />
-    <Content Include="bin\Debug\Microsoft.Practices.Unity.xml" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.xml" />
-    <Content Include="bin\Debug\PCLCrypto.dll" />
-    <Content Include="bin\Debug\PCLCrypto.xml" />
-    <Content Include="bin\Debug\PCLStorage.Abstractions.dll" />
-    <Content Include="bin\Debug\PCLStorage.Abstractions.xml" />
-    <Content Include="bin\Debug\PCLStorage.dll" />
-    <Content Include="bin\Debug\PCLStorage.xml" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.Abstractions.dll" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.Abstractions.pdb" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.Abstractions.xml" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.dll" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.pdb" />
-    <Content Include="bin\Debug\Plugin.DeviceInfo.xml" />
-    <Content Include="bin\Debug\Prism.dll" />
-    <Content Include="bin\Debug\Prism.Forms.dll" />
-    <Content Include="bin\Debug\Prism.Forms.xml" />
-    <Content Include="bin\Debug\Prism.Unity.Forms.dll" />
-    <Content Include="bin\Debug\Prism.Unity.Forms.xml" />
-    <Content Include="bin\Debug\Prism.xml" />
-    <Content Include="bin\Debug\SQLite.Net.dll" />
-    <Content Include="bin\Debug\SQLiteNetExtensions.dll" />
-    <Content Include="bin\Debug\System.Net.Http.dll" />
-    <Content Include="bin\Debug\System.Net.Http.Extensions.dll" />
-    <Content Include="bin\Debug\System.Net.Http.Extensions.xml" />
-    <Content Include="bin\Debug\System.Net.Http.Primitives.dll" />
-    <Content Include="bin\Debug\System.Net.Http.Primitives.xml" />
-    <Content Include="bin\Debug\System.Net.Http.xml" />
-    <Content Include="bin\Debug\Validation.dll" />
-    <Content Include="bin\Debug\Validation.xml" />
-    <Content Include="bin\Debug\Xamarin.Forms.Core.dll" />
-    <Content Include="bin\Debug\Xamarin.Forms.Core.pdb" />
-    <Content Include="bin\Debug\Xamarin.Forms.Core.xml" />
-    <Content Include="bin\Debug\Xamarin.Forms.Platform.dll" />
-    <Content Include="bin\Debug\Xamarin.Forms.Platform.pdb" />
-    <Content Include="bin\Debug\Xamarin.Forms.Xaml.dll" />
-    <Content Include="bin\Debug\Xamarin.Forms.Xaml.pdb" />
-    <Content Include="bin\Debug\Xamarin.Forms.Xaml.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.3.4.231\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

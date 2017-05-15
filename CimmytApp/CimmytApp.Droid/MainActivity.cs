@@ -1,4 +1,7 @@
-﻿namespace CimmytApp.Droid
+﻿using Android.Util;
+using Gcm.Client;
+
+namespace CimmytApp.Droid
 {
     using Android.App;
     using Android.Content.PM;
@@ -17,7 +20,28 @@
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            XamForms.Controls.Droid.Calendar.Init();
+            //base.OnCreate (bundle);
+
+            //// Set your view from the "main" layout resource
+            //SetContentView (Resource.Layout.Main);
+
+            //// Get your button from the layout resource,
+            //// and attach an event to it
+            //Button button = FindViewById<Button> (Resource.Id.myButton);
+
+            RegisterWithGCM();
             LoadApplication(new App(new AndroidInitializer()));
+        }
+        private void RegisterWithGCM()
+        {
+            // Check to ensure everything's set up right
+            GcmClient.CheckDevice(this);
+            GcmClient.CheckManifest(this);
+
+            // Register for push notifications
+            Log.Info("MainActivity", "Registering...");
+            GcmClient.Register(this, Constants.SenderID);
         }
     }
 
