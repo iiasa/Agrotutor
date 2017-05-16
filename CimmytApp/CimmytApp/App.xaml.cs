@@ -1,4 +1,7 @@
-﻿namespace CimmytApp
+﻿using CimmytApp.Calendar;
+using CimmytApp.Calendar.Views;
+
+namespace CimmytApp
 {
     using System.Reflection;
     using Prism.Unity;
@@ -6,6 +9,8 @@
 
     using Localization;
     using Views;
+    using System;
+    using Prism.Modularity;
 
     public partial class App : PrismApplication
     {
@@ -25,7 +30,19 @@
                 DependencyService.Get<ILocalize>().SetLocale(ci);
             }
         }
+        protected override void ConfigureModuleCatalog()
+        {
 
+            Type locationeModuleType = typeof(CalenderModuleIntialize);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = locationeModuleType.Name,
+                    ModuleType = locationeModuleType,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
+
+        }
         protected override void OnInitialized()
         {
             InitializeComponent();
@@ -47,6 +64,7 @@
         {
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<WelcomePage>();
+            Container.RegisterTypeForNavigation<CalendarPage>();
             Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
             Container.RegisterTypeForNavigation<AddParcelPage>();
             Container.RegisterTypeForNavigation<RegistrationPage>();
