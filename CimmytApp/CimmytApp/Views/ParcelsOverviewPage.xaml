@@ -5,11 +5,34 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
-             Title="{localization:Translate parcels_overview_title}">
-    <StackLayout>
-        <!--
-        <views:DatasetOverview Datasets="{Binding Parcels}" />
-        -->
-        <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" />
-    </StackLayout>
+             Title="{localization:Translate parcels_overview_title}"
+             x:Name="ParcelOverviewRoot">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ScrollView Grid.Row="0">
+            <ListView ItemsSource="{Binding Parcels}" RowHeight="72">
+                <!-- TODO RowHeight auto -->
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="16">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="auto" />
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
+                                <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
+                                <Button Text="Details" Command="{Binding Path=BindingContext. ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
+        <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" Grid.Row="1" />
+    </Grid>
 </ContentPage>

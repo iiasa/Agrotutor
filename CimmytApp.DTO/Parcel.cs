@@ -28,9 +28,13 @@ namespace CimmytApp.DTO
 
         public GeoPosition GeoPosition { get; set; }
 
+        public int CompletedPercentage => 10;
+        public string OverviewString => $"{Crop}\r\n({CompletedPercentage} % complete)";
+        public string IconSource => $"corn.png";
+
         public DataTemplate GetOverviewDataTemplate()
         {
-            throw new System.NotImplementedException();
+            return null;
         }
     }
 }
