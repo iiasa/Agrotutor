@@ -193,6 +193,69 @@
       <Name>CimmytApp</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\corn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\beans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\cloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_weblink.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\local_benchmarking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mapall.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mapempty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mapone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\potato.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\opportunity.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rainsun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rainsnow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\rice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sun.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\suncloud.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sunsnow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\thunderrain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\thunderstorm.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

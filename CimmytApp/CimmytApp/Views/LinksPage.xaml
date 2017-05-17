@@ -4,34 +4,36 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.LinksPage"
-             Title="Links">
-    <Grid>
+             Title="Links" Padding="16">
+    <Grid HorizontalOptions="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="0" />
-        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="1" />
-        <Label Text="CIMMYT Soil Protocols" Grid.Row="1" Grid.Column="0" />
-        <Label Text="CIMMYT Soil Protocols" Grid.Row="1" Grid.Column="1" />
-        <!--
-        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="0" />
-        <Image Source="imageSource" Grid.Row="0" Grid.Column="1">
+        <Label Text="CIMMYT Soil Protocols" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.geo-wiki.org/" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Image Source="ic_weblink.png" Grid.Row="0" Grid.Column="1">
             <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="{Binding TapLinkCommand}" CommandParameter="http://link.com" />
+                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.geo-wiki.org/" />
             </Image.GestureRecognizers>
         </Image>
-        <Label Text="How to grow with Don Grower" Grid.Row="1" Grid.Column="0" />
-        <Image Source="imageSource" Grid.Row="1" Grid.Column="1">
+        <Label Text="How to grow with Don Grower" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.geo-wiki.org/" />
+            </Label.GestureRecognizers>
+        </Label>
+        <Image Source="ic_weblink.png" Grid.Row="1" Grid.Column="1">
             <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="{Binding TapLinkCommand}" CommandParameter="http://link2.org" />
+                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.geo-wiki.org/" />
             </Image.GestureRecognizers>
         </Image>
-        -->
     </Grid>
 </ContentPage>

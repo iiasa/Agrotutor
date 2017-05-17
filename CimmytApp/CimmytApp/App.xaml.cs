@@ -47,7 +47,7 @@ namespace CimmytApp
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("WelcomePage");
+            NavigationService.NavigateAsync("MainPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {

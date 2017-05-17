@@ -8,4 +8,5 @@
        
                 xmlns:generic="clr-namespace:System.Collections.Generic;assembly=System.Collections"
                 x:Class="CimmytApp.Views.AddParcelPage">
+    <!--<Picker SelectedIndex="{Binding AgriculturalCyclesSelectedIndex}" Items="{Binding AgriculturalCycles}" />-->
 </ContentPage>
