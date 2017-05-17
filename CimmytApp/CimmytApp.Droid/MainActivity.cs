@@ -33,6 +33,7 @@ namespace CimmytApp.Droid
             RegisterWithGCM();
             LoadApplication(new App(new AndroidInitializer()));
         }
+
         private void RegisterWithGCM()
         {
             // Check to ensure everything's set up right

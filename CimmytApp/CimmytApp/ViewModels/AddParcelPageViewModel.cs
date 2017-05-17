@@ -2,23 +2,41 @@
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
+using System.Windows.Input;
 using CimmytApp.DTO;
 
 namespace CimmytApp.ViewModels
 {
     public class AddParcelPageViewModel : BindableBase
     {
-        public Dictionary<string, string> AgriculturalCycles { get; private set; }
+        private List<string> agriculturalCycles = new List<string> { "Spring-Summer", "Autumn-Winter" };
+        public List<string> AgriculturalCycles => agriculturalCycles;
+
+        public bool Test { get; set; }
+
+        public ICommand AgriculturalCycleChangedCommand;
+        public ICommand Moo;
+
         public Parcel Parcel { get; set; }
 
         public AddParcelPageViewModel()
         {
-            AgriculturalCycles = new Dictionary<string, string>
-            {
-                /* {"agricultural_cycle_1", Resx.AppResources.agricultural_cycle_1 },
-                 {"agricultural_cycle_2", Resx.AppResources.agricultural_cycle_2 }*/
-            };
+            AgriculturalCycleChangedCommand = new DelegateCommand(AgriculturalCycleChanged);
+            Moo = new DelegateCommand(Mooo);
+        }
+
+        public void Mooo()
+        {
+            Debug.WriteLine("We here...");
+            int i = 0;
+            i++;
+        }
+
+        private void AgriculturalCycleChanged()
+        {
         }
     }
 }
