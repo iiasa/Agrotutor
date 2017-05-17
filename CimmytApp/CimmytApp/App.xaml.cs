@@ -30,7 +30,7 @@
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("MainPage");
+            NavigationService.NavigateAsync("AddParcelPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
