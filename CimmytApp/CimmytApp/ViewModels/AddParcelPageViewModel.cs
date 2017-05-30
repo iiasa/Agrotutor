@@ -25,14 +25,6 @@ namespace CimmytApp.ViewModels
         public AddParcelPageViewModel()
         {
             AgriculturalCycleChangedCommand = new DelegateCommand(AgriculturalCycleChanged);
-            Moo = new DelegateCommand(Mooo);
-        }
-
-        public void Mooo()
-        {
-            Debug.WriteLine("We here...");
-            int i = 0;
-            i++;
         }
 
         private void AgriculturalCycleChanged()

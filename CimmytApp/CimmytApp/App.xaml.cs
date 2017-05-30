@@ -1,4 +1,9 @@
-﻿namespace CimmytApp
+﻿using System.Collections.Generic;
+using CimmytApp.BusinessContract;
+using CimmytApp.DTO;
+using CimmytApp.SQLiteDB;
+
+namespace CimmytApp
 {
     using System.Reflection;
     using Prism.Unity;
@@ -9,6 +14,9 @@
 
     public partial class App : PrismApplication
     {
+        public static Parcel CurrentParcel { get; set; }
+        public static List<Parcel> Parcels { get; set; }
+
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
             System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
@@ -24,6 +32,8 @@
                 Resx.AppResources.Culture = ci;
                 DependencyService.Get<ILocalize>().SetLocale(ci);
             }
+
+            CimmytDbOperations.GetAllParcels();
         }
 
         protected override void OnInitialized()
@@ -56,6 +66,10 @@
             Container.RegisterTypeForNavigation<LinksPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
             Container.RegisterTypeForNavigation<MapPage>();
+            Container.RegisterTypeForNavigation<ParcelPage>();
+            Container.RegisterTypeForNavigation<AddParcelInformationPage>();
+            Container.RegisterTypeForNavigation<ViewParcelInformation>();
+            Container.RegisterTypeForNavigation<LocalBenchmarkingPage>();
         }
     }
 }

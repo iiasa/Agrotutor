@@ -60,6 +60,7 @@ namespace CimmytApp.ViewModels
 
         private void NavigateToParcelDetailPage(object id)
         {
+            //App.CurrentParcel =
             var navigationParameters = new NavigationParameters { { "id", (int)id } };
             _navigationService.NavigateAsync("ParcelDetailPage", navigationParameters);
         }

@@ -9,7 +9,13 @@ namespace CimmytApp.ViewModels
 {
     public class ParcelPageViewModel : BindableBase
     {
-        public Parcel Parcel { get; private set; }
+        private Parcel _parcel;
+
+        public Parcel Parcel
+        {
+            get { return _parcel; }
+            set { SetProperty(ref _parcel, value); }
+        }
 
         public ParcelPageViewModel()
         {
