@@ -1,4 +1,6 @@
-﻿using Xamarin.Forms;
+﻿using CimmytApp.DTO;
+using CimmytApp.ViewModels;
+using Xamarin.Forms;
 
 namespace CimmytApp.Views
 {
