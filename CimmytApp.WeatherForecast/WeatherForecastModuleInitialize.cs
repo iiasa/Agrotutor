@@ -1,4 +1,4 @@
-﻿using CimmytApp.Views;
+﻿using CimmytApp.WeatherForecast.Views;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;

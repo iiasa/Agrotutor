@@ -258,6 +258,10 @@
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>CimmytApp.SQLiteDB</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.WeatherForecast\CimmytApp.WeatherForecast.csproj">
+      <Project>{49028EEC-96AD-4FC4-B93E-A4FD630985A8}</Project>
+      <Name>CimmytApp.WeatherForecast</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Helper.Map\Helper.Map.csproj">
       <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
       <Name>Helper.Map</Name>

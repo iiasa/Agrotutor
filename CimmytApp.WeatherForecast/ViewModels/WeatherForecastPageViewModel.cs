@@ -7,7 +7,6 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using CimmytApp.DTO;
-using CimmytApp.Views;
 using Xamarin.Forms;
 
 namespace CimmytApp.WeatherForecast.ViewModels

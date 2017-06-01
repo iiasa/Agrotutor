@@ -1,8 +1,6 @@
-﻿using CimmytApp.DTO;
-using CimmytApp.ViewModels;
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
-namespace CimmytApp.Views
+namespace CimmytApp.WeatherForecast.Views
 {
     public partial class WeatherForecastPage : ContentPage
     {

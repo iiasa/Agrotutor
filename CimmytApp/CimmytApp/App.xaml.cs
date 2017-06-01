@@ -2,6 +2,7 @@
 using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
 using CimmytApp.SQLiteDB;
+using Prism.Navigation;
 
 namespace CimmytApp
 {
@@ -40,7 +41,15 @@ namespace CimmytApp
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("AddParcelPage");
+            var parcel = new Parcel
+            {
+                ID = 2,
+                Crop = "Wheat"
+            };
+
+            var navigationParameters = new NavigationParameters();
+            navigationParameters.Add("parcel", parcel);
+            NavigationService.NavigateAsync("ParcelPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
@@ -61,14 +70,13 @@ namespace CimmytApp
             Container.RegisterTypeForNavigation<AddParcelPage>();
             Container.RegisterTypeForNavigation<RegistrationPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
-            Container.RegisterTypeForNavigation<WeatherForecastPage>();
             Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
             Container.RegisterTypeForNavigation<LinksPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
             Container.RegisterTypeForNavigation<MapPage>();
             Container.RegisterTypeForNavigation<ParcelPage>();
             Container.RegisterTypeForNavigation<AddParcelInformationPage>();
-            Container.RegisterTypeForNavigation<ViewParcelInformation>();
+            Container.RegisterTypeForNavigation<ViewParcelInformationPage>();
             Container.RegisterTypeForNavigation<LocalBenchmarkingPage>();
         }
     }

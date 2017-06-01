@@ -6,11 +6,10 @@ using System.Linq;
 
 namespace CimmytApp.ViewModels
 {
-    public class ViewParcelInformationViewModel : BindableBase
+    public class ViewParcelInformationPageViewModel : BindableBase
     {
-        public ViewParcelInformationViewModel()
+        public ViewParcelInformationPageViewModel()
         {
-
         }
     }
 }

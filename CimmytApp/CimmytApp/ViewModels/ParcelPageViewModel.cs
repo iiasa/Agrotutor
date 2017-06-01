@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using CimmytApp.DTO;
+using Prism.Navigation;
 
 namespace CimmytApp.ViewModels
 {
@@ -19,6 +20,11 @@ namespace CimmytApp.ViewModels
 
         public ParcelPageViewModel()
         {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            _parcel = (Parcel)parameters["parcel"];
         }
     }
 }

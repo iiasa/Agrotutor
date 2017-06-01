@@ -4,10 +4,11 @@
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
-            x:Class="CimmytApp.Views.ParcelPage">
+             xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
+             x:Class="CimmytApp.Views.ParcelPage">
     <views:AddParcelInformationPage />
-    <views:ViewParcelInformation />
-    <views:WeatherForecastPage />
+    <views:ViewParcelInformationPage />
+    <viewsWeather:WeatherForecastPage />
     <views:LocalBenchmarkingPage />
     <views:LocalAgronomicalRecommendationsPage />
 </TabbedPage>
