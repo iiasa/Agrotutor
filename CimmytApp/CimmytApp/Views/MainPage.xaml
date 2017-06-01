@@ -5,14 +5,13 @@
              xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
             xmlns:calender="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
              xmlns:viewsMap="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
+             xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
              Title="MainPage">
     <views:ParcelsOverviewPage />
     <views:MapPage />
-    <views:WeatherForecastPage />
-  <calender:CalendarPage></calender:CalendarPage>
-    <!--<views:LocalAgronomicalRecommendationsPage />-->
-  
+    <viewsWeather:WeatherForecastPage />
+    <views:LocalAgronomicalRecommendationsPage />
     <views:LinksPage />
 </TabbedPage>

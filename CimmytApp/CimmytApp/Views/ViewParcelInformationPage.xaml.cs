@@ -2,9 +2,9 @@
 
 namespace CimmytApp.Views
 {
-    public partial class WeatherForecastPage : ContentPage
+    public partial class ViewParcelInformationPage : ContentPage
     {
-        public WeatherForecastPage()
+        public ViewParcelInformationPage()
         {
             InitializeComponent();
         }

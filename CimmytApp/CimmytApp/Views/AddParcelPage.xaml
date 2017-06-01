@@ -10,14 +10,13 @@
         <StackLayout Orientation="Vertical">
             <Label Text="Select agronomical cycle" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <controls:ExtendedPicker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="0">
-            </controls:ExtendedPicker>
+            <controls:ExtendedPicker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="0" />
             <Label Text="Select the year" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <controls:ExtendedPicker ItemsSource="{Binding Years}" SelectedIndex="0" />
             <Label Text="Estimated parcel area" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="[ha]" />
+            <Entry Placeholder="[ha]" Text="{Binding Parcel.EstimatedParcelArea}" />
             <Label Text="Producer name" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="Firstname Lastname" />
@@ -25,7 +24,7 @@
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="(for identification, e.g.: Corn Road 1)" Margin="0,0,0,16" />
             <Label Text="Please select technologies which were used:" />
-            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" Margin="0,0,0,8"/>
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" Margin="0,0,0,8" />
             <controls:CheckBox Checked="{Binding Test}" DefaultText="Change to improved, new varieties adapted to areas with potential to increase yield" />
             <controls:CheckBox DefaultText="Interpretation and use of soil analysis" />
             <controls:CheckBox DefaultText="Using infrared sensor for optimized fertilizer use" />
@@ -34,7 +33,7 @@
             <controls:CheckBox DefaultText="Minimal movement of soil, retention of residues and rotation of crops" />
             <controls:CheckBox DefaultText="Introduction of new crops in rotation (e.g. forage crops)" />
             <controls:CheckBox DefaultText="Technology to improve grain storage" />
-            <Label Text="Other technologies" Margin="0,16,0,0"/>
+            <Label Text="Other technologies" Margin="0,16,0,0" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="Technologies used" />
             <Label Text="Crop planted" />
