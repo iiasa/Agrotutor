@@ -62,7 +62,7 @@
     <Compile Include="ViewModels\ParcelPageViewModel.cs" />
     <Compile Include="ViewModels\ParcelsOverviewPageViewModel.cs" />
     <Compile Include="ViewModels\RegistrationPageViewModel.cs" />
-    <Compile Include="ViewModels\ViewParcelInformationViewModel.cs" />
+    <Compile Include="ViewModels\ViewParcelInformationPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomeContentPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\AddParcelInformationPage.xaml.cs">
@@ -98,8 +98,8 @@
     <Compile Include="Views\RegistrationPage.xaml.cs">
       <DependentUpon>RegistrationPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewParcelInformation.xaml.cs">
-      <DependentUpon>ViewParcelInformation.xaml</DependentUpon>
+    <Compile Include="Views\ViewParcelInformationPage.xaml.cs">
+      <DependentUpon>ViewParcelInformationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WelcomeContentPage.xaml.cs">
       <DependentUpon>WelcomeContentPage.xaml</DependentUpon>
@@ -322,7 +322,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\ViewParcelInformation.xaml">
+    <EmbeddedResource Include="Views\ViewParcelInformationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

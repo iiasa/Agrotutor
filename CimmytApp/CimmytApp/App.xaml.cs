@@ -44,7 +44,16 @@ namespace CimmytApp
             var parcel = new Parcel
             {
                 ID = 2,
-                Crop = "Wheat"
+                Crop = "Wheat",
+                AgronomicalCycle = 1,
+                EstimatedParcelArea = 2.5,
+                Cultivar = "Example Cultivar",
+                GeoPosition = new GeoPosition
+                {
+                    Latitude = 46.789,
+                    Longitude = 16.78856
+                },
+                Irrigation = "Irrigated"
             };
 
             var navigationParameters = new NavigationParameters();
