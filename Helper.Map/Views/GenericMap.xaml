@@ -4,5 +4,14 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Helper.Map.Views.GenericMap"
-             Title="{Binding Title}">
+              xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
+             Title="Map">
+  
+  <!--<bindableMap:TKCustomMap CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}"
+                         MapCenter="{Binding MapsPosition}"
+                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >-->
+    <bindableMap:TKCustomMap MapRegion="{Binding MapRegion}"
+                        
+                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >
+    </bindableMap:TKCustomMap>
 </ContentPage>

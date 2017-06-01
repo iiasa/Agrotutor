@@ -11,6 +11,7 @@ namespace CimmytApp
     using Views;
     using System;
     using Prism.Modularity;
+    using Helper.Map;
 
     public partial class App : PrismApplication
     {
@@ -42,12 +43,21 @@ namespace CimmytApp
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
+            Type mapModuleIntialize = typeof(MapModuleIntialize);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = mapModuleIntialize.Name,
+                    ModuleType = mapModuleIntialize,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
+
         }
         protected override void OnInitialized()
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("AddParcelPage");
+            NavigationService.NavigateAsync("WelcomePage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {

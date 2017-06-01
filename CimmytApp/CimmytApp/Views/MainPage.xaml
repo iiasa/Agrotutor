@@ -9,7 +9,8 @@
              x:Class="CimmytApp.Views.MainPage"
              Title="MainPage">
     <views:ParcelsOverviewPage />
-    <views:MapPage />
+    <!--<views:MapPage />-->
+  <viewsMap:GenericMap></viewsMap:GenericMap>
     <views:WeatherForecastPage />
   <calender:CalendarPage></calender:CalendarPage>
     <!--<views:LocalAgronomicalRecommendationsPage />-->

@@ -21,6 +21,7 @@ namespace CimmytApp.ViewModels
             _moduleManager = moduleManager;
             NavigateToMainPageCommand = new DelegateCommand(NavigateToMainPage);
             _moduleManager.LoadModule("CalenderModuleIntialize");
+            _moduleManager.LoadModule("MapModuleIntialize");
         }
 
         private void NavigateToMainPage()
