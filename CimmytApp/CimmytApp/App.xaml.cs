@@ -41,9 +41,9 @@ namespace CimmytApp
 
             CimmytDbOperations.GetAllParcels();
         }
+
         protected override void ConfigureModuleCatalog()
         {
-
             Type locationeModuleType = typeof(CalenderModuleIntialize);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
@@ -61,8 +61,8 @@ namespace CimmytApp
                     ModuleType = mapModuleIntialize,
                     InitializationMode = InitializationMode.WhenAvailable
                 });
-
         }
+
         protected override void OnInitialized()
         {
             InitializeComponent();
@@ -100,14 +100,11 @@ namespace CimmytApp
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<MainPage>();
-            Container.RegisterTypeForNavigation<WelcomePage>();
             Container.RegisterTypeForNavigation<CalendarPage>();
             Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
             Container.RegisterTypeForNavigation<AddParcelPage>();
-            Container.RegisterTypeForNavigation<RegistrationPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
-            Container.RegisterTypeForNavigation<LinksPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
             Container.RegisterTypeForNavigation<MapPage>();
             Container.RegisterTypeForNavigation<ParcelPage>();
