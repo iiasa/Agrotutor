@@ -258,6 +258,10 @@
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.PublishSubscriberEvents\CimmytApp.PublishSubscriberEvents.csproj">
+      <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
+      <Name>CimmytApp.PublishSubscriberEvents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CimmytApp.SQLiteDB\CimmytApp.SQLiteDB.csproj">
       <Project>{67F9D3A8-F71E-4428-913F-C37AE82CDB24}</Project>
       <Name>CimmytApp.SQLiteDB</Name>

@@ -5,17 +5,25 @@ using System.Collections.Generic;
 using System.Linq;
 using CimmytApp.DTO;
 using Prism.Navigation;
+using Prism;
 
 namespace CimmytApp.ViewModels
 {
-    public class ParcelPageViewModel : BindableBase
+    public class ParcelPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;
+
+        public event EventHandler IsActiveChanged;
 
         public Parcel Parcel
         {
             get { return _parcel; }
             set { SetProperty(ref _parcel, value); }
+        }
+
+        public bool IsActive
+        { get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
         }
 
         public ParcelPageViewModel()
@@ -25,6 +33,16 @@ namespace CimmytApp.ViewModels
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             _parcel = (Parcel)parameters["parcel"];
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        
         }
     }
 }
