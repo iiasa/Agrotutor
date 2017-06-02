@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace CimmytApp.ViewModels
 {
-    public class ParcelsOverviewPageViewModel : BindableBase
+    public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
         private readonly INavigationService _navigationService;
         private ObservableCollection<Parcel> _parcels;
@@ -68,6 +68,21 @@ namespace CimmytApp.ViewModels
         private void NavigateToAddParcelPage()
         {
             _navigationService.NavigateAsync("AddParcelPage");
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+         
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+      
         }
     }
 }
