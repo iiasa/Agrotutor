@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
+            xmlns:calender="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
              xmlns:viewsMap="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
              prism:ViewModelLocator.AutowireViewModel="True"

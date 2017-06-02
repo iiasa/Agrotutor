@@ -3,6 +3,8 @@ using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
 using CimmytApp.SQLiteDB;
 using Prism.Navigation;
+using CimmytApp.Calendar;
+using CimmytApp.Calendar.Views;
 
 namespace CimmytApp
 {
@@ -12,6 +14,9 @@ namespace CimmytApp
 
     using Localization;
     using Views;
+    using System;
+    using Prism.Modularity;
+    using Helper.Map;
 
     public partial class App : PrismApplication
     {
@@ -36,7 +41,28 @@ namespace CimmytApp
 
             CimmytDbOperations.GetAllParcels();
         }
+        protected override void ConfigureModuleCatalog()
+        {
 
+            Type locationeModuleType = typeof(CalenderModuleIntialize);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = locationeModuleType.Name,
+                    ModuleType = locationeModuleType,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
+
+            Type mapModuleIntialize = typeof(MapModuleIntialize);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = mapModuleIntialize.Name,
+                    ModuleType = mapModuleIntialize,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
+
+        }
         protected override void OnInitialized()
         {
             InitializeComponent();
@@ -75,6 +101,7 @@ namespace CimmytApp
         {
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<WelcomePage>();
+            Container.RegisterTypeForNavigation<CalendarPage>();
             Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
             Container.RegisterTypeForNavigation<AddParcelPage>();
             Container.RegisterTypeForNavigation<RegistrationPage>();

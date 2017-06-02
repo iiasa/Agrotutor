@@ -250,6 +250,10 @@
       <Project>{8fa589b1-356e-4a97-b4c9-c1681a8906d7}</Project>
       <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.Calendar\CimmytApp.Calendar.csproj">
+      <Project>{d673eec7-ddef-48e1-82d3-6c1a64517de7}</Project>
+      <Name>CimmytApp.Calendar</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CimmytApp.DTO\CimmytApp.DTO.csproj">
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>

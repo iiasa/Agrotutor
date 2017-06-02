@@ -6,11 +6,11 @@ using Prism.Unity;
 //[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Helper.Map
 {
-    public class PictureModuleIntialize : IModule
+    public class MapModuleIntialize : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public PictureModuleIntialize(IUnityContainer unityContainer)
+        public MapModuleIntialize(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }
