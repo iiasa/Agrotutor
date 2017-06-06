@@ -52,14 +52,10 @@
     </Compile>
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="ViewModels\MapPageViewModel.cs" />
     <Compile Include="ViewModels\OfflineTilesDownloadPageViewModel.cs" />
     <Compile Include="ViewModels\ParcelPageViewModel.cs" />
     <Compile Include="Views\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\MapPage.xaml.cs">
-      <DependentUpon>MapPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\OfflineTilesDownloadPage.xaml.cs">
       <DependentUpon>OfflineTilesDownloadPage.xaml</DependentUpon>
@@ -241,12 +237,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\OfflineTilesDownloadPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\MapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

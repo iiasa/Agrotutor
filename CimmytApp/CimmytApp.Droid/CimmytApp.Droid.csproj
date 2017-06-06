@@ -244,8 +244,6 @@
     <Compile Include="Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PushHandlerService.cs" />
-    <Compile Include="Renderers\CustomMapRenderer.cs" />
-    <Compile Include="Renderers\CustomTileProvider.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

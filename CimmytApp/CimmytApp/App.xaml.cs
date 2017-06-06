@@ -100,7 +100,6 @@
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
-            Container.RegisterTypeForNavigation<MapPage>();
             Container.RegisterTypeForNavigation<ParcelPage>();
         }
     }
