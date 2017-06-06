@@ -1,14 +1,11 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using Prism.Modularity;
-using Prism.Navigation;
-
-namespace CimmytApp.Introduction.ViewModels
+﻿namespace CimmytApp.Introduction.ViewModels
 {
+    using Prism.Commands;
+    using Prism.Mvvm;
+    using System.Windows.Input;
+    using Prism.Modularity;
+    using Prism.Navigation;
+
     public class WelcomePageViewModel : BindableBase, INavigationAware
     {
         public INavigationService _navigationService { get; set; }

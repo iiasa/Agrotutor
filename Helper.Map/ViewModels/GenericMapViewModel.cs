@@ -1,17 +1,16 @@
-﻿using Helper.Base.Contract;
-using Helper.Base.DTO;
-using Helper.Base.PublishSubscriberEvents;
-using Prism.Events;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System.Collections.ObjectModel;
-using System.Linq;
-using TK.CustomMap;
-using Xamarin.Forms.Maps;
-using System;
-
-namespace Helper.Map.ViewModels
+﻿namespace Helper.Map.ViewModels
 {
+    using Base.Contract;
+    using Base.DTO;
+    using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using TK.CustomMap;
+    using Xamarin.Forms.Maps;
+    using System;
+
     public class GenericMapViewModel : BindableBase
     {
         public class LocationPageViewModel : BindableBase, INavigationAware
@@ -26,12 +25,9 @@ namespace Helper.Map.ViewModels
             private Position _mapsPosition;
             private ObservableCollection<TKCustomMapPin> _customPinsList;
             private MapSpan _mapRegion;
-          
-
 
             public LocationPageViewModel()
             {
-
             }
 
             public ObservableCollection<TKCustomMapPin> CustomPinsList
@@ -69,6 +65,7 @@ namespace Helper.Map.ViewModels
                     SetProperty(ref _isGeolocationEnabled, value);
                 }
             }
+
             public LocationPageViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
             {
                 _navigationService = navigationService;
@@ -76,14 +73,9 @@ namespace Helper.Map.ViewModels
                 _eventAggregator = eventAggregator;
 
                 _geoLocator = geoLocator;
-
-
-
             }
 
-
-
-            void HandlePositionEvent(GeoPosition position)
+            private void HandlePositionEvent(GeoPosition position)
             {
                 if (position == null)
                 {
@@ -92,15 +84,13 @@ namespace Helper.Map.ViewModels
                 else
                 {
                     IsGeolocationEnabled = true;
-                 
+
                     var tkCustomMapPin = CustomPinsList?.FirstOrDefault(x => x.ID == "userCurrLocation");
                     if (tkCustomMapPin != null)
                     {
                         tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
                     }
                 }
-
-
             }
 
             public void OnNavigatedFrom(NavigationParameters parameters)
@@ -137,7 +127,7 @@ namespace Helper.Map.ViewModels
                             });
                 }
 
-               // _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
+                // _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
 
             public void OnNavigatingTo(NavigationParameters parameters)

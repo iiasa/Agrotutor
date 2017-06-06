@@ -1,8 +1,7 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
+    using Prism.Commands;
+    using Prism.Mvvm;
     using System;
     using Prism.Navigation;
     using Prism;

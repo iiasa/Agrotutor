@@ -42,7 +42,7 @@
 
         protected override void ConfigureModuleCatalog()
         {
-            Type locationeModuleType = typeof(CalenderModuleIntialize);
+            var locationeModuleType = typeof(CalenderModuleIntialize);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
                 {
@@ -51,7 +51,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-            Type mapModuleIntialize = typeof(MapModuleIntialize);
+            var mapModuleIntialize = typeof(MapModuleIntialize);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
                 {

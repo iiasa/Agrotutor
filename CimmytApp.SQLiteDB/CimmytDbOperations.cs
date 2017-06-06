@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using BusinessContract;
-    using DTO.Parcel;
+    using CimmytApp.DTO.Parcel;
 
     public class CimmytDbOperations : ICimmytDbOperations
     {

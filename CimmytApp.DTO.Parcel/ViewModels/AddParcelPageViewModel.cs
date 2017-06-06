@@ -1,15 +1,10 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Linq;
-using System.Windows.Input;
-using CimmytApp.DTO;
-
-namespace CimmytApp.DTO.Parcel.ViewModels
+﻿namespace CimmytApp.DTO.Parcel.ViewModels
 {
+    using Prism.Commands;
+    using Prism.Mvvm;
+    using System.Collections.Generic;
+    using System.Windows.Input;
+
     public class AddParcelPageViewModel : BindableBase
     {
         private List<string> agriculturalCycles = new List<string> { "Spring-Summer", "Autumn-Winter" };

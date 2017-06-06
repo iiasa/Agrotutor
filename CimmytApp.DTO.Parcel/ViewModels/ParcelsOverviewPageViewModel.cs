@@ -1,17 +1,13 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Windows.Input;
-using CimmytApp.BusinessContract;
-using CimmytApp.DTO;
-using Prism.Navigation;
-using Xamarin.Forms;
-
-namespace CimmytApp.DTO.Parcel.ViewModels
+﻿namespace CimmytApp.DTO.Parcel.ViewModels
 {
+    using Prism.Commands;
+    using Prism.Mvvm;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using Prism.Navigation;
+    using Xamarin.Forms;
+
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
         private readonly INavigationService _navigationService;

@@ -1,10 +1,11 @@
-﻿using CimmytApp.AgronomicalRecommendations.Views;
-using Microsoft.Practices.Unity;
-using Prism.Modularity;
-using Prism.Unity;
-
-namespace CimmytApp.AgronomicalRecommendations
+﻿namespace CimmytApp.AgronomicalRecommendations
 {
+    using Microsoft.Practices.Unity;
+    using Prism.Modularity;
+    using Prism.Unity;
+
+    using Views;
+
     public class AgronomicalRecommendationsModuleInitialize : IModule
     {
         private readonly IUnityContainer _unityContainer;

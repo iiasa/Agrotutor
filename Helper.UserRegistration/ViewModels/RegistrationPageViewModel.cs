@@ -1,13 +1,10 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows.Input;
-using Prism.Navigation;
-
-namespace Helper.UserRegistration.ViewModels
+﻿namespace Helper.UserRegistration.ViewModels
 {
+    using Prism.Commands;
+    using Prism.Mvvm;
+    using System.Windows.Input;
+    using Prism.Navigation;
+
     public class RegistrationPageViewModel : BindableBase
     {
         private INavigationService _navigationService;

@@ -1,11 +1,7 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CimmytApp.Introduction.ViewModels
+﻿namespace CimmytApp.Introduction.ViewModels
 {
+    using Prism.Mvvm;
+
     public class WelcomeContentPageViewModel : BindableBase
     {
         public WelcomeContentPageViewModel()

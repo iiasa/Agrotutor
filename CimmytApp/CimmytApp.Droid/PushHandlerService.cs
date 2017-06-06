@@ -1,14 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-using WindowsAzure.Messaging;
-using Android.App;
-using Android.Content;
-using Android.Util;
-using Gcm.Client;
-
 namespace CimmytApp.Droid
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using WindowsAzure.Messaging;
+    using Android.App;
+    using Android.Content;
+    using Android.Util;
+    using Gcm.Client;
+
     [Service] // Must use the service tag
     public class PushHandlerService : GcmServiceBase
     {
@@ -55,15 +55,14 @@ namespace CimmytApp.Droid
 
         protected override void OnMessage(Context context, Intent intent)
         {
-
             var msg = new StringBuilder();
 
-            if (intent != null && intent.Extras != null)
+            if (intent?.Extras != null)
             {
                 foreach (var key in intent.Extras.KeySet())
                     msg.AppendLine(key + "=" + intent.Extras.Get(key));
 
-                string messageText = intent.Extras.GetString("message");
+                var messageText = intent.Extras.GetString("message");
                 if (!string.IsNullOrEmpty(messageText))
                 {
                     createNotification("New hub message!", messageText);
@@ -75,16 +74,16 @@ namespace CimmytApp.Droid
             }
         }
 
-        void createNotification(string title, string desc)
+        private void createNotification(string title, string desc)
         {
             //Create notification
-            var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
+            var notificationManager = GetSystemService(NotificationService) as NotificationManager;
 
             //Create an intent to show UI
             var uiIntent = new Intent(this, typeof(MainActivity));
 
             //Create the notification
-            var notification = new Android.App.Notification(Android.Resource.Drawable.SymActionEmail, title);
+            var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
 
             //Auto-cancel will remove the notification once the user touches it
             notification.Flags = NotificationFlags.AutoCancel;
@@ -96,7 +95,6 @@ namespace CimmytApp.Droid
 
             //Show the notification
             notificationManager.Notify(0, notification);
-
         }
 
         protected override void OnUnRegistered(Context context, string registrationId)

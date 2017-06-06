@@ -24,6 +24,5 @@ namespace CimmytApp.Droid
     {
         public const string TAG = "NotificationHubSample-LOG";
         public static string[] SENDER_IDS = { Constants.SenderID };
-
     }
 }

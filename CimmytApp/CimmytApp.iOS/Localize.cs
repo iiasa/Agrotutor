@@ -24,10 +24,10 @@ namespace CimmytApp.iOS
                 netLanguage = iOSToDotnetLanguage(pref);
             }
             // this gets called a lot - try/catch can be expensive so consider caching or something
-            System.Globalization.CultureInfo ci = null;
+            CultureInfo ci = null;
             try
             {
-                ci = new System.Globalization.CultureInfo(netLanguage);
+                ci = new CultureInfo(netLanguage);
             }
             catch (CultureNotFoundException e1)
             {
@@ -36,12 +36,12 @@ namespace CimmytApp.iOS
                 try
                 {
                     var fallback = ToDotnetFallbackLanguage(new PlatformCulture(netLanguage));
-                    ci = new System.Globalization.CultureInfo(fallback);
+                    ci = new CultureInfo(fallback);
                 }
                 catch (CultureNotFoundException e2)
                 {
                     // iOS language not valid .NET culture, falling back to English
-                    ci = new System.Globalization.CultureInfo("en");
+                    ci = new CultureInfo("en");
                 }
             }
             return ci;

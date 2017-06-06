@@ -1,8 +1,7 @@
-﻿using System;
-using System.Globalization;
-
-namespace CimmytApp.Localization
+﻿namespace CimmytApp.Localization
 {
+    using System.Globalization;
+
     public interface ILocalize
     {
         CultureInfo GetCurrentCultureInfo();
