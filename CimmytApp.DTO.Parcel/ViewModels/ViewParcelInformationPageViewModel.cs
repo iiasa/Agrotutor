@@ -11,8 +11,15 @@ namespace CimmytApp.DTO.Parcel.ViewModels
 
     public class ViewParcelInformationPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
+        private Parcel _parcel;
         private readonly IEventAggregator _eventAggregator;
         private bool isActive;
+
+        public Parcel Parcel
+        {
+            get { return _parcel; }
+            set { _parcel = value; }
+        }
 
         public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator)
         {
@@ -31,7 +38,7 @@ namespace CimmytApp.DTO.Parcel.ViewModels
 
         private void ReadParcelData(IDataset parcelObj)
         {
-            var parcel = (Parcel)parcelObj;
+            _parcel = (Parcel)parcelObj;
         }
 
         public event EventHandler IsActiveChanged;

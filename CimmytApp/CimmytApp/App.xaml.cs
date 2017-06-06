@@ -2,19 +2,18 @@
 {
     using System.Collections.Generic;
     using System.Reflection;
+    using Prism.Modularity;
+    using Prism.Navigation;
     using Prism.Unity;
     using Xamarin.Forms;
 
-    using Localization;
-    using Views;
-    using System;
-    using Prism.Modularity;
-    using DTO;
-    using Helper.Map;
-    using DTO.Parcel;
-    using SQLiteDB;
-    using Prism.Navigation;
     using Calendar;
+    using DTO;
+    using DTO.Parcel;
+    using Helper.Map;
+    using Localization;
+    using SQLiteDB;
+    using Views;
 
     public partial class App : PrismApplication
     {
