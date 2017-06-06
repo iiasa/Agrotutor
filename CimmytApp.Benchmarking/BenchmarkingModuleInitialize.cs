@@ -1,7 +1,10 @@
-﻿using CimmytApp.Benchmarking.Views;
-
-namespace CimmytApp.Benchmarking
+﻿namespace CimmytApp.Benchmarking
 {
+    using Microsoft.Practices.Unity;
+    using Prism.Modularity;
+    using Prism.Unity;
+    using Views;
+
     public class BenchmarkingModuleInitialize : IModule
     {
         private readonly IUnityContainer _unityContainer;

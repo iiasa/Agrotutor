@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace CimmytApp.Views
+namespace CimmytApp.DTO.Parcel.Views
 {
     public partial class ViewParcelInformationPage : ContentPage
     {

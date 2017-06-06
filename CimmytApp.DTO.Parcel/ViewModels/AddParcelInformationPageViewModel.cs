@@ -1,20 +1,17 @@
-﻿using CimmytApp.DTO;
-using CimmytApp.PublishSubscriberEvents;
-using Prism;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.DTO.Parcel.ViewModels
 {
+    using Helper.PublishSubscriberEvents;
+    using Prism;
+    using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
+    using System;
+
     public class AddParcelInformationPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private readonly IEventAggregator _eventAggregator;
         private bool isActive;
+
         public AddParcelInformationPageViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
@@ -23,12 +20,13 @@ namespace CimmytApp.ViewModels
         public bool IsActive
         {
             get { return isActive; }
-            set {
+            set
+            {
                 if (isActive && !value)
                 {
-                    _eventAggregator.GetEvent<ParcelInSyncEvent>().Publish(new Parcel() { ID=1,ParcelName="Test"});
+                    _eventAggregator.GetEvent<ParcelInSyncEvent>().Publish(new Parcel() { ID = 1, ParcelName = "Test" });
                 }
-                 isActive = value;
+                isActive = value;
             }
         }
 
@@ -36,17 +34,14 @@ namespace CimmytApp.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-        
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-          
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-           
         }
     }
 }

@@ -10,7 +10,7 @@ using CimmytApp.DTO;
 using Prism.Navigation;
 using Xamarin.Forms;
 
-namespace CimmytApp.ViewModels
+namespace CimmytApp.DTO.Parcel.ViewModels
 {
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
@@ -77,12 +77,10 @@ namespace CimmytApp.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-         
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-      
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Windows.Input;
 using CimmytApp.DTO;
 
-namespace CimmytApp.ViewModels
+namespace CimmytApp.DTO.Parcel.ViewModels
 {
     public class AddParcelPageViewModel : BindableBase
     {

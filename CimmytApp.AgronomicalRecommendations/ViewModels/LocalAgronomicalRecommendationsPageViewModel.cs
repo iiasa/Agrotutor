@@ -1,12 +1,11 @@
 ﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CimmytApp.DTO;
 
 namespace CimmytApp.AgronomicalRecommendations.ViewModels
 {
+    using Prism.Mvvm;
+
+    using DTO.Parcel;
+
     public class LocalAgronomicalRecommendationsPageViewModel : BindableBase
     {
         public Parcel Parcel { get; set; }

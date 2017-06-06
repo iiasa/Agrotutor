@@ -1,14 +1,14 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using CimmytApp.DTO;
-using Prism.Navigation;
-using Prism;
 
 namespace CimmytApp.ViewModels
 {
+    using System;
+    using Prism.Navigation;
+    using Prism;
+
+    using DTO.Parcel;
+
     public class ParcelPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;
@@ -22,7 +22,8 @@ namespace CimmytApp.ViewModels
         }
 
         public bool IsActive
-        { get => throw new NotImplementedException();
+        {
+            get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
 
@@ -37,12 +38,10 @@ namespace CimmytApp.ViewModels
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-        
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-        
         }
     }
 }

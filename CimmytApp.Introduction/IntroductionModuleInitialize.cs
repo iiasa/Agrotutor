@@ -1,11 +1,10 @@
-﻿using CimmytApp.Introduction.Views;
-using CimmytApp.Views;
-using Microsoft.Practices.Unity;
-using Prism.Modularity;
-using Prism.Unity;
-
-namespace CimmytApp.Introduction
+﻿namespace CimmytApp.Introduction
 {
+    using Microsoft.Practices.Unity;
+    using Prism.Modularity;
+    using Prism.Unity;
+    using Views;
+
     public class IntroductionModuleInitialize : IModule
     {
         private readonly IUnityContainer _unityContainer;

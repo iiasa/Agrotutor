@@ -1,11 +1,11 @@
-﻿using System;
-
-namespace CimmytApp.DTO
+﻿namespace CimmytApp.DTO.Parcel
 {
+    using System;
     using System.Collections.Generic;
-    using CimmytApp.BusinessContract;
+    using BusinessContract;
     using Xamarin.Forms;
     using SQLite.Net.Attributes;
+    using DTO;
 
     [Table("Parcel")]
     public class Parcel : IDataset

@@ -1,13 +1,6 @@
-﻿using System.Collections.Generic;
-using CimmytApp.BusinessContract;
-using CimmytApp.DTO;
-using CimmytApp.SQLiteDB;
-using Prism.Navigation;
-using CimmytApp.Calendar;
-using CimmytApp.Calendar.Views;
-
-namespace CimmytApp
+﻿namespace CimmytApp
 {
+    using System.Collections.Generic;
     using System.Reflection;
     using Prism.Unity;
     using Xamarin.Forms;
@@ -16,7 +9,12 @@ namespace CimmytApp
     using Views;
     using System;
     using Prism.Modularity;
+    using DTO;
     using Helper.Map;
+    using DTO.Parcel;
+    using SQLiteDB;
+    using Prism.Navigation;
+    using Calendar;
 
     public partial class App : PrismApplication
     {
@@ -100,17 +98,10 @@ namespace CimmytApp
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<MainPage>();
-            Container.RegisterTypeForNavigation<CalendarPage>();
-            Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
-            Container.RegisterTypeForNavigation<AddParcelPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
-            Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
             Container.RegisterTypeForNavigation<MapPage>();
             Container.RegisterTypeForNavigation<ParcelPage>();
-            Container.RegisterTypeForNavigation<AddParcelInformationPage>();
-            Container.RegisterTypeForNavigation<ViewParcelInformationPage>();
-            Container.RegisterTypeForNavigation<LocalBenchmarkingPage>();
         }
     }
 }
