@@ -2,9 +2,11 @@
 {
     using System;
     using System.Collections.Generic;
-    using BusinessContract;
     using Xamarin.Forms;
     using SQLite.Net.Attributes;
+
+    using Helper.BusinessContract;
+
     using DTO;
 
     [Table("Parcel")]

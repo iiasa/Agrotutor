@@ -1,4 +1,4 @@
-﻿namespace Helper.PublishSubscriberEvents
+﻿namespace Helper.DatasetSyncEvents.Event
 {
     using Prism.Events;
 

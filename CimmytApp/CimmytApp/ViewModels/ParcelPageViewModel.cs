@@ -1,20 +1,18 @@
-﻿using Helper.PublishSubscriberEvents;
-using Prism.Events;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
-    using Prism.Commands;
-    using Prism.Mvvm;
     using System;
     using Prism.Navigation;
     using Prism;
 
-    using DTO.Parcel;
+    using Helper.BusinessContract;
 
-    public class ParcelPageViewModel : BindableBase, INavigationAware, IActiveAware
+    using DTO.Parcel;
+    using Prism.Events;
+    using Helper.DatasetSyncEvents.ViewModelBase;
+
+    public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;
-        private readonly IEventAggregator _eventAggregator;
 
         public event EventHandler IsActiveChanged;
 
@@ -24,7 +22,7 @@ namespace CimmytApp.ViewModels
             set
             {
                 SetProperty(ref _parcel, value);
-                _eventAggregator.GetEvent<DatasetSyncEvent>().Publish(value);
+                PublishDataset(value);
             }
         }
 
@@ -34,15 +32,8 @@ namespace CimmytApp.ViewModels
             set;
         }
 
-        public ParcelPageViewModel(IEventAggregator eventAggregator)
+        public ParcelPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<DatasetSyncRequestEvent>().Subscribe(SyncDataset);
-        }
-
-        private void SyncDataset()
-        {
-            _eventAggregator.GetEvent<DatasetSyncEvent>().Publish(_parcel);
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
@@ -56,6 +47,11 @@ namespace CimmytApp.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+        }
+
+        protected override void ReadDataset(IDataset dataset)
+        {
+            _parcel = (Parcel)dataset;
         }
     }
 }

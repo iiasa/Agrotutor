@@ -1,7 +1,8 @@
-﻿namespace Helper.PublishSubscriberEvents
+﻿namespace Helper.DatasetSyncEvents.Event
 {
     using Prism.Events;
-    using CimmytApp.BusinessContract;
+
+    using BusinessContract;
 
     public class DatasetSyncEvent : PubSubEvent<IDataset>
     {

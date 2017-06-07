@@ -1,20 +1,18 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.DTO.Parcel.ViewModels
+﻿namespace CimmytApp.DTO.Parcel.ViewModels
 {
-    using Helper.PublishSubscriberEvents;
+    using System;
     using System.Windows.Input;
-    using BusinessContract;
     using Prism;
     using Prism.Events;
-    using Prism.Mvvm;
     using Prism.Navigation;
-    using System;
+    using Xamarin.Forms;
 
-    public class ViewParcelInformationPageViewModel : BindableBase, INavigationAware, IActiveAware
+    using Helper.BusinessContract;
+    using Helper.DatasetSyncEvents.ViewModelBase;
+
+    public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;
-        private readonly IEventAggregator _eventAggregator;
         private bool isActive;
         public ICommand TestCommand { get; set; }
 
@@ -24,10 +22,8 @@ namespace CimmytApp.DTO.Parcel.ViewModels
             set { _parcel = value; }
         }
 
-        public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator)
+        public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<DatasetSyncEvent>().Subscribe(ReadParcelData);
             TestCommand = new Command(Test);
         }
 
@@ -46,11 +42,6 @@ namespace CimmytApp.DTO.Parcel.ViewModels
             }
         }
 
-        private void ReadParcelData(IDataset parcelObj)
-        {
-            _parcel = (Parcel)parcelObj;
-        }
-
         public event EventHandler IsActiveChanged;
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -63,6 +54,11 @@ namespace CimmytApp.DTO.Parcel.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+        }
+
+        protected override void ReadDataset(IDataset dataset)
+        {
+            _parcel = (Parcel)dataset;
         }
     }
 }
