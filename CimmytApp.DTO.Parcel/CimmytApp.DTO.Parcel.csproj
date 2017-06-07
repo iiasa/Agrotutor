@@ -125,6 +125,10 @@
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
+      <Project>{E26AC875-8F9C-4468-AD54-03D7A71F3A60}</Project>
+      <Name>Helper.Map</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.PublishSubscriberEvents\Helper.PublishSubscriberEvents.csproj">
       <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
       <Name>Helper.PublishSubscriberEvents</Name>

@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.DTO.Parcel.ViewModels
+﻿using CimmytApp.BusinessContract;
+
+namespace CimmytApp.DTO.Parcel.ViewModels
 {
     using Helper.PublishSubscriberEvents;
     using Prism;
@@ -11,10 +13,19 @@
     {
         private readonly IEventAggregator _eventAggregator;
         private bool isActive;
+        private Parcel _parcel;
 
         public AddParcelInformationPageViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
+            _eventAggregator.GetEvent<DatasetSyncEvent>().Subscribe(ReadParcelData);
+            _eventAggregator.GetEvent<DatasetAvailableForSyncEvent>().Subscribe(OnDatasetAvailableForSync);
+            _eventAggregator.GetEvent<DatasetSyncRequestEvent>().Publish();
+        }
+
+        private void OnDatasetAvailableForSync()
+        {
+            _eventAggregator.GetEvent<DatasetSyncRequestEvent>().Publish();
         }
 
         public bool IsActive
@@ -24,10 +35,15 @@
             {
                 if (isActive && !value)
                 {
-                    _eventAggregator.GetEvent<ParcelInSyncEvent>().Publish(new Parcel() { ID = 1, ParcelName = "Test" });
+                    _eventAggregator.GetEvent<DatasetSyncEvent>().Publish(_parcel);
                 }
                 isActive = value;
             }
+        }
+
+        private void ReadParcelData(IDataset parcelObj)
+        {
+            _parcel = (Parcel)parcelObj;
         }
 
         public event EventHandler IsActiveChanged;

@@ -68,7 +68,6 @@
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            throw new NotImplementedException();
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)

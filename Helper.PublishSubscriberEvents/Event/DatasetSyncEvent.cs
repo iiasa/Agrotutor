@@ -3,7 +3,7 @@
     using Prism.Events;
     using CimmytApp.BusinessContract;
 
-    public class ParcelInSyncEvent : PubSubEvent<IDataset>
+    public class DatasetSyncEvent : PubSubEvent<IDataset>
     {
     }
 }

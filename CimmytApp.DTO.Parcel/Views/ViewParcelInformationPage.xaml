@@ -9,7 +9,7 @@
         <StackLayout Margin="16">
             <Label Text="Agronomical Cycle" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="Spring-Summer" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.AgronomicalCycle}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Year" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
@@ -78,8 +78,8 @@
             <Label Text="Application date" Margin="16, 0, 16, 0" />
             <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
             <Label Text="22-07-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 16" />
-            
-            
+
+            <Button Command="{Binding TestCommand}" Text="OK"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

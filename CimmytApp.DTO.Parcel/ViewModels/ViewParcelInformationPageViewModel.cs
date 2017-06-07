@@ -1,8 +1,10 @@
-﻿using CimmytApp.BusinessContract;
+﻿using Xamarin.Forms;
 
 namespace CimmytApp.DTO.Parcel.ViewModels
 {
     using Helper.PublishSubscriberEvents;
+    using System.Windows.Input;
+    using BusinessContract;
     using Prism;
     using Prism.Events;
     using Prism.Mvvm;
@@ -14,6 +16,7 @@ namespace CimmytApp.DTO.Parcel.ViewModels
         private Parcel _parcel;
         private readonly IEventAggregator _eventAggregator;
         private bool isActive;
+        public ICommand TestCommand { get; set; }
 
         public Parcel Parcel
         {
@@ -24,7 +27,14 @@ namespace CimmytApp.DTO.Parcel.ViewModels
         public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<ParcelInSyncEvent>().Subscribe(ReadParcelData);
+            _eventAggregator.GetEvent<DatasetSyncEvent>().Subscribe(ReadParcelData);
+            TestCommand = new Command(Test);
+        }
+
+        private void Test()
+        {
+            var i = 0;
+            i++;
         }
 
         public bool IsActive

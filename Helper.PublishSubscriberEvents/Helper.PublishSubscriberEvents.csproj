@@ -8,8 +8,8 @@
     <ProjectGuid>{FE0BAF91-231E-4D28-81C3-02DD54BEC9FA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CimmytApp.PublishSubscriberEvents</RootNamespace>
-    <AssemblyName>CimmytApp.PublishSubscriberEvents</AssemblyName>
+    <RootNamespace>Helper.PublishSubscriberEvents</RootNamespace>
+    <AssemblyName>Helper.PublishSubscriberEvents</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -35,7 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ParcelInSyncEvent.cs" />
+    <Compile Include="DatasetSyncEvent.cs" />
+    <Compile Include="DatasetSyncRequestEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
