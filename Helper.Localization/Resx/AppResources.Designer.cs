@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CimmytApp.Resx {
+namespace Helper.Localization.Resx {
     using System;
     using System.Reflection;
     
@@ -23,7 +23,7 @@ namespace CimmytApp.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class AppResources {
+    public class AppResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -37,10 +37,10 @@ namespace CimmytApp.Resx {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.Resx.AppResources", typeof(AppResources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Helper.Localization.Resx.AppResources", typeof(AppResources).GetTypeInfo().Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -52,7 +52,7 @@ namespace CimmytApp.Resx {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -64,7 +64,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Spring-Summer.
         /// </summary>
-        internal static string agricultural_cycle_1 {
+        public static string agricultural_cycle_1 {
             get {
                 return ResourceManager.GetString("agricultural_cycle_1", resourceCulture);
             }
@@ -73,7 +73,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Autumn-Winter.
         /// </summary>
-        internal static string agricultural_cycle_2 {
+        public static string agricultural_cycle_2 {
             get {
                 return ResourceManager.GetString("agricultural_cycle_2", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
-        internal static string btn_go_to_registration_text {
+        public static string btn_go_to_registration_text {
             get {
                 return ResourceManager.GetString("btn_go_to_registration_text", resourceCulture);
             }
@@ -91,7 +91,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
-        internal static string btn_login_text {
+        public static string btn_login_text {
             get {
                 return ResourceManager.GetString("btn_login_text", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Register.
         /// </summary>
-        internal static string btn_register_text {
+        public static string btn_register_text {
             get {
                 return ResourceManager.GetString("btn_register_text", resourceCulture);
             }
@@ -109,16 +109,34 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to You don&apos;t have a user yet? Then please register here:.
         /// </summary>
-        internal static string hint_register {
+        public static string hint_register {
             get {
                 return ResourceManager.GetString("hint_register", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Calender.
+        /// </summary>
+        public static string page_title_calender {
+            get {
+                return ResourceManager.GetString("page_title_calender", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        public static string page_title_editParcel {
+            get {
+                return ResourceManager.GetString("page_title_editParcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login.
         /// </summary>
-        internal static string page_title_login {
+        public static string page_title_login {
             get {
                 return ResourceManager.GetString("page_title_login", resourceCulture);
             }
@@ -127,7 +145,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Registration.
         /// </summary>
-        internal static string page_title_registration {
+        public static string page_title_registration {
             get {
                 return ResourceManager.GetString("page_title_registration", resourceCulture);
             }
@@ -136,7 +154,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Parcels.
         /// </summary>
-        internal static string parcels_overview_title {
+        public static string parcels_overview_title {
             get {
                 return ResourceManager.GetString("parcels_overview_title", resourceCulture);
             }
@@ -145,7 +163,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
-        internal static string placeholder_email {
+        public static string placeholder_email {
             get {
                 return ResourceManager.GetString("placeholder_email", resourceCulture);
             }
@@ -154,7 +172,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Password.
         /// </summary>
-        internal static string placeholder_password {
+        public static string placeholder_password {
             get {
                 return ResourceManager.GetString("placeholder_password", resourceCulture);
             }
@@ -163,7 +181,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Verify Password.
         /// </summary>
-        internal static string placeholder_password_verification {
+        public static string placeholder_password_verification {
             get {
                 return ResourceManager.GetString("placeholder_password_verification", resourceCulture);
             }
@@ -172,7 +190,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Username.
         /// </summary>
-        internal static string placeholder_username {
+        public static string placeholder_username {
             get {
                 return ResourceManager.GetString("placeholder_username", resourceCulture);
             }
@@ -181,7 +199,7 @@ namespace CimmytApp.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Welcome.
         /// </summary>
-        internal static string welcome {
+        public static string welcome {
             get {
                 return ResourceManager.GetString("welcome", resourceCulture);
             }

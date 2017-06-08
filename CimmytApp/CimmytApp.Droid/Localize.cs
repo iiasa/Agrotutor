@@ -2,9 +2,10 @@
 
 namespace CimmytApp.Droid
 {
+    using Helper.Localization.Localization;
     using System.Globalization;
     using System.Threading;
-    using Localization;
+
 
     public class Localize : ILocalize
     {

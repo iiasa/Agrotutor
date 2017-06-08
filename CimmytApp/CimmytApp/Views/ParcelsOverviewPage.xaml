@@ -4,7 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.ParcelsOverviewPage"
-             xmlns:localization="clr-namespace:CimmytApp.Localization;assembly=CimmytApp"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              Title="{localization:Translate parcels_overview_title}"
              x:Name="ParcelOverviewRoot">
     <Grid>

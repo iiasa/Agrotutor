@@ -1,17 +1,17 @@
-﻿namespace CimmytApp.Localization
-{
-    using System;
-    using System.Globalization;
-    using System.Reflection;
-    using System.Resources;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
+﻿using System;
+using System.Globalization;
+using System.Reflection;
+using System.Resources;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
+namespace Helper.Localization.Localization
+{
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {
         private readonly CultureInfo _ci;
-        private const string ResourceId = "CimmytApp.Resx.AppResources";
+        private const string ResourceId = "Helper.Localization.Resx.AppResources";
 
         public string Text { get; set; }
 

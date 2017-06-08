@@ -118,45 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="agricultural_cycle_1" xml:space="preserve">
-    <value>Spring-Summer</value>
+    <value>Primavera-Verano</value>
   </data>
   <data name="agricultural_cycle_2" xml:space="preserve">
-    <value>Autumn-Winter</value>
+    <value>Otoño-Invierno</value>
   </data>
   <data name="btn_go_to_registration_text" xml:space="preserve">
-    <value>Register</value>
+    <value>Registro</value>
   </data>
   <data name="btn_login_text" xml:space="preserve">
-    <value>Login</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="btn_register_text" xml:space="preserve">
-    <value>Register</value>
+    <value>Registro</value>
+  </data>
+  <data name="email" xml:space="preserve">
+    <value>Correo electrónico</value>
   </data>
   <data name="hint_register" xml:space="preserve">
-    <value>You don't have a user yet? Then please register here:</value>
+    <value>¿Todavía no tienes un usuario? A continuación, regístrese aquí:</value>
+  </data>
+  <data name="page_title_calender" xml:space="preserve">
+    <value>Calender</value>
+  </data>
+  <data name="page_title_editParcel" xml:space="preserve">
+    <value>Edit</value>
   </data>
   <data name="page_title_login" xml:space="preserve">
-    <value>Login</value>
+    <value>Iniciar sesión</value>
   </data>
   <data name="page_title_registration" xml:space="preserve">
-    <value>Registration</value>
+    <value>Registro</value>
   </data>
   <data name="parcels_overview_title" xml:space="preserve">
-    <value>Parcels</value>
+    <value>Parcelas</value>
   </data>
-  <data name="placeholder_email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="placeholder_password" xml:space="preserve">
-    <value>Password</value>
+  <data name="password" xml:space="preserve">
+    <value>Contraseña</value>
   </data>
   <data name="placeholder_password_verification" xml:space="preserve">
-    <value>Verify Password</value>
+    <value>Verificar contraseña</value>
   </data>
   <data name="placeholder_username" xml:space="preserve">
-    <value>Username</value>
+    <value>Nombre de usuario</value>
   </data>
   <data name="welcome" xml:space="preserve">
-    <value>Welcome</value>
+    <value>Bienvenido</value>
   </data>
 </root>

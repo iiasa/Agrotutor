@@ -11,12 +11,11 @@ namespace CimmytApp
     using System.Reflection;
     using Prism.Unity;
     using Xamarin.Forms;
-
-    using Localization;
     using Views;
     using System;
     using Prism.Modularity;
     using Helper.Map;
+    using Helper.Localization.Localization;
 
     public partial class App : PrismApplication
     {
@@ -35,7 +34,7 @@ namespace CimmytApp
             if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
             {
                 var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-                Resx.AppResources.Culture = ci;
+                Helper.Localization.Resx.AppResources.Culture = ci;
                 DependencyService.Get<ILocalize>().SetLocale(ci);
             }
 

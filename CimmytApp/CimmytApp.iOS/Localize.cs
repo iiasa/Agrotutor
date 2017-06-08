@@ -5,7 +5,8 @@ namespace CimmytApp.iOS
     using System.Globalization;
     using System.Threading;
     using Foundation;
-    using Localization;
+
+    using Helper.Localization.Localization;
 
     public class Localize : ILocalize
     {

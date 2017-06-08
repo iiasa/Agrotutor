@@ -35,21 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Localization\PlatformCulture.cs" />
-    <Compile Include="Localization\TranslateExtension.cs" />
-    <Compile Include="Localization\ILocalize.cs" />
     <Compile Include="Map\CustomMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resx\AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resx\AppResources.es.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.es.resx</DependentUpon>
-    </Compile>
     <Compile Include="ViewModels\AddParcelInformationPageViewModel.cs" />
     <Compile Include="ViewModels\AddParcelPageViewModel.cs" />
     <Compile Include="ViewModels\LinksPageViewModel.cs" />
@@ -118,14 +105,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resx\AppResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Resx\AppResources.es.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>AppResources.es.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Views\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -225,7 +204,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\WelcomePage.xaml">
@@ -269,6 +250,11 @@
     <ProjectReference Include="..\..\CimmytApp.WeatherForecast\CimmytApp.WeatherForecast.csproj">
       <Project>{49028EEC-96AD-4FC4-B93E-A4FD630985A8}</Project>
       <Name>CimmytApp.WeatherForecast</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helper.Localization\Helper.Localization.csproj">
+      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
+      <Name>Helper.Localization</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\..\Helper.Map\Helper.Map.csproj">
       <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>

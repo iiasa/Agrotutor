@@ -218,6 +218,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Helper.Localization\Helper.Localization.csproj">
+      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
+      <Name>Helper.Localization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">
       <Project>{b7dec39b-eda0-4bca-8556-a56d8897a347}</Project>
       <Name>CimmytApp</Name>

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace CimmytApp.Localization
+namespace Helper.Localization.Localization
 {
     public interface ILocalize
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CimmytApp.Localization
+namespace Helper.Localization.Localization
 {
     public class PlatformCulture
     {
