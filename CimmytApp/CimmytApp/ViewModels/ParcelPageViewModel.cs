@@ -1,14 +1,14 @@
 ﻿namespace CimmytApp.ViewModels
 {
     using System;
-    using Prism.Navigation;
     using Prism;
+    using Prism.Events;
+    using Prism.Navigation;
 
     using Helper.BusinessContract;
+    using Helper.DatasetSyncEvents.ViewModelBase;
 
     using DTO.Parcel;
-    using Prism.Events;
-    using Helper.DatasetSyncEvents.ViewModelBase;
 
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {

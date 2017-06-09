@@ -1,11 +1,12 @@
-﻿using Helper.Map.Views;
-using Microsoft.Practices.Unity;
-using Prism.Modularity;
-using Prism.Unity;
-
-//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+﻿//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Helper.Map
 {
+    using Microsoft.Practices.Unity;
+    using Prism.Modularity;
+    using Prism.Unity;
+
+    using Views;
+
     public class MapModuleIntialize : IModule
     {
         private readonly IUnityContainer _unityContainer;

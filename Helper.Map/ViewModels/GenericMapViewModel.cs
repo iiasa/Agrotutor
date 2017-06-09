@@ -1,15 +1,16 @@
 ﻿namespace Helper.Map.ViewModels
 {
-    using Base.Contract;
-    using Base.DTO;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using Xamarin.Forms.Maps;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using System.Collections.ObjectModel;
-    using System.Linq;
     using TK.CustomMap;
-    using Xamarin.Forms.Maps;
-    using System;
+
+    using Base.Contract;
+    using Base.DTO;
 
     public class GenericMapViewModel : BindableBase
     {
