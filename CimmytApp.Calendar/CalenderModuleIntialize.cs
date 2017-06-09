@@ -1,15 +1,16 @@
-﻿using CimmytApp.Calendar.Views;
-using Microsoft.Practices.Unity;
-using Prism.Modularity;
-using Prism.Unity;
-
-
-//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+﻿//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace CimmytApp.Calendar
 {
+    using Microsoft.Practices.Unity;
+    using Prism.Modularity;
+    using Prism.Unity;
+
+    using Views;
+
     public class CalenderModuleIntialize : IModule
     {
         private readonly IUnityContainer _unityContainer;
+
         public CalenderModuleIntialize(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
@@ -17,8 +18,7 @@ namespace CimmytApp.Calendar
 
         public void Initialize()
         {
-          _unityContainer.RegisterTypeForNavigation<CalendarPage>();
-
+            _unityContainer.RegisterTypeForNavigation<CalendarPage>();
         }
     }
 }

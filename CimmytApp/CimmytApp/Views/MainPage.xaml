@@ -2,16 +2,17 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
-            xmlns:calender="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
-             xmlns:viewsMap="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
+             xmlns:views1="clr-namespace:CimmytApp.StaticContent.Views;assembly=CimmytApp.StaticContent"
+             xmlns:views2="clr-namespace:CimmytApp.DTO.Parcel.Views;assembly=CimmytApp.DTO.Parcel"
+             xmlns:views3="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
+             xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
              Title="MainPage">
-    <views:ParcelsOverviewPage />
-    <views:MapPage />
+    <views2:ParcelsOverviewPage />
+    <views4:GenericMap />
     <viewsWeather:WeatherForecastPage />
-    <views:LocalAgronomicalRecommendationsPage />
-    <views:LinksPage />
+    <views3:LocalAgronomicalRecommendationsPage />
+    <views1:LinksPage />
 </TabbedPage>

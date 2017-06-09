@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.DTO.Parcel.Views.ViewParcelInformationPage"
+             Title="View">
+    <ScrollView>
+        <StackLayout Margin="16">
+            <Label Text="Agronomical Cycle" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="{Binding Parcel.AgronomicalCycle}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Year" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Estimated Parcel Area" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="5 ha" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Producer Name" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="John Doe" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Parcel Name" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="Maize Field 1" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Technologies used" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="Change to improved, new varieties adapted to areas with potential to increase yield" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <BoxView Color="LightSlateGray" HeightRequest="2" WidthRequest="100" Margin="8, 0, 8, 0" />
+            <Label Text="Use of biofertilizers" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <BoxView Color="LightSlateGray" HeightRequest="2" WidthRequest="100" Margin="8, 0, 8, 0" />
+            <Label Text="Other technologies as string entered by user" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Crop planted" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="Maize" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Performance" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="10 tons/ha" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Irrigation" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="irrigated" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Planting date" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            <Label Text="12-04-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+
+            <Label Text="Pesticide application" />
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100"/>
+            
+            <Label Text="Product" Margin="16, 16, 16, 0" />
+            <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
+            <Label Text="PesticideProduct" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 0" />
+            <Label Text="Application date" Margin="16, 0, 16, 0" />
+            <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
+            <Label Text="16-05-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 0" />
+            
+            <BoxView Color="LightSlateGray" HeightRequest="2" WidthRequest="100" Margin="8, 16, 8, 16" />
+
+            <Label Text="Product" Margin="16, 16, 16, 0" />
+            <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
+            <Label Text="PesticideProduct1" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 0" />
+            <Label Text="Application date" Margin="16, 0, 16, 0" />
+            <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
+            <Label Text="06-06-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 0" />
+            
+            <BoxView Color="LightSlateGray" HeightRequest="2" WidthRequest="100" Margin="8, 16, 8, 16" />
+
+            <Label Text="Product" Margin="16, 0, 16, 0" />
+            <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
+            <Label Text="PesticideProduct2" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 0" />
+            <Label Text="Application date" Margin="16, 0, 16, 0" />
+            <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
+            <Label Text="22-07-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 16" />
+
+            <Button Command="{Binding TestCommand}" Text="OK"/>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

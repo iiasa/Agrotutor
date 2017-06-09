@@ -1,11 +1,10 @@
-﻿using Android.Util;
-using Gcm.Client;
-
-namespace CimmytApp.Droid
+﻿namespace CimmytApp.Droid
 {
     using Android.App;
     using Android.Content.PM;
     using Android.OS;
+    using Android.Util;
+    using Gcm.Client;
     using Prism.Unity;
     using Microsoft.Practices.Unity;
 

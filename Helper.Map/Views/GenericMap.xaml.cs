@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace Helper.Map.Views
+﻿namespace Helper.Map.Views
 {
+    using Xamarin.Forms;
+
     public partial class GenericMap : ContentPage
     {
         public GenericMap()

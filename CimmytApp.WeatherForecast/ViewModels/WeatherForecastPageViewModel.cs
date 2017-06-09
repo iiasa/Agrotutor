@@ -1,16 +1,10 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using CimmytApp.DTO;
-using Xamarin.Forms;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
+    using Prism.Mvvm;
+    using System.Windows.Input;
+    using Xamarin.Forms;
+    using DTO.Parcel;
+
     public class WeatherForecastPageViewModel : BindableBase
     {
         private Parcel _parcel;

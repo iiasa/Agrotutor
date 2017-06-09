@@ -1,14 +1,12 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using Xamarin.Forms;
-using XamForms.Controls;
-
-namespace CimmytApp.Calendar.ViewModels
+﻿namespace CimmytApp.Calendar.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using Prism.Commands;
+    using Prism.Mvvm;
+    using Xamarin.Forms;
+    using XamForms.Controls;
+
     public class CalendarPageViewModel : BindableBase
     {
         private List<DateTime> _selectedDatesList;
@@ -61,7 +59,7 @@ namespace CimmytApp.Calendar.ViewModels
 
         private void DateClieckCommandAction(object obj)
         {
-          var x=  SelecteCurrentDate;
+            var x = SelecteCurrentDate;
         }
     }
 }
