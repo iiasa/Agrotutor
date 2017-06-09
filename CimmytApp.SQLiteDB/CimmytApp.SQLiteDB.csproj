@@ -43,6 +43,10 @@
       <Project>{8fa589b1-356e-4a97-b4c9-c1681a8906d7}</Project>
       <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
+      <Project>{D9ACFCBC-CA0B-4228-B9D9-9F29C2D5E281}</Project>
+      <Name>CimmytApp.DTO.Parcel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
       <Project>{73076BC1-B08E-4E09-8173-B626F6BEA6F9}</Project>
       <Name>CimmytApp.DTO</Name>
@@ -60,6 +64,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

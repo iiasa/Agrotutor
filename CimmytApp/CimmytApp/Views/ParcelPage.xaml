@@ -3,15 +3,16 @@
             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
             prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:views="clr-namespace:CimmytApp.Views;assembly=CimmytApp"
             xmlns:calend="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
-             xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
-           
-             x:Class="CimmytApp.Views.ParcelPage">
-    <views:AddParcelInformationPage />
-    <views:ViewParcelInformationPage />
+            xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
+            xmlns:views2="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
+            xmlns:views3="clr-namespace:CimmytApp.DTO.Parcel.Views;assembly=CimmytApp.DTO.Parcel"
+            xmlns:views4="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
+            x:Class="CimmytApp.Views.ParcelPage">
+    <views3:AddParcelInformationPage />
+    <views3:ViewParcelInformationPage />
     <viewsWeather:WeatherForecastPage />
-    <views:LocalBenchmarkingPage />
-    <views:LocalAgronomicalRecommendationsPage />
+    <views4:LocalBenchmarkingPage />
+    <views2:LocalAgronomicalRecommendationsPage />
     <calend:CalendarPage></calend:CalendarPage>
 </TabbedPage>

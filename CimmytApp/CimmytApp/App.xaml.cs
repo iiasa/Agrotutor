@@ -1,21 +1,18 @@
-﻿using System.Collections.Generic;
-using CimmytApp.BusinessContract;
-using CimmytApp.DTO;
-using CimmytApp.SQLiteDB;
-using Prism.Navigation;
-using CimmytApp.Calendar;
-using CimmytApp.Calendar.Views;
-
-namespace CimmytApp
+﻿namespace CimmytApp
 {
+    using System.Collections.Generic;
     using System.Reflection;
+    using Prism.Modularity;
+    using Prism.Navigation;
     using Prism.Unity;
     using Xamarin.Forms;
     using Views;
-    using System;
-    using Prism.Modularity;
     using Helper.Map;
     using Helper.Localization.Localization;
+    using Calendar;
+    using DTO;
+    using SQLiteDB;
+    using DTO.Parcel;
 
     public partial class App : PrismApplication
     {
@@ -40,10 +37,10 @@ namespace CimmytApp
 
             CimmytDbOperations.GetAllParcels();
         }
+
         protected override void ConfigureModuleCatalog()
         {
-
-            Type locationeModuleType = typeof(CalenderModuleIntialize);
+            var locationeModuleType = typeof(CalenderModuleIntialize);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
                 {
@@ -52,7 +49,7 @@ namespace CimmytApp
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-            Type mapModuleIntialize = typeof(MapModuleIntialize);
+            var mapModuleIntialize = typeof(MapModuleIntialize);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
                 {
@@ -60,8 +57,8 @@ namespace CimmytApp
                     ModuleType = mapModuleIntialize,
                     InitializationMode = InitializationMode.WhenAvailable
                 });
-
         }
+
         protected override void OnInitialized()
         {
             InitializeComponent();
@@ -83,7 +80,7 @@ namespace CimmytApp
 
             var navigationParameters = new NavigationParameters();
             navigationParameters.Add("parcel", parcel);
-            NavigationService.NavigateAsync("ParcelPage");
+            NavigationService.NavigateAsync("ParcelPage", navigationParameters);
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
@@ -99,20 +96,9 @@ namespace CimmytApp
         protected override void RegisterTypes()
         {
             Container.RegisterTypeForNavigation<MainPage>();
-            Container.RegisterTypeForNavigation<WelcomePage>();
-            Container.RegisterTypeForNavigation<CalendarPage>();
-            Container.RegisterTypeForNavigation<ParcelsOverviewPage>();
-            Container.RegisterTypeForNavigation<AddParcelPage>();
-            Container.RegisterTypeForNavigation<RegistrationPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
-            Container.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
-            Container.RegisterTypeForNavigation<LinksPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
-            Container.RegisterTypeForNavigation<MapPage>();
             Container.RegisterTypeForNavigation<ParcelPage>();
-            Container.RegisterTypeForNavigation<AddParcelInformationPage>();
-            Container.RegisterTypeForNavigation<ViewParcelInformationPage>();
-            Container.RegisterTypeForNavigation<LocalBenchmarkingPage>();
         }
     }
 }

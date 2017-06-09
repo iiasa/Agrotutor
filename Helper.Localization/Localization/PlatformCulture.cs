@@ -1,7 +1,7 @@
-﻿using System;
-
-namespace Helper.Localization.Localization
+﻿namespace Helper.Localization.Localization
 {
+    using System;
+
     public class PlatformCulture
     {
         public string PlatformString { get; private set; }

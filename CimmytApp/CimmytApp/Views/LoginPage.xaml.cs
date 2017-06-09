@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.Views
+﻿namespace CimmytApp.Views
 {
+    using Xamarin.Forms;
+
     public partial class LoginPage : ContentPage
     {
         public LoginPage()

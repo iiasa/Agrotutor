@@ -1,12 +1,12 @@
-﻿using System;
-using System.Globalization;
-using System.Reflection;
-using System.Resources;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Helper.Localization.Localization
+﻿namespace Helper.Localization.Localization
 {
+    using System;
+    using System.Globalization;
+    using System.Reflection;
+    using System.Resources;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [ContentProperty("Text")]
     public class TranslateExtension : IMarkupExtension
     {

@@ -36,8 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GeoPosition.cs" />
-    <Compile Include="Parcel.cs" />
-    <Compile Include="PesticideApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
