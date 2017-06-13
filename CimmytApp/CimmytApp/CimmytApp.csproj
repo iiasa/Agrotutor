@@ -50,6 +50,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.es.resx</DependentUpon>
     </Compile>
+    <Compile Include="Style.xaml.cs">
+      <DependentUpon>Style.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModels\LoginPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\OfflineTilesDownloadPageViewModel.cs" />
@@ -249,6 +252,12 @@
     <EmbeddedResource Include="Views\ParcelPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Style.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
