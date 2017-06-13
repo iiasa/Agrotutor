@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.DTO.Parcel.Views
+﻿namespace CimmytApp.DTO.Parcel.Views
 {
+    using Xamarin.Forms;
+
     public partial class ParcelsOverviewPage : ContentPage
     {
         public ParcelsOverviewPage()

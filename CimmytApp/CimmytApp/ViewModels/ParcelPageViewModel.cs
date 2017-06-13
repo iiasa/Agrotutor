@@ -53,5 +53,10 @@
         {
             _parcel = (Parcel)dataset;
         }
+
+        protected override IDataset GetDataset()
+        {
+            return _parcel;
+        }
     }
 }

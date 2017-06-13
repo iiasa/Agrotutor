@@ -48,5 +48,10 @@ namespace CimmytApp.DTO.Parcel.ViewModels
         {
             _parcel = (Parcel)dataset;
         }
+
+        protected override IDataset GetDataset()
+        {
+            return _parcel;
+        }
     }
 }
