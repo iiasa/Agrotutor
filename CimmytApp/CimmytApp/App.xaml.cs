@@ -13,6 +13,9 @@
     using DTO;
     using SQLiteDB;
     using DTO.Parcel;
+    using Helper.RestfulClient;
+    using Microsoft.Practices.Unity;
+    using CimmytApp.BusinessContract;
 
     public partial class App : PrismApplication
     {
@@ -35,7 +38,7 @@
                 DependencyService.Get<ILocalize>().SetLocale(ci);
             }
 
-            CimmytDbOperations.GetAllParcels();
+          //  CimmytDbOperations.GetAllParcels();
         }
 
         protected override void ConfigureModuleCatalog()
@@ -80,6 +83,9 @@
 
             var navigationParameters = new NavigationParameters();
             navigationParameters.Add("parcel", parcel);
+
+         
+    
             NavigationService.NavigateAsync("ParcelPage", navigationParameters);
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
@@ -99,6 +105,8 @@
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
             Container.RegisterTypeForNavigation<ParcelPage>();
+            Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
+         new ContainerControlledLifetimeManager());
         }
     }
 }
