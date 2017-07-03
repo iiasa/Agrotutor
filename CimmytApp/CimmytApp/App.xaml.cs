@@ -6,16 +6,17 @@
     using Prism.Navigation;
     using Prism.Unity;
     using Xamarin.Forms;
-    using Views;
+    using Microsoft.Practices.Unity;
+
     using Helper.Map;
     using Helper.Localization.Localization;
+
+    using BusinessContract;
     using Calendar;
+    using DTO.Parcel;
     using DTO;
     using SQLiteDB;
-    using DTO.Parcel;
-    using Helper.RestfulClient;
-    using Microsoft.Practices.Unity;
-    using CimmytApp.BusinessContract;
+    using Views;
 
     public partial class App : PrismApplication
     {
@@ -84,7 +85,7 @@
             var navigationParameters = new NavigationParameters();
             navigationParameters.Add("parcel", parcel);
 
-            NavigationService.NavigateAsync("MainPage", navigationParameters);
+            NavigationService.NavigateAsync("AddParcelPage", navigationParameters);
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {

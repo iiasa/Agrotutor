@@ -2,7 +2,6 @@
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
-    using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
@@ -20,9 +19,8 @@
             set { SetProperty(ref _parcels, value); }
         }
 
-        public ParcelsOverviewPageViewModel(INavigationService navigationService)
+        public ParcelsOverviewPageViewModel()
         {
-            _navigationService = navigationService;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
             // Todo: get parcels from sqlite
@@ -51,6 +49,11 @@
                     Crop = "This thing is long as heeeeelll..."
                 }
             };
+        }
+
+        public ParcelsOverviewPageViewModel(INavigationService navigationService) : this()
+        {
+            _navigationService = navigationService;
         }
 
         private void NavigateToParcelDetailPage(object id)

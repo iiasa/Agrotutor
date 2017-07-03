@@ -37,16 +37,6 @@
   <ItemGroup>
     <Compile Include="Map\CustomMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Resx\AppResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Resx\AppResources.es.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>AppResources.es.resx</DependentUpon>
-    </Compile>
     <Compile Include="Style.xaml.cs">
       <DependentUpon>Style.xaml</DependentUpon>
     </Compile>
