@@ -129,6 +129,10 @@
       <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
       <Name>Helper.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
+      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
+      <Name>Helper.Localization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
       <Project>{E26AC875-8F9C-4468-AD54-03D7A71F3A60}</Project>
       <Name>Helper.Map</Name>

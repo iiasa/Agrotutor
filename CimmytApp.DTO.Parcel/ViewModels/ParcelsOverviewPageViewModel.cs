@@ -23,7 +23,7 @@
         public ParcelsOverviewPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
+            AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
             // Todo: get parcels from sqlite
 
@@ -57,7 +57,7 @@
         {
             //App.CurrentParcel =
             var navigationParameters = new NavigationParameters { { "id", (int)id } };
-            _navigationService.NavigateAsync("ParcelDetailPage", navigationParameters);
+            _navigationService.NavigateAsync("ParcelPage", navigationParameters);
         }
 
         private void NavigateToAddParcelPage()

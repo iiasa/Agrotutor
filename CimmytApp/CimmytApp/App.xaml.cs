@@ -38,7 +38,7 @@
                 DependencyService.Get<ILocalize>().SetLocale(ci);
             }
 
-          //  CimmytDbOperations.GetAllParcels();
+            //  CimmytDbOperations.GetAllParcels();
         }
 
         protected override void ConfigureModuleCatalog()
@@ -84,9 +84,7 @@
             var navigationParameters = new NavigationParameters();
             navigationParameters.Add("parcel", parcel);
 
-         
-    
-            NavigationService.NavigateAsync("ParcelPage", navigationParameters);
+            NavigationService.NavigateAsync("MainPage", navigationParameters);
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {

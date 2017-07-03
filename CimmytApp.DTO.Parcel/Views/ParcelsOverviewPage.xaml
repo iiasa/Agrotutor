@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.ParcelsOverviewPage"
+             x:Class="CimmytApp.DTO.Parcel.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              Title="{localization:Translate parcels_overview_title}"
              x:Name="ParcelOverviewRoot">
@@ -26,7 +26,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
                                 <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
-                                <Button Text="Details" Command="{Binding Path=BindingContext. ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
+                                <Button Text="Details" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
