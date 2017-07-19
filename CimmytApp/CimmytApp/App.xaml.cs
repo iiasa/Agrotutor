@@ -9,7 +9,8 @@
     using Microsoft.Practices.Unity;
 
     using Helper.Map;
-    using Helper.Localization.Localization;
+	using Helper.Localization.Localization;
+	using Helper.UserRegistration;
 
     using BusinessContract;
     using Calendar;
@@ -46,6 +47,24 @@
 
             //  CimmytDbOperations.GetAllParcels();
         }
+
+		protected override void OnInitialized()
+		{
+			InitializeComponent();
+
+            NavigationService.NavigateAsync("MainPage");
+            return;
+            /*
+            if (Current.Properties.ContainsKey("not_first_launch"))
+            {
+                Current.Properties.Add("not_first_launch", true);
+                NavigationService.NavigateAsync("MainPage");
+            }
+            else
+            {
+                NavigationService.NavigateAsync("WelcomePage");
+            }*/
+		}
 
         protected override void ConfigureModuleCatalog()
         {
@@ -110,6 +129,15 @@
 					InitializationMode = InitializationMode.WhenAvailable
 				});
 
+			var userRegistrationModule = typeof(UserRegistrationModule);
+			ModuleCatalog.AddModule(
+				new ModuleInfo()
+				{
+					ModuleName = userRegistrationModule.Name,
+					ModuleType = userRegistrationModule,
+					InitializationMode = InitializationMode.WhenAvailable
+				});
+
 			var weatherForecastModule = typeof(WeatherForecastModule);
 			ModuleCatalog.AddModule(
 				new ModuleInfo()
@@ -118,43 +146,6 @@
 					ModuleType = weatherForecastModule,
 					InitializationMode = InitializationMode.WhenAvailable
 				});
-        }
-
-        protected override void OnInitialized()
-        {
-            InitializeComponent();
-
-            var parcel = new Parcel
-            {
-                ID = 2,
-                Crop = "Wheat",
-                AgronomicalCycle = 1,
-                EstimatedParcelArea = 2.5,
-                Cultivar = "Example Cultivar",
-                GeoPosition = new GeoPosition
-                {
-                    Latitude = 46.789,
-                    Longitude = 16.78856
-                },
-                Irrigation = "Irrigated"
-            };
-
-            //var parcels = null; 
-
-            var navigationParameters = new NavigationParameters();
-            navigationParameters.Add("parcel", parcel);
-
-            NavigationService.NavigateAsync("AddParcelPage");
-            /*
-            if (Current.Properties.ContainsKey("not_first_launch"))
-            {
-                Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("MainPage");
-            }
-            else
-            {
-                NavigationService.NavigateAsync("WelcomePage");
-            }*/
         }
 
         protected override void RegisterTypes()

@@ -17,7 +17,6 @@
         public void Initialize()
         {
             _unityContainer.RegisterTypeForNavigation<WelcomePage>();
-            _unityContainer.RegisterTypeForNavigation<WelcomeContentPage>();
         }
     }
 }
