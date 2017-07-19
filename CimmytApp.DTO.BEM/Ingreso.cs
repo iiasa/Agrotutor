@@ -3,8 +3,8 @@
     using Newtonsoft.Json;
     using SQLite.Net.Attributes;
 
-    [Table("BEM-Utilidad")]
-    public class Utilidad
+    [Table("BEM-Ingreso")]
+    public class Ingreso
     {
         [JsonProperty("id_bitacora")]
         public string BitacoraId { get; set; }
@@ -48,7 +48,7 @@
         [JsonProperty("localidad")]
         public string Location { get; set; }
 
-        [JsonProperty("rentabilidad_ha")]
-        public string Rentability { get; set; }
+        [JsonProperty("ingresos_ha")]
+        public string Income { get; set; }
     }
 }

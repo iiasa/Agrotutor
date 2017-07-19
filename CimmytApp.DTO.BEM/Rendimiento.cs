@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using SQLite.Net.Attributes;
-
-namespace CimmytApp.DTO.BEM
+﻿namespace CimmytApp.DTO.BEM
 {
+    using Newtonsoft.Json;
+    using SQLite.Net.Attributes;
+
     [Table("BEM-Rendimiento")]
     public class Rendimiento
     {
