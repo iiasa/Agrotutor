@@ -1,22 +1,23 @@
-﻿namespace CimmytApp.Benchmarking
+﻿namespace CimmytApp.Introduction
 {
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
     using Views;
 
-    public class BenchmarkingModuleInitialize : IModule
+    public class IntroductionModule : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public BenchmarkingModuleInitialize(IUnityContainer unityContainer)
+        public IntroductionModule(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }
 
         public void Initialize()
         {
-            _unityContainer.RegisterTypeForNavigation<LocalBenchmarkingPage>();
+            _unityContainer.RegisterTypeForNavigation<WelcomePage>();
+            _unityContainer.RegisterTypeForNavigation<WelcomeContentPage>();
         }
     }
 }

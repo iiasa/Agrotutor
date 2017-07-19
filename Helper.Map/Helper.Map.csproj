@@ -39,7 +39,7 @@
       <DependentUpon>GenericMap.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\GenericMapViewModel.cs" />
-    <Compile Include="MapModuleIntialize.cs" />
+    <Compile Include="MapModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

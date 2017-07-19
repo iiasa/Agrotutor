@@ -1,5 +1,4 @@
-﻿//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace Helper.Map
+﻿namespace CimmytApp.WeatherForecast
 {
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
@@ -7,18 +6,18 @@ namespace Helper.Map
 
     using Views;
 
-    public class MapModuleIntialize : IModule
+    public class WeatherForecastModule : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public MapModuleIntialize(IUnityContainer unityContainer)
+        public WeatherForecastModule(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }
 
         public void Initialize()
         {
-            _unityContainer.RegisterTypeForNavigation<GenericMap>();
+            _unityContainer.RegisterTypeForNavigation<WeatherForecastPage>();
         }
     }
 }

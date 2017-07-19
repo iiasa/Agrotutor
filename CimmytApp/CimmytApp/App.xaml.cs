@@ -17,6 +17,11 @@
     using DTO;
     using SQLiteDB;
     using Views;
+    using CimmytApp.AgronomicalRecommendations;
+    using CimmytApp.Benchmarking;
+    using CimmytApp.Introduction;
+    using CimmytApp.StaticContent;
+    using CimmytApp.WeatherForecast;
 
     public partial class App : PrismApplication
     {
@@ -44,23 +49,75 @@
 
         protected override void ConfigureModuleCatalog()
         {
-            var locationeModuleType = typeof(CalenderModuleIntialize);
+            var agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
             ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = locationeModuleType.Name,
-                    ModuleType = locationeModuleType,
-                    InitializationMode = InitializationMode.WhenAvailable
+                new ModuleInfo(){
+                    ModuleName = agronomicalRecommendationsModule.Name,
+	                ModuleType = agronomicalRecommendationsModule,
+	                InitializationMode = InitializationMode.WhenAvailable
                 });
 
-            var mapModuleIntialize = typeof(MapModuleIntialize);
+            var benchmarkingModule = typeof(BenchmarkingModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo(){
+	                ModuleName = benchmarkingModule.Name,
+	                ModuleType = benchmarkingModule,
+	                InitializationMode = InitializationMode.WhenAvailable
+				});
+
+			var calendarModule = typeof(CalenderModule);
+			ModuleCatalog.AddModule(
+				new ModuleInfo()
+				{
+					ModuleName = calendarModule.Name,
+					ModuleType = calendarModule,
+					InitializationMode = InitializationMode.WhenAvailable
+				});
+
+            var introductionModule = typeof(IntroductionModule);
+			ModuleCatalog.AddModule(
+				new ModuleInfo()
+				{
+					ModuleName = introductionModule.Name,
+					ModuleType = introductionModule,
+					InitializationMode = InitializationMode.WhenAvailable
+				});
+
+            var mapModule = typeof(MapModule);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
                 {
-                    ModuleName = mapModuleIntialize.Name,
-                    ModuleType = mapModuleIntialize,
+                    ModuleName = mapModule.Name,
+                    ModuleType = mapModule,
                     InitializationMode = InitializationMode.WhenAvailable
-                });
+				});
+
+			var parcelModule = typeof(ParcelModule);
+			ModuleCatalog.AddModule(
+				new ModuleInfo()
+				{
+					ModuleName = parcelModule.Name,
+					ModuleType = parcelModule,
+					InitializationMode = InitializationMode.WhenAvailable
+				});
+
+			var staticContentModule = typeof(StaticContentModule);
+			ModuleCatalog.AddModule(
+				new ModuleInfo()
+				{
+					ModuleName = staticContentModule.Name,
+					ModuleType = staticContentModule,
+					InitializationMode = InitializationMode.WhenAvailable
+				});
+
+			var weatherForecastModule = typeof(WeatherForecastModule);
+			ModuleCatalog.AddModule(
+				new ModuleInfo()
+				{
+					ModuleName = weatherForecastModule.Name,
+					ModuleType = weatherForecastModule,
+					InitializationMode = InitializationMode.WhenAvailable
+				});
         }
 
         protected override void OnInitialized()
@@ -82,16 +139,17 @@
                 Irrigation = "Irrigated"
             };
 
+            //var parcels = null; 
+
             var navigationParameters = new NavigationParameters();
             navigationParameters.Add("parcel", parcel);
 
-            NavigationService.NavigateAsync("MainPage", navigationParameters);
-            //NavigationService.NavigateAsync("AddParcelPage");
+            NavigationService.NavigateAsync("AddParcelPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
                 Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("MainPage?title=Hello%20from%20Xamarin.Forms");
+                NavigationService.NavigateAsync("MainPage");
             }
             else
             {

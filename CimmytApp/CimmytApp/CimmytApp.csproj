@@ -224,6 +224,14 @@
       <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
       <Name>Helper.Map</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.Introduction\CimmytApp.Introduction.csproj">
+      <Project>{F4095A9B-FD71-48D3-996E-7B0306356160}</Project>
+      <Name>CimmytApp.Introduction</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helper.UserRegistration\Helper.UserRegistration.csproj">
+      <Project>{5D7A2A33-882D-4967-ABC6-960E45B26B8E}</Project>
+      <Name>Helper.UserRegistration</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

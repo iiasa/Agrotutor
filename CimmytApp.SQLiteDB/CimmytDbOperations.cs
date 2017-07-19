@@ -1,15 +1,16 @@
 ﻿namespace CimmytApp.SQLiteDB
 {
     using System.Collections.Generic;
+    using CimmytApp.BusinessContract;
+    using Helper.BusinessContract;
 
-    using BusinessContract;
-    using CimmytApp.DTO.Parcel;
-
-    public class CimmytDbOperations : ICimmytDbOperations
+    public class CimmytDbOperations //: ICimmytDbOperations
     {
-        public static List<Parcel> GetAllParcels()
+        public static List<IDataset> GetAllParcels()
         {
-            return null;
+            var parcels = new List<IDataset>();
+            // fetch
+            return parcels;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Helper.UserRegistration
+﻿namespace CimmytApp.AgronomicalRecommendations
 {
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
@@ -6,18 +6,18 @@
 
     using Views;
 
-    public class UserRegistrationModuleInitialize : IModule
+    public class AgronomicalRecommendationsModule : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public UserRegistrationModuleInitialize(IUnityContainer unityContainer)
+        public AgronomicalRecommendationsModule(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }
 
         public void Initialize()
         {
-            _unityContainer.RegisterTypeForNavigation<RegistrationPage>();
+            _unityContainer.RegisterTypeForNavigation<LocalAgronomicalRecommendationsPage>();
         }
     }
 }

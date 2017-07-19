@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticContentModuleInitialize.cs" />
+    <Compile Include="StaticContentModule.cs" />
     <Compile Include="ViewModels\LinksPageViewModel.cs" />
     <Compile Include="Views\LinksPage.xaml.cs">
       <DependentUpon>LinksPage.xaml</DependentUpon>

@@ -58,6 +58,10 @@
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
+      <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
+      <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

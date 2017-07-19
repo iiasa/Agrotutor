@@ -1,23 +1,22 @@
-﻿namespace CimmytApp.StaticContent
+﻿namespace CimmytApp.Benchmarking
 {
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-
     using Views;
 
-    public class StaticContentModuleInitialize : IModule
+    public class BenchmarkingModule : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public StaticContentModuleInitialize(IUnityContainer unityContainer)
+        public BenchmarkingModule(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }
 
         public void Initialize()
         {
-            _unityContainer.RegisterTypeForNavigation<LinksPage>();
+            _unityContainer.RegisterTypeForNavigation<LocalBenchmarkingPage>();
         }
     }
 }

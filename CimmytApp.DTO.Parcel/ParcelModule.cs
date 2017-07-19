@@ -6,11 +6,11 @@
 
     using Views;
 
-    public class ParcelModuleInitialize : IModule
+    public class ParcelModule : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public ParcelModuleInitialize(IUnityContainer unityContainer)
+        public ParcelModule(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }

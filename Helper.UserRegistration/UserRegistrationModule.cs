@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.WeatherForecast
+﻿namespace Helper.UserRegistration
 {
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
@@ -6,18 +6,18 @@
 
     using Views;
 
-    internal class WeatherForecastModuleInitialize : IModule
+    public class UserRegistrationModule : IModule
     {
         private readonly IUnityContainer _unityContainer;
 
-        public WeatherForecastModuleInitialize(IUnityContainer unityContainer)
+        public UserRegistrationModule(IUnityContainer unityContainer)
         {
             _unityContainer = unityContainer;
         }
 
         public void Initialize()
         {
-            _unityContainer.RegisterTypeForNavigation<WeatherForecastPage>();
+            _unityContainer.RegisterTypeForNavigation<RegistrationPage>();
         }
     }
 }

@@ -52,6 +52,10 @@
       <Project>{73076BC1-B08E-4E09-8173-B626F6BEA6F9}</Project>
       <Name>CimmytApp.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
+      <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
+      <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

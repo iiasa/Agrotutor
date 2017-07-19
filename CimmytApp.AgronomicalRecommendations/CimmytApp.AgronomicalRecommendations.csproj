@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AgronomicalRecommendationsModuleInitialize.cs" />
+    <Compile Include="AgronomicalRecommendationsModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LocalAgronomicalRecommendationsPageViewModel.cs" />
     <Compile Include="Views\LocalAgronomicalRecommendationsPage.xaml.cs">
