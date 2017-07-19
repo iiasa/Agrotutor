@@ -250,10 +250,6 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\raw\ingreso.json" />
-    <AndroidResource Include="Resources\raw\rendimiento.json" />
-    <AndroidResource Include="Resources\raw\utilidad.json" />
-    <AndroidResource Include="Resources\raw\costo.json" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
