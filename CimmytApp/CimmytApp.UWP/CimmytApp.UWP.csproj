@@ -129,11 +129,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">
-      <Name>CimmytApp</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Reference Include="SqLite.Contract">
       <HintPath>I:\karner\BaseDll\SqLite.Contract.dll</HintPath>
     </Reference>
