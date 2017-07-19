@@ -5,23 +5,22 @@
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              mvvm:ViewModelLocator.AutowireViewModel="True"
-             xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar" 
-             Title="{localization:Translate page_title_calender}">
-  <Grid>
-    <Grid.RowDefinitions>
-      <RowDefinition></RowDefinition>
-      <RowDefinition></RowDefinition>
-    </Grid.RowDefinitions>
-  <!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />-->
-    <controls:Calendar x:Name="CalendarCtr"  Padding="10,0,10,0"  StartDay="Monday"
+             xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
+             Title="Calendar">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--<Label Text="{Binding MainText}" VerticalOptions="Center" HorizontalOptions="Center" />-->
+        <controls:Calendar x:Name="CalendarCtr"  Padding="10,0,10,0"  StartDay="Monday"
                          SelectedBorderWidth="4" DisabledBorderColor="Black" MultiSelectDates="True"
-                       SelectedDates="{Binding SelectedDatesList}" 
+                       SelectedDates="{Binding SelectedDatesList}"
                        SelectedDate="{Binding SelecteCurrentDate}"
                        SpecialDates="{Binding SpecialDatesList}"
-                       DateCommand="{Binding DateClickCommand}"/>
-    <StackLayout Grid.Row="1">
-      <Label Text="{Binding SelecteCurrentdDate}"></Label>
-    </StackLayout>
-
-  </Grid>
+                       DateCommand="{Binding DateClickCommand}" />
+        <StackLayout Grid.Row="1">
+            <Label Text="{Binding SelecteCurrentdDate}"></Label>
+        </StackLayout>
+    </Grid>
 </ContentPage>

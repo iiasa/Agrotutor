@@ -19,7 +19,7 @@
 
         public event EventHandler IsActiveChanged;
 
-        IWeatherDbOperations _weatherDbOperations;
+        private IWeatherDbOperations _weatherDbOperations;
 
         public Parcel Parcel
         {
@@ -41,19 +41,19 @@
         {
             _weatherDbOperations = weatherDbOperations;
             ReadDataAsync();
-
         }
+
         private async System.Threading.Tasks.Task ReadDataAsync()
         {
-            RestfulClient<WeatherData> x = new RestfulClient<WeatherData>();
+            var x = new RestfulClient<WeatherData>();
             var z = await x.RefreshDataAsync("https://wsgi.geo-wiki.org/skywise_weather?lat=48.16&lng=16.15");
             if (z != null)
             {
                 _weatherDbOperations.AddWeatherData(z);
-                var res=_weatherDbOperations.GetAllWeatherData();
+                var res = _weatherDbOperations.GetAllWeatherData();
             }
-
         }
+
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             Parcel = (Parcel)parameters["parcel"];

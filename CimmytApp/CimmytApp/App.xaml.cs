@@ -85,7 +85,8 @@
             var navigationParameters = new NavigationParameters();
             navigationParameters.Add("parcel", parcel);
 
-            NavigationService.NavigateAsync("AddParcelPage", navigationParameters);
+            //NavigationService.NavigateAsync("MainPage", navigationParameters);
+            NavigationService.NavigateAsync("AddParcelPage");
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
