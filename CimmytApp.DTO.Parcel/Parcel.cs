@@ -19,7 +19,7 @@
         public string Cultivar { get; set; }
         public string AgriculturalCycle { get; set; }
         public string Year { get; set; }
-        public double EstimatedParcelArea { get; set; }
+        public string EstimatedParcelArea { get; set; }
         public string ProducerName { get; set; }
         public List<string> TechnologiesUsed { get; set; }
         public string OtherTechnologies { get; set; }

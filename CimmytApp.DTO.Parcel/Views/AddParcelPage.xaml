@@ -11,32 +11,32 @@
         <StackLayout Orientation="Vertical">
             <Label Text="Select agronomical cycle" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <controls:ExtendedPicker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" />
+            <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" />
             <Label Text="Select the year" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <controls:ExtendedPicker ItemsSource="{Binding Years}" SelectedIndex="{Binding PickerYearsSelectedIndex}" />
+            <Picker ItemsSource="{Binding Years, Mode=TwoWay}" SelectedIndex="{Binding PickerYearsSelectedIndex, Mode=TwoWay}" />
             <Label Text="Estimated parcel area" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="[ha]" Text="{Binding Parcel.EstimatedParcelArea}" />
             <Label Text="Producer name" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="Firstname Lastname" />
+            <Entry Placeholder="Firstname Lastname" Text="{Binding Parcel.ProducerName}" />
             <Label Text="Parcel name" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="(for identification, e.g.: Corn Road 1)" Margin="0,0,0,16" />
+            <Entry Placeholder="(for identification, e.g.: Corn Road 1)" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
             <Label Text="Please select technologies which were used:" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" Margin="0,0,0,8" />
-            <controls:CheckBox Checked="{Binding Test}" DefaultText="Change to improved, new varieties adapted to areas with potential to increase yield" />
-            <controls:CheckBox DefaultText="Interpretation and use of soil analysis" />
-            <controls:CheckBox DefaultText="Using infrared sensor for optimized fertilizer use" />
-            <controls:CheckBox DefaultText="Use of biofertilizers" />
-            <controls:CheckBox DefaultText="Soil improvement to complement fertilization" />
-            <controls:CheckBox DefaultText="Minimal movement of soil, retention of residues and rotation of crops" />
-            <controls:CheckBox DefaultText="Introduction of new crops in rotation (e.g. forage crops)" />
-            <controls:CheckBox DefaultText="Technology to improve grain storage" />
+            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="Change to improved, new varieties adapted to areas with potential to increase yield" />
+            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="Interpretation and use of soil analysis" />
+            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="Using infrared sensor for optimized fertilizer use" />
+            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="Use of biofertilizers" />
+            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="Soil improvement to complement fertilization" />
+            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="Minimal movement of soil, retention of residues and rotation of crops" />
+            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="Introduction of new crops in rotation (e.g. forage crops)" />
+            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="Technology to improve grain storage" />
             <Label Text="Other technologies" Margin="0,16,0,0" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="Technologies used" />
+            <Entry Placeholder="Technologies used" Text="{Binding Parcel.OtherTechnologies}" />
             <Label Text="Crop planted" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="0" />
