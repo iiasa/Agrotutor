@@ -133,7 +133,7 @@
 
             public void OnNavigatingTo(NavigationParameters parameters)
             {
-                throw new NotImplementedException();
+                
             }
         }
     }
