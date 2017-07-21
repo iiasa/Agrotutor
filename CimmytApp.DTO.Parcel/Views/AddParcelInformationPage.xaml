@@ -6,4 +6,5 @@
              x:Class="CimmytApp.DTO.Parcel.Views.AddParcelInformationPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              Title="{localization:Translate page_title_editParcel}">
+    <Label Text="Somecontent" />
 </ContentPage>

@@ -1,4 +1,6 @@
-﻿using CimmytApp.DTO.BEM;
+﻿using System.Collections.Generic;
+using CimmytApp.DTO.BEM;
+using Helper.GeoWiki.API;
 
 namespace CimmytApp.ViewModels
 {
@@ -12,6 +14,14 @@ namespace CimmytApp.ViewModels
         private readonly IModuleManager _moduleManager;
         private INavigationService _navigationService;
 
+        private object _legend;
+
+        private object legend
+        {
+            get { return _legend; }
+            set { _legend = value; }
+        }
+
         public string Title
         {
             get { return _title; }
@@ -22,11 +32,14 @@ namespace CimmytApp.ViewModels
         {
             _moduleManager = moduleManager;
             _navigationService = navigationService;
-            BemData bd = new BemData();
+            //BemData bd = new BemData();
+            legend = GeoWikiApi.Get<List<object>>("Legend", "getLegend", "100");
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
+            int i = 0;
+            i++;
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -35,8 +48,6 @@ namespace CimmytApp.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("title"))
-                Title = "Welcome to this piece of shit!";
         }
     }
 }

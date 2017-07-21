@@ -219,6 +219,10 @@
       <Project>{49028EEC-96AD-4FC4-B93E-A4FD630985A8}</Project>
       <Name>CimmytApp.WeatherForecast</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Helper.GeoWiki.API\Helper.GeoWiki.API.csproj">
+      <Project>{cc7252b9-f950-4859-82be-0798fd05007b}</Project>
+      <Name>Helper.GeoWiki.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Helper.Localization\Helper.Localization.csproj">
       <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
       <Name>Helper.Localization</Name>
