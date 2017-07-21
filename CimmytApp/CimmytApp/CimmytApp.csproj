@@ -187,6 +187,10 @@
       <Project>{d673eec7-ddef-48e1-82d3-6c1a64517de7}</Project>
       <Name>CimmytApp.Calendar</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.DTO.BEM\CimmytApp.DTO.BEM.csproj">
+      <Project>{d35ef41b-7484-4544-8186-29c31ec6af4a}</Project>
+      <Name>CimmytApp.DTO.BEM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
       <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
       <Name>CimmytApp.DTO.Parcel</Name>

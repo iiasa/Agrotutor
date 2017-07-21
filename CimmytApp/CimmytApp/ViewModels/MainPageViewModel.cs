@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.ViewModels
+﻿using CimmytApp.DTO.BEM;
+
+namespace CimmytApp.ViewModels
 {
     using Prism.Modularity;
     using Prism.Mvvm;
@@ -20,6 +22,7 @@
         {
             _moduleManager = moduleManager;
             _navigationService = navigationService;
+            BemData bd = new BemData();
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
