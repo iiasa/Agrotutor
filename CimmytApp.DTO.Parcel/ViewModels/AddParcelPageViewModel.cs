@@ -17,7 +17,7 @@
         private List<string> _cropTypes;
         public List<string> CropTypes => _cropTypes;
 
-        public ObservableCollection<string> Years;
+        public List<string> Years = new List<string> { "2015", "2016", "2017" };
 
         private ObservableCollection<string> _singleYears;
 		private ObservableCollection<string> _doubleYears;
@@ -127,7 +127,7 @@
 			set
 			{
 				_pickerAgriculturalCycleSelectedIndex = value;
-                Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);
+                Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);/*
                 switch(value){
                     case 0:
                         Years = _singleYears;
@@ -135,7 +135,7 @@
                     case 1:
                         Years = _doubleYears;
                         break;
-                }
+                }*/
 			}
 		}
 		private int _pickerYearsSelectedIndex;
@@ -165,7 +165,6 @@
 			};
 			_singleYears = new ObservableCollection<string>() { "2015", "2016", "2017" };
 			_doubleYears = new ObservableCollection<string>() { "2014-2015", "2015-2016", "2016-2017" };
-            Years = _singleYears;
         }
 
         private void AgriculturalCycleChanged()

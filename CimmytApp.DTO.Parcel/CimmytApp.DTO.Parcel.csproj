@@ -64,9 +64,6 @@
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
-    <Reference Include="Helper.Base.DTO">
-      <HintPath>I:\karner\BaseDll\Helper.Base.DTO.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
@@ -108,6 +105,9 @@
     </Reference>
     <Reference Include="XLabs.Serialization, Version=2.0.5782.15703, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
       <HintPath>..\packages\XLabs.Serialization.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Helper.Base.DTO">
+      <HintPath>..\BaseDLL\Helper.Base.DTO.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +158,10 @@
     <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
       <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
       <Name>Helper.DatasetSyncEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.UI\Helper.UI.csproj">
+      <Project>{FC3EAE0D-7DBA-4973-9816-36688CB7098F}</Project>
+      <Name>Helper.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
