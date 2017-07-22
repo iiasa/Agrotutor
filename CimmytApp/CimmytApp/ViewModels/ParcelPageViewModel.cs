@@ -40,7 +40,7 @@
         public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
         {
             _weatherDbOperations = weatherDbOperations;
-            ReadDataAsync();
+            //ReadDataAsync();
         }
 
         private async System.Threading.Tasks.Task ReadDataAsync()

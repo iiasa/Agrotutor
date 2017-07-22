@@ -60,7 +60,8 @@
         {
             //App.CurrentParcel =
             var navigationParameters = new NavigationParameters { { "id", (int)id } };
-            _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+            //_navigationService.NavigateAsync("ParcelPage", navigationParameters);
+            _navigationService.NavigateAsync("ParcelPage");
         }
 
         private void NavigateToAddParcelPage()

@@ -7,12 +7,17 @@
     using SQLite.Net.Attributes;
 
     using Helper.BusinessContract;
+    using Helper.GeoWiki.GenericDatasetStorage;
 
     using DTO;
+    using System.Threading.Tasks;
 
     [Table("Parcel")]
     public class Parcel : IDataset, INotifyPropertyChanged
     {
+        private static int geoWikiDatasetGroupId = 1;
+
+
         public int ID { get; set; }
         public string ParcelName { get; set; }
         public string Crop { get; set; }
@@ -40,6 +45,14 @@
         public DataTemplate GetOverviewDataTemplate()
         {
             return null;
+        }
+
+        public async void Submit(){
+            await Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
+        }
+
+        public async static Task<List<Parcel>> LoadParcelsFromServer(){
+            return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
         }
     }
 }
