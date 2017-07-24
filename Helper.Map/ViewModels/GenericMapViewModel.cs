@@ -1,4 +1,6 @@
-﻿namespace Helper.Map.ViewModels
+﻿using Prism;
+
+namespace Helper.Map.ViewModels
 {
     using System;
     using System.Collections.ObjectModel;
@@ -12,7 +14,7 @@
     using Base.Contract;
     using Base.DTO;
 
-    public class GenericMapViewModel : BindableBase
+    public class GenericMapViewModel : BindableBase, IActiveAware
     {
         public class LocationPageViewModel : BindableBase, INavigationAware
         {
@@ -133,8 +135,27 @@
 
             public void OnNavigatingTo(NavigationParameters parameters)
             {
-                
             }
         }
+
+        private bool _isActive;
+
+        public bool IsActive
+        {
+            get { return _isActive; }
+            set
+            {
+                if (value == IsActive) return;
+                _isActive = value;
+                if (_isActive)
+                {
+                }
+                else
+                {
+                }
+            }
+        }
+
+        public event EventHandler IsActiveChanged;
     }
 }
