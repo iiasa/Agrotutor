@@ -7,7 +7,8 @@
     using System.Windows.Input;
     using Prism.Commands;
     using Prism.Mvvm;
-    using Prism.Navigation;
+	using Prism.Navigation;
+    using Xamarin.Forms;
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
@@ -153,18 +154,41 @@
 
         public bool Test { get; set; }
 
-        public ICommand Moo;
+		public ICommand ClickChooseLocation;
+		public ICommand ClickSave;
+
+        public INavigationService _navigationService;
 
         public Parcel Parcel { get; set; }
 
-        public AddParcelPageViewModel()
+        public AddParcelPageViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             Parcel = new Parcel()
             {
                 EstimatedParcelArea = "20178"
 			};
 			_singleYears = new ObservableCollection<string>() { "2015", "2016", "2017" };
 			_doubleYears = new ObservableCollection<string>() { "2014-2015", "2015-2016", "2016-2017" };
+
+            ClickSave = new Command(SaveParcel);
+            ClickChooseLocation = new Command(ChooseLocation);
+        }
+
+        private void ChooseLocation(object obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void SaveParcel(object obj)
+        {
+            Parcel.Save();
+
+            var navigationParameters = new NavigationParameters();
+
+            navigationParameters.Add("", ""); //TODO
+
+            _navigationService.NavigateAsync("ParcelPage", navigationParameters);
         }
 
         private void AgriculturalCycleChanged()

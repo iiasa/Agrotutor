@@ -61,9 +61,8 @@
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="Product" />
             <controls:CheckBox DefaultText="Are you at the parcel?" />
-            <Button Text="Choose location on map" Command="{Binding Moo}" />
-            <Button Text="Save and add another" Command="{Binding Moo}" />
-            <Button Text="Save" Command="{Binding Moo}" />
+            <Button Text="Choose location on map" Command="{Binding ClickChooseLocation}" />
+            <Button Text="Save" Command="{Binding Save}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

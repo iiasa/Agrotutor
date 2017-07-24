@@ -47,12 +47,18 @@
             return null;
         }
 
-        public async void Submit(){
+        public async void Submit()
+        {
             await Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
         }
 
-        public async static Task<List<Parcel>> LoadParcelsFromServer(){
+        public async static Task<List<Parcel>> LoadParcelsFromServer()
+        {
             return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
+        }
+
+        public int Save(){
+            //TODO persist and return ID
         }
     }
 }
