@@ -5,7 +5,7 @@
                 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
                 xmlns:ui="clr-namespace:Helper.UI;assembly=Helper.UI"
                 prism:ViewModelLocator.AutowireViewModel="True"
-                x:Class="CimmytApp.DTO.Parcel.Views.AddParcelPage"
+                x:Class="CimmytApp.Parcel.Views.AddParcelPage"
                 Title="Add parcel"
                 Padding="16">
     <ScrollView>

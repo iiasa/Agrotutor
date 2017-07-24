@@ -1,36 +1,20 @@
-﻿namespace CimmytApp.DTO.Parcel.ViewModels
+﻿using Helper.BusinessContract;
+using Helper.DatasetSyncEvents.ViewModelBase;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System;
-    using System.Windows.Input;
     using Prism;
     using Prism.Events;
     using Prism.Navigation;
-    using Xamarin.Forms;
 
-    using Helper.BusinessContract;
-    using Helper.DatasetSyncEvents.ViewModelBase;
-
-    public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware
+    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
-        private Parcel _parcel;
         private bool isActive;
-        public ICommand TestCommand { get; set; }
+        private Parcel _parcel;
 
-        public Parcel Parcel
+        public AddParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
-            get { return _parcel; }
-            set { _parcel = value; }
-        }
-
-        public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
-            TestCommand = new Command(Test);
-        }
-
-        private void Test()
-        {
-            var i = 0;
-            i++;
         }
 
         public bool IsActive
@@ -38,6 +22,10 @@
             get { return isActive; }
             set
             {
+                if (isActive && !value)
+                {
+                    PublishDataset(_parcel);
+                }
                 isActive = value;
             }
         }
@@ -59,6 +47,11 @@
         protected override void ReadDataset(IDataset dataset)
         {
             _parcel = (Parcel)dataset;
+        }
+
+        protected override IDataset GetDataset()
+        {
+            return _parcel;
         }
     }
 }

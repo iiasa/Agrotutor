@@ -14,7 +14,7 @@
 
     using BusinessContract;
     using Calendar;
-    using DTO.Parcel;
+    using Parcel;
     using DTO;
     using SQLiteDB;
     using Views;

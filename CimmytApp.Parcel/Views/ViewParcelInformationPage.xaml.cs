@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.DTO.Parcel.Views
+﻿namespace CimmytApp.Parcel.Views
 {
     using Xamarin.Forms;
 

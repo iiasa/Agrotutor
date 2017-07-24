@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.DTO.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
