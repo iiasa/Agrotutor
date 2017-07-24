@@ -6,6 +6,8 @@
     using Prism.Navigation;
     using Xamarin.Forms;
 
+    using DTO.Parcel;
+
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
         private readonly INavigationService _navigationService;

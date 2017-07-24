@@ -2,11 +2,11 @@
 {
     using Prism.Mvvm;
 
-    using DTO.BemData;
+    using DTO.BEM;
 
     public class LocalBenchmarkingPageViewModel : BindableBase
     {
-        BemData bemData;
+        private BemData bemData;
 
         public LocalBenchmarkingPageViewModel()
         {

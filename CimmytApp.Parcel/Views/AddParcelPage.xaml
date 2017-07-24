@@ -3,7 +3,6 @@
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-                xmlns:ui="clr-namespace:Helper.UI;assembly=Helper.UI"
                 prism:ViewModelLocator.AutowireViewModel="True"
                 x:Class="CimmytApp.Parcel.Views.AddParcelPage"
                 Title="Add parcel"

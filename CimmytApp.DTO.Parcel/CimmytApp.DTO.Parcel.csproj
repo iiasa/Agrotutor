@@ -53,6 +53,9 @@
     <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
     </Reference>
@@ -106,6 +109,10 @@
       <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
       <Name>Helper.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.GeoWiki.GenericDatasetStorage\Helper.GeoWiki.GenericDatasetStorage.csproj">
+      <Project>{d17e4173-81da-4ad5-8929-50206f036f62}</Project>
+      <Name>Helper.GeoWiki.GenericDatasetStorage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
       <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
       <Name>Helper.Localization</Name>
@@ -121,10 +128,6 @@
     <ProjectReference Include="..\Helper.UI\Helper.UI.csproj">
       <Project>{FC3EAE0D-7DBA-4973-9816-36688CB7098F}</Project>
       <Name>Helper.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.GenericGeoWikiDatasetStorage\Helper.GenericGeoWikiDatasetStorage.csproj">
-      <Project>{D17E4173-81DA-4AD5-8929-50206F036F62}</Project>
-      <Name>Helper.GeoWiki.GenericDatasetStorage</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

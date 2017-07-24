@@ -1,8 +1,8 @@
 ﻿namespace CimmytApp.DTO.Parcel
 {
     using System;
-	using System.Collections.Generic;
-	using System.ComponentModel;
+    using System.Collections.Generic;
+    using System.ComponentModel;
     using Xamarin.Forms;
     using SQLite.Net.Attributes;
 
@@ -16,7 +16,6 @@
     public class Parcel : IDataset, INotifyPropertyChanged
     {
         private static int geoWikiDatasetGroupId = 1;
-
 
         public int ID { get; set; }
         public string ParcelName { get; set; }
@@ -52,13 +51,15 @@
             await Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
         }
 
-        public async static Task<List<Parcel>> LoadParcelsFromServer()
+        public static async Task<List<Parcel>> LoadParcelsFromServer()
         {
             return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
         }
 
-        public int Save(){
+        public int Save()
+        {
             //TODO persist and return ID
+            return -1;
         }
     }
 }

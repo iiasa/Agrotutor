@@ -4,7 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
              xmlns:views1="clr-namespace:CimmytApp.StaticContent.Views;assembly=CimmytApp.StaticContent"
-             xmlns:views2="clr-namespace:CimmytApp.DTO.Parcel.Views;assembly=CimmytApp.DTO.Parcel"
+             xmlns:views2="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
              xmlns:views3="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
              xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              prism:ViewModelLocator.AutowireViewModel="True"

@@ -1,12 +1,14 @@
-﻿using Helper.BusinessContract;
-using Helper.DatasetSyncEvents.ViewModelBase;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System;
     using Prism;
     using Prism.Events;
     using Prism.Navigation;
+
+    using Helper.BusinessContract;
+    using Helper.DatasetSyncEvents.ViewModelBase;
+
+    using DTO.Parcel;
 
     public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {

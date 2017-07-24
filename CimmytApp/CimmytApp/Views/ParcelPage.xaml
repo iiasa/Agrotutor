@@ -6,7 +6,7 @@
             xmlns:calend="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
             xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
             xmlns:views2="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
-            xmlns:views3="clr-namespace:CimmytApp.DTO.Parcel.Views;assembly=CimmytApp.DTO.Parcel"
+            xmlns:views3="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
             xmlns:views4="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
             x:Class="CimmytApp.Views.ParcelPage">
 

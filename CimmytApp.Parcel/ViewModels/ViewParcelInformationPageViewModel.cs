@@ -10,6 +10,8 @@
     using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.ViewModelBase;
 
+    using DTO.Parcel;
+
     public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;

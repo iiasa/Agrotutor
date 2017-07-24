@@ -7,11 +7,11 @@
 
     using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.ViewModelBase;
-
-    using DTO.Parcel;
-    using CimmytApp.BusinessContract;
     using Helper.RestfulClient;
-    using CimmytApp.DTO;
+
+    using DTO;
+    using DTO.Parcel;
+    using BusinessContract;
 
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {

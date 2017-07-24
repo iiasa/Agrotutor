@@ -1,4 +1,6 @@
-﻿namespace CimmytApp
+﻿using CimmytApp.Parcel;
+
+namespace CimmytApp
 {
     using System.Collections.Generic;
     using System.Reflection;
@@ -9,25 +11,23 @@
     using Microsoft.Practices.Unity;
 
     using Helper.Map;
-	using Helper.Localization.Localization;
-	using Helper.UserRegistration;
+    using Helper.Localization.Localization;
+    using Helper.UserRegistration;
 
     using BusinessContract;
     using Calendar;
-    using Parcel;
-    using DTO;
     using SQLiteDB;
     using Views;
-    using CimmytApp.AgronomicalRecommendations;
-    using CimmytApp.Benchmarking;
-    using CimmytApp.Introduction;
-    using CimmytApp.StaticContent;
-    using CimmytApp.WeatherForecast;
+    using AgronomicalRecommendations;
+    using Benchmarking;
+    using Introduction;
+    using StaticContent;
+    using WeatherForecast;
 
     public partial class App : PrismApplication
     {
-        public static Parcel CurrentParcel { get; set; }
-        public static List<Parcel> Parcels { get; set; }
+        public static DTO.Parcel.Parcel CurrentParcel { get; set; }
+        public static List<DTO.Parcel.Parcel> Parcels { get; set; }
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
@@ -48,9 +48,9 @@
             //  CimmytDbOperations.GetAllParcels();
         }
 
-		protected override void OnInitialized()
-		{
-			InitializeComponent();
+        protected override void OnInitialized()
+        {
+            InitializeComponent();
 
             NavigationService.NavigateAsync("MainPage");
             return;
@@ -64,43 +64,45 @@
             {
                 NavigationService.NavigateAsync("WelcomePage");
             }*/
-		}
+        }
 
         protected override void ConfigureModuleCatalog()
         {
             var agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
             ModuleCatalog.AddModule(
-                new ModuleInfo(){
+                new ModuleInfo()
+                {
                     ModuleName = agronomicalRecommendationsModule.Name,
-	                ModuleType = agronomicalRecommendationsModule,
-	                InitializationMode = InitializationMode.WhenAvailable
+                    ModuleType = agronomicalRecommendationsModule,
+                    InitializationMode = InitializationMode.WhenAvailable
                 });
 
             var benchmarkingModule = typeof(BenchmarkingModule);
             ModuleCatalog.AddModule(
-                new ModuleInfo(){
-	                ModuleName = benchmarkingModule.Name,
-	                ModuleType = benchmarkingModule,
-	                InitializationMode = InitializationMode.WhenAvailable
-				});
+                new ModuleInfo()
+                {
+                    ModuleName = benchmarkingModule.Name,
+                    ModuleType = benchmarkingModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-			var calendarModule = typeof(CalenderModule);
-			ModuleCatalog.AddModule(
-				new ModuleInfo()
-				{
-					ModuleName = calendarModule.Name,
-					ModuleType = calendarModule,
-					InitializationMode = InitializationMode.WhenAvailable
-				});
+            var calendarModule = typeof(CalenderModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = calendarModule.Name,
+                    ModuleType = calendarModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
             var introductionModule = typeof(IntroductionModule);
-			ModuleCatalog.AddModule(
-				new ModuleInfo()
-				{
-					ModuleName = introductionModule.Name,
-					ModuleType = introductionModule,
-					InitializationMode = InitializationMode.WhenAvailable
-				});
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = introductionModule.Name,
+                    ModuleType = introductionModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
             var mapModule = typeof(MapModule);
             ModuleCatalog.AddModule(
@@ -109,43 +111,43 @@
                     ModuleName = mapModule.Name,
                     ModuleType = mapModule,
                     InitializationMode = InitializationMode.WhenAvailable
-				});
+                });
 
-			var parcelModule = typeof(ParcelModule);
-			ModuleCatalog.AddModule(
-				new ModuleInfo()
-				{
-					ModuleName = parcelModule.Name,
-					ModuleType = parcelModule,
-					InitializationMode = InitializationMode.WhenAvailable
-				});
+            var parcelModule = typeof(ParcelModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = parcelModule.Name,
+                    ModuleType = parcelModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-			var staticContentModule = typeof(StaticContentModule);
-			ModuleCatalog.AddModule(
-				new ModuleInfo()
-				{
-					ModuleName = staticContentModule.Name,
-					ModuleType = staticContentModule,
-					InitializationMode = InitializationMode.WhenAvailable
-				});
+            var staticContentModule = typeof(StaticContentModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = staticContentModule.Name,
+                    ModuleType = staticContentModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-			var userRegistrationModule = typeof(UserRegistrationModule);
-			ModuleCatalog.AddModule(
-				new ModuleInfo()
-				{
-					ModuleName = userRegistrationModule.Name,
-					ModuleType = userRegistrationModule,
-					InitializationMode = InitializationMode.WhenAvailable
-				});
+            var userRegistrationModule = typeof(UserRegistrationModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = userRegistrationModule.Name,
+                    ModuleType = userRegistrationModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-			var weatherForecastModule = typeof(WeatherForecastModule);
-			ModuleCatalog.AddModule(
-				new ModuleInfo()
-				{
-					ModuleName = weatherForecastModule.Name,
-					ModuleType = weatherForecastModule,
-					InitializationMode = InitializationMode.WhenAvailable
-				});
+            var weatherForecastModule = typeof(WeatherForecastModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = weatherForecastModule.Name,
+                    ModuleType = weatherForecastModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
         }
 
         protected override void RegisterTypes()
