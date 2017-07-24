@@ -37,16 +37,16 @@
     <Compile Include="ViewModels\ParcelsOverviewPageViewModel.cs" />
     <Compile Include="ViewModels\ViewParcelInformationPageViewModel.cs" />
     <Compile Include="Views\AddParcelInformationPage.xaml.cs">
-      <DependentUpon>..\..\CimmytApp.DTO.Parcel\Views\AddParcelInformationPage.xaml</DependentUpon>
+      <DependentUpon>AddParcelInformationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddParcelPage.xaml.cs">
-      <DependentUpon>..\..\CimmytApp.DTO.Parcel\Views\AddParcelPage.xaml</DependentUpon>
+      <DependentUpon>AddParcelPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ParcelsOverviewPage.xaml.cs">
-      <DependentUpon>..\..\CimmytApp.DTO.Parcel\Views\ParcelsOverviewPage.xaml</DependentUpon>
+      <DependentUpon>ParcelsOverviewPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewParcelInformationPage.xaml.cs">
-      <DependentUpon>..\..\CimmytApp.DTO.Parcel\Views\ViewParcelInformationPage.xaml</DependentUpon>
+      <DependentUpon>ViewParcelInformationPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -114,6 +114,24 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
+      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
+      <Name>CimmytApp.DTO.Parcel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
+      <Project>{ec0ea894-07e3-4905-81aa-65febe9e4d68}</Project>
+      <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
+      <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
+      <Name>Helper.DatasetSyncEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
+      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
+      <Name>Helper.Localization</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
