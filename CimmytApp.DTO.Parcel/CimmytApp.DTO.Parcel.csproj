@@ -36,7 +36,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Parcel.cs" />
-    <Compile Include="ParcelModule.cs" />
     <Compile Include="PesticideApplication.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
