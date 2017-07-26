@@ -39,7 +39,7 @@
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
                     var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    res = JsonConvert.DeserializeObject<T>(responseContent);
+                    //res = JsonConvert.DeserializeObject<T>(responseContent);
                 }
             }
             return res;

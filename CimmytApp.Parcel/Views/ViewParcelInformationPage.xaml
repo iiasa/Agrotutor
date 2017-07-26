@@ -9,7 +9,7 @@
         <StackLayout Margin="16">
             <Label Text="Agronomical Cycle" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.AgronomicalCycle}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.AgriculturalCycle}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Year" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
@@ -17,40 +17,39 @@
 
             <Label Text="Estimated Parcel Area" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="5 ha" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.EstimatedParcelAreaWithUnit}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Producer Name" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="John Doe" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.ProducerName}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Parcel Name" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="Maize Field 1" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.ParcelName}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Technologies used" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="Change to improved, new varieties adapted to areas with potential to increase yield" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-            <BoxView Color="LightSlateGray" HeightRequest="2" WidthRequest="100" Margin="8, 0, 8, 0" />
-            <Label Text="Use of biofertilizers" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-            <BoxView Color="LightSlateGray" HeightRequest="2" WidthRequest="100" Margin="8, 0, 8, 0" />
-            <Label Text="Other technologies as string entered by user" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.TechnologiesScreenList}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Crop planted" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="Maize" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.Crop}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Performance" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="10 tons/ha" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.Performance}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Irrigation" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="irrigated" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.Irrigation}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Planting date" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="12-04-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.PlantingDate}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
+
+            
+            <!--
             <Label Text="Pesticide application" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100"/>
             
@@ -78,7 +77,7 @@
             <Label Text="Application date" Margin="16, 0, 16, 0" />
             <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
             <Label Text="22-07-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 16" />
-
+-->
             <Button Command="{Binding TestCommand}" Text="OK"/>
         </StackLayout>
     </ScrollView>

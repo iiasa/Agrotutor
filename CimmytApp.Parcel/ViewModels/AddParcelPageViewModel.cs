@@ -214,8 +214,7 @@
 
         private void AgriculturalCycleChanged()
         {
-            int i = 0;
-            i++;
+            
         }
 
         private void updateTechChecked()

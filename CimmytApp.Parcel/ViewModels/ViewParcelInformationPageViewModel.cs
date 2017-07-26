@@ -31,8 +31,7 @@
 
         private void Test()
         {
-            var i = 0;
-            i++;
+            Parcel.Submit();
         }
 
         public bool IsActive
