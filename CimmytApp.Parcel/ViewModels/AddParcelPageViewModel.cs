@@ -16,13 +16,15 @@
         private List<string> agriculturalCycles = new List<string> { "Spring-Summer", "Autumn-Winter" };
         public List<string> AgriculturalCycles => agriculturalCycles;
 
-        private List<string> _cropTypes;
+        private List<string> _cropTypes = new List<string>{"Maize", "Barley", "Potato"};
         public List<string> CropTypes => _cropTypes;
 
-        public List<string> Years = new List<string> { "2015", "2016", "2017" };
+        private List<string> _years = new List<string> { "2015", "2016", "2017" };
+		public List<string> Years => _years;
 
-        private ObservableCollection<string> _singleYears;
-        private ObservableCollection<string> _doubleYears;
+		private List<string> _irrigationTypes = new List<string> { "Irrigation", "Sprinkler irrigation", "Temporal" };
+		public List<string> IrrigationTypes => _irrigationTypes;
+
 
         private bool _tech1Checked;
         private bool _tech2Checked;
@@ -131,54 +133,67 @@
             set
             {
                 _pickerAgriculturalCycleSelectedIndex = value;
-                Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);/*
+                Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);
                 switch(value){
                     case 0:
-                        Years = _singleYears;
+                        _years = _singleYears;
                         break;
 
                     case 1:
-                        Years = _doubleYears;
+                        _years = _doubleYears;
                         break;
-                }*/
+                }
             }
         }
 
-        private int _pickerYearsSelectedIndex;
+		private int _pickerYearsSelectedIndex;
 
-        private int _pickerCropTypesSelectedIndex;
+		private int _pickerCropTypesSelectedIndex;
 
-        public int PickerCropTypesSelectedIndex
-        {
-            get { return _pickerCropTypesSelectedIndex; }
-            set
-            {
-                _pickerCropTypesSelectedIndex = value;
-                Parcel.Crop = CropTypes.ElementAt(value);
-            }
-        }
+		public int PickerCropTypesSelectedIndex
+		{
+			get { return _pickerCropTypesSelectedIndex; }
+			set
+			{
+				_pickerCropTypesSelectedIndex = value;
+				Parcel.Crop = CropTypes.ElementAt(value);
+			}
+		}
+
+		private int _pickerIrrigationTypesSelectedIndex;
+
+		public int PickerIrrigationTypesSelectedIndex
+		{
+			get { return _pickerIrrigationTypesSelectedIndex; }
+			set
+			{
+				_pickerIrrigationTypesSelectedIndex = value;
+                Parcel.Irrigation = IrrigationTypes.ElementAt(value);
+			}
+		}
 
         public bool Test { get; set; }
 
-        public ICommand ClickChooseLocation;
-        public ICommand ClickSave;
+        public ICommand ClickChooseLocation { get; set; }
+        public ICommand ClickSave { get; set; }
 
         public INavigationService _navigationService;
 
         public Parcel Parcel { get; set; }
 
+		private List<string> _singleYears;
+		private List<string> _doubleYears;
+
         public AddParcelPageViewModel(INavigationService navigationService)
         {
-            _navigationService = navigationService;
-            Parcel = new Parcel()
-            {
-                EstimatedParcelArea = "20178"
-            };
-            _singleYears = new ObservableCollection<string>() { "2015", "2016", "2017" };
-            _doubleYears = new ObservableCollection<string>() { "2014-2015", "2015-2016", "2016-2017" };
+			_navigationService = navigationService;
 
-            ClickSave = new Command(SaveParcel);
-            ClickChooseLocation = new Command(ChooseLocation);
+			ClickSave = new Command(SaveParcel);
+			ClickChooseLocation = new Command(ChooseLocation);
+
+            Parcel = new Parcel();
+            _singleYears = new List<string>() { "2015", "2016", "2017" };
+            _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
         }
 
         private void ChooseLocation(object obj)
@@ -192,7 +207,7 @@
 
             var navigationParameters = new NavigationParameters();
 
-            navigationParameters.Add("", ""); //TODO
+            navigationParameters.Add("id", Parcel.ID);
 
             _navigationService.NavigateAsync("ParcelPage", navigationParameters);
         }
@@ -206,14 +221,14 @@
         private void updateTechChecked()
         {
             var technologies = new List<string>();
-            if (_tech1Checked) technologies.Add("");
-            if (_tech2Checked) technologies.Add("");
-            if (_tech3Checked) technologies.Add("");
-            if (_tech4Checked) technologies.Add("");
-            if (_tech5Checked) technologies.Add("");
-            if (_tech6Checked) technologies.Add("");
-            if (_tech7Checked) technologies.Add("");
-            if (_tech8Checked) technologies.Add("");
+            if (_tech1Checked) technologies.Add("tech1");
+            if (_tech2Checked) technologies.Add("tech2");
+            if (_tech3Checked) technologies.Add("tech3");
+            if (_tech4Checked) technologies.Add("tech4");
+            if (_tech5Checked) technologies.Add("tech5");
+            if (_tech6Checked) technologies.Add("tech6");
+            if (_tech7Checked) technologies.Add("tech7");
+            if (_tech8Checked) technologies.Add("tech8");
             Parcel.TechnologiesUsed = technologies;
         }
 

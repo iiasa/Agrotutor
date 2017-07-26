@@ -28,7 +28,7 @@
         public List<string> TechnologiesUsed { get; set; }
         public string OtherTechnologies { get; set; }
 
-        public double? Performance { get; set; }
+        public string Performance { get; set; }
         public string Irrigation { get; set; }
         public DateTime PlantingDate { get; set; }
         public List<PesticideApplication> PesticidesApplied { get; set; }
@@ -40,6 +40,10 @@
         public string IconSource => $"corn.png";
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        public Parcel(){
+            PlantingDate = DateTime.Today;
+        }
 
         public DataTemplate GetOverviewDataTemplate()
         {

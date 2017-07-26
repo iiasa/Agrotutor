@@ -39,29 +39,23 @@
             <Entry Placeholder="Technologies used" Text="{Binding Parcel.OtherTechnologies}" />
             <Label Text="Crop planted" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="0" />
+            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
             <Label Text="Cultivar" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="Cultivar planted" />
+            <Entry Placeholder="Cultivar planted" Text="{Binding Parcel.Cultivar}" />
             <Label Text="Please also enter the following optional information." />
             <Label Text="Performance" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="[tons/ha]" />
+            <Entry Placeholder="[tons/ha]" Text="{Binding Parcel.Performance}" />
             <Label Text="Irrigation" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="0" />
+            <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" />
             <Label Text="Planting date" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <DatePicker />
-            <Label Text="Pesticide application date" />
-            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <DatePicker />
-            <Label Text="Pesticide product applied" />
-            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="Product" />
+            <DatePicker Date="{Binding Parcel.PlantingDate}"/>
             <controls:CheckBox DefaultText="Are you at the parcel?" />
             <Button Text="Choose location on map" Command="{Binding ClickChooseLocation}" />
-            <Button Text="Save" Command="{Binding Save}" />
+            <Button Text="Save" Command="{Binding ClickSave}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

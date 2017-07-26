@@ -24,7 +24,7 @@ namespace CimmytApp.MockData
                 },
                 Irrigation = "Irrigated",
                 ParcelName = "Testparcel 1",
-                Performance = 1.2,
+                Performance = "1.2",
                 PesticidesApplied = new List<PesticideApplication>(){
                     new PesticideApplication(){
                         ProductName = "Pesticide Product",
@@ -55,7 +55,7 @@ namespace CimmytApp.MockData
                 },
                 Irrigation = "Irrigated",
                 ParcelName = "Testparcel 2",
-                Performance = 1.2,
+                Performance = "1.2",
                 PesticidesApplied = new List<PesticideApplication>(){
                     new PesticideApplication(){
                         ProductName = "Pesticide Product",
