@@ -244,6 +244,10 @@
       <Project>{F7513236-DC22-4A65-803E-1892E7FA180A}</Project>
       <Name>CimmytApp.Parcel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\CimmytApp.MockData\CimmytApp.MockData.csproj">
+      <Project>{ACACFC5B-E592-4806-8611-DF847A8DB55C}</Project>
+      <Name>CimmytApp.MockData</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

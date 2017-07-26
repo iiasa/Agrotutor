@@ -132,6 +132,10 @@
       <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
       <Name>Helper.Localization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.MockData\CimmytApp.MockData.csproj">
+      <Project>{ACACFC5B-E592-4806-8611-DF847A8DB55C}</Project>
+      <Name>CimmytApp.MockData</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />

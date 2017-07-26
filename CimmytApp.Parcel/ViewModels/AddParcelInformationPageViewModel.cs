@@ -24,7 +24,7 @@
             get { return isActive; }
             set
             {
-                if (isActive && !value)
+                if (isActive && !value && _parcel != null)
                 {
                     PublishDataset(_parcel);
                 }

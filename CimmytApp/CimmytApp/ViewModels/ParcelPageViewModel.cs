@@ -12,6 +12,8 @@
     using DTO;
     using DTO.Parcel;
     using BusinessContract;
+    using CimmytApp.MockData;
+    using System.Linq;
 
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
@@ -27,7 +29,7 @@
             set
             {
                 SetProperty(ref _parcel, value);
-                PublishDataset(value);
+                if (value!=null) PublishDataset(value);
             }
         }
 
@@ -56,7 +58,8 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            Parcel = (Parcel)parameters["parcel"];
+            var id = (int)parameters["id"];
+            Parcel = new TestParcels().ElementAt(id);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

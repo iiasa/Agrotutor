@@ -7,6 +7,9 @@
     using Xamarin.Forms;
 
     using DTO.Parcel;
+    using CimmytApp.MockData;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
@@ -27,29 +30,13 @@
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
             // Todo: get parcels from sqlite
 
+            List<Parcel> parcels = new TestParcels();
+
             //testcode:
             Parcels = new ObservableCollection<Parcel>
             {
-                new Parcel
-                {
-                    ID = 1,
-                    Crop = "Maize"
-                },
-                new Parcel
-                {
-                    ID = 2,
-                    Crop = "Wheat"
-                },
-                new Parcel
-                {
-                    ID = 3,
-                    Crop = "Triticale"
-                },
-                new Parcel
-                {
-                    ID = 4,
-                    Crop = "This thing is long as heeeeelll..."
-                }
+                parcels.ElementAt(0),
+                parcels.ElementAt(1)
             };
         }
 
@@ -60,10 +47,8 @@
 
         private void NavigateToParcelDetailPage(object id)
         {
-            //App.CurrentParcel =
             var navigationParameters = new NavigationParameters { { "id", (int)id } };
-            //_navigationService.NavigateAsync("ParcelPage", navigationParameters);
-            _navigationService.NavigateAsync("ParcelPage");
+            _navigationService.NavigateAsync("ParcelPage", navigationParameters);
         }
 
         private void NavigateToAddParcelPage()
