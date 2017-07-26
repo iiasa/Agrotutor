@@ -10,9 +10,16 @@
 
     using DTO.Parcel;
 
-    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
+    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
         private bool isActive;
+        public Parcel Parcel {
+            get { return _parcel; }
+            set {
+                _parcel = value;
+                OnPropertyChanged("Parcel");
+            }
+        }
         private Parcel _parcel;
 
         public AddParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
@@ -48,12 +55,20 @@
 
         protected override void ReadDataset(IDataset dataset)
         {
-            _parcel = (Parcel)dataset;
+            Parcel = (Parcel)dataset;
         }
 
         protected override IDataset GetDataset()
         {
             return _parcel;
-        }
+		}
+
+
+		protected virtual void OnPropertyChanged(string aName)
+		{
+			var iHandler = PropertyChanged;
+			iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
     }
 }

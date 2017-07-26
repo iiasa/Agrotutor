@@ -14,8 +14,9 @@
     using BusinessContract;
     using CimmytApp.MockData;
     using System.Linq;
+    using System.ComponentModel;
 
-    public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
+    public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
         private Parcel _parcel;
 
@@ -29,6 +30,7 @@
             set
             {
                 SetProperty(ref _parcel, value);
+                OnPropertyChanged("Parcel");
                 if (value!=null) PublishDataset(value);
             }
         }
@@ -72,12 +74,20 @@
 
         protected override void ReadDataset(IDataset dataset)
         {
-            _parcel = (Parcel)dataset;
+            Parcel = (Parcel)dataset;
         }
 
         protected override IDataset GetDataset()
         {
             return _parcel;
-        }
+		}
+
+
+		protected virtual void OnPropertyChanged(string aName)
+		{
+			var iHandler = PropertyChanged;
+			iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -7,11 +7,12 @@
               xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
              Title="Map">
   
-  <!--<bindableMap:TKCustomMap CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}"
+    <bindableMap:TKCustomMap CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}"
                          MapCenter="{Binding MapsPosition}"
-                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >-->
+                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >
+        <!--
     <bindableMap:TKCustomMap MapRegion="{Binding MapRegion}"
                         
-                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >
+                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >-->
     </bindableMap:TKCustomMap>
 </ContentPage>

@@ -9,7 +9,7 @@
         <StackLayout Margin="16">
             <Label Text="Agronomical Cycle" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.AgriculturalCycle}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <Label Text="{Binding Parcel.AgriculturalCycle, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Year" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />

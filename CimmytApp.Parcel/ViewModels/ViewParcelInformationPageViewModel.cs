@@ -11,8 +11,9 @@
     using Helper.DatasetSyncEvents.ViewModelBase;
 
     using DTO.Parcel;
+    using System.ComponentModel;
 
-    public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware
+    public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
         private Parcel _parcel;
         private bool isActive;
@@ -21,7 +22,11 @@
         public Parcel Parcel
         {
             get { return _parcel; }
-            set { _parcel = value; }
+			set
+            {
+				_parcel = value;
+                OnPropertyChanged("Parcel");
+            }
         }
 
         public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
@@ -59,7 +64,15 @@
 
         protected override void ReadDataset(IDataset dataset)
         {
-            _parcel = (Parcel)dataset;
+            Parcel = (Parcel)dataset;
         }
+
+
+        protected virtual void OnPropertyChanged(string aName)
+        {
+            var iHandler = PropertyChanged;
+            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+		}
+		public event PropertyChangedEventHandler PropertyChanged;
     }
 }
