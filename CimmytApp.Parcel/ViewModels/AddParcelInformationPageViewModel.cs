@@ -9,6 +9,7 @@
     using Helper.DatasetSyncEvents.ViewModelBase;
 
     using DTO.Parcel;
+    using System.ComponentModel;
 
     public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {

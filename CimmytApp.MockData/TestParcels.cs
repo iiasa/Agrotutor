@@ -70,6 +70,7 @@ namespace CimmytApp.MockData
                 TechnologiesUsed = new List<string>(),
                 Year = "2017"
             });
+
         }
     }
 }

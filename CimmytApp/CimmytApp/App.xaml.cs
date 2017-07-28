@@ -29,8 +29,16 @@ namespace CimmytApp
         public static DTO.Parcel.Parcel CurrentParcel { get; set; }
         public static List<DTO.Parcel.Parcel> Parcels { get; set; }
 
+        static IDictionary<string, object> _properties;
+
+        public static IDictionary<string, object> GetProperties()
+        {
+            return _properties;
+        }
+
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
+            _properties = Current.Properties;
             System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
             var assembly = typeof(App).GetTypeInfo().Assembly;
             foreach (var res in assembly.GetManifestResourceNames())
@@ -47,6 +55,8 @@ namespace CimmytApp
 
             //  CimmytDbOperations.GetAllParcels();
         }
+
+
 
         protected override void OnInitialized()
         {

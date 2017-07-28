@@ -79,7 +79,7 @@
 
         protected override IDataset GetDataset()
         {
-            return _parcel;
+            return Parcel;
 		}
 
 

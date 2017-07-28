@@ -4,37 +4,64 @@
     using System.Windows.Input;
     using Xamarin.Forms;
     using DTO.Parcel;
+    using Helper.DatasetSyncEvents.ViewModelBase;
+    using System;
+    using Helper.BusinessContract;
+    using Prism.Events;
+    using CimmytApp.DTO;
+    using Prism.Navigation;
+    using System.ComponentModel;
+    using Prism;
 
-    public class WeatherForecastPageViewModel : BindableBase
-    {
+    public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
+	{
+		private bool isActive;
         private Parcel _parcel;
 
         public Parcel Parcel
         {
             get { return _parcel; }
-            set { SetProperty(ref _parcel, value); }
+            set { 
+                SetProperty(ref _parcel, value);
+                LoadWeatherData();
+            }
         }
 
-        //public event PropertyChangedEventHandler PropertyChanged;
+        private void LoadWeatherData()
+        {
+            WeatherService.GetWeatherData(Parcel.GeoPosition);
+        }
 
-        //protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = "")
-        //{
-        //    var changed = PropertyChanged;
-        //    if (changed != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
+        private WeatherData _weatherData;
 
-        //private static void HandleParcelChanged(BindableObject bindable, object oldvalue, object newvalue)
-        //{
-        //    var i = 0;
-        //    i++;
-        //}
+        public WeatherData WeatherData
+        {
+            get
+            {
+                return _weatherData;
+            }
 
-        public ICommand TestCommand { get; set; }
+            set
+            {
+                _weatherData = value;
+                RaisePropertyChanged("WeatherData");
+            }
+        }
 
-        public WeatherForecastPageViewModel()
+		public ICommand TestCommand { get; set; }
+
+		public bool IsActive
+		{
+			get { return isActive; }
+			set
+			{
+				isActive = value;
+			}
+		}
+
+		public event EventHandler IsActiveChanged;
+
+        public WeatherForecastPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
             TestCommand = new Command(Test);
         }
@@ -43,6 +70,23 @@
         {
             var i = 0;
             i++;
+        }
+
+        protected override void ReadDataset(IDataset dataset)
+        {
+            Parcel = (Parcel)dataset;
+        }
+
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }
