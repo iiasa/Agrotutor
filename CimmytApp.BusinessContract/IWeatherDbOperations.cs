@@ -1,12 +1,10 @@
-﻿using CimmytApp.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace CimmytApp.BusinessContract
 {
+    using System.Collections.Generic;
+    using Helper.DTO.SkywiseWeather;
+
     public interface IWeatherDbOperations
     {
 
@@ -14,7 +12,7 @@ namespace CimmytApp.BusinessContract
         void AddWeatherData(WeatherData weatherData);
 
 
-         int DeleteWeatherData(int id);
+        int DeleteWeatherData(int id);
 
         WeatherData GetWeatherData(int weatherDataId);
 

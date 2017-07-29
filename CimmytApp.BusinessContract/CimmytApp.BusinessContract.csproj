@@ -52,6 +52,10 @@
       <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
       <Name>Helper.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.DTO.SkywiseWeather\Helper.DTO.SkywiseWeather.csproj">
+      <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
+      <Name>Helper.DTO.SkywiseWeather</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
