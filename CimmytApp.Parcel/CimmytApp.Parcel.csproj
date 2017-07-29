@@ -68,6 +68,32 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
+      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
+      <Name>CimmytApp.DTO.Parcel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
+      <Project>{ec0ea894-07e3-4905-81aa-65febe9e4d68}</Project>
+      <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
+      <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
+      <Name>Helper.DatasetSyncEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
+      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
+      <Name>Helper.Localization</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.MockData\CimmytApp.MockData.csproj">
+      <Project>{ACACFC5B-E592-4806-8611-DF847A8DB55C}</Project>
+      <Name>CimmytApp.MockData</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExifLib.PCL.1.0.1\lib\portable-net45+sl50+win+WindowsPhoneApp81+wp80+Xamarin.iOS10+MonoAndroid10+MonoTouch10\ExifLib.dll</HintPath>
     </Reference>
@@ -110,32 +136,6 @@
     <Reference Include="XLabs.Serialization, Version=2.0.5782.15703, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
       <HintPath>..\packages\XLabs.Serialization.2.0.5782\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1\XLabs.Serialization.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
-      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
-      <Name>CimmytApp.DTO.Parcel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
-      <Project>{ec0ea894-07e3-4905-81aa-65febe9e4d68}</Project>
-      <Name>Helper.BusinessContract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
-      <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
-      <Name>Helper.DatasetSyncEvents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
-      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
-      <Name>Helper.Localization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CimmytApp.MockData\CimmytApp.MockData.csproj">
-      <Project>{ACACFC5B-E592-4806-8611-DF847A8DB55C}</Project>
-      <Name>CimmytApp.MockData</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
