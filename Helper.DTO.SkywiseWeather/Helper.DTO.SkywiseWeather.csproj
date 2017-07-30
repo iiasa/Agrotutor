@@ -29,14 +29,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Historic\WeatherData.cs" />
-    <Compile Include="Historic\Unit.cs" />
+    <Compile Include="Historical\WeatherData.cs" />
+    <Compile Include="Historical\Unit.cs" />
+    <Compile Include="Historical\Value.cs" />
+    <Compile Include="Historical\HistoricalSeries.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Historic\" />
+    <Folder Include="Historical\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

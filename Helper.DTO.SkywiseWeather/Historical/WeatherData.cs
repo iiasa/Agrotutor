@@ -1,5 +1,5 @@
 ﻿﻿
-namespace Helper.DTO.SkywiseWeather.Historic
+namespace Helper.DTO.SkywiseWeather.Historical
 {
 
 	using SQLite.Net.Attributes;
@@ -19,62 +19,62 @@ namespace Helper.DTO.SkywiseWeather.Historic
 
         [JsonProperty("gdd")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public GrowingDegreeDays growingDegreeDays { get; set; }
+        public GrowingDegreeDays GrowingDegreeDays { get; set; }
         [JsonProperty("cdd")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public CoolingDegreeDays cdd { get; set; }
+        public CoolingDegreeDays CoolingDegreeDays { get; set; }
         [JsonProperty("hdd")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HeatingDegreeDays hdd { get; set; }
+        public HeatingDegreeDays HeatingDegreeDays { get; set; }
         [JsonProperty("dp")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public DailyPrecipitation dp { get; set; }
+        public DailyPrecipitation DailyPrecipitation { get; set; }
         [JsonProperty("hp")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyPrecipitation hp { get; set; }
+        public HourlyPrecipitation HourlyPrecipitation { get; set; }
         [JsonProperty("hrh")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyRelativeHumidity hrh { get; set; }
+        public HourlyRelativeHumidity HourlyRelativeHumidity { get; set; }
         [JsonProperty("dsr")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public DailySolarRadiation dsr { get; set; }
+        public DailySolarRadiation DailySolarRadiation { get; set; }
         [JsonProperty("hsr")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlySolarRadiation hsr { get; set; }
+        public HourlySolarRadiation HourlySolarRadiation { get; set; }
 
         [JsonProperty("ht")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyTemperature ht { get; set; }
+        public HourlyTemperature HourlyTemperature { get; set; }
         [JsonProperty("dht")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public DailyHighTemperature dht { get; set; }
+        public DailyHighTemperature DailyHighTemperature { get; set; }
         [JsonProperty("dlt")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public DailyLowTemperature dlt { get; set; }
+        public DailyLowTemperature DailyLowTemperature { get; set; }
         [JsonProperty("hd")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyDewpoint hd { get; set; }
+        public HourlyDewpoint HourlyDewpoint { get; set; }
         [JsonProperty("hws")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyWindSpeed hws { get; set; }
+        public HourlyWindSpeed HourlyWindSpeed { get; set; }
         [JsonProperty("hwd")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public Hwd hwd { get; set; }
+        public HourlyWindDirection HourlyWindDirection { get; set; }
         [JsonProperty("desc")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public DailyEvapotranspirationShortCrop desc { get; set; }
+        public DailyEvapotranspirationShortCrop DailyEvapotranspirationShortCrop { get; set; }
         [JsonProperty("detc")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public DailyEvapotranspirationTallCrop detc { get; set; }
+        public DailyEvapotranspirationTallCrop DailyEvapotranspirationTallCrop { get; set; }
         [JsonProperty("hesc")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyEvapotranspirationShortCrop hesc { get; set; }
+        public HourlyEvapotranspirationShortCrop HourlyEvapotranspirationShortCrop { get; set; }
         [JsonProperty("hetc")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
-        public HourlyEvapotranspirationTallCrop hetc { get; set; }
+        public HourlyEvapotranspirationTallCrop HourlyEvapotranspirationTallCrop { get; set; }
     }
 
-    public class GrowingDegreeDays
+    public class GrowingDegreeDays : HistoricalSeries 
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
@@ -82,23 +82,9 @@ namespace Helper.DTO.SkywiseWeather.Historic
         public float degreeDays { get; set; }
         public string endDate { get; set; }
         public float baseTemperature { get; set; }
-        public Series[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-
-    public class Series
-    {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
-		public string validDate { get; set; }
-		public DateTime validTime { get; set; }
-        public float value { get; set; }
-    }
-
-    public class CoolingDegreeDays
+    public class CoolingDegreeDays : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
@@ -106,13 +92,9 @@ namespace Helper.DTO.SkywiseWeather.Historic
         public float degreeDays { get; set; }
         public string endDate { get; set; }
         public float baseTemperature { get; set; }
-        public Series[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HeatingDegreeDays
+    public class HeatingDegreeDays : HistoricalSeries
     {
         [
             PrimaryKey, AutoIncrement]
@@ -121,192 +103,138 @@ namespace Helper.DTO.SkywiseWeather.Historic
         public float degreeDays { get; set; }
         public string endDate { get; set; }
         public float baseTemperature { get; set; }
-        public Series2[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class DailyPrecipitation
+    public class DailyPrecipitation : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
-        public Series3[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
         public float precipitation { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyPrecipitation
+    public class HourlyPrecipitation : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series4[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
         public float precipitation { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyRelativeHumidity
+    public class HourlyRelativeHumidity : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series5[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class DailySolarRadiation
+    public class DailySolarRadiation : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string startDate { get; set; }
         public float solarRadiation { get; set; }
         public string endDate { get; set; }
-        public Series6[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlySolarRadiation
+    public class HourlySolarRadiation : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series7[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyTemperature
+    public class HourlyTemperature : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series8[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class DailyHighTemperature
+    public class DailyHighTemperature : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
-        public Series9[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
+        public Value[] series { get; set; }
     }
 
-    public class DailyLowTemperature
+    public class DailyLowTemperature : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
-        public Series10[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyDewpoint
+    public class HourlyDewpoint : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series11[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyWindSpeed
+    public class HourlyWindSpeed : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series12[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyWindDirection
+    public class HourlyWindDirection : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series13[] series { get; set; }
-        public float longitude { get; set; }
         public DateTime startTime { get; set; }
-        public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class DailyEvapotranspirationShortCrop
+    public class DailyEvapotranspirationShortCrop : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
-        public Series14[] series { get; set; }
-        public float longitude { get; set; }
-        public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class DailyEvapotranspirationTallCrop
+    public class DailyEvapotranspirationTallCrop : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
         public string startDate { get; set; }
         public string endDate { get; set; }
-        public Series15[] series { get; set; }
+        public Value[] series { get; set; }
         public float longitude { get; set; }
         public float latitude { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyEvapotranspirationShortCrop
+    public class HourlyEvapotranspirationShortCrop : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series16[] series { get; set; }
+        public Value[] series { get; set; }
         public float longitude { get; set; }
         public DateTime startTime { get; set; }
         public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 
-    public class HourlyEvapotranspirationTallCrop
+    public class HourlyEvapotranspirationTallCrop : HistoricalSeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-        public Series17[] series { get; set; }
+        public Value[] series { get; set; }
         public float longitude { get; set; }
         public DateTime startTime { get; set; }
         public float latitude { get; set; }
         public DateTime endTime { get; set; }
-        public Unit unit { get; set; }
     }
 }

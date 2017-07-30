@@ -1,4 +1,4 @@
-﻿namespace Helper.DTO.SkywiseWeather.Historic
+﻿namespace Helper.DTO.SkywiseWeather.Historical
 {
 	using System;
 
