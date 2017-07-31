@@ -18,19 +18,21 @@
 	{
 		private bool isActive;
         private Parcel _parcel;
+        private GeoPosition position;
 
         public Parcel Parcel
         {
             get { return _parcel; }
             set { 
                 SetProperty(ref _parcel, value);
-                LoadWeatherData();
+                position = Parcel.GeoPosition;
+                LoadWeatherDataAsync();
             }
         }
 
-        private void LoadWeatherData()
+        private async void LoadWeatherDataAsync()
         {
-            WeatherService.GetWeatherData(Parcel.GeoPosition);
+            WeatherData = await WeatherService.GetWeatherData(position);
         }
 
         private WeatherData _weatherData;
