@@ -117,7 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="add_parcel" xml:space="preserve">
+  <!--<data name="add_parcel" xml:space="preserve">
     <value>Add parcel</value>
   </data>
   <data name="agronomical_cycle" xml:space="preserve">
@@ -608,5 +608,5 @@
   </data>
   <data name="year" xml:space="preserve">
     <value>Year</value>
-  </data>
+  </data>-->
 </root>
