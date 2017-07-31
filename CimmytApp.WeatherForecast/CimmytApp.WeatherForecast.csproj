@@ -101,6 +101,10 @@
       <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
       <Name>Helper.DTO.SkywiseWeather</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
+      <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
+      <Name>Helper.Localization</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\WeatherForecastPage.xaml">

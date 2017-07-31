@@ -49,6 +49,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AppResources.es.resx</DependentUpon>
     </Compile>
+    <Compile Include="LocalizedBindableBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resx\AppResources.es.resx">

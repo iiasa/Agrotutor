@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.WeatherForecast.Views.WeatherForecastPage"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              Title="Weather">
     <Button Command="{Binding TestCommand}" />
 </ContentPage>
