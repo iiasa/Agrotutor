@@ -41,6 +41,7 @@
     <Compile Include="Rendimiento.cs" />
     <Compile Include="Utilidad.cs" />
     <Compile Include="BemData.cs" />
+    <Compile Include="BemDataset.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="assets\costo.json">

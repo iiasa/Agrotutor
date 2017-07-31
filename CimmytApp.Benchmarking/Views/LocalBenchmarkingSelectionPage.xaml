@@ -7,8 +7,14 @@
              x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingSelectionPage"
              Title="{localization:Translate page_title_benchmarking}">
 	<StackLayout>
+
         <Picker ItemsSource="{Binding DatasetSelection}" SelectedIndex="{Binding DatasetSelectedIndex}"/>
+
+        <controls:CheckBox Checked="{Binding FilterYears}" DefaultText="Filter years" />
         <Picker ItemsSource="{Binding YearsSelection}" SelectedIndex="{Binding YearsSelectedIndex}"/>
+
+
+        <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="Filter cycles" />
         <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}"/>
 
 

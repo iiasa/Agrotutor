@@ -4,7 +4,7 @@
     using SQLite.Net.Attributes;
 
     [Table("BEM-Utilidad")]
-    public class Utilidad
+    public class Utilidad : BemDataset
     {
         [JsonProperty("id_bitacora")]
         public string BitacoraId { get; set; }

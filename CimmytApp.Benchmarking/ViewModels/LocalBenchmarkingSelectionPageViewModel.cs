@@ -33,6 +33,26 @@
         {
             _navigationService = navigationService;
             ViewDataCommand = new Command(ViewData);
+
+
+            DatasetSelection = new List<string>
+            {
+                "Costo",
+                "Ingreso",
+                "Rendimiento",
+                "Utilidad"
+            };
+
+            YearsSelection = new List<string>{
+                "2015",
+                "2016",
+                "2017"
+            };
+
+            CycleSelection = new List<string>{
+                "Primavera-Verano",
+                "Otoño-Invierno"
+            }
         }
 
         private void ViewData(){
