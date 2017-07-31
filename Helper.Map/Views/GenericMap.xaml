@@ -4,6 +4,7 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Helper.Map.Views.GenericMap"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
               xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
              Title="Map">
   <Grid>
