@@ -42,6 +42,14 @@
     </Compile>
     <Compile Include="WeatherForecastModule.cs" />
     <Compile Include="WeatherService.cs" />
+    <Compile Include="Views\WeatherDataSelection.xaml.cs">
+      <DependentUpon>WeatherDataSelection.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WeatherDataSelectionViewModel.cs" />
+    <Compile Include="Views\WeatherDataView.xaml.cs">
+      <DependentUpon>WeatherDataView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WeatherDataViewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Helper.RestfulClient">
@@ -110,6 +118,12 @@
     <EmbeddedResource Include="Views\WeatherForecastPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WeatherDataSelection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WeatherDataView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
