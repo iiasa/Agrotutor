@@ -17,13 +17,13 @@
             set { SetProperty(ref _selectedDatesList, value); }
         }
 
-        private DateTime? _selecteCurrentDate;
+        private DateTime? _selectCurrentDate;
         private List<SpecialDate> _specialDatesList;
 
-        public DateTime? SelecteCurrentDate
+        public DateTime? SelectCurrentDate
         {
-            get { return _selecteCurrentDate; }
-            set { SetProperty(ref _selecteCurrentDate, value); }
+            get { return _selectCurrentDate; }
+            set { SetProperty(ref _selectCurrentDate, value); }
         }
 
         public List<SpecialDate> SpecialDatesList

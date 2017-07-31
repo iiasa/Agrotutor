@@ -294,7 +294,7 @@
   <data name="hint_agronomical_cycle" xml:space="preserve">
     <value>Seleccione el ciclo agronómico</value>
   </data>
-  <data name="hint_area" xml:space="preserve">
+  <data name="hint_year" xml:space="preserve">
     <value>Seleccione el año</value>
   </data>
   <data name="hint_crop" xml:space="preserve">
@@ -354,7 +354,7 @@
   <data name="hint_user_at_parcel" xml:space="preserve">
     <value>Se encuentra en su parcela?</value>
   </data>
-  <data name="hint_year" xml:space="preserve">
+  <data name="hint_area" xml:space="preserve">
     <value>Area estimada de parcela</value>
   </data>
   <data name="hourly_radiation_unit" xml:space="preserve">

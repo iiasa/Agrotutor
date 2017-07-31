@@ -401,9 +401,9 @@ namespace Helper.Localization.Resx {
             }
         }
         
-        public static string hint_area {
+        public static string hint_year {
             get {
-                return ResourceManager.GetString("hint_area", resourceCulture);
+                return ResourceManager.GetString("hint_year", resourceCulture);
             }
         }
         
@@ -521,9 +521,9 @@ namespace Helper.Localization.Resx {
             }
         }
         
-        public static string hint_year {
+        public static string hint_area {
             get {
-                return ResourceManager.GetString("hint_year", resourceCulture);
+                return ResourceManager.GetString("hint_area", resourceCulture);
             }
         }
         

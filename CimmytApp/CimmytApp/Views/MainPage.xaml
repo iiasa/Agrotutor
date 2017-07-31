@@ -10,7 +10,7 @@
              xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
-             Title="{}">
+             Title="{localization:Translate app_name}">
     <views2:ParcelsOverviewPage />
     <views4:GenericMap />
     <!--<viewsWeather:WeatherForecastPage />-->

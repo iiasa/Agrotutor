@@ -26,13 +26,13 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
                                 <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
-                                <Button Text="Details" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
+                                <Button Text="{localization:Translate Details}" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Button Text="Add Parcel" Command="{Binding AddParcelCommand}" Grid.Row="1" />
+        <Button Text="{localization:Translate add_parcel}" Command="{Binding AddParcelCommand}" Grid.Row="1" />
     </Grid>
 </ContentPage>

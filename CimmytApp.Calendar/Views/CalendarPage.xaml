@@ -20,7 +20,7 @@
                        SpecialDates="{Binding SpecialDatesList}"
                        DateCommand="{Binding DateClickCommand}" />
         <StackLayout Grid.Row="1">
-            <Label Text="{Binding SelecteCurrentdDate}"></Label>
+            <Label Text="{Binding SelectCurrentDate}"></Label>
         </StackLayout>
     </Grid>
 </ContentPage>

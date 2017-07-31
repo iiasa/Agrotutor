@@ -8,31 +8,31 @@
              Title="View">
     <ScrollView>
         <StackLayout Margin="16">
-            <Label Text="Agronomical Cycle" />
+            <Label Text="{localization:Translate agronomical_cycle}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.AgriculturalCycle, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Year" />
+            <Label Text="{localization:Translate hint_year}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Estimated Parcel Area" />
+            <Label Text="{localization:Translate hint_area}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.EstimatedParcelAreaWithUnit}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Producer Name" />
+            <Label Text="{localization:Translate hint_producer_name}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.ProducerName}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Parcel Name" />
+            <Label Text="{localization:Translate hint_parcel_name}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.ParcelName}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Technologies used" />
+            <Label Text="{localization:Translate hint_other_technology_used}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.TechnologiesScreenList}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Crop planted" />
+            <Label Text="{localization:Translate hint_crop}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.Crop}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 

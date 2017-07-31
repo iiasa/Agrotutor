@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -297,7 +297,7 @@
   <data name="hint_agronomical_cycle" xml:space="preserve">
     <value>Select agronomical cycle</value>
   </data>
-  <data name="hint_area" xml:space="preserve">
+  <data name="hint_year" xml:space="preserve">
     <value>Select the year</value>
   </data>
   <data name="hint_crop" xml:space="preserve">
@@ -357,7 +357,7 @@
   <data name="hint_user_at_parcel" xml:space="preserve">
     <value>Are you at the parcel?</value>
   </data>
-  <data name="hint_year" xml:space="preserve">
+  <data name="hint_area" xml:space="preserve">
     <value>Estimated parcel area</value>
   </data>
   <data name="hourly_radiation_unit" xml:space="preserve">
