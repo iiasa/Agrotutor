@@ -198,7 +198,7 @@
 
         private void ChooseLocation(object obj)
         {
-            throw new NotImplementedException();
+            _navigationService.NavigateAsync("GenericMap");
         }
 
         private void SaveParcel(object obj)

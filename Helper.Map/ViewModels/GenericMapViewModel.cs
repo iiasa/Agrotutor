@@ -6,6 +6,7 @@ namespace Helper.Map.ViewModels
     using System.Collections.ObjectModel;
     using System.Linq;
     using Xamarin.Forms.Maps;
+    using Prism;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
