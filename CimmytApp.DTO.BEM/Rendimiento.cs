@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.DTO.BEM
 {
+    using System;
     using Newtonsoft.Json;
     using SQLite.Net.Attributes;
 
@@ -37,7 +38,7 @@
         public string Year { get; set; }
 
         [JsonProperty("ciclo_agronomico")]
-        public string AgronomicalCycle { get; set; }
+        public string AgriculturalCycle { get; set; }
 
         [JsonProperty("estado")]
         public string State { get; set; }
@@ -53,5 +54,25 @@
 
         [JsonProperty("longitud")]
         public string Longitude { get; set; }
+
+        public override string GetCycle()
+        {
+            return AgriculturalCycle;
+        }
+
+        public override string GetDataType()
+        {
+            return "Rendimiento";
+        }
+
+        public override string GetValue()
+        {
+            return Performance;
+        }
+
+        public override string GetYear()
+        {
+            return Year;
+        }
     }
 }

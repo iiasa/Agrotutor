@@ -12,6 +12,7 @@
 		private object _dataset;
 		private object _year;
 		private object _cycle;
+        public List<BemDataset> Datasets; 
 
 
 
@@ -114,7 +115,7 @@
 					{
 						foreach (Rendimiento rendimiento in datasets)
 						{
-                            if (rendimiento.AgronomicalCycle.Equals((string)_cycle))
+                            if (rendimiento.AgriculturalCycle.Equals((string)_cycle))
 							{
 								selection2.Add(rendimiento);
 							}
@@ -154,6 +155,8 @@
 					datasets.AddRange(selection3);
                     break;
             }
+
+            Datasets = datasets;
         }
     }
 }

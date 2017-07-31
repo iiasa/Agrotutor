@@ -52,7 +52,7 @@
             CycleSelection = new List<string>{
                 "Primavera-Verano",
                 "Otoño-Invierno"
-            }
+            };
         }
 
         private void ViewData(){

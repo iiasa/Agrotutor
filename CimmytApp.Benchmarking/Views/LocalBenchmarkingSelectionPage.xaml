@@ -1,23 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingSelectionPage"
-             Title="{localization:Translate page_title_benchmarking}">
-	<StackLayout>
-
-        <Picker ItemsSource="{Binding DatasetSelection}" SelectedIndex="{Binding DatasetSelectedIndex}"/>
-
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" prism:ViewModelLocator.AutowireViewModel="True" xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization" x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingSelectionPage" Title="{localization:Translate page_title_benchmarking}">
+    <StackLayout>
+        <Picker ItemsSource="{Binding DatasetSelection}" SelectedIndex="{Binding DatasetSelectedIndex}" />
         <controls:CheckBox Checked="{Binding FilterYears}" DefaultText="Filter years" />
-        <Picker ItemsSource="{Binding YearsSelection}" SelectedIndex="{Binding YearsSelectedIndex}"/>
-
-
+        <Picker ItemsSource="{Binding YearsSelection}" SelectedIndex="{Binding YearsSelectedIndex}" />
         <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="Filter cycles" />
-        <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}"/>
-
-
-        <Button Command="{Binding ViewDataCommand}" Text="View" /> 
+        <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}" />
+        <Button Command="{Binding ViewDataCommand}" Text="View" />
     </StackLayout>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.DTO.BEM
 {
+    using System;
     using Newtonsoft.Json;
     using SQLite.Net.Attributes;
 
@@ -107,5 +108,25 @@
 
         [JsonProperty("costos_produccion_ha")]
         public string ProductionCost { get; set; }
+
+        public override string GetCycle()
+        {
+            return AgriculturalCycle;
+        }
+
+        public override string GetDataType()
+        {
+            return "Costo";
+        }
+
+        public override string GetValue()
+        {
+            return ProductionCost;
+        }
+
+        public override string GetYear()
+        {
+            return Year;
+        }
     }
 }
