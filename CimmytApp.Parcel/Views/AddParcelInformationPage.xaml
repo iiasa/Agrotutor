@@ -4,7 +4,6 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             Title="{localization:Translate page_title_editParcel}">
+             Title="Edit">
     <Label Text="Somecontent" />
 </ContentPage>

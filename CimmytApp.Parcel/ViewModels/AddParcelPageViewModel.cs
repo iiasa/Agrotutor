@@ -20,7 +20,7 @@
         public List<string> CropTypes => _cropTypes;
 
         private List<string> _years = new List<string> { "2015", "2016", "2017" };
-		public List<string> Years => _years;
+        public List<string> Years { get { return _years; } set{SetProperty(ref _years, value);}}
 
 		private List<string> _irrigationTypes = new List<string> { "Irrigation", "Sprinkler irrigation", "Temporal" };
 		public List<string> IrrigationTypes => _irrigationTypes;
@@ -134,15 +134,15 @@
             {
                 _pickerAgriculturalCycleSelectedIndex = value;
                 Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);
-                switch(value){
+                /*switch(value){
                     case 0:
-                        _years = _singleYears;
+                        Years = _singleYears;
                         break;
 
                     case 1:
-                        _years = _doubleYears;
+                        Years = _doubleYears;
                         break;
-                }
+                }*/
             }
         }
 
@@ -209,7 +209,7 @@
 
             navigationParameters.Add("id", Parcel.ID);
 
-            _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+            _navigationService.NavigateAsync("MainPage", navigationParameters);
         }
 
         private void AgriculturalCycleChanged()
