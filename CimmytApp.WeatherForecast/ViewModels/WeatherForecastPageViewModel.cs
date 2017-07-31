@@ -47,7 +47,7 @@
             set
             {
                 _weatherData = value;
-                RaisePropertyChanged("WeatherData");
+                SetProperty(ref _weatherData, value);
             }
         }
 

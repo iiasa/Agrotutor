@@ -1,7 +1,6 @@
 ﻿namespace Helper.Localization
 {
     using Helper.Localization.Localization;
-    using Prism.Mvvm;
 
     public class LocalizedBindableBase : BindableBase
     {
