@@ -36,15 +36,15 @@
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.Crop}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Performance" />
+            <Label Text="{localization:Translate hint_performance}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.Performance}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Irrigation" />
+            <Label Text="{localization:Translate hint_irrigation}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.Irrigation}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
-            <Label Text="Planting date" />
+            <Label Text="{localization:Translate hint_planting_date}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Label Text="{Binding Parcel.PlantingDate}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
