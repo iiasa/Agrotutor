@@ -15,8 +15,9 @@
         }
 
         public void Initialize()
-        {
-            _unityContainer.RegisterTypeForNavigation<LocalBenchmarkingPage>();
+		{
+			_unityContainer.RegisterTypeForNavigation<LocalBenchmarkingSelectionPage>();
+			_unityContainer.RegisterTypeForNavigation<LocalBenchmarkingPage>();
         }
     }
 }

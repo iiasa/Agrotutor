@@ -8,11 +8,13 @@
              xmlns:views2="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
              xmlns:views3="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
              xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
+             xmlns:views5="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.MainPage"
              Title="{localization:Translate app_name}">
     <views2:ParcelsOverviewPage />
     <views4:GenericMap />
+    <views5:LocalBenchmarkingSelectionPage />
     <!--<viewsWeather:WeatherForecastPage />-->
     <views3:LocalAgronomicalRecommendationsPage />
     <views1:LinksPage />
