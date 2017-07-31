@@ -13,6 +13,8 @@ namespace Helper.Map.ViewModels
 
     using Base.Contract;
     using Base.DTO;
+    using Xamarin.Forms;
+    using Helper.Base.PublishSubscriberEvents;
 
     public class GenericMapViewModel : BindableBase, IActiveAware
     {
@@ -28,8 +30,10 @@ namespace Helper.Map.ViewModels
             private Position _mapsPosition;
             private ObservableCollection<TKCustomMapPin> _customPinsList;
             private MapSpan _mapRegion;
+			public Command GoToPicturesModuleCommand { get; set; }
 
-            public LocationPageViewModel()
+
+			public LocationPageViewModel()
             {
             }
 
@@ -98,7 +102,7 @@ namespace Helper.Map.ViewModels
 
             public void OnNavigatedFrom(NavigationParameters parameters)
             {
-                //  _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
+                _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
             }
 
             public async void OnNavigatedTo(NavigationParameters parameters)
@@ -112,7 +116,6 @@ namespace Helper.Map.ViewModels
                 else
                 {
                     IsGeolocationEnabled = true;
-                    //  GrowerData = MapGrowPositionData(positionRes);
 
                     MapsPosition = new Position(positionRes.Latitude, positionRes.Longitude);
 
@@ -130,7 +133,7 @@ namespace Helper.Map.ViewModels
                             });
                 }
 
-                // _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
+                _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
 
             public void OnNavigatingTo(NavigationParameters parameters)

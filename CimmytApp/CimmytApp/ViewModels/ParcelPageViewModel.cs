@@ -7,6 +7,7 @@
 
     using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.ViewModelBase;
+    using Helper.DTO.SkywiseWeather.Historical;
     using Helper.RestfulClient;
 
     using DTO;

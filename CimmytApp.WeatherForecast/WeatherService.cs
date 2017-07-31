@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
+using Helper.DTO.SkywiseWeather.Historical;
 using Helper.RestfulClient;
 
 namespace CimmytApp.WeatherForecast
@@ -8,7 +10,7 @@ namespace CimmytApp.WeatherForecast
     public static class WeatherService
     {
 
-        public static async System.Threading.Tasks.Task<WeatherData> GetWeatherData(GeoPosition location)
+        public static async Task<WeatherData> GetWeatherData(GeoPosition location)
         {
             var client = new RestfulClient<WeatherData>();
             var data = await client.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={location.Latitude}&lng={location.Longitude}");

@@ -12,6 +12,7 @@
     using Prism.Navigation;
     using System.ComponentModel;
     using Prism;
+    using Helper.DTO.SkywiseWeather.Historical;
 
     public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
 	{

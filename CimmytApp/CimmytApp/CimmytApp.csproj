@@ -234,6 +234,10 @@
       <Project>{ACACFC5B-E592-4806-8611-DF847A8DB55C}</Project>
       <Name>CimmytApp.MockData</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Helper.DTO.SkywiseWeather\Helper.DTO.SkywiseWeather.csproj">
+      <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
+      <Name>Helper.DTO.SkywiseWeather</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

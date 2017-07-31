@@ -1,6 +1,7 @@
 ﻿namespace Helper.DTO.SkywiseWeather.Historical
 {
 	using System;
+    using SQLite.Net.Attributes;
 
     public class Unit
 	{

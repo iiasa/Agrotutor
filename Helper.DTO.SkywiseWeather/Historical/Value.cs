@@ -1,4 +1,5 @@
 ﻿using System;
+using SQLite.Net.Attributes;
 
 namespace Helper.DTO.SkywiseWeather.Historical
 {

@@ -3,7 +3,7 @@
 namespace CimmytApp.BusinessContract
 {
     using System.Collections.Generic;
-    using Helper.DTO.SkywiseWeather.Historic;
+    using Helper.DTO.SkywiseWeather.Historical;
 
     public interface IWeatherDbOperations
     {
