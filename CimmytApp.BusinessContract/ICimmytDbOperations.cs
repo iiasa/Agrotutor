@@ -2,10 +2,11 @@
 {
     using System.Collections.Generic;
 
-    using Helper.BusinessContract;
+    using CimmytApp.DTO.Parcel;
 
     public interface ICimmytDbOperations
     {
-        List<IDataset> GetAllParcels();
+        List<Parcel> GetAllParcels();
+        void AddParcel(Parcel parcel);
     }
 }

@@ -31,7 +31,8 @@
         private DateTime _plantingDate;
         private string _producerName;
         private List<string> _technologiesUsed;
-        private string _year;
+		private string _year;
+		private int _uploaded;
 
         public Parcel()
         {
@@ -214,13 +215,15 @@
 
         public int Save()
         {
-            //TODO persist and return ID
             return -1;
         }
 
         public async void Submit()
         {
+            if (_uploaded == 1) return;
             await Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
+            _uploaded = 1;
+            Save();
         }
 
         protected virtual void OnPropertyChanged(string aName)
