@@ -4,9 +4,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             Title="{localization:Translate parcels_overview_title}"
-             x:Name="ParcelOverviewRoot">
+             x:Name="ParcelOverviewRoot"
+    Title="Parcels">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -26,13 +25,13 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
                                 <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
-                                <Button Text="{localization:Translate Details}" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
+                                <Button Text="Detail" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Button Text="{localization:Translate add_parcel}" Command="{Binding AddParcelCommand}" Grid.Row="1" />
+        <Button Text="Add parcel" Command="{Binding AddParcelCommand}" Grid.Row="1" />
     </Grid>
 </ContentPage>

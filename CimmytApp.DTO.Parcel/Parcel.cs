@@ -127,7 +127,7 @@
             }
         }
 
-        public string OverviewString => $"{Crop}\r\n({CompletedPercentage} % complete)";
+        public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
         public string ParcelName
         {
