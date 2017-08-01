@@ -32,14 +32,10 @@ namespace CimmytApp.ViewModels
         {
             _moduleManager = moduleManager;
             _navigationService = navigationService;
-            //BemData bd = new BemData();
-            legend = GeoWikiApi.Get<List<object>>("Legend", "getLegend", "100");
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            int i = 0;
-            i++;
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

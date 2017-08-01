@@ -5,57 +5,57 @@
                 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
                 prism:ViewModelLocator.AutowireViewModel="True"
                 x:Class="CimmytApp.Parcel.Views.AddParcelPage"
-                Title="Add parcel"
+                Title="Nueva parcela"
                 Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <Label Text="Select agronomical cycle" />
+            <Label Text="Seleccione el ciclo agronómico" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" />
-            <Label Text="Select the year" />
+            <Label Text="Seleccione el año" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Picker ItemsSource="{Binding Years}" SelectedIndex="{Binding PickerYearsSelectedIndex}" />
-            <Label Text="Estimated parcel area" />
+            <Label Text="Area estimada de parcela" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="[ha]" Text="{Binding Parcel.EstimatedParcelArea}" />
-            <Label Text="Producer name" />
+            <Label Text="Nombre del productor" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="Firstname Lastname" Text="{Binding Parcel.ProducerName}" />
-            <Label Text="Parcel name" />
+            <Label Text="Nombre de parcela" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="(for identification, e.g.: Corn Road 1)" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
-            <Label Text="Please select technologies which were used:" />
+            <Entry Placeholder="(para identificación, ej: Maíz Camino 1)" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
+            <Label Text="Por favor seleccione que tecnologías se emplearon:" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" Margin="0,0,0,8" />
-            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="Change to improved, new varieties adapted to areas with potential to increase yield" />
-            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="Interpretation and use of soil analysis" />
-            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="Using infrared sensor for optimized fertilizer use" />
-            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="Use of biofertilizers" />
-            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="Soil improvement to complement fertilization" />
-            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="Minimal movement of soil, retention of residues and rotation of crops" />
-            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="Introduction of new crops in rotation (e.g. forage crops)" />
-            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="Technology to improve grain storage" />
-            <Label Text="Other technologies" Margin="0,16,0,0" />
+            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento" />
+            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="Interpretación y uso del análisis de suelo" />
+            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="Uso del sensor infrarrojo para fertilización óptima" />
+            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="Uso de biofertilizantes" />
+            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="Mejoradores de suelo para complementar fertilización" />
+            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="Mínimo movimiento de suelo, retención de residuos y rotación de cultivos" />
+            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)" />
+            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="Tecnología para mejorar el almacenamiento del grano" />
+            <Label Text="Otras tecnologías" Margin="0,16,0,0" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="Technologies used" Text="{Binding Parcel.OtherTechnologies}" />
-            <Label Text="Crop planted" />
+            <Entry Placeholder="Tecnologías usadas" Text="{Binding Parcel.OtherTechnologies}" />
+            <Label Text="Cultivo sembrado" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
             <Label Text="Cultivar" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Entry Placeholder="Cultivar planted" Text="{Binding Parcel.Cultivar}" />
-            <Label Text="Please also enter the following optional information." />
-            <Label Text="Performance" />
+            <Entry Placeholder="Cultivar sembrado" Text="{Binding Parcel.Cultivar}" />
+            <Label Text="Por favor ingrese la siguiente información opcional" />
+            <Label Text="Desempeño" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Entry Placeholder="[tons/ha]" Text="{Binding Parcel.Performance}" />
-            <Label Text="Irrigation" />
+            <Label Text="Riego" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" />
-            <Label Text="Planting date" />
+            <Label Text="Fecha de siembra" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <DatePicker Date="{Binding Parcel.PlantingDate}"/>
-            <controls:CheckBox DefaultText="Are you at the parcel?" />
-            <Button Text="Choose location on map" Command="{Binding ClickChooseLocation}" />
-            <Button Text="Save" Command="{Binding ClickSave}" />
+            <controls:CheckBox DefaultText="Se encuentra en su parcela?" />
+            <Button Text="Escoja una ubicación en el mapa" Command="{Binding ClickChooseLocation}" />
+            <Button Text="Guardar" Command="{Binding ClickSave}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

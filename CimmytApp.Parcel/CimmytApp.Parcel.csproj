@@ -76,10 +76,6 @@
       <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
       <Name>CimmytApp.DTO.Parcel</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
-      <Project>{ec0ea894-07e3-4905-81aa-65febe9e4d68}</Project>
-      <Name>Helper.BusinessContract</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
       <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
       <Name>Helper.DatasetSyncEvents</Name>
@@ -91,6 +87,14 @@
     <ProjectReference Include="..\CimmytApp.MockData\CimmytApp.MockData.csproj">
       <Project>{ACACFC5B-E592-4806-8611-DF847A8DB55C}</Project>
       <Name>CimmytApp.MockData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
+      <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
+      <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.BusinessContract\CimmytApp.BusinessContract.csproj">
+      <Project>{8FA589B1-356E-4A97-B4C9-C1681A8906D7}</Project>
+      <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

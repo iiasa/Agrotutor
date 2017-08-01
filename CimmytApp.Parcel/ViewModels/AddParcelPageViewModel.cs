@@ -9,7 +9,9 @@
     using Prism.Navigation;
     using Xamarin.Forms;
 
+
     using DTO.Parcel;
+    using CimmytApp.BusinessContract;
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
@@ -183,10 +185,12 @@
 
 		private List<string> _singleYears;
 		private List<string> _doubleYears;
+        private ICimmytDbOperations _cimmytDbOperations;
 
-        public AddParcelPageViewModel(INavigationService navigationService)
+        public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
 			_navigationService = navigationService;
+			_cimmytDbOperations = cimmytDbOperations;
 
 			ClickSave = new Command(SaveParcel);
 			ClickChooseLocation = new Command(ChooseLocation);
@@ -194,21 +198,23 @@
             Parcel = new Parcel();
             _singleYears = new List<string>() { "2015", "2016", "2017" };
             _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
+
+
         }
 
-        private void ChooseLocation(object obj)
+        private void ChooseLocation()
         {
             _navigationService.NavigateAsync("GenericMap");
         }
 
-        private void SaveParcel(object obj)
+        private void SaveParcel()
         {
-            Parcel.Save();
+            _cimmytDbOperations.AddParcel(Parcel);
 
-            var navigationParameters = new NavigationParameters();
-
-            navigationParameters.Add("id", Parcel.ID);
-
+            var navigationParameters = new NavigationParameters
+            {
+                { "id", Parcel.ID }
+            };
             _navigationService.NavigateAsync("MainPage", navigationParameters);
         }
 

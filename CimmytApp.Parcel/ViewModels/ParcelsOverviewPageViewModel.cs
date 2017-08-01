@@ -10,6 +10,7 @@
     using CimmytApp.MockData;
     using System.Collections.Generic;
     using System.Linq;
+    using CimmytApp.BusinessContract;
 
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
@@ -24,11 +25,14 @@
             set { SetProperty(ref _parcels, value); }
         }
 
-        public ParcelsOverviewPageViewModel()
-        {
+        private ICimmytDbOperations _cimmytDbOperations;
+
+        public ParcelsOverviewPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+		{
+			_navigationService = navigationService;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
-            // Todo: get parcels from sqlite
+            _cimmytDbOperations = cimmytDbOperations;
 
             List<Parcel> parcels = new TestParcels();
 
@@ -38,11 +42,9 @@
                 parcels.ElementAt(0),
                 parcels.ElementAt(1)
             };
-        }
 
-        public ParcelsOverviewPageViewModel(INavigationService navigationService) : this()
-        {
-            _navigationService = navigationService;
+            parcels.AddRange(cimmytDbOperations.GetAllParcels());
+
         }
 
         private void NavigateToParcelDetailPage(object id)

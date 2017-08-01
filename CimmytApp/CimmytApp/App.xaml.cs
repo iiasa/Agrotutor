@@ -166,9 +166,11 @@ namespace CimmytApp
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
-            Container.RegisterTypeForNavigation<ParcelPage>();
-            Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
-         new ContainerControlledLifetimeManager());
+			Container.RegisterTypeForNavigation<ParcelPage>();
+			Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
+		 new ContainerControlledLifetimeManager());
+			Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
+		 new ContainerControlledLifetimeManager());
 
 			Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
         }

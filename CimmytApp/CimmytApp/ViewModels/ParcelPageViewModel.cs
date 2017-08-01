@@ -16,6 +16,7 @@
     using CimmytApp.MockData;
     using System.Linq;
     using System.ComponentModel;
+    using System.Collections.Generic;
 
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
@@ -42,20 +43,27 @@
             set;
         }
 
+        private List<WeatherData> _weatherData;
+        public List<WeatherData> WeatherData { 
+            get { return _weatherData; } 
+            set {SetProperty(ref _weatherData, value);} 
+        }
+
         public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
         {
             _weatherDbOperations = weatherDbOperations;
-            //ReadDataAsync();
+            ReadDataAsync();
         }
 
         private async System.Threading.Tasks.Task ReadDataAsync()
         {
-            var x = new RestfulClient<WeatherData>();
-            var z = await x.RefreshDataAsync("https://wsgi.geo-wiki.org/skywise_weather?lat=48.16&lng=16.15");
-            if (z != null)
+            var restfulClient = new RestfulClient<WeatherData>();
+            var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.GeoPosition.Latitude}&lng={Parcel.GeoPosition.Longitude}");
+            if (response != null)
             {
-                _weatherDbOperations.AddWeatherData(z);
-                var res = _weatherDbOperations.GetAllWeatherData();
+                _weatherDbOperations.AddWeatherData(response);
+                var returnData = _weatherDbOperations.GetAllWeatherData();
+                WeatherData = returnData;
             }
         }
 
