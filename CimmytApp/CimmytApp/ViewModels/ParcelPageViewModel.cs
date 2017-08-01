@@ -33,7 +33,7 @@
             {
                 SetProperty(ref _parcel, value);
                 OnPropertyChanged("Parcel");
-                if (value!=null) PublishDataset(value);
+                if (value != null) PublishDataset(value);
             }
         }
 
@@ -44,9 +44,11 @@
         }
 
         private List<WeatherData> _weatherData;
-        public List<WeatherData> WeatherData { 
-            get { return _weatherData; } 
-            set {SetProperty(ref _weatherData, value);} 
+
+        public List<WeatherData> WeatherData
+        {
+            get { return _weatherData; }
+            set { SetProperty(ref _weatherData, value); }
         }
 
         public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
@@ -89,14 +91,14 @@
         protected override IDataset GetDataset()
         {
             return Parcel;
-		}
+        }
 
+        protected virtual void OnPropertyChanged(string aName)
+        {
+            var iHandler = PropertyChanged;
+            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+        }
 
-		protected virtual void OnPropertyChanged(string aName)
-		{
-			var iHandler = PropertyChanged;
-			iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
-		}
-		public event PropertyChangedEventHandler PropertyChanged;
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
