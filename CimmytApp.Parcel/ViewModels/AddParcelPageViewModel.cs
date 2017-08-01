@@ -9,24 +9,24 @@
     using Prism.Navigation;
     using Xamarin.Forms;
 
-
     using DTO.Parcel;
     using CimmytApp.BusinessContract;
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
-        private List<string> agriculturalCycles = new List<string> { "Primavera-Verano","Otoño-Invierno" };
-        public List<string> AgriculturalCycles => agriculturalCycles;
+        public List<string> AgriculturalCycles { get; } = new List<string> { "Primavera-Verano", "Otoño-Invierno" };
 
-        private List<string> _cropTypes = new List<string>{"Maíz", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí" };
-        public List<string> CropTypes => _cropTypes;
+        public List<string> CropTypes { get; } = new List<string> { "Maíz", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí" };
 
         private List<string> _years = new List<string> { "2015", "2016", "2017" };
-        public List<string> Years { get { return _years; } set{SetProperty(ref _years, value);}}
 
-		private List<string> _irrigationTypes = new List<string> { "Riego","Riego de punteo","Temporal" };
-		public List<string> IrrigationTypes => _irrigationTypes;
+        public List<string> Years
+        {
+            get => _years;
+            set => SetProperty(ref _years, value);
+        }
 
+        public List<string> IrrigationTypes { get; } = new List<string> { "Riego", "Riego de punteo", "Temporal" };
 
         private bool _tech1Checked;
         private bool _tech2Checked;
@@ -39,87 +39,87 @@
 
         public bool Tech1Checked
         {
-            get { return _tech1Checked; }
+            get => _tech1Checked;
             set
             {
                 _tech1Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech2Checked
         {
-            get { return _tech2Checked; }
+            get => _tech2Checked;
             set
             {
                 _tech2Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech3Checked
         {
-            get { return _tech3Checked; }
+            get => _tech3Checked;
             set
             {
                 _tech3Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech4Checked
         {
-            get { return _tech4Checked; }
+            get => _tech4Checked;
             set
             {
                 _tech4Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech5Checked
         {
-            get { return _tech5Checked; }
+            get => _tech5Checked;
             set
             {
                 _tech5Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech6Checked
         {
-            get { return _tech6Checked; }
+            get => _tech6Checked;
             set
             {
                 _tech6Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech7Checked
         {
-            get { return _tech7Checked; }
+            get => _tech7Checked;
             set
             {
                 _tech7Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public bool Tech8Checked
         {
-            get { return _tech8Checked; }
+            get => _tech8Checked;
             set
             {
                 _tech8Checked = value;
-                updateTechChecked();
+                UpdateTechChecked();
             }
         }
 
         public int PickerYearsSelectedIndex
         {
-            get { return _pickerYearsSelectedIndex; }
+            get => _pickerYearsSelectedIndex;
             set
             {
                 _pickerYearsSelectedIndex = value;
@@ -131,7 +131,7 @@
 
         public int PickerAgriculturalCycleSelectedIndex
         {
-            get { return _pickerAgriculturalCycleSelectedIndex; }
+            get => _pickerAgriculturalCycleSelectedIndex;
             set
             {
                 _pickerAgriculturalCycleSelectedIndex = value;
@@ -148,31 +148,31 @@
             }
         }
 
-		private int _pickerYearsSelectedIndex;
+        private int _pickerYearsSelectedIndex;
 
-		private int _pickerCropTypesSelectedIndex;
+        private int _pickerCropTypesSelectedIndex;
 
-		public int PickerCropTypesSelectedIndex
-		{
-			get { return _pickerCropTypesSelectedIndex; }
-			set
-			{
-				_pickerCropTypesSelectedIndex = value;
-				Parcel.Crop = CropTypes.ElementAt(value);
-			}
-		}
+        public int PickerCropTypesSelectedIndex
+        {
+            get => _pickerCropTypesSelectedIndex;
+            set
+            {
+                _pickerCropTypesSelectedIndex = value;
+                Parcel.Crop = CropTypes.ElementAt(value);
+            }
+        }
 
-		private int _pickerIrrigationTypesSelectedIndex;
+        private int _pickerIrrigationTypesSelectedIndex;
 
-		public int PickerIrrigationTypesSelectedIndex
-		{
-			get { return _pickerIrrigationTypesSelectedIndex; }
-			set
-			{
-				_pickerIrrigationTypesSelectedIndex = value;
+        public int PickerIrrigationTypesSelectedIndex
+        {
+            get => _pickerIrrigationTypesSelectedIndex;
+            set
+            {
+                _pickerIrrigationTypesSelectedIndex = value;
                 Parcel.Irrigation = IrrigationTypes.ElementAt(value);
-			}
-		}
+            }
+        }
 
         public bool Test { get; set; }
 
@@ -183,23 +183,21 @@
 
         public Parcel Parcel { get; set; }
 
-		private List<string> _singleYears;
-		private List<string> _doubleYears;
+        private List<string> _singleYears;
+        private List<string> _doubleYears;
         private ICimmytDbOperations _cimmytDbOperations;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
-			_navigationService = navigationService;
-			_cimmytDbOperations = cimmytDbOperations;
+            _navigationService = navigationService;
+            _cimmytDbOperations = cimmytDbOperations;
 
-			ClickSave = new Command(SaveParcel);
-			ClickChooseLocation = new Command(ChooseLocation);
+            ClickSave = new Command(SaveParcel);
+            ClickChooseLocation = new Command(ChooseLocation);
 
             Parcel = new Parcel();
             _singleYears = new List<string>() { "2015", "2016", "2017" };
             _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
-
-
         }
 
         private void ChooseLocation()
@@ -220,10 +218,9 @@
 
         private void AgriculturalCycleChanged()
         {
-            
         }
 
-        private void updateTechChecked()
+        private void UpdateTechChecked()
         {
             var technologies = new List<string>();
             if (_tech1Checked) technologies.Add("tech1");

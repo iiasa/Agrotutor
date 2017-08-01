@@ -14,38 +14,33 @@ namespace CimmytApp.ViewModels
 
     public class MainPageViewModel : BindableBase, INavigationAware
     {
+        private readonly IEventAggregator _eventAggregator;
         private readonly IModuleManager _moduleManager;
+        private ICimmytDbOperations _cimmytDbOperations;
         private object _legend;
         private INavigationService _navigationService;
-		private ICimmytDbOperations _cimmytDbOperations;
-		private readonly IEventAggregator _eventAggregator;
         private string _title;
 
-        public MainPageViewModel(IModuleManager moduleManager, IEventAggregator eventAggregator, INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+        public MainPageViewModel(IModuleManager moduleManager, IEventAggregator eventAggregator, INavigationService navigationService)
         {
             _moduleManager = moduleManager;
             _navigationService = navigationService;
-            _cimmytDbOperations = cimmytDbOperations;
+            //_cimmytDbOperations = cimmytDbOperations;
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
             _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
         }
 
-        private void OnDbConnectionRequest()
-        {
-            _eventAggregator.GetEvent<DbConnectionEvent>().Publish(_cimmytDbOperations);
-        }
-
         public string Title
         {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
+            get => _title;
+            set => SetProperty(ref _title, value);
         }
 
-        private object legend
+        private object Legend
         {
-            get { return _legend; }
-            set { _legend = value; }
+            get => _legend;
+            set => _legend = value;
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -58,6 +53,11 @@ namespace CimmytApp.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+        }
+
+        private void OnDbConnectionRequest()
+        {
+            _eventAggregator.GetEvent<DbConnectionEvent>().Publish(_cimmytDbOperations);
         }
     }
 }

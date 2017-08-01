@@ -1,17 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using CimmytApp.DTO;
-using CimmytApp.DTO.Parcel;
-
-namespace CimmytApp.MockData
+﻿namespace CimmytApp.MockData
 {
+    using System;
+    using System.Collections.Generic;
+
+    using DTO;
+    using DTO.Parcel;
+
     public class TestParcels : List<Parcel>
     {
         public TestParcels()
         {
-            this.Add(new Parcel()
+            Add(new Parcel()
             {
-                ID = 0,
+                Id = 0,
                 AgriculturalCycle = "Spring-Summer",
                 Crop = "Maize",
                 Cultivar = "Example Cultivar",
@@ -40,9 +41,9 @@ namespace CimmytApp.MockData
                 Year = "2017"
             });
 
-            this.Add(new Parcel()
+            Add(new Parcel()
             {
-                ID = 1,
+                Id = 1,
                 AgriculturalCycle = "Spring-Summer",
                 Crop = "Maize",
                 Cultivar = "Example Cultivar 2",
@@ -70,7 +71,6 @@ namespace CimmytApp.MockData
                 TechnologiesUsed = new List<string>(),
                 Year = "2017"
             });
-
         }
     }
 }

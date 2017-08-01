@@ -9,30 +9,10 @@
 
     public class CalendarPageViewModel : BindableBase
     {
+        private DateTime? _selectCurrentDate;
         private List<DateTime> _selectedDatesList;
 
-        public List<DateTime> SelectedDatesList
-        {
-            get { return _selectedDatesList; }
-            set { SetProperty(ref _selectedDatesList, value); }
-        }
-
-        private DateTime? _selectCurrentDate;
         private List<SpecialDate> _specialDatesList;
-
-        public DateTime? SelectCurrentDate
-        {
-            get { return _selectCurrentDate; }
-            set { SetProperty(ref _selectCurrentDate, value); }
-        }
-
-        public List<SpecialDate> SpecialDatesList
-        {
-            get { return _specialDatesList; }
-            set { SetProperty(ref _specialDatesList, value); }
-        }
-
-        public DelegateCommand<object> DateClickCommand { get; set; }
 
         public CalendarPageViewModel()
         {
@@ -55,6 +35,26 @@
                     Selectable = true
                 }
             };
+        }
+
+        public DelegateCommand<object> DateClickCommand { get; set; }
+
+        public DateTime? SelectCurrentDate
+        {
+            get => _selectCurrentDate;
+            set => SetProperty(ref _selectCurrentDate, value);
+        }
+
+        public List<DateTime> SelectedDatesList
+        {
+            get => _selectedDatesList;
+            set => SetProperty(ref _selectedDatesList, value);
+        }
+
+        public List<SpecialDate> SpecialDatesList
+        {
+            get => _specialDatesList;
+            set => SetProperty(ref _specialDatesList, value);
         }
 
         private void DateClieckCommandAction(object obj)

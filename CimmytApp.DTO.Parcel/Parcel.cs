@@ -31,8 +31,8 @@
         private DateTime _plantingDate;
         private string _producerName;
         private List<string> _technologiesUsed;
-		private string _year;
-		private int _uploaded;
+        private int _uploaded;
+        private string _year;
 
         public Parcel()
         {
@@ -43,7 +43,7 @@
 
         public string AgriculturalCycle
         {
-            get { return _agriculturalCycle; }
+            get => _agriculturalCycle;
             set
             {
                 _agriculturalCycle = value;
@@ -55,7 +55,7 @@
 
         public string Crop
         {
-            get { return _crop; }
+            get => _crop;
             set
             {
                 _crop = value;
@@ -65,7 +65,7 @@
 
         public string Cultivar
         {
-            get { return _cultivar; }
+            get => _cultivar;
             set
             {
                 _cultivar = value;
@@ -75,7 +75,7 @@
 
         public string EstimatedParcelArea
         {
-            get { return _estimatedParcelArea; }
+            get => _estimatedParcelArea;
             set
             {
                 _estimatedParcelArea = value;
@@ -87,7 +87,7 @@
 
         public GeoPosition GeoPosition
         {
-            get { return _geoPosition; }
+            get => _geoPosition;
             set
             {
                 _geoPosition = value;
@@ -99,7 +99,7 @@
 
         public int ID
         {
-            get { return _id; }
+            get => _id;
             set
             {
                 _id = value;
@@ -109,7 +109,7 @@
 
         public string Irrigation
         {
-            get { return _irrigation; }
+            get => _irrigation;
             set
             {
                 _irrigation = value;
@@ -119,7 +119,7 @@
 
         public string OtherTechnologies
         {
-            get { return _otherTechnologies; }
+            get => _otherTechnologies;
             set
             {
                 _otherTechnologies = value;
@@ -131,7 +131,7 @@
 
         public string ParcelName
         {
-            get { return _parcelName; }
+            get => _parcelName;
             set
             {
                 _parcelName = value;
@@ -141,7 +141,7 @@
 
         public string Performance
         {
-            get { return _performance; }
+            get => _performance;
             set
             {
                 _performance = value;
@@ -153,7 +153,7 @@
 
         public List<PesticideApplication> PesticidesApplied
         {
-            get { return _pesticidesApplied; }
+            get => _pesticidesApplied;
             set
             {
                 _pesticidesApplied = value;
@@ -163,7 +163,7 @@
 
         public DateTime PlantingDate
         {
-            get { return _plantingDate; }
+            get => _plantingDate;
             set
             {
                 _plantingDate = value;
@@ -173,7 +173,7 @@
 
         public string ProducerName
         {
-            get { return _producerName; }
+            get => _producerName;
             set
             {
                 _producerName = value;
@@ -185,7 +185,7 @@
 
         public List<string> TechnologiesUsed
         {
-            get { return _technologiesUsed; }
+            get => _technologiesUsed;
             set
             {
                 _technologiesUsed = value;
@@ -195,7 +195,7 @@
 
         public string Year
         {
-            get { return _year; }
+            get => _year;
             set
             {
                 _year = value;

@@ -18,23 +18,26 @@ namespace CimmytApp.WeatherForecast.ViewModels
         private bool _isActive = false;
         private GeoPosition _location;
 
-        public WeatherData WeatherData {get;set;}
+        public WeatherData WeatherData { get; set; }
 
         protected WeatherDataViewViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
         }
 
-        public bool IsActive 
-        { 
-            get {
+        public bool IsActive
+        {
+            get
+            {
                 return _isActive;
-            } 
-            set {
+            }
+            set
+            {
                 _isActive = value;
-                if (_isActive && !_initialized){
+                if (_isActive && !_initialized)
+                {
                     //WeatherData = LoadWeatherData(); TODO load
                 }
-            } 
+            }
         }
 
         private async Task<WeatherData> LoadWeatherData()

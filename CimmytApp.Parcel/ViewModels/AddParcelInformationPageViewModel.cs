@@ -13,23 +13,20 @@
 
     public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
-        private bool isActive;
-        public Parcel Parcel {
-            get { return _parcel; }
-            set {
-                _parcel = value;
-                OnPropertyChanged("Parcel");
-            }
-        }
         private Parcel _parcel;
+        private bool isActive;
 
         public AddParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
         }
 
+        public event EventHandler IsActiveChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public bool IsActive
         {
-            get { return isActive; }
+            get => isActive;
             set
             {
                 if (isActive && !value && _parcel != null)
@@ -40,7 +37,15 @@
             }
         }
 
-        public event EventHandler IsActiveChanged;
+        public Parcel Parcel
+        {
+            get => _parcel;
+            set
+            {
+                _parcel = value;
+                OnPropertyChanged("Parcel");
+            }
+        }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -54,22 +59,20 @@
         {
         }
 
+        protected override IDataset GetDataset()
+        {
+            return _parcel;
+        }
+
+        protected virtual void OnPropertyChanged(string aName)
+        {
+            var iHandler = PropertyChanged;
+            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+        }
+
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
         }
-
-        protected override IDataset GetDataset()
-        {
-            return _parcel;
-		}
-
-
-		protected virtual void OnPropertyChanged(string aName)
-		{
-			var iHandler = PropertyChanged;
-			iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
-		}
-		public event PropertyChangedEventHandler PropertyChanged;
     }
 }

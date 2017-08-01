@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Benchmarking.ViewModels
+﻿using System.Linq;
+
+namespace CimmytApp.Benchmarking.ViewModels
 {
     using Prism.Mvvm;
 
@@ -8,25 +10,21 @@
 
     public class LocalBenchmarkingPageViewModel : BindableBase, INavigationAware
     {
-        private BemData _bemData;
-        private object _dataset;
-        private object _year;
+        private readonly BemData _bemData;
         private object _cycle;
+        private object _dataset;
         private List<BemDataset> _datasets;
-        public List<BemDataset> Datasets
-        {
-            get { return _datasets; }
-            set
-            {
-                SetProperty(ref _datasets, value);
-            }
-        }
-
-
+        private object _year;
 
         public LocalBenchmarkingPageViewModel()
         {
             _bemData = new BemData();
+        }
+
+        public List<BemDataset> Datasets
+        {
+            get => _datasets;
+            set => SetProperty(ref _datasets, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -48,28 +46,14 @@
                     var selection = new List<Costo>();
                     if (_year != null)
                     {
-                        foreach (Costo costo in datasets)
-                        {
-                            if (costo.Year.Equals((string)_year))
-                            {
-                                selection.Add(costo);
-                            }
-
-                        }
+                        selection.AddRange(datasets.Cast<Costo>().Where(costo => costo.Year.Equals((string)_year)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection);
                     selection = new List<Costo>();
                     if (_cycle != null)
                     {
-                        foreach (Costo costo in datasets)
-                        {
-                            if (costo.AgriculturalCycle.Equals((string)_cycle))
-                            {
-                                selection.Add(costo);
-                            }
-
-                        }
+                        selection.AddRange(datasets.Cast<Costo>().Where(costo => costo.AgriculturalCycle.Equals((string)_cycle)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection);
@@ -80,28 +64,14 @@
                     var selection1 = new List<Ingreso>();
                     if (_year != null)
                     {
-                        foreach (Ingreso ingreso in datasets)
-                        {
-                            if (ingreso.Year.Equals((string)_year))
-                            {
-                                selection1.Add(ingreso);
-                            }
-
-                        }
+                        selection1.AddRange(datasets.Cast<Ingreso>().Where(ingreso => ingreso.Year.Equals((string)_year)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection1);
                     selection1 = new List<Ingreso>();
                     if (_cycle != null)
                     {
-                        foreach (Ingreso ingreso in datasets)
-                        {
-                            if (ingreso.AgriculturalCycle.Equals((string)_cycle))
-                            {
-                                selection1.Add(ingreso);
-                            }
-
-                        }
+                        selection1.AddRange(datasets.Cast<Ingreso>().Where(ingreso => ingreso.AgriculturalCycle.Equals((string)_cycle)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection1);
@@ -112,28 +82,14 @@
                     var selection2 = new List<Rendimiento>();
                     if (_year != null)
                     {
-                        foreach (Rendimiento rendimiento in datasets)
-                        {
-                            if (rendimiento.Year.Equals((string)_year))
-                            {
-                                selection2.Add(rendimiento);
-                            }
-
-                        }
+                        selection2.AddRange(datasets.Cast<Rendimiento>().Where(rendimiento => rendimiento.Year.Equals((string)_year)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection2);
                     selection2 = new List<Rendimiento>();
                     if (_cycle != null)
                     {
-                        foreach (Rendimiento rendimiento in datasets)
-                        {
-                            if (rendimiento.AgriculturalCycle.Equals((string)_cycle))
-                            {
-                                selection2.Add(rendimiento);
-                            }
-
-                        }
+                        selection2.AddRange(datasets.Cast<Rendimiento>().Where(rendimiento => rendimiento.AgriculturalCycle.Equals((string)_cycle)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection2);
@@ -144,28 +100,14 @@
                     var selection3 = new List<Utilidad>();
                     if (_year != null)
                     {
-                        foreach (Utilidad utilidad in datasets)
-                        {
-                            if (utilidad.Year.Equals((string)_year))
-                            {
-                                selection3.Add(utilidad);
-                            }
-
-                        }
+                        selection3.AddRange(datasets.Cast<Utilidad>().Where(utilidad => utilidad.Year.Equals((string)_year)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection3);
                     selection3 = new List<Utilidad>();
                     if (_cycle != null)
                     {
-                        foreach (Utilidad utilidad in datasets)
-                        {
-                            if (utilidad.AgriculturalCycle.Equals((string)_cycle))
-                            {
-                                selection3.Add(utilidad);
-                            }
-
-                        }
+                        selection3.AddRange(datasets.Cast<Utilidad>().Where(utilidad => utilidad.AgriculturalCycle.Equals((string)_cycle)));
                     }
                     datasets.Clear();
                     datasets.AddRange(selection3);

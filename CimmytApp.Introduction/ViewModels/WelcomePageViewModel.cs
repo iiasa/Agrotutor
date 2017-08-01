@@ -8,7 +8,7 @@
 
     public class WelcomePageViewModel : BindableBase, INavigationAware
     {
-        public INavigationService _navigationService { get; set; }
+        private INavigationService _navigationService;
         private readonly IModuleManager _moduleManager;
         public ICommand NavigateToMainPageCommand { get; set; }
 
