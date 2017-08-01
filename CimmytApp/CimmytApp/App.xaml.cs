@@ -163,6 +163,7 @@ namespace CimmytApp
 
         protected override void RegisterTypes()
         {
+
             Container.RegisterTypeForNavigation<MainPage>();
             Container.RegisterTypeForNavigation<LoginPage>();
             Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();

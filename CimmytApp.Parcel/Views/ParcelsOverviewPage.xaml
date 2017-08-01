@@ -25,13 +25,13 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
                                 <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
-                                <Button Text="Detail" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
+                                <Button Text="Detalle" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ID}"  Grid.Column="2" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Button Text="Add parcel" Command="{Binding AddParcelCommand}" Grid.Row="1" />
+        <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}" Grid.Row="1" />
     </Grid>
 </ContentPage>

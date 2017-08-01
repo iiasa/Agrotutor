@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -27,12 +27,12 @@
 
         private ICimmytDbOperations _cimmytDbOperations;
 
-        public ParcelsOverviewPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+        public ParcelsOverviewPageViewModel(INavigationService navigationService)
 		{
 			_navigationService = navigationService;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
-            _cimmytDbOperations = cimmytDbOperations;
+            //_cimmytDbOperations = cimmytDbOperations;
 
             List<Parcel> parcels = new TestParcels();
 
@@ -43,7 +43,7 @@
                 parcels.ElementAt(1)
             };
 
-            parcels.AddRange(cimmytDbOperations.GetAllParcels());
+            //parcels.AddRange(cimmytDbOperations.GetAllParcels());
 
         }
 

@@ -32,6 +32,11 @@
 
         private async void LoadWeatherDataAsync()
         {
+            position = new GeoPosition()
+            {
+                Latitude = 48,
+                Longitude = 16
+            };
             WeatherData = await WeatherService.GetWeatherData(position);
         }
 

@@ -4,6 +4,26 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.WeatherForecast.Views.WeatherForecastPage"
+    xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
              Title="Weather">
-    <Button Command="{Binding TestCommand}" />
+    <dg:DataGrid ItemsSource="{Binding WeatherData.GrowingDegreeDays}">
+        <dg:DataGrid.HeaderFontSize>
+            <OnIdiom x:TypeArguments="x:Double">
+                <OnIdiom.Tablet>15</OnIdiom.Tablet>
+                <OnIdiom.Phone>13</OnIdiom.Phone>
+            </OnIdiom>
+        </dg:DataGrid.HeaderFontSize>
+        <dg:DataGrid.Columns>
+            <dg:DataGridColumn Title="Start" PropertyName="startDate" />
+            <dg:DataGridColumn Title="End" PropertyName="endDate" />
+            <dg:DataGridColumn Title="Degree" PropertyName="degreeDays" />
+            <dg:DataGridColumn Title="Base Temperature" PropertyName="baseTemperature" />
+        </dg:DataGrid.Columns>
+        <dg:DataGrid.RowsBackgroundColorPalette>
+            <dg:PaletteCollection>
+                <Color>#F2F2F2</Color>
+                <Color>#FFFFFF</Color>
+            </dg:PaletteCollection>
+        </dg:DataGrid.RowsBackgroundColorPalette>
+    </dg:DataGrid>
 </ContentPage>
