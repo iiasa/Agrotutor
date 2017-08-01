@@ -10,16 +10,15 @@ namespace CimmytApp.ViewModels
 
     public class MainPageViewModel : BindableBase, INavigationAware
     {
-        private string _title;
         private readonly IModuleManager _moduleManager;
-        private INavigationService _navigationService;
-
         private object _legend;
+        private INavigationService _navigationService;
+        private string _title;
 
-        private object legend
+        public MainPageViewModel(IModuleManager moduleManager, INavigationService navigationService)
         {
-            get { return _legend; }
-            set { _legend = value; }
+            _moduleManager = moduleManager;
+            _navigationService = navigationService;
         }
 
         public string Title
@@ -28,21 +27,21 @@ namespace CimmytApp.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
-        public MainPageViewModel(IModuleManager moduleManager, INavigationService navigationService)
+        private object legend
         {
-            _moduleManager = moduleManager;
-            _navigationService = navigationService;
+            get { return _legend; }
+            set { _legend = value; }
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        public void OnNavigatingTo(NavigationParameters parameters)
+        public void OnNavigatedTo(NavigationParameters parameters)
         {
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public void OnNavigatingTo(NavigationParameters parameters)
         {
         }
     }

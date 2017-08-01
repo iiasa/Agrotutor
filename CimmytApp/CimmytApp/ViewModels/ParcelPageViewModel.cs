@@ -22,9 +22,25 @@
     {
         private Parcel _parcel;
 
-        public event EventHandler IsActiveChanged;
+        private List<WeatherData> _weatherData;
 
         private IWeatherDbOperations _weatherDbOperations;
+
+        public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
+        {
+            _weatherDbOperations = weatherDbOperations;
+            ReadDataAsync();
+        }
+
+        public event EventHandler IsActiveChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsActive
+        {
+            get;
+            set;
+        }
 
         public Parcel Parcel
         {
@@ -37,36 +53,14 @@
             }
         }
 
-        public bool IsActive
-        {
-            get;
-            set;
-        }
-
-        private List<WeatherData> _weatherData;
-
         public List<WeatherData> WeatherData
         {
             get { return _weatherData; }
             set { SetProperty(ref _weatherData, value); }
         }
 
-        public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            _weatherDbOperations = weatherDbOperations;
-            ReadDataAsync();
-        }
-
-        private async System.Threading.Tasks.Task ReadDataAsync()
-        {
-            var restfulClient = new RestfulClient<WeatherData>();
-            var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.GeoPosition.Latitude}&lng={Parcel.GeoPosition.Longitude}");
-            if (response != null)
-            {
-                _weatherDbOperations.AddWeatherData(response);
-                var returnData = _weatherDbOperations.GetAllWeatherData();
-                WeatherData = returnData;
-            }
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
@@ -75,17 +69,8 @@
             Parcel = new TestParcels().ElementAt(id);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-        }
-
-        protected override void ReadDataset(IDataset dataset)
-        {
-            Parcel = (Parcel)dataset;
         }
 
         protected override IDataset GetDataset()
@@ -99,6 +84,21 @@
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        protected override void ReadDataset(IDataset dataset)
+        {
+            Parcel = (Parcel)dataset;
+        }
+
+        private async System.Threading.Tasks.Task ReadDataAsync()
+        {
+            var restfulClient = new RestfulClient<WeatherData>();
+            var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.GeoPosition.Latitude}&lng={Parcel.GeoPosition.Longitude}");
+            if (response != null)
+            {
+                _weatherDbOperations.AddWeatherData(response);
+                var returnData = _weatherDbOperations.GetAllWeatherData();
+                WeatherData = returnData;
+            }
+        }
     }
 }

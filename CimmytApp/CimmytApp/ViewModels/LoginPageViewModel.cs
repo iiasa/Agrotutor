@@ -8,8 +8,6 @@
     public class LoginPageViewModel : BindableBase
     {
         private INavigationService _navigationService;
-        public ICommand LoginCommand { get; set; }
-        public ICommand NavigateToRegistrationCommand { get; set; }
 
         public LoginPageViewModel(INavigationService navigationService)
         {
@@ -17,6 +15,9 @@
             LoginCommand = new DelegateCommand(LoginClick);
             NavigateToRegistrationCommand = new DelegateCommand(NavigateToRegistrationClick);
         }
+
+        public ICommand LoginCommand { get; set; }
+        public ICommand NavigateToRegistrationCommand { get; set; }
 
         private void LoginClick()
         {
