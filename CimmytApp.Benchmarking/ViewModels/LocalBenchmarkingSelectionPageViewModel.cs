@@ -10,7 +10,7 @@
     public class LocalBenchmarkingSelectionPageViewModel : BindableBase
     {
 
-        public ICommand ViewDataCommand;
+        public ICommand ViewDataCommand { get; set; }
 
         public int DatasetSelectedIndex { get;  set;}
 		public List<string> DatasetSelection { get; set; }

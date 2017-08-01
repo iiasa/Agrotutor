@@ -2,17 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True" x:Class="Helper.Map.Views.GenericMap" xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization" xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap" Title="Map">
     <Grid>
         <Grid.RowDefinitions>
-            <!--<RowDefinition Height="50"></RowDefinition>-->
             <RowDefinition>
             </RowDefinition>
             <RowDefinition Height="Auto">
             </RowDefinition>
         </Grid.RowDefinitions>
         <bindableMap:TKCustomMap CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}" MapCenter="{Binding MapsPosition}" HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False">
-            <!--
-    <bindableMap:TKCustomMap MapRegion="{Binding MapRegion}"
-                        
-                         HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"  >-->
+
         </bindableMap:TKCustomMap>
         <Button Text="Use location" Command="{Binding GoToPicturesModuleCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1">
         </Button>

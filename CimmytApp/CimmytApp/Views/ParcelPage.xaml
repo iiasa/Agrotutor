@@ -9,10 +9,10 @@
             xmlns:views3="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
             xmlns:views4="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
             x:Class="CimmytApp.Views.ParcelPage">
-
+            <!--
     <views3:AddParcelInformationPage />
     <views3:ViewParcelInformationPage />
-    <viewsWeather:WeatherForecastPage />
+    <viewsWeather:WeatherForecastPage />-->
     <views4:LocalBenchmarkingPage />
     <calend:CalendarPage />
 </TabbedPage>

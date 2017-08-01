@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid" prism:ViewModelLocator.AutowireViewModel="True" xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization" x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingPage" Title="{localization:Translate page_title_benchmarking}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid" prism:ViewModelLocator.AutowireViewModel="True" xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization" x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingPage">
     <dg:DataGrid ItemsSource="{Binding Datasets}">
         <dg:DataGrid.HeaderFontSize>
             <OnIdiom x:TypeArguments="x:Double">

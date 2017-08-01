@@ -238,6 +238,10 @@
       <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
       <Name>Helper.DTO.SkywiseWeather</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Helper.Geolocator\Helper.Geolocator.csproj">
+      <Project>{C0203D22-76BB-4029-9294-BAB90B082A1F}</Project>
+      <Name>Helper.Geolocator</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

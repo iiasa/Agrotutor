@@ -23,6 +23,7 @@ namespace CimmytApp
     using Introduction;
     using StaticContent;
     using WeatherForecast;
+    using Helper.Geolocator;
 
     public partial class App : PrismApplication
     {
@@ -168,6 +169,8 @@ namespace CimmytApp
             Container.RegisterTypeForNavigation<ParcelPage>();
             Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
          new ContainerControlledLifetimeManager());
+
+			Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
         }
     }
 }

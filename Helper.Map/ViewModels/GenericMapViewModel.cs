@@ -31,10 +31,10 @@ namespace Helper.Map.ViewModels
             private Position _mapsPosition;
             private ObservableCollection<TKCustomMapPin> _customPinsList;
             private MapSpan _mapRegion;
-			public Command GoToPicturesModuleCommand { get; set; }
+            public Command GoToPicturesModuleCommand { get; set; }
 
 
-			public LocationPageViewModel()
+            public LocationPageViewModel()
             {
             }
 
@@ -77,9 +77,7 @@ namespace Helper.Map.ViewModels
             public LocationPageViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
             {
                 _navigationService = navigationService;
-
                 _eventAggregator = eventAggregator;
-
                 _geoLocator = geoLocator;
             }
 

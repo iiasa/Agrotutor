@@ -13,16 +13,16 @@
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
-        private List<string> agriculturalCycles = new List<string> { "Spring-Summer", "Autumn-Winter" };
+        private List<string> agriculturalCycles = new List<string> { "Primavera-Verano","Otoño-Invierno" };
         public List<string> AgriculturalCycles => agriculturalCycles;
 
-        private List<string> _cropTypes = new List<string>{"Maize", "Barley", "Potato"};
+        private List<string> _cropTypes = new List<string>{"Maíz", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí" };
         public List<string> CropTypes => _cropTypes;
 
         private List<string> _years = new List<string> { "2015", "2016", "2017" };
         public List<string> Years { get { return _years; } set{SetProperty(ref _years, value);}}
 
-		private List<string> _irrigationTypes = new List<string> { "Irrigation", "Sprinkler irrigation", "Temporal" };
+		private List<string> _irrigationTypes = new List<string> { "Riego","Riego de punteo","Temporal" };
 		public List<string> IrrigationTypes => _irrigationTypes;
 
 

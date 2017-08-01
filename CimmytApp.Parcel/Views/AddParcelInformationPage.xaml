@@ -4,6 +4,6 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage"
-             Title="Edit">
+             Title="Editar">
     <Label Text="Somecontent" />
 </ContentPage>
