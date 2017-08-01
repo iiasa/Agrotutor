@@ -37,7 +37,6 @@
             _eventAggregator = eventAggregator;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
-            //_cimmytDbOperations = cimmytDbOperations;
 
             List<Parcel> parcels = new TestParcels();
 
@@ -48,12 +47,17 @@
                 parcels.ElementAt(1)
 			};
 
-			_eventAggregator.GetEvent<DbConnectionEvent>().Subscribe(ReceiveDbConnection);
+			_eventAggregator.GetEvent<DbConnectionAvailableEvent>().Subscribe(RequestDbConnection);
+            RequestDbConnection();
 			_eventAggregator.GetEvent<DbConnectionRequestEvent>().Publish();
 
         }
 
-        private void ReceiveDbConnection(ICimmytDbOperations cimmytDbOperations)
+        private void RequestDbConnection(){
+            _eventAggregator.GetEvent<DbConnectionEvent>().Subscribe(ReceiveDbConnection);
+ 		}
+
+		private void ReceiveDbConnection(ICimmytDbOperations cimmytDbOperations)
         {
             _cimmytDbOperations = cimmytDbOperations;
             Parcels = cimmytDbOperations.GetAllParcels();

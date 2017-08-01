@@ -7,7 +7,7 @@
         public WeatherForecastPage()
         {
             InitializeComponent();
-            DataGridComponent.Init();
+            // todo DataGridComponent.Init();
         }
     }
 }

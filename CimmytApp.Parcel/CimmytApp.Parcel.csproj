@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="Events\DbConnectionRequestEvent.cs" />
     <Compile Include="Events\DbConnectionEvent.cs" />
+    <Compile Include="Events\DbConnectionAvailableEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AddParcelInformationPage.xaml">

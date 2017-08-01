@@ -27,10 +27,11 @@ namespace CimmytApp.ViewModels
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
             _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbRequest);
+            _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
+            _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
         }
 
-        private void OnDbRequest()
+        private void OnDbConnectionRequest()
         {
             _eventAggregator.GetEvent<DbConnectionEvent>().Publish(_cimmytDbOperations);
         }
