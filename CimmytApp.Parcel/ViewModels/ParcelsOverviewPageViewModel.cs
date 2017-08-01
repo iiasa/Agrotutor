@@ -43,8 +43,7 @@
                 parcels.ElementAt(1)
             };
 
-            //parcels.AddRange(cimmytDbOperations.GetAllParcels());
-
+            //parcels.AddRange(_cimmytDbOperations.GetAllParcels());
         }
 
         private void NavigateToParcelDetailPage(object id)
