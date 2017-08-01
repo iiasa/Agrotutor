@@ -27,12 +27,12 @@
 
         private ICimmytDbOperations _cimmytDbOperations;
 
-        public ParcelsOverviewPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
-		{
-			_navigationService = navigationService;
+        public ParcelsOverviewPageViewModel(INavigationService navigationService)
+        {
+            _navigationService = navigationService;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
-            _cimmytDbOperations = cimmytDbOperations;
+            //_cimmytDbOperations = cimmytDbOperations;
 
             List<Parcel> parcels = new TestParcels();
 
@@ -44,7 +44,6 @@
             };
 
             parcels.AddRange(cimmytDbOperations.GetAllParcels());
-
         }
 
         private void NavigateToParcelDetailPage(object id)

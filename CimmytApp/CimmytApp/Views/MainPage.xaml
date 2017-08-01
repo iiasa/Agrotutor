@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TabbedPage 
-    xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-    xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast" 
-    xmlns:views1="clr-namespace:CimmytApp.StaticContent.Views;assembly=CimmytApp.StaticContent" 
-    xmlns:views2="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel" 
-    xmlns:views3="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations" 
-    xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map" 
+<TabbedPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:viewsWeather="clr-namespace:CimmytApp.WeatherForecast.Views;assembly=CimmytApp.WeatherForecast"
+    xmlns:views1="clr-namespace:CimmytApp.StaticContent.Views;assembly=CimmytApp.StaticContent"
+    xmlns:views2="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
+    xmlns:views3="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
+    xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
     xmlns:views5="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
-    xmlns:calend="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar" 
-    prism:ViewModelLocator.AutowireViewModel="True" 
-    x:Class="CimmytApp.Views.MainPage" 
+    xmlns:calend="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.Views.MainPage"
     Title="Title">
-    <views2:ParcelsOverviewPage />
+    <!--<views2:ParcelsOverviewPage />-->
     <!--<views4:GenericMap />-->
     <views5:LocalBenchmarkingSelectionPage />
     <!--<viewsWeather:WeatherForecastPage />-->
     <calend:CalendarPage />
-    <views1:LinksPage/>
+    <views1:LinksPage />
 </TabbedPage>
