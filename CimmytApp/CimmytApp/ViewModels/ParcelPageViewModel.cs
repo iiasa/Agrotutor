@@ -92,7 +92,7 @@
         private async System.Threading.Tasks.Task ReadDataAsync()
         {
             var restfulClient = new RestfulClient<WeatherData>();
-            var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.GeoPosition.Latitude}&lng={Parcel.GeoPosition.Longitude}");
+            var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.Latitude}&lng={Parcel.Longitude}");
             if (response != null)
             {
                 _weatherDbOperations.AddWeatherData(response);

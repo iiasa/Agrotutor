@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.DTO.Parcel
+﻿using SQLiteNetExtensions.Attributes;
+
+namespace CimmytApp.DTO.Parcel
 {
     using System;
     using System.Collections.Generic;
@@ -13,7 +15,7 @@
     using System.Threading.Tasks;
 
     [Table("Parcel")]
-    public class Parcel : IDataset, INotifyPropertyChanged
+    public class Parcel : GeoPosition, IDataset, INotifyPropertyChanged
     {
         private static int geoWikiDatasetGroupId = 1;
 
@@ -40,6 +42,9 @@
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        //[PrimaryKey, AutoIncrement]
+        //public int DBId { get; set; }
 
         public string AgriculturalCycle
         {
@@ -85,18 +90,19 @@
 
         public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
 
-        public GeoPosition GeoPosition
-        {
-            get => _geoPosition;
-            set
-            {
-                _geoPosition = value;
-                OnPropertyChanged("GeoPosition");
-            }
-        }
+        //public GeoPosition GeoPosition
+        //{
+        //    get => _geoPosition;
+        //    set
+        //    {
+        //        _geoPosition = value;
+        //        OnPropertyChanged("GeoPosition");
+        //    }
+        //}
 
         public string IconSource => $"corn.png";
 
+        [PrimaryKey, AutoIncrement]
         public int Id
         {
             get => _id;
@@ -151,6 +157,7 @@
 
         public string PerformanceWithUnit => Performance + " tons/ha";
 
+        [OneToMany(CascadeOperations = CascadeOperation.CascadeInsert)]
         public List<PesticideApplication> PesticidesApplied
         {
             get => _pesticidesApplied;
@@ -183,6 +190,7 @@
 
         public string TechnologiesScreenList => string.Join("\r\n", TechnologiesUsed.ToArray());
 
+        [TextBlob("TechnologiesUsedBlobbed")]
         public List<string> TechnologiesUsed
         {
             get => _technologiesUsed;
@@ -192,7 +200,7 @@
                 OnPropertyChanged("TechnologiesUsed");
             }
         }
-
+        public string TechnologiesUsedBlobbed { get; set; } // serialized phone numbers
         public string Year
         {
             get => _year;

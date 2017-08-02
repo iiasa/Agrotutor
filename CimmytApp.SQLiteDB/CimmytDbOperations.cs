@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.SQLiteDB
+﻿using System;
+
+namespace CimmytApp.SQLiteDB
 {
     using System.Collections.Generic;
     using CimmytApp.BusinessContract;
@@ -14,8 +16,13 @@
 
         public CimmytDbOperations()
         {
+          
+
+    
             _databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
+       
             _databaseConn.CreateTable<Parcel>();
+        
         }
 
         public void AddParcel(Parcel parcel)
@@ -26,6 +33,10 @@
         public List<Parcel> GetAllParcels()
         {
             return _databaseConn.GetAllWithChildren<Parcel>();
+        }
+        public int DeleteAllData()
+        {
+            return _databaseConn.DeleteAll<Parcel>();
         }
     }
 }

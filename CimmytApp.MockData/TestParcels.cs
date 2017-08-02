@@ -17,12 +17,12 @@
                 Crop = "Maize",
                 Cultivar = "Example Cultivar",
                 EstimatedParcelArea = "10",
-                GeoPosition = new GeoPosition()
-                {
+                //GeoPosition = new GeoPosition()
+                //{
                     Accuracy = 10,
                     Latitude = 48,
-                    Longitude = 17
-                },
+                    Longitude = 17,
+                //},
                 Irrigation = "Irrigated",
                 ParcelName = "Testparcel 1",
                 Performance = "1.2",
@@ -48,12 +48,12 @@
                 Crop = "Maize",
                 Cultivar = "Example Cultivar 2",
                 EstimatedParcelArea = "10",
-                GeoPosition = new GeoPosition()
-                {
+                //GeoPosition = new GeoPosition()
+                //{
                     Accuracy = 10,
                     Latitude = 48.01,
-                    Longitude = 17.02
-                },
+                    Longitude = 17.02,
+                //},
                 Irrigation = "Irrigated",
                 ParcelName = "Testparcel 2",
                 Performance = "1.2",

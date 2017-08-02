@@ -25,7 +25,8 @@
             get { return _parcel; }
             set { 
                 SetProperty(ref _parcel, value);
-                position = Parcel.GeoPosition;
+                position.Latitude = Parcel.Latitude;
+                position.Longitude = Parcel.Longitude;
                 LoadWeatherDataAsync();
             }
         }
