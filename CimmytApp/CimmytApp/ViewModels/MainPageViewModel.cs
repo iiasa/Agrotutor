@@ -21,11 +21,11 @@ namespace CimmytApp.ViewModels
         private INavigationService _navigationService;
         private string _title;
 
-        public MainPageViewModel(IModuleManager moduleManager, IEventAggregator eventAggregator, INavigationService navigationService)
+        public MainPageViewModel(IModuleManager moduleManager, IEventAggregator eventAggregator, INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _moduleManager = moduleManager;
             _navigationService = navigationService;
-            //_cimmytDbOperations = cimmytDbOperations;
+            _cimmytDbOperations = cimmytDbOperations;
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
             _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
@@ -35,12 +35,6 @@ namespace CimmytApp.ViewModels
         {
             get => _title;
             set => SetProperty(ref _title, value);
-        }
-
-        private object Legend
-        {
-            get => _legend;
-            set => _legend = value;
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

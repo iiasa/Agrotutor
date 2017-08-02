@@ -37,7 +37,7 @@ namespace CimmytApp.Benchmarking.ViewModels
             parameters.TryGetValue("year", out _year);
             parameters.TryGetValue("cycle", out _cycle);
 
-            List<BemDataset> datasets = new List<BemDataset>();
+            var datasets = new List<BemDataset>();
 
             switch (_dataset)
             {

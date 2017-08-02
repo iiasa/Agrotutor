@@ -187,10 +187,10 @@
         private List<string> _doubleYears;
         private ICimmytDbOperations _cimmytDbOperations;
 
-        public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+        public AddParcelPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _cimmytDbOperations = cimmytDbOperations;
+            //_cimmytDbOperations = cimmytDbOperations;
 
             ClickSave = new Command(SaveParcel);
             ClickChooseLocation = new Command(ChooseLocation);
