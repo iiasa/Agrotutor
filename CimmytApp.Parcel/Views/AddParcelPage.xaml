@@ -4,6 +4,7 @@
                 xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                 xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
                 prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
                 x:Class="CimmytApp.Parcel.Views.AddParcelPage"
                 Title="Nueva parcela"
                 Padding="16">
@@ -12,7 +13,7 @@
             <Label Text="Seleccione el ciclo agronómico" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" />
-            <Label Text="Seleccione el año" />
+            <Label Text="{localization:Translate hint_year}" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
             <Picker ItemsSource="{Binding Years}" SelectedIndex="{Binding PickerYearsSelectedIndex}" />
             <Label Text="Area estimada de parcela" />
@@ -52,7 +53,7 @@
             <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" />
             <Label Text="Fecha de siembra" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <DatePicker Date="{Binding Parcel.PlantingDate}"/>
+            <DatePicker Date="{Binding Parcel.PlantingDate}" />
             <controls:CheckBox DefaultText="Se encuentra en su parcela?" />
             <Button Text="Escoja una ubicación en el mapa" Command="{Binding ClickChooseLocation}" />
             <Button Text="Guardar" Command="{Binding ClickSave}" />
