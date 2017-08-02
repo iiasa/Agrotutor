@@ -97,7 +97,7 @@
 
         public string IconSource => $"corn.png";
 
-        public int ID
+        public int Id
         {
             get => _id;
             set

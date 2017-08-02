@@ -10,6 +10,7 @@ using Gcm.Client;
 [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
 [assembly: UsesPermission(Name = "android.permission.INTERNET")]
 [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
+
 namespace CimmytApp.Droid
 {
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
@@ -21,7 +22,7 @@ namespace CimmytApp.Droid
         Categories = new[] { "@PACKAGE_NAME@" })]
     public class AzurePushBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     {
-        public const string TAG = "NotificationHubSample-LOG";
-        public static string[] SENDER_IDS = { Constants.SenderID };
+        public const string Tag = "NotificationHubSample-LOG";
+        public static string[] SenderIds = { Constants.SenderId };
     }
 }
