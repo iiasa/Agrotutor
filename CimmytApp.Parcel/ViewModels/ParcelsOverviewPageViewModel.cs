@@ -31,10 +31,11 @@
 
         private ICimmytDbOperations _cimmytDbOperations;
 
-        public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator)
+        public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
 		{
 			_navigationService = navigationService;
-            _eventAggregator = eventAggregator;
+			_eventAggregator = eventAggregator;
+			_cimmytDbOperations = cimmytDbOperations;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
 
@@ -47,20 +48,8 @@
                 parcels.ElementAt(1)
 			};
 
-			_eventAggregator.GetEvent<DbConnectionAvailableEvent>().Subscribe(RequestDbConnection);
-            RequestDbConnection();
-			_eventAggregator.GetEvent<DbConnectionRequestEvent>().Publish();
-
-        }
-
-        private void RequestDbConnection(){
-            _eventAggregator.GetEvent<DbConnectionEvent>().Subscribe(ReceiveDbConnection);
- 		}
-
-		private void ReceiveDbConnection(ICimmytDbOperations cimmytDbOperations)
-        {
-            _cimmytDbOperations = cimmytDbOperations;
-            Parcels = cimmytDbOperations.GetAllParcels();
+            Parcels.AddRange(cimmytDbOperations.GetAllParcels());
+            foreach (var parcel in Parcels) parcel.Submit();
         }
 
         private void NavigateToParcelDetailPage(object id)

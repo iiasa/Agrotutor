@@ -2,11 +2,11 @@
 
 namespace CimmytApp.Benchmarking.ViewModels
 {
+	using System.Collections.Generic;
     using Prism.Mvvm;
 
     using DTO.BEM;
     using Prism.Navigation;
-    using System.Collections.Generic;
 
     public class LocalBenchmarkingPageViewModel : BindableBase, INavigationAware
     {
@@ -31,90 +31,56 @@ namespace CimmytApp.Benchmarking.ViewModels
         {
         }
 
+        private List<BemDataset> FilterDatasets<T>(List<BemDataset> bemDatasets) where T : BemDataset{
+            
+            var datasets = new List<BemDataset>();
+			datasets.AddRange(bemDatasets);
+            List<T> selection;
+			if (_year != null)
+			{
+				selection = new List<T>();
+                selection.AddRange(datasets.Cast<T>().Where(dataset => dataset.OutYear.Equals((string)_year)));
+				datasets.Clear();
+				datasets.AddRange(selection);
+			}
+            if (_cycle != null)
+            {
+				selection = new List<T>();
+				selection.AddRange(datasets.Cast<T>().Where(dataset => dataset.OutCycle.Equals((string)_cycle)));
+				datasets.Clear();
+				datasets.AddRange(selection);
+            }
+            return datasets;
+        }
+
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             parameters.TryGetValue("dataset", out _dataset);
             parameters.TryGetValue("year", out _year);
             parameters.TryGetValue("cycle", out _cycle);
 
-            var datasets = new List<BemDataset>();
-
+            List<BemDataset> datasets = new List<BemDataset>();
             switch (_dataset)
             {
                 case "Costo":
                     datasets.AddRange(_bemData.Costo);
-                    var selection = new List<Costo>();
-                    if (_year != null)
-                    {
-                        selection.AddRange(datasets.Cast<Costo>().Where(costo => costo.Year.Equals((string)_year)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection);
-                    selection = new List<Costo>();
-                    if (_cycle != null)
-                    {
-                        selection.AddRange(datasets.Cast<Costo>().Where(costo => costo.AgriculturalCycle.Equals((string)_cycle)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection);
+                    Datasets = FilterDatasets<Costo>(datasets);
                     break;
-
-                case "Ingreso":
+				case "Ingreso":
                     datasets.AddRange(_bemData.Ingreso);
-                    var selection1 = new List<Ingreso>();
-                    if (_year != null)
-                    {
-                        selection1.AddRange(datasets.Cast<Ingreso>().Where(ingreso => ingreso.Year.Equals((string)_year)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection1);
-                    selection1 = new List<Ingreso>();
-                    if (_cycle != null)
-                    {
-                        selection1.AddRange(datasets.Cast<Ingreso>().Where(ingreso => ingreso.AgriculturalCycle.Equals((string)_cycle)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection1);
+					Datasets = FilterDatasets<Ingreso>(datasets);
                     break;
 
                 case "Rendimiento":
-                    datasets.AddRange(_bemData.Rendimiento);
-                    var selection2 = new List<Rendimiento>();
-                    if (_year != null)
-                    {
-                        selection2.AddRange(datasets.Cast<Rendimiento>().Where(rendimiento => rendimiento.Year.Equals((string)_year)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection2);
-                    selection2 = new List<Rendimiento>();
-                    if (_cycle != null)
-                    {
-                        selection2.AddRange(datasets.Cast<Rendimiento>().Where(rendimiento => rendimiento.AgriculturalCycle.Equals((string)_cycle)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection2);
+					datasets.AddRange(_bemData.Rendimiento);
+					Datasets = FilterDatasets<Rendimiento>(datasets);
                     break;
 
                 case "Utilidad":
-                    datasets.AddRange(_bemData.Utilidad);
-                    var selection3 = new List<Utilidad>();
-                    if (_year != null)
-                    {
-                        selection3.AddRange(datasets.Cast<Utilidad>().Where(utilidad => utilidad.Year.Equals((string)_year)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection3);
-                    selection3 = new List<Utilidad>();
-                    if (_cycle != null)
-                    {
-                        selection3.AddRange(datasets.Cast<Utilidad>().Where(utilidad => utilidad.AgriculturalCycle.Equals((string)_cycle)));
-                    }
-                    datasets.Clear();
-                    datasets.AddRange(selection3);
+					datasets.AddRange(_bemData.Utilidad);
+					Datasets = FilterDatasets<Utilidad>(datasets);
                     break;
             }
-
-            Datasets = datasets;
         }
     }
 }

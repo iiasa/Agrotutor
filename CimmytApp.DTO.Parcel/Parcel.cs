@@ -221,22 +221,17 @@ namespace CimmytApp.DTO.Parcel
             return null;
         }
 
-        public int Save()
-        {
-            return -1;
-        }
-
         public async void Submit()
         {
             if (_uploaded == 1) return;
             await Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
-            _uploaded = 1;
-            Save();
+            _uploaded = (int)DatasetUploadStatus.Synchronized;
         }
 
         protected virtual void OnPropertyChanged(string aName)
         {
             var iHandler = PropertyChanged;
+            _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
     }

@@ -20,8 +20,9 @@ namespace CimmytApp.SQLiteDB
 
     
             _databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
-       
-            _databaseConn.CreateTable<Parcel>();
+
+			_databaseConn.CreateTable<Parcel>();
+            _databaseConn.CreateTable<PesticideApplication>();
         
         }
 

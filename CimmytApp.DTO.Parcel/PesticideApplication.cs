@@ -1,4 +1,5 @@
 ﻿using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace CimmytApp.DTO.Parcel
 {
@@ -8,6 +9,8 @@ namespace CimmytApp.DTO.Parcel
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string ProductName { get; set; }
-        public string ApplicationDate { get; set; }
+		public string ApplicationDate { get; set; }
+		[ForeignKey(typeof(Parcel))]
+		public int ParcelID { get; set; }
     }
 }
