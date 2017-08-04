@@ -7,14 +7,15 @@
     xmlns:views1="clr-namespace:CimmytApp.StaticContent.Views;assembly=CimmytApp.StaticContent"
     xmlns:views2="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
     xmlns:views3="clr-namespace:CimmytApp.AgronomicalRecommendations.Views;assembly=CimmytApp.AgronomicalRecommendations"
-    xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
+   
     xmlns:views5="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
     xmlns:calend="clr-namespace:CimmytApp.Calendar.Views;assembly=CimmytApp.Calendar"
+    xmlns:views4="clr-namespace:Helper.Map.Views;assembly=Helper.Map"
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Views.MainPage"
     Title="Title">
     <views2:ParcelsOverviewPage />
-    <!--<views4:GenericMap />-->
+    <views4:GenericMap />
     <views5:LocalBenchmarkingSelectionPage />
     <!--<viewsWeather:WeatherForecastPage />-->
     <calend:CalendarPage />

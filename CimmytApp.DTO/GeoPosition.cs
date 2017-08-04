@@ -3,11 +3,10 @@
     using System;
     using SQLite.Net.Attributes;
 
-    [Table("GeoPosition")]
     public class GeoPosition
     {
-        [PrimaryKey, AutoIncrement]
-        public int Id { get; set; }
+        //[PrimaryKey, AutoIncrement]
+        //public int Id { get; set; }
 
         public DateTimeOffset Timestamp { get; set; }
 

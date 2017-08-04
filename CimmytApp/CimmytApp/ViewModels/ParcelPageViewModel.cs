@@ -25,11 +25,21 @@
         private List<WeatherData> _weatherData;
 
         private IWeatherDbOperations _weatherDbOperations;
-
-        public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
+        private ICimmytDbOperations _cimmytDbOperations;
+        public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
+            try
+            {
+
+       
             _weatherDbOperations = weatherDbOperations;
+            _cimmytDbOperations = cimmytDbOperations;
             ReadDataAsync();
+            }
+            catch (Exception e)
+            {
+              
+            }
         }
 
         public event EventHandler IsActiveChanged;
@@ -49,7 +59,8 @@
             {
                 SetProperty(ref _parcel, value);
                 OnPropertyChanged("Parcel");
-                if (value != null) PublishDataset(value);
+                if (value != null)
+                    PublishDataset(value);
             }
         }
 
@@ -65,8 +76,18 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            var id = (int)parameters["id"];
-            Parcel = new TestParcels().ElementAt(id);
+            try
+            {
+
+                var id = (int) parameters["Id"];
+
+                Parcel = _cimmytDbOperations.GetParcelById(id); //new TestParcels().ElementAt(id);
+
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -87,8 +108,13 @@
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
+         
         }
 
+        private void ReadParcelData()
+        {
+         
+        }
         private async System.Threading.Tasks.Task ReadDataAsync()
         {
             var restfulClient = new RestfulClient<WeatherData>();

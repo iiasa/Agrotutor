@@ -39,23 +39,34 @@
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
 
-            List<Parcel> parcels = new TestParcels();
-
+		    _parcels=new List<Parcel>();
+          // cimmytDbOperations.DeleteAllData();
+            Parcels = cimmytDbOperations.GetAllParcels();
             //testcode:
-            Parcels = new List<Parcel>
-            {
-                parcels.ElementAt(0),
-                parcels.ElementAt(1)
-			};
-
-            Parcels.AddRange(cimmytDbOperations.GetAllParcels());
-            foreach (var parcel in Parcels) parcel.Submit();
+            //         Parcels = new List<Parcel>
+            //         {
+            //             parcels.ElementAt(0),
+            //             parcels.ElementAt(1)
+            //};
+           // cimmytDbOperations.DeleteAllData();
+           //  Parcels = cimmytDbOperations.GetAllParcels();
+		   // Parcels.AddRange(Parcels);
+            //foreach (var parcel in Parcels) parcel.Submit();
         }
 
         private void NavigateToParcelDetailPage(object id)
         {
-            var navigationParameters = new NavigationParameters { { "id", (int)id } };
+            try
+            {
+
+
+            var navigationParameters = new NavigationParameters { { "Id", (int)id } };
             _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+            }
+            catch (Exception e)
+            {
+         
+            }
         }
 
         private void NavigateToAddParcelPage()

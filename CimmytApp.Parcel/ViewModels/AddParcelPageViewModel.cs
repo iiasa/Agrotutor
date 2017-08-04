@@ -211,7 +211,7 @@
 
             var navigationParameters = new NavigationParameters
             {
-                { "id", Parcel.Id }
+                { "id", Parcel.ParcelId }
             };
             _navigationService.NavigateAsync("MainPage", navigationParameters);
         }

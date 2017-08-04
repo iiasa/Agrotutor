@@ -12,7 +12,7 @@
         {
             Add(new Parcel()
             {
-                Id = 0,
+                ParcelId = 0,
                 AgriculturalCycle = "Spring-Summer",
                 Crop = "Maize",
                 Cultivar = "Example Cultivar",
@@ -43,7 +43,7 @@
 
             Add(new Parcel()
             {
-                Id = 1,
+                ParcelId = 1,
                 AgriculturalCycle = "Spring-Summer",
                 Crop = "Maize",
                 Cultivar = "Example Cultivar 2",

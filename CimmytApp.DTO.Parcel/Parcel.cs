@@ -1,18 +1,16 @@
-﻿using SQLiteNetExtensions.Attributes;
-
+﻿using System.Runtime.Serialization;
+using SQLiteNetExtensions.Attributes;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using Xamarin.Forms;
+using SQLite.Net.Attributes;
+using Helper.BusinessContract;
+using Helper.GeoWiki.GenericDatasetStorage;
+using System.Threading.Tasks;
 namespace CimmytApp.DTO.Parcel
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using Xamarin.Forms;
-    using SQLite.Net.Attributes;
 
-    using Helper.BusinessContract;
-    using Helper.GeoWiki.GenericDatasetStorage;
-
-    using DTO;
-    using System.Threading.Tasks;
 
     [Table("Parcel")]
     public class Parcel : GeoPosition, IDataset, INotifyPropertyChanged
@@ -39,7 +37,11 @@ namespace CimmytApp.DTO.Parcel
         public Parcel()
         {
             PlantingDate = DateTime.Today;
+            _technologiesUsed=new List<string>();
         }
+
+        [PrimaryKey, AutoIncrement]
+        public int ParcelId{ get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -90,28 +92,10 @@ namespace CimmytApp.DTO.Parcel
 
         public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
 
-        //public GeoPosition GeoPosition
-        //{
-        //    get => _geoPosition;
-        //    set
-        //    {
-        //        _geoPosition = value;
-        //        OnPropertyChanged("GeoPosition");
-        //    }
-        //}
 
         public string IconSource => $"corn.png";
 
-        [PrimaryKey, AutoIncrement]
-        public int Id
-        {
-            get => _id;
-            set
-            {
-                _id = value;
-                OnPropertyChanged("ID");
-            }
-        }
+
 
         public string Irrigation
         {
@@ -157,7 +141,7 @@ namespace CimmytApp.DTO.Parcel
 
         public string PerformanceWithUnit => Performance + " tons/ha";
 
-        [OneToMany(CascadeOperations = CascadeOperation.CascadeInsert)]
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<PesticideApplication> PesticidesApplied
         {
             get => _pesticidesApplied;
@@ -187,8 +171,19 @@ namespace CimmytApp.DTO.Parcel
                 OnPropertyChanged("ProducerName");
             }
         }
-
-        public string TechnologiesScreenList => string.Join("\r\n", TechnologiesUsed.ToArray());
+        [IgnoreDataMember]
+        public string TechnologiesScreenList
+        {
+            get
+            {
+                if (TechnologiesUsed != null && TechnologiesUsed.Count > 0)
+                {
+                    var technologiesScreenList = string.Join("\r\n", TechnologiesUsed.ToArray());
+                    return technologiesScreenList;
+                }
+                return null;
+            }
+        }
 
         [TextBlob("TechnologiesUsedBlobbed")]
         public List<string> TechnologiesUsed

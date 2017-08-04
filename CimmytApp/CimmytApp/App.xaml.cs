@@ -1,4 +1,8 @@
-﻿using CimmytApp.Parcel;
+﻿using System;
+using CimmytApp.Parcel;
+using Helper.Base.Contract;
+
+using Helper.Map;
 
 namespace CimmytApp
 {
@@ -9,8 +13,6 @@ namespace CimmytApp
     using Prism.Unity;
     using Xamarin.Forms;
     using Microsoft.Practices.Unity;
-
-    using Helper.Map;
     using Helper.Localization.Localization;
     using Helper.UserRegistration;
 
@@ -39,31 +41,48 @@ namespace CimmytApp
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
-            _properties = Current.Properties;
-            System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-            foreach (var res in assembly.GetManifestResourceNames())
-                System.Diagnostics.Debug.WriteLine("found resource: " + res);
-            System.Diagnostics.Debug.WriteLine("====================================");
-
-            //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
-            if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+            try
             {
-                var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-                Helper.Localization.Resx.AppResources.Culture = ci;
-                DependencyService.Get<ILocalize>().SetLocale(ci);
+
+            
+                _properties = Current.Properties;
+                System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
+                var assembly = typeof(App).GetTypeInfo().Assembly;
+                foreach (var res in assembly.GetManifestResourceNames())
+                    System.Diagnostics.Debug.WriteLine("found resource: " + res);
+                System.Diagnostics.Debug.WriteLine("====================================");
+
+                //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
+                if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+                {
+                    var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
+                    Helper.Localization.Resx.AppResources.Culture = ci;
+                    DependencyService.Get<ILocalize>().SetLocale(ci);
+                }
+
+                //  CimmytDbOperations.GetAllParcels();
+
             }
-
-            //  CimmytDbOperations.GetAllParcels();
+            catch (Exception e)
+            {
+         
+            }
         }
-
 
 
         protected override void OnInitialized()
         {
             InitializeComponent();
+            try
+            {
 
-            NavigationService.NavigateAsync("MainPage");
+
+                NavigationService.NavigateAsync("MainPage");
+            }
+            catch (Exception e)
+            {
+              
+            }
             return;
             /*
             if (Current.Properties.ContainsKey("not_first_launch"))
@@ -79,6 +98,10 @@ namespace CimmytApp
 
         protected override void ConfigureModuleCatalog()
         {
+            try
+            {
+
+
             var agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
@@ -159,21 +182,35 @@ namespace CimmytApp
                     ModuleType = weatherForecastModule,
                     InitializationMode = InitializationMode.WhenAvailable
                 });
+            }
+            catch (Exception e)
+            {
+               
+            }
         }
 
         protected override void RegisterTypes()
         {
+            try
+            {
 
-            Container.RegisterTypeForNavigation<MainPage>();
-            Container.RegisterTypeForNavigation<LoginPage>();
-            Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
-			Container.RegisterTypeForNavigation<ParcelPage>();
-			Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
-		 new ContainerControlledLifetimeManager());
-			Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
-		 new ContainerControlledLifetimeManager());
 
-			Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
+                Container.RegisterTypeForNavigation<MainPage>();
+                Container.RegisterTypeForNavigation<LoginPage>();
+                Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
+                Container.RegisterTypeForNavigation<ParcelPage>();
+                Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
+                    new ContainerControlledLifetimeManager());
+                Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
+                    new ContainerControlledLifetimeManager());
+
+                Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
+ 
+            }
+            catch (Exception e)
+            {
+ 
+            }
         }
     }
 }

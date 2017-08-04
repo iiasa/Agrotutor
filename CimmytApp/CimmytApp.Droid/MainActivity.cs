@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Droid
+﻿using System;
+
+namespace CimmytApp.Droid
 {
     using Android.App;
     using Android.Content.PM;
@@ -7,18 +9,42 @@
     using Gcm.Client;
     using Prism.Unity;
     using Microsoft.Practices.Unity;
+    using Android.Runtime;
+    using System.Threading.Tasks;
 
     [Activity(Label = "CimmytApp", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.tabs;
+            try
+            {
+                AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
+                {
+                
+                        var x = args;
+             
+
+                };
+
+                AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
+                {
+                    var x = args.ExceptionObject;
+                };
+
+                // Wire up the unobserved task exception handler
+                TaskScheduler.UnobservedTaskException += (sender, args) =>
+                {
+                    var x = args;
+                };
+
+                TabLayoutResource = Resource.Layout.tabs;
             ToolbarResource = Resource.Layout.toolbar;
 
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+             //  Xamarin.FormsMaps.Init(this, bundle);
             XamForms.Controls.Droid.Calendar.Init();
             //base.OnCreate (bundle);
 
@@ -31,6 +57,21 @@
 
             RegisterWithGCM();
             LoadApplication(new App(new AndroidInitializer()));
+            }
+            catch (Exception e)
+            {
+            
+            }
+        }
+
+        private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+           
+        }
+
+        private void HandleAndroidException(object sender, RaiseThrowableEventArgs e)
+        {
+           
         }
 
         private void RegisterWithGCM()

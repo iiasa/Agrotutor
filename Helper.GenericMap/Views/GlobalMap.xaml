@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             x:Class="Helper.GenericMap.Views.GlobalMap"
+             mvvm:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <!--<customMap:TKCustomMap CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}"
+                                     MapCenter="{Binding MapsPosition}" 
+                                     HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False"   >-->
+            <!--<b:EventToCommandBehavior EventName="UserLocationChanged" 
+                                  Command="{Binding UserLocationCommand}"
+                                   />-->
+            <!--</customMap:TKCustomMap>
+            <Button Text="Next" Command="{Binding GoToPicturesModuleCommand}"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"  Grid.Row="1" ></Button>-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

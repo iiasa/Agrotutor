@@ -1,26 +1,25 @@
 ﻿using Prism;
+using Prism.Commands;
+using System;
+using System.Collections.ObjectModel;
+using System.Linq;
+using Helper.Base.Contract;
+using Helper.Base.DTO;
+using Xamarin.Forms.Maps;
+using Prism.Events;
+using Prism.Mvvm;
+using Prism.Navigation;
+using TK.CustomMap;
+using Xamarin.Forms;
+using Helper.Base.PublishSubscriberEvents;
 
 namespace Helper.Map.ViewModels
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using Xamarin.Forms.Maps;
-    using Prism;
-    using Prism.Events;
-    using Prism.Mvvm;
-    using Prism.Navigation;
-    using TK.CustomMap;
 
-    using Base.Contract;
-    using Base.DTO;
-    using Xamarin.Forms;
-    using Helper.Base.PublishSubscriberEvents;
 
-    public class GenericMapViewModel : BindableBase, IActiveAware
+    public class GenericMapViewModel : BindableBase, INavigationAware, IActiveAware
     {
-        public class LocationPageViewModel : BindableBase, INavigationAware
-        {
+     
             private readonly INavigationService _navigationService;
 
             private readonly IEventAggregator _eventAggregator;
@@ -31,13 +30,7 @@ namespace Helper.Map.ViewModels
             private Position _mapsPosition;
             private ObservableCollection<TKCustomMapPin> _customPinsList;
             private MapSpan _mapRegion;
-            public Command GoToPicturesModuleCommand { get; set; }
-
-
-            public LocationPageViewModel()
-            {
-            }
-
+            public DelegateCommand UseLocationCommand { get; set; }
             public ObservableCollection<TKCustomMapPin> CustomPinsList
             {
                 get { return _customPinsList; }
@@ -74,14 +67,20 @@ namespace Helper.Map.ViewModels
                 }
             }
 
-            public LocationPageViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
+            public GenericMapViewModel(IEventAggregator eventAggregator, INavigationService navigationService)
             {
                 _navigationService = navigationService;
                 _eventAggregator = eventAggregator;
-                _geoLocator = geoLocator;
+              //  _geoLocator = geoLocator;
+                UseLocationCommand=new DelegateCommand(UseLocation);
             }
 
-            private void HandlePositionEvent(GeoPosition position)
+        private void UseLocation()
+        {
+            
+        }
+
+        private void HandlePositionEvent(GeoPosition position)
             {
                 if (position == null)
                 {
@@ -104,7 +103,9 @@ namespace Helper.Map.ViewModels
                 _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
             }
 
-            public async void OnNavigatedTo(NavigationParameters parameters)
+        public async void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (_geoLocator != null)
             {
                 var positionRes = await _geoLocator.GetCurrentPosition();
 
@@ -121,24 +122,25 @@ namespace Helper.Map.ViewModels
                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMiles(.07));
 
                     CustomPinsList = new ObservableCollection<TKCustomMapPin>(new[]
-                                {
-                                new TKCustomMapPin
-                                {
-                                    ID = "userCurrLocation",
-                                    //Title = "Custom Callout Sample",
-                                    Position = MapsPosition,
-                                   // ShowCallout = true
-                                }
-                            });
+                    {
+                        new TKCustomMapPin
+                        {
+                            ID = "userCurrLocation",
+                            //Title = "Custom Callout Sample",
+                            Position = MapsPosition,
+                            // ShowCallout = true
+                        }
+                    });
                 }
 
                 _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
+        }
 
-            public void OnNavigatingTo(NavigationParameters parameters)
+        public void OnNavigatingTo(NavigationParameters parameters)
             {
             }
-        }
+        
 
         private bool _isActive;
 

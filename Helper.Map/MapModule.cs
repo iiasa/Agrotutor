@@ -1,11 +1,12 @@
 ﻿//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace Helper.Map
-{
-    using Microsoft.Practices.Unity;
-    using Prism.Modularity;
-    using Prism.Unity;
 
-    using Views;
+using Helper.Map.Views;
+using Microsoft.Practices.Unity;
+using Prism.Modularity;
+using Prism.Unity;
+
+namespace Helper.Map
+{ 
 
     public class MapModule : IModule
     {

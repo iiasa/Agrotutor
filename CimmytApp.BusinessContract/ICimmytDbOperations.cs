@@ -6,7 +6,9 @@
 
     public interface ICimmytDbOperations
     {
+        Parcel GetParcelById(int parcelId);
         List<Parcel> GetAllParcels();
         void AddParcel(Parcel parcel);
+        int DeleteAllData();
     }
 }

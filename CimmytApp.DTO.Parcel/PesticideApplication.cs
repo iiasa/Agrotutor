@@ -12,5 +12,7 @@ namespace CimmytApp.DTO.Parcel
 		public string ApplicationDate { get; set; }
 		[ForeignKey(typeof(Parcel))]
 		public int ParcelID { get; set; }
+        //[ManyToOne]      // Many to one relationship with Parcel
+        //public Parcel Parcel { get; set; }
     }
 }
