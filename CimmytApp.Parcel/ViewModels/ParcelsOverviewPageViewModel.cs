@@ -1,4 +1,4 @@
-﻿﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -7,7 +7,6 @@
     using Xamarin.Forms;
 
     using DTO.Parcel;
-    using CimmytApp.MockData;
     using System.Collections.Generic;
     using System.Linq;
     using CimmytApp.BusinessContract;
@@ -32,25 +31,26 @@
         private ICimmytDbOperations _cimmytDbOperations;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
-		{
-			_navigationService = navigationService;
-			_eventAggregator = eventAggregator;
-			_cimmytDbOperations = cimmytDbOperations;
+        {
+            _navigationService = navigationService;
+            _eventAggregator = eventAggregator;
+            _cimmytDbOperations = cimmytDbOperations;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
 
-		    _parcels=new List<Parcel>();
-          // cimmytDbOperations.DeleteAllData();
+            _parcels = new List<Parcel>();
+            // cimmytDbOperations.DeleteAllData();
             Parcels = cimmytDbOperations.GetAllParcels();
+            foreach (var parcel in Parcels) parcel.Submit();
             //testcode:
             //         Parcels = new List<Parcel>
             //         {
             //             parcels.ElementAt(0),
             //             parcels.ElementAt(1)
             //};
-           // cimmytDbOperations.DeleteAllData();
-           //  Parcels = cimmytDbOperations.GetAllParcels();
-		   // Parcels.AddRange(Parcels);
+            // cimmytDbOperations.DeleteAllData();
+            //  Parcels = cimmytDbOperations.GetAllParcels();
+            // Parcels.AddRange(Parcels);
             //foreach (var parcel in Parcels) parcel.Submit();
         }
 
@@ -58,14 +58,11 @@
         {
             try
             {
-
-
-            var navigationParameters = new NavigationParameters { { "Id", (int)id } };
-            _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+                var navigationParameters = new NavigationParameters { { "Id", (int)id } };
+                _navigationService.NavigateAsync("ParcelPage", navigationParameters);
             }
             catch (Exception e)
             {
-         
             }
         }
 

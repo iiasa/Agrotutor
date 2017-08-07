@@ -10,4 +10,18 @@
         <!-- Style applied to all labels with x:Key set to LabelKey -->
         <!--<Setter Property="TextColor" Value="Crimson" />-->
     </Style>
+
+    <Style TargetType="{x:Type TabbedPage}">
+        <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryGreen}"/>
+    </Style>
+
+    <Color x:Key="PrimaryGreen">#7BC142</Color>
+    <Color x:Key="PrimaryGrey">#696A6C</Color>
+    <Color x:Key="SecondaryBlue">#00A7CE</Color>
+    <Color x:Key="SecondaryOrange">#FF6B00</Color>
+    <Color x:Key="SecondaryDarkYellow">#C7B000</Color>
+    <Color x:Key="SecondaryDarkGreen">#2A4634</Color>
+    <Color x:Key="SecondaryGreenBrown">#908C14</Color>
+    <Color x:Key="SecondaryLightYellow">#EEE49A</Color>
+    <Color x:Key="SecondaryLightGreen">#D4EB8D</Color>
 </ResourceDictionary>
