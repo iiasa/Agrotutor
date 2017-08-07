@@ -16,19 +16,20 @@ namespace CimmytApp.SQLiteDB
 
         public CimmytDbOperations()
         {
-          
-
-    
             _databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
 
-			_databaseConn.CreateTable<Parcel>();
+            _databaseConn.CreateTable<Parcel>();
             _databaseConn.CreateTable<PesticideApplication>();
-        
         }
 
         public void AddParcel(Parcel parcel)
         {
             _databaseConn.InsertWithChildren(parcel, true);
+        }
+
+        public void DeleteParcel(Parcel parcel)
+        {
+            _databaseConn.Delete<Parcel>(parcel.ParcelId);
         }
 
         public List<Parcel> GetAllParcels()
@@ -40,7 +41,6 @@ namespace CimmytApp.SQLiteDB
         {
             return _databaseConn.GetWithChildren<Parcel>(parcelId);
         }
-
 
         public int DeleteAllData()
         {

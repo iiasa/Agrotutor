@@ -22,10 +22,7 @@ namespace CimmytApp.Droid
             {
                 AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
                 {
-                
-                        var x = args;
-             
-
+                    var x = args;
                 };
 
                 AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
@@ -40,39 +37,36 @@ namespace CimmytApp.Droid
                 };
 
                 TabLayoutResource = Resource.Layout.tabs;
-            ToolbarResource = Resource.Layout.toolbar;
+                ToolbarResource = Resource.Layout.toolbar;
 
-            base.OnCreate(bundle);
+                base.OnCreate(bundle);
 
-            global::Xamarin.Forms.Forms.Init(this, bundle);
+                global::Xamarin.Forms.Forms.Init(this, bundle);
                 Xamarin.FormsMaps.Init(this, bundle);
                 XamForms.Controls.Droid.Calendar.Init();
-            //base.OnCreate (bundle);
+                //base.OnCreate (bundle);
 
-            //// Set your view from the "main" layout resource
-            //SetContentView (Resource.Layout.Main);
+                //// Set your view from the "main" layout resource
+                //SetContentView (Resource.Layout.Main);
 
-            //// Get your button from the layout resource,
-            //// and attach an event to it
-            //Button button = FindViewById<Button> (Resource.Id.myButton);
+                //// Get your button from the layout resource,
+                //// and attach an event to it
+                //Button button = FindViewById<Button> (Resource.Id.myButton);
 
-            RegisterWithGCM();
-            LoadApplication(new App(new AndroidInitializer()));
+                RegisterWithGCM(); // TODO Store token and only register when token = null
+                LoadApplication(new App(new AndroidInitializer()));
             }
             catch (Exception e)
             {
-            
             }
         }
-   
+
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
-           
         }
 
         private void HandleAndroidException(object sender, RaiseThrowableEventArgs e)
         {
-           
         }
 
         private void RegisterWithGCM()
@@ -85,6 +79,7 @@ namespace CimmytApp.Droid
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderId);
         }
+
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
         {
             PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);

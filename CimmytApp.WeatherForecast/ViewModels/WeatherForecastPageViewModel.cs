@@ -15,29 +15,35 @@
     using Helper.DTO.SkywiseWeather.Historical;
 
     public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
-	{
-		private bool isActive;
+    {
+        private bool isActive;
         private Parcel _parcel;
         private GeoPosition position;
 
         public Parcel Parcel
         {
-            get { return _parcel; }
-            set { 
+            get => _parcel;
+            set
+            {
                 SetProperty(ref _parcel, value);
-                //position.Latitude = Parcel.Latitude;
-                //position.Longitude = Parcel.Longitude;
-                LoadWeatherDataAsync();
+                if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
+                {
+                    position = new GeoPosition
+                    {
+                        Latitude = Parcel.Latitude,
+                        Longitude = Parcel.Longitude
+                    };
+                    LoadWeatherDataAsync();
+                }
+                else
+                {
+                    //Show msg - no location
+                }
             }
         }
 
         private async void LoadWeatherDataAsync()
         {
-            position = new GeoPosition()
-            {
-                Latitude = 48,
-                Longitude = 16
-            };
             WeatherData = await WeatherService.GetWeatherData(position);
         }
 
@@ -57,18 +63,18 @@
             }
         }
 
-		public ICommand TestCommand { get; set; }
+        public ICommand TestCommand { get; set; }
 
-		public bool IsActive
-		{
-			get { return isActive; }
-			set
-			{
-				isActive = value;
-			}
-		}
+        public bool IsActive
+        {
+            get { return isActive; }
+            set
+            {
+                isActive = value;
+            }
+        }
 
-		public event EventHandler IsActiveChanged;
+        public event EventHandler IsActiveChanged;
 
         public WeatherForecastPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
