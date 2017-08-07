@@ -8,8 +8,7 @@
              Title="MainPage">
     <ContentPage>
         <Label Text="Blablabla" />
-    </ContentPage>
-    <ContentPage>
         <Button Text="OK" Command="{Binding NavigateToMainPageCommand}" />
     </ContentPage>
+
 </CarouselPage>

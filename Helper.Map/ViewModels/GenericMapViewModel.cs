@@ -129,8 +129,8 @@ namespace Helper.Map.ViewModels
                 if (getLocation != null) ReturnGeolocationButtonVisible = (bool)getLocation;
             }
         }
-
-        private async System.Threading.Tasks.Task GetPosition()
+ 
+        public async System.Threading.Tasks.Task GetPosition()
         {
             if (_geoLocator != null)
             {

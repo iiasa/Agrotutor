@@ -11,8 +11,9 @@ namespace CimmytApp.ViewModels
     using Prism.Modularity;
     using Prism.Mvvm;
     using Prism.Navigation;
+    using Prism;
 
-    public class MainPageViewModel : BindableBase, INavigationAware
+    public class MainPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly IModuleManager _moduleManager;
@@ -36,6 +37,14 @@ namespace CimmytApp.ViewModels
             get => _title;
             set => SetProperty(ref _title, value);
         }
+
+        public bool IsActive
+        {
+            get;
+            set;
+        }
+
+        public event EventHandler IsActiveChanged;
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {

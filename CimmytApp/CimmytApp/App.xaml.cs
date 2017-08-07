@@ -68,24 +68,25 @@ namespace CimmytApp
         protected override void OnInitialized()
         {
             InitializeComponent();
-            try
-            {
-                NavigationService.NavigateAsync("MainPage");
-            }
-            catch (Exception e)
-            {
-            }
-            return;
-            /*
+
+            //try
+            //{
+            //    NavigationService.NavigateAsync("MainPage");
+            //}
+            //catch (Exception e)
+            //{
+            //}
+            //return;
+
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
-                Current.Properties.Add("not_first_launch", true);
                 NavigationService.NavigateAsync("MainPage");
             }
             else
             {
+                Current.Properties.Add("not_first_launch", true);
                 NavigationService.NavigateAsync("WelcomePage");
-            }*/
+            }
         }
 
         protected override void ConfigureModuleCatalog()
