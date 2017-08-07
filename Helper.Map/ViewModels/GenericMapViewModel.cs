@@ -66,13 +66,14 @@ namespace Helper.Map.ViewModels
                     SetProperty(ref _isGeolocationEnabled, value);
                 }
             }
-
-            public GenericMapViewModel(IEventAggregator eventAggregator, INavigationService navigationService)
+        //IPosition geoLocator,
+            public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
             {
                 _navigationService = navigationService;
                 _eventAggregator = eventAggregator;
-              //  _geoLocator = geoLocator;
+               _geoLocator = geoLocator;
                 UseLocationCommand=new DelegateCommand(UseLocation);
+           GetPosition();
             }
 
         private void UseLocation()
@@ -104,6 +105,11 @@ namespace Helper.Map.ViewModels
             }
 
         public async void OnNavigatedTo(NavigationParameters parameters)
+        {
+            await GetPosition();
+        }
+
+        private async System.Threading.Tasks.Task GetPosition()
         {
             if (_geoLocator != null)
             {
@@ -153,6 +159,7 @@ namespace Helper.Map.ViewModels
                 _isActive = value;
                 if (_isActive)
                 {
+
                     // Well, it seems we don't have to put anything here - it works now and I won't touch this
                     // The error was that ImageView can't be cast to ViewGroup when using the map in a tab and exiting the TabbedPage
                     // I assumed the map component didn't realize it is no more and still tries to draw.

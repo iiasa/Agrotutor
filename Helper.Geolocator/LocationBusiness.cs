@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using CimmytApp.DTO;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
 using Prism.Events;
+using Helper.Base.Contract;
+using Helper.Base.DTO;
+using Helper.Base.PublishSubscriberEvents;
 
 namespace Helper.Geolocator
 {
@@ -36,7 +38,7 @@ namespace Helper.Geolocator
 
         public string PositionStatus { get; set; }
 
-        public bool CheckIfGpsIsEnabled()
+        public bool CheckIfGPSIsEnabled()
         {
             if (locator != null)
             {
@@ -51,7 +53,7 @@ namespace Helper.Geolocator
         public async Task<GeoPosition> GetCurrentPosition()
         {
             GeoPosition posRes = null;
-            if (CheckIfGpsIsEnabled())
+            if (CheckIfGPSIsEnabled())
             {
                 cancelSource = new CancellationTokenSource();
 
@@ -77,18 +79,14 @@ namespace Helper.Geolocator
             return posRes;
         }
 
-        Task<GeoPosition> IPosition.GetCurrentPosition()
-        {
-            throw new NotImplementedException();
-        }
-
         private void Locator_PositionChanged(object sender, PositionEventArgs e)
         {
             var position = e.Position;
 
             var pos = MapPosition(position);
-            //_eventAggregator.GetEvent<LivePositionEvent>().Publish(pos);
+            _eventAggregator.GetEvent<LivePositionEvent>().Publish(pos);
         }
+
 
         private GeoPosition MapPosition(Position position)
         {

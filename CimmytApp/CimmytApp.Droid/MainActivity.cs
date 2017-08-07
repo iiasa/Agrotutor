@@ -11,6 +11,7 @@ namespace CimmytApp.Droid
     using Microsoft.Practices.Unity;
     using Android.Runtime;
     using System.Threading.Tasks;
+    using Plugin.Permissions;
 
     [Activity(Label = "CimmytApp", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -44,8 +45,8 @@ namespace CimmytApp.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-             //  Xamarin.FormsMaps.Init(this, bundle);
-            XamForms.Controls.Droid.Calendar.Init();
+                Xamarin.FormsMaps.Init(this, bundle);
+                XamForms.Controls.Droid.Calendar.Init();
             //base.OnCreate (bundle);
 
             //// Set your view from the "main" layout resource
@@ -63,7 +64,7 @@ namespace CimmytApp.Droid
             
             }
         }
-
+   
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
            
@@ -83,6 +84,10 @@ namespace CimmytApp.Droid
             // Register for push notifications
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderId);
+        }
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 
