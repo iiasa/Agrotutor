@@ -23,13 +23,20 @@ namespace Helper.Map.ViewModels
 
         private bool _isGeolocationEnabled;
 
-        public bool ReturnGeolocationButtonActive
+        public bool ReturnGeolocationButtonVisible
         {
-            get => _returnGeolocationButtonActive;
-            set => SetProperty(ref _returnGeolocationButtonActive, value);
+            get => _returnGeolocationButtonVisible;
+            set => SetProperty(ref _returnGeolocationButtonVisible, value);
+        }
+
+        public bool ReturnGeolocationButtonEnabled
+        {
+            get => _returnGeolocationButtonEnabled;
+            set => SetProperty(ref _returnGeolocationButtonEnabled, value);
         }
 
         private readonly IPosition _geoLocator;
+        private GeoPosition _currentGeoPosition;
         private Position _mapsPosition;
         private ObservableCollection<TKCustomMapPin> _customPinsList;
         private MapSpan _mapRegion;
@@ -77,12 +84,16 @@ namespace Helper.Map.ViewModels
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
+            ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation);
             GetPosition();
         }
 
         private void UseLocation()
         {
+            var parameters = new NavigationParameters();
+            parameters.Add("GeoPosition", _currentGeoPosition);
+            _navigationService.GoBackAsync(parameters);
         }
 
         private void HandlePositionEvent(GeoPosition position)
@@ -115,7 +126,7 @@ namespace Helper.Map.ViewModels
             {
                 object getLocation;
                 parameters.TryGetValue("GetLocation", out getLocation);
-                if (getLocation != null) ReturnGeolocationButtonActive = (bool)getLocation;
+                if (getLocation != null) ReturnGeolocationButtonVisible = (bool)getLocation;
             }
         }
 
@@ -125,6 +136,8 @@ namespace Helper.Map.ViewModels
             {
                 var positionRes = await _geoLocator.GetCurrentPosition();
 
+                _currentGeoPosition = positionRes;
+
                 if (positionRes == null)
                 {
                     IsGeolocationEnabled = false;
@@ -132,6 +145,8 @@ namespace Helper.Map.ViewModels
                 else
                 {
                     IsGeolocationEnabled = true;
+
+                    ReturnGeolocationButtonEnabled = true;
 
                     MapsPosition = new Position(positionRes.Latitude, positionRes.Longitude);
 
@@ -158,11 +173,12 @@ namespace Helper.Map.ViewModels
         }
 
         private bool _isActive;
-        private bool _returnGeolocationButtonActive;
+        private bool _returnGeolocationButtonVisible;
+        private bool _returnGeolocationButtonEnabled;
 
         public bool IsActive
         {
-            get { return _isActive; }
+            get => _isActive;
             set
             {
                 if (value == IsActive) return;

@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using CimmytApp.DTO;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +13,8 @@
 
     using DTO.Parcel;
     using CimmytApp.BusinessContract;
+
+    using Helper.Base.DTO;
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
@@ -242,6 +246,17 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            if (parameters.ContainsKey("GeoPosition"))
+            {
+                object geoPosition;
+                parameters.TryGetValue("GeoPosition", out geoPosition);
+                if (geoPosition != null)
+                {
+                    var position = (GeoPosition)geoPosition;
+                    Parcel.Latitude = position.Latitude;
+                    Parcel.Longitude = position.Longitude;
+                }
+            }
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

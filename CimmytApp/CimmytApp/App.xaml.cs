@@ -32,7 +32,7 @@ namespace CimmytApp
         public static DTO.Parcel.Parcel CurrentParcel { get; set; }
         public static List<DTO.Parcel.Parcel> Parcels { get; set; }
 
-        static IDictionary<string, object> _properties;
+        private static IDictionary<string, object> _properties;
 
         public static IDictionary<string, object> GetProperties()
         {
@@ -43,8 +43,6 @@ namespace CimmytApp
         {
             try
             {
-
-            
                 _properties = Current.Properties;
                 System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
                 var assembly = typeof(App).GetTypeInfo().Assembly;
@@ -61,27 +59,21 @@ namespace CimmytApp
                 }
 
                 //  CimmytDbOperations.GetAllParcels();
-
             }
             catch (Exception e)
             {
-         
             }
         }
-
 
         protected override void OnInitialized()
         {
             InitializeComponent();
             try
             {
-
-
                 NavigationService.NavigateAsync("MainPage");
             }
             catch (Exception e)
             {
-              
             }
             return;
             /*
@@ -100,92 +92,89 @@ namespace CimmytApp
         {
             try
             {
+                var agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = agronomicalRecommendationsModule.Name,
+                        ModuleType = agronomicalRecommendationsModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
+                var benchmarkingModule = typeof(BenchmarkingModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = benchmarkingModule.Name,
+                        ModuleType = benchmarkingModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = agronomicalRecommendationsModule.Name,
-                    ModuleType = agronomicalRecommendationsModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var calendarModule = typeof(CalenderModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = calendarModule.Name,
+                        ModuleType = calendarModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var benchmarkingModule = typeof(BenchmarkingModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = benchmarkingModule.Name,
-                    ModuleType = benchmarkingModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var introductionModule = typeof(IntroductionModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = introductionModule.Name,
+                        ModuleType = introductionModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var calendarModule = typeof(CalenderModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = calendarModule.Name,
-                    ModuleType = calendarModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var mapModule = typeof(MapModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = mapModule.Name,
+                        ModuleType = mapModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var introductionModule = typeof(IntroductionModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = introductionModule.Name,
-                    ModuleType = introductionModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var parcelModule = typeof(ParcelModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = parcelModule.Name,
+                        ModuleType = parcelModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var mapModule = typeof(MapModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = mapModule.Name,
-                    ModuleType = mapModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var staticContentModule = typeof(StaticContentModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = staticContentModule.Name,
+                        ModuleType = staticContentModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var parcelModule = typeof(ParcelModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = parcelModule.Name,
-                    ModuleType = parcelModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var userRegistrationModule = typeof(UserRegistrationModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = userRegistrationModule.Name,
+                        ModuleType = userRegistrationModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
 
-            var staticContentModule = typeof(StaticContentModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = staticContentModule.Name,
-                    ModuleType = staticContentModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
-
-            var userRegistrationModule = typeof(UserRegistrationModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = userRegistrationModule.Name,
-                    ModuleType = userRegistrationModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
-
-            var weatherForecastModule = typeof(WeatherForecastModule);
-            ModuleCatalog.AddModule(
-                new ModuleInfo()
-                {
-                    ModuleName = weatherForecastModule.Name,
-                    ModuleType = weatherForecastModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
+                var weatherForecastModule = typeof(WeatherForecastModule);
+                ModuleCatalog.AddModule(
+                    new ModuleInfo()
+                    {
+                        ModuleName = weatherForecastModule.Name,
+                        ModuleType = weatherForecastModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
             }
             catch (Exception e)
             {
-               
             }
         }
 
@@ -193,8 +182,6 @@ namespace CimmytApp
         {
             try
             {
-
-
                 Container.RegisterTypeForNavigation<MainPage>();
                 Container.RegisterTypeForNavigation<LoginPage>();
                 Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
@@ -205,11 +192,9 @@ namespace CimmytApp
                     new ContainerControlledLifetimeManager());
 
                 Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
- 
             }
             catch (Exception e)
             {
- 
             }
         }
     }

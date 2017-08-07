@@ -16,6 +16,6 @@
         <bindableMap:TKCustomMap
                                  HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False" CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}" MapCenter="{Binding MapsPosition}">
         </bindableMap:TKCustomMap>
-        <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonActive}" />
+        <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}" IsEnabled="{Binding ReturnGeolocationButtonEnabled}" />
     </Grid>
 </ContentPage>
