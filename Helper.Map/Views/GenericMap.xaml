@@ -5,7 +5,7 @@
                  prism:ViewModelLocator.AutowireViewModel="True"
                  x:Class="Helper.Map.Views.GenericMap"
                  xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
-                 Title="Map" >
+                 Title="Map" Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
         <Grid>
         <Grid.RowDefinitions>
             <RowDefinition>
@@ -13,10 +13,12 @@
             <RowDefinition Height="Auto">
             </RowDefinition>
         </Grid.RowDefinitions>
-        <bindableMap:TKCustomMap 
+            <StackLayout x:Name="MapLayout">
+        <!--<bindableMap:TKCustomMap x:Name="CustomMapCtr"
                                  HasZoomEnabled="True" MapType="Hybrid" IsShowingUser="False" CustomPins="{Binding CustomPinsList}" MapRegion="{Binding MapRegion}" MapCenter="{Binding MapsPosition}">
             
-        </bindableMap:TKCustomMap>
+        </bindableMap:TKCustomMap>-->
+            </StackLayout>
         <!--<Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1">
         </Button>-->
     </Grid>

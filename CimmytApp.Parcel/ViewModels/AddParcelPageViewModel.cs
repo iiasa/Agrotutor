@@ -213,7 +213,7 @@
             {
                 { "id", Parcel.ParcelId }
             };
-            _navigationService.NavigateAsync("MainPage", navigationParameters,false);//This makes issues with Map screen
+            _navigationService.NavigateAsync("MainPage", navigationParameters,true);//This makes issues with Map screen
         }
 
         private void AgriculturalCycleChanged()

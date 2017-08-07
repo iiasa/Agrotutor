@@ -108,8 +108,8 @@ namespace Helper.Map.ViewModels
         {
             await GetPosition();
         }
-
-        private async System.Threading.Tasks.Task GetPosition()
+ 
+        public async System.Threading.Tasks.Task GetPosition()
         {
             if (_geoLocator != null)
             {
