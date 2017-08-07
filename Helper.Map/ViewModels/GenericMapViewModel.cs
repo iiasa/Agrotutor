@@ -15,98 +15,108 @@ using Helper.Base.PublishSubscriberEvents;
 
 namespace Helper.Map.ViewModels
 {
-
-
     public class GenericMapViewModel : BindableBase, INavigationAware, IActiveAware
     {
-     
-            private readonly INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
 
-            private readonly IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
-            private bool _isGeolocationEnabled;
+        private bool _isGeolocationEnabled;
 
-            private readonly IPosition _geoLocator;
-            private Position _mapsPosition;
-            private ObservableCollection<TKCustomMapPin> _customPinsList;
-            private MapSpan _mapRegion;
-            public DelegateCommand UseLocationCommand { get; set; }
-            public ObservableCollection<TKCustomMapPin> CustomPinsList
+        public bool ReturnGeolocationButtonActive
+        {
+            get => _returnGeolocationButtonActive;
+            set => SetProperty(ref _returnGeolocationButtonActive, value);
+        }
+
+        private readonly IPosition _geoLocator;
+        private Position _mapsPosition;
+        private ObservableCollection<TKCustomMapPin> _customPinsList;
+        private MapSpan _mapRegion;
+        public DelegateCommand UseLocationCommand { get; set; }
+
+        public ObservableCollection<TKCustomMapPin> CustomPinsList
+        {
+            get { return _customPinsList; }
+            set
             {
-                get { return _customPinsList; }
-                set
-                {
-                    SetProperty(ref _customPinsList, value);
-                }
+                SetProperty(ref _customPinsList, value);
             }
+        }
 
-            public Position MapsPosition
+        public Position MapsPosition
+        {
+            get { return _mapsPosition; }
+            set
             {
-                get { return _mapsPosition; }
-                set
-                {
-                    SetProperty(ref _mapsPosition, value);
-                }
+                SetProperty(ref _mapsPosition, value);
             }
+        }
 
-            public MapSpan MapRegion
+        public MapSpan MapRegion
+        {
+            get { return _mapRegion; }
+            set
             {
-                get { return _mapRegion; }
-                set
-                {
-                    SetProperty(ref _mapRegion, value);
-                }
+                SetProperty(ref _mapRegion, value);
             }
+        }
 
-            public bool IsGeolocationEnabled
+        public bool IsGeolocationEnabled
+        {
+            get { return _isGeolocationEnabled; }
+            set
             {
-                get { return _isGeolocationEnabled; }
-                set
-                {
-                    SetProperty(ref _isGeolocationEnabled, value);
-                }
+                SetProperty(ref _isGeolocationEnabled, value);
             }
+        }
+
         //IPosition geoLocator,
-            public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
-            {
-                _navigationService = navigationService;
-                _eventAggregator = eventAggregator;
-               _geoLocator = geoLocator;
-                UseLocationCommand=new DelegateCommand(UseLocation);
-           GetPosition();
-            }
+        public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            _eventAggregator = eventAggregator;
+            _geoLocator = geoLocator;
+            UseLocationCommand = new DelegateCommand(UseLocation);
+            GetPosition();
+        }
 
         private void UseLocation()
         {
-            
         }
 
         private void HandlePositionEvent(GeoPosition position)
+        {
+            if (position == null)
             {
-                if (position == null)
-                {
-                    IsGeolocationEnabled = false;
-                }
-                else
-                {
-                    IsGeolocationEnabled = true;
+                IsGeolocationEnabled = false;
+            }
+            else
+            {
+                IsGeolocationEnabled = true;
 
-                    var tkCustomMapPin = CustomPinsList?.FirstOrDefault(x => x.ID == "userCurrLocation");
-                    if (tkCustomMapPin != null)
-                    {
-                        tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
-                    }
+                var tkCustomMapPin = CustomPinsList?.FirstOrDefault(x => x.ID == "userCurrLocation");
+                if (tkCustomMapPin != null)
+                {
+                    tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
                 }
             }
+        }
 
-            public void OnNavigatedFrom(NavigationParameters parameters)
-            {
-                _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
-            }
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
+        }
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
             await GetPosition();
+            if (parameters.ContainsKey("GetLocation"))
+            {
+                object getLocation;
+                parameters.TryGetValue("GetLocation", out getLocation);
+                if (getLocation != null) ReturnGeolocationButtonActive = (bool)getLocation;
+            }
         }
 
         private async System.Threading.Tasks.Task GetPosition()
@@ -144,11 +154,11 @@ namespace Helper.Map.ViewModels
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
-            {
-            }
-        
+        {
+        }
 
         private bool _isActive;
+        private bool _returnGeolocationButtonActive;
 
         public bool IsActive
         {
@@ -159,7 +169,6 @@ namespace Helper.Map.ViewModels
                 _isActive = value;
                 if (_isActive)
                 {
-
                     // Well, it seems we don't have to put anything here - it works now and I won't touch this
                     // The error was that ImageView can't be cast to ViewGroup when using the map in a tab and exiting the TabbedPage
                     // I assumed the map component didn't realize it is no more and still tries to draw.

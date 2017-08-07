@@ -136,7 +136,8 @@
             {
                 _pickerAgriculturalCycleSelectedIndex = value;
                 Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);
-                /*switch(value){
+                switch (value)
+                {
                     case 0:
                         Years = _singleYears;
                         break;
@@ -144,7 +145,7 @@
                     case 1:
                         Years = _doubleYears;
                         break;
-                }*/
+                }
             }
         }
 
@@ -202,7 +203,8 @@
 
         private void ChooseLocation()
         {
-            _navigationService.NavigateAsync("GenericMap");
+            var parameters = new NavigationParameters { { "GetLocation", true } };
+            _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
         private void SaveParcel()
@@ -213,7 +215,7 @@
             {
                 { "id", Parcel.ParcelId }
             };
-            _navigationService.NavigateAsync("MainPage", navigationParameters,false);//This makes issues with Map screen
+            _navigationService.NavigateAsync("MainPage", navigationParameters, false);//This makes issues with Map screen
         }
 
         private void AgriculturalCycleChanged()
