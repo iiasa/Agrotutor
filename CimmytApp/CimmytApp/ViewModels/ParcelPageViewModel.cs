@@ -24,21 +24,19 @@
 
         private List<WeatherData> _weatherData;
 
-        private IWeatherDbOperations _weatherDbOperations;
-        private ICimmytDbOperations _cimmytDbOperations;
+        private readonly IWeatherDbOperations _weatherDbOperations;
+        private readonly ICimmytDbOperations _cimmytDbOperations;
+
         public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
             try
             {
-
-       
-            _weatherDbOperations = weatherDbOperations;
-            _cimmytDbOperations = cimmytDbOperations;
-            ReadDataAsync();
+                _weatherDbOperations = weatherDbOperations;
+                _cimmytDbOperations = cimmytDbOperations;
+                ReadDataAsync();
             }
             catch (Exception e)
             {
-              
             }
         }
 
@@ -78,15 +76,12 @@
         {
             try
             {
-
-                var id = (int) parameters["Id"];
+                var id = (int)parameters["Id"];
 
                 Parcel = _cimmytDbOperations.GetParcelById(id); //new TestParcels().ElementAt(id);
-
             }
             catch (Exception e)
             {
-
             }
         }
 
@@ -108,13 +103,12 @@
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
-         
         }
 
         private void ReadParcelData()
         {
-         
         }
+
         private async System.Threading.Tasks.Task ReadDataAsync()
         {
             var restfulClient = new RestfulClient<WeatherData>();

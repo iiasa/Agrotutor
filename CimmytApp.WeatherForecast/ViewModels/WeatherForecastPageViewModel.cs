@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.WeatherForecast.ViewModels
+﻿using Helper.DTO.SkywiseWeather.Historical.Temperature;
+
+namespace CimmytApp.WeatherForecast.ViewModels
 {
     using Prism.Mvvm;
     using System.Windows.Input;

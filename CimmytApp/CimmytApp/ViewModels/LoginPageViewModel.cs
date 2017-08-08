@@ -7,7 +7,7 @@
 
     public class LoginPageViewModel : BindableBase
     {
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
 
         public LoginPageViewModel(INavigationService navigationService)
         {

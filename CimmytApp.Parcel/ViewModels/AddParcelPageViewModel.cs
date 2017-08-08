@@ -16,8 +16,8 @@
     {
         private readonly List<string> _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
         private readonly List<string> _singleYears = new List<string>() { "2015", "2016", "2017" };
-        private ICimmytDbOperations _cimmytDbOperations;
-        private INavigationService _navigationService;
+        private readonly ICimmytDbOperations _cimmytDbOperations;
+        private readonly INavigationService _navigationService;
         private int _pickerAgriculturalCycleSelectedIndex;
         private int _pickerCropTypesSelectedIndex;
         private int _pickerIrrigationTypesSelectedIndex;

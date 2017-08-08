@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -28,15 +28,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Historical\Temperature\CoolingDegreeDays.cs" />
+    <Compile Include="Historical\Evapotranspiration\DailyEvapotranspirationShortCrop.cs" />
+    <Compile Include="Historical\Evapotranspiration\DailyEvapotranspirationTallCrop.cs" />
+    <Compile Include="Historical\Temperature\DailyHighTemperature.cs" />
+    <Compile Include="Historical\Temperature\DailyLowTemperature.cs" />
+    <Compile Include="Historical\Precipitation\DailyPrecipitation.cs" />
+    <Compile Include="Historical\SolarRadiation\DailySolarRadiation.cs" />
+    <Compile Include="Historical\Temperature\GrowingDegreeDays.cs" />
+    <Compile Include="Historical\Temperature\HeatingDegreeDays.cs" />
+    <Compile Include="Historical\Temperature\HourlyDewpoint.cs" />
+    <Compile Include="Historical\Evapotranspiration\HourlyEvapotranspirationShortCrop.cs" />
+    <Compile Include="Historical\Evapotranspiration\HourlyEvapotranspirationTallCrop.cs" />
+    <Compile Include="Historical\Precipitation\HourlyPrecipitation.cs" />
+    <Compile Include="Historical\Humidity\HourlyRelativeHumidity.cs" />
+    <Compile Include="Historical\SolarRadiation\HourlySolarRadiation.cs" />
+    <Compile Include="Historical\Temperature\HourlyTemperature.cs" />
+    <Compile Include="Historical\Wind\HourlyWindDirection.cs" />
+    <Compile Include="Historical\Wind\HourlyWindSpeed.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Historical\WeatherData.cs" />
     <Compile Include="Historical\Unit.cs" />
     <Compile Include="Historical\Value.cs" />
     <Compile Include="Historical\HistoricalSeries.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Historical\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
