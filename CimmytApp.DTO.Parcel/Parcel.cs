@@ -8,10 +8,9 @@ using SQLite.Net.Attributes;
 using Helper.BusinessContract;
 using Helper.GeoWiki.GenericDatasetStorage;
 using System.Threading.Tasks;
+
 namespace CimmytApp.DTO.Parcel
 {
-
-
     [Table("Parcel")]
     public class Parcel : GeoPosition, IDataset, INotifyPropertyChanged
     {
@@ -37,11 +36,11 @@ namespace CimmytApp.DTO.Parcel
         public Parcel()
         {
             PlantingDate = DateTime.Today;
-            _technologiesUsed=new List<string>();
+            _technologiesUsed = new List<string>();
         }
 
         [PrimaryKey, AutoIncrement]
-        public int ParcelId{ get; set; }
+        public int ParcelId { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -92,10 +91,7 @@ namespace CimmytApp.DTO.Parcel
 
         public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
 
-
         public string IconSource => $"corn.png";
-
-
 
         public string Irrigation
         {
@@ -171,6 +167,7 @@ namespace CimmytApp.DTO.Parcel
                 OnPropertyChanged("ProducerName");
             }
         }
+
         [IgnoreDataMember]
         public string TechnologiesScreenList
         {
@@ -195,7 +192,9 @@ namespace CimmytApp.DTO.Parcel
                 OnPropertyChanged("TechnologiesUsed");
             }
         }
+
         public string TechnologiesUsedBlobbed { get; set; } // serialized phone numbers
+
         public string Year
         {
             get => _year;
@@ -216,11 +215,19 @@ namespace CimmytApp.DTO.Parcel
             return null;
         }
 
-        public async void Submit()
+        public void Submit()
         {
-            if (_uploaded == 1) return;
+            if (_uploaded == (int)DatasetUploadStatus.Synchronized) return;
+            _uploaded = (int)DatasetUploadStatus.Synchronized;
+            Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
+        }
+
+        public async Task<Parcel> SubmitAsync()
+        {
+            if (_uploaded == (int)DatasetUploadStatus.Synchronized) return null;
             await Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
             _uploaded = (int)DatasetUploadStatus.Synchronized;
+            return this;
         }
 
         protected virtual void OnPropertyChanged(string aName)

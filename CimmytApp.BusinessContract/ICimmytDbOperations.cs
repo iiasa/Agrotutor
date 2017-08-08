@@ -2,13 +2,18 @@
 {
     using System.Collections.Generic;
 
-    using CimmytApp.DTO.Parcel;
+    using DTO.Parcel;
 
     public interface ICimmytDbOperations
     {
-        Parcel GetParcelById(int parcelId);
-        List<Parcel> GetAllParcels();
         void AddParcel(Parcel parcel);
+
         int DeleteAllData();
+
+        List<Parcel> GetAllParcels();
+
+        Parcel GetParcelById(int parcelId);
+
+        void UpdateParcel(Parcel parcel);
     }
 }

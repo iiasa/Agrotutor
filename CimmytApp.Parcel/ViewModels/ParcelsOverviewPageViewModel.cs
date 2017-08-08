@@ -41,7 +41,7 @@
             _parcels = new List<Parcel>();
             // cimmytDbOperations.DeleteAllData();
             Parcels = cimmytDbOperations.GetAllParcels();
-            foreach (var parcel in Parcels) parcel.Submit();
+            UploadParcels();
             //testcode:
             //         Parcels = new List<Parcel>
             //         {
@@ -52,6 +52,15 @@
             //  Parcels = cimmytDbOperations.GetAllParcels();
             // Parcels.AddRange(Parcels);
             //foreach (var parcel in Parcels) parcel.Submit();
+        }
+
+        private void UploadParcels()
+        {
+            foreach (var parcel in Parcels)
+            {
+                parcel.Submit();
+                //var sent = await parcel.Submit();
+            }
         }
 
         private void NavigateToParcelDetailPage(object id)

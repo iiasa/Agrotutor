@@ -16,9 +16,33 @@
 
     public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
-        private bool isActive;
+        private DailyHighTemperature _dailyHighTemperature;
         private Parcel _parcel;
+        private WeatherData _weatherData;
+        private bool isActive;
         private GeoPosition position;
+
+        public WeatherForecastPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+            TestCommand = new Command(Test);
+        }
+
+        public event EventHandler IsActiveChanged;
+
+        public DailyHighTemperature DailyHighTemperature
+        {
+            get => _dailyHighTemperature;
+            private set => SetProperty(ref _dailyHighTemperature, value);
+        }
+
+        public bool IsActive
+        {
+            get { return isActive; }
+            set
+            {
+                isActive = value;
+            }
+        }
 
         public Parcel Parcel
         {
@@ -28,6 +52,7 @@
                 SetProperty(ref _parcel, value);
                 if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
                 {
+                    if (_parcel.Latitude == 0 && _parcel.Longitude == 0) return;
                     position = new GeoPosition
                     {
                         Latitude = Parcel.Latitude,
@@ -42,12 +67,7 @@
             }
         }
 
-        private async void LoadWeatherDataAsync()
-        {
-            WeatherData = await WeatherService.GetWeatherData(position);
-        }
-
-        private WeatherData _weatherData;
+        public ICommand TestCommand { get; set; }
 
         public WeatherData WeatherData
         {
@@ -63,22 +83,16 @@
             }
         }
 
-        public ICommand TestCommand { get; set; }
-
-        public bool IsActive
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            get { return isActive; }
-            set
-            {
-                isActive = value;
-            }
         }
 
-        public event EventHandler IsActiveChanged;
-
-        public WeatherForecastPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public void OnNavigatedTo(NavigationParameters parameters)
         {
-            TestCommand = new Command(Test);
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
 
         public void Test()
@@ -92,16 +106,10 @@
             Parcel = (Parcel)dataset;
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        private async void LoadWeatherDataAsync()
         {
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
+            WeatherData = await WeatherService.GetWeatherData(position);
+            DailyHighTemperature = WeatherData.DailyHighTemperature;
         }
     }
 }

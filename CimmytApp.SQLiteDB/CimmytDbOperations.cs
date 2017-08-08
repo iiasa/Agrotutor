@@ -42,6 +42,11 @@ namespace CimmytApp.SQLiteDB
             return _databaseConn.GetWithChildren<Parcel>(parcelId);
         }
 
+        public void UpdateParcel(Parcel parcel)
+        {
+            _databaseConn.UpdateWithChildren(parcel);
+        }
+
         public int DeleteAllData()
         {
             return _databaseConn.DeleteAll<Parcel>();

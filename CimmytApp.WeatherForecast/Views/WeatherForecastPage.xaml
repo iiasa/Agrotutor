@@ -6,7 +6,7 @@
              x:Class="CimmytApp.WeatherForecast.Views.WeatherForecastPage"
     xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
              Title="Weather">
-    <dg:DataGrid ItemsSource="{Binding WeatherData.GrowingDegreeDays}">
+    <dg:DataGrid ItemsSource="{Binding DailyHighTemperature.Series}">
         <dg:DataGrid.HeaderFontSize>
             <OnIdiom x:TypeArguments="x:Double">
                 <OnIdiom.Tablet>15</OnIdiom.Tablet>
@@ -14,10 +14,8 @@
             </OnIdiom>
         </dg:DataGrid.HeaderFontSize>
         <dg:DataGrid.Columns>
-            <dg:DataGridColumn Title="Start" PropertyName="startDate" />
-            <dg:DataGridColumn Title="End" PropertyName="endDate" />
-            <dg:DataGridColumn Title="Degree" PropertyName="degreeDays" />
-            <dg:DataGridColumn Title="Base Temperature" PropertyName="baseTemperature" />
+            <dg:DataGridColumn Title="Date" PropertyName="validDate" />
+            <dg:DataGridColumn Title="Temperature" PropertyName="value" />
         </dg:DataGrid.Columns>
         <dg:DataGrid.RowsBackgroundColorPalette>
             <dg:PaletteCollection>
