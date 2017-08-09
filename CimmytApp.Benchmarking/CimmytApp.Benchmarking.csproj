@@ -56,6 +56,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CimmytApp.BusinessContract\CimmytApp.BusinessContract.csproj">
+      <Project>{8FA589B1-356E-4A97-B4C9-C1681A8906D7}</Project>
+      <Name>CimmytApp.BusinessContract</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CimmytApp.DTO.BEM\CimmytApp.DTO.BEM.csproj">
       <Project>{D35EF41B-7484-4544-8186-29C31EC6AF4A}</Project>
       <Name>CimmytApp.DTO.BEM</Name>

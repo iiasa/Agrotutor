@@ -7,5 +7,6 @@
         <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="Filter cycles" />
         <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}" />
         <Button Command="{Binding ViewDataCommand}" Text="View" />
+        <Button Command="{Binding RefreshDataCommand}" Text="Refresh Benchmarking Data" />
     </StackLayout>
 </ContentPage>

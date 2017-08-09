@@ -1,22 +1,19 @@
-﻿using CimmytApp.BusinessContract;
-using CimmytApp.DTO;
-using SqLite.Contract;
-using SQLite.Net;
-using SQLiteNetExtensions.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xamarin.Forms;
-using Helper.DTO.SkywiseWeather.Historical;
-
-namespace CimmytApp.SQLiteDB
+﻿namespace CimmytApp.SQLiteDB
 {
-   public class WeatherDataDbOperations: IWeatherDbOperations
-    {
-        readonly SQLiteConnection _databaseConn;
+    using SqLite.Contract;
+    using SQLite.Net;
+    using SQLiteNetExtensions.Extensions;
+    using System;
+    using System.Collections.Generic;
+    using Xamarin.Forms;
 
+    using Helper.DTO.SkywiseWeather.Historical;
+
+    using BusinessContract;
+
+    public class WeatherDataDbOperations : IWeatherDbOperations
+    {
+        private readonly SQLiteConnection _databaseConn;
 
         public WeatherDataDbOperations()
         {
@@ -30,25 +27,19 @@ namespace CimmytApp.SQLiteDB
             }
             catch (Exception e)
             {
-
             }
-
-
         }
 
         public void AddWeatherData(WeatherData weatherData)
         {
-      
             _databaseConn.InsertWithChildren(weatherData, true);
         }
 
-
         public int DeleteWeatherData(int id)
         {
-
             return _databaseConn.Delete<WeatherData>(id);
-
         }
+
         public WeatherData GetWeatherData(int weatherDataId)
         {
             return _databaseConn.GetWithChildren<WeatherData>(weatherDataId);
@@ -58,8 +49,6 @@ namespace CimmytApp.SQLiteDB
         {
             return _databaseConn.GetAllWithChildren<WeatherData>();
         }
-
-
 
         public int UpdateWeatherData(WeatherData weatherData)
         {

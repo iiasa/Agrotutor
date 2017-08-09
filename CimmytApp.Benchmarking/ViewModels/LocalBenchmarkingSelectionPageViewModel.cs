@@ -7,27 +7,20 @@
     using Prism.Navigation;
     using Xamarin.Forms;
 
+    using BusinessContract;
+    using DTO.BEM;
+
     public class LocalBenchmarkingSelectionPageViewModel : BindableBase
     {
-        public ICommand ViewDataCommand { get; set; }
-
-        public int DatasetSelectedIndex { get; set; }
-        public List<string> DatasetSelection { get; set; }
-
-        public bool FilterYears { get; set; }
-        public int YearsSelectedIndex { get; set; }
-        public List<string> YearsSelection { get; set; }
-
-        public bool FilterCycle { get; set; }
-        public int CycleSelectedIndex { get; set; }
-        public List<string> CycleSelection { get; set; }
-
+        private readonly ICimmytDbOperations _cimmytDbOperations;
         private readonly INavigationService _navigationService;
 
-        public LocalBenchmarkingSelectionPageViewModel(INavigationService navigationService)
+        public LocalBenchmarkingSelectionPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
+            _cimmytDbOperations = cimmytDbOperations;
             _navigationService = navigationService;
             ViewDataCommand = new Command(ViewData);
+            RefreshDataCommand = new Command(RefreshData);
 
             DatasetSelection = new List<string>
             {
@@ -47,6 +40,26 @@
                 "Primavera-Verano",
                 "Otoño-Invierno"
             };
+        }
+
+        public int CycleSelectedIndex { get; set; }
+        public List<string> CycleSelection { get; set; }
+        public int DatasetSelectedIndex { get; set; }
+        public List<string> DatasetSelection { get; set; }
+        public bool FilterCycle { get; set; }
+        public bool FilterYears { get; set; }
+        public ICommand RefreshDataCommand { get; set; }
+        public ICommand ViewDataCommand { get; set; }
+        public int YearsSelectedIndex { get; set; }
+        public List<string> YearsSelection { get; set; }
+
+        private async void RefreshData()
+        {
+            var bemData = await BemData.LoadBEMData();
+            _cimmytDbOperations.SaveCostos(bemData.Costo);
+            _cimmytDbOperations.SaveIngresos(bemData.Ingreso);
+            _cimmytDbOperations.SaveRendimientos(bemData.Rendimiento);
+            _cimmytDbOperations.SaveUtilidades(bemData.Utilidad);
         }
 
         private void ViewData()

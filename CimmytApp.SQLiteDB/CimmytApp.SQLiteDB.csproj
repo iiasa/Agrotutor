@@ -44,6 +44,10 @@
       <Project>{8fa589b1-356e-4a97-b4c9-c1681a8906d7}</Project>
       <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.DTO.BEM\CimmytApp.DTO.BEM.csproj">
+      <Project>{d35ef41b-7484-4544-8186-29c31ec6af4a}</Project>
+      <Name>CimmytApp.DTO.BEM</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
       <Project>{D9ACFCBC-CA0B-4228-B9D9-9F29C2D5E281}</Project>
       <Name>CimmytApp.DTO.Parcel</Name>

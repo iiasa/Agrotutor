@@ -1,19 +1,17 @@
-﻿using System;
-using CimmytApp.Parcel;
-using Helper.Base.Contract;
-
-using Helper.Map;
-
-namespace CimmytApp
+﻿namespace CimmytApp
 {
+    using System;
     using System.Collections.Generic;
     using System.Reflection;
     using Prism.Modularity;
-    using Prism.Navigation;
     using Prism.Unity;
     using Xamarin.Forms;
     using Microsoft.Practices.Unity;
+
+    using Helper.Base.Contract;
+    using Helper.Geolocator;
     using Helper.Localization.Localization;
+    using Helper.Map;
     using Helper.UserRegistration;
 
     using BusinessContract;
@@ -25,19 +23,11 @@ namespace CimmytApp
     using Introduction;
     using StaticContent;
     using WeatherForecast;
-    using Helper.Geolocator;
+    using Parcel;
 
     public partial class App : PrismApplication
     {
-        public static DTO.Parcel.Parcel CurrentParcel { get; set; }
-        public static List<DTO.Parcel.Parcel> Parcels { get; set; }
-
         private static IDictionary<string, object> _properties;
-
-        public static IDictionary<string, object> GetProperties()
-        {
-            return _properties;
-        }
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
@@ -65,29 +55,12 @@ namespace CimmytApp
             }
         }
 
-        protected override void OnInitialized()
+        public static DTO.Parcel.Parcel CurrentParcel { get; set; }
+        public static List<DTO.Parcel.Parcel> Parcels { get; set; }
+
+        public static IDictionary<string, object> GetProperties()
         {
-            InitializeComponent();
-
-            //try
-            //{
-            //    NavigationService.NavigateAsync("MainPage");
-            //}
-            //catch (Exception e)
-            //{
-            //}
-            //return;
-
-            if (Current.Properties.ContainsKey("not_first_launch"))
-            {
-                NavigationService.NavigateAsync("MainPage");
-            }
-            else
-            {
-                Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("MainPage");
-                //NavigationService.NavigateAsync("WelcomePage");
-            }
+            return _properties;
         }
 
         protected override void ConfigureModuleCatalog()
@@ -177,6 +150,31 @@ namespace CimmytApp
             }
             catch (Exception e)
             {
+            }
+        }
+
+        protected override void OnInitialized()
+        {
+            InitializeComponent();
+
+            //try
+            //{
+            //    NavigationService.NavigateAsync("MainPage");
+            //}
+            //catch (Exception e)
+            //{
+            //}
+            //return;
+
+            if (Current.Properties.ContainsKey("not_first_launch"))
+            {
+                NavigationService.NavigateAsync("MainPage");
+            }
+            else
+            {
+                Current.Properties.Add("not_first_launch", true);
+                NavigationService.NavigateAsync("MainPage");
+                //NavigationService.NavigateAsync("WelcomePage");
             }
         }
 
