@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -182,7 +181,7 @@
     <value>Chickpea</value>
   </data>
   <data name="crop_types_16" xml:space="preserve">
-    <value>Bean</value>
+    <value>Fava Bean</value>
   </data>
   <data name="crop_types_17" xml:space="preserve">
     <value>Soy</value>

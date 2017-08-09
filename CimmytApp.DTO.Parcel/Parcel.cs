@@ -18,6 +18,7 @@ namespace CimmytApp.DTO.Parcel
 
         private string _agriculturalCycle;
         private string _crop;
+        private CropType _croptype;
         private string _cultivar;
         private string _estimatedParcelArea;
         private GeoPosition _geoPosition;
@@ -39,13 +40,7 @@ namespace CimmytApp.DTO.Parcel
             _technologiesUsed = new List<string>();
         }
 
-        [PrimaryKey, AutoIncrement]
-        public int ParcelId { get; set; }
-
         public event PropertyChangedEventHandler PropertyChanged;
-
-        //[PrimaryKey, AutoIncrement]
-        //public int DBId { get; set; }
 
         public string AgriculturalCycle
         {
@@ -57,6 +52,8 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        //[PrimaryKey, AutoIncrement]
+        //public int DBId { get; set; }
         public int CompletedPercentage => 10;
 
         public string Crop
@@ -67,6 +64,12 @@ namespace CimmytApp.DTO.Parcel
                 _crop = value;
                 OnPropertyChanged("Crop");
             }
+        }
+
+        public CropType CropType
+        {
+            get => _croptype;
+            set => _croptype = value;
         }
 
         public string Cultivar
@@ -91,7 +94,74 @@ namespace CimmytApp.DTO.Parcel
 
         public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
 
-        public string IconSource => $"corn.png";
+        public string IconSource
+        {
+            get
+            {
+                switch (_croptype)
+                {
+                    case CropType.Corn:
+                        return "crop_corn.png";
+
+                    case CropType.Barley:
+                        return "crop_barley.png";
+
+                    case CropType.Bean:
+                        return "crop_bean.png";
+
+                    case CropType.Wheat:
+                        return "crop_wheat.png";
+
+                    case CropType.Triticale:
+                        return "crop_triticale.png";
+
+                    case CropType.Sorghum:
+                        return "crop_sorghum.png";
+
+                    case CropType.Alfalfa:
+                        return "crop_alfalfa.png";
+
+                    case CropType.Oats:
+                        return "crop_oats.png";
+
+                    case CropType.Sesame:
+                        return "crop_sesame.png";
+
+                    case CropType.Amaranth:
+                        return "crop_amaranth.png";
+
+                    case CropType.Rice:
+                        return "crop_rice.png";
+
+                    case CropType.Canola:
+                        return "crop_canola.png";
+
+                    case CropType.Cartamo:
+                        return "crop_cartamo.png";
+
+                    case CropType.Zucchini:
+                        return "crop_zucchini.png";
+
+                    case CropType.Chickpea:
+                        return "crop_chickpea.png";
+
+                    case CropType.FavaBean:
+                        return "crop_bean.png";
+
+                    case CropType.Soy:
+                        return "crop_soy.png";
+
+                    case CropType.None:
+                        return "crop_none.png";
+
+                    case CropType.Other:
+                        return "crop_other.png";
+
+                    default:
+                        return "crop_other.png";
+                }
+            }
+        }
 
         public string Irrigation
         {
@@ -114,6 +184,9 @@ namespace CimmytApp.DTO.Parcel
         }
 
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
+
+        [PrimaryKey, AutoIncrement]
+        public int ParcelId { get; set; }
 
         public string ParcelName
         {

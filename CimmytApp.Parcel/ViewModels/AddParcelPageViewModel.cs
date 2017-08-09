@@ -48,7 +48,7 @@
 
         public ICommand ClickChooseLocation { get; set; }
         public ICommand ClickSave { get; set; }
-        public List<string> CropTypes { get; } = new List<string> { "Maíz", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí" };
+        public List<string> CropTypes { get; } = new List<string> { "Maíz", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro" };
         public List<string> IrrigationTypes { get; } = new List<string> { "Riego", "Riego de punteo", "Temporal" };
 
         public Parcel Parcel { get; set; }
@@ -75,6 +75,7 @@
             {
                 _pickerCropTypesSelectedIndex = value;
                 Parcel.Crop = CropTypes.ElementAt(value);
+                Parcel.CropType = (CropType)(value + 1);
             }
         }
 
