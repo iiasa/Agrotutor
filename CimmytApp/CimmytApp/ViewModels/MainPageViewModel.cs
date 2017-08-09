@@ -17,8 +17,7 @@ namespace CimmytApp.ViewModels
     {
         private readonly IEventAggregator _eventAggregator;
         private readonly IModuleManager _moduleManager;
-        private ICimmytDbOperations _cimmytDbOperations;
-        private object _legend;
+        private readonly ICimmytDbOperations _cimmytDbOperations;
         private INavigationService _navigationService;
         private string _title;
 
