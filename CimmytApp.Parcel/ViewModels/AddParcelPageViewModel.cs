@@ -195,8 +195,7 @@
         {
             if (parameters.ContainsKey("GeoPosition"))
             {
-                object geoPosition;
-                parameters.TryGetValue("GeoPosition", out geoPosition);
+                parameters.TryGetValue("GeoPosition", out object geoPosition);
                 if (geoPosition != null)
                 {
                     var position = (GeoPosition)geoPosition;

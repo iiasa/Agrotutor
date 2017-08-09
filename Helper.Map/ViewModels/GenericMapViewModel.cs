@@ -91,8 +91,7 @@ namespace Helper.Map.ViewModels
 
         private void UseLocation()
         {
-            var parameters = new NavigationParameters();
-            parameters.Add("GeoPosition", _currentGeoPosition);
+            var parameters = new NavigationParameters { { "GeoPosition", _currentGeoPosition } };
             _navigationService.GoBackAsync(parameters);
         }
 
@@ -124,12 +123,11 @@ namespace Helper.Map.ViewModels
             await GetPosition();
             if (parameters.ContainsKey("GetLocation"))
             {
-                object getLocation;
-                parameters.TryGetValue("GetLocation", out getLocation);
+                parameters.TryGetValue("GetLocation", out object getLocation);
                 if (getLocation != null) ReturnGeolocationButtonVisible = (bool)getLocation;
             }
         }
- 
+
         public async System.Threading.Tasks.Task GetPosition()
         {
             if (_geoLocator != null)

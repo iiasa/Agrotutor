@@ -83,10 +83,13 @@ namespace CimmytApp.Droid
             var uiIntent = new Intent(this, typeof(MainActivity));
 
             //Create the notification
-            var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title);
+            var notification =
+                new Notification(Android.Resource.Drawable.SymActionEmail, title)
+                {
+                    Flags = NotificationFlags.AutoCancel
+                };
 
             //Auto-cancel will remove the notification once the user touches it
-            notification.Flags = NotificationFlags.AutoCancel;
 
             //Set the notification info
             //we use the pending intent, passing our ui intent over, which will get called
