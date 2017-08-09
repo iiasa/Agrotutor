@@ -25,12 +25,14 @@ namespace CimmytApp.Droid
         {
             Log.Verbose(AzurePushBroadcastReceiver.Tag, "GCM Registered: " + registrationId);
             RegistrationId = registrationId;
-
-            CreateNotification("PushHandlerService-GCM Registered...",
-                                "The device has been Registered!");
+            // TODO store registrationID
+            /*CreateNotification("PushHandlerService-GCM Registered...",
+                                "The device has been Registered!");*/
 
             Hub = new NotificationHub(Constants.NotificationHubName, Constants.ListenConnectionString,
                                         context);
+
+            //TODO : don't unregister - load registrationID here if available
             try
             {
                 Hub.UnregisterAll(registrationId);
@@ -66,10 +68,11 @@ namespace CimmytApp.Droid
                 if (!string.IsNullOrEmpty(messageText))
                 {
                     CreateNotification("New hub message!", messageText);
+                    // TODO save data in DB for app to use
                 }
                 else
                 {
-                    CreateNotification("Unknown message details", msg.ToString());
+                    //CreateNotification("Unknown message details", msg.ToString());
                 }
             }
         }
@@ -104,7 +107,7 @@ namespace CimmytApp.Droid
         {
             Log.Verbose(AzurePushBroadcastReceiver.Tag, "GCM Unregistered: " + registrationId);
 
-            CreateNotification("GCM Unregistered...", "The device has been unregistered!");
+            //CreateNotification("GCM Unregistered...", "The device has been unregistered!");
         }
 
         protected override bool OnRecoverableError(Context context, string errorId)
