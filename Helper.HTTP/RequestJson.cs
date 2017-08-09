@@ -1,10 +1,10 @@
 ﻿namespace Helper.HTTP
 {
-    using Newtonsoft.Json;
     using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     public static class RequestJson
     {
@@ -13,11 +13,22 @@
             T res;
             using (var httpClient = new HttpClient())
             {
-                var response = await httpClient.GetAsync(url).ConfigureAwait(false);
-                if (response.StatusCode != HttpStatusCode.OK) return null;
+                HttpResponseMessage response = null;
+                try
+                {
+                    response = await httpClient.GetAsync(url).ConfigureAwait(false);
+                }
+                catch (HttpRequestException e)
+                {
+                    System.Diagnostics.Debug.WriteLine("HTTP E: " + e.Message);
+                    return null;
+                }
+
+                if (response == null || response.StatusCode != HttpStatusCode.OK) return null;
                 var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 res = JsonConvert.DeserializeObject<T>(responseContent);
             }
+
             return res;
         }
 
@@ -29,20 +40,27 @@
 
         public static async Task<T> Post<T>(string url, Dictionary<string, string> param) where T : class
         {
-            T res = null;
+            T res;
             using (var httpClient = new HttpClient())
             {
+                HttpResponseMessage response = null;
                 var parameters = new Dictionary<string, string>() { { "parameter", JsonConvert.SerializeObject(param) } };
-                var encodedContent = new FormUrlEncodedContent(parameters);
-                var response = await httpClient.PostAsync(url, encodedContent).ConfigureAwait(false);
-
-                if (response.StatusCode == HttpStatusCode.OK)
+                var encodedContent = new FormUrlEncodedContent(parameters); try
                 {
-                    var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    if (string.IsNullOrEmpty(responseContent)) return null;
-                    res = JsonConvert.DeserializeObject<T>(responseContent);
+                    response = await httpClient.PostAsync(url, encodedContent).ConfigureAwait(false);
                 }
+                catch (HttpRequestException e)
+                {
+                    System.Diagnostics.Debug.WriteLine("HTTP E: " + e.Message);
+                    return null;
+                }
+
+                if (response.StatusCode != HttpStatusCode.OK) return null;
+                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                if (string.IsNullOrEmpty(responseContent)) return null;
+                res = JsonConvert.DeserializeObject<T>(responseContent);
             }
+
             return res;
         }
 
