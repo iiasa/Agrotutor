@@ -7,11 +7,6 @@
         public ParcelPage()
         {
             InitializeComponent();
-            /*
-			var pages = Children.GetEnumerator();
-			pages.MoveNext(); // First page
-			pages.MoveNext(); // Second page
-			CurrentPage = pages.Current;*/
         }
     }
 }

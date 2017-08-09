@@ -1,17 +1,14 @@
-﻿using System.Collections.Generic;
-using CimmytApp.DTO.BEM;
-using Helper.GeoWiki.API;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
     using System;
-    using CimmytApp.BusinessContract;
-    using CimmytApp.Parcel.Events;
     using Prism.Events;
     using Prism.Modularity;
     using Prism.Mvvm;
     using Prism.Navigation;
     using Prism;
+
+    using BusinessContract;
+    using Parcel.Events;
 
     public class MainPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
