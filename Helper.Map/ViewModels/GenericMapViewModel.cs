@@ -22,13 +22,13 @@ namespace Helper.Map.ViewModels
         private readonly INavigationService _navigationService;
 
         private readonly IEventAggregator _eventAggregator;
-
+        private bool _isGetLocationFeatureExist;
         private bool _isGeolocationEnabled;
         private MapTask _mapTask = MapTask.DisplayGeometriesOnly;
         private DeliniationState _currentDeliniationState;
 
-        public ICommand MapClickedCommand { get; set; }
-        public ICommand MapLongPressCommand { get; set; }
+        public DelegateCommand<object> MapClickedCommand { get; set; }
+        public DelegateCommand<object> MapLongPressCommand { get; set; }
 
         private DeliniationState CurrentDeliniationState
         {
@@ -122,13 +122,15 @@ namespace Helper.Map.ViewModels
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
+            _mapPolygonsList=new ObservableCollection<TKPolygon>();
             CurrentDeliniationState = DeliniationState.Inactive;
-            MapClickedCommand = new Command(MapClicked);
-            MapLongPressCommand = new Command(MapLongPress);
+            MapClickedCommand = new DelegateCommand<object>(MapClicked);
+            MapLongPressCommand = new DelegateCommand<object>(MapLongPress);
             ReturnGeolocationButtonEnabled = false;
-            UseLocationCommand = new DelegateCommand(UseLocation);
+            UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
             GetPosition();
         }
+
 
         private void MapClicked(object obj)
         {
@@ -141,7 +143,8 @@ namespace Helper.Map.ViewModels
                 ? DeliniationState.ActiveEnoughPoints
                 : DeliniationState.ActiveNotEnoughPoints;
             ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
-            MapPolygons = polygonsList;
+           // MapPolygons = polygonsList;
+           MapPolygons[0].Coordinates.Add(position);
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_" + pointId,
@@ -159,7 +162,7 @@ namespace Helper.Map.ViewModels
                 return;
             }
 
-            _mapPolygonsList = new ObservableCollection<TKPolygon>();
+           // _mapPolygonsList = new ObservableCollection<TKPolygon>();
             var polygon = new TKPolygon // TODO: following settings don't affect stroke in polygon object
             {
                 StrokeColor = Color.Black,
@@ -167,8 +170,9 @@ namespace Helper.Map.ViewModels
                 Color = Color.FromHex("#885F9EA0")
             };
             polygon.Coordinates.Add(position);
-            _mapPolygonsList.Add(polygon);
-            MapPolygons = _mapPolygonsList;
+           // _mapPolygonsList.Add(polygon);
+         //   MapPolygons = _mapPolygonsList;
+         MapPolygons.Add(polygon);
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_0",
@@ -198,6 +202,12 @@ namespace Helper.Map.ViewModels
                 if (tkCustomMapPin != null)
                 {
                     tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
+                    if (_isGetLocationFeatureExist)
+                    {
+                        MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                    }
+                    //Enable use Location button in case the map is open from AddParcel Page and there is point already exist on the map 
+                    ReturnGeolocationButtonEnabled = true;
                 }
             }
         }
@@ -209,13 +219,16 @@ namespace Helper.Map.ViewModels
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
-            await GetPosition();
+          //  await GetPosition();
             if (parameters.ContainsKey("GetLocation"))
             {
                 parameters.TryGetValue("GetLocation", out object getLocation);
                 if (getLocation != null)
                 {
-                    ReturnGeolocationButtonVisible = (bool)getLocation;
+                    _isGetLocationFeatureExist = (bool)getLocation;
+                    ReturnGeolocationButtonVisible = _isGetLocationFeatureExist;
+
+                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                     _mapTask = MapTask.GetLocation;
                 }
             }
@@ -252,7 +265,7 @@ namespace Helper.Map.ViewModels
 
                     MapsPosition = new Position(positionRes.Latitude, positionRes.Longitude);
 
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMiles(.07));
+                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(50));
 
                     CustomPinsList = new ObservableCollection<TKCustomMapPin>(new[]
                     {
