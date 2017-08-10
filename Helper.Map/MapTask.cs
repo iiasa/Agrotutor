@@ -1,12 +1,14 @@
-﻿
-namespace Helper.Map
+﻿namespace Helper.Map
 {
     public enum MapTask
     {
         GetLocation,
+
         //GetPath,
-        //GetPolygon,
+        GetPolygon,
+
         SelectLocation,
+
         //SelectPath,
         //SelectPolygon,
         DisplayGeometriesOnly

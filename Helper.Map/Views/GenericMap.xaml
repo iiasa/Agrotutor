@@ -23,5 +23,9 @@
         <!--<Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1">
         </Button>-->
         <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}" IsEnabled="{Binding ReturnGeolocationButtonEnabled}" />
+        <StackLayout IsVisible="{Binding DeliniationButtonsVisible}" Orientation="Horizontal" Grid.Row="1" VerticalOptions="Center">
+            <Button Text="OK" Command="{Binding AcceptDeliniationCommand}" IsEnabled="{Binding ButtonAcceptDeliniationEnabled}" />
+            <Button Text="Cancel" Command="{Binding CancelDeliniationCommand}" IsEnabled="{Binding ButtonCancelDeliniationEnabled}" />
+        </StackLayout>
     </Grid>
 </ContentPage>

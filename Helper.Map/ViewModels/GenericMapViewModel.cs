@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows.Input;
 using Helper.Base.Contract;
 using Helper.Base.DTO;
 using Xamarin.Forms.Maps;
@@ -10,8 +11,9 @@ using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using TK.CustomMap;
-using Xamarin.Forms;
 using Helper.Base.PublishSubscriberEvents;
+using TK.CustomMap.Overlays;
+using Xamarin.Forms;
 
 namespace Helper.Map.ViewModels
 {
@@ -22,6 +24,35 @@ namespace Helper.Map.ViewModels
         private readonly IEventAggregator _eventAggregator;
 
         private bool _isGeolocationEnabled;
+        private MapTask _mapTask = MapTask.DisplayGeometriesOnly;
+        private DeliniationState _currentDeliniationState;
+
+        public ICommand MapClickedCommand { get; set; }
+        public ICommand MapLongPressCommand { get; set; }
+
+        private DeliniationState CurrentDeliniationState
+        {
+            get => _currentDeliniationState;
+            set => SetProperty(ref _currentDeliniationState, value);
+        }
+
+        public bool ButtonAcceptDeliniationEnabled
+        {
+            get => _buttonAcceptDeliniationEnabled;
+            set => SetProperty(ref _buttonAcceptDeliniationEnabled, value);
+        }
+
+        public bool ButtonCancelDeliniationEnabled
+        {
+            get => _buttonCancelDeliniationEnabled;
+            set => SetProperty(ref _buttonCancelDeliniationEnabled, value);
+        }
+
+        public bool DeliniationButtonsVisible
+        {
+            get => _deliniationButtonsVisible;
+            set => SetProperty(ref _deliniationButtonsVisible, value);
+        }
 
         public bool ReturnGeolocationButtonVisible
         {
@@ -39,6 +70,7 @@ namespace Helper.Map.ViewModels
         private GeoPosition _currentGeoPosition;
         private Position _mapsPosition;
         private ObservableCollection<TKCustomMapPin> _customPinsList;
+        private ObservableCollection<TKPolygon> _mapPolygonsList;
         private MapSpan _mapRegion;
         public DelegateCommand UseLocationCommand { get; set; }
 
@@ -49,6 +81,12 @@ namespace Helper.Map.ViewModels
             {
                 SetProperty(ref _customPinsList, value);
             }
+        }
+
+        public ObservableCollection<TKPolygon> MapPolygons
+        {
+            get => _mapPolygonsList;
+            set => SetProperty(ref _mapPolygonsList, value);
         }
 
         public Position MapsPosition
@@ -84,9 +122,60 @@ namespace Helper.Map.ViewModels
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
+            CurrentDeliniationState = DeliniationState.Inactive;
+            MapClickedCommand = new Command(MapClicked);
+            MapLongPressCommand = new Command(MapLongPress);
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation);
             GetPosition();
+        }
+
+        private void MapClicked(object obj)
+        {
+            if (CurrentDeliniationState == DeliniationState.Inactive) return;
+            var position = (Position)obj;
+            var polygonsList = MapPolygons;
+            var pointId = polygonsList.ElementAt(0).Coordinates.Count;
+            polygonsList.ElementAt(0).Coordinates.Add(position);
+            CurrentDeliniationState = (polygonsList.ElementAt(0).Coordinates.Count > 2)
+                ? DeliniationState.ActiveEnoughPoints
+                : DeliniationState.ActiveNotEnoughPoints;
+            ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
+            MapPolygons = polygonsList;
+            CustomPinsList.Add(new TKCustomMapPin
+            {
+                ID = "polygon_marker_" + pointId,
+                Position = position,
+            });
+        }
+
+        private void MapLongPress(object obj)
+        {
+            if (_mapTask != MapTask.GetPolygon) return;
+            var position = (Position)obj;
+            if (CurrentDeliniationState != DeliniationState.Inactive)
+            {
+                MapClicked(obj);
+                return;
+            }
+
+            _mapPolygonsList = new ObservableCollection<TKPolygon>();
+            var polygon = new TKPolygon
+            {
+                StrokeColor = Color.Black,
+                StrokeWidth = 2,
+                Color = Color.FromHex("#885F9EA0")
+            };
+            polygon.Coordinates.Add(position);
+            _mapPolygonsList.Add(polygon);
+            MapPolygons = _mapPolygonsList;
+            CustomPinsList.Add(new TKCustomMapPin
+            {
+                ID = "polygon_marker_0",
+                Position = position,
+            });
+            ButtonCancelDeliniationEnabled = true;
+            CurrentDeliniationState = DeliniationState.ActiveNotEnoughPoints;
         }
 
         private void UseLocation()
@@ -124,7 +213,22 @@ namespace Helper.Map.ViewModels
             if (parameters.ContainsKey("GetLocation"))
             {
                 parameters.TryGetValue("GetLocation", out object getLocation);
-                if (getLocation != null) ReturnGeolocationButtonVisible = (bool)getLocation;
+                if (getLocation != null)
+                {
+                    ReturnGeolocationButtonVisible = (bool)getLocation;
+                    _mapTask = MapTask.GetLocation;
+                }
+            }
+
+            if (parameters.ContainsKey("GetPolygon"))
+            {
+                object getLocation;
+                parameters.TryGetValue("GetPolygon", out getLocation);
+                if (getLocation != null)
+                {
+                    DeliniationButtonsVisible = (bool)getLocation;
+                    _mapTask = MapTask.GetPolygon;
+                }
             }
         }
 
@@ -173,6 +277,9 @@ namespace Helper.Map.ViewModels
         private bool _isActive;
         private bool _returnGeolocationButtonVisible;
         private bool _returnGeolocationButtonEnabled;
+        private bool _deliniationButtonsVisible;
+        private bool _buttonAcceptDeliniationEnabled = false;
+        private bool _buttonCancelDeliniationEnabled = false;
 
         public bool IsActive
         {

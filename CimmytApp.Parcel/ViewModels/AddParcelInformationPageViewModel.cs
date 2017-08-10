@@ -1,4 +1,7 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using System.Windows.Input;
+using Xamarin.Forms;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System;
     using Prism;
@@ -15,9 +18,24 @@
     {
         private Parcel _parcel;
         private bool isActive;
+        public ICommand DeliniateParcelCommand { get; set; }
+        private INavigationService _navigationService;
 
-        public AddParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator) : base(eventAggregator)
         {
+            DeliniateParcelCommand = new Command(DeliniateParcel);
+            _navigationService = navigationService;
+        }
+
+        private void DeliniateParcel()
+        {
+            var parameters = new NavigationParameters
+            {
+                {"Latitude", _parcel.Latitude},
+                {"Longitude", _parcel.Longitude},
+                {"GetPolygon", true}
+            };
+            _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
         public event EventHandler IsActiveChanged;

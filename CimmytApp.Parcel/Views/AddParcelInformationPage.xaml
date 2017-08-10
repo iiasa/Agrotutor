@@ -5,5 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage"
              Title="Editar">
-    <Label Text="Somecontent" />
+    <StackLayout>
+        <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
+    </StackLayout>
 </ContentPage>
