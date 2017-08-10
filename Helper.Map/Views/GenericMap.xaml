@@ -22,6 +22,6 @@
         </StackLayout>
         <!--<Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1">
         </Button>-->
-        <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}" IsEnabled="{Binding ReturnGeolocationButtonEnabled}" />
+        <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}"  />
     </Grid>
 </ContentPage>

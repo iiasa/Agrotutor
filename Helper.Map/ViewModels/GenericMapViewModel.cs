@@ -23,6 +23,7 @@ namespace Helper.Map.ViewModels
 
         private bool _isGeolocationEnabled;
 
+        private bool _isGetLocationFeatureExist;
         public bool ReturnGeolocationButtonVisible
         {
             get => _returnGeolocationButtonVisible;
@@ -85,8 +86,9 @@ namespace Helper.Map.ViewModels
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
             ReturnGeolocationButtonEnabled = false;
-            UseLocationCommand = new DelegateCommand(UseLocation);
-            GetPosition();
+            UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
+
+           GetPosition();
         }
 
         private void UseLocation()
@@ -109,6 +111,12 @@ namespace Helper.Map.ViewModels
                 if (tkCustomMapPin != null)
                 {
                     tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
+                    if (_isGetLocationFeatureExist)
+                    {
+                        MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                    }
+                    //Enable use Location button in case the map is open from AddParcel Page and there is point already exist on the map
+                    ReturnGeolocationButtonEnabled = true;
                 }
             }
         }
@@ -120,12 +128,18 @@ namespace Helper.Map.ViewModels
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
-            await GetPosition();
+            
             if (parameters.ContainsKey("GetLocation"))
             {
                 parameters.TryGetValue("GetLocation", out object getLocation);
-                if (getLocation != null) ReturnGeolocationButtonVisible = (bool)getLocation;
+                if (getLocation != null)
+                    _isGetLocationFeatureExist = (bool)getLocation;
+                ReturnGeolocationButtonVisible = _isGetLocationFeatureExist;
+
+                MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+
             }
+           // await GetPosition();
         }
 
         public async System.Threading.Tasks.Task GetPosition()
@@ -148,7 +162,7 @@ namespace Helper.Map.ViewModels
 
                     MapsPosition = new Position(positionRes.Latitude, positionRes.Longitude);
 
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMiles(.07));
+                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(50));
 
                     CustomPinsList = new ObservableCollection<TKCustomMapPin>(new[]
                     {
@@ -161,6 +175,8 @@ namespace Helper.Map.ViewModels
                         }
                     });
                 }
+                //Enable use Location button in case the map is open from AddParcel Page and there is point already exist on the map
+
 
                 _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
