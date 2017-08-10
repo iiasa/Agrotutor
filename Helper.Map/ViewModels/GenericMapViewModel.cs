@@ -160,7 +160,7 @@ namespace Helper.Map.ViewModels
             }
 
             _mapPolygonsList = new ObservableCollection<TKPolygon>();
-            var polygon = new TKPolygon
+            var polygon = new TKPolygon // TODO: following settings don't affect stroke in polygon object
             {
                 StrokeColor = Color.Black,
                 StrokeWidth = 2,

@@ -24,15 +24,31 @@ namespace Helper.Map.Views
 
         private void GenericMap_OnAppearing(object sender, EventArgs e)
         {
-            TKCustomMap map = new TKCustomMap();
-            contextObj.GetPosition();
-            map.CustomPins = contextObj.CustomPinsList;
-            map.Polygons = contextObj.MapPolygons;
+            if (MapLayout.Children.Count == 0)
+            {
+                TKCustomMap map = new TKCustomMap();
+                // map.BindingContext = contextObj;
 
-            map.MapClickedCommand = contextObj.MapClickedCommand;
-            map.MapLongPressCommand = contextObj.MapLongPressCommand;
+                map.SetBinding(TKCustomMap.CustomPinsProperty, "CustomPinsList");
+                map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
+                map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
+                map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
 
-            MapLayout.Children.Add(map);
+                map.HasZoomEnabled = true;
+                map.MapType = MapType.Hybrid;
+                map.IsShowingUser = false;
+
+                map.MapClickedCommand = contextObj.MapClickedCommand;
+                map.MapLongPressCommand = contextObj.MapLongPressCommand;
+
+                MapLayout.Children.Add(map);
+            }
+
+            //TKCustomMap map = new TKCustomMap();
+            // contextObj.GetPosition();
+            //map.CustomPins = contextObj.CustomPinsList;
+
+            //MapLayout.Children.Add(map);
         }
     }
 }
