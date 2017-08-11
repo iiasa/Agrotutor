@@ -34,13 +34,14 @@ namespace Helper.Map.Views
                 map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
                 map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
                 map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
-
+                map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
+                map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
                 map.HasZoomEnabled = true;
                 map.MapType = MapType.Hybrid;
                 map.IsShowingUser = false;
 
-                map.MapClickedCommand = contextObj.MapClickedCommand;
-                map.MapLongPressCommand = contextObj.MapLongPressCommand;
+                //map.MapClickedCommand = contextObj.MapClickedCommand;
+                //map.MapLongPressCommand = contextObj.MapLongPressCommand;
 
                 MapLayout.Children.Add(map);
             }
