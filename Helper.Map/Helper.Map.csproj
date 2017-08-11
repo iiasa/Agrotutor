@@ -116,6 +116,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
+      <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
+      <Name>CimmytApp.DTO</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>

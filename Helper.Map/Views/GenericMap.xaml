@@ -5,8 +5,9 @@
                  prism:ViewModelLocator.AutowireViewModel="True"
                  x:Class="Helper.Map.Views.GenericMap"
                  xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
+                 xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
 
-                 Title="Map" Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
+                 Title="{localization:Translate page_title_add_parcel}" Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -22,7 +23,7 @@
         </StackLayout>
         <!--<Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1">
         </Button>-->
-        <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}"  />
+        <Button Text="Use location" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}" />
         <StackLayout IsVisible="{Binding DeliniationButtonsVisible}" Orientation="Horizontal" Grid.Row="1" VerticalOptions="Center">
             <Button Text="OK" Command="{Binding AcceptDeliniationCommand}" IsEnabled="{Binding ButtonAcceptDeliniationEnabled}" />
             <Button Text="Cancel" Command="{Binding CancelDeliniationCommand}" IsEnabled="{Binding ButtonCancelDeliniationEnabled}" />
