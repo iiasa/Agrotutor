@@ -4,8 +4,9 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              x:Name="ParcelOverviewRoot"
-    Title="Parcels">
+    Title="{localization:Translate page_title_parcels_overview}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms" prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingSelectionPage" Title="Benchmarking">
-    <StackLayout>
-        <Picker ItemsSource="{Binding DatasetSelection}" SelectedIndex="{Binding DatasetSelectedIndex}" />
-        <controls:CheckBox Checked="{Binding FilterYears}" DefaultText="Filter years" />
-        <Picker ItemsSource="{Binding YearsSelection}" SelectedIndex="{Binding YearsSelectedIndex}" />
-        <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="Filter cycles" />
-        <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}" />
-        <Button Command="{Binding ViewDataCommand}" Text="View" />
-        <Button Command="{Binding RefreshDataCommand}" Text="Refresh Benchmarking Data" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingSelectionPage"
+
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+             Title="{localization:Translate benchmarking}">
+    <StackLayout Margin="16">
+
+        <Label Text="{localization:Translate bem_data_type}" FontSize="10" />
+        <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+        <Picker ItemsSource="{Binding DatasetSelection}" SelectedIndex="{Binding DatasetSelectedIndex}" Margin="0,0,0,16" />
+
+        <Label Text="{localization:Translate filter_years}" FontSize="10" />
+        <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+        <controls:CheckBox Checked="{Binding FilterYears}" DefaultText="{localization:Translate filter_years}" />
+        <Picker ItemsSource="{Binding YearsSelection}" SelectedIndex="{Binding YearsSelectedIndex}" IsVisible="{Binding FilterYears}" Margin="0,0,0,16" />
+
+        <Label Text="{localization:Translate filter_cycle}" FontSize="10" />
+        <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+        <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="{localization:Translate filter_cycle}" />
+        <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}"  IsVisible="{Binding FilterCycle}" Margin="0,0,0,16" />
+
+        <Button Command="{Binding ViewDataCommand}" Text="{localization:Translate view}" />
+        <Button Command="{Binding RefreshDataCommand}" Text="{localization:Translate refresh_benchmarking_data}" />
     </StackLayout>
 </ContentPage>

@@ -609,4 +609,46 @@
   <data name="year" xml:space="preserve">
     <value>Year</value>
   </data>
+  <data name="benchmarking" xml:space="preserve">
+    <value>Benchmarking</value>
+  </data>
+  <data name="calendar" xml:space="preserve">
+    <value>Calendar</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="deliniate_parcel" xml:space="preserve">
+    <value>Deliniate parcel</value>
+  </data>
+  <data name="filter_cycle" xml:space="preserve">
+    <value>Filter by cycle</value>
+  </data>
+  <data name="filter_years" xml:space="preserve">
+    <value>Filter by year</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="parcels" xml:space="preserve">
+    <value>Parcels</value>
+  </data>
+  <data name="refresh_benchmarking_data" xml:space="preserve">
+    <value>Refresh benchmarking data</value>
+  </data>
+  <data name="use_this_location" xml:space="preserve">
+    <value>Use this location</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="weblink1" xml:space="preserve">
+    <value>CIMMYT Soil Protocols</value>
+  </data>
+  <data name="weblink2" xml:space="preserve">
+    <value>How to grow with Don Grower</value>
+  </data>
+  <data name="bem_data_type" xml:space="preserve">
+    <value>Select type of data</value>
+  </data>
 </root>

@@ -13,7 +13,7 @@ namespace CimmytApp.Droid
     using System.Threading.Tasks;
     using Plugin.Permissions;
 
-    [Activity(Label = "CimmytApp", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Mexico Produce!", Icon = "@drawable/app_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)

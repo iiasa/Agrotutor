@@ -14,10 +14,10 @@
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
-        private readonly List<string> _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
-        private readonly List<string> _singleYears = new List<string>() { "2015", "2016", "2017" };
         private readonly ICimmytDbOperations _cimmytDbOperations;
+        private readonly List<string> _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
         private readonly INavigationService _navigationService;
+        private readonly List<string> _singleYears = new List<string>() { "2015", "2016", "2017" };
         private int _pickerAgriculturalCycleSelectedIndex;
         private int _pickerCropTypesSelectedIndex;
         private int _pickerIrrigationTypesSelectedIndex;
@@ -30,6 +30,7 @@
         private bool _tech6Checked;
         private bool _tech7Checked;
         private bool _tech8Checked;
+        private bool _userIsAtParcel;
         private List<string> _years;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
@@ -181,6 +182,12 @@
 
         public bool Test { get; set; }
 
+        public bool UserIsAtParcel
+        {
+            get => _userIsAtParcel;
+            set => SetProperty(ref _userIsAtParcel, value);
+        }
+
         public List<string> Years
         {
             get => _years;
@@ -237,14 +244,14 @@
         private void UpdateTechChecked()
         {
             var technologies = new List<string>();
-            if (_tech1Checked) technologies.Add("tech1");
-            if (_tech2Checked) technologies.Add("tech2");
-            if (_tech3Checked) technologies.Add("tech3");
-            if (_tech4Checked) technologies.Add("tech4");
-            if (_tech5Checked) technologies.Add("tech5");
-            if (_tech6Checked) technologies.Add("tech6");
-            if (_tech7Checked) technologies.Add("tech7");
-            if (_tech8Checked) technologies.Add("tech8");
+            if (_tech1Checked) technologies.Add("Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento ");
+            if (_tech2Checked) technologies.Add("Interpretación y uso del análisis de suelo");
+            if (_tech3Checked) technologies.Add("Uso del sensor infrarrojo para fertilización óptima");
+            if (_tech4Checked) technologies.Add("Uso de biofertilizantes");
+            if (_tech5Checked) technologies.Add("Mejoradores de suelo para complementar fertilización");
+            if (_tech6Checked) technologies.Add("Mínimo movimiento de suelo, retención de residuos y rotación de cultivos");
+            if (_tech7Checked) technologies.Add("Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)");
+            if (_tech8Checked) technologies.Add("Tecnología para mejorar el almacenamiento del grano");
             Parcel.TechnologiesUsed = technologies;
         }
     }

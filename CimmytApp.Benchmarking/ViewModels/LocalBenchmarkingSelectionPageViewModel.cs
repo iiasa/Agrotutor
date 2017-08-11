@@ -14,6 +14,8 @@
     {
         private readonly ICimmytDbOperations _cimmytDbOperations;
         private readonly INavigationService _navigationService;
+        private bool _filterCycle;
+        private bool _filterYears;
 
         public LocalBenchmarkingSelectionPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
@@ -31,7 +33,6 @@
             };
 
             YearsSelection = new List<string>{
-                "2015",
                 "2016",
                 "2017"
             };
@@ -46,8 +47,19 @@
         public List<string> CycleSelection { get; set; }
         public int DatasetSelectedIndex { get; set; }
         public List<string> DatasetSelection { get; set; }
-        public bool FilterCycle { get; set; }
-        public bool FilterYears { get; set; }
+
+        public bool FilterCycle
+        {
+            get => _filterCycle;
+            set => SetProperty(ref _filterCycle, value);
+        }
+
+        public bool FilterYears
+        {
+            get => _filterYears;
+            set => SetProperty(ref _filterYears, value);
+        }
+
         public ICommand RefreshDataCommand { get; set; }
         public ICommand ViewDataCommand { get; set; }
         public int YearsSelectedIndex { get; set; }
