@@ -1,11 +1,12 @@
 ﻿using Prism;
 using Prism.Commands;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows.Input;
+using CimmytApp.DTO;
 using Helper.Base.Contract;
-using Helper.Base.DTO;
 using Xamarin.Forms.Maps;
 using Prism.Events;
 using Prism.Mvvm;
@@ -29,6 +30,9 @@ namespace Helper.Map.ViewModels
 
         public ICommand MapClickedCommand { get; set; }
         public ICommand MapLongPressCommand { get; set; }
+
+        public DelegateCommand AcceptDeliniationCommand { get; set; }
+        public DelegateCommand CancelDeliniationCommand { get; set; }
 
         private DeliniationState CurrentDeliniationState
         {
@@ -67,7 +71,7 @@ namespace Helper.Map.ViewModels
         }
 
         private readonly IPosition _geoLocator;
-        private GeoPosition _currentGeoPosition;
+        private Base.DTO.GeoPosition _currentGeoPosition;
         private Position _mapsPosition;
         private ObservableCollection<TKCustomMapPin> _customPinsList;
         private ObservableCollection<TKPolygon> _mapPolygonsList;
@@ -125,9 +129,45 @@ namespace Helper.Map.ViewModels
             CurrentDeliniationState = DeliniationState.Inactive;
             MapClickedCommand = new Command(MapClicked);
             MapLongPressCommand = new Command(MapLongPress);
+            AcceptDeliniationCommand = new DelegateCommand(AcceptDeliniation);
+            CancelDeliniationCommand = new DelegateCommand(CancelDeliniation);
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation);
             GetPosition();
+        }
+
+        private void CancelDeliniation()
+        {
+            ButtonCancelDeliniationEnabled = false;
+            ButtonAcceptDeliniationEnabled = false;
+            MapPolygons = null;
+            CurrentDeliniationState = DeliniationState.Inactive;
+            CustomPinsList.Clear();
+        }
+
+        private void AcceptDeliniation()
+        {
+            var positions = MapPolygons.ElementAt(0).Coordinates;
+            if (positions.Count == 0)
+            {
+                _navigationService.GoBackAsync();
+            }
+            else
+            {
+                var geoPositions = new List<CimmytApp.DTO.GeoPosition>();
+                foreach (var position in positions)
+                {
+                    geoPositions.Add(new CimmytApp.DTO.GeoPosition
+                    {
+                        Latitude = position.Latitude,
+                        Longitude = position.Longitude,
+                        AcquiredThrough = TypeOfAcquisition.SelectedOnMap
+                    });
+                }
+                geoPositions.Add(geoPositions.ElementAt(0));
+                var parameters = new NavigationParameters { { "Deliniation", geoPositions } };
+                _navigationService.GoBackAsync(parameters);
+            }
         }
 
         private void MapClicked(object obj)
@@ -184,7 +224,7 @@ namespace Helper.Map.ViewModels
             _navigationService.GoBackAsync(parameters);
         }
 
-        private void HandlePositionEvent(GeoPosition position)
+        private void HandlePositionEvent(Base.DTO.GeoPosition position)
         {
             if (position == null)
             {

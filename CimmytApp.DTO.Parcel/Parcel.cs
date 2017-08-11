@@ -8,6 +8,7 @@ using SQLite.Net.Attributes;
 using Helper.BusinessContract;
 using Helper.GeoWiki.GenericDatasetStorage;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace CimmytApp.DTO.Parcel
 {
@@ -28,6 +29,7 @@ namespace CimmytApp.DTO.Parcel
         private string _parcelName;
         private string _performance;
         private List<PesticideApplication> _pesticidesApplied;
+        private string _deliniation;
         private DateTime _plantingDate;
         private string _producerName;
         private List<string> _technologiesUsed;
@@ -308,6 +310,16 @@ namespace CimmytApp.DTO.Parcel
             var iHandler = PropertyChanged;
             _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+        }
+
+        public List<GeoPosition> GetDeliniation()
+        {
+            return string.IsNullOrEmpty(_deliniation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_deliniation);
+        }
+
+        public void SetDeliniation(List<GeoPosition> deliniation)
+        {
+            _deliniation = JsonConvert.SerializeObject(deliniation);
         }
     }
 }

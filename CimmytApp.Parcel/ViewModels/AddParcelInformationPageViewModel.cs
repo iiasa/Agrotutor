@@ -1,4 +1,7 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Windows.Input;
+using CimmytApp.BusinessContract;
+using CimmytApp.DTO;
 using Xamarin.Forms;
 
 namespace CimmytApp.Parcel.ViewModels
@@ -20,11 +23,13 @@ namespace CimmytApp.Parcel.ViewModels
         private bool isActive;
         public ICommand DeliniateParcelCommand { get; set; }
         private INavigationService _navigationService;
+        private ICimmytDbOperations _cimmytDbOperations;
 
-        public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator) : base(eventAggregator)
+        public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
             DeliniateParcelCommand = new Command(DeliniateParcel);
             _navigationService = navigationService;
+            _cimmytDbOperations = cimmytDbOperations;
         }
 
         private void DeliniateParcel()
@@ -71,6 +76,15 @@ namespace CimmytApp.Parcel.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            if (parameters.ContainsKey("Deliniation"))
+            {
+                object deliniation;
+                parameters.TryGetValue("Deliniation", out deliniation);
+                Parcel.SetDeliniation((List<GeoPosition>)deliniation);
+                OnPropertyChanged("Parcel"); //TODO improve this...
+                PublishDataset(_parcel);//TODO improve this..
+                _cimmytDbOperations.UpdateParcel(Parcel);
+            }
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

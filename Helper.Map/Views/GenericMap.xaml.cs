@@ -4,6 +4,7 @@ using Helper.Map.ViewModels;
 using TK.CustomMap;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
+using Xamarin.Forms.Xaml;
 
 namespace Helper.Map.Views
 {
