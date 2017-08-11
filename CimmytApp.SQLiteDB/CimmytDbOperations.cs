@@ -1,4 +1,7 @@
-﻿namespace CimmytApp.SQLiteDB
+﻿using System;
+using SQLiteNetExtensions.Extensions.TextBlob;
+
+namespace CimmytApp.SQLiteDB
 {
     using System.Collections.Generic;
     using SqLite.Contract;
@@ -16,14 +19,24 @@
 
         public CimmytDbOperations()
         {
+            try
+            {
+
             _databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
 
             _databaseConn.CreateTable<Parcel>();
+            _databaseConn.CreateTable<PolygonDto>();
             _databaseConn.CreateTable<PesticideApplication>();
             _databaseConn.CreateTable<Costo>();
             _databaseConn.CreateTable<Ingreso>();
             _databaseConn.CreateTable<Rendimiento>();
             _databaseConn.CreateTable<Utilidad>();
+                
+            }
+            catch (Exception)
+            {
+               
+            }
         }
 
         public void AddParcel(Parcel parcel)
@@ -44,6 +57,35 @@
         public List<Parcel> GetAllParcels()
         {
             return _databaseConn.GetAllWithChildren<Parcel>();
+        }
+
+        public void SaveParcelPolygon(int parcelId, PolygonDto polygonObj)
+        {
+            if (polygonObj == null)
+                throw new ArgumentNullException();
+
+            var parcelObj = _databaseConn.GetWithChildren<Parcel>(parcelId);
+          
+            if (parcelObj != null)
+            {
+                if (parcelObj.Polygon == null)
+                {
+                    parcelObj.Polygon = polygonObj;
+                    _databaseConn.InsertOrReplaceWithChildren(parcelObj);
+                }
+                else
+                {
+                    parcelObj.Polygon.ListPoints = polygonObj.ListPoints;
+                    _databaseConn.UpdateWithChildren(parcelObj);
+
+                }
+               // _databaseConn.Delete<Parcel>(parcelObj.ParcelId);
+              
+              
+               
+            }
+
+
         }
 
         public BemData GetBemData()

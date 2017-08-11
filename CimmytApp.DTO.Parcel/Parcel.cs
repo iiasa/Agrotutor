@@ -35,11 +35,13 @@ namespace CimmytApp.DTO.Parcel
         private List<string> _technologiesUsed;
         private int _uploaded;
         private string _year;
+        private PolygonDto _polygon;
 
         public Parcel()
         {
             PlantingDate = DateTime.Today;
-            _technologiesUsed = new List<string>();
+            //_technologiesUsed = new List<string>();
+            //_polygon=new PolygonDto();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -91,6 +93,30 @@ namespace CimmytApp.DTO.Parcel
             {
                 _estimatedParcelArea = value;
                 OnPropertyChanged("EstimatedParcelArea");
+            }
+        }
+        [ForeignKey(typeof(PolygonDto))]
+        public int PolygonID { get; set; }
+
+        [OneToOne(CascadeOperations = CascadeOperation.All)]
+        public PolygonDto Polygon
+        {
+            get { return _polygon; }
+            set
+            {
+                _polygon = value;
+                OnPropertyChanged("Polygon");
+            }
+        }
+
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
+        public List<PesticideApplication> PesticidesApplied
+        {
+            get => _pesticidesApplied;
+            set
+            {
+                _pesticidesApplied = value;
+                OnPropertyChanged("PesticidesApplied");
             }
         }
 
@@ -212,16 +238,7 @@ namespace CimmytApp.DTO.Parcel
 
         public string PerformanceWithUnit => Performance + " tons/ha";
 
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<PesticideApplication> PesticidesApplied
-        {
-            get => _pesticidesApplied;
-            set
-            {
-                _pesticidesApplied = value;
-                OnPropertyChanged("PesticidesApplied");
-            }
-        }
+
 
         public DateTime PlantingDate
         {
@@ -268,7 +285,7 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
-        public string TechnologiesUsedBlobbed { get; set; } // serialized phone numbers
+        public string TechnologiesUsedBlobbed { get; set; }
 
         public string Year
         {
@@ -280,23 +297,25 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        //ToDo:Move to another Class 
         public static async Task<List<Parcel>> LoadParcelsFromServer()
         {
             return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
         }
-
+        //ToDo:Move to another Class 
         public DataTemplate GetOverviewDataTemplate()
         {
             return null;
         }
 
+        //ToDo:Move to another Class 
         public void Submit()
         {
             if (_uploaded == (int)DatasetUploadStatus.Synchronized) return;
             _uploaded = (int)DatasetUploadStatus.Synchronized;
             Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
         }
-
+        //ToDo:Move to another Class 
         public async Task<Parcel> SubmitAsync()
         {
             if (_uploaded == (int)DatasetUploadStatus.Synchronized) return null;
@@ -311,12 +330,12 @@ namespace CimmytApp.DTO.Parcel
             _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
-
+        //ToDo:Move to another Class 
         public List<GeoPosition> GetDeliniation()
         {
             return string.IsNullOrEmpty(_deliniation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_deliniation);
         }
-
+        //ToDo:Move to another Class 
         public void SetDeliniation(List<GeoPosition> deliniation)
         {
             _deliniation = JsonConvert.SerializeObject(deliniation);

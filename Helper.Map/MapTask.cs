@@ -2,6 +2,7 @@
 {
     public enum MapTask
     {
+        
         GetLocation,
 
         //GetPath,

@@ -13,6 +13,7 @@
 
         List<Parcel> GetAllParcels();
 
+        void SaveParcelPolygon(int parcelId, PolygonDto polygonObj);
         BemData GetBemData();
 
         Parcel GetParcelById(int parcelId);

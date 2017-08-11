@@ -19,7 +19,7 @@
                 EstimatedParcelArea = "10",
                 //GeoPosition = new GeoPosition()
                 //{
-                    Accuracy = 10,
+                    //Accuracy = 10,
                     Latitude = 48,
                     Longitude = 17,
                 //},
@@ -50,7 +50,7 @@
                 EstimatedParcelArea = "10",
                 //GeoPosition = new GeoPosition()
                 //{
-                    Accuracy = 10,
+                  //  Accuracy = 10,
                     Latitude = 48.01,
                     Longitude = 17.02,
                 //},

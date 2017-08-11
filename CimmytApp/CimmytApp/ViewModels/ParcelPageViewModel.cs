@@ -111,6 +111,9 @@
 
         private async System.Threading.Tasks.Task ReadDataAsync()
         {
+            try
+            {
+
             var restfulClient = new RestfulClient<WeatherData>();
             var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.Latitude}&lng={Parcel.Longitude}");
             if (response != null)
@@ -118,6 +121,12 @@
                 _weatherDbOperations.AddWeatherData(response);
                 var returnData = _weatherDbOperations.GetAllWeatherData();
                 WeatherData = returnData;
+            }
+
+            }
+            catch (Exception e)
+            {
+             
             }
         }
     }

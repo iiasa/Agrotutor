@@ -6,7 +6,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
+using CimmytApp.DTO.Parcel;
 using Helper.Base.Contract;
 using Xamarin.Forms.Maps;
 using Prism.Events;
@@ -72,6 +74,7 @@ namespace Helper.Map.ViewModels
         }
 
         private readonly IPosition _geoLocator;
+        private readonly ICimmytDbOperations _cimmytDbOperations;
         private Base.DTO.GeoPosition _currentGeoPosition;
         private Position _mapsPosition;
         private ObservableCollection<TKCustomMapPin> _customPinsList;
@@ -122,12 +125,13 @@ namespace Helper.Map.ViewModels
         }
 
         //IPosition geoLocator,
-        public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
+        public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
-           // _mapPolygonsList=new ObservableCollection<TKPolygon>();
+            _cimmytDbOperations = cimmytDbOperations;
+            // _mapPolygonsList=new ObservableCollection<TKPolygon>();
             CurrentDeliniationState = DeliniationState.Inactive;
             MapClickedCommand = new DelegateCommand<object>(MapClicked);
             MapLongPressCommand = new DelegateCommand<object>(MapLongPress);
@@ -136,8 +140,47 @@ namespace Helper.Map.ViewModels
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
             GetPosition();
+           var polyRes= GetAllPolygons();
+            DrawPolygonsOnMap(polyRes);
         }
 
+
+        private List<Parcel> GetAllPolygons()
+        {
+          return _cimmytDbOperations.GetAllParcels();
+        
+        }
+
+        private void DrawPolygonsOnMap(List<Parcel>listParcels )
+        {
+            if (listParcels==null)
+            return;
+            MapPolygons = new ObservableCollection<TKPolygon>();
+          // List<PolygonDto>listPol=new List<PolygonDto>();
+            foreach (var item in listParcels)
+            {
+                if (item.Polygon != null)
+                {
+                    var polygon = new TKPolygon
+                    {
+                        StrokeColor = Color.Green,
+                        StrokeWidth = 2f,
+                        Color = Color.Red,
+
+                    };
+                    List<Position> listPosition = new List<Position>();
+                    foreach (var positionitem in item.Polygon.ListPoints)
+                    {
+                        listPosition.Add(new Position(positionitem.Latitude, positionitem.Longitude));
+                    }
+                    if (listPosition.Count > 2)
+                    {
+                        polygon.Coordinates = listPosition;
+                        MapPolygons.Add(polygon);
+                    }
+                }
+            }
+        }
         private void CancelDeliniation()
         {
             ButtonCancelDeliniationEnabled = false;
@@ -163,10 +206,10 @@ namespace Helper.Map.ViewModels
                     {
                         Latitude = position.Latitude,
                         Longitude = position.Longitude,
-                        AcquiredThrough = TypeOfAcquisition.SelectedOnMap
+                    //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
                     });
                 }
-                geoPositions.Add(geoPositions.ElementAt(0));
+              //  geoPositions.Add(geoPositions.ElementAt(0));
                 var parameters = new NavigationParameters { { "Deliniation", geoPositions } };
                 _navigationService.GoBackAsync(parameters);
             }
@@ -196,13 +239,13 @@ namespace Helper.Map.ViewModels
 
             ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
            // MapPolygons = polygonsList;
-           MapPolygons[0].Coordinates.Add(position);
+         //  MapPolygons[0].Coordinates.Add(position);
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_" + pointId,
                 Position = position,
             });
-            MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+         //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
             //if (polygonsList.ElementAt(0).Coordinates.Count > 2)
             //{
             //    _eventAggregator.GetEvent<Test>().Publish("");

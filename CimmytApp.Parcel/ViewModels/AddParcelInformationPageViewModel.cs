@@ -80,10 +80,14 @@ namespace CimmytApp.Parcel.ViewModels
             {
                 object deliniation;
                 parameters.TryGetValue("Deliniation", out deliniation);
-                Parcel.SetDeliniation((List<GeoPosition>)deliniation);
+                //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
+                PolygonDto polygonObj=new PolygonDto();
+                polygonObj.ListPoints = (List<GeoPosition>) deliniation;
+                _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
+                var res=_cimmytDbOperations.GetAllParcels();
                 OnPropertyChanged("Parcel"); //TODO improve this...
                 PublishDataset(_parcel);//TODO improve this..
-                _cimmytDbOperations.UpdateParcel(Parcel);
+              //  _cimmytDbOperations.UpdateParcel(Parcel);
             }
         }
 
