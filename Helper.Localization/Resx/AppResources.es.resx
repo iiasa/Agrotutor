@@ -648,4 +648,7 @@
   <data name="weblink2" xml:space="preserve">
     <value>Como Crecer con Don Crecencio</value>
   </data>
+  <data name="bem_data_type" xml:space="preserve">
+    <value>Seleccione el tipo de datos</value>
+  </data>
 </root>

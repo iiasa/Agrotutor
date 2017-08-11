@@ -244,14 +244,14 @@
         private void UpdateTechChecked()
         {
             var technologies = new List<string>();
-            if (_tech1Checked) technologies.Add("tech1");
-            if (_tech2Checked) technologies.Add("tech2");
-            if (_tech3Checked) technologies.Add("tech3");
-            if (_tech4Checked) technologies.Add("tech4");
-            if (_tech5Checked) technologies.Add("tech5");
-            if (_tech6Checked) technologies.Add("tech6");
-            if (_tech7Checked) technologies.Add("tech7");
-            if (_tech8Checked) technologies.Add("tech8");
+            if (_tech1Checked) technologies.Add("Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento ");
+            if (_tech2Checked) technologies.Add("Interpretación y uso del análisis de suelo");
+            if (_tech3Checked) technologies.Add("Uso del sensor infrarrojo para fertilización óptima");
+            if (_tech4Checked) technologies.Add("Uso de biofertilizantes");
+            if (_tech5Checked) technologies.Add("Mejoradores de suelo para complementar fertilización");
+            if (_tech6Checked) technologies.Add("Mínimo movimiento de suelo, retención de residuos y rotación de cultivos");
+            if (_tech7Checked) technologies.Add("Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)");
+            if (_tech8Checked) technologies.Add("Tecnología para mejorar el almacenamiento del grano");
             Parcel.TechnologiesUsed = technologies;
         }
     }

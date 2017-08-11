@@ -134,6 +134,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select type of data.
+        /// </summary>
+        public static string bem_data_type {
+            get {
+                return ResourceManager.GetString("bem_data_type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Benchmarking.
         /// </summary>
         public static string benchmarking {

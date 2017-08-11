@@ -77,7 +77,7 @@
             <BoxView Color="CadetBlue" HeightRequest="1" WidthRequest="100" Margin="16, 0, 16, 0" />
             <Label Text="22-07-2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 0, 16, 16" />
 -->
-            <Button Command="{Binding TestCommand}" Text="OK" />
+            <!--<Button Command="{Binding TestCommand}" Text="OK" />-->
         </StackLayout>
     </ScrollView>
 </ContentPage>

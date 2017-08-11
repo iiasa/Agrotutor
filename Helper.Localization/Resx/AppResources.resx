@@ -648,4 +648,7 @@
   <data name="weblink2" xml:space="preserve">
     <value>How to grow with Don Grower</value>
   </data>
+  <data name="bem_data_type" xml:space="preserve">
+    <value>Select type of data</value>
+  </data>
 </root>
