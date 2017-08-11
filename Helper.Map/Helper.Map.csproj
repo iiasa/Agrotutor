@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DeliniationState.cs" />
+    <Compile Include="Test.cs" />
     <Compile Include="Views\GenericMap.xaml.cs">
       <DependentUpon>GenericMap.xaml</DependentUpon>
     </Compile>

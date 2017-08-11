@@ -1,9 +1,12 @@
 ﻿using Prism;
 using Prism.Commands;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Input;
+using CimmytApp.DTO.Parcel;
 using Helper.Base.Contract;
 using Helper.Base.DTO;
 using Xamarin.Forms.Maps;
@@ -21,7 +24,7 @@ namespace Helper.Map.ViewModels
     {
         private readonly INavigationService _navigationService;
 
-        private readonly IEventAggregator _eventAggregator;
+        public IEventAggregator _eventAggregator;
         private bool _isGetLocationFeatureExist;
         private bool _isGeolocationEnabled;
         private MapTask _mapTask = MapTask.DisplayGeometriesOnly;
@@ -122,7 +125,7 @@ namespace Helper.Map.ViewModels
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
-            _mapPolygonsList=new ObservableCollection<TKPolygon>();
+           // _mapPolygonsList=new ObservableCollection<TKPolygon>();
             CurrentDeliniationState = DeliniationState.Inactive;
             MapClickedCommand = new DelegateCommand<object>(MapClicked);
             MapLongPressCommand = new DelegateCommand<object>(MapLongPress);
@@ -136,24 +139,45 @@ namespace Helper.Map.ViewModels
         {
             if (CurrentDeliniationState == DeliniationState.Inactive) return;
             var position = (Position)obj;
-            var polygonsList = MapPolygons;
-            var pointId = polygonsList.ElementAt(0).Coordinates.Count;
-            polygonsList.ElementAt(0).Coordinates.Add(position);
-            CurrentDeliniationState = (polygonsList.ElementAt(0).Coordinates.Count > 2)
-                ? DeliniationState.ActiveEnoughPoints
-                : DeliniationState.ActiveNotEnoughPoints;
+            // var polygonsList = MapPolygons;
+     
+             var pointId = MapPolygons.ElementAt(0).Coordinates.Count;
+         
+           MapPolygons.ElementAt(0).Coordinates.Add(position);
+   
+            if (MapPolygons.ElementAt(0).Coordinates.Count > 2)
+            {
+                CurrentDeliniationState = DeliniationState.ActiveEnoughPoints;
+                var listCoordinate = MapPolygons[0].Coordinates;
+                listCoordinate.Add(position);
+                MapPolygons[0].Coordinates = new List<Position>(listCoordinate);
+            }
+            else
+            {
+                CurrentDeliniationState = DeliniationState.ActiveNotEnoughPoints;
+            }
+
             ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
-           // MapPolygons = polygonsList;
-           MapPolygons[0].Coordinates.Add(position);
+          //  MapPolygons = polygonsList;
+          // MapPolygons[0].Coordinates.Add(position);
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_" + pointId,
                 Position = position,
             });
+            MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+            //if (polygonsList.ElementAt(0).Coordinates.Count > 2)
+            //{
+            //    _eventAggregator.GetEvent<Test>().Publish("");
+            //}
         }
 
-        private void MapLongPress(object obj)
+        private async void MapLongPress(object obj)
         {
+
+
+
+
             if (_mapTask != MapTask.GetPolygon) return;
             var position = (Position)obj;
             if (CurrentDeliniationState != DeliniationState.Inactive)
@@ -162,17 +186,18 @@ namespace Helper.Map.ViewModels
                 return;
             }
 
-           // _mapPolygonsList = new ObservableCollection<TKPolygon>();
+            MapPolygons = new ObservableCollection<TKPolygon>();
             var polygon = new TKPolygon // TODO: following settings don't affect stroke in polygon object
             {
-                StrokeColor = Color.Black,
-                StrokeWidth = 2,
-                Color = Color.FromHex("#885F9EA0")
+                StrokeColor = Color.Green,
+                StrokeWidth = 2f,
+                Color = Color.Red,
+
             };
+
             polygon.Coordinates.Add(position);
-           // _mapPolygonsList.Add(polygon);
-         //   MapPolygons = _mapPolygonsList;
-         MapPolygons.Add(polygon);
+
+            MapPolygons.Add(polygon);
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_0",
