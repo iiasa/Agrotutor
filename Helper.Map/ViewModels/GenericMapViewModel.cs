@@ -211,8 +211,6 @@ namespace Helper.Map.ViewModels
             polygon.Coordinates.Add(position);
             // _mapPolygonsList.Add(polygon);
             //   MapPolygons = _mapPolygonsList;
-            if (MapPolygons == null) MapPolygons = new ObservableCollection<TKPolygon>();
-
             MapPolygons.Add(polygon);
             CustomPinsList.Add(new TKCustomMapPin
             {
