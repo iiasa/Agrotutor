@@ -6,7 +6,7 @@
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              mvvm:ViewModelLocator.AutowireViewModel="True"
              xmlns:controls="clr-namespace:XamForms.Controls;assembly=XamForms.Controls.Calendar"
-             Title="Calendar">
+             Title="{localization:Translate calendar}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

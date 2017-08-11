@@ -134,6 +134,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Benchmarking.
+        /// </summary>
+        public static string benchmarking {
+            get {
+                return ResourceManager.GetString("benchmarking", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Choose location on map.
         /// </summary>
         public static string btn_choose_location {
@@ -157,6 +166,24 @@ namespace Helper.Localization.Resx {
         public static string btn_save_and_new1 {
             get {
                 return ResourceManager.GetString("btn_save_and_new1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calendar.
+        /// </summary>
+        public static string calendar {
+            get {
+                return ResourceManager.GetString("calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        public static string cancel {
+            get {
+                return ResourceManager.GetString("cancel", resourceCulture);
             }
         }
         
@@ -395,6 +422,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deliniate parcel.
+        /// </summary>
+        public static string deliniate_parcel {
+            get {
+                return ResourceManager.GetString("deliniate_parcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Daily evapotranspiration short crop.
         /// </summary>
         public static string desc {
@@ -535,6 +571,24 @@ namespace Helper.Localization.Resx {
         public static string filter {
             get {
                 return ResourceManager.GetString("filter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter by cycle.
+        /// </summary>
+        public static string filter_cycle {
+            get {
+                return ResourceManager.GetString("filter_cycle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Filter by year.
+        /// </summary>
+        public static string filter_years {
+            get {
+                return ResourceManager.GetString("filter_years", resourceCulture);
             }
         }
         
@@ -1025,6 +1079,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        public static string ok {
+            get {
+                return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Optional information.
         /// </summary>
         public static string optional_information {
@@ -1187,6 +1250,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Parcels.
+        /// </summary>
+        public static string parcels {
+            get {
+                return ResourceManager.GetString("parcels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Plot.
         /// </summary>
         public static string plot {
@@ -1228,6 +1300,15 @@ namespace Helper.Localization.Resx {
         public static string radiation_unit_short {
             get {
                 return ResourceManager.GetString("radiation_unit_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh benchmarking data.
+        /// </summary>
+        public static string refresh_benchmarking_data {
+            get {
+                return ResourceManager.GetString("refresh_benchmarking_data", resourceCulture);
             }
         }
         
@@ -1525,6 +1606,42 @@ namespace Helper.Localization.Resx {
         public static string unit_performance {
             get {
                 return ResourceManager.GetString("unit_performance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use this location.
+        /// </summary>
+        public static string use_this_location {
+            get {
+                return ResourceManager.GetString("use_this_location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View.
+        /// </summary>
+        public static string view {
+            get {
+                return ResourceManager.GetString("view", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CIMMYT Soil Protocols.
+        /// </summary>
+        public static string weblink1 {
+            get {
+                return ResourceManager.GetString("weblink1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to How to grow with Don Grower.
+        /// </summary>
+        public static string weblink2 {
+            get {
+                return ResourceManager.GetString("weblink2", resourceCulture);
             }
         }
         

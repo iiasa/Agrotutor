@@ -14,10 +14,10 @@
 
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
-        private readonly List<string> _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
-        private readonly List<string> _singleYears = new List<string>() { "2015", "2016", "2017" };
         private readonly ICimmytDbOperations _cimmytDbOperations;
+        private readonly List<string> _doubleYears = new List<string>() { "2014-2015", "2015-2016", "2016-2017" };
         private readonly INavigationService _navigationService;
+        private readonly List<string> _singleYears = new List<string>() { "2015", "2016", "2017" };
         private int _pickerAgriculturalCycleSelectedIndex;
         private int _pickerCropTypesSelectedIndex;
         private int _pickerIrrigationTypesSelectedIndex;
@@ -30,6 +30,7 @@
         private bool _tech6Checked;
         private bool _tech7Checked;
         private bool _tech8Checked;
+        private bool _userIsAtParcel;
         private List<string> _years;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
@@ -180,6 +181,12 @@
         }
 
         public bool Test { get; set; }
+
+        public bool UserIsAtParcel
+        {
+            get => _userIsAtParcel;
+            set => SetProperty(ref _userIsAtParcel, value);
+        }
 
         public List<string> Years
         {
