@@ -1,6 +1,5 @@
 ﻿namespace Helper.DTO.SkywiseWeather.Historical.Wind
 {
-    using System;
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
 

@@ -1,6 +1,5 @@
 namespace Helper.DTO.SkywiseWeather.Historical.Evapotranspiration
 {
-    using System;
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
 
