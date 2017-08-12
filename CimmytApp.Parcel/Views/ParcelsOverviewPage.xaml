@@ -6,7 +6,8 @@
              x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              x:Name="ParcelOverviewRoot"
-    Title="{localization:Translate page_title_parcels_overview}">
+   >
+    <!--Title="{localization:Translate page_title_parcels_overview}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />

@@ -7,7 +7,8 @@
                  xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
                  xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
 
-                 Title="{localization:Translate page_title_add_parcel}" Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
+                 Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
+    <!--Title="{localization:Translate page_title_add_parcel}"-->
     <Grid>
 
         <Grid.RowDefinitions>

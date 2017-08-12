@@ -245,7 +245,9 @@ namespace CimmytApp.DTO.Parcel
             get => _plantingDate;
             set
             {
-                _plantingDate = value;
+                //_plantingDate = value;
+         
+                _plantingDate = value.ToLocalTime();
                 OnPropertyChanged("PlantingDate");
             }
         }
