@@ -11,6 +11,7 @@
 
         public string startDate { get; set; }
         public string endDate { get; set; }
+        public Value[] series { get; set; }
 
         [ForeignKey(typeof(WeatherData))]
         public int WeatherDataID { get; set; }

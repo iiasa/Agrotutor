@@ -5,13 +5,10 @@
     using SQLiteNetExtensions.Attributes;
 
     [Table("HourlyDewpoint")]
-    public class HourlyDewpoint : HistoricalSeries
+    public class HourlyDewpoint : HourlySeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-
-        public DateTime startTime { get; set; }
-        public DateTime endTime { get; set; }
 
         [ForeignKey(typeof(WeatherData))]
         public int WeatherDataID { get; set; }

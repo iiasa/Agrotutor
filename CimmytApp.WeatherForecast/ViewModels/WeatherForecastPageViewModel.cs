@@ -10,11 +10,13 @@ namespace CimmytApp.WeatherForecast.ViewModels
     using System;
     using Helper.BusinessContract;
     using Prism.Events;
-    using CimmytApp.DTO;
     using Prism.Navigation;
     using System.ComponentModel;
     using Prism;
+
     using Helper.DTO.SkywiseWeather.Historical;
+
+    using DTO;
 
     public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
