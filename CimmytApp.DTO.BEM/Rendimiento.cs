@@ -1,6 +1,5 @@
 ﻿namespace CimmytApp.DTO.BEM
 {
-    using System;
     using Newtonsoft.Json;
     using SQLite.Net.Attributes;
 

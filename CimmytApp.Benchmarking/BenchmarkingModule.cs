@@ -15,9 +15,12 @@
         }
 
         public void Initialize()
-		{
-			_unityContainer.RegisterTypeForNavigation<LocalBenchmarkingSelectionPage>();
-			_unityContainer.RegisterTypeForNavigation<LocalBenchmarkingPage>();
+        {
+            _unityContainer.RegisterTypeForNavigation<LocalBenchmarkingSelectionPage>();
+            _unityContainer.RegisterTypeForNavigation<ViewCostoPage>();
+            _unityContainer.RegisterTypeForNavigation<ViewIngresoPage>();
+            _unityContainer.RegisterTypeForNavigation<ViewRendimientoPage>();
+            _unityContainer.RegisterTypeForNavigation<ViewUtilidadPage>();
         }
     }
 }

@@ -38,6 +38,10 @@
     <Compile Include="BenchmarkingModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\LocalBenchmarkingPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewCostoPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewIngresoPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewRendimientoPageViewModel.cs" />
+    <Compile Include="ViewModels\ViewUtilidadPageViewModel.cs" />
     <Compile Include="Views\LocalBenchmarkingPage.xaml.cs">
       <DependentUpon>LocalBenchmarkingPage.xaml</DependentUpon>
     </Compile>
@@ -45,6 +49,18 @@
       <DependentUpon>LocalBenchmarkingSelectionPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\LocalBenchmarkingSelectionPageViewModel.cs" />
+    <Compile Include="Views\ViewCostoPage.xaml.cs">
+      <DependentUpon>ViewCostoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewIngresoPage.xaml.cs">
+      <DependentUpon>ViewIngresoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewRendimientoPage.xaml.cs">
+      <DependentUpon>ViewRendimientoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewUtilidadPage.xaml.cs">
+      <DependentUpon>ViewUtilidadPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LocalBenchmarkingPage.xaml">
@@ -119,6 +135,30 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ViewCostoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ViewRendimientoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ViewUtilidadPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ViewIngresoPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
