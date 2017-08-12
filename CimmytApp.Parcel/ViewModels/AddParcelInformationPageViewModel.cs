@@ -2,6 +2,7 @@
 using System.Windows.Input;
 using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
+using Prism.Commands;
 using Xamarin.Forms;
 
 namespace CimmytApp.Parcel.ViewModels
@@ -21,13 +22,23 @@ namespace CimmytApp.Parcel.ViewModels
     {
         private Parcel _parcel;
         private bool isActive;
-        public ICommand DeliniateParcelCommand { get; set; }
+        public DelegateCommand DeliniateParcelCommand { get; set; }
         private INavigationService _navigationService;
         private ICimmytDbOperations _cimmytDbOperations;
+        private bool _deliniationAlreadyDone;
+
+        public bool DeliniationAlreadyDone
+        {
+            get { return _deliniationAlreadyDone; }
+            set
+            {
+                SetProperty(ref _deliniationAlreadyDone, value);
+            }
+        }
 
         public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
-            DeliniateParcelCommand = new Command(DeliniateParcel);
+            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel).ObservesCanExecute(o => DeliniationAlreadyDone);
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
         }
@@ -38,7 +49,8 @@ namespace CimmytApp.Parcel.ViewModels
             {
                 {"Latitude", _parcel.Latitude},
                 {"Longitude", _parcel.Longitude},
-                {"GetPolygon", true}
+                {"GetPolygon", true},
+                {"parcelId",_parcel.ParcelId }
             };
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -89,6 +101,21 @@ namespace CimmytApp.Parcel.ViewModels
                 PublishDataset(_parcel);//TODO improve this..
               //  _cimmytDbOperations.UpdateParcel(Parcel);
             }
+            else
+            {
+                if (Parcel != null)
+                {
+                    if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
+                    {
+                        DeliniationAlreadyDone = false;
+                    }
+                    else
+                    {
+                        DeliniationAlreadyDone = true;
+                    }
+
+                }
+            }
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -109,6 +136,7 @@ namespace CimmytApp.Parcel.ViewModels
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
+      
         }
     }
 }

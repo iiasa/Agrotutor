@@ -33,7 +33,7 @@
             {
                 _weatherDbOperations = weatherDbOperations;
                 _cimmytDbOperations = cimmytDbOperations;
-                ReadDataAsync();
+             //   ReadDataAsync();
             }
             catch (Exception e)
             {
@@ -109,25 +109,25 @@
         {
         }
 
-        private async System.Threading.Tasks.Task ReadDataAsync()
-        {
-            try
-            {
+        //private async System.Threading.Tasks.Task ReadDataAsync()
+        //{
+        //    try
+        //    {
 
-            var restfulClient = new RestfulClient<WeatherData>();
-            var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.Latitude}&lng={Parcel.Longitude}");
-            if (response != null)
-            {
-                _weatherDbOperations.AddWeatherData(response);
-                var returnData = _weatherDbOperations.GetAllWeatherData();
-                WeatherData = returnData;
-            }
+        //    var restfulClient = new RestfulClient<WeatherData>();
+        //    var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.Latitude}&lng={Parcel.Longitude}");
+        //    if (response != null)
+        //    {
+        //        _weatherDbOperations.AddWeatherData(response);
+        //        var returnData = _weatherDbOperations.GetAllWeatherData();
+        //        WeatherData = returnData;
+        //    }
 
-            }
-            catch (Exception e)
-            {
+        //    }
+        //    catch (Exception e)
+        //    {
              
-            }
-        }
+        //    }
+        //}
     }
 }

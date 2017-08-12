@@ -22,12 +22,17 @@ namespace CimmytApp.DTO.Parcel
         {
             get
             {
+                if(ListPointsBlobbed!=null)
                 return JsonConvert.DeserializeObject<List<GeoPosition>>(ListPointsBlobbed);
+                else
+                {
+                    return null;
+                }
              //  return _listPoints;
             }
             set
             {
-
+                if(value!=null)
                 ListPointsBlobbed = JsonConvert.SerializeObject(value);
                 
               //  _listPoints = value;
