@@ -19,6 +19,7 @@ namespace CimmytApp.Droid
 
             var platform = new SQLite.Net.Platform.XamarinAndroid.SQLitePlatformAndroid();
             var connection = new SQLite.Net.SQLiteConnection(platform, path);
+         
             return connection;
 
         }

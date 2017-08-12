@@ -5,7 +5,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.StaticContent.Views.LinksPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             Title="{localization:Translate page_title_links}" Padding="16">
+             Padding="16">
+    <!--Title="{localization:Translate page_title_links}"-->
     <Grid HorizontalOptions="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
