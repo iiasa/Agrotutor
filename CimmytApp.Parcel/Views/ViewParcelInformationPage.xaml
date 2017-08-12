@@ -10,45 +10,72 @@
     <ScrollView>
         <StackLayout Margin="16">
             <Label Text="Agricultural cycle"  FontSize="10" />
+            <Label Text="{Binding Parcel.AgriculturalCycle, Mode=TwoWay}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.AgriculturalCycle, Mode=TwoWay}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
+            
             <Label Text="Year"  FontSize="10" />
+            <Label Text="{Binding Parcel.Year }" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="2015" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Estimated parcel area" FontSize="10" />
+            <Label Text="{Binding Parcel.EstimatedParcelAreaWithUnit}" FontSize="Medium"  Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.EstimatedParcelAreaWithUnit}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
 
             <Label Text="Producer name"  FontSize="10" />
+            <Label Text="{Binding Parcel.ProducerName}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.ProducerName}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
+            
             <Label Text="Parcel name"  FontSize="10" />
+            <Label Text="{Binding Parcel.ParcelName}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.ParcelName}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
+            
             <Label Text="Technology used"  FontSize="10" />
-            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.TechnologiesScreenList}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
+            <!--<Label Text="{Binding Parcel.TechnologiesScreenList}" FontSize="Medium" Margin="16, 8, 16, 8" />-->
+            <!--<StackLayout VerticalOptions="FillAndExpand" Orientation="Vertical" HeightRequest="100">-->
+                <ListView x:Name="TechnologiesScreenListView" RowHeight="50" HeightRequest="150" SeparatorVisibility="None" ItemsSource="{Binding Parcel.TechnologiesUsed}"  >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
 
+                        <ViewCell>
+
+                            <Grid  Margin="5" >
+                                <!--<BoxView BackgroundColor="Black" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"></BoxView>-->
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                    <ColumnDefinition Width="20"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Image Aspect="AspectFit" HorizontalOptions="Center"   Source="bullet_black.png"  Grid.Column="0">
+                                </Image>
+                                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Orientation="Horizontal" Margin="2" Grid.Column="2" >
+
+                                    <Label x:Name="lbTechnologyName"  Text="{Binding}"></Label>
+                                </StackLayout>
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        <!--</StackLayout>-->
+            <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
+            
             <Label Text="Crop" FontSize="10" />
+            <Label Text="{Binding Parcel.Crop}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.Crop}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
+            
             <Label Text="Performance"  FontSize="10" />
+            <Label Text="{Binding Parcel.Performance}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.Performance}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
+            
             <Label Text="Irrigation"  FontSize="10" />
+            <Label Text="{Binding Parcel.Irrigation}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.Irrigation}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
+            
             <Label Text="Planting date"  FontSize="10" />
+            <Label Text="{Binding Parcel.PlantingDate}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-            <Label Text="{Binding Parcel.PlantingDate}" FontSize="Medium" HorizontalTextAlignment="End" Margin="16, 8, 16, 8" />
-
             <!--
             <Label Text="Pesticide application" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
