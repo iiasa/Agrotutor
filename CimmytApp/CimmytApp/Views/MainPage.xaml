@@ -14,10 +14,10 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Views.MainPage"
     Title="Title">
-    <views2:ParcelsOverviewPage />
-    <views4:GenericMap />
-    <views5:LocalBenchmarkingSelectionPage />
+    <views2:ParcelsOverviewPage Icon="icon_overview"/>
+    <views4:GenericMap Icon="icon_map"/>
+    <views5:LocalBenchmarkingSelectionPage Icon="icon_benchmark"/>
     <!--<viewsWeather:WeatherForecastPage />-->
-    <calend:CalendarPage />
-    <views1:LinksPage />
+    <calend:CalendarPage Icon="icon_calendar"/>
+    <views1:LinksPage Icon="icon_links"/>
 </TabbedPage>

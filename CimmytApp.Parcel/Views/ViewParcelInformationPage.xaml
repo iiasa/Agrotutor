@@ -5,7 +5,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              x:Class="CimmytApp.Parcel.Views.ViewParcelInformationPage"
-             Title="{localization:Translate view}">
+             >
+    <!--Title="{localization:Translate view}"-->
     <ScrollView>
         <StackLayout Margin="16">
             <Label Text="Agricultural cycle"  FontSize="10" />

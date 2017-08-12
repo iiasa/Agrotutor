@@ -4,8 +4,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage"
-             Title="Editar">
+             x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage">
+    <!--Title="Editar"-->
     <StackLayout>
         <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
     </StackLayout>
