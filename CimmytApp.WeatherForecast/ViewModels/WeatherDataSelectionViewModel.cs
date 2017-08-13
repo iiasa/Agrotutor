@@ -1,7 +1,4 @@
-﻿using CimmytApp.BusinessContract;
-using Prism.Mvvm;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -16,6 +13,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
     using Helper.DatasetSyncEvents.ViewModelBase;
     using Helper.DTO.SkywiseWeather.Historical;
 
+    using BusinessContract;
     using DTO;
     using DTO.Parcel;
 
@@ -29,6 +27,8 @@ namespace CimmytApp.WeatherForecast.ViewModels
         private IWeatherDbOperations _weatherDbOperations;
         private bool isActive;
         private GeoPosition position;
+
+        private bool refreshedFromServer = false;
 
         public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
         {
@@ -77,7 +77,16 @@ namespace CimmytApp.WeatherForecast.ViewModels
         public Parcel Parcel
         {
             get => _parcel;
-            set => SetProperty(ref _parcel, value);
+            set
+            {
+                SetProperty(ref _parcel, value);
+                LoadWeatherFromDb(value.ParcelId);
+            }
+        }
+
+        private void LoadWeatherFromDb(int parcelId)
+        {
+            _weatherDbOperations.GetWeatherData(parcelId);
         }
 
         public DelegateCommand RefreshWeatherDataCommand { get; set; }
@@ -96,9 +105,13 @@ namespace CimmytApp.WeatherForecast.ViewModels
 
             set
             {
-                WeatherData data = value;
+                var data = value;
                 data.ParcelId = Parcel.ParcelId;
-                SetProperty(ref _weatherData, value);
+                SetProperty(ref _weatherData, data);
+                if (refreshedFromServer)
+                {
+                    _weatherDbOperations.UpdateWeatherData(data);
+                }
             }
         }
 
@@ -121,6 +134,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
 
         private async void LoadWeatherDataAsync()
         {
+            refreshedFromServer = true;
             WeatherData = await WeatherService.GetWeatherData(position);
         }
 
