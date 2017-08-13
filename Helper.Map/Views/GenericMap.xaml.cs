@@ -38,31 +38,29 @@ namespace Helper.Map.Views
         {
             if (MapLayout.Children.Count == 0)
             {
-                 map = new TKCustomMap();
-                // map.BindingContext = contextObj;
+                if (contextObj != null)
+                {
+                    contextObj.DrawPolygonsOnMap();
+                    contextObj.AdjustMapZoom();
 
-                map.SetBinding(TKCustomMap.CustomPinsProperty, "CustomPinsList");
-                map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
-                map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
-                map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
-                map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
-                map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
+                    map = new TKCustomMap();
 
-                map.HasZoomEnabled = true;
-                map.MapType = MapType.Street;
-                map.IsShowingUser = false;
+                    map.SetBinding(TKCustomMap.CustomPinsProperty, "CustomPinsList");
+                    map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
+                    map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
+                    map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
+                    map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
+                    map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
 
-                //map.MapClickedCommand = contextObj.MapClickedCommand;
-                //map.MapLongPressCommand = contextObj.MapLongPressCommand;
+                    map.HasZoomEnabled = true;
+                    map.MapType = MapType.Street;
+                    map.IsShowingUser = false;
 
-                MapLayout.Children.Add(map);
+                    MapLayout.Children.Add(map);
+                }
             }
 
-            //TKCustomMap map = new TKCustomMap();
-            // contextObj.GetPosition();
-            //map.CustomPins = contextObj.CustomPinsList;
-
-            //MapLayout.Children.Add(map);
+     
         }
     }
 }

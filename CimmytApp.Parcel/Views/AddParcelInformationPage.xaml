@@ -12,6 +12,6 @@
                 <TapGestureRecognizer Command="{Binding DeliniateParcelCommand}" CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
             </Image.GestureRecognizers>
         </Image>
-        <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
+        <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" IsEnabled="{Binding NeedsDeliniation}" />
     </StackLayout>
 </ContentPage>

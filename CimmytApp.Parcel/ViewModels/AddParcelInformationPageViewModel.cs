@@ -18,33 +18,34 @@ namespace CimmytApp.Parcel.ViewModels
     using DTO.Parcel;
     using System.ComponentModel;
 
-    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
+    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;
         private bool isActive;
         public DelegateCommand DeliniateParcelCommand { get; set; }
         private INavigationService _navigationService;
         private ICimmytDbOperations _cimmytDbOperations;
-        private bool _deliniationAlreadyDone;
+        private bool _needsDeliniation;
 
-        public bool DeliniationAlreadyDone
+        public bool NeedsDeliniation
         {
-            get { return _deliniationAlreadyDone; }
+            get { return _needsDeliniation; }
             set
             {
-                SetProperty(ref _deliniationAlreadyDone, value);
+                SetProperty(ref _needsDeliniation, value);
             }
         }
 
         public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
-            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel).ObservesCanExecute(o => DeliniationAlreadyDone);
+            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel);
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
         }
 
         private void DeliniateParcel()
         {
+            NeedsDeliniation = false;
             var parameters = new NavigationParameters
             {
                 {"Latitude", _parcel.Latitude},
@@ -88,6 +89,7 @@ namespace CimmytApp.Parcel.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+         
             if (parameters.ContainsKey("Deliniation"))
             {
                 object deliniation;
@@ -95,27 +97,17 @@ namespace CimmytApp.Parcel.ViewModels
                 //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
                 PolygonDto polygonObj=new PolygonDto();
                 polygonObj.ListPoints = (List<GeoPosition>) deliniation;
-                _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
-                var res=_cimmytDbOperations.GetAllParcels();
+                if (polygonObj.ListPoints != null && polygonObj.ListPoints.Count > 2)
+                {
+                    _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
+                    NeedsDeliniation = false;
+                }
+               // var res=_cimmytDbOperations.GetAllParcels();
                 OnPropertyChanged("Parcel"); //TODO improve this...
-                PublishDataset(_parcel);//TODO improve this..
+                PublishDataset(Parcel);//TODO improve this..
               //  _cimmytDbOperations.UpdateParcel(Parcel);
             }
-            else
-            {
-                if (Parcel != null)
-                {
-                    if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
-                    {
-                        DeliniationAlreadyDone = false;
-                    }
-                    else
-                    {
-                        DeliniationAlreadyDone = true;
-                    }
-
-                }
-            }
+          
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -125,6 +117,20 @@ namespace CimmytApp.Parcel.ViewModels
         protected override IDataset GetDataset()
         {
             return _parcel;
+        }
+        private void CheckDeliniation()
+        {
+            if (Parcel != null)
+            {
+                if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
+                {
+                    NeedsDeliniation = false;
+                }
+                else
+                {
+                    NeedsDeliniation = true;
+                }
+            }
         }
 
         protected virtual void OnPropertyChanged(string aName)
@@ -136,7 +142,7 @@ namespace CimmytApp.Parcel.ViewModels
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
-      
+            CheckDeliniation();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using Prism.Commands;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -32,6 +34,7 @@
         private bool _tech8Checked;
         private bool _userIsAtParcel;
         private List<string> _years;
+        private bool _isSaveBtnEnabled=true;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
@@ -39,16 +42,28 @@
             _cimmytDbOperations = cimmytDbOperations;
             Years = new List<string>();
 
-            ClickSave = new Command(SaveParcel);
+            ClickSave = new DelegateCommand(SaveParcel).ObservesCanExecute(o => IsSaveBtnEnabled);
             ClickChooseLocation = new Command(ChooseLocation);
 
             Parcel = new Parcel();
         }
 
+        public bool IsSaveBtnEnabled
+        {
+            get
+            {
+                return _isSaveBtnEnabled;
+            }
+            set
+            {
+                SetProperty(ref _isSaveBtnEnabled, value);
+            }
+        }
+
         public List<string> AgriculturalCycles { get; } = new List<string> { "Primavera-Verano", "Otoño-Invierno" };
 
         public ICommand ClickChooseLocation { get; set; }
-        public ICommand ClickSave { get; set; }
+        public DelegateCommand ClickSave { get; set; }
         public List<string> CropTypes { get; } = new List<string> { "Maíz", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro" };
         public List<string> IrrigationTypes { get; } = new List<string> { "Riego", "Riego de punteo", "Temporal" };
 
@@ -193,6 +208,7 @@
             get => _years;
             set => SetProperty(ref _years, value);
         }
+ 
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -229,6 +245,7 @@
 
         private void SaveParcel()
         {
+            IsSaveBtnEnabled = false;
             if (CheckFields() == false)
             {
             }

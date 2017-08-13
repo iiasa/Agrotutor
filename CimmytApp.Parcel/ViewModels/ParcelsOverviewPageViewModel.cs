@@ -15,6 +15,7 @@ namespace CimmytApp.Parcel.ViewModels
     using Prism.Events;
     using CimmytApp.Parcel.Events;
     using System;
+    using Prism.Commands;
 
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
@@ -22,7 +23,7 @@ namespace CimmytApp.Parcel.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private List<Parcel> _parcels;
         public ICommand AddParcelCommand { get; set; }
-        public ICommand ParcelDetailCommand { get; set; }
+        public DelegateCommand<object> ParcelDetailCommand { get; set; }
 
         public List<Parcel> Parcels
         {
@@ -30,7 +31,14 @@ namespace CimmytApp.Parcel.ViewModels
             set { SetProperty(ref _parcels, value); }
         }
 
+        public bool IsParcelListEnabled
+        {
+            get { return _isParcelListEnabled; }
+            set { SetProperty(ref _isParcelListEnabled, value); }
+        }
+
         private ICimmytDbOperations _cimmytDbOperations;
+        private bool _isParcelListEnabled=true;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
         {
@@ -38,7 +46,7 @@ namespace CimmytApp.Parcel.ViewModels
             _eventAggregator = eventAggregator;
             _cimmytDbOperations = cimmytDbOperations;
             AddParcelCommand = new Command(NavigateToAddParcelPage);
-            ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
+            ParcelDetailCommand = new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
 
             _parcels = new List<Parcel>();
             Parcels = cimmytDbOperations.GetAllParcels();
@@ -58,8 +66,12 @@ namespace CimmytApp.Parcel.ViewModels
         {
             try
             {
-                var navigationParameters = new NavigationParameters { { "Id", (int)id } };
-                _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+              
+                   // IsParcelListEnabled = false;
+                    var navigationParameters = new NavigationParameters {{"Id", (int) id}};
+                    _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+                   
+                
             }
             catch (Exception e)
             {
