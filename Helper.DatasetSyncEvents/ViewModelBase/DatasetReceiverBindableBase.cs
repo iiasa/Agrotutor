@@ -23,6 +23,7 @@
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DatasetAvailableForSyncEvent>().Subscribe(OnDatasetAvailableForSync);
             _eventAggregator.GetEvent<DatasetSyncEvent>().Subscribe(ReadDataset);
+            //_eventAggregator.GetEvent<DatasetSyncRequestEvent>().Publish();
         }
 
         /// <summary>

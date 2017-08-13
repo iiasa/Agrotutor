@@ -155,6 +155,7 @@
         private void ShowWeatherData()
         {
             var page = "";
+            if (WeatherData == null) return;
             HistoricalSeries series = null;
             switch (SelectedDataset)
             {
