@@ -36,7 +36,7 @@
             parameters.TryGetValue("Series", out object series);
             Series = (DailySeries)series;
 
-            parameters.TryGetValue("variableName", out object variableName);
+            parameters.TryGetValue("VariableName", out object variableName);
             VariableName = (string)variableName;
         }
     }

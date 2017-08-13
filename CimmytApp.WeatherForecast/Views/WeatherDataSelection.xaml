@@ -4,10 +4,12 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             x:Class="CimmytApp.WeatherForecast.Views.WeatherDataSelection"
-             Title="{localization:Translate page_title_weather}">
+             x:Class="CimmytApp.WeatherForecast.Views.WeatherDataSelection">
     <ContentPage.Content>
-        <Picker Items="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" />
-        <Button Text="Ver" Command="{Binding ShowWeatherDataCommand}" />
+        <StackLayout>
+            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" />
+            <Button Text="Refresh" Command="{Binding RefreshWeatherDataCommand}" />
+            <Button Text="Ver" Command="{Binding ShowWeatherDataCommand}" />
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

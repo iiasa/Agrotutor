@@ -1,4 +1,7 @@
-﻿namespace CimmytApp.WeatherForecast.ViewModels
+﻿using CimmytApp.BusinessContract;
+using Prism.Mvvm;
+
+namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -19,14 +22,15 @@
     public class WeatherDataSelectionViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
         private List<string> _datasetNames;
+        private INavigationService _navigationService;
         private Parcel _parcel;
         private int _selectedDataset;
         private WeatherData _weatherData;
+        private IWeatherDbOperations _weatherDbOperations;
         private bool isActive;
         private GeoPosition position;
-        private INavigationService _navigationService;
 
-        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService) : base(eventAggregator)
+        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
         {
             DatasetNames = new List<string>
             {
@@ -50,8 +54,10 @@
                 "Evapotranspiración horaria de cultivos altos"
             };
             ShowWeatherDataCommand = new DelegateCommand(ShowWeatherData);
+            RefreshWeatherDataCommand = new DelegateCommand(RefreshWeatherData);
 
             _navigationService = navigationService;
+            _weatherDbOperations = weatherDbOperations;
         }
 
         public event EventHandler IsActiveChanged;
@@ -71,25 +77,10 @@
         public Parcel Parcel
         {
             get => _parcel;
-            set
-            {
-                SetProperty(ref _parcel, value);
-                if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
-                {
-                    if (_parcel.Latitude == 0 && _parcel.Longitude == 0) return;
-                    position = new GeoPosition
-                    {
-                        Latitude = Parcel.Latitude,
-                        Longitude = Parcel.Longitude
-                    };
-                    LoadWeatherDataAsync();
-                }
-                else
-                {
-                    //Show msg - no location
-                }
-            }
+            set => SetProperty(ref _parcel, value);
         }
+
+        public DelegateCommand RefreshWeatherDataCommand { get; set; }
 
         public int SelectedDataset
         {
@@ -103,7 +94,12 @@
         {
             get => _weatherData;
 
-            set => SetProperty(ref _weatherData, value);
+            set
+            {
+                WeatherData data = value;
+                data.ParcelId = Parcel.ParcelId;
+                SetProperty(ref _weatherData, value);
+            }
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -126,6 +122,20 @@
         private async void LoadWeatherDataAsync()
         {
             WeatherData = await WeatherService.GetWeatherData(position);
+        }
+
+        private void RefreshWeatherData()
+        {
+            if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
+            {
+                if (_parcel.Latitude == 0 && _parcel.Longitude == 0) return;
+                position = new GeoPosition
+                {
+                    Latitude = Parcel.Latitude,
+                    Longitude = Parcel.Longitude
+                };
+                LoadWeatherDataAsync();
+            }
         }
 
         private void ShowWeatherData()
