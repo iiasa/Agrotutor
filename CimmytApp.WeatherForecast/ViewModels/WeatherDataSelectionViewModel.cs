@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using Prism;
     using Prism.Commands;
     using Prism.Events;
@@ -23,18 +24,34 @@
         private WeatherData _weatherData;
         private bool isActive;
         private GeoPosition position;
+        private INavigationService _navigationService;
 
-        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService) : base(eventAggregator)
         {
             DatasetNames = new List<string>
             {
+                "Días de grado creciente",
+                "Días de grado de enfriamiento",
+                "Días de grado de calefacción",
+                "Precipitación diaria",
+                "Precipitaciones por hora",
+                "Humedad relativa por hora",
+                "Radiación solar diaria",
+                "Radiación solar por hora",
+                "Temperatura por hora",
+                "Temperatura alta diaria",
+                "Temperatura baja diaria",
+                "Punto de rocío por hora",
+                "Velocidad del viento por hora",
+                "Dirección del viento por hora",
+                "Evapotranspiración diaria de cultivos cortos",
+                "Evapotranspiración diaria de cultivos altos",
+                "Evapotranspiración horaria de cultivos cortos",
+                "Evapotranspiración horaria de cultivos altos"
             };
             ShowWeatherDataCommand = new DelegateCommand(ShowWeatherData);
-        }
 
-        private void ShowWeatherData()
-        {
-            throw new NotImplementedException();
+            _navigationService = navigationService;
         }
 
         public event EventHandler IsActiveChanged;
@@ -109,6 +126,111 @@
         private async void LoadWeatherDataAsync()
         {
             WeatherData = await WeatherService.GetWeatherData(position);
+        }
+
+        private void ShowWeatherData()
+        {
+            var page = "";
+            HistoricalSeries series = null;
+            switch (SelectedDataset)
+            {
+                case 0:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.GrowingDegreeDays;
+                    break;
+
+                case 1:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.CoolingDegreeDays;
+                    break;
+
+                case 2:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.HeatingDegreeDays;
+                    break;
+
+                case 3:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.DailyPrecipitation;
+                    break;
+
+                case 4:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyPrecipitation;
+                    break;
+
+                case 5:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyRelativeHumidity;
+                    break;
+
+                case 6:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.DailySolarRadiation;
+                    break;
+
+                case 7:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlySolarRadiation;
+                    break;
+
+                case 8:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyTemperature;
+                    break;
+
+                case 9:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.DailyHighTemperature;
+                    break;
+
+                case 10:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.DailyLowTemperature;
+                    break;
+
+                case 11:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyDewpoint;
+                    break;
+
+                case 12:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyWindSpeed;
+                    break;
+
+                case 13:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyWindDirection;
+                    break;
+
+                case 14:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.DailyEvapotranspirationShortCrop;
+                    break;
+
+                case 15:
+                    page = "DailyWeatherDataPage";
+                    series = WeatherData.DailyEvapotranspirationTallCrop;
+                    break;
+
+                case 16:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyEvapotranspirationShortCrop;
+                    break;
+
+                case 17:
+                    page = "HourlyWeatherDataPage";
+                    series = WeatherData.HourlyEvapotranspirationTallCrop;
+                    break;
+            }
+
+            var parameters = new NavigationParameters
+            {
+                {"Series", series},
+                {"VariableName", DatasetNames.ElementAt(SelectedDataset)}
+            };
+            _navigationService.NavigateAsync(page, parameters);
         }
     }
 }

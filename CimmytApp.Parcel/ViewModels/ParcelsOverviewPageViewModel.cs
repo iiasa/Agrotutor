@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using System.Threading.Tasks;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -39,19 +41,9 @@
             ParcelDetailCommand = new Command(NavigateToParcelDetailPage);
 
             _parcels = new List<Parcel>();
-            // cimmytDbOperations.DeleteAllData();
             Parcels = cimmytDbOperations.GetAllParcels();
-            UploadParcels();
-            //testcode:
-            //         Parcels = new List<Parcel>
-            //         {
-            //             parcels.ElementAt(0),
-            //             parcels.ElementAt(1)
-            //};
-            // cimmytDbOperations.DeleteAllData();
-            //  Parcels = cimmytDbOperations.GetAllParcels();
-            // Parcels.AddRange(Parcels);
-            //foreach (var parcel in Parcels) parcel.Submit();
+            /*var uploadTask = new Task(UploadParcels);
+            uploadTask.Start();*/ //TODO: find a proper place to trigger upload
         }
 
         private void UploadParcels()
@@ -59,7 +51,6 @@
             foreach (var parcel in Parcels)
             {
                 parcel.Submit();
-                //var sent = await parcel.Submit();
             }
         }
 
