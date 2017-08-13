@@ -7,6 +7,6 @@
              x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage">
     <!--Title="Editar"-->
     <StackLayout>
-        <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
+        <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" IsEnabled="{Binding NeedsDeliniation}" />
     </StackLayout>
 </ContentPage>

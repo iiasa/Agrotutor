@@ -148,9 +148,10 @@ namespace Helper.Map.ViewModels
             OverrideDeliniationCommand=new DelegateCommand(OverrideDelinationMethod);
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
+          
             GetPosition();
-           var polyRes= GetAllPolygons();
-            DrawPolygonsOnMap(polyRes);
+          
+          //  DrawPolygonsOnMap();
         }
 
         private void OverrideDelinationMethod()
@@ -159,20 +160,21 @@ namespace Helper.Map.ViewModels
         }
 
 
-        private List<Parcel> GetAllPolygons()
+        public List<Parcel> GetAllPolygons()
         {
           return _cimmytDbOperations.GetAllParcels();
         
         }
 
-        private void DrawPolygonsOnMap(List<Parcel>listParcels )
+        public void DrawPolygonsOnMap( )
         {
-            if (listParcels==null)
+            var polyRes = GetAllPolygons();
+            if (polyRes == null)
             return;
             MapPolygons = new ObservableCollection<TKPolygon>();
          
 
-            foreach (var item in listParcels)
+            foreach (var item in polyRes)
             {
                 if (item.Polygon != null)
                 {
@@ -345,8 +347,9 @@ namespace Helper.Map.ViewModels
                     _isGetLocationFeatureExist = (bool)getLocation;
                     ReturnGeolocationButtonVisible = _isGetLocationFeatureExist;
 
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                 //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                     _mapTask = MapTask.GetLocation;
+                    MapPolygons.Clear();
                 }
             }
 
@@ -357,11 +360,30 @@ namespace Helper.Map.ViewModels
                 if (getLocation != null)
                 {
                     DeliniationButtonsVisible = (bool)getLocation;
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                 //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                     _mapTask = MapTask.GetPolygon;
                     _parcelId = (int) parameters["parcelId"];
+                    MapPolygons.Clear();
                  
                 }
+            }
+            AdjustMapZoom();
+        }
+
+        public void AdjustMapZoom()
+        {
+            if (MapsPosition.Latitude!=0&& MapsPosition.Longitude != 0)
+
+            {
+                if (_mapTask == MapTask.GetPolygon || _mapTask == MapTask.GetLocation)
+                {
+                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                }
+                else
+                {
+                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(20));
+                }
+               
             }
         }
 
@@ -384,8 +406,8 @@ namespace Helper.Map.ViewModels
                     ReturnGeolocationButtonEnabled = true;
 
                     MapsPosition = new Position(positionRes.Latitude, positionRes.Longitude);
-
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(50));
+                    AdjustMapZoom();
+                    //  MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(50));
 
                     CustomPinsList = new ObservableCollection<TKCustomMapPin>(new[]
                     {

@@ -14,7 +14,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="0">
-            <ListView ItemsSource="{Binding Parcels}" RowHeight="72">
+            <ListView ItemsSource="{Binding Parcels}" RowHeight="72" >
                 <!-- TODO RowHeight auto -->
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -27,7 +27,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
                                 <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
-                                <Button Text="Detalle" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ParcelId}"  Grid.Column="2" />
+                                <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ParcelId}"  Grid.Column="2" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
