@@ -18,27 +18,27 @@ namespace CimmytApp.Parcel.ViewModels
     using DTO.Parcel;
     using System.ComponentModel;
 
-    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
+    public class AddParcelInformationPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
         private Parcel _parcel;
         private bool isActive;
         public DelegateCommand DeliniateParcelCommand { get; set; }
         private INavigationService _navigationService;
         private ICimmytDbOperations _cimmytDbOperations;
-        private bool _deliniationAlreadyDone;
+        private bool _needDeliniation;
 
-        public bool DeliniationAlreadyDone
+        public bool NeedsDeliniation
         {
-            get { return _deliniationAlreadyDone; }
+            get { return _needDeliniation; }
             set
             {
-                SetProperty(ref _deliniationAlreadyDone, value);
+                SetProperty(ref _needDeliniation, value);
             }
         }
 
         public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
-            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel).ObservesCanExecute(o => DeliniationAlreadyDone);
+            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel).ObservesCanExecute( o => NeedsDeliniation);
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
         }
@@ -90,6 +90,7 @@ namespace CimmytApp.Parcel.ViewModels
         {
             if (parameters.ContainsKey("Deliniation"))
             {
+                CheckDeliniation();
                 object deliniation;
                 parameters.TryGetValue("Deliniation", out deliniation);
                 //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
@@ -101,21 +102,7 @@ namespace CimmytApp.Parcel.ViewModels
                 PublishDataset(_parcel);//TODO improve this..
               //  _cimmytDbOperations.UpdateParcel(Parcel);
             }
-            else
-            {
-                if (Parcel != null)
-                {
-                    if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
-                    {
-                        DeliniationAlreadyDone = false;
-                    }
-                    else
-                    {
-                        DeliniationAlreadyDone = true;
-                    }
-
-                }
-            }
+           
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -136,7 +123,22 @@ namespace CimmytApp.Parcel.ViewModels
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
-      
+            CheckDeliniation();
+        }
+
+        private void CheckDeliniation()
+        {
+            if (Parcel != null)
+            {
+                if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
+                {
+                    NeedsDeliniation = false;
+                }
+                else
+                {
+                    NeedsDeliniation = true;
+                }
+            }
         }
     }
 }
