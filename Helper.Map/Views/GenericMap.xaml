@@ -23,6 +23,7 @@
         <StackLayout IsVisible="{Binding DeliniationButtonsVisible}" Orientation="Horizontal" Grid.Row="1" VerticalOptions="Center">
             <Button Text="{localization:Translate ok}" Command="{Binding AcceptDeliniationCommand}" IsEnabled="{Binding ButtonAcceptDeliniationEnabled}" />
             <Button Text="{localization:Translate cancel}" Command="{Binding CancelDeliniationCommand}" IsEnabled="{Binding ButtonCancelDeliniationEnabled}" />
+            <Button Text="Override current deliniation" IsVisible="{Binding ShowOverrideButton}" Command="{Binding OverrideDeliniationCommand}" IsEnabled="{Binding ButtonCancelDeliniationEnabled}" />
         </StackLayout>
     </Grid>
 </ContentPage>

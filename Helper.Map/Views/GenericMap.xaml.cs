@@ -47,6 +47,7 @@ namespace Helper.Map.Views
                 map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
                 map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
                 map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
+
                 map.HasZoomEnabled = true;
                 map.MapType = MapType.Street;
                 map.IsShowingUser = false;
