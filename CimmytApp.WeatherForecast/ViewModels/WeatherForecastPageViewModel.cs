@@ -1,8 +1,5 @@
-﻿using Helper.DTO.SkywiseWeather.Historical.Temperature;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
-    using Prism.Mvvm;
     using System.Windows.Input;
     using Xamarin.Forms;
     using DTO.Parcel;
@@ -10,11 +7,14 @@ namespace CimmytApp.WeatherForecast.ViewModels
     using System;
     using Helper.BusinessContract;
     using Prism.Events;
-    using CimmytApp.DTO;
     using Prism.Navigation;
     using System.ComponentModel;
     using Prism;
+
     using Helper.DTO.SkywiseWeather.Historical;
+    using Helper.DTO.SkywiseWeather.Historical.Temperature;
+
+    using DTO;
 
     public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
     {
@@ -73,16 +73,9 @@ namespace CimmytApp.WeatherForecast.ViewModels
 
         public WeatherData WeatherData
         {
-            get
-            {
-                return _weatherData;
-            }
+            get => _weatherData;
 
-            set
-            {
-                _weatherData = value;
-                SetProperty(ref _weatherData, value);
-            }
+            set => SetProperty(ref _weatherData, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

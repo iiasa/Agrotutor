@@ -1,8 +1,8 @@
-﻿using System;
-using SQLite.Net.Attributes;
-
-namespace Helper.DTO.SkywiseWeather.Historical
+﻿namespace Helper.DTO.SkywiseWeather.Historical
 {
+    using System;
+    using SQLite.Net.Attributes;
+
     public class Value
     {
         [PrimaryKey, AutoIncrement]

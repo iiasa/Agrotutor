@@ -7,6 +7,11 @@
              x:Class="CimmytApp.Parcel.Views.AddParcelInformationPage">
     <!--Title="Editar"-->
     <StackLayout>
+        <Image Source="delineation.png" Grid.Row="0" Grid.Column="1">
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding DeliniateParcelCommand}" CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
+            </Image.GestureRecognizers>
+        </Image>
         <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
     </StackLayout>
 </ContentPage>

@@ -4,13 +4,11 @@
     using SQLiteNetExtensions.Attributes;
 
     [Table("DailyPrecipitation")]
-    public class DailyPrecipitation : HistoricalSeries
+    public class DailyPrecipitation : DailySeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        public string startDate { get; set; }
-        public string endDate { get; set; }
         public float precipitation { get; set; }
 
         [ForeignKey(typeof(WeatherData))]

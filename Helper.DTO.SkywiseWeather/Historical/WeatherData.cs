@@ -86,6 +86,8 @@
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
         public HourlyWindSpeed HourlyWindSpeed { get; set; }
 
+        public int ParcelId { get; set; }
+
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
     }

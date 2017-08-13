@@ -4,14 +4,11 @@
     using SQLiteNetExtensions.Attributes;
 
     [Table("DailyEvapotranspirationTallCrop")]
-    public class DailyEvapotranspirationTallCrop : HistoricalSeries
+    public class DailyEvapotranspirationTallCrop : DailySeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        public string startDate { get; set; }
-        public string endDate { get; set; }
-        public Value[] series { get; set; }
         public float longitude { get; set; }
         public float latitude { get; set; }
 
