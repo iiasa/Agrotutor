@@ -233,9 +233,13 @@ namespace CimmytApp.Parcel.ViewModels
 
         private bool CheckFields()
         {
+            if (Parcel.EstimatedParcelArea == null) return false;
             if (Parcel.EstimatedParcelArea.Equals(string.Empty)) return false;
+            if (Parcel.ProducerName == null) return false;
             if (Parcel.ProducerName.Equals(string.Empty)) return false;
+            if (Parcel.ParcelName == null) return false;
             if (Parcel.ParcelName.Equals(string.Empty)) return false;
+            if (Parcel.Cultivar == null) return false;
             if (Parcel.Cultivar.Equals(string.Empty)) return false;
             return true;
         }
@@ -249,11 +253,11 @@ namespace CimmytApp.Parcel.ViewModels
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
-            if (CheckFields() == false)
-            {
-                IsSaveBtnEnabled = false;
-                return;
-            }
+            //if (CheckFields() == false)
+            //{
+            //    IsSaveBtnEnabled = false;
+            //    return;
+            //}
             _cimmytDbOperations.AddParcel(Parcel);
 
             var navigationParameters = new NavigationParameters

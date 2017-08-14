@@ -173,7 +173,6 @@
             else
             {
                 Current.Properties.Add("not_first_launch", true);
-                //NavigationService.NavigateAsync("MainPage");
                 NavigationService.NavigateAsync("WelcomePage");
             }
         }

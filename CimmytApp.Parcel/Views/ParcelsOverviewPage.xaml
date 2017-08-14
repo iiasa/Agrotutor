@@ -34,7 +34,7 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}"   Grid.Row="1" />
-        <Button Text="Subir cambios" Command="{Binding UploadCommand}"   Grid.Row="2" />
+        <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}"  Grid.Row="1" />
+        <Button Text="Subir cambios" Command="{Binding UploadCommand}" IsVisible="{Binding ShowUploadButton}" Grid.Row="2" />
     </Grid>
 </ContentPage>

@@ -26,6 +26,12 @@ namespace CimmytApp.Parcel.ViewModels
         public DelegateCommand UploadCommand { get; set; }
         public DelegateCommand<object> ParcelDetailCommand { get; set; }
 
+        public bool ShowUploadButton
+        {
+            get => _showUploadButton;
+            set => SetProperty(ref _showUploadButton, value);
+        }
+
         public List<Parcel> Parcels
         {
             get => _parcels;
@@ -40,6 +46,7 @@ namespace CimmytApp.Parcel.ViewModels
 
         private ICimmytDbOperations _cimmytDbOperations;
         private bool _isParcelListEnabled = true;
+        private bool _showUploadButton;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
         {
@@ -58,6 +65,7 @@ namespace CimmytApp.Parcel.ViewModels
 
         private void UploadParcels()
         {
+            ShowUploadButton = false;
             foreach (var parcel in Parcels)
             {
                 parcel.Submit();
