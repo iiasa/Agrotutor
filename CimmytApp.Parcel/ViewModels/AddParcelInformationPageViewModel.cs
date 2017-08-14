@@ -116,21 +116,6 @@ namespace CimmytApp.Parcel.ViewModels
             return _parcel;
         }
 
-        private void CheckDeliniation()
-        {
-            if (Parcel != null)
-            {
-                if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
-                {
-                    NeedsDeliniation = false;
-                }
-                else
-                {
-                    NeedsDeliniation = true;
-                }
-            }
-        }
-
         protected virtual void OnPropertyChanged(string aName)
         {
             var iHandler = PropertyChanged;

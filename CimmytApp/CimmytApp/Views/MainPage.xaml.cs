@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using System;
+using Xamarin.Forms.Xaml;
 
 namespace CimmytApp.Views
 {
