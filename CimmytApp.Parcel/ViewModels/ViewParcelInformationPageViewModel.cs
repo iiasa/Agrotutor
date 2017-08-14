@@ -4,6 +4,7 @@
     using System.Windows.Input;
     using Prism;
     using Prism.Events;
+    using Prism.Commands;
     using Prism.Navigation;
     using Xamarin.Forms;
 
@@ -28,13 +29,16 @@
             }
         }
 
+        public DelegateCommand TestCommand {get; set;}
+
         public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
+            TestCommand = new DelegateCommand(Test);
         }
 
         private void Test()
         {
-            Parcel.Submit();
+            //Parcel.Submit();
         }
 
         public bool IsActive

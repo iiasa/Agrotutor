@@ -8,8 +8,10 @@
     <ContentPage.Content>
         <StackLayout>
             <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" />
-            <Button Text="Refresh" Command="{Binding RefreshWeatherDataCommand}" />
-            <Button Text="Ver" Command="{Binding ShowWeatherDataCommand}" />
+            <Button Text="Actualice" Command="{Binding RefreshWeatherDataCommand}" />
+            <Button Text="Ver" Command="{Binding ShowWeatherDataCommand}" IsEnabled="{Binding WeatherDataAvailable}" />
+            <Label Text="Por favor actualice primero." IsVisible="{Binding ShowRefreshText}" />
+            <Label Text="La ubicación de la parcela no se conoce. Por favor delinee el parcela para mostrar la información del tiempo." IsVisible="{Binding ParcelLocationNotSet}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

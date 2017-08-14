@@ -4501,11 +4501,11 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f02014a
 			public const int notification_icon_background = 2130837834;
 			
-			// aapt resource value: 0x7f020155
-			public const int notification_template_icon_bg = 2130837845;
+			// aapt resource value: 0x7f020159
+			public const int notification_template_icon_bg = 2130837849;
 			
-			// aapt resource value: 0x7f020156
-			public const int notification_template_icon_low_bg = 2130837846;
+			// aapt resource value: 0x7f02015a
+			public const int notification_template_icon_low_bg = 2130837850;
 			
 			// aapt resource value: 0x7f02014b
 			public const int notification_tile_bg = 2130837835;
@@ -4536,6 +4536,18 @@ namespace CimmytApp.Droid
 			
 			// aapt resource value: 0x7f020154
 			public const int thunderstorm = 2130837844;
+			
+			// aapt resource value: 0x7f020155
+			public const int welcome_1 = 2130837845;
+			
+			// aapt resource value: 0x7f020156
+			public const int welcome_2 = 2130837846;
+			
+			// aapt resource value: 0x7f020157
+			public const int welcome_3 = 2130837847;
+			
+			// aapt resource value: 0x7f020158
+			public const int welcome_4 = 2130837848;
 			
 			static Drawable()
 			{

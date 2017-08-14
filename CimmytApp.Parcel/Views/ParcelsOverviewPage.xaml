@@ -5,12 +5,12 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             x:Name="ParcelOverviewRoot"
-   >
+             x:Name="ParcelOverviewRoot">
     <!--Title="{localization:Translate page_title_parcels_overview}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="0">
@@ -27,13 +27,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
                                 <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
-                                <Button Text="Detalle" Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ParcelId}"  Grid.Column="2" />
+                                <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ParcelId}"  Grid.Column="2" />
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}"   Grid.Row="1" />
+        <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}"  Grid.Row="1" />
+        <Button Text="Subir cambios" Command="{Binding UploadCommand}" IsVisible="{Binding ShowUploadButton}" Grid.Row="2" />
     </Grid>
 </ContentPage>

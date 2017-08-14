@@ -7,8 +7,48 @@
              x:Class="CimmytApp.Introduction.Views.WelcomePage"
              Title="MainPage">
     <ContentPage>
-        <Label Text="Blablabla" />
-        <Button Text="OK" Command="{Binding NavigateToMainPageCommand}" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_1.png" />
+            <Label Grid.Row="1" Text="Crear y administrar sus parcelas (Deslízate a la izquierda)" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
     </ContentPage>
-
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_2.png" />
+            <Label Grid.Row="1" Text="Proporcionar información sobre su parcelas"  HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_3.png" />
+            <Label Grid.Row="1" Text="Delinee sus parcelas" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_4.png" />
+            <Label Grid.Row="1" Text="Recibir información útil" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Button Text="Empieza ahora" Command="{Binding NavigateToMainPageCommand}" />
+        </StackLayout>
+    </ContentPage>
 </CarouselPage>

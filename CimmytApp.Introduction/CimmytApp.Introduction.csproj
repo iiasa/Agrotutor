@@ -37,23 +37,13 @@
   <ItemGroup>
     <Compile Include="IntroductionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\WelcomeContentPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
-    <Compile Include="Views\WelcomeContentPage.xaml.cs">
-      <DependentUpon>WelcomeContentPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\WelcomePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\WelcomeContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

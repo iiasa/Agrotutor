@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
@@ -45,6 +46,7 @@ namespace CimmytApp.Parcel.ViewModels
 
         private void DeliniateParcel()
         {
+            NeedsDeliniation = false;
             var parameters = new NavigationParameters
             {
                 {"Latitude", _parcel.Latitude},
@@ -112,6 +114,21 @@ namespace CimmytApp.Parcel.ViewModels
         protected override IDataset GetDataset()
         {
             return _parcel;
+        }
+
+        private void CheckDeliniation()
+        {
+            if (Parcel != null)
+            {
+                if (Parcel.Polygon != null && Parcel.Polygon.ListPoints.Count > 0)
+                {
+                    NeedsDeliniation = false;
+                }
+                else
+                {
+                    NeedsDeliniation = true;
+                }
+            }
         }
 
         protected virtual void OnPropertyChanged(string aName)

@@ -52,7 +52,7 @@ namespace CimmytApp.Benchmarking.ViewModels
                 "Otoño-Invierno"
             };
 
-            //GetData();
+           // GetData();
         }
 
         private async void LoadData()

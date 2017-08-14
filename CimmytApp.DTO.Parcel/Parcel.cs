@@ -95,6 +95,7 @@ namespace CimmytApp.DTO.Parcel
                 OnPropertyChanged("EstimatedParcelArea");
             }
         }
+
         [ForeignKey(typeof(PolygonDto))]
         public int PolygonID { get; set; }
 
@@ -308,6 +309,7 @@ namespace CimmytApp.DTO.Parcel
         {
             return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
         }
+
         //ToDo:Move to another Class
         public DataTemplate GetOverviewDataTemplate()
         {
@@ -321,6 +323,7 @@ namespace CimmytApp.DTO.Parcel
             _uploaded = (int)DatasetUploadStatus.Synchronized;
             Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
         }
+
         //ToDo:Move to another Class
         public async Task<Parcel> SubmitAsync()
         {
@@ -336,11 +339,13 @@ namespace CimmytApp.DTO.Parcel
             _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
+
         //ToDo:Move to another Class
         public List<GeoPosition> GetDeliniation()
         {
             return string.IsNullOrEmpty(_deliniation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_deliniation);
         }
+
         //ToDo:Move to another Class
         public void SetDeliniation(List<GeoPosition> deliniation)
         {

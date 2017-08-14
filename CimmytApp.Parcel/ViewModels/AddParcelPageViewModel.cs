@@ -1,4 +1,7 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using System;
+using Prism.Commands;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -32,6 +35,7 @@
         private bool _tech8Checked;
         private bool _userIsAtParcel;
         private List<string> _years;
+        private bool _isSaveBtnEnabled = true;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
@@ -39,16 +43,29 @@
             _cimmytDbOperations = cimmytDbOperations;
             Years = new List<string>();
 
-            ClickSave = new Command(SaveParcel);
+            ClickSave = new DelegateCommand(SaveParcel).ObservesCanExecute(o => IsSaveBtnEnabled);
             ClickChooseLocation = new Command(ChooseLocation);
 
             Parcel = new Parcel();
         }
 
+        public bool IsSaveBtnEnabled
+        {
+            get
+            {
+                return _isSaveBtnEnabled;
+            }
+            set
+            {
+                SetProperty(ref _isSaveBtnEnabled, value);
+            }
+        }
+
+        public bool InformationMissing { get { return !IsSaveBtnEnabled; } }
         public List<string> AgriculturalCycles { get; } = new List<string> { "Primavera-Verano", "Otoño-Invierno" };
 
         public ICommand ClickChooseLocation { get; set; }
-        public ICommand ClickSave { get; set; }
+        public DelegateCommand ClickSave { get; set; }
         public List<string> CropTypes { get; } = new List<string> { "Maíz", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro" };
         public List<string> IrrigationTypes { get; } = new List<string> { "Riego", "Riego de punteo", "Temporal" };
 
@@ -203,12 +220,10 @@
             if (parameters.ContainsKey("GeoPosition"))
             {
                 parameters.TryGetValue("GeoPosition", out object geoPosition);
-                if (geoPosition != null)
-                {
-                    var position = (GeoPosition)geoPosition;
-                    Parcel.Latitude = position.Latitude;
-                    Parcel.Longitude = position.Longitude;
-                }
+                if (geoPosition == null) return;
+                var position = (GeoPosition)geoPosition;
+                Parcel.Latitude = position.Latitude;
+                Parcel.Longitude = position.Longitude;
             }
         }
 
@@ -218,6 +233,14 @@
 
         private bool CheckFields()
         {
+            if (Parcel.EstimatedParcelArea == null) return false;
+            if (Parcel.EstimatedParcelArea.Equals(string.Empty)) return false;
+            if (Parcel.ProducerName == null) return false;
+            if (Parcel.ProducerName.Equals(string.Empty)) return false;
+            if (Parcel.ParcelName == null) return false;
+            if (Parcel.ParcelName.Equals(string.Empty)) return false;
+            if (Parcel.Cultivar == null) return false;
+            if (Parcel.Cultivar.Equals(string.Empty)) return false;
             return true;
         }
 
@@ -229,9 +252,12 @@
 
         private void SaveParcel()
         {
-            if (CheckFields() == false)
-            {
-            }
+            IsSaveBtnEnabled = false;
+            //if (CheckFields() == false)
+            //{
+            //    IsSaveBtnEnabled = false;
+            //    return;
+            //}
             _cimmytDbOperations.AddParcel(Parcel);
 
             var navigationParameters = new NavigationParameters
