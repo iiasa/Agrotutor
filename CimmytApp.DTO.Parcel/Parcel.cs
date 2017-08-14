@@ -218,7 +218,7 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
-        public string OverviewString => _uploaded == (int)DatasetUploadStatus.Synchronized ? $"{Crop}\r\n{ParcelName}" : $"* {Crop}\r\n{ParcelName}";
+        public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
         [PrimaryKey, AutoIncrement]
         public int ParcelId { get; set; }

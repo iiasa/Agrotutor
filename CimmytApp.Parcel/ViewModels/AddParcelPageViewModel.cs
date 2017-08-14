@@ -60,6 +60,7 @@ namespace CimmytApp.Parcel.ViewModels
             }
         }
 
+        public bool InformationMissing {get{return !IsSaveBtnEnabled;}}
         public List<string> AgriculturalCycles { get; } = new List<string> { "Primavera-Verano", "Otoño-Invierno" };
 
         public ICommand ClickChooseLocation { get; set; }
@@ -234,6 +235,7 @@ namespace CimmytApp.Parcel.ViewModels
 
         private bool CheckFields()
         {
+            // TODO if (Parcel.ParcelName = ""
             return true;
         }
 
@@ -248,6 +250,8 @@ namespace CimmytApp.Parcel.ViewModels
             IsSaveBtnEnabled = false;
             if (CheckFields() == false)
             {
+                IsSaveBtnEnabled = false;
+                return;
             }
             _cimmytDbOperations.AddParcel(Parcel);
 
