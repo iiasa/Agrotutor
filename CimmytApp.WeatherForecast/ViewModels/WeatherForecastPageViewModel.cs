@@ -111,7 +111,11 @@ namespace CimmytApp.WeatherForecast.ViewModels
         private async void LoadWeatherDataAsync()
         {
             WeatherData = await WeatherService.GetWeatherData(position);
-            DailyHighTemperature = WeatherData.DailyHighTemperature;
+            if (WeatherData!=null)
+            {
+                DailyHighTemperature = WeatherData.DailyHighTemperature;
+            }
+       
         }
     }
 }

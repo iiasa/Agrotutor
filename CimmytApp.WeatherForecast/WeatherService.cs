@@ -12,9 +12,17 @@ namespace CimmytApp.WeatherForecast
 
         public static async Task<WeatherData> GetWeatherData(GeoPosition location)
         {
-            var client = new RestfulClient<WeatherData>();
-            var data = await client.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={location.Latitude}&lng={location.Longitude}");
-            return data;
+            try
+            {
+                var client = new RestfulClient<WeatherData>();
+                var data = await client.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={location.Latitude}&lng={location.Longitude}");
+                return data;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+     
         }
     }
 }
