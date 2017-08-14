@@ -39,6 +39,7 @@ namespace Helper.Map.ViewModels
         public DelegateCommand CancelDeliniationCommand { get; set; }
 
         public DelegateCommand OverrideDeliniationCommand { get; set; }
+
         private DeliniationState CurrentDeliniationState
         {
             get => _currentDeliniationState;
@@ -47,7 +48,7 @@ namespace Helper.Map.ViewModels
 
         public bool ShowOverrideButton
         {
-            get => _showOverrideButton; 
+            get => _showOverrideButton;
             set => SetProperty(ref _showOverrideButton, value);
         }
 
@@ -145,34 +146,30 @@ namespace Helper.Map.ViewModels
             MapLongPressCommand = new DelegateCommand<object>(MapLongPress);
             AcceptDeliniationCommand = new DelegateCommand(AcceptDeliniation);
             CancelDeliniationCommand = new DelegateCommand(CancelDeliniation);
-            OverrideDeliniationCommand=new DelegateCommand(OverrideDelinationMethod);
+            OverrideDeliniationCommand = new DelegateCommand(OverrideDelinationMethod);
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
-          
+
             GetPosition();
-          
-          //  DrawPolygonsOnMap();
+
+            //  DrawPolygonsOnMap();
         }
 
         private void OverrideDelinationMethod()
         {
-            
         }
-
 
         public List<Parcel> GetAllPolygons()
         {
-          return _cimmytDbOperations.GetAllParcels();
-        
+            return _cimmytDbOperations.GetAllParcels();
         }
 
-        public void DrawPolygonsOnMap( )
+        public void DrawPolygonsOnMap()
         {
             var polyRes = GetAllPolygons();
             if (polyRes == null)
-            return;
+                return;
             MapPolygons = new ObservableCollection<TKPolygon>();
-         
 
             foreach (var item in polyRes)
             {
@@ -183,7 +180,6 @@ namespace Helper.Map.ViewModels
                         StrokeColor = Color.Green,
                         StrokeWidth = 2f,
                         Color = Color.Red,
-                       
                     };
                     List<Position> listPosition = new List<Position>();
                     foreach (var positionitem in item.Polygon.ListPoints)
@@ -193,13 +189,12 @@ namespace Helper.Map.ViewModels
                     if (listPosition.Count > 2)
                     {
                         polygon.Coordinates = listPosition;
-                        MapPolygons.Add( polygon);
-           
+                        MapPolygons.Add(polygon);
                     }
-
                 }
             }
         }
+
         private void CancelDeliniation()
         {
             ButtonCancelDeliniationEnabled = false;
@@ -225,10 +220,10 @@ namespace Helper.Map.ViewModels
                     {
                         Latitude = position.Latitude,
                         Longitude = position.Longitude,
-                    //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
+                        //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
                     });
                 }
-        
+
                 var parameters = new NavigationParameters { { "Deliniation", geoPositions } };
                 _navigationService.GoBackAsync(parameters);
             }
@@ -239,11 +234,11 @@ namespace Helper.Map.ViewModels
             if (CurrentDeliniationState == DeliniationState.Inactive) return;
             var position = (Position)obj;
             // var polygonsList = MapPolygons;
-     
-             var pointId = MapPolygons.ElementAt(0).Coordinates.Count;
-         
-           MapPolygons.ElementAt(0).Coordinates.Add(position);
-   
+
+            var pointId = MapPolygons.ElementAt(0).Coordinates.Count;
+
+            MapPolygons.ElementAt(0).Coordinates.Add(position);
+
             if (MapPolygons.ElementAt(0).Coordinates.Count > 2)
             {
                 CurrentDeliniationState = DeliniationState.ActiveEnoughPoints;
@@ -257,21 +252,16 @@ namespace Helper.Map.ViewModels
             }
 
             ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
- 
+
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_" + pointId,
                 Position = position,
             });
-
         }
 
         private async void MapLongPress(object obj)
         {
-
-
-
-
             if (_mapTask != MapTask.GetPolygon) return;
             var position = (Position)obj;
             if (CurrentDeliniationState != DeliniationState.Inactive)
@@ -286,12 +276,12 @@ namespace Helper.Map.ViewModels
                 StrokeColor = Color.Green,
                 StrokeWidth = 2f,
                 Color = Color.Red,
-
             };
 
             polygon.Coordinates.Add(position);
 
             MapPolygons.Add(polygon);
+            if (CustomPinsList == null) CustomPinsList = new ObservableCollection<TKCustomMapPin>();
             CustomPinsList.Add(new TKCustomMapPin
             {
                 ID = "polygon_marker_0",
@@ -347,7 +337,7 @@ namespace Helper.Map.ViewModels
                     _isGetLocationFeatureExist = (bool)getLocation;
                     ReturnGeolocationButtonVisible = _isGetLocationFeatureExist;
 
-                 //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                    //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                     _mapTask = MapTask.GetLocation;
                     MapPolygons.Clear();
                 }
@@ -360,11 +350,10 @@ namespace Helper.Map.ViewModels
                 if (getLocation != null)
                 {
                     DeliniationButtonsVisible = (bool)getLocation;
-                 //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                    //   MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                     _mapTask = MapTask.GetPolygon;
-                    _parcelId = (int) parameters["parcelId"];
+                    _parcelId = (int)parameters["parcelId"];
                     MapPolygons.Clear();
-                 
                 }
             }
             AdjustMapZoom();
@@ -372,18 +361,17 @@ namespace Helper.Map.ViewModels
 
         public void AdjustMapZoom()
         {
-            if (MapsPosition.Latitude!=0&& MapsPosition.Longitude != 0)
+            if (MapsPosition.Latitude != 0 && MapsPosition.Longitude != 0)
 
             {
                 if (_mapTask == MapTask.GetPolygon || _mapTask == MapTask.GetLocation)
                 {
-                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                 }
                 else
                 {
                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(20));
                 }
-               
             }
         }
 
@@ -436,7 +424,6 @@ namespace Helper.Map.ViewModels
         private bool _buttonAcceptDeliniationEnabled = false;
         private bool _buttonCancelDeliniationEnabled = false;
         private bool _showOverrideButton;
-
 
         public bool IsActive
         {

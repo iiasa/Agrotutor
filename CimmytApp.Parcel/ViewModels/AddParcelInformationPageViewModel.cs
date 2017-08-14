@@ -39,7 +39,7 @@ namespace CimmytApp.Parcel.ViewModels
 
         public AddParcelInformationPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
-            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel).ObservesCanExecute( o => NeedsDeliniation);
+            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel).ObservesCanExecute(o => NeedsDeliniation);
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
         }
@@ -92,24 +92,27 @@ namespace CimmytApp.Parcel.ViewModels
         {
             if (parameters.ContainsKey("Deliniation"))
             {
-           
                 object deliniation;
                 parameters.TryGetValue("Deliniation", out deliniation);
                 //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
-                PolygonDto polygonObj=new PolygonDto();
-                polygonObj.ListPoints = (List<GeoPosition>) deliniation;
+                PolygonDto polygonObj = new PolygonDto();
+                polygonObj.ListPoints = (List<GeoPosition>)deliniation;
+                if (polygonObj.ListPoints.Count > 0)
+                {
+                    Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
+                    Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
+                }
                 //if (polygonObj.ListPoints != null && polygonObj.ListPoints.Count > 2)
                 //{
                 //    NeedsDeliniation = false;
                 //}
                 _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
-             
+
                 //var res=_cimmytDbOperations.GetAllParcels();
                 OnPropertyChanged("Parcel"); //TODO improve this...
                 PublishDataset(_parcel);//TODO improve this..
-              //  _cimmytDbOperations.UpdateParcel(Parcel);
+                                        //  _cimmytDbOperations.UpdateParcel(Parcel);
             }
-           
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

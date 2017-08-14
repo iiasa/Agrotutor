@@ -31,9 +31,22 @@
         private GeoPosition position;
 
         private bool refreshedFromServer = false;
+        private bool _downloading;
+
+        public bool Downloading
+        {
+            get => _downloading;
+            set => SetProperty(ref _downloading, value);
+        }
+
+        public bool ViewInactive
+        {
+            get { return !Downloading; }
+        }
 
         public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService, IWeatherDbOperations weatherDbOperations) : base(eventAggregator)
         {
+            Downloading = false;
             DatasetNames = new List<string>
             {
                 "Días de grado creciente",
@@ -90,6 +103,7 @@
                 {
                     _weatherDbOperations.UpdateWeatherData(data);
                     refreshedFromServer = false;
+                    Downloading = false;
                 }
             }
         }
@@ -143,6 +157,7 @@
         private async void LoadWeatherDataAsync()
         {
             refreshedFromServer = true;
+            Downloading = true;
             MyWeatherData = await WeatherService.GetWeatherData(position);
         }
 
@@ -153,16 +168,23 @@
 
         private void RefreshWeatherData()
         {
-            if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
+            if (_parcel.Latitude == 0 && _parcel.Longitude == 0)
             {
-                if (_parcel.Latitude == 0 && _parcel.Longitude == 0) return;
                 position = new GeoPosition
                 {
                     Latitude = Parcel.Latitude,
                     Longitude = Parcel.Longitude
                 };
-                LoadWeatherDataAsync();
             }
+            else
+            {
+                position = new GeoPosition
+                {
+                    Latitude = 21.798344,
+                    Longitude = -101.667537
+                };
+            }
+            LoadWeatherDataAsync();
         }
 
         private void ShowWeatherData()
@@ -171,6 +193,7 @@
             if (MyWeatherData == null)
             {
                 WeatherDataAvailable = false;
+                return;
             }
 
             HistoricalSeries series = null;

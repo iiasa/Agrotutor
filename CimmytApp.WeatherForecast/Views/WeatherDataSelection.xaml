@@ -12,6 +12,7 @@
             <Button Text="Ver" Command="{Binding ShowWeatherDataCommand}" IsEnabled="{Binding WeatherDataAvailable}" />
             <Label Text="Por favor actualice primero." IsVisible="{Binding ShowRefreshText}" />
             <Label Text="La ubicación de la parcela no se conoce. Por favor delinee el parcela para mostrar la información del tiempo." IsVisible="{Binding ParcelLocationNotSet}" />
+            <Label Text="Por favor espere mientras recuperamos sus registros." IsVisible="{Binding Downloading}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
