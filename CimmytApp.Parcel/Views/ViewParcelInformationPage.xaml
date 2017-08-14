@@ -8,7 +8,6 @@
     <ScrollView>
         <StackLayout Margin="16">
 
-            <Button Command="{Binding TestCommand}" Text="Hi"/>
             <Label Text="Agricultural cycle"  FontSize="10" />
             <Label Text="{Binding Parcel.AgriculturalCycle, Mode=TwoWay}" FontSize="Medium" Margin="16, 8, 16, 8" />
             <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />

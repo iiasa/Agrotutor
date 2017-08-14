@@ -5,8 +5,9 @@
     using System.ComponentModel;
     using System.Linq;
     using Prism;
-    using Prism.Commands;
-    using Prism.Events;
+	using Prism.Commands;
+	using Prism.Events;
+	using Prism.Mvvm;
     using Prism.Navigation;
 
     using Helper.BusinessContract;
@@ -17,7 +18,7 @@
     using DTO;
     using DTO.Parcel;
 
-    public class WeatherDataSelectionViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
+    public class WeatherDataSelectionViewModel : DatasetReceiverBindableBase, IActiveAware
     {
         private List<string> _datasetNames;
         private INavigationService _navigationService;
@@ -80,16 +81,22 @@
             set
             {
                 SetProperty(ref _parcel, value);
-                LoadWeatherFromDb(value.ParcelId);
+                try
+                {
+                    LoadWeatherFromDb(value.ParcelId);
+                }
+                catch{}
             }
-        }
+		}
+
+        public DelegateCommand RefreshWeatherDataCommand { get; set; }
+		public DelegateCommand ShowWeatherDataCommand { get; set; }
 
         private void LoadWeatherFromDb(int parcelId)
         {
-            _weatherDbOperations.GetWeatherData(parcelId);
+            MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
         }
 
-        public DelegateCommand RefreshWeatherDataCommand { get; set; }
 
         public int SelectedDataset
         {
@@ -97,9 +104,8 @@
             set => SetProperty(ref _selectedDataset, value);
         }
 
-        public DelegateCommand ShowWeatherDataCommand { get; set; }
 
-        public WeatherData WeatherData
+        public WeatherData MyWeatherData
         {
             get => _weatherData;
 
@@ -111,20 +117,9 @@
                 if (refreshedFromServer)
                 {
                     _weatherDbOperations.UpdateWeatherData(data);
+                    refreshedFromServer = false;
                 }
             }
-        }
-
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         protected override void ReadDataset(IDataset dataset)
@@ -135,7 +130,7 @@
         private async void LoadWeatherDataAsync()
         {
             refreshedFromServer = true;
-            WeatherData = await WeatherService.GetWeatherData(position);
+            MyWeatherData = await WeatherService.GetWeatherData(position);
         }
 
         private void RefreshWeatherData()
@@ -155,98 +150,98 @@
         private void ShowWeatherData()
         {
             var page = "";
-            if (WeatherData == null) return;
+            if (MyWeatherData == null) return;
             HistoricalSeries series = null;
             switch (SelectedDataset)
             {
                 case 0:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.GrowingDegreeDays;
+                    series = MyWeatherData.GrowingDegreeDays;
                     break;
 
                 case 1:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.CoolingDegreeDays;
+                    series = MyWeatherData.CoolingDegreeDays;
                     break;
 
                 case 2:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.HeatingDegreeDays;
+                    series = MyWeatherData.HeatingDegreeDays;
                     break;
 
                 case 3:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.DailyPrecipitation;
+                    series = MyWeatherData.DailyPrecipitation;
                     break;
 
                 case 4:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyPrecipitation;
+                    series = MyWeatherData.HourlyPrecipitation;
                     break;
 
                 case 5:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyRelativeHumidity;
+                    series = MyWeatherData.HourlyRelativeHumidity;
                     break;
 
                 case 6:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.DailySolarRadiation;
+                    series = MyWeatherData.DailySolarRadiation;
                     break;
 
                 case 7:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlySolarRadiation;
+                    series = MyWeatherData.HourlySolarRadiation;
                     break;
 
                 case 8:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyTemperature;
+                    series = MyWeatherData.HourlyTemperature;
                     break;
 
                 case 9:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.DailyHighTemperature;
+                    series = MyWeatherData.DailyHighTemperature;
                     break;
 
                 case 10:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.DailyLowTemperature;
+                    series = MyWeatherData.DailyLowTemperature;
                     break;
 
                 case 11:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyDewpoint;
+                    series = MyWeatherData.HourlyDewpoint;
                     break;
 
                 case 12:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyWindSpeed;
+                    series = MyWeatherData.HourlyWindSpeed;
                     break;
 
                 case 13:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyWindDirection;
+                    series = MyWeatherData.HourlyWindDirection;
                     break;
 
                 case 14:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.DailyEvapotranspirationShortCrop;
+                    series = MyWeatherData.DailyEvapotranspirationShortCrop;
                     break;
 
                 case 15:
                     page = "DailyWeatherDataPage";
-                    series = WeatherData.DailyEvapotranspirationTallCrop;
+                    series = MyWeatherData.DailyEvapotranspirationTallCrop;
                     break;
 
                 case 16:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyEvapotranspirationShortCrop;
+                    series = MyWeatherData.HourlyEvapotranspirationShortCrop;
                     break;
 
                 case 17:
                     page = "HourlyWeatherDataPage";
-                    series = WeatherData.HourlyEvapotranspirationTallCrop;
+                    series = MyWeatherData.HourlyEvapotranspirationTallCrop;
                     break;
             }
 
