@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using System.Threading.Tasks;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.ObjectModel;
     using System.Windows.Input;
@@ -20,67 +22,64 @@
         private readonly INavigationService _navigationService;
         private readonly IEventAggregator _eventAggregator;
         private List<Parcel> _parcels;
-        public ICommand AddParcelCommand { get; set; }
+        public DelegateCommand AddParcelCommand { get; set; }
+        public DelegateCommand UploadCommand { get; set; }
         public DelegateCommand<object> ParcelDetailCommand { get; set; }
+
+        public bool ShowUploadButton
+        {
+            get => _showUploadButton;
+            set => SetProperty(ref _showUploadButton, value);
+        }
 
         public List<Parcel> Parcels
         {
-            get { return _parcels; }
-            set { SetProperty(ref _parcels, value); }
+            get => _parcels;
+            set => SetProperty(ref _parcels, value);
         }
 
         public bool IsParcelListEnabled
         {
-            get { return _isParcelListEnabled; }
-            set { SetProperty(ref _isParcelListEnabled, value); }
+            get => _isParcelListEnabled;
+            set => SetProperty(ref _isParcelListEnabled, value);
         }
 
         private ICimmytDbOperations _cimmytDbOperations;
-        private bool _isParcelListEnabled=true;
+        private bool _isParcelListEnabled = true;
+        private bool _showUploadButton;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _cimmytDbOperations = cimmytDbOperations;
-            AddParcelCommand = new Command(NavigateToAddParcelPage);
+            AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
+            UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand = new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
 
             _parcels = new List<Parcel>();
-            // cimmytDbOperations.DeleteAllData();
             Parcels = cimmytDbOperations.GetAllParcels();
-            UploadParcels();
-            //testcode:
-            //         Parcels = new List<Parcel>
-            //         {
-            //             parcels.ElementAt(0),
-            //             parcels.ElementAt(1)
-            //};
-            // cimmytDbOperations.DeleteAllData();
-            //  Parcels = cimmytDbOperations.GetAllParcels();
-            // Parcels.AddRange(Parcels);
-            //foreach (var parcel in Parcels) parcel.Submit();
+            /*var uploadTask = new Task(UploadParcels);
+            uploadTask.Start();*/ //TODO: find a proper place to trigger upload
         }
 
         private void UploadParcels()
         {
+            ShowUploadButton = false;
             foreach (var parcel in Parcels)
             {
                 parcel.Submit();
-                //var sent = await parcel.Submit();
             }
+            Parcels = Parcels; // Just for triggering setproperty
         }
 
         private void NavigateToParcelDetailPage(object id)
         {
             try
             {
-              
-                   // IsParcelListEnabled = false;
-                    var navigationParameters = new NavigationParameters {{"Id", (int) id}};
-                    _navigationService.NavigateAsync("ParcelPage", navigationParameters);
-                   
-                
+                // IsParcelListEnabled = false;
+                var navigationParameters = new NavigationParameters { { "Id", (int)id } };
+                _navigationService.NavigateAsync("ParcelPage", navigationParameters);
             }
             catch (Exception e)
             {

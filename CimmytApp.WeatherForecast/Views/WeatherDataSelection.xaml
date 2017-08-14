@@ -3,7 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              x:Class="CimmytApp.WeatherForecast.Views.WeatherDataSelection">
-	<ContentPage.Content>
-	</ContentPage.Content>
+    <ContentPage.Content>
+        <StackLayout>
+            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" />
+            <Button Text="Actualice" Command="{Binding RefreshWeatherDataCommand}" />
+            <Button Text="Ver" Command="{Binding ShowWeatherDataCommand}" IsEnabled="{Binding WeatherDataAvailable}" />
+            <Label Text="Por favor actualice primero." IsVisible="{Binding ShowRefreshText}" />
+            <Label Text="La ubicación de la parcela no se conoce. Por favor delinee el parcela para mostrar la información del tiempo." IsVisible="{Binding ParcelLocationNotSet}" />
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>

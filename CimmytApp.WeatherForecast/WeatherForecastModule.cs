@@ -16,10 +16,10 @@
         }
 
         public void Initialize()
-		{
-			_unityContainer.RegisterTypeForNavigation<WeatherForecastPage>();
-			_unityContainer.RegisterTypeForNavigation<WeatherDataSelection>();
-			_unityContainer.RegisterTypeForNavigation<WeatherDataView>();
+        {
+            _unityContainer.RegisterTypeForNavigation<WeatherDataSelection>();
+            _unityContainer.RegisterTypeForNavigation<DailyWeatherDataPage>();
+            _unityContainer.RegisterTypeForNavigation<HourlyWeatherDataPage>();
         }
     }
 }

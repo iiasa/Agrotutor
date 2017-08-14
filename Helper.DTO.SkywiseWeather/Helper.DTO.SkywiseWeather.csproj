@@ -28,6 +28,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Historical\DailySeries.cs" />
+    <Compile Include="Historical\HourlySeries.cs" />
     <Compile Include="Historical\Temperature\CoolingDegreeDays.cs" />
     <Compile Include="Historical\Evapotranspiration\DailyEvapotranspirationShortCrop.cs" />
     <Compile Include="Historical\Evapotranspiration\DailyEvapotranspirationTallCrop.cs" />
@@ -35,6 +37,7 @@
     <Compile Include="Historical\Temperature\DailyLowTemperature.cs" />
     <Compile Include="Historical\Precipitation\DailyPrecipitation.cs" />
     <Compile Include="Historical\SolarRadiation\DailySolarRadiation.cs" />
+    <Compile Include="Historical\Temperature\DegreeDays.cs" />
     <Compile Include="Historical\Temperature\GrowingDegreeDays.cs" />
     <Compile Include="Historical\Temperature\HeatingDegreeDays.cs" />
     <Compile Include="Historical\Temperature\HourlyDewpoint.cs" />

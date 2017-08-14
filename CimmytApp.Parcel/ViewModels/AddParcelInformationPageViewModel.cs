@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Input;
 using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
@@ -89,25 +90,28 @@ namespace CimmytApp.Parcel.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-         
             if (parameters.ContainsKey("Deliniation"))
             {
                 object deliniation;
                 parameters.TryGetValue("Deliniation", out deliniation);
                 //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
-                PolygonDto polygonObj=new PolygonDto();
-                polygonObj.ListPoints = (List<GeoPosition>) deliniation;
+                PolygonDto polygonObj = new PolygonDto();
+                polygonObj.ListPoints = (List<GeoPosition>)deliniation;
                 if (polygonObj.ListPoints != null && polygonObj.ListPoints.Count > 2)
                 {
+                    if (Parcel.Latitude == 0 && Parcel.Longitude == 0)
+                    {
+                        Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
+                        Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
+                    }
                     _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
                     NeedsDeliniation = false;
                 }
-               // var res=_cimmytDbOperations.GetAllParcels();
+                // var res=_cimmytDbOperations.GetAllParcels();
                 OnPropertyChanged("Parcel"); //TODO improve this...
                 PublishDataset(Parcel);//TODO improve this..
-              //  _cimmytDbOperations.UpdateParcel(Parcel);
+                                       //  _cimmytDbOperations.UpdateParcel(Parcel);
             }
-          
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
@@ -118,6 +122,7 @@ namespace CimmytApp.Parcel.ViewModels
         {
             return _parcel;
         }
+
         private void CheckDeliniation()
         {
             if (Parcel != null)

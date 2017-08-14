@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using System;
+using Prism.Commands;
 
 namespace CimmytApp.Parcel.ViewModels
 {
@@ -34,7 +35,7 @@ namespace CimmytApp.Parcel.ViewModels
         private bool _tech8Checked;
         private bool _userIsAtParcel;
         private List<string> _years;
-        private bool _isSaveBtnEnabled=true;
+        private bool _isSaveBtnEnabled = true;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
@@ -60,6 +61,7 @@ namespace CimmytApp.Parcel.ViewModels
             }
         }
 
+        public bool InformationMissing { get { return !IsSaveBtnEnabled; } }
         public List<string> AgriculturalCycles { get; } = new List<string> { "Primavera-Verano", "Otoño-Invierno" };
 
         public ICommand ClickChooseLocation { get; set; }
@@ -208,7 +210,6 @@ namespace CimmytApp.Parcel.ViewModels
             get => _years;
             set => SetProperty(ref _years, value);
         }
- 
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -219,12 +220,10 @@ namespace CimmytApp.Parcel.ViewModels
             if (parameters.ContainsKey("GeoPosition"))
             {
                 parameters.TryGetValue("GeoPosition", out object geoPosition);
-                if (geoPosition != null)
-                {
-                    var position = (GeoPosition)geoPosition;
-                    Parcel.Latitude = position.Latitude;
-                    Parcel.Longitude = position.Longitude;
-                }
+                if (geoPosition == null) return;
+                var position = (GeoPosition)geoPosition;
+                Parcel.Latitude = position.Latitude;
+                Parcel.Longitude = position.Longitude;
             }
         }
 
@@ -234,6 +233,14 @@ namespace CimmytApp.Parcel.ViewModels
 
         private bool CheckFields()
         {
+            if (Parcel.EstimatedParcelArea == null) return false;
+            if (Parcel.EstimatedParcelArea.Equals(string.Empty)) return false;
+            if (Parcel.ProducerName == null) return false;
+            if (Parcel.ProducerName.Equals(string.Empty)) return false;
+            if (Parcel.ParcelName == null) return false;
+            if (Parcel.ParcelName.Equals(string.Empty)) return false;
+            if (Parcel.Cultivar == null) return false;
+            if (Parcel.Cultivar.Equals(string.Empty)) return false;
             return true;
         }
 
@@ -246,9 +253,11 @@ namespace CimmytApp.Parcel.ViewModels
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
-            if (CheckFields() == false)
-            {
-            }
+            //if (CheckFields() == false)
+            //{
+            //    IsSaveBtnEnabled = false;
+            //    return;
+            //}
             _cimmytDbOperations.AddParcel(Parcel);
 
             var navigationParameters = new NavigationParameters

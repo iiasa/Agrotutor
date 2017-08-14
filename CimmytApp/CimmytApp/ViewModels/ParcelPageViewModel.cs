@@ -24,16 +24,13 @@
 
         private List<WeatherData> _weatherData;
 
-        private readonly IWeatherDbOperations _weatherDbOperations;
         private readonly ICimmytDbOperations _cimmytDbOperations;
 
-        public ParcelPageViewModel(IEventAggregator eventAggregator, IWeatherDbOperations weatherDbOperations, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
+        public ParcelPageViewModel(IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
             try
             {
-                _weatherDbOperations = weatherDbOperations;
                 _cimmytDbOperations = cimmytDbOperations;
-             //   ReadDataAsync();
             }
             catch (Exception e)
             {
@@ -78,7 +75,7 @@
             {
                 var id = (int)parameters["Id"];
 
-                Parcel = _cimmytDbOperations.GetParcelById(id); //new TestParcels().ElementAt(id);
+                Parcel = _cimmytDbOperations.GetParcelById(id);
             }
             catch (Exception e)
             {
@@ -104,30 +101,5 @@
         {
             Parcel = (Parcel)dataset;
         }
-
-        private void ReadParcelData()
-        {
-        }
-
-        //private async System.Threading.Tasks.Task ReadDataAsync()
-        //{
-        //    try
-        //    {
-
-        //    var restfulClient = new RestfulClient<WeatherData>();
-        //    var response = await restfulClient.RefreshDataAsync($"https://wsgi.geo-wiki.org/skywise_weather?lat={Parcel.Latitude}&lng={Parcel.Longitude}");
-        //    if (response != null)
-        //    {
-        //        _weatherDbOperations.AddWeatherData(response);
-        //        var returnData = _weatherDbOperations.GetAllWeatherData();
-        //        WeatherData = returnData;
-        //    }
-
-        //    }
-        //    catch (Exception e)
-        //    {
-             
-        //    }
-        //}
     }
 }

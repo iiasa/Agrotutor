@@ -9,9 +9,6 @@
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
 
-        public string startDate { get; set; }
-        public string endDate { get; set; }
-
         [ForeignKey(typeof(WeatherData))]
         public int WeatherDataID { get; set; }
     }

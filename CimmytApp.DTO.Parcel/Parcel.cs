@@ -95,6 +95,7 @@ namespace CimmytApp.DTO.Parcel
                 OnPropertyChanged("EstimatedParcelArea");
             }
         }
+
         [ForeignKey(typeof(PolygonDto))]
         public int PolygonID { get; set; }
 
@@ -118,6 +119,12 @@ namespace CimmytApp.DTO.Parcel
                 _pesticidesApplied = value;
                 OnPropertyChanged("PesticidesApplied");
             }
+        }
+
+        public int Uploaded
+        {
+            get => _uploaded;
+            set => _uploaded = value;
         }
 
         public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
@@ -238,15 +245,13 @@ namespace CimmytApp.DTO.Parcel
 
         public string PerformanceWithUnit => Performance + " tons/ha";
 
-
-
         public DateTime PlantingDate
         {
             get => _plantingDate;
             set
             {
                 //_plantingDate = value;
-         
+
                 _plantingDate = value.ToLocalTime();
                 OnPropertyChanged("PlantingDate");
             }
@@ -299,25 +304,27 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
-        //ToDo:Move to another Class 
+        //ToDo:Move to another Class
         public static async Task<List<Parcel>> LoadParcelsFromServer()
         {
             return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
         }
-        //ToDo:Move to another Class 
+
+        //ToDo:Move to another Class
         public DataTemplate GetOverviewDataTemplate()
         {
             return null;
         }
 
-        //ToDo:Move to another Class 
+        //ToDo:Move to another Class
         public void Submit()
         {
             if (_uploaded == (int)DatasetUploadStatus.Synchronized) return;
             _uploaded = (int)DatasetUploadStatus.Synchronized;
             Storage.StoreDatasetAsync(this, -1, 16, 1, geoWikiDatasetGroupId);
         }
-        //ToDo:Move to another Class 
+
+        //ToDo:Move to another Class
         public async Task<Parcel> SubmitAsync()
         {
             if (_uploaded == (int)DatasetUploadStatus.Synchronized) return null;
@@ -332,12 +339,14 @@ namespace CimmytApp.DTO.Parcel
             _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
-        //ToDo:Move to another Class 
+
+        //ToDo:Move to another Class
         public List<GeoPosition> GetDeliniation()
         {
             return string.IsNullOrEmpty(_deliniation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_deliniation);
         }
-        //ToDo:Move to another Class 
+
+        //ToDo:Move to another Class
         public void SetDeliniation(List<GeoPosition> deliniation)
         {
             _deliniation = JsonConvert.SerializeObject(deliniation);

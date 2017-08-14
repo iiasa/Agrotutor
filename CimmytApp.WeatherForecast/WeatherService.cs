@@ -9,9 +9,9 @@ namespace CimmytApp.WeatherForecast
 {
     public static class WeatherService
     {
-
         public static async Task<WeatherData> GetWeatherData(GeoPosition location)
         {
+<<<<<<< HEAD
             try
             {
                 var client = new RestfulClient<WeatherData>();
@@ -23,6 +23,20 @@ namespace CimmytApp.WeatherForecast
                 return null;
             }
      
+=======
+            var client = new RestfulClient<WeatherData>();
+            WeatherData data = null;
+            try
+            {
+                data = await client.RefreshDataAsync(
+                    $"https://wsgi.geo-wiki.org/skywise_weather?lat={location.Latitude}&lng={location.Longitude}");
+            }
+            catch
+            {
+                // ignored
+            }
+            return data;
+>>>>>>> master
         }
     }
 }

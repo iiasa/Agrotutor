@@ -4,15 +4,10 @@ namespace Helper.DTO.SkywiseWeather.Historical.Temperature
     using SQLiteNetExtensions.Attributes;
 
     [Table("CoolingDegreeDays")]
-    public class CoolingDegreeDays : HistoricalSeries
+    public class CoolingDegreeDays : DegreeDays
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
-
-        public string startDate { get; set; }
-        public float degreeDays { get; set; }
-        public string endDate { get; set; }
-        public float baseTemperature { get; set; }
 
         [ForeignKey(typeof(WeatherData))]
         public int WeatherDataID { get; set; }

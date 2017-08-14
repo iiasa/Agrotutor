@@ -4,6 +4,7 @@
     using System.Windows.Input;
     using Prism;
     using Prism.Events;
+    using Prism.Commands;
     using Prism.Navigation;
     using Xamarin.Forms;
 
@@ -17,26 +18,27 @@
     {
         private Parcel _parcel;
         private bool isActive;
-        public ICommand TestCommand { get; set; }
 
         public Parcel Parcel
         {
             get { return _parcel; }
-			set
+            set
             {
-				_parcel = value;
+                _parcel = value;
                 OnPropertyChanged("Parcel");
             }
         }
 
+        public DelegateCommand TestCommand {get; set;}
+
         public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
-            TestCommand = new Command(Test);
+            TestCommand = new DelegateCommand(Test);
         }
 
         private void Test()
         {
-            Parcel.Submit();
+            //Parcel.Submit();
         }
 
         public bool IsActive
@@ -67,12 +69,12 @@
             Parcel = (Parcel)dataset;
         }
 
-
         protected virtual void OnPropertyChanged(string aName)
         {
             var iHandler = PropertyChanged;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
-		}
-		public event PropertyChangedEventHandler PropertyChanged;
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
