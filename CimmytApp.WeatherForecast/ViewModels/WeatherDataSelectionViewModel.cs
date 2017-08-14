@@ -126,7 +126,14 @@
 
         public bool ShowRefreshText => !_weatherDataAvailable;
 
-        public bool ParcelLocationNotSet => (Parcel.Latitude == 0 && Parcel.Longitude == 0);
+        public bool ParcelLocationNotSet
+        {
+            get
+            {
+                if (Parcel == null) return true;
+                return (Parcel.Latitude == 0 && Parcel.Longitude == 0);
+            }
+        }
 
         protected override void ReadDataset(IDataset dataset)
         {

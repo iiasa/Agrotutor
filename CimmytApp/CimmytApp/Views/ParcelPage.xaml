@@ -12,7 +12,7 @@
 
     <views3:AddParcelInformationPage Icon="icon_edit" />
     <views3:ViewParcelInformationPage Icon="icon_view" />
-    <!--<viewsWeather:WeatherDataSelection Icon="icon_weather" />-->
+    <viewsWeather:WeatherDataSelection Icon="icon_weather" />
     <views4:LocalBenchmarkingSelectionPage Icon="icon_benchmark" />
     <calend:CalendarPage Icon="icon_calendar" />
 </TabbedPage>
