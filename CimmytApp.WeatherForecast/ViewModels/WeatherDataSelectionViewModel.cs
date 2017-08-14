@@ -5,9 +5,9 @@
     using System.ComponentModel;
     using System.Linq;
     using Prism;
-	using Prism.Commands;
-	using Prism.Events;
-	using Prism.Mvvm;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Mvvm;
     using Prism.Navigation;
 
     using Helper.BusinessContract;
@@ -26,6 +26,7 @@
         private int _selectedDataset;
         private WeatherData _weatherData;
         private IWeatherDbOperations _weatherDbOperations;
+        private bool _weatherDataAvailable = true;
         private bool isActive;
         private GeoPosition position;
 
@@ -75,36 +76,6 @@
             set => isActive = value;
         }
 
-        public Parcel Parcel
-        {
-            get => _parcel;
-            set
-            {
-                SetProperty(ref _parcel, value);
-                try
-                {
-                    LoadWeatherFromDb(value.ParcelId);
-                }
-                catch{}
-            }
-		}
-
-        public DelegateCommand RefreshWeatherDataCommand { get; set; }
-		public DelegateCommand ShowWeatherDataCommand { get; set; }
-
-        private void LoadWeatherFromDb(int parcelId)
-        {
-            MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
-        }
-
-
-        public int SelectedDataset
-        {
-            get => _selectedDataset;
-            set => SetProperty(ref _selectedDataset, value);
-        }
-
-
         public WeatherData MyWeatherData
         {
             get => _weatherData;
@@ -112,6 +83,7 @@
             set
             {
                 var data = value;
+                WeatherDataAvailable = true;
                 data.ParcelId = Parcel.ParcelId;
                 SetProperty(ref _weatherData, data);
                 if (refreshedFromServer)
@@ -122,6 +94,40 @@
             }
         }
 
+        public Parcel Parcel
+        {
+            get => _parcel;
+            set
+            {
+                SetProperty(ref _parcel, value);
+                try
+                {
+                    LoadWeatherFromDb(value.ParcelId);
+                }
+                catch { }
+            }
+        }
+
+        public DelegateCommand RefreshWeatherDataCommand { get; set; }
+
+        public int SelectedDataset
+        {
+            get => _selectedDataset;
+            set => SetProperty(ref _selectedDataset, value);
+        }
+
+        public DelegateCommand ShowWeatherDataCommand { get; set; }
+
+        public bool WeatherDataAvailable
+        {
+            get => _weatherDataAvailable;
+            set => SetProperty(ref _weatherDataAvailable, value);
+        }
+
+        public bool ShowRefreshText => !_weatherDataAvailable;
+
+        public bool ParcelLocationNotSet => (Parcel.Latitude == 0 && Parcel.Longitude == 0);
+
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
@@ -131,6 +137,11 @@
         {
             refreshedFromServer = true;
             MyWeatherData = await WeatherService.GetWeatherData(position);
+        }
+
+        private void LoadWeatherFromDb(int parcelId)
+        {
+            MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
         }
 
         private void RefreshWeatherData()
@@ -150,7 +161,11 @@
         private void ShowWeatherData()
         {
             var page = "";
-            if (MyWeatherData == null) return;
+            if (MyWeatherData == null)
+            {
+                WeatherDataAvailable = false;
+            }
+
             HistoricalSeries series = null;
             switch (SelectedDataset)
             {

@@ -5,16 +5,16 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             x:Name="ParcelOverviewRoot"
-   >
+             x:Name="ParcelOverviewRoot">
     <!--Title="{localization:Translate page_title_parcels_overview}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="0">
-            <ListView ItemsSource="{Binding Parcels}" RowHeight="72" >
+            <ListView ItemsSource="{Binding Parcels}" RowHeight="72">
                 <!-- TODO RowHeight auto -->
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -35,5 +35,6 @@
             </ListView>
         </ScrollView>
         <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}"   Grid.Row="1" />
+        <Button Text="Subir cambios" Command="{Binding UploadCommand}"   Grid.Row="2" />
     </Grid>
 </ContentPage>

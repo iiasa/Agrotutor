@@ -22,30 +22,32 @@ namespace CimmytApp.Parcel.ViewModels
         private readonly INavigationService _navigationService;
         private readonly IEventAggregator _eventAggregator;
         private List<Parcel> _parcels;
-        public ICommand AddParcelCommand { get; set; }
+        public DelegateCommand AddParcelCommand { get; set; }
+        public DelegateCommand UploadCommand { get; set; }
         public DelegateCommand<object> ParcelDetailCommand { get; set; }
 
         public List<Parcel> Parcels
         {
-            get { return _parcels; }
-            set { SetProperty(ref _parcels, value); }
+            get => _parcels;
+            set => SetProperty(ref _parcels, value);
         }
 
         public bool IsParcelListEnabled
         {
-            get { return _isParcelListEnabled; }
-            set { SetProperty(ref _isParcelListEnabled, value); }
+            get => _isParcelListEnabled;
+            set => SetProperty(ref _isParcelListEnabled, value);
         }
 
         private ICimmytDbOperations _cimmytDbOperations;
-        private bool _isParcelListEnabled=true;
+        private bool _isParcelListEnabled = true;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _cimmytDbOperations = cimmytDbOperations;
-            AddParcelCommand = new Command(NavigateToAddParcelPage);
+            AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
+            UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand = new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
 
             _parcels = new List<Parcel>();
@@ -60,18 +62,16 @@ namespace CimmytApp.Parcel.ViewModels
             {
                 parcel.Submit();
             }
+            Parcels = Parcels; // Just for triggering setproperty
         }
 
         private void NavigateToParcelDetailPage(object id)
         {
             try
             {
-              
-                   // IsParcelListEnabled = false;
-                    var navigationParameters = new NavigationParameters {{"Id", (int) id}};
-                    _navigationService.NavigateAsync("ParcelPage", navigationParameters);
-                   
-                
+                // IsParcelListEnabled = false;
+                var navigationParameters = new NavigationParameters { { "Id", (int)id } };
+                _navigationService.NavigateAsync("ParcelPage", navigationParameters);
             }
             catch (Exception e)
             {
