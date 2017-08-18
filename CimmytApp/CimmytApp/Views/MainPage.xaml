@@ -17,6 +17,6 @@
     <views2:ParcelsOverviewPage Icon="icon_overview" />
     <views4:GenericMap Icon="icon_map" />
     <views5:LocalBenchmarkingSelectionPage Icon="icon_benchmark" />
-    <calend:CalendarPage Icon="icon_calendar" />
+    <calend:TelerikCalendarPage Icon="icon_calendar" />
     <views1:LinksPage Icon="icon_links" />
 </TabbedPage>
