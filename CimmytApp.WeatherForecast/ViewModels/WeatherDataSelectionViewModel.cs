@@ -168,7 +168,7 @@
 
         private void RefreshWeatherData()
         {
-            if (_parcel.Latitude == 0 && _parcel.Longitude == 0)
+            if (_parcel.Latitude != 0 || _parcel.Longitude != 0)
             {
                 position = new GeoPosition
                 {
@@ -290,6 +290,7 @@
                     break;
             }
 
+            series?.Sort();
             var parameters = new NavigationParameters
             {
                 {"Series", series},

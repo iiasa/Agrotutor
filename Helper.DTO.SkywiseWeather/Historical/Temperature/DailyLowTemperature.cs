@@ -4,7 +4,7 @@
     using SQLiteNetExtensions.Attributes;
 
     [Table("DailyLowTemperature")]
-    public class DailyLowTemperature : HistoricalSeries
+    public class DailyLowTemperature : DailySeries
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

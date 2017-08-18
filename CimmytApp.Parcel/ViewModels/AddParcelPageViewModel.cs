@@ -1,4 +1,6 @@
 ﻿using System;
+using Helper.BusinessContract;
+using Helper.Localization;
 using Prism.Commands;
 
 namespace CimmytApp.Parcel.ViewModels
@@ -264,7 +266,7 @@ namespace CimmytApp.Parcel.ViewModels
             {
                 { "id", Parcel.ParcelId }
             };
-            _navigationService.NavigateAsync("MainPage", navigationParameters, true);//This makes issues with Map screen
+            _navigationService.NavigateAsync("MainPage", navigationParameters, true);
         }
 
         private void UpdateTechChecked()

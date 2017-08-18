@@ -37,7 +37,7 @@ namespace Helper.Localization.Resx {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Helper.Localization.Resx.AppResources", typeof(AppResources).GetTypeInfo().Assembly);
@@ -52,7 +52,7 @@ namespace Helper.Localization.Resx {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -64,7 +64,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Agregue parcela.
         /// </summary>
-        internal static string add_parcel {
+        public static string add_parcel {
             get {
                 return ResourceManager.GetString("add_parcel", resourceCulture);
             }
@@ -73,7 +73,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Tipo de ciclo agronómico.
         /// </summary>
-        internal static string agronomic_cycle_type {
+        public static string agronomic_cycle_type {
             get {
                 return ResourceManager.GetString("agronomic_cycle_type", resourceCulture);
             }
@@ -82,7 +82,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ciclo agronómico.
         /// </summary>
-        internal static string agronomical_cycle {
+        public static string agronomical_cycle {
             get {
                 return ResourceManager.GetString("agronomical_cycle", resourceCulture);
             }
@@ -91,7 +91,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Primavera-Verano.
         /// </summary>
-        internal static string agronomical_cycle_1 {
+        public static string agronomical_cycle_1 {
             get {
                 return ResourceManager.GetString("agronomical_cycle_1", resourceCulture);
             }
@@ -100,7 +100,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Otoño-Invierno.
         /// </summary>
-        internal static string agronomical_cycle_2 {
+        public static string agronomical_cycle_2 {
             get {
                 return ResourceManager.GetString("agronomical_cycle_2", resourceCulture);
             }
@@ -109,7 +109,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to México Produce!.
         /// </summary>
-        internal static string app_name {
+        public static string app_name {
             get {
                 return ResourceManager.GetString("app_name", resourceCulture);
             }
@@ -118,7 +118,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Abril.
         /// </summary>
-        internal static string april {
+        public static string april {
             get {
                 return ResourceManager.GetString("april", resourceCulture);
             }
@@ -127,7 +127,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Agosto.
         /// </summary>
-        internal static string august {
+        public static string august {
             get {
                 return ResourceManager.GetString("august", resourceCulture);
             }
@@ -136,7 +136,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Seleccione el tipo de datos.
         /// </summary>
-        internal static string bem_data_type {
+        public static string bem_data_type {
             get {
                 return ResourceManager.GetString("bem_data_type", resourceCulture);
             }
@@ -145,7 +145,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Información comparativa.
         /// </summary>
-        internal static string benchmarking {
+        public static string benchmarking {
             get {
                 return ResourceManager.GetString("benchmarking", resourceCulture);
             }
@@ -154,7 +154,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Escoja una ubicación en el mapa.
         /// </summary>
-        internal static string btn_choose_location {
+        public static string btn_choose_location {
             get {
                 return ResourceManager.GetString("btn_choose_location", resourceCulture);
             }
@@ -163,7 +163,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Guardar.
         /// </summary>
-        internal static string btn_save_and_new {
+        public static string btn_save_and_new {
             get {
                 return ResourceManager.GetString("btn_save_and_new", resourceCulture);
             }
@@ -172,7 +172,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Guardar y añadir otra(o).
         /// </summary>
-        internal static string btn_save_and_new1 {
+        public static string btn_save_and_new1 {
             get {
                 return ResourceManager.GetString("btn_save_and_new1", resourceCulture);
             }
@@ -181,7 +181,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Calendario.
         /// </summary>
-        internal static string calendar {
+        public static string calendar {
             get {
                 return ResourceManager.GetString("calendar", resourceCulture);
             }
@@ -190,7 +190,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cancelar.
         /// </summary>
-        internal static string cancel {
+        public static string cancel {
             get {
                 return ResourceManager.GetString("cancel", resourceCulture);
             }
@@ -199,7 +199,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Grados-día de enfriamiento.
         /// </summary>
-        internal static string cdd {
+        public static string cdd {
             get {
                 return ResourceManager.GetString("cdd", resourceCulture);
             }
@@ -208,7 +208,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Coordinador.
         /// </summary>
-        internal static string coordinator {
+        public static string coordinator {
             get {
                 return ResourceManager.GetString("coordinator", resourceCulture);
             }
@@ -217,7 +217,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Maíz.
         /// </summary>
-        internal static string crop_types_1 {
+        public static string crop_types_1 {
             get {
                 return ResourceManager.GetString("crop_types_1", resourceCulture);
             }
@@ -226,7 +226,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Amaranto.
         /// </summary>
-        internal static string crop_types_10 {
+        public static string crop_types_10 {
             get {
                 return ResourceManager.GetString("crop_types_10", resourceCulture);
             }
@@ -235,7 +235,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Arroz.
         /// </summary>
-        internal static string crop_types_11 {
+        public static string crop_types_11 {
             get {
                 return ResourceManager.GetString("crop_types_11", resourceCulture);
             }
@@ -244,7 +244,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Canola.
         /// </summary>
-        internal static string crop_types_12 {
+        public static string crop_types_12 {
             get {
                 return ResourceManager.GetString("crop_types_12", resourceCulture);
             }
@@ -253,7 +253,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cartamo.
         /// </summary>
-        internal static string crop_types_13 {
+        public static string crop_types_13 {
             get {
                 return ResourceManager.GetString("crop_types_13", resourceCulture);
             }
@@ -262,7 +262,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Calabacín.
         /// </summary>
-        internal static string crop_types_14 {
+        public static string crop_types_14 {
             get {
                 return ResourceManager.GetString("crop_types_14", resourceCulture);
             }
@@ -271,7 +271,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Garbanzo.
         /// </summary>
-        internal static string crop_types_15 {
+        public static string crop_types_15 {
             get {
                 return ResourceManager.GetString("crop_types_15", resourceCulture);
             }
@@ -280,7 +280,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Haba.
         /// </summary>
-        internal static string crop_types_16 {
+        public static string crop_types_16 {
             get {
                 return ResourceManager.GetString("crop_types_16", resourceCulture);
             }
@@ -289,7 +289,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Soya.
         /// </summary>
-        internal static string crop_types_17 {
+        public static string crop_types_17 {
             get {
                 return ResourceManager.GetString("crop_types_17", resourceCulture);
             }
@@ -298,7 +298,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ninguno.
         /// </summary>
-        internal static string crop_types_18 {
+        public static string crop_types_18 {
             get {
                 return ResourceManager.GetString("crop_types_18", resourceCulture);
             }
@@ -307,7 +307,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Otro.
         /// </summary>
-        internal static string crop_types_19 {
+        public static string crop_types_19 {
             get {
                 return ResourceManager.GetString("crop_types_19", resourceCulture);
             }
@@ -316,7 +316,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cebada.
         /// </summary>
-        internal static string crop_types_2 {
+        public static string crop_types_2 {
             get {
                 return ResourceManager.GetString("crop_types_2", resourceCulture);
             }
@@ -325,7 +325,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Frijol.
         /// </summary>
-        internal static string crop_types_3 {
+        public static string crop_types_3 {
             get {
                 return ResourceManager.GetString("crop_types_3", resourceCulture);
             }
@@ -334,7 +334,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Trigo.
         /// </summary>
-        internal static string crop_types_4 {
+        public static string crop_types_4 {
             get {
                 return ResourceManager.GetString("crop_types_4", resourceCulture);
             }
@@ -343,7 +343,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Triticale.
         /// </summary>
-        internal static string crop_types_5 {
+        public static string crop_types_5 {
             get {
                 return ResourceManager.GetString("crop_types_5", resourceCulture);
             }
@@ -352,7 +352,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Sorgo.
         /// </summary>
-        internal static string crop_types_6 {
+        public static string crop_types_6 {
             get {
                 return ResourceManager.GetString("crop_types_6", resourceCulture);
             }
@@ -361,7 +361,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Alfalfa.
         /// </summary>
-        internal static string crop_types_7 {
+        public static string crop_types_7 {
             get {
                 return ResourceManager.GetString("crop_types_7", resourceCulture);
             }
@@ -370,7 +370,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Avena.
         /// </summary>
-        internal static string crop_types_8 {
+        public static string crop_types_8 {
             get {
                 return ResourceManager.GetString("crop_types_8", resourceCulture);
             }
@@ -379,7 +379,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ajonjolí.
         /// </summary>
-        internal static string crop_types_9 {
+        public static string crop_types_9 {
             get {
                 return ResourceManager.GetString("crop_types_9", resourceCulture);
             }
@@ -388,7 +388,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ciclo.
         /// </summary>
-        internal static string cycle {
+        public static string cycle {
             get {
                 return ResourceManager.GetString("cycle", resourceCulture);
             }
@@ -397,7 +397,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Fecha.
         /// </summary>
-        internal static string date {
+        public static string date {
             get {
                 return ResourceManager.GetString("date", resourceCulture);
             }
@@ -406,7 +406,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Diciembre.
         /// </summary>
-        internal static string december {
+        public static string december {
             get {
                 return ResourceManager.GetString("december", resourceCulture);
             }
@@ -415,7 +415,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Grados celsius.
         /// </summary>
-        internal static string degrees_celsius {
+        public static string degrees_celsius {
             get {
                 return ResourceManager.GetString("degrees_celsius", resourceCulture);
             }
@@ -424,7 +424,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Delinear parcela.
         /// </summary>
-        internal static string deliniate_parcel {
+        public static string deliniate_parcel {
             get {
                 return ResourceManager.GetString("deliniate_parcel", resourceCulture);
             }
@@ -433,7 +433,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Evapotranspiración diaria cultivo bajo.
         /// </summary>
-        internal static string desc {
+        public static string desc {
             get {
                 return ResourceManager.GetString("desc", resourceCulture);
             }
@@ -442,7 +442,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Detalles.
         /// </summary>
-        internal static string details {
+        public static string details {
             get {
                 return ResourceManager.GetString("details", resourceCulture);
             }
@@ -451,7 +451,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Evapotranspiración diaria cultivo alto.
         /// </summary>
-        internal static string detc {
+        public static string detc {
             get {
                 return ResourceManager.GetString("detc", resourceCulture);
             }
@@ -460,7 +460,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Temperatura alta diaria.
         /// </summary>
-        internal static string dht {
+        public static string dht {
             get {
                 return ResourceManager.GetString("dht", resourceCulture);
             }
@@ -469,7 +469,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Grados en sentido horario desde el norte.
         /// </summary>
-        internal static string direction_unit {
+        public static string direction_unit {
             get {
                 return ResourceManager.GetString("direction_unit", resourceCulture);
             }
@@ -478,7 +478,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to °.
         /// </summary>
-        internal static string direction_unit_short {
+        public static string direction_unit_short {
             get {
                 return ResourceManager.GetString("direction_unit_short", resourceCulture);
             }
@@ -487,7 +487,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Temperatura baja diaria.
         /// </summary>
-        internal static string dlt {
+        public static string dlt {
             get {
                 return ResourceManager.GetString("dlt", resourceCulture);
             }
@@ -496,7 +496,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Precipitación diaria.
         /// </summary>
-        internal static string dp {
+        public static string dp {
             get {
                 return ResourceManager.GetString("dp", resourceCulture);
             }
@@ -505,7 +505,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Radiación solar diaria.
         /// </summary>
-        internal static string dsr {
+        public static string dsr {
             get {
                 return ResourceManager.GetString("dsr", resourceCulture);
             }
@@ -514,7 +514,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Fin.
         /// </summary>
-        internal static string end {
+        public static string end {
             get {
                 return ResourceManager.GetString("end", resourceCulture);
             }
@@ -523,7 +523,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Milímetros por día.
         /// </summary>
-        internal static string evapotranspiration_unit {
+        public static string evapotranspiration_unit {
             get {
                 return ResourceManager.GetString("evapotranspiration_unit", resourceCulture);
             }
@@ -532,7 +532,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Milímetros por hora.
         /// </summary>
-        internal static string evapotranspiration_unit_hour {
+        public static string evapotranspiration_unit_hour {
             get {
                 return ResourceManager.GetString("evapotranspiration_unit_hour", resourceCulture);
             }
@@ -541,7 +541,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to mm/h.
         /// </summary>
-        internal static string evapotranspiration_unit_hour_short {
+        public static string evapotranspiration_unit_hour_short {
             get {
                 return ResourceManager.GetString("evapotranspiration_unit_hour_short", resourceCulture);
             }
@@ -550,7 +550,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to mm/día.
         /// </summary>
-        internal static string evapotranspiration_unit_short {
+        public static string evapotranspiration_unit_short {
             get {
                 return ResourceManager.GetString("evapotranspiration_unit_short", resourceCulture);
             }
@@ -559,7 +559,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Febrero.
         /// </summary>
-        internal static string february {
+        public static string february {
             get {
                 return ResourceManager.GetString("february", resourceCulture);
             }
@@ -568,7 +568,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Filtro.
         /// </summary>
-        internal static string filter {
+        public static string filter {
             get {
                 return ResourceManager.GetString("filter", resourceCulture);
             }
@@ -577,7 +577,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Filtrar por ciclo.
         /// </summary>
-        internal static string filter_cycle {
+        public static string filter_cycle {
             get {
                 return ResourceManager.GetString("filter_cycle", resourceCulture);
             }
@@ -586,7 +586,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Filtrar por años.
         /// </summary>
-        internal static string filter_years {
+        public static string filter_years {
             get {
                 return ResourceManager.GetString("filter_years", resourceCulture);
             }
@@ -595,7 +595,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Grados-día de crecimiento.
         /// </summary>
-        internal static string gdd {
+        public static string gdd {
             get {
                 return ResourceManager.GetString("gdd", resourceCulture);
             }
@@ -604,7 +604,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Punto de rocío por hora.
         /// </summary>
-        internal static string hd {
+        public static string hd {
             get {
                 return ResourceManager.GetString("hd", resourceCulture);
             }
@@ -613,7 +613,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Grados-día de calentamiento.
         /// </summary>
-        internal static string hdd {
+        public static string hdd {
             get {
                 return ResourceManager.GetString("hdd", resourceCulture);
             }
@@ -622,7 +622,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Evapotranspiración por hora cultivo pequeño.
         /// </summary>
-        internal static string hesc {
+        public static string hesc {
             get {
                 return ResourceManager.GetString("hesc", resourceCulture);
             }
@@ -631,7 +631,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Evapotranspiración por hora cultivo alto.
         /// </summary>
-        internal static string hetc {
+        public static string hetc {
             get {
                 return ResourceManager.GetString("hetc", resourceCulture);
             }
@@ -640,7 +640,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor ingrese la siguiente información opcional.
         /// </summary>
-        internal static string hint_additional_information {
+        public static string hint_additional_information {
             get {
                 return ResourceManager.GetString("hint_additional_information", resourceCulture);
             }
@@ -649,7 +649,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Seleccione el ciclo agronómico.
         /// </summary>
-        internal static string hint_agronomical_cycle {
+        public static string hint_agronomical_cycle {
             get {
                 return ResourceManager.GetString("hint_agronomical_cycle", resourceCulture);
             }
@@ -658,7 +658,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Area estimada de parcela.
         /// </summary>
-        internal static string hint_area {
+        public static string hint_area {
             get {
                 return ResourceManager.GetString("hint_area", resourceCulture);
             }
@@ -667,7 +667,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cultivo sembrado.
         /// </summary>
-        internal static string hint_crop {
+        public static string hint_crop {
             get {
                 return ResourceManager.GetString("hint_crop", resourceCulture);
             }
@@ -676,7 +676,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cultivar.
         /// </summary>
-        internal static string hint_cultivar {
+        public static string hint_cultivar {
             get {
                 return ResourceManager.GetString("hint_cultivar", resourceCulture);
             }
@@ -685,7 +685,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cultivar sembrado.
         /// </summary>
-        internal static string hint_cultivar_placeholder {
+        public static string hint_cultivar_placeholder {
             get {
                 return ResourceManager.GetString("hint_cultivar_placeholder", resourceCulture);
             }
@@ -694,7 +694,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Nombre Apellido.
         /// </summary>
-        internal static string hint_firstname_lastname {
+        public static string hint_firstname_lastname {
             get {
                 return ResourceManager.GetString("hint_firstname_lastname", resourceCulture);
             }
@@ -703,7 +703,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Riego.
         /// </summary>
-        internal static string hint_irrigation {
+        public static string hint_irrigation {
             get {
                 return ResourceManager.GetString("hint_irrigation", resourceCulture);
             }
@@ -712,7 +712,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Tienes mensajes no leídos.
         /// </summary>
-        internal static string hint_notification_received {
+        public static string hint_notification_received {
             get {
                 return ResourceManager.GetString("hint_notification_received", resourceCulture);
             }
@@ -721,7 +721,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Mostrar los mensajes en una lista.
         /// </summary>
-        internal static string hint_notifications {
+        public static string hint_notifications {
             get {
                 return ResourceManager.GetString("hint_notifications", resourceCulture);
             }
@@ -730,7 +730,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Tecnologías usadas.
         /// </summary>
-        internal static string hint_other_technology_used {
+        public static string hint_other_technology_used {
             get {
                 return ResourceManager.GetString("hint_other_technology_used", resourceCulture);
             }
@@ -739,7 +739,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Nombre de parcela.
         /// </summary>
-        internal static string hint_parcel_name {
+        public static string hint_parcel_name {
             get {
                 return ResourceManager.GetString("hint_parcel_name", resourceCulture);
             }
@@ -748,7 +748,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to (para identificación, ej: Maíz Camino 1).
         /// </summary>
-        internal static string hint_parcel_name_1 {
+        public static string hint_parcel_name_1 {
             get {
                 return ResourceManager.GetString("hint_parcel_name_1", resourceCulture);
             }
@@ -757,7 +757,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Desempeño.
         /// </summary>
-        internal static string hint_performance {
+        public static string hint_performance {
             get {
                 return ResourceManager.GetString("hint_performance", resourceCulture);
             }
@@ -766,7 +766,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Fecha de aplicaicón de pesticida.
         /// </summary>
-        internal static string hint_pesticide_date {
+        public static string hint_pesticide_date {
             get {
                 return ResourceManager.GetString("hint_pesticide_date", resourceCulture);
             }
@@ -775,7 +775,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Nombre del pesticida aplicado.
         /// </summary>
-        internal static string hint_pesticide_product {
+        public static string hint_pesticide_product {
             get {
                 return ResourceManager.GetString("hint_pesticide_product", resourceCulture);
             }
@@ -784,7 +784,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Producto.
         /// </summary>
-        internal static string hint_pesticide_product_placeholder {
+        public static string hint_pesticide_product_placeholder {
             get {
                 return ResourceManager.GetString("hint_pesticide_product_placeholder", resourceCulture);
             }
@@ -793,7 +793,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Fecha de siembra.
         /// </summary>
-        internal static string hint_planting_date {
+        public static string hint_planting_date {
             get {
                 return ResourceManager.GetString("hint_planting_date", resourceCulture);
             }
@@ -802,7 +802,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Nombre del productor.
         /// </summary>
-        internal static string hint_producer_name {
+        public static string hint_producer_name {
             get {
                 return ResourceManager.GetString("hint_producer_name", resourceCulture);
             }
@@ -811,7 +811,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor seleccione que tecnologías se emplearon:.
         /// </summary>
-        internal static string hint_technologies_used {
+        public static string hint_technologies_used {
             get {
                 return ResourceManager.GetString("hint_technologies_used", resourceCulture);
             }
@@ -820,7 +820,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Otras tecnologías.
         /// </summary>
-        internal static string hint_technology_other {
+        public static string hint_technology_other {
             get {
                 return ResourceManager.GetString("hint_technology_other", resourceCulture);
             }
@@ -829,7 +829,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Se encuentra en su parcela?.
         /// </summary>
-        internal static string hint_user_at_parcel {
+        public static string hint_user_at_parcel {
             get {
                 return ResourceManager.GetString("hint_user_at_parcel", resourceCulture);
             }
@@ -838,7 +838,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Seleccione el año.
         /// </summary>
-        internal static string hint_year {
+        public static string hint_year {
             get {
                 return ResourceManager.GetString("hint_year", resourceCulture);
             }
@@ -847,7 +847,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Vatios por metro cuadrado.
         /// </summary>
-        internal static string hourly_radiation_unit {
+        public static string hourly_radiation_unit {
             get {
                 return ResourceManager.GetString("hourly_radiation_unit", resourceCulture);
             }
@@ -856,7 +856,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to W/m².
         /// </summary>
-        internal static string hourly_radiation_unit_short {
+        public static string hourly_radiation_unit_short {
             get {
                 return ResourceManager.GetString("hourly_radiation_unit_short", resourceCulture);
             }
@@ -865,7 +865,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Precipitación por hora.
         /// </summary>
-        internal static string hp {
+        public static string hp {
             get {
                 return ResourceManager.GetString("hp", resourceCulture);
             }
@@ -874,7 +874,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Radiación solar por hora.
         /// </summary>
-        internal static string hsr {
+        public static string hsr {
             get {
                 return ResourceManager.GetString("hsr", resourceCulture);
             }
@@ -883,7 +883,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Temperatura por hora.
         /// </summary>
-        internal static string ht {
+        public static string ht {
             get {
                 return ResourceManager.GetString("ht", resourceCulture);
             }
@@ -892,7 +892,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Centro.
         /// </summary>
-        internal static string hub {
+        public static string hub {
             get {
                 return ResourceManager.GetString("hub", resourceCulture);
             }
@@ -901,7 +901,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Dirección del viento por hora.
         /// </summary>
-        internal static string hwd {
+        public static string hwd {
             get {
                 return ResourceManager.GetString("hwd", resourceCulture);
             }
@@ -910,7 +910,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Velocidad del viento por hora.
         /// </summary>
-        internal static string hws {
+        public static string hws {
             get {
                 return ResourceManager.GetString("hws", resourceCulture);
             }
@@ -919,7 +919,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Institución.
         /// </summary>
-        internal static string institution {
+        public static string institution {
             get {
                 return ResourceManager.GetString("institution", resourceCulture);
             }
@@ -928,7 +928,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Riego.
         /// </summary>
-        internal static string irrigation_type_1 {
+        public static string irrigation_type_1 {
             get {
                 return ResourceManager.GetString("irrigation_type_1", resourceCulture);
             }
@@ -937,7 +937,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Riego de punteo.
         /// </summary>
-        internal static string irrigation_type_2 {
+        public static string irrigation_type_2 {
             get {
                 return ResourceManager.GetString("irrigation_type_2", resourceCulture);
             }
@@ -946,7 +946,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Temporal.
         /// </summary>
-        internal static string irrigation_type_3 {
+        public static string irrigation_type_3 {
             get {
                 return ResourceManager.GetString("irrigation_type_3", resourceCulture);
             }
@@ -955,7 +955,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Enero.
         /// </summary>
-        internal static string january {
+        public static string january {
             get {
                 return ResourceManager.GetString("january", resourceCulture);
             }
@@ -964,7 +964,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Julio.
         /// </summary>
-        internal static string july {
+        public static string july {
             get {
                 return ResourceManager.GetString("july", resourceCulture);
             }
@@ -973,7 +973,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Junio.
         /// </summary>
-        internal static string june {
+        public static string june {
             get {
                 return ResourceManager.GetString("june", resourceCulture);
             }
@@ -982,7 +982,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Última Modificación.
         /// </summary>
-        internal static string last_modification {
+        public static string last_modification {
             get {
                 return ResourceManager.GetString("last_modification", resourceCulture);
             }
@@ -991,7 +991,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Latitud.
         /// </summary>
-        internal static string lat {
+        public static string lat {
             get {
                 return ResourceManager.GetString("lat", resourceCulture);
             }
@@ -1000,7 +1000,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Lng.
         /// </summary>
-        internal static string lng {
+        public static string lng {
             get {
                 return ResourceManager.GetString("lng", resourceCulture);
             }
@@ -1009,7 +1009,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ubicación.
         /// </summary>
-        internal static string location {
+        public static string location {
             get {
                 return ResourceManager.GetString("location", resourceCulture);
             }
@@ -1018,7 +1018,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ubicación.
         /// </summary>
-        internal static string location1 {
+        public static string location1 {
             get {
                 return ResourceManager.GetString("location1", resourceCulture);
             }
@@ -1027,7 +1027,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Marzo.
         /// </summary>
-        internal static string march {
+        public static string march {
             get {
                 return ResourceManager.GetString("march", resourceCulture);
             }
@@ -1036,7 +1036,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Mayo.
         /// </summary>
-        internal static string may {
+        public static string may {
             get {
                 return ResourceManager.GetString("may", resourceCulture);
             }
@@ -1045,7 +1045,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Milímetros.
         /// </summary>
-        internal static string millimeters {
+        public static string millimeters {
             get {
                 return ResourceManager.GetString("millimeters", resourceCulture);
             }
@@ -1054,7 +1054,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to mm.
         /// </summary>
-        internal static string millimeters_unit {
+        public static string millimeters_unit {
             get {
                 return ResourceManager.GetString("millimeters_unit", resourceCulture);
             }
@@ -1063,7 +1063,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Noviembre.
         /// </summary>
-        internal static string november {
+        public static string november {
             get {
                 return ResourceManager.GetString("november", resourceCulture);
             }
@@ -1072,7 +1072,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Octubre.
         /// </summary>
-        internal static string october {
+        public static string october {
             get {
                 return ResourceManager.GetString("october", resourceCulture);
             }
@@ -1081,7 +1081,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Vale.
         /// </summary>
-        internal static string ok {
+        public static string ok {
             get {
                 return ResourceManager.GetString("ok", resourceCulture);
             }
@@ -1090,7 +1090,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Información opcional.
         /// </summary>
-        internal static string optional_information {
+        public static string optional_information {
             get {
                 return ResourceManager.GetString("optional_information", resourceCulture);
             }
@@ -1099,7 +1099,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Nueva parcela.
         /// </summary>
-        internal static string page_title_add_parcel {
+        public static string page_title_add_parcel {
             get {
                 return ResourceManager.GetString("page_title_add_parcel", resourceCulture);
             }
@@ -1108,7 +1108,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Información comparativa local.
         /// </summary>
-        internal static string page_title_benchmarking {
+        public static string page_title_benchmarking {
             get {
                 return ResourceManager.GetString("page_title_benchmarking", resourceCulture);
             }
@@ -1117,7 +1117,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Enlaces.
         /// </summary>
-        internal static string page_title_links {
+        public static string page_title_links {
             get {
                 return ResourceManager.GetString("page_title_links", resourceCulture);
             }
@@ -1126,7 +1126,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ingreso.
         /// </summary>
-        internal static string page_title_login {
+        public static string page_title_login {
             get {
                 return ResourceManager.GetString("page_title_login", resourceCulture);
             }
@@ -1135,7 +1135,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to México Produce!.
         /// </summary>
-        internal static string page_title_main {
+        public static string page_title_main {
             get {
                 return ResourceManager.GetString("page_title_main", resourceCulture);
             }
@@ -1144,7 +1144,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Mapa.
         /// </summary>
-        internal static string page_title_map {
+        public static string page_title_map {
             get {
                 return ResourceManager.GetString("page_title_map", resourceCulture);
             }
@@ -1153,7 +1153,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Mensajes.
         /// </summary>
-        internal static string page_title_notifications {
+        public static string page_title_notifications {
             get {
                 return ResourceManager.GetString("page_title_notifications", resourceCulture);
             }
@@ -1162,7 +1162,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ingrese información.
         /// </summary>
-        internal static string page_title_parcel_add_information {
+        public static string page_title_parcel_add_information {
             get {
                 return ResourceManager.GetString("page_title_parcel_add_information", resourceCulture);
             }
@@ -1171,7 +1171,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Información comparativa local.
         /// </summary>
-        internal static string page_title_parcel_benchmarking {
+        public static string page_title_parcel_benchmarking {
             get {
                 return ResourceManager.GetString("page_title_parcel_benchmarking", resourceCulture);
             }
@@ -1180,7 +1180,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Detalles.
         /// </summary>
-        internal static string page_title_parcel_details {
+        public static string page_title_parcel_details {
             get {
                 return ResourceManager.GetString("page_title_parcel_details", resourceCulture);
             }
@@ -1189,7 +1189,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Información de parcela.
         /// </summary>
-        internal static string page_title_parcel_page {
+        public static string page_title_parcel_page {
             get {
                 return ResourceManager.GetString("page_title_parcel_page", resourceCulture);
             }
@@ -1198,7 +1198,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Clima.
         /// </summary>
-        internal static string page_title_parcel_weather {
+        public static string page_title_parcel_weather {
             get {
                 return ResourceManager.GetString("page_title_parcel_weather", resourceCulture);
             }
@@ -1207,7 +1207,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Ventanas de oportunidad.
         /// </summary>
-        internal static string page_title_parcel_windows_of_opportunity {
+        public static string page_title_parcel_windows_of_opportunity {
             get {
                 return ResourceManager.GetString("page_title_parcel_windows_of_opportunity", resourceCulture);
             }
@@ -1216,7 +1216,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Parcelas.
         /// </summary>
-        internal static string page_title_parcels_overview {
+        public static string page_title_parcels_overview {
             get {
                 return ResourceManager.GetString("page_title_parcels_overview", resourceCulture);
             }
@@ -1225,7 +1225,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Regístrese.
         /// </summary>
-        internal static string page_title_register {
+        public static string page_title_register {
             get {
                 return ResourceManager.GetString("page_title_register", resourceCulture);
             }
@@ -1234,7 +1234,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Clima.
         /// </summary>
-        internal static string page_title_weather {
+        public static string page_title_weather {
             get {
                 return ResourceManager.GetString("page_title_weather", resourceCulture);
             }
@@ -1243,7 +1243,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Bienvenido(a).
         /// </summary>
-        internal static string page_title_welcome {
+        public static string page_title_welcome {
             get {
                 return ResourceManager.GetString("page_title_welcome", resourceCulture);
             }
@@ -1252,7 +1252,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Parcelas.
         /// </summary>
-        internal static string parcels {
+        public static string parcels {
             get {
                 return ResourceManager.GetString("parcels", resourceCulture);
             }
@@ -1261,7 +1261,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Terreno.
         /// </summary>
-        internal static string plot {
+        public static string plot {
             get {
                 return ResourceManager.GetString("plot", resourceCulture);
             }
@@ -1270,7 +1270,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Precipitación.
         /// </summary>
-        internal static string precipitation {
+        public static string precipitation {
             get {
                 return ResourceManager.GetString("precipitation", resourceCulture);
             }
@@ -1279,7 +1279,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Tipo de produccion.
         /// </summary>
-        internal static string production_type {
+        public static string production_type {
             get {
                 return ResourceManager.GetString("production_type", resourceCulture);
             }
@@ -1288,7 +1288,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Megajoules .
         /// </summary>
-        internal static string radiation_unit {
+        public static string radiation_unit {
             get {
                 return ResourceManager.GetString("radiation_unit", resourceCulture);
             }
@@ -1297,7 +1297,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to MJ/m.
         /// </summary>
-        internal static string radiation_unit_short {
+        public static string radiation_unit_short {
             get {
                 return ResourceManager.GetString("radiation_unit_short", resourceCulture);
             }
@@ -1306,7 +1306,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Actualizar los datos comparativos.
         /// </summary>
-        internal static string refresh_benchmarking_data {
+        public static string refresh_benchmarking_data {
             get {
                 return ResourceManager.GetString("refresh_benchmarking_data", resourceCulture);
             }
@@ -1315,7 +1315,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Correo electrónico.
         /// </summary>
-        internal static string register_email {
+        public static string register_email {
             get {
                 return ResourceManager.GetString("register_email", resourceCulture);
             }
@@ -1324,7 +1324,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor ingrese una dirección de correo electrónico.
         /// </summary>
-        internal static string register_email_empty {
+        public static string register_email_empty {
             get {
                 return ResourceManager.GetString("register_email_empty", resourceCulture);
             }
@@ -1333,7 +1333,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor asegúrese de usar una dirección de correo electrónico válida.
         /// </summary>
-        internal static string register_email_invalid {
+        public static string register_email_invalid {
             get {
                 return ResourceManager.GetString("register_email_invalid", resourceCulture);
             }
@@ -1342,7 +1342,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Contraseña.
         /// </summary>
-        internal static string register_password {
+        public static string register_password {
             get {
                 return ResourceManager.GetString("register_password", resourceCulture);
             }
@@ -1351,7 +1351,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor ingrese una contraseña.
         /// </summary>
-        internal static string register_password_empty {
+        public static string register_password_empty {
             get {
                 return ResourceManager.GetString("register_password_empty", resourceCulture);
             }
@@ -1360,7 +1360,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Verifique su contraseña.
         /// </summary>
-        internal static string register_password_verification {
+        public static string register_password_verification {
             get {
                 return ResourceManager.GetString("register_password_verification", resourceCulture);
             }
@@ -1369,7 +1369,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor verifique su contraseña.
         /// </summary>
-        internal static string register_password_verification_empty {
+        public static string register_password_verification_empty {
             get {
                 return ResourceManager.GetString("register_password_verification_empty", resourceCulture);
             }
@@ -1378,7 +1378,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor asegúrese de ingresar la misma contraseña dos veces.
         /// </summary>
-        internal static string register_password_verification_fail {
+        public static string register_password_verification_fail {
             get {
                 return ResourceManager.GetString("register_password_verification_fail", resourceCulture);
             }
@@ -1387,7 +1387,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Nombre de usuario.
         /// </summary>
-        internal static string register_username {
+        public static string register_username {
             get {
                 return ResourceManager.GetString("register_username", resourceCulture);
             }
@@ -1396,7 +1396,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Por favor ingrese un nombre de usuario.
         /// </summary>
-        internal static string register_username_empty {
+        public static string register_username_empty {
             get {
                 return ResourceManager.GetString("register_username_empty", resourceCulture);
             }
@@ -1405,7 +1405,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Humedad relativa.
         /// </summary>
-        internal static string rh {
+        public static string rh {
             get {
                 return ResourceManager.GetString("rh", resourceCulture);
             }
@@ -1414,7 +1414,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ({porcentaje}% completo).
         /// </summary>
-        internal static string s {
+        public static string s {
             get {
                 return ResourceManager.GetString("s", resourceCulture);
             }
@@ -1423,7 +1423,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Septiembre.
         /// </summary>
-        internal static string september {
+        public static string september {
             get {
                 return ResourceManager.GetString("september", resourceCulture);
             }
@@ -1432,7 +1432,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Radiación solar.
         /// </summary>
-        internal static string solar_radiation {
+        public static string solar_radiation {
             get {
                 return ResourceManager.GetString("solar_radiation", resourceCulture);
             }
@@ -1441,7 +1441,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Metros por segundo.
         /// </summary>
-        internal static string speed_unit {
+        public static string speed_unit {
             get {
                 return ResourceManager.GetString("speed_unit", resourceCulture);
             }
@@ -1450,7 +1450,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to m/s.
         /// </summary>
-        internal static string speed_unit_short {
+        public static string speed_unit_short {
             get {
                 return ResourceManager.GetString("speed_unit_short", resourceCulture);
             }
@@ -1459,7 +1459,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Inicio.
         /// </summary>
-        internal static string start {
+        public static string start {
             get {
                 return ResourceManager.GetString("start", resourceCulture);
             }
@@ -1468,7 +1468,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Superficie.
         /// </summary>
-        internal static string surface {
+        public static string surface {
             get {
                 return ResourceManager.GetString("surface", resourceCulture);
             }
@@ -1477,7 +1477,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Técnico.
         /// </summary>
-        internal static string technician {
+        public static string technician {
             get {
                 return ResourceManager.GetString("technician", resourceCulture);
             }
@@ -1486,7 +1486,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Tecnologías que fueron usadas:.
         /// </summary>
-        internal static string technologies_used {
+        public static string technologies_used {
             get {
                 return ResourceManager.GetString("technologies_used", resourceCulture);
             }
@@ -1495,7 +1495,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento .
         /// </summary>
-        internal static string technology_1 {
+        public static string technology_1 {
             get {
                 return ResourceManager.GetString("technology_1", resourceCulture);
             }
@@ -1504,7 +1504,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Interpretación y uso del análisis de suelo.
         /// </summary>
-        internal static string technology_2 {
+        public static string technology_2 {
             get {
                 return ResourceManager.GetString("technology_2", resourceCulture);
             }
@@ -1513,7 +1513,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Uso del sensor infrarrojo para fertilización óptima.
         /// </summary>
-        internal static string technology_3 {
+        public static string technology_3 {
             get {
                 return ResourceManager.GetString("technology_3", resourceCulture);
             }
@@ -1522,7 +1522,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Uso de biofertilizantes.
         /// </summary>
-        internal static string technology_4 {
+        public static string technology_4 {
             get {
                 return ResourceManager.GetString("technology_4", resourceCulture);
             }
@@ -1531,7 +1531,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Mejoradores de suelo para complementar fertilización.
         /// </summary>
-        internal static string technology_5 {
+        public static string technology_5 {
             get {
                 return ResourceManager.GetString("technology_5", resourceCulture);
             }
@@ -1540,7 +1540,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Mínimo movimiento de suelo, retención de residuos y rotación de cultivos.
         /// </summary>
-        internal static string technology_6 {
+        public static string technology_6 {
             get {
                 return ResourceManager.GetString("technology_6", resourceCulture);
             }
@@ -1549,7 +1549,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje).
         /// </summary>
-        internal static string technology_7 {
+        public static string technology_7 {
             get {
                 return ResourceManager.GetString("technology_7", resourceCulture);
             }
@@ -1558,7 +1558,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Tecnología para mejorar el almacenamiento del grano.
         /// </summary>
-        internal static string technology_8 {
+        public static string technology_8 {
             get {
                 return ResourceManager.GetString("technology_8", resourceCulture);
             }
@@ -1567,7 +1567,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Temperatura.
         /// </summary>
-        internal static string temperature {
+        public static string temperature {
             get {
                 return ResourceManager.GetString("temperature", resourceCulture);
             }
@@ -1576,7 +1576,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Formador.
         /// </summary>
-        internal static string trainer {
+        public static string trainer {
             get {
                 return ResourceManager.GetString("trainer", resourceCulture);
             }
@@ -1585,7 +1585,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Unidad.
         /// </summary>
-        internal static string unit {
+        public static string unit {
             get {
                 return ResourceManager.GetString("unit", resourceCulture);
             }
@@ -1594,7 +1594,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to °C.
         /// </summary>
-        internal static string unit_celsius {
+        public static string unit_celsius {
             get {
                 return ResourceManager.GetString("unit_celsius", resourceCulture);
             }
@@ -1603,7 +1603,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to [ha].
         /// </summary>
-        internal static string unit_hectares {
+        public static string unit_hectares {
             get {
                 return ResourceManager.GetString("unit_hectares", resourceCulture);
             }
@@ -1612,7 +1612,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to [tons/ha].
         /// </summary>
-        internal static string unit_performance {
+        public static string unit_performance {
             get {
                 return ResourceManager.GetString("unit_performance", resourceCulture);
             }
@@ -1621,7 +1621,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Utilizar esta ubicación.
         /// </summary>
-        internal static string use_this_location {
+        public static string use_this_location {
             get {
                 return ResourceManager.GetString("use_this_location", resourceCulture);
             }
@@ -1630,7 +1630,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to ver.
         /// </summary>
-        internal static string view {
+        public static string view {
             get {
                 return ResourceManager.GetString("view", resourceCulture);
             }
@@ -1639,7 +1639,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to CIMMYT Protocolos del suelo.
         /// </summary>
-        internal static string weblink1 {
+        public static string weblink1 {
             get {
                 return ResourceManager.GetString("weblink1", resourceCulture);
             }
@@ -1648,7 +1648,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Como Crecer con Don Crecencio.
         /// </summary>
-        internal static string weblink2 {
+        public static string weblink2 {
             get {
                 return ResourceManager.GetString("weblink2", resourceCulture);
             }
@@ -1657,7 +1657,7 @@ namespace Helper.Localization.Resx {
         /// <summary>
         ///   Looks up a localized string similar to Año.
         /// </summary>
-        internal static string year {
+        public static string year {
             get {
                 return ResourceManager.GetString("year", resourceCulture);
             }
