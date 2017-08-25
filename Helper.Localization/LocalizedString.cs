@@ -59,7 +59,7 @@ namespace Helper.Localization
                         $"Key '{resourceName}' was not found in resources '{ResourceId}' for culture '{_ci.Name}'.",
                         "Text");
 #else
-				translation = Text; // HACK: returns the key, which GETS DISPLAYED TO THE USER
+                    translation = resourceName; // HACK: returns the key, which GETS DISPLAYED TO THE USER
 #endif
                 }
             }

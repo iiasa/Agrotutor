@@ -1,18 +1,20 @@
 ﻿using System;
+using Android.App;
+using Android.Content.PM;
+using Android.OS;
+using Android.Util;
+using Gcm.Client;
+using Prism.Unity;
+using Microsoft.Practices.Unity;
+using Xamarin.Forms.Platform.Android;
+using Android.Runtime;
+using System.Threading.Tasks;
+using Plugin.Permissions;
+using Xamarin.Forms;
 
+[assembly: ExportRenderer(typeof(Telerik.XamarinForms.Input.RadCalendar), typeof(Telerik.XamarinForms.InputRenderer.Android.CalendarRenderer))]
 namespace CimmytApp.Droid
 {
-    using Android.App;
-    using Android.Content.PM;
-    using Android.OS;
-    using Android.Util;
-    using Gcm.Client;
-    using Prism.Unity;
-    using Microsoft.Practices.Unity;
-    using Android.Runtime;
-    using System.Threading.Tasks;
-    using Plugin.Permissions;
-
     [Activity(Label = "Mexico Produce!", Icon = "@drawable/app_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
