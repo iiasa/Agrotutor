@@ -51,6 +51,10 @@
     <Compile Include="Events\DbConnectionRequestEvent.cs" />
     <Compile Include="Events\DbConnectionEvent.cs" />
     <Compile Include="Events\DbConnectionAvailableEvent.cs" />
+    <Compile Include="Views\ParcelPage.xaml.cs">
+      <DependentUpon>ParcelPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\ParcelPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\AddParcelInformationPage.xaml">
@@ -68,6 +72,9 @@
     <EmbeddedResource Include="Views\ViewParcelInformationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ParcelPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
