@@ -7,24 +7,24 @@ using Prism.Navigation;
 
 namespace CimmytApp.Parcel.ViewModels
 {
-    public class ParcelPageViewModel : DatasetSyncBindableBase,INavigationAware,IActiveAware
+    public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
-        public ParcelPageViewModel(IEventAggregator eventAggregator):base(eventAggregator)
+        public ParcelPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
-		}
-		public bool IsActive { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        }
+        public bool IsActive { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
-		public event EventHandler IsActiveChanged;
+        public event EventHandler IsActiveChanged;
 
-		public void OnNavigatedFrom(NavigationParameters parameters)
-		{
-			throw new NotImplementedException();
-		}
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
 
-		public void OnNavigatedTo(NavigationParameters parameters)
-		{
-			throw new NotImplementedException();
-    }
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            throw new NotImplementedException();
+        }
 
         protected override IDataset GetDataset()
         {
@@ -36,3 +36,4 @@ namespace CimmytApp.Parcel.ViewModels
             throw new NotImplementedException();
         }
     }
+}

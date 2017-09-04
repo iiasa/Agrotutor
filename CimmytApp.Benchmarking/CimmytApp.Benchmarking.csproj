@@ -61,6 +61,10 @@
     <Compile Include="Views\ViewUtilidadPage.xaml.cs">
       <DependentUpon>ViewUtilidadPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\BenchmarkingPage.xaml.cs">
+      <DependentUpon>BenchmarkingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\BenchmarkingPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LocalBenchmarkingPage.xaml">
@@ -68,6 +72,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\LocalBenchmarkingSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\BenchmarkingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

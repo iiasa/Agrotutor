@@ -9,6 +9,6 @@
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <application android:label="Mexico Produce!" android:theme="@style/MyTheme">
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCuI1hkAy7TbIHMAldjztp-GQ_ZSmQeDKA" />
+    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCFVDQBvLzdNzm5ZfweMKfTHEKmZyHA4ug" />
   </application>
 </manifest>

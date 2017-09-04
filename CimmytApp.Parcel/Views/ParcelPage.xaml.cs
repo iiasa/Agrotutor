@@ -11,7 +11,5 @@ namespace CimmytApp.Parcel.Views
         {
             InitializeComponent();
         }
-
-        }
     }
 }
