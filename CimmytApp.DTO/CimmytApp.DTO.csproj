@@ -35,6 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Benchmarking\BenchmarkingInformation.cs" />
+    <Compile Include="Benchmarking\BenchmarkingRequestParams.cs" />
     <Compile Include="GeoPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

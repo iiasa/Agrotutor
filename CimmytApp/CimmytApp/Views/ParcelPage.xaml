@@ -14,5 +14,6 @@
     <views3:ViewParcelInformationPage Icon="icon_view" />
     <viewsWeather:WeatherDataSelection Icon="icon_weather" />
     <views4:LocalBenchmarkingSelectionPage Icon="icon_benchmark" />
+    <views4:BenchmarkingPage Icon="ic_chart" />
     <calend:TelerikCalendarPage Icon="icon_calendar" />
 </TabbedPage>

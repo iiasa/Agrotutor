@@ -87,12 +87,35 @@
       <Project>{D35EF41B-7484-4544-8186-29C31EC6AF4A}</Project>
       <Name>CimmytApp.DTO.BEM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
+      <Project>{D9ACFCBC-CA0B-4228-B9D9-9F29C2D5E281}</Project>
+      <Name>CimmytApp.DTO.Parcel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
+      <Project>{73076BC1-B08E-4E09-8173-B626F6BEA6F9}</Project>
+      <Name>CimmytApp.DTO</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
+      <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
+      <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
+      <Project>{FE0BAF91-231E-4D28-81C3-02DD54BEC9FA}</Project>
+      <Name>Helper.DatasetSyncEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.GeoWiki.API\Helper.GeoWiki.API.csproj">
+      <Project>{cc7252b9-f950-4859-82be-0798fd05007b}</Project>
+      <Name>Helper.GeoWiki.API</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Helper.RestfulClient">
+      <HintPath>..\BaseDLL\Helper.RestfulClient.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
     </Reference>
