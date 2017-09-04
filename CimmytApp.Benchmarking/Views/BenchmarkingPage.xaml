@@ -4,8 +4,60 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
              x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
-    <StackLayout>
-        <Button Text="Load data" Command="{Binding LoadDataCommand}" />
-    </StackLayout>
+    <ScrollView>
+        <StackLayout>
+            <Button Text="Load data" Command="{Binding LoadDataCommand}" Margin="0,0,0,16" />
+
+            <Label Text="Irrigated:" />
+            <Label Text="{Binding DataIrrigated.GetMin}" />
+            <Label Text="{Binding DataIrrigated.GetAvg}" />
+            <Label Text="{Binding DataIrrigated.GetMax}" Margin="0,0,0,16" />
+
+            <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
+                <chart:RadCartesianChart.HorizontalAxis>
+                    <chart:CategoricalAxis LabelFitMode="Rotate" />
+                </chart:RadCartesianChart.HorizontalAxis>
+                <chart:RadCartesianChart.VerticalAxis>
+                    <chart:NumericalAxis />
+                </chart:RadCartesianChart.VerticalAxis>
+
+                <chart:RadCartesianChart.Series>
+                    <chart:BarSeries ItemsSource="{Binding DataIrrigated.BenchmarkingDatasets}">
+                        <chart:BarSeries.ValueBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="val" />
+                        </chart:BarSeries.ValueBinding>
+                        <chart:BarSeries.CategoryBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="year" />
+                        </chart:BarSeries.CategoryBinding>
+                    </chart:BarSeries>
+                </chart:RadCartesianChart.Series>
+            </chart:RadCartesianChart>
+
+            <Label Text="Rainfed:" />
+            <Label Text="{Binding DataRainfed.GetMin}" />
+            <Label Text="{Binding DataRainfed.GetAvg}" />
+            <Label Text="{Binding DataRainfed.GetMax}" Margin="0,0,0,16" />
+            <chart:RadCartesianChart HeightRequest="400">
+                <chart:RadCartesianChart.HorizontalAxis>
+                    <chart:CategoricalAxis LabelFitMode="Rotate" />
+                </chart:RadCartesianChart.HorizontalAxis>
+                <chart:RadCartesianChart.VerticalAxis>
+                    <chart:NumericalAxis />
+                </chart:RadCartesianChart.VerticalAxis>
+
+                <chart:RadCartesianChart.Series>
+                    <chart:BarSeries ItemsSource="{Binding DataRainfed.BenchmarkingDatasets}">
+                        <chart:BarSeries.ValueBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="val" />
+                        </chart:BarSeries.ValueBinding>
+                        <chart:BarSeries.CategoryBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="year" />
+                        </chart:BarSeries.CategoryBinding>
+                    </chart:BarSeries>
+                </chart:RadCartesianChart.Series>
+            </chart:RadCartesianChart>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

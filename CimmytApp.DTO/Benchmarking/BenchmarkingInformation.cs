@@ -10,6 +10,21 @@ namespace CimmytApp.DTO.Benchmarking
     {
         public List<BenchmarkingDataset> BenchmarkingDatasets { get; set; }
 
+        public string GetMin
+        {
+            get { return "\tMin: " + BenchmarkingDatasets.Min(r => r.val); }
+        }
+
+        public string GetMax
+        {
+            get { return "\tMax: " + BenchmarkingDatasets.Max(r => r.val); }
+        }
+
+        public string GetAvg
+        {
+            get { return "\tAverage: " + BenchmarkingDatasets.Average(r => r.val); }
+        }
+
         public class BenchmarkingDataset
         {
             public String filename { get; set; }
@@ -18,7 +33,7 @@ namespace CimmytApp.DTO.Benchmarking
 
             public void SetYear()
             {
-                year = filename.Substring(filename.Length - 15, filename.Length - 11);
+                year = filename.Substring(filename.Length - 15, 4);
             }
         }
 

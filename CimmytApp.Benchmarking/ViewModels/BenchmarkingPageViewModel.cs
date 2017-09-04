@@ -124,23 +124,26 @@ namespace CimmytApp.Benchmarking.ViewModels
         private void UpdateData(BenchmarkingInformation value)
         {
             if (value == null) return;
-            DataIrrigated = new BenchmarkingInformation();
-            DataRainfed = new BenchmarkingInformation();
+            var dataIrrigated = new BenchmarkingInformation();
+            var dataRainfed = new BenchmarkingInformation();
 
-            DataIrrigated.BenchmarkingDatasets = new List<BenchmarkingInformation.BenchmarkingDataset>();
-            DataRainfed.BenchmarkingDatasets = new List<BenchmarkingInformation.BenchmarkingDataset>();
+            dataIrrigated.BenchmarkingDatasets = new List<BenchmarkingInformation.BenchmarkingDataset>();
+            dataRainfed.BenchmarkingDatasets = new List<BenchmarkingInformation.BenchmarkingDataset>();
 
             foreach (var valueBenchmarkingDataset in value.BenchmarkingDatasets)
             {
                 if (valueBenchmarkingDataset.filename.Contains("ir"))
                 {
-                    DataIrrigated.BenchmarkingDatasets.Add(valueBenchmarkingDataset);
+                    dataIrrigated.BenchmarkingDatasets.Add(valueBenchmarkingDataset);
                 }
                 else
                 {
-                    DataRainfed.BenchmarkingDatasets.Add(valueBenchmarkingDataset);
+                    dataRainfed.BenchmarkingDatasets.Add(valueBenchmarkingDataset);
                 }
             }
+
+            DataIrrigated = dataIrrigated;
+            DataRainfed = dataRainfed;
         }
 
         /// <summary>
