@@ -1,14 +1,25 @@
-﻿using System;
-using Helper.BusinessContract;
-using Helper.DatasetSyncEvents.ViewModelBase;
-using Prism;
-using Prism.Events;
-using Prism.Navigation;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
+	using System;
+	using Helper.BusinessContract;
+	using Helper.DatasetSyncEvents.ViewModelBase;
+	using Prism;
+	using Prism.Events;
+	using Prism.Navigation;
+	using DTO.Parcel;
+
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
+        Parcel parcel;
+
+        public Parcel Parcel
+        {
+            get => parcel;
+            set => SetProperty(ref parcel, value);
+        }
+
+        public bool EditModeActive { get; set; }
+
         public ParcelPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
         }
@@ -28,12 +39,12 @@ namespace CimmytApp.Parcel.ViewModels
 
         protected override IDataset GetDataset()
         {
-            throw new NotImplementedException();
+            return Parcel;
         }
 
         protected override void ReadDataset(IDataset dataset)
         {
-            throw new NotImplementedException();
+            Parcel = (Parcel)dataset;
         }
     }
 }
