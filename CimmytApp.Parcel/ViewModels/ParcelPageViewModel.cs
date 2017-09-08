@@ -10,15 +10,20 @@
 
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
-        Parcel parcel;
+        private Parcel _parcel;
 
         public Parcel Parcel
         {
-            get => parcel;
-            set => SetProperty(ref parcel, value);
+            get => _parcel;
+            set => SetProperty(ref _parcel, value);
         }
+        bool _editModeActive;
 
-        public bool EditModeActive { get; set; }
+        public bool EditModeActive
+        {
+            get => _editModeActive;
+            set => SetProperty(ref _editModeActive, value);
+        }
 
         public ParcelPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
         {
