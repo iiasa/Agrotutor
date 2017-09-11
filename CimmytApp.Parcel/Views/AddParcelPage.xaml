@@ -7,7 +7,6 @@
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
                 x:Class="CimmytApp.Parcel.Views.AddParcelPage"
                 Padding="16">
-    <!--Title="{localization:Translate page_title_add_parcel}"-->
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <Label Text="{localization:Translate hint_agronomical_cycle}" FontSize="10" />

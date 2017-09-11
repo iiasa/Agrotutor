@@ -1,5 +1,64 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="CimmytApp.Parcel.Views.ParcelPage">
-	<ContentPage.Content>
-	</ContentPage.Content>
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+    x:Class="CimmytApp.Parcel.Views.ParcelPage">
+	<ScrollView>
+        <StackLayout Orientation="Vertical">
+            <Label Text="{localization:Translate hint_agronomical_cycle}" FontSize="10" />
+            <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_year}" FontSize="10" />
+            <Picker ItemsSource="{Binding Years}" SelectedIndex="{Binding PickerYearsSelectedIndex}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_area}" FontSize="10" />
+            <Entry Keyboard="Numeric" Placeholder="{localization:Translate unit_hectares}" Text="{Binding Parcel.EstimatedParcelArea}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
+            <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding Parcel.ProducerName}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_parcel_name}" FontSize="10" />
+            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_technologies_used}" FontSize="10" />
+
+            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" />
+            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="{localization:Translate technology_2}" />
+            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="{localization:Translate technology_3}" />
+            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="{localization:Translate technology_4}" />
+            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="{localization:Translate technology_5}" />
+            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="{localization:Translate technology_6}" />
+            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="{localization:Translate technology_7}" />
+            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="{localization:Translate technology_8}" />
+
+            <Label  Text="{localization:Translate hint_technology_other}" Margin="0,16,0,0" FontSize="10" />
+            <Entry  Placeholder="{localization:Translate hint_other_technology_used}" Text="{Binding Parcel.OtherTechnologies}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_crop}" FontSize="10" />
+            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_cultivar}" FontSize="10" />
+            <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_additional_information}" />
+
+            <Label Text="{localization:Translate hint_performance}" FontSize="10" />
+
+            <Entry Placeholder="{localization:Translate unit_performance}" Text="{Binding Parcel.Performance}"  Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_irrigation}" FontSize="10" />
+
+            <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_planting_date}" FontSize="10" />
+
+            <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
+            <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" Checked="{Binding UserIsAtParcel}" />
+
+            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" IsEnabled="{Binding UserIsAtParcel}" />
+            <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
