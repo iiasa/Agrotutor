@@ -13,14 +13,12 @@ namespace Helper.Map.Views
     {
         private GenericMapViewModel contextObj;
         private TKCustomMap map;
+
         public GenericMap()
         {
             InitializeComponent();
             contextObj = (GenericMapViewModel)BindingContext;
-         //   contextObj._eventAggregator.GetEvent<Test>().Subscribe(TestMethod);
-
-
-
+            //   contextObj._eventAggregator.GetEvent<Test>().Subscribe(TestMethod);
         }
 
         //private void TestMethod(string s)
@@ -31,12 +29,12 @@ namespace Helper.Map.Views
 
         private void GenericMap_OnDisappearing(object sender, EventArgs e)
         {
-            MapLayout.Children.Clear();
+            MapLayout?.Children?.Clear();
         }
 
         private void GenericMap_OnAppearing(object sender, EventArgs e)
         {
-            if (MapLayout.Children.Count == 0)
+            if (MapLayout?.Children?.Count == 0)
             {
                 if (contextObj != null)
                 {
@@ -59,8 +57,6 @@ namespace Helper.Map.Views
                     MapLayout.Children.Add(map);
                 }
             }
-
-     
         }
     }
 }

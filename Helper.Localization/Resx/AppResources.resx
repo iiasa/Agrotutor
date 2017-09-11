@@ -651,4 +651,7 @@
   <data name="bem_data_type" xml:space="preserve">
     <value>Seleccione el tipo de datos</value>
   </data>
+  <data name="btn_photo" xml:space="preserve">
+    <value>Tomar una foto</value>
+  </data>
 </root>
