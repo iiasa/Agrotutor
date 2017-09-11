@@ -341,6 +341,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\CimmytApp.Parcel\CimmytApp.Parcel.csproj">
+      <Project>{f7513236-dc22-4a65-803e-1892e7fa180a}</Project>
+      <Name>CimmytApp.Parcel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Helper.Geolocator\Helper.Geolocator.csproj">
       <Project>{c0203d22-76bb-4029-9294-bab90b082a1f}</Project>
       <Name>Helper.Geolocator</Name>
