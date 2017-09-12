@@ -4,11 +4,8 @@
                  xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                  prism:ViewModelLocator.AutowireViewModel="True"
                  x:Class="Helper.Map.Views.GenericMap"
-                 xmlns:bindableMap="clr-namespace:TK.CustomMap;assembly=TK.CustomMap"
                  xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-
                  Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
-    <!--Title="{localization:Translate page_title_add_parcel}"-->
     <Grid>
 
         <Grid.RowDefinitions>

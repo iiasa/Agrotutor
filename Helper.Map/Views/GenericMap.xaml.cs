@@ -1,24 +1,34 @@
-﻿using System;
-using System.Threading.Tasks;
-using CimmytApp.DTO.Parcel;
-using Helper.Map.ViewModels;
-using TK.CustomMap;
-using Xamarin.Forms;
-using Xamarin.Forms.Maps;
-using Xamarin.Forms.Xaml;
-
-namespace Helper.Map.Views
+﻿namespace Helper.Map.Views
 {
+    using System;
+    using TK.CustomMap;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Maps;
+
+    using ViewModels;
+
+    /// <summary>
+    /// Defines the <see cref="GenericMap" />
+    /// </summary>
     public partial class GenericMap : ContentPage
     {
+        /// <summary>
+        /// Defines the contextObj
+        /// </summary>
         private GenericMapViewModel contextObj;
+
+        /// <summary>
+        /// Defines the map
+        /// </summary>
         private TKCustomMap map;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GenericMap"/> class.
+        /// </summary>
         public GenericMap()
         {
             InitializeComponent();
             contextObj = (GenericMapViewModel)BindingContext;
-            //   contextObj._eventAggregator.GetEvent<Test>().Subscribe(TestMethod);
         }
 
         //private void TestMethod(string s)
@@ -26,12 +36,21 @@ namespace Helper.Map.Views
         //    if(map!=null)
         //    map.MoveToRegion(contextObj.MapRegion);
         //}
-
+        /// <summary>
+        /// The GenericMap_OnDisappearing
+        /// </summary>
+        /// <param name="sender">The <see cref="object"/></param>
+        /// <param name="e">The <see cref="EventArgs"/></param>
         private void GenericMap_OnDisappearing(object sender, EventArgs e)
         {
             MapLayout?.Children?.Clear();
         }
 
+        /// <summary>
+        /// The GenericMap_OnAppearing
+        /// </summary>
+        /// <param name="sender">The <see cref="object"/></param>
+        /// <param name="e">The <see cref="EventArgs"/></param>
         private void GenericMap_OnAppearing(object sender, EventArgs e)
         {
             if (MapLayout?.Children?.Count == 0)
@@ -51,7 +70,7 @@ namespace Helper.Map.Views
                     map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
 
                     map.HasZoomEnabled = true;
-                    map.MapType = MapType.Street;
+                    map.MapType = MapType.Hybrid;
                     map.IsShowingUser = false;
 
                     MapLayout.Children.Add(map);

@@ -51,8 +51,6 @@ namespace CimmytApp.Benchmarking.ViewModels
                 "Primavera-Verano",
                 "Otoño-Invierno"
             };
-
-           // GetData();
         }
 
         private async void LoadData()
