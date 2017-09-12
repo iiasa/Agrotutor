@@ -2,6 +2,14 @@
 using Xamarin.Forms;
 using XLabs.Platform.Services.Media;
 
+
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using XLabs.Forms.Mvvm;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services.Media;
+
 namespace CimmytApp.Parcel.ViewModels
 {
     using System;
@@ -22,6 +30,21 @@ namespace CimmytApp.Parcel.ViewModels
             set => SetProperty(ref _parcel, value);
         }
 
+		private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
+
+		public ImageSource ImageSource
+		{
+			get
+			{
+				return _imageSource;
+			}
+			set
+			{
+				SetProperty(ref _imageSource, value);
+			}
+		}
+
+		private ImageSource _imageSource;
         private bool _editModeActive;
 
         public DelegateCommand ClickPhoto { get; set; }
@@ -37,7 +60,23 @@ namespace CimmytApp.Parcel.ViewModels
             ClickPhoto = new DelegateCommand(OnTakePhotoClick);
         }
 
-        private void OnTakePhotoClick()
+		private void Setup()
+		{
+			if (_mediaPicker != null)
+			{
+				return;
+			}
+
+			var device = Resolver.Resolve<IDevice>();
+
+			////RM: hack for working on windows phone? 
+			_mediaPicker = DependencyService.Get<IMediaPicker>() ?? device.MediaPicker;
+		}
+
+
+		private IMediaPicker _mediaPicker;
+
+        private async void OnTakePhotoClick()
         {
             var _mediaPicker = DependencyService.Get<IMediaPicker>();
 
