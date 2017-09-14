@@ -24,7 +24,7 @@
             <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_technologies_used}" FontSize="10" />
-
+            
             <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" IsEnabled="{Binding EditModeActive}" />
             <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="{localization:Translate technology_2}" IsEnabled="{Binding EditModeActive}" />
             <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="{localization:Translate technology_3}" IsEnabled="{Binding EditModeActive}" />
@@ -39,7 +39,7 @@
 
             <Label Text="{localization:Translate hint_crop}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
-
+            
             <Label Text="{localization:Translate hint_cultivar}" FontSize="10" />
             <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
@@ -54,11 +54,11 @@
             <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" FontSize="10" />
-
+            
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
             <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" IsEnabled="{Binding EditModeActive}" Checked="{Binding UserIsAtParcel}" />
 
-            <Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" IsEnabled="{Binding UserIsAtParcel}" />
+            <!--<Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" IsEnabled="{Binding UserIsAtParcel}" />-->
             <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" IsEnabled="{Binding UserIsAtParcel}" />
             <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
         </StackLayout>

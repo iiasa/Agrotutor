@@ -124,6 +124,8 @@ namespace CimmytApp.Benchmarking.ViewModels
 
         private void ViewData()
         {
+            if (_bemData == null) return;
+
             var pageToCall = "";
 
             string year = null;

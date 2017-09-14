@@ -1,4 +1,6 @@
-﻿namespace Helper.Map.Views
+﻿using System.Linq;
+
+namespace Helper.Map.Views
 {
     using System;
     using TK.CustomMap;

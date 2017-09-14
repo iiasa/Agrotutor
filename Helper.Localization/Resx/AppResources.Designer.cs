@@ -161,6 +161,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Test.
+        /// </summary>
+        public static string btn_get_location {
+            get {
+                return ResourceManager.GetString("btn_get_location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Tomar una foto.
         /// </summary>
         public static string btn_photo {

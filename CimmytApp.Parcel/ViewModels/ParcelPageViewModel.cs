@@ -28,7 +28,11 @@
         /// <summary>
         /// Gets or sets the Parcel
         /// </summary>
-        public Parcel Parcel { get => _parcel; set => SetProperty(ref _parcel, value); }
+        public Parcel Parcel
+        {
+            get => _parcel;
+            set => SetProperty(ref _parcel, value);
+        }
 
         /// <summary>
         /// Defines the _scheduler

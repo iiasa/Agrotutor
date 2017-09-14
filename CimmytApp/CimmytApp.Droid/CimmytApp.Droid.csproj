@@ -133,6 +133,12 @@
     <Reference Include="SqLite.Contract">
       <HintPath>..\..\BaseDLL\SqLite.Contract.dll</HintPath>
     </Reference>
+    <Reference Include="TK.CustomMap, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\TK.CustomMap.1.5.1\lib\MonoAndroid10\TK.CustomMap.dll</HintPath>
+    </Reference>
+    <Reference Include="TK.CustomMap.Android, Version=1.5.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\TK.CustomMap.1.5.1\lib\MonoAndroid10\TK.CustomMap.Android.dll</HintPath>
+    </Reference>
     <Reference Include="Telerik.Xamarin.Android.Chart, Version=2017.2.818.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\MonoAndroid10\Telerik.Xamarin.Android.Chart.dll</HintPath>
     </Reference>

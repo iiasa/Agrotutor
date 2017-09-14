@@ -13,6 +13,7 @@ using Plugin.Permissions;
 using Xamarin.Forms;
 
 [assembly: ExportRenderer(typeof(Telerik.XamarinForms.Input.RadCalendar), typeof(Telerik.XamarinForms.InputRenderer.Android.CalendarRenderer))]
+
 namespace CimmytApp.Droid
 {
     [Activity(Label = "Mexico Produce!", Icon = "@drawable/app_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

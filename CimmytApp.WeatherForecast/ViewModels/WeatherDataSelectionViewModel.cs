@@ -96,6 +96,13 @@
             set
             {
                 var data = value;
+                if (data == null)
+                {
+                    if (!refreshedFromServer) return;
+                    refreshedFromServer = false;
+                    Downloading = false;
+                    return;
+                }
                 WeatherDataAvailable = true;
                 data.ParcelId = Parcel.ParcelId;
                 SetProperty(ref _weatherData, data);

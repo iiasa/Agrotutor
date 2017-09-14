@@ -654,4 +654,7 @@
   <data name="btn_photo" xml:space="preserve">
     <value>Tomar una foto</value>
   </data>
+  <data name="btn_get_location" xml:space="preserve">
+    <value>Test</value>
+  </data>
 </root>
