@@ -144,15 +144,6 @@
     <Reference Include="Plugin.Permissions.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.Permissions.2.0.1\lib\Xamarin.iOS10\Plugin.Permissions.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Core.6.3.0\lib\Xamarin.iOS10\Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Forms.6.3.0\lib\Xamarin.iOS1.0\Prism.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Prism.Unity.Forms.6.3.0\lib\Xamarin.iOS1.0\Prism.Unity.Forms.dll</HintPath>
-    </Reference>
     <Reference Include="SkiaSharp, Version=1.55.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
       <HintPath>..\..\packages\SkiaSharp.1.55.1\lib\XamariniOS\SkiaSharp.dll</HintPath>
     </Reference>
@@ -260,6 +251,15 @@
     </Reference>
     <Reference Include="XamForms.Controls.Calendar.iOS">
       <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.1\lib\Xamarin.iOS10\XamForms.Controls.Calendar.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism">
+      <HintPath>..\..\packages\Prism.Core.6.2.0\lib\Xamarin.iOS10\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Forms">
+      <HintPath>..\..\packages\Prism.Forms.6.2.0\lib\Xamarin.iOS1.0\Prism.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Unity.Forms">
+      <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0\lib\Xamarin.iOS1.0\Prism.Unity.Forms.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
