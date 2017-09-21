@@ -4,9 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-    x:Class="CimmytApp.Parcel.Views.ParcelPage">
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    mvvm:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.Parcel.Views.ParcelPage"
+    Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" Padding="16">
+                <Label Text="Enable editing" />
+                <Switch IsToggled="{Binding EditModeActive}" />
+            </StackLayout>
             <Label Text="{localization:Translate hint_agronomical_cycle}" FontSize="10" />
             <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
@@ -58,7 +65,7 @@
             <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" IsEnabled="{Binding EditModeActive}" Checked="{Binding UserIsAtParcel}" />
 
             <!--<Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" IsEnabled="{Binding UserIsAtParcel}" />-->
-            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" IsEnabled="{Binding UserIsAtParcel}" />
+            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />
             <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
             <Button Text="Guardar cambios" Command="{Binding ClickSave}" />
         </StackLayout>

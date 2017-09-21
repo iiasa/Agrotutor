@@ -116,9 +116,9 @@
             get => _pickerCropTypesSelectedIndex;
             set
             {
-                _pickerCropTypesSelectedIndex = value;
+                _pickerCropTypesSelectedIndex = value;/*
                 Parcel.Crop = CropTypes.ElementAt(value);
-                Parcel.CropType = (CropType)(value + 1);
+                Parcel.CropType = (CropType)(value + 1);*/
             }
         }
 
@@ -145,8 +145,8 @@
             get => _pickerIrrigationTypesSelectedIndex;
             set
             {
-                _pickerIrrigationTypesSelectedIndex = value;
-                Parcel.Irrigation = IrrigationTypes.ElementAt(value);
+                _pickerIrrigationTypesSelectedIndex = value;/*
+                Parcel.Irrigation = IrrigationTypes.ElementAt(value);*/
             }
         }
 
@@ -158,8 +158,8 @@
             get => _pickerYearsSelectedIndex;
             set
             {
-                _pickerYearsSelectedIndex = value;
-                Parcel.Year = Years.ElementAt(value);
+                _pickerYearsSelectedIndex = value;/*
+                Parcel.Year = Years.ElementAt(value);*/
             }
         }
 
@@ -410,15 +410,17 @@
             get => _pickerAgriculturalCycleSelectedIndex;
             set
             {
-                _pickerAgriculturalCycleSelectedIndex = value;
+                _pickerAgriculturalCycleSelectedIndex = value;/*
                 Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);
                 var yrs = Years;
                 yrs.Clear();
                 yrs.AddRange(value == 0 ? _singleYears : _doubleYears);
 
-                Years = yrs;
+                Years = yrs;*/
             }
         }
+
+        public DelegateCommand ClickChooseLocation { get; set; }
 
         /// <summary>
         /// Defines the _scheduler
@@ -466,6 +468,13 @@
             ClickPhoto = new DelegateCommand(OnTakePhotoClick);
             ClickSave = new DelegateCommand(SaveParcel);
             DeliniateParcelCommand = new DelegateCommand(DeliniateParcel);
+            ClickChooseLocation = new DelegateCommand(ChooseLocation);
+        }
+
+        private void ChooseLocation()
+        {
+            var parameters = new NavigationParameters { { "GetLocation", true } };
+            _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
         /// <summary>
