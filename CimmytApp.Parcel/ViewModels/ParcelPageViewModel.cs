@@ -84,7 +84,7 @@
         /// <summary>
         /// The DeliniateParcel
         /// </summary>
-        private void DeliniateParcel()
+        public void DeliniateParcel()
         {
             var parameters = new NavigationParameters
             {

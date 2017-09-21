@@ -115,6 +115,7 @@ namespace CimmytApp.Benchmarking.ViewModels
         private async Task<BemData> RefreshData()
         {
             var bemData = await BemData.LoadBEMData();
+            if (bemData == null) return null;
             _cimmytDbOperations.SaveCostos(bemData.Costo);
             _cimmytDbOperations.SaveIngresos(bemData.Ingreso);
             _cimmytDbOperations.SaveRendimientos(bemData.Rendimiento);

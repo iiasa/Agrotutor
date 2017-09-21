@@ -360,7 +360,6 @@ namespace Helper.Map.ViewModels
         public void AdjustMapZoom()
         {
             if (MapsPosition.Latitude != 0 && MapsPosition.Longitude != 0)
-
             {
                 if (_mapTask == MapTask.GetPolygon || _mapTask == MapTask.GetLocation)
                 {

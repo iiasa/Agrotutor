@@ -59,7 +59,7 @@
 
             <!--<Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" IsEnabled="{Binding UserIsAtParcel}" />-->
             <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" IsEnabled="{Binding UserIsAtParcel}" />
-            <!--<Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />-->
+            <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
             <Button Text="Guardar cambios" Command="{Binding ClickSave}" />
         </StackLayout>
     </ScrollView>
