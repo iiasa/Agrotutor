@@ -77,9 +77,6 @@ namespace Helper.Map.Views
                     map.MapType = MapType.Hybrid;
                     map.IsShowingUser = false;
 
-                    var region = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromKilometers(15));
-                    map.MoveToMapRegion(region);
-
                     MapLayout.Children.Add(map);
                 }
             }

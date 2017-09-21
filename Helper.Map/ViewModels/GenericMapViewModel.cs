@@ -371,6 +371,9 @@ namespace Helper.Map.ViewModels
                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(20));
                 }
             }
+            else {
+				MapRegion = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromKilometers(15));
+            }
         }
 
         public async System.Threading.Tasks.Task GetPosition()
@@ -453,6 +456,7 @@ namespace Helper.Map.ViewModels
 
         public void OnAppearing()
         {
+            AdjustMapZoom();
             GetPosition();
         }
     }
