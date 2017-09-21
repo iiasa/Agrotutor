@@ -79,6 +79,11 @@ namespace Helper.Geolocator
             return posRes;
         }
 
+        public Task<bool> StopListening()
+        {
+            throw new NotImplementedException();
+        }
+
         private void Locator_PositionChanged(object sender, PositionEventArgs e)
         {
             var position = e.Position;
@@ -86,7 +91,6 @@ namespace Helper.Geolocator
             var pos = MapPosition(position);
             _eventAggregator.GetEvent<LivePositionEvent>().Publish(pos);
         }
-
 
         private GeoPosition MapPosition(Position position)
         {

@@ -150,8 +150,6 @@ namespace Helper.Map.ViewModels
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
 
-            GetPosition();
-
             //  DrawPolygonsOnMap();
         }
 
@@ -447,5 +445,15 @@ namespace Helper.Map.ViewModels
         }
 
         public event EventHandler IsActiveChanged;
+
+        public void OnDisappearing()
+        {
+            _geoLocator.StopListening();
+        }
+
+        public void OnAppearing()
+        {
+            GetPosition();
+        }
     }
 }

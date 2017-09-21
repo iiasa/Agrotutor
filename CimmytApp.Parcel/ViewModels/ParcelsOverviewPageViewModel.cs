@@ -1,21 +1,14 @@
-﻿using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
-    using System.Collections.ObjectModel;
-    using System.Windows.Input;
+    using System;
+    using System.Collections.Generic;
+    using Prism.Events;
+    using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using Xamarin.Forms;
 
     using DTO.Parcel;
-    using System.Collections.Generic;
-    using System.Linq;
-    using CimmytApp.BusinessContract;
-    using Prism.Events;
-    using CimmytApp.Parcel.Events;
-    using System;
-    using Prism.Commands;
+    using BusinessContract;
 
     public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
     {
@@ -32,10 +25,27 @@ namespace CimmytApp.Parcel.ViewModels
             set => SetProperty(ref _showUploadButton, value);
         }
 
+        public bool ParcelsListIsVisible
+        {
+            get => _parcelsListIsVisible;
+            set => SetProperty(ref _parcelsListIsVisible, value);
+        }
+
+        public bool AddParcelHintIsVisible
+        {
+            get => _addParcelHintIsVisible;
+            set => SetProperty(ref _addParcelHintIsVisible, value);
+        }
+
         public List<Parcel> Parcels
         {
             get => _parcels;
-            set => SetProperty(ref _parcels, value);
+            set
+            {
+                SetProperty(ref _parcels, value);
+                ParcelsListIsVisible = (value.Count > 0);
+                AddParcelHintIsVisible = !ParcelsListIsVisible;
+            }
         }
 
         public bool IsParcelListEnabled
@@ -47,6 +57,8 @@ namespace CimmytApp.Parcel.ViewModels
         private ICimmytDbOperations _cimmytDbOperations;
         private bool _isParcelListEnabled = true;
         private bool _showUploadButton;
+        private bool _parcelsListIsVisible = false;
+        private bool _addParcelHintIsVisible = true;
 
         public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
         {

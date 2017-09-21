@@ -46,6 +46,7 @@ namespace Helper.Map.Views
         private void GenericMap_OnDisappearing(object sender, EventArgs e)
         {
             MapLayout?.Children?.Clear();
+            contextObj?.OnDisappearing();
         }
 
         /// <summary>
@@ -59,6 +60,7 @@ namespace Helper.Map.Views
             {
                 if (contextObj != null)
                 {
+                    contextObj.OnAppearing();
                     contextObj.DrawPolygonsOnMap();
                     contextObj.AdjustMapZoom();
 
@@ -74,6 +76,9 @@ namespace Helper.Map.Views
                     map.HasZoomEnabled = true;
                     map.MapType = MapType.Hybrid;
                     map.IsShowingUser = false;
+
+                    var region = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromKilometers(15));
+                    map.MoveToMapRegion(region);
 
                     MapLayout.Children.Add(map);
                 }

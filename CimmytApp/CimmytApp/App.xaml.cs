@@ -1,4 +1,6 @@
-﻿namespace CimmytApp
+﻿using Microsoft.Practices.ServiceLocation;
+
+namespace CimmytApp
 {
     using System;
     using System.Collections.Generic;
@@ -194,6 +196,23 @@
             }
             catch (Exception e)
             {
+            }
+        }
+
+        protected override void OnSleep()
+        {
+            base.OnSleep();
+
+            if (ServiceLocator.IsLocationProviderSet)
+            {
+                try
+                {
+                    var geolocator = ServiceLocator.Current.GetInstance<IPosition>();
+                    geolocator?.StopListening();
+                }
+                catch (Exception ignored)
+                {
+                }
             }
         }
     }

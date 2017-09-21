@@ -59,7 +59,7 @@
             <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
             <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" Checked="{Binding UserIsAtParcel}" />
 
-            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" IsEnabled="{Binding UserIsAtParcel}" />
+            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />
             <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
         </StackLayout>
     </ScrollView>

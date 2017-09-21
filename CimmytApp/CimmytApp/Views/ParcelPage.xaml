@@ -8,9 +8,7 @@
             xmlns:views3="clr-namespace:CimmytApp.Parcel.Views;assembly=CimmytApp.Parcel"
             xmlns:views4="clr-namespace:CimmytApp.Benchmarking.Views;assembly=CimmytApp.Benchmarking"
             x:Class="CimmytApp.Views.ParcelPage">
-    <views3:AddParcelInformationPage Icon="icon_edit" />
-    <!--<views3:ParcelPage Icon="icon_edit" />-->
-    <views3:ViewParcelInformationPage Icon="icon_view" />
+    <views3:ParcelPage Icon="icon_edit" />
     <viewsWeather:WeatherDataSelection Icon="icon_weather" />
     <views4:LocalBenchmarkingSelectionPage Icon="icon_benchmark" />
     <views4:BenchmarkingPage Icon="ic_chart" />

@@ -5,7 +5,8 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             x:Name="ParcelOverviewRoot">
+             x:Name="ParcelOverviewRoot"
+             Padding="16">
     <!--Title="{localization:Translate page_title_parcels_overview}"-->
     <Grid>
         <Grid.RowDefinitions>
@@ -13,7 +14,7 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <ScrollView Grid.Row="0">
+        <ScrollView Grid.Row="0" IsVisible="{Binding ParcelsListIsVisible}">
             <ListView ItemsSource="{Binding Parcels}" RowHeight="72">
                 <!-- TODO RowHeight auto -->
                 <ListView.ItemTemplate>
@@ -34,7 +35,8 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Button Text="Agregar parcela" Command="{Binding AddParcelCommand}"  Grid.Row="1" />
+        <Label Grid.Row="0" Text="Aún no has creado una parcela. Presione 'nueva parcela' para agregar una parcela." IsVisible="{Binding AddParcelHintIsVisible}" />
+        <Button Text="Nueva parcela" Command="{Binding AddParcelCommand}"  Grid.Row="1" />
         <Button Text="Subir cambios" Command="{Binding UploadCommand}" IsVisible="{Binding ShowUploadButton}" Grid.Row="2" />
     </Grid>
 </ContentPage>
