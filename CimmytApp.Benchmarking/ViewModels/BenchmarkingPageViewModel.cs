@@ -71,8 +71,8 @@ namespace CimmytApp.Benchmarking.ViewModels
             {
                 var param = new BenchmarkingRequestParams
                 {
-                    lat = 20,// parcelLatitude,
-                    lng = -100 //parcelLongitude
+                    lat = parcelLatitude,
+                    lng = parcelLongitude
                 };
                 var data = await GeoWikiApi.Post<List<BenchmarkingInformation.BenchmarkingDataset>>("Raster", "GetColCimBenchmarkingInformation",
                     param);

@@ -123,7 +123,7 @@ namespace CimmytApp.Benchmarking.ViewModels
             return bemData;
         }
 
-        private void ViewData()
+        private void ViewData() //todo crash here
         {
             if (_bemData == null) return;
 
