@@ -174,7 +174,8 @@
             get => _tech1Checked;
             set
             {
-                _tech1Checked = value;
+                SetProperty(ref _tech1Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -187,7 +188,8 @@
             get => _tech2Checked;
             set
             {
-                _tech2Checked = value;
+                SetProperty(ref _tech2Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -200,7 +202,8 @@
             get => _tech3Checked;
             set
             {
-                _tech3Checked = value;
+                SetProperty(ref _tech3Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -213,7 +216,8 @@
             get => _tech4Checked;
             set
             {
-                _tech4Checked = value;
+                SetProperty(ref _tech4Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -226,7 +230,8 @@
             get => _tech5Checked;
             set
             {
-                _tech5Checked = value;
+                SetProperty(ref _tech5Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -239,7 +244,8 @@
             get => _tech6Checked;
             set
             {
-                _tech6Checked = value;
+                SetProperty(ref _tech6Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -252,7 +258,8 @@
             get => _tech7Checked;
             set
             {
-                _tech7Checked = value;
+                SetProperty(ref _tech7Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -265,7 +272,8 @@
             get => _tech8Checked;
             set
             {
-                _tech8Checked = value;
+                SetProperty(ref _tech8Checked, value);
+				if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -337,35 +345,35 @@
                 switch (technology)
                 {
                     case Technology1:
-                        SetProperty(ref _tech1Checked, true);
+                        Tech1Checked = true;
                         break;
 
-                    case Technology2:
-                        SetProperty(ref _tech2Checked, true);
+					case Technology2:
+                        Tech2Checked = true;
                         break;
 
-                    case Technology3:
-                        SetProperty(ref _tech3Checked, true);
+					case Technology3:
+						Tech3Checked = true;
                         break;
 
-                    case Technology4:
-                        SetProperty(ref _tech4Checked, true);
+					case Technology4:
+						Tech4Checked = true;
                         break;
 
-                    case Technology5:
-                        SetProperty(ref _tech5Checked, true);
+					case Technology5:
+						Tech5Checked = true;
                         break;
 
-                    case Technology6:
-                        SetProperty(ref _tech6Checked, true);
+					case Technology6:
+						Tech6Checked = true;
                         break;
 
-                    case Technology7:
-                        SetProperty(ref _tech7Checked, true);
+					case Technology7:
+						Tech7Checked = true;
                         break;
 
-                    case Technology8:
-                        SetProperty(ref _tech8Checked, true);
+					case Technology8:
+						Tech8Checked = true;
                         break;
                 }
             }
