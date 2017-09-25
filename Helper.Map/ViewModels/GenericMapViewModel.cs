@@ -382,12 +382,12 @@ namespace Helper.Map.ViewModels
                 }
                 else
                 {
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(20));
+                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                 }
             }
             else
             {
-                MapRegion = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromKilometers(15));
+                MapRegion = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromMeters(200));
             }
         }
 
