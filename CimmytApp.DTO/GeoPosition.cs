@@ -1,31 +1,45 @@
 ﻿namespace CimmytApp.DTO
 {
-    using System;
-    using SQLite.Net.Attributes;
-    
+    /// <summary>
+    /// Defines the <see cref="GeoPosition" />
+    /// </summary>
     public class GeoPosition
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeoPosition"/> class.
+        /// </summary>
+        public GeoPosition()
+        {
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="GeoPosition"/> class.
+        /// </summary>
+        /// <param name="latitude">The <see cref="double"/></param>
+        /// <param name="longitude">The <see cref="double"/></param>
+        public GeoPosition(double latitude, double longitude)
+        {
+            Latitude = latitude;
+            Longitude = longitude;
+        }
+
         //[PrimaryKey, AutoIncrement]
         //public int Id { get; set; }
 
-     //   public DateTimeOffset Timestamp { get; set; }
+        //   public DateTimeOffset Timestamp { get; set; }
 
+        //[PrimaryKey, AutoIncrement]
+        //public int Id { get; set; }
+
+        //   public DateTimeOffset Timestamp { get; set; }
+        /// <summary>
+        /// Gets or sets the Latitude
+        /// </summary>
         public double Latitude { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Longitude
+        /// </summary>
         public double Longitude { get; set; }
-
-        //public double Speed { get; set; }
-        //public double Heading { get; set; }
-        //public double Accuracy { get; set; }
-        //public double Altitude { get; set; }
-        //public double AltitudeAccuracy { get; set; }
-
-      //  public TypeOfAcquisition AcquiredThrough { get; set; }
     }
-
-    //public enum TypeOfAcquisition
-    //{
-    //    Gps = 0,
-    //    SelectedOnMap = 1,
-    //    Other = 2
-    //}
 }

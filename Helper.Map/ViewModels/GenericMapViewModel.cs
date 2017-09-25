@@ -354,7 +354,22 @@ namespace Helper.Map.ViewModels
                     MapPolygons.Clear();
                 }
             }
-            AdjustMapZoom();
+
+            if (parameters.ContainsKey("Center"))
+            {
+                var center = (GeoPosition)parameters["Center"];
+                AdjustMapZoom(center);
+            }
+            else
+            {
+                AdjustMapZoom();
+            }
+        }
+
+        private void AdjustMapZoom(GeoPosition center)
+        {
+            var position = new Position(center.Latitude, center.Longitude);
+            MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
         }
 
         public void AdjustMapZoom()
@@ -370,8 +385,9 @@ namespace Helper.Map.ViewModels
                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromKilometers(20));
                 }
             }
-            else {
-				MapRegion = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromKilometers(15));
+            else
+            {
+                MapRegion = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromKilometers(15));
             }
         }
 

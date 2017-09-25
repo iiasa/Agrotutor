@@ -474,6 +474,10 @@
         private void ChooseLocation()
         {
             var parameters = new NavigationParameters { { "GetLocation", true } };
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            {
+                parameters.Add("Center", new GeoPosition(Parcel.Latitude, Parcel.Longitude));
+            }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
