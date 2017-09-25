@@ -116,9 +116,10 @@
             get => _pickerCropTypesSelectedIndex;
             set
             {
-                _pickerCropTypesSelectedIndex = value;/*
+                _pickerCropTypesSelectedIndex = value;
+                if (!EditModeActive) return;
                 Parcel.Crop = CropTypes.ElementAt(value);
-                Parcel.CropType = (CropType)(value + 1);*/
+                Parcel.CropType = (CropType)(value + 1);
             }
         }
 
@@ -145,8 +146,9 @@
             get => _pickerIrrigationTypesSelectedIndex;
             set
             {
-                _pickerIrrigationTypesSelectedIndex = value;/*
-                Parcel.Irrigation = IrrigationTypes.ElementAt(value);*/
+                _pickerIrrigationTypesSelectedIndex = value;
+                if (!EditModeActive) return;
+                Parcel.Irrigation = IrrigationTypes.ElementAt(value);
             }
         }
 
@@ -158,8 +160,9 @@
             get => _pickerYearsSelectedIndex;
             set
             {
-                _pickerYearsSelectedIndex = value;/*
-                Parcel.Year = Years.ElementAt(value);*/
+                _pickerYearsSelectedIndex = value;
+                if (!EditModeActive) return;
+                Parcel.Year = Years.ElementAt(value);
             }
         }
 
@@ -410,16 +413,20 @@
             get => _pickerAgriculturalCycleSelectedIndex;
             set
             {
-                _pickerAgriculturalCycleSelectedIndex = value;/*
+                _pickerAgriculturalCycleSelectedIndex = value;
+                if (!EditModeActive) return;
                 Parcel.AgriculturalCycle = AgriculturalCycles.ElementAt(value);
                 var yrs = Years;
                 yrs.Clear();
                 yrs.AddRange(value == 0 ? _singleYears : _doubleYears);
 
-                Years = yrs;*/
+                Years = yrs;
             }
         }
 
+        /// <summary>
+        /// Gets or sets the ClickChooseLocation
+        /// </summary>
         public DelegateCommand ClickChooseLocation { get; set; }
 
         /// <summary>
@@ -464,6 +471,7 @@
         public ParcelPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations) : base(eventAggregator)
         {
             _navigationService = navigationService;
+            Years = _singleYears;
             _cimmytDbOperations = cimmytDbOperations;
             ClickPhoto = new DelegateCommand(OnTakePhotoClick);
             ClickSave = new DelegateCommand(SaveParcel);
@@ -471,6 +479,9 @@
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
         }
 
+        /// <summary>
+        /// The ChooseLocation
+        /// </summary>
         private void ChooseLocation()
         {
             var parameters = new NavigationParameters { { "GetLocation", true } };
@@ -605,7 +616,15 @@
                 //var res=_cimmytDbOperations.GetAllParcels();
                 OnPropertyChanged("Parcel"); //TODO improve this...
                 PublishDataset(_parcel);//TODO improve this..
-                //  _cimmytDbOperations.UpdateParcel(Parcel);
+                                        //  _cimmytDbOperations.UpdateParcel(Parcel);
+            }
+            if (parameters.ContainsKey("GeoPosition"))
+            {
+                parameters.TryGetValue("GeoPosition", out object geoPosition);
+                if (geoPosition == null) return;
+                var position = (GeoPosition)geoPosition;
+                Parcel.Latitude = position.Latitude;
+                Parcel.Longitude = position.Longitude;
             }
         }
 
