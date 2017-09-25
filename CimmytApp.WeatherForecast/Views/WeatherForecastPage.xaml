@@ -5,8 +5,7 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.WeatherForecast.Views.WeatherForecastPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-    xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
-            >
+    xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid">
     <!--Title="{localization:Translate page_title_weather}"-->
     <dg:DataGrid ItemsSource="{Binding DailyHighTemperature.Series}">
         <dg:DataGrid.HeaderFontSize>
@@ -16,8 +15,8 @@
             </OnIdiom>
         </dg:DataGrid.HeaderFontSize>
         <dg:DataGrid.Columns>
-            <dg:DataGridColumn Title="Date" PropertyName="validDate" />
-            <dg:DataGridColumn Title="Temperature" PropertyName="value" />
+            <dg:DataGridColumn Title="Fecha" PropertyName="validDate" />
+            <dg:DataGridColumn Title="Temperatura" PropertyName="value" />
         </dg:DataGrid.Columns>
         <dg:DataGrid.RowsBackgroundColorPalette>
             <dg:PaletteCollection>

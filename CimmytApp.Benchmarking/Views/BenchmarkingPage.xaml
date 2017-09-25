@@ -5,12 +5,13 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
     xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
         <StackLayout>
-            <Button Text="Load data" Command="{Binding LoadDataCommand}" Margin="0,0,0,16" />
+            <Button Text="{localization:Translate load_data}" Command="{Binding LoadDataCommand}" Margin="0,0,0,16" />
 
-            <Label Text="Irrigated:" />
+            <Label Text="{localization:Translate irrigated}" />
             <Label Text="{Binding DataIrrigated.GetMin}" />
             <Label Text="{Binding DataIrrigated.GetAvg}" />
             <Label Text="{Binding DataIrrigated.GetMax}" Margin="0,0,0,16" />
@@ -35,7 +36,7 @@
                 </chart:RadCartesianChart.Series>
             </chart:RadCartesianChart>
 
-            <Label Text="Rainfed:" />
+            <Label Text="{localization:Translate rainfed}" />
             <Label Text="{Binding DataRainfed.GetMin}" />
             <Label Text="{Binding DataRainfed.GetAvg}" />
             <Label Text="{Binding DataRainfed.GetMax}" Margin="0,0,0,16" />

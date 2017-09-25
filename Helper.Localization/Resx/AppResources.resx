@@ -657,4 +657,10 @@
   <data name="btn_get_location" xml:space="preserve">
     <value>Test</value>
   </data>
+  <data name="irrigated" xml:space="preserve">
+    <value>Regado:</value>
+  </data>
+  <data name="load_data" xml:space="preserve">
+    <value>Cargar datos</value>
+  </data>
 </root>

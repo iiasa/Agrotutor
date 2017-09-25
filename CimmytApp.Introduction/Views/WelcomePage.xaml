@@ -33,7 +33,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Source="welcome_3.png" />
-            <Label Grid.Row="1" Text="Delinee sus parcelas" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+            <Label Grid.Row="1" Text="Delinee sus parcelas (Mantenga presionada la pantalla para crear el primer punto. Luego marque las esquinas de la parcela.)" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
         </Grid>
     </ContentPage>
     <ContentPage>

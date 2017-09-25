@@ -944,6 +944,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Irrigado:.
+        /// </summary>
+        public static string irrigated {
+            get {
+                return ResourceManager.GetString("irrigated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Riego.
         /// </summary>
         public static string irrigation_type_1 {
@@ -1021,6 +1030,15 @@ namespace Helper.Localization.Resx {
         public static string lng {
             get {
                 return ResourceManager.GetString("lng", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cargar datos.
+        /// </summary>
+        public static string load_data {
+            get {
+                return ResourceManager.GetString("load_data", resourceCulture);
             }
         }
         
@@ -1318,6 +1336,15 @@ namespace Helper.Localization.Resx {
         public static string radiation_unit_short {
             get {
                 return ResourceManager.GetString("radiation_unit_short", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No irrigado:.
+        /// </summary>
+        public static string rainfed {
+            get {
+                return ResourceManager.GetString("rainfed", resourceCulture);
             }
         }
         
