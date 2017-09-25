@@ -80,8 +80,11 @@ namespace CimmytApp.Benchmarking.ViewModels
                     param);
 
                 var info = new BenchmarkingInformation { BenchmarkingDatasets = data };
-                info.KeepNewest(5);
-                info.SetYears();
+                if (info.BenchmarkingDatasets.Count > 0)
+                {
+                    info.KeepNewest(5);
+                    info.SetYears();
+                }
                 return info;
             }
             catch (Exception e)

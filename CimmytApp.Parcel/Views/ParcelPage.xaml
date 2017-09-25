@@ -65,9 +65,9 @@
             <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" IsEnabled="{Binding EditModeActive}" Checked="{Binding UserIsAtParcel}" />
 
             <!--<Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" IsEnabled="{Binding UserIsAtParcel}" />-->
-            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />
-            <Button Text="Deliniate Parcel" Command="{Binding DeliniateParcelCommand}" />
-            <Button Text="Guardar cambios" Command="{Binding ClickSave}" />
+            <Button Text="{localization:Translate btn_choose_location}" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickChooseLocation}" />
+            <Button Text="Deliniate Parcel" IsEnabled="{Binding EditModeActive}" Command="{Binding DeliniateParcelCommand}" />
+            <Button Text="Guardar cambios" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickSave}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

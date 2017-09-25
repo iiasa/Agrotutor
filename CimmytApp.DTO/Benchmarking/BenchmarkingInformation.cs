@@ -47,25 +47,7 @@ namespace CimmytApp.DTO.Benchmarking
 
         public void KeepNewest(int count)
         {
-            if (count >= BenchmarkingDatasets.Count) return;
-            if (count <= 0)
-            {
-                BenchmarkingDatasets.Clear();
-                return;
-            }
-            var n = 1;
-            var temp = new List<BenchmarkingDataset>();
-            for (var i = BenchmarkingDatasets.Count - 1; i >= 0; i++)
-            {
-                temp.Add(BenchmarkingDatasets.ElementAt(i));
-                if (n == count)
-                {
-                    temp.Reverse();
-                    BenchmarkingDatasets = temp;
-                    return;
-                }
-                n++;
-            }
+            BenchmarkingDatasets = (System.Collections.Generic.List<CimmytApp.DTO.Benchmarking.BenchmarkingInformation.BenchmarkingDataset>)BenchmarkingDatasets.Skip(Math.Max(0, BenchmarkingDatasets.Count() - count));
         }
     }
 }

@@ -25,7 +25,9 @@
         <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="{localization:Translate filter_cycle}" />
         <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}"  IsVisible="{Binding FilterCycle}" Margin="0,0,0,16" />
 
-        <Button Command="{Binding ViewDataCommand}" Text="{localization:Translate view}" />
+        <Button Command="{Binding ViewDataCommand}" Text="{localization:Translate view}" IsEnabled="{Binding DataAvailable}" />
         <Button Command="{Binding RefreshDataCommand}" Text="{localization:Translate refresh_benchmarking_data}" />
+        <Label Text="Por favor espere mientras recuperamos sus registros." IsVisible="{Binding Downloading}" />
+        
     </StackLayout>
 </ContentPage>

@@ -19,7 +19,14 @@ namespace CimmytApp.Benchmarking.ViewModels
         private BemData _bemData;
         private bool _filterCycle;
         private bool _filterYears;
-        private bool _dataAvailable;
+		private bool _dataAvailable;
+		private bool _downloading;
+
+		public bool Downloading
+		{
+			get => _downloading;
+			set => SetProperty(ref _downloading, value);
+		}
 
         public bool DataAvailable
         {
@@ -82,6 +89,7 @@ namespace CimmytApp.Benchmarking.ViewModels
 
         private static List<T> FilterDatasets<T>(List<T> bemDatasets, string year, string cycle) where T : BemDataset
         {
+            return bemDatasets;
             var datasets = new List<T>();
             datasets.AddRange(bemDatasets);
             List<T> selection;
@@ -114,12 +122,16 @@ namespace CimmytApp.Benchmarking.ViewModels
 
         private async Task<BemData> RefreshData()
         {
+            DataAvailable = false;
+            Downloading = true;
             var bemData = await BemData.LoadBEMData();
             if (bemData == null) return null;
             _cimmytDbOperations.SaveCostos(bemData.Costo);
             _cimmytDbOperations.SaveIngresos(bemData.Ingreso);
             _cimmytDbOperations.SaveRendimientos(bemData.Rendimiento);
             _cimmytDbOperations.SaveUtilidades(bemData.Utilidad);
+            DataAvailable = true;
+            Downloading = false;
             return bemData;
         }
 
