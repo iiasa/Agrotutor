@@ -68,6 +68,7 @@
             <Button Text="{localization:Translate btn_choose_location}" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickChooseLocation}" />
             <Button Text="Delinear parcela" IsEnabled="{Binding EditModeActive}" Command="{Binding DeliniateParcelCommand}" />
             <Button Text="Guardar cambios" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickSave}" />
+            <Button Text="Borrar parcela" IsEnabled="{Binding EditModeActive}" Command="{Binding DeleteParcelCommand}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

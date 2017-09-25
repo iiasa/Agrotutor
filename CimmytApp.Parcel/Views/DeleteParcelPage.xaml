@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Parcel.Views.DeleteParcelPage" Padding="32">
+    <StackLayout Orientation="Vertical">
+        <Label Text="Borrar la parcela" HorizontalTextAlignment="Center" Margin="0,0,0,32" />
+        <StackLayout>
+            <Button Text="Sí" Command="{Binding Delete}" Margin="16"/>
+            <Button Text="No" Command="{Binding GoBack}" Margin="16" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

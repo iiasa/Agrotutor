@@ -19,6 +19,7 @@
         public void Initialize()
         {
             _unityContainer.RegisterTypeForNavigation<AddParcelPage>();
+            _unityContainer.RegisterTypeForNavigation<DeleteParcelPage>();
             _unityContainer.RegisterTypeForNavigation<ParcelsOverviewPage>();
             _unityContainer.RegisterTypeForNavigation<ViewParcelInformationPage>();
         }

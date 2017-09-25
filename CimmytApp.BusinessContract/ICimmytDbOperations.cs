@@ -9,11 +9,14 @@
     {
         void AddParcel(Parcel parcel);
 
+        void DeleteParcel(Parcel parcel);
+
         int DeleteAllData();
 
         List<Parcel> GetAllParcels();
 
         void SaveParcelPolygon(int parcelId, PolygonDto polygonObj);
+
         BemData GetBemData();
 
         Parcel GetParcelById(int parcelId);

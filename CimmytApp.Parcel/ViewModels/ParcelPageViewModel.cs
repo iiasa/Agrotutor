@@ -23,6 +23,8 @@
     /// </summary>
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
+        public DelegateCommand DeleteParcelCommand { get; set; }
+
         /// <summary>
         /// Defines the Technology1
         /// </summary>
@@ -68,6 +70,17 @@
         /// </summary>
         private Parcel _parcel;
 
+        protected override bool SetProperty<T>(ref T storage, T value, string propertyName = null)
+        {
+            if (typeof(T) != Parcel.GetType())
+            {
+                EditsDone = true;
+            }
+            return base.SetProperty(ref storage, value, propertyName);
+        }
+
+        public bool EditsDone { get; set; }
+
         /// <summary>
         /// Gets or sets the Parcel
         /// </summary>
@@ -78,6 +91,48 @@
             {
                 SetProperty(ref _parcel, value);
                 UpdateTechCheckedUI();
+                UpdateSelections();
+            }
+        }
+
+        private void UpdateSelections()
+        {
+            switch (Parcel.AgriculturalCycle)
+            {
+                case "Primavera-Verano":
+                    PickerAgriculturalCycleSelectedIndex = 0;
+                    break;
+
+                case "Otoño-Invierno":
+                    PickerAgriculturalCycleSelectedIndex = 1;
+                    break;
+            }
+
+            for (int i = 0; i < CropTypes.Count; i++)
+            {
+                if (CropTypes[i] == Parcel.Crop)
+                {
+                    PickerCropTypesSelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < IrrigationTypes.Count; i++)
+            {
+                if (IrrigationTypes[i] == Parcel.Irrigation)
+                {
+                    PickerIrrigationTypesSelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < Years.Count; i++)
+            {
+                if (Years[i] == Parcel.Year)
+                {
+                    PickerYearsSelectedIndex = i;
+                    break;
+                }
             }
         }
 
@@ -116,7 +171,7 @@
             get => _pickerCropTypesSelectedIndex;
             set
             {
-                _pickerCropTypesSelectedIndex = value;
+                SetProperty(ref _pickerCropTypesSelectedIndex, value);
                 if (!EditModeActive) return;
                 Parcel.Crop = CropTypes.ElementAt(value);
                 Parcel.CropType = (CropType)(value + 1);
@@ -146,7 +201,7 @@
             get => _pickerIrrigationTypesSelectedIndex;
             set
             {
-                _pickerIrrigationTypesSelectedIndex = value;
+                SetProperty(ref _pickerIrrigationTypesSelectedIndex, value);
                 if (!EditModeActive) return;
                 Parcel.Irrigation = IrrigationTypes.ElementAt(value);
             }
@@ -160,7 +215,7 @@
             get => _pickerYearsSelectedIndex;
             set
             {
-                _pickerYearsSelectedIndex = value;
+                SetProperty(ref _pickerYearsSelectedIndex, value);
                 if (!EditModeActive) return;
                 Parcel.Year = Years.ElementAt(value);
             }
@@ -175,7 +230,7 @@
             set
             {
                 SetProperty(ref _tech1Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -189,7 +244,7 @@
             set
             {
                 SetProperty(ref _tech2Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -203,7 +258,7 @@
             set
             {
                 SetProperty(ref _tech3Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -217,7 +272,7 @@
             set
             {
                 SetProperty(ref _tech4Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -231,7 +286,7 @@
             set
             {
                 SetProperty(ref _tech5Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -245,7 +300,7 @@
             set
             {
                 SetProperty(ref _tech6Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -259,7 +314,7 @@
             set
             {
                 SetProperty(ref _tech7Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -273,7 +328,7 @@
             set
             {
                 SetProperty(ref _tech8Checked, value);
-				if (!EditModeActive) return;
+                if (!EditModeActive) return;
                 UpdateTechChecked();
             }
         }
@@ -348,32 +403,32 @@
                         Tech1Checked = true;
                         break;
 
-					case Technology2:
+                    case Technology2:
                         Tech2Checked = true;
                         break;
 
-					case Technology3:
-						Tech3Checked = true;
+                    case Technology3:
+                        Tech3Checked = true;
                         break;
 
-					case Technology4:
-						Tech4Checked = true;
+                    case Technology4:
+                        Tech4Checked = true;
                         break;
 
-					case Technology5:
-						Tech5Checked = true;
+                    case Technology5:
+                        Tech5Checked = true;
                         break;
 
-					case Technology6:
-						Tech6Checked = true;
+                    case Technology6:
+                        Tech6Checked = true;
                         break;
 
-					case Technology7:
-						Tech7Checked = true;
+                    case Technology7:
+                        Tech7Checked = true;
                         break;
 
-					case Technology8:
-						Tech8Checked = true;
+                    case Technology8:
+                        Tech8Checked = true;
                         break;
                 }
             }
@@ -470,7 +525,11 @@
         /// <summary>
         /// Gets or sets a value indicating whether EditModeActive
         /// </summary>
-        public bool EditModeActive { get => _editModeActive; set => SetProperty(ref _editModeActive, value); }
+        public bool EditModeActive
+        {
+            get => _editModeActive;
+            set => SetProperty(ref _editModeActive, value);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ParcelPageViewModel"/> class.
@@ -485,6 +544,14 @@
             ClickSave = new DelegateCommand(SaveParcel);
             DeliniateParcelCommand = new DelegateCommand(DeliniateParcel);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
+            DeleteParcelCommand = new DelegateCommand(DeleteParcel);
+            EditModeActive = false;
+        }
+
+        private void DeleteParcel()
+        {
+            var parameters = new NavigationParameters { { "Parcel", Parcel } };
+            _navigationService.NavigateAsync("DeleteParcelPage", parameters);
         }
 
         /// <summary>
@@ -512,6 +579,8 @@
         {
             _cimmytDbOperations.UpdateParcel(Parcel);
             PublishDataset(Parcel);
+            EditModeActive = false;
+            EditsDone = false;
         }
 
         /// <summary>
