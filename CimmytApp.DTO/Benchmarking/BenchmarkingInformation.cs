@@ -44,5 +44,28 @@ namespace CimmytApp.DTO.Benchmarking
                 benchmarkingDataset.SetYear();
             }
         }
+
+        public void KeepNewest(int count)
+        {
+            if (count >= BenchmarkingDatasets.Count) return;
+            if (count <= 0)
+            {
+                BenchmarkingDatasets.Clear();
+                return;
+            }
+            var n = 1;
+            var temp = new List<BenchmarkingDataset>();
+            for (var i = BenchmarkingDatasets.Count - 1; i >= 0; i++)
+            {
+                temp.Add(BenchmarkingDatasets.ElementAt(i));
+                if (n == count)
+                {
+                    temp.Reverse();
+                    BenchmarkingDatasets = temp;
+                    return;
+                }
+                n++;
+            }
+        }
     }
 }

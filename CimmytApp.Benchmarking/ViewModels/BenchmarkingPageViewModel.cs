@@ -67,6 +67,8 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// <returns>The <see cref="Task{BenchmarkingInformation}"/></returns>
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)
         {
+            if (parcelLatitude == 0 && parcelLongitude == 0) return null;
+
             try
             {
                 var param = new BenchmarkingRequestParams
@@ -76,7 +78,9 @@ namespace CimmytApp.Benchmarking.ViewModels
                 };
                 var data = await GeoWikiApi.Post<List<BenchmarkingInformation.BenchmarkingDataset>>("Raster", "GetColCimBenchmarkingInformation",
                     param);
+
                 var info = new BenchmarkingInformation { BenchmarkingDatasets = data };
+                info.KeepNewest(5);
                 info.SetYears();
                 return info;
             }
