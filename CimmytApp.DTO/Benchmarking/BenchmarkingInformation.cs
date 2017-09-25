@@ -47,7 +47,10 @@ namespace CimmytApp.DTO.Benchmarking
 
         public void KeepNewest(int count)
         {
-            BenchmarkingDatasets = (System.Collections.Generic.List<CimmytApp.DTO.Benchmarking.BenchmarkingInformation.BenchmarkingDataset>)BenchmarkingDatasets.Skip(Math.Max(0, BenchmarkingDatasets.Count() - count));
+            while (BenchmarkingDatasets.Count() > count)
+            {
+                BenchmarkingDatasets.RemoveAt(0);
+            }
         }
     }
 }

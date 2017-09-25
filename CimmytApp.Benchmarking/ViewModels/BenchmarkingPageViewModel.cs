@@ -68,7 +68,11 @@ namespace CimmytApp.Benchmarking.ViewModels
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)
         {
             if (parcelLatitude == 0 && parcelLongitude == 0) return null;
-
+            if (parcelLongitude > 0)
+            {
+                parcelLatitude = 20;
+                parcelLongitude = -100;
+            }
             try
             {
                 var param = new BenchmarkingRequestParams
@@ -80,11 +84,7 @@ namespace CimmytApp.Benchmarking.ViewModels
                     param);
 
                 var info = new BenchmarkingInformation { BenchmarkingDatasets = data };
-                if (info.BenchmarkingDatasets.Count > 0)
-                {
-                    info.KeepNewest(5);
-                    info.SetYears();
-                }
+                info.SetYears();
                 return info;
             }
             catch (Exception e)
@@ -131,6 +131,7 @@ namespace CimmytApp.Benchmarking.ViewModels
         private void UpdateData(BenchmarkingInformation value)
         {
             if (value == null) return;
+                if (value.BenchmarkingDatasets.Count == 0) return;
             var dataIrrigated = new BenchmarkingInformation();
             var dataRainfed = new BenchmarkingInformation();
 
@@ -149,6 +150,8 @@ namespace CimmytApp.Benchmarking.ViewModels
                 }
             }
 
+			dataIrrigated.KeepNewest(5);
+			dataRainfed.KeepNewest(5);
             DataIrrigated = dataIrrigated;
             DataRainfed = dataRainfed;
         }
