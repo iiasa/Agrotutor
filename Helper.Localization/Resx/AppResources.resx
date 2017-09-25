@@ -658,9 +658,12 @@
     <value>Test</value>
   </data>
   <data name="irrigated" xml:space="preserve">
-    <value>Regado:</value>
+    <value>Irrigado:</value>
   </data>
   <data name="load_data" xml:space="preserve">
     <value>Cargar datos</value>
+  </data>
+  <data name="rainfed" xml:space="preserve">
+    <value>No irrigado:</value>
   </data>
 </root>

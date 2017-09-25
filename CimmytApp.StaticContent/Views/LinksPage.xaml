@@ -11,6 +11,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -37,5 +38,7 @@
                 <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
             </Image.GestureRecognizers>
         </Image>
+
+        <Button Text="Ver pantalla de introducción" Grid.Row="2" Grid.Column="1" Command="{Binding ShowIntroductionCommand}" />
     </Grid>
 </ContentPage>
