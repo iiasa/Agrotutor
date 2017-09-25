@@ -255,11 +255,6 @@ namespace CimmytApp.Parcel.ViewModels
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
-            //if (CheckFields() == false)
-            //{
-            //    IsSaveBtnEnabled = false;
-            //    return;
-            //}
             _cimmytDbOperations.AddParcel(Parcel);
 
             var navigationParameters = new NavigationParameters
