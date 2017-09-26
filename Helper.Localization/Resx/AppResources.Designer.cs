@@ -62,6 +62,87 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Preparación del terreno.
+        /// </summary>
+        public static string activity_1 {
+            get {
+                return ResourceManager.GetString("activity_1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación de fertilizante foliar.
+        /// </summary>
+        public static string activity_2 {
+            get {
+                return ResourceManager.GetString("activity_2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación de fertilizante orgánico.
+        /// </summary>
+        public static string activity_3 {
+            get {
+                return ResourceManager.GetString("activity_3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fertilización química al suelo.
+        /// </summary>
+        public static string activity_4 {
+            get {
+                return ResourceManager.GetString("activity_4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación de herbicidas después de la siembra.
+        /// </summary>
+        public static string activity_5 {
+            get {
+                return ResourceManager.GetString("activity_5", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación de herbicidas presiembra.
+        /// </summary>
+        public static string activity_6 {
+            get {
+                return ResourceManager.GetString("activity_6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Labores culturales y control físico de malezas.
+        /// </summary>
+        public static string activity_7 {
+            get {
+                return ResourceManager.GetString("activity_7", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación de fungicidas.
+        /// </summary>
+        public static string activity_8 {
+            get {
+                return ResourceManager.GetString("activity_8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aplicación de insecticidas.
+        /// </summary>
+        public static string activity_9 {
+            get {
+                return ResourceManager.GetString("activity_9", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Agregue parcela.
         /// </summary>
         public static string add_parcel {

@@ -23,6 +23,9 @@
     /// </summary>
     public class ParcelPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
     {
+        /// <summary>
+        /// Gets or sets the DeleteParcelCommand
+        /// </summary>
         public DelegateCommand DeleteParcelCommand { get; set; }
 
         /// <summary>
@@ -66,10 +69,63 @@
         private const string Technology8 = "Tecnología para mejorar el almacenamiento del grano";
 
         /// <summary>
+        /// Defines the Activity1
+        /// </summary>
+        private const string Activity1 = "Preparación del terreno";
+
+        /// <summary>
+        /// Defines the Activity2
+        /// </summary>
+        private const string Activity2 = "Aplicación de fertilizante foliar";
+
+        /// <summary>
+        /// Defines the Activity3
+        /// </summary>
+        private const string Activity3 = "Aplicación de fertilizante orgánico";
+
+        /// <summary>
+        /// Defines the Activity4
+        /// </summary>
+        private const string Activity4 = "Fertilización química al suelo";
+
+        /// <summary>
+        /// Defines the Activity5
+        /// </summary>
+        private const string Activity5 = "Aplicación de herbicidas después de la siembra";
+
+        /// <summary>
+        /// Defines the Activity6
+        /// </summary>
+        private const string Activity6 = "Aplicación de herbicidas presiembra";
+
+        /// <summary>
+        /// Defines the Activity7
+        /// </summary>
+        private const string Activity7 = "Labores culturales y control físico de malezas";
+
+        /// <summary>
+        /// Defines the Activity8
+        /// </summary>
+        private const string Activity8 = "Aplicación de fungicidas";
+
+        /// <summary>
+        /// Defines the Activity9
+        /// </summary>
+        private const string Activity9 = "Aplicación de insecticidas";
+
+        /// <summary>
         /// Defines the _parcel
         /// </summary>
         private Parcel _parcel;
 
+        /// <summary>
+        /// The SetProperty
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="storage">The <see cref="T"/></param>
+        /// <param name="value">The <see cref="T"/></param>
+        /// <param name="propertyName">The <see cref="string"/></param>
+        /// <returns>The <see cref="bool"/></returns>
         protected override bool SetProperty<T>(ref T storage, T value, string propertyName = null)
         {
             if (typeof(T) != Parcel.GetType())
@@ -79,6 +135,9 @@
             return base.SetProperty(ref storage, value, propertyName);
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether EditsDone
+        /// </summary>
         public bool EditsDone { get; set; }
 
         /// <summary>
@@ -91,10 +150,14 @@
             {
                 SetProperty(ref _parcel, value);
                 UpdateTechCheckedUI();
+                UpdateActivityCheckedUI();
                 UpdateSelections();
             }
         }
 
+        /// <summary>
+        /// The UpdateSelections
+        /// </summary>
         private void UpdateSelections()
         {
             switch (Parcel.AgriculturalCycle)
@@ -334,6 +397,132 @@
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether Activity1Checked
+        /// </summary>
+        public bool Activity1Checked
+        {
+            get => _activity1Checked;
+            set
+            {
+                SetProperty(ref _activity1Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity2Checked
+        /// </summary>
+        public bool Activity2Checked
+        {
+            get => _activity2Checked;
+            set
+            {
+                SetProperty(ref _activity2Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity3Checked
+        /// </summary>
+        public bool Activity3Checked
+        {
+            get => _activity3Checked;
+            set
+            {
+                SetProperty(ref _activity3Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity4Checked
+        /// </summary>
+        public bool Activity4Checked
+        {
+            get => _activity4Checked;
+            set
+            {
+                SetProperty(ref _activity4Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity5Checked
+        /// </summary>
+        public bool Activity5Checked
+        {
+            get => _activity5Checked;
+            set
+            {
+                SetProperty(ref _activity5Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity6Checked
+        /// </summary>
+        public bool Activity6Checked
+        {
+            get => _activity6Checked;
+            set
+            {
+                SetProperty(ref _activity6Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity7Checked
+        /// </summary>
+        public bool Activity7Checked
+        {
+            get => _activity7Checked;
+            set
+            {
+                SetProperty(ref _activity7Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity8Checked
+        /// </summary>
+        public bool Activity8Checked
+        {
+            get => _activity8Checked;
+            set
+            {
+                SetProperty(ref _activity8Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether Activity9Checked
+        /// </summary>
+        public bool Activity9Checked
+        {
+            get => _activity9Checked;
+            set
+            {
+                SetProperty(ref _activity9Checked, value);
+                if (!EditModeActive) return;
+                UpdateActivityChecked();
+            }
+        }
+
+        /// <summary>
         /// Defines the _tech1Checked
         /// </summary>
         private bool _tech1Checked;
@@ -374,6 +563,51 @@
         private bool _tech8Checked;
 
         /// <summary>
+        /// Defines the _activity1Checked
+        /// </summary>
+        private bool _activity1Checked;
+
+        /// <summary>
+        /// Defines the _activity9Checked
+        /// </summary>
+        private bool _activity9Checked;
+
+        /// <summary>
+        /// Defines the _activity8Checked
+        /// </summary>
+        private bool _activity8Checked;
+
+        /// <summary>
+        /// Defines the _activity7Checked
+        /// </summary>
+        private bool _activity7Checked;
+
+        /// <summary>
+        /// Defines the _activity6Checked
+        /// </summary>
+        private bool _activity6Checked;
+
+        /// <summary>
+        /// Defines the _activity5Checked
+        /// </summary>
+        private bool _activity5Checked;
+
+        /// <summary>
+        /// Defines the _activity4Checked
+        /// </summary>
+        private bool _activity4Checked;
+
+        /// <summary>
+        /// Defines the _activity3Checked
+        /// </summary>
+        private bool _activity3Checked;
+
+        /// <summary>
+        /// Defines the _activity2Checked
+        /// </summary>
+        private bool _activity2Checked;
+
+        /// <summary>
         /// The UpdateTechChecked
         /// </summary>
         private void UpdateTechChecked()
@@ -388,6 +622,54 @@
             if (_tech7Checked) technologies.Add(Technology7);
             if (_tech8Checked) technologies.Add(Technology8);
             Parcel.TechnologiesUsed = technologies;
+        }
+
+        /// <summary>
+        /// The UpdateActivityCheckedUI
+        /// </summary>
+        private void UpdateActivityCheckedUI()
+        {
+            foreach (var activity in Parcel.Activities)
+            {
+                switch (activity)
+                {
+                    case Activity1:
+                        Activity1Checked = true;
+                        break;
+
+                    case Activity2:
+                        Activity2Checked = true;
+                        break;
+
+                    case Activity3:
+                        Activity3Checked = true;
+                        break;
+
+                    case Activity4:
+                        Activity4Checked = true;
+                        break;
+
+                    case Activity5:
+                        Activity5Checked = true;
+                        break;
+
+                    case Activity6:
+                        Activity6Checked = true;
+                        break;
+
+                    case Activity7:
+                        Activity7Checked = true;
+                        break;
+
+                    case Activity8:
+                        Activity8Checked = true;
+                        break;
+
+                    case Activity9:
+                        Activity8Checked = true;
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -525,11 +807,7 @@
         /// <summary>
         /// Gets or sets a value indicating whether EditModeActive
         /// </summary>
-        public bool EditModeActive
-        {
-            get => _editModeActive;
-            set => SetProperty(ref _editModeActive, value);
-        }
+        public bool EditModeActive { get => _editModeActive; set => SetProperty(ref _editModeActive, value); }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ParcelPageViewModel"/> class.
@@ -548,6 +826,9 @@
             EditModeActive = false;
         }
 
+        /// <summary>
+        /// The DeleteParcel
+        /// </summary>
         private void DeleteParcel()
         {
             var parameters = new NavigationParameters { { "Parcel", Parcel } };
@@ -664,6 +945,24 @@
         /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
+        }
+
+        /// <summary>
+        /// The UpdateActivityChecked
+        /// </summary>
+        private void UpdateActivityChecked()
+        {
+            var activities = new List<string>();
+            if (_activity1Checked) activities.Add("Preparación del terreno");
+            if (_activity2Checked) activities.Add("Aplicación de fertilizante foliar");
+            if (_activity3Checked) activities.Add("Aplicación de fertilizante orgánico");
+            if (_activity4Checked) activities.Add("Fertilización química al suelo");
+            if (_activity5Checked) activities.Add("Aplicación de herbicidas después de la siembra");
+            if (_activity6Checked) activities.Add("Aplicación de herbicidas presiembra");
+            if (_activity7Checked) activities.Add("Labores culturales y control físico de malezas");
+            if (_activity8Checked) activities.Add("Aplicación de fungicidas");
+            if (_activity9Checked) activities.Add("Aplicación de insecticidas");
+            Parcel.Activities = activities;
         }
 
         /// <summary>

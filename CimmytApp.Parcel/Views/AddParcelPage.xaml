@@ -34,6 +34,15 @@
             <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="{localization:Translate technology_6}" />
             <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="{localization:Translate technology_7}" />
             <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="{localization:Translate technology_8}" />
+            <controls:CheckBox Checked="{Binding Activity1Checked}" DefaultText="{localization:Translate activity_1}" />
+            <controls:CheckBox Checked="{Binding Activity2Checked}" DefaultText="{localization:Translate activity_2}" />
+            <controls:CheckBox Checked="{Binding Activity3Checked}" DefaultText="{localization:Translate activity_3}" />
+            <controls:CheckBox Checked="{Binding Activity4Checked}" DefaultText="{localization:Translate activity_4}" />
+            <controls:CheckBox Checked="{Binding Activity5Checked}" DefaultText="{localization:Translate activity_5}" />
+            <controls:CheckBox Checked="{Binding Activity6Checked}" DefaultText="{localization:Translate activity_6}" />
+            <controls:CheckBox Checked="{Binding Activity7Checked}" DefaultText="{localization:Translate activity_7}" />
+            <controls:CheckBox Checked="{Binding Activity8Checked}" DefaultText="{localization:Translate activity_8}" />
+            <controls:CheckBox Checked="{Binding Activity9Checked}" DefaultText="{localization:Translate activity_9}" />
 
             <Label  Text="{localization:Translate hint_technology_other}" Margin="0,16,0,0" FontSize="10" />
             <Entry  Placeholder="{localization:Translate hint_other_technology_used}" Text="{Binding Parcel.OtherTechnologies}" Margin="0,0,0,16" />

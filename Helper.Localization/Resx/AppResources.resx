@@ -666,4 +666,31 @@
   <data name="rainfed" xml:space="preserve">
     <value>No irrigado:</value>
   </data>
+  <data name="activity_1" xml:space="preserve">
+    <value>Preparación del terreno</value>
+  </data>
+  <data name="activity_2" xml:space="preserve">
+    <value>Aplicación de fertilizante foliar</value>
+  </data>
+  <data name="activity_3" xml:space="preserve">
+    <value>Aplicación de fertilizante orgánico</value>
+  </data>
+  <data name="activity_4" xml:space="preserve">
+    <value>Fertilización química al suelo</value>
+  </data>
+  <data name="activity_5" xml:space="preserve">
+    <value>Aplicación de herbicidas después de la siembra</value>
+  </data>
+  <data name="activity_6" xml:space="preserve">
+    <value>Aplicación de herbicidas presiembra</value>
+  </data>
+  <data name="activity_7" xml:space="preserve">
+    <value>Labores culturales y control físico de malezas</value>
+  </data>
+  <data name="activity_8" xml:space="preserve">
+    <value>Aplicación de fungicidas</value>
+  </data>
+  <data name="activity_9" xml:space="preserve">
+    <value>Aplicación de insecticidas</value>
+  </data>
 </root>

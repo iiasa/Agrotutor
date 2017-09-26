@@ -38,6 +38,15 @@ namespace CimmytApp.Parcel.ViewModels
         private bool _userIsAtParcel;
         private List<string> _years;
         private bool _isSaveBtnEnabled = true;
+        private bool _activity1Checked;
+        private bool _activity9Checked;
+        private bool _activity8Checked;
+        private bool _activity7Checked;
+        private bool _activity6Checked;
+        private bool _activity5Checked;
+        private bool _activity4Checked;
+        private bool _activity3Checked;
+        private bool _activity2Checked;
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
@@ -199,6 +208,96 @@ namespace CimmytApp.Parcel.ViewModels
             }
         }
 
+        public bool Activity1Checked
+        {
+            get => _activity1Checked;
+            set
+            {
+                SetProperty(ref _activity1Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity2Checked
+        {
+            get => _activity2Checked;
+            set
+            {
+                SetProperty(ref _activity2Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity3Checked
+        {
+            get => _activity3Checked;
+            set
+            {
+                SetProperty(ref _activity3Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity4Checked
+        {
+            get => _activity4Checked;
+            set
+            {
+                SetProperty(ref _activity4Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity5Checked
+        {
+            get => _activity5Checked;
+            set
+            {
+                SetProperty(ref _activity5Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity6Checked
+        {
+            get => _activity6Checked;
+            set
+            {
+                SetProperty(ref _activity6Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity7Checked
+        {
+            get => _activity7Checked;
+            set
+            {
+                SetProperty(ref _activity7Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity8Checked
+        {
+            get => _activity8Checked;
+            set
+            {
+                SetProperty(ref _activity8Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
+        public bool Activity9Checked
+        {
+            get => _activity9Checked;
+            set
+            {
+                SetProperty(ref _activity9Checked, value);
+                UpdateActivityChecked();
+            }
+        }
+
         public bool Test { get; set; }
 
         public bool UserIsAtParcel
@@ -276,6 +375,21 @@ namespace CimmytApp.Parcel.ViewModels
             if (_tech7Checked) technologies.Add("Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)");
             if (_tech8Checked) technologies.Add("Tecnología para mejorar el almacenamiento del grano");
             Parcel.TechnologiesUsed = technologies;
+        }
+
+        private void UpdateActivityChecked()
+        {
+            var activities = new List<string>();
+            if (_activity1Checked) activities.Add("Preparación del terreno");
+            if (_activity2Checked) activities.Add("Aplicación de fertilizante foliar");
+            if (_activity3Checked) activities.Add("Aplicación de fertilizante orgánico");
+            if (_activity4Checked) activities.Add("Fertilización química al suelo");
+            if (_activity5Checked) activities.Add("Aplicación de herbicidas después de la siembra");
+            if (_activity6Checked) activities.Add("Aplicación de herbicidas presiembra");
+            if (_activity7Checked) activities.Add("Labores culturales y control físico de malezas");
+            if (_activity8Checked) activities.Add("Aplicación de fungicidas");
+            if (_activity9Checked) activities.Add("Aplicación de insecticidas");
+            Parcel.Activities = activities;
         }
     }
 }

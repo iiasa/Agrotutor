@@ -1,79 +1,155 @@
-﻿using System.Runtime.Serialization;
-using SQLiteNetExtensions.Attributes;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Xamarin.Forms;
-using SQLite.Net.Attributes;
-using Helper.BusinessContract;
-using Helper.GeoWiki.GenericDatasetStorage;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-namespace CimmytApp.DTO.Parcel
+﻿namespace CimmytApp.DTO.Parcel
 {
+    using Helper.BusinessContract;
+    using Helper.GeoWiki.GenericDatasetStorage;
+    using Newtonsoft.Json;
+    using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Runtime.Serialization;
+    using System.Threading.Tasks;
+    using Xamarin.Forms;
+
+    /// <summary>
+    /// Defines the <see cref="Parcel" />
+    /// </summary>
     [Table("Parcel")]
     public class Parcel : GeoPosition, IDataset, INotifyPropertyChanged
     {
+        /// <summary>
+        /// Defines the geoWikiDatasetGroupId
+        /// </summary>
         private static int geoWikiDatasetGroupId = 1;
 
+        /// <summary>
+        /// Defines the _agriculturalCycle
+        /// </summary>
         private string _agriculturalCycle;
+
+        /// <summary>
+        /// Defines the _crop
+        /// </summary>
         private string _crop;
+
+        /// <summary>
+        /// Defines the _croptype
+        /// </summary>
         private CropType _croptype;
+
+        /// <summary>
+        /// Defines the _cultivar
+        /// </summary>
         private string _cultivar;
+
+        /// <summary>
+        /// Defines the _estimatedParcelArea
+        /// </summary>
         private string _estimatedParcelArea;
+
+        /// <summary>
+        /// Defines the _geoPosition
+        /// </summary>
         private GeoPosition _geoPosition;
+
+        /// <summary>
+        /// Defines the _id
+        /// </summary>
         private int _id;
+
+        /// <summary>
+        /// Defines the _irrigation
+        /// </summary>
         private string _irrigation;
+
+        /// <summary>
+        /// Defines the _otherTechnologies
+        /// </summary>
         private string _otherTechnologies;
+
+        /// <summary>
+        /// Defines the _parcelName
+        /// </summary>
         private string _parcelName;
+
+        /// <summary>
+        /// Defines the _performance
+        /// </summary>
         private string _performance;
+
+        /// <summary>
+        /// Defines the _pesticidesApplied
+        /// </summary>
         private List<PesticideApplication> _pesticidesApplied;
+
+        /// <summary>
+        /// Defines the _deliniation
+        /// </summary>
         private string _deliniation;
+
+        /// <summary>
+        /// Defines the _plantingDate
+        /// </summary>
         private DateTime _plantingDate;
+
+        /// <summary>
+        /// Defines the _producerName
+        /// </summary>
         private string _producerName;
+
+        /// <summary>
+        /// Defines the _technologiesUsed
+        /// </summary>
         private List<string> _technologiesUsed;
+
+        /// <summary>
+        /// Defines the _uploaded
+        /// </summary>
         private int _uploaded;
+
+        /// <summary>
+        /// Defines the _year
+        /// </summary>
         private string _year;
+
+        /// <summary>
+        /// Defines the _polygon
+        /// </summary>
         private PolygonDto _polygon;
-        List<Activity> activities;
-        string otherActivities;
 
-        public string OtherActivities
-        {
-            get
-            {
-                return otherActivities;
-            }
+        /// <summary>
+        /// Defines the _activities
+        /// </summary>
+        private List<string> _activities;
 
-            set
-            {
-                otherActivities = value;
-            }
-        }
+        /// <summary>
+        /// Gets or sets the Activities
+        /// </summary>
+        [TextBlob("ActivitiesBlobbed")]
+        public List<string> Activities { get => _activities; set => _activities = value; }
 
-        public List<Activity> Activities
-        {
-            get
-            {
-                return activities;
-            }
+        /// <summary>
+        /// Gets or sets the ActivitiesBlobbed
+        /// </summary>
+        public string ActivitiesBlobbed { get; set; }
 
-            set
-            {
-                activities = value;
-            }
-        }
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Parcel"/> class.
+        /// </summary>
         public Parcel()
         {
             PlantingDate = DateTime.Today;
-            //_technologiesUsed = new List<string>();
-            //_polygon=new PolygonDto();
         }
 
+        /// <summary>
+        /// Defines the PropertyChanged
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Gets or sets the AgriculturalCycle
+        /// </summary>
         public string AgriculturalCycle
         {
             get => _agriculturalCycle;
@@ -84,10 +160,14 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
-        //[PrimaryKey, AutoIncrement]
-        //public int DBId { get; set; }
+        /// <summary>
+        /// Gets the CompletedPercentage
+        /// </summary>
         public int CompletedPercentage => 10;
 
+        /// <summary>
+        /// Gets or sets the Crop
+        /// </summary>
         public string Crop
         {
             get => _crop;
@@ -98,12 +178,14 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
-        public CropType CropType
-        {
-            get => _croptype;
-            set => _croptype = value;
-        }
+        /// <summary>
+        /// Gets or sets the CropType
+        /// </summary>
+        public CropType CropType { get => _croptype; set => _croptype = value; }
 
+        /// <summary>
+        /// Gets or sets the Cultivar
+        /// </summary>
         public string Cultivar
         {
             get => _cultivar;
@@ -114,6 +196,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the EstimatedParcelArea
+        /// </summary>
         public string EstimatedParcelArea
         {
             get => _estimatedParcelArea;
@@ -124,13 +209,19 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the PolygonID
+        /// </summary>
         [ForeignKey(typeof(PolygonDto))]
         public int PolygonID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Polygon
+        /// </summary>
         [OneToOne(CascadeOperations = CascadeOperation.All)]
         public PolygonDto Polygon
         {
-            get { return _polygon; }
+            get => _polygon;
             set
             {
                 _polygon = value;
@@ -138,6 +229,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the PesticidesApplied
+        /// </summary>
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<PesticideApplication> PesticidesApplied
         {
@@ -149,14 +243,19 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
-        public int Uploaded
-        {
-            get => _uploaded;
-            set => _uploaded = value;
-        }
+        /// <summary>
+        /// Gets or sets the Uploaded
+        /// </summary>
+        public int Uploaded { get => _uploaded; set => _uploaded = value; }
 
+        /// <summary>
+        /// Gets the EstimatedParcelAreaWithUnit
+        /// </summary>
         public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
 
+        /// <summary>
+        /// Gets the IconSource
+        /// </summary>
         public string IconSource
         {
             get
@@ -226,6 +325,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Irrigation
+        /// </summary>
         public string Irrigation
         {
             get => _irrigation;
@@ -236,6 +338,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the OtherTechnologies
+        /// </summary>
         public string OtherTechnologies
         {
             get => _otherTechnologies;
@@ -246,11 +351,20 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets the OverviewString
+        /// </summary>
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
+        /// <summary>
+        /// Gets or sets the ParcelId
+        /// </summary>
         [PrimaryKey, AutoIncrement]
         public int ParcelId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the ParcelName
+        /// </summary>
         public string ParcelName
         {
             get => _parcelName;
@@ -261,6 +375,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the Performance
+        /// </summary>
         public string Performance
         {
             get => _performance;
@@ -271,20 +388,27 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets the PerformanceWithUnit
+        /// </summary>
         public string PerformanceWithUnit => Performance + " tons/ha";
 
+        /// <summary>
+        /// Gets or sets the PlantingDate
+        /// </summary>
         public DateTime PlantingDate
         {
             get => _plantingDate;
             set
             {
-                //_plantingDate = value;
-
                 _plantingDate = value.ToLocalTime();
                 OnPropertyChanged("PlantingDate");
             }
         }
 
+        /// <summary>
+        /// Gets or sets the ProducerName
+        /// </summary>
         public string ProducerName
         {
             get => _producerName;
@@ -295,6 +419,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets the TechnologiesScreenList
+        /// </summary>
         [IgnoreDataMember]
         public string TechnologiesScreenList
         {
@@ -309,6 +436,9 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the TechnologiesUsed
+        /// </summary>
         [TextBlob("TechnologiesUsedBlobbed")]
         public List<string> TechnologiesUsed
         {
@@ -320,8 +450,14 @@ namespace CimmytApp.DTO.Parcel
             }
         }
 
+        /// <summary>
+        /// Gets or sets the TechnologiesUsedBlobbed
+        /// </summary>
         public string TechnologiesUsedBlobbed { get; set; }
 
+        /// <summary>
+        /// Gets or sets the Year
+        /// </summary>
         public string Year
         {
             get => _year;
@@ -333,18 +469,29 @@ namespace CimmytApp.DTO.Parcel
         }
 
         //ToDo:Move to another Class
+        /// <summary>
+        /// The LoadParcelsFromServer
+        /// </summary>
+        /// <returns>The <see cref="Task{List{Parcel}}"/></returns>
         public static async Task<List<Parcel>> LoadParcelsFromServer()
         {
             return await Storage.GetDatasets<Parcel>(16, 1, geoWikiDatasetGroupId);
         }
 
         //ToDo:Move to another Class
+        /// <summary>
+        /// The GetOverviewDataTemplate
+        /// </summary>
+        /// <returns>The <see cref="DataTemplate"/></returns>
         public DataTemplate GetOverviewDataTemplate()
         {
             return null;
         }
 
         //ToDo:Move to another Class
+        /// <summary>
+        /// The Submit
+        /// </summary>
         public void Submit()
         {
             if (_uploaded == (int)DatasetUploadStatus.Synchronized) return;
@@ -353,6 +500,10 @@ namespace CimmytApp.DTO.Parcel
         }
 
         //ToDo:Move to another Class
+        /// <summary>
+        /// The SubmitAsync
+        /// </summary>
+        /// <returns>The <see cref="Task{Parcel}"/></returns>
         public async Task<Parcel> SubmitAsync()
         {
             if (_uploaded == (int)DatasetUploadStatus.Synchronized) return null;
@@ -361,6 +512,10 @@ namespace CimmytApp.DTO.Parcel
             return this;
         }
 
+        /// <summary>
+        /// The OnPropertyChanged
+        /// </summary>
+        /// <param name="aName">The <see cref="string"/></param>
         protected virtual void OnPropertyChanged(string aName)
         {
             var iHandler = PropertyChanged;
@@ -369,12 +524,20 @@ namespace CimmytApp.DTO.Parcel
         }
 
         //ToDo:Move to another Class
+        /// <summary>
+        /// The GetDeliniation
+        /// </summary>
+        /// <returns>The <see cref="List{GeoPosition}"/></returns>
         public List<GeoPosition> GetDeliniation()
         {
             return string.IsNullOrEmpty(_deliniation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_deliniation);
         }
 
         //ToDo:Move to another Class
+        /// <summary>
+        /// The SetDeliniation
+        /// </summary>
+        /// <param name="deliniation">The <see cref="List{GeoPosition}"/></param>
         public void SetDeliniation(List<GeoPosition> deliniation)
         {
             _deliniation = JsonConvert.SerializeObject(deliniation);
