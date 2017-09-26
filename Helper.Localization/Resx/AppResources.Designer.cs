@@ -152,7 +152,7 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Escoja una ubicación en el mapa.
+        ///   Looks up a localized string similar to Obtener la ubicación de la parcela (GPS).
         /// </summary>
         public static string btn_choose_location {
             get {
