@@ -54,7 +54,7 @@
             <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding Madurez}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Margin="0,0,0,16" />
@@ -75,7 +75,7 @@
             <Label Text="{localization:Translate hint_planting_date}" FontSize="10" />
 
             <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
-            <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" Checked="{Binding UserIsAtParcel}" />
+
             <Label Text="{localization:Translate cosecha}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding HarvestingTypes}" SelectedIndex="{Binding PickerHarvestingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
