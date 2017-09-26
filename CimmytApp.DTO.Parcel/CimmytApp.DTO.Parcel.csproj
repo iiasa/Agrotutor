@@ -41,6 +41,16 @@
     <Compile Include="PolygonDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="DatasetUploadStatus.cs" />
+    <Compile Include="Activity\Activity.cs" />
+    <Compile Include="Activity\MejadorDeSuelo.cs" />
+    <Compile Include="Activity\PreparacionDeTerreno.cs" />
+    <Compile Include="Activity\Siembra.cs" />
+    <Compile Include="Activity\Fertilizacion.cs" />
+    <Compile Include="Activity\PrevencionDeMalezas.cs" />
+    <Compile Include="Activity\PrevencionDePlagas.cs" />
+    <Compile Include="Activity\Cosechas.cs" />
+    <Compile Include="Activity\AlmacenamientoPoscosecha.cs" />
+    <Compile Include="Activity\Comercializacion.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -127,6 +137,9 @@
       <Project>{FC3EAE0D-7DBA-4973-9816-36688CB7098F}</Project>
       <Name>Helper.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Activity\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.3.4.224\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
