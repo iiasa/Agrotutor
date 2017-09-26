@@ -36,6 +36,34 @@ namespace CimmytApp.DTO.Parcel
         private int _uploaded;
         private string _year;
         private PolygonDto _polygon;
+        List<Activity> activities;
+        string otherActivities;
+
+        public string OtherActivities
+        {
+            get
+            {
+                return otherActivities;
+            }
+
+            set
+            {
+                otherActivities = value;
+            }
+        }
+
+        public List<Activity> Activities
+        {
+            get
+            {
+                return activities;
+            }
+
+            set
+            {
+                activities = value;
+            }
+        }
 
         public Parcel()
         {

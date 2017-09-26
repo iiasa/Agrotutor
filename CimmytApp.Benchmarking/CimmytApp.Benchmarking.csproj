@@ -65,6 +65,7 @@
       <DependentUpon>BenchmarkingPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\BenchmarkingPageViewModel.cs" />
+    <Compile Include="PhuAccumulator.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LocalBenchmarkingPage.xaml">
