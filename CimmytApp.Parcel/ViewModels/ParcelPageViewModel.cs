@@ -284,6 +284,34 @@
         }
 
         /// <summary>
+        /// Gets or sets the PickerMaturityClassesSelectedIndex
+        /// </summary>
+        public int PickerMaturityClassesSelectedIndex
+        {
+            get => _pickerMaturityClassesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerMaturityClassesSelectedIndex, value);
+                if (!EditModeActive) return;
+                Parcel.MaturityClass = MaturityClasses.ElementAt(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the PickerClimateTypesSelectedIndex
+        /// </summary>
+        public int PickerClimateTypesSelectedIndex
+        {
+            get => _pickerClimateTypesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerClimateTypesSelectedIndex, value);
+                if (!EditModeActive) return;
+                Parcel.ClimateType = ClimateTypes.ElementAt(value);
+            }
+        }
+
+        /// <summary>
         /// Defines the _pickerCropTypesSelectedIndex
         /// </summary>
         private int _pickerCropTypesSelectedIndex;
@@ -788,6 +816,20 @@
             = new List<string> { "Riego", "Riego de punteo", "Temporal" };
 
         /// <summary>
+        /// Gets the MaturityClasses
+        /// </summary>
+        public List<string> MaturityClasses { get; }
+
+            = new List<string> { "Temprana", "Semi-temprana", "Intermedia", "Semi-tardía", "Tardía" };
+
+        /// <summary>
+        /// Gets the ClimateTypes
+        /// </summary>
+        public List<string> ClimateTypes { get; }
+
+            = new List<string> { "Frío", "Templado/Subtropical", "Tropical", "Híbrido" };
+
+        /// <summary>
         /// Gets the HarvestingTypes
         /// </summary>
         public List<string> HarvestingTypes { get; }
@@ -972,6 +1014,16 @@
         /// Defines the _pickerStorageTypesSelectedIndex
         /// </summary>
         private int _pickerStorageTypesSelectedIndex;
+
+        /// <summary>
+        /// Defines the _pickerMaturityClassesSelectedIndex
+        /// </summary>
+        private int _pickerMaturityClassesSelectedIndex;
+
+        /// <summary>
+        /// Defines the _pickerClimateTypesSelectedIndex
+        /// </summary>
+        private int _pickerClimateTypesSelectedIndex;
 
         /// <summary>
         /// The OnTakePhotoClick

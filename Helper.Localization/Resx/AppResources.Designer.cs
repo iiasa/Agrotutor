@@ -1151,6 +1151,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Tipo de madurez del cultivar.
+        /// </summary>
+        public static string madurez {
+            get {
+                return ResourceManager.GetString("madurez", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Marzo.
         /// </summary>
         public static string march {
@@ -1732,6 +1741,15 @@ namespace Helper.Localization.Resx {
         public static string temperature {
             get {
                 return ResourceManager.GetString("temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clima idóneo del cultivar.
+        /// </summary>
+        public static string tipo_clima {
+            get {
+                return ResourceManager.GetString("tipo_clima", resourceCulture);
             }
         }
         

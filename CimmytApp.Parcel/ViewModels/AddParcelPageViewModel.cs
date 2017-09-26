@@ -172,6 +172,16 @@
         private int _pickerStorageTypesSelectedIndex;
 
         /// <summary>
+        /// Defines the _pickerMaturityClassesSelectedIndex
+        /// </summary>
+        private int _pickerMaturityClassesSelectedIndex;
+
+        /// <summary>
+        /// Defines the _pickerClimateTypesSelectedIndex
+        /// </summary>
+        private int _pickerClimateTypesSelectedIndex;
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="AddParcelPageViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">The <see cref="INavigationService"/></param>
@@ -641,6 +651,46 @@
             {
                 SetProperty(ref _pickerSowingTypesSelectedIndex, value);
                 Parcel.SowingType = SowingTypes.ElementAt(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets the MaturityClasses
+        /// </summary>
+        public List<string> MaturityClasses { get; }
+
+            = new List<string> { "Temprana", "Semi-temprana", "Intermedia", "Semi-tardía", "Tardía" };
+
+        /// <summary>
+        /// Gets the ClimateTypes
+        /// </summary>
+        public List<string> ClimateTypes { get; }
+
+            = new List<string> { "Frío", "Templado/Subtropical", "Tropical", "Híbrido" };
+
+        /// <summary>
+        /// Gets or sets the PickerMaturityClassesSelectedIndex
+        /// </summary>
+        public int PickerMaturityClassesSelectedIndex
+        {
+            get => _pickerMaturityClassesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerMaturityClassesSelectedIndex, value);
+                Parcel.MaturityClass = MaturityClasses.ElementAt(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the PickerClimateTypesSelectedIndex
+        /// </summary>
+        public int PickerClimateTypesSelectedIndex
+        {
+            get => _pickerClimateTypesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerClimateTypesSelectedIndex, value);
+                Parcel.ClimateType = ClimateTypes.ElementAt(value);
             }
         }
 

@@ -693,4 +693,22 @@
   <data name="activity_9" xml:space="preserve">
     <value>Aplicación de insecticidas</value>
   </data>
+  <data name="cosecha" xml:space="preserve">
+    <value>Cosecha</value>
+  </data>
+  <data name="madurez" xml:space="preserve">
+    <value>Tipo de madurez del cultivar</value>
+  </data>
+  <data name="poscosecha" xml:space="preserve">
+    <value>Almacenamiento poscosecha</value>
+  </data>
+  <data name="resiembra" xml:space="preserve">
+    <value>Resiembra</value>
+  </data>
+  <data name="siembra" xml:space="preserve">
+    <value>Siembra</value>
+  </data>
+  <data name="tipo_clima" xml:space="preserve">
+    <value>Clima idóneo del cultivar</value>
+  </data>
 </root>

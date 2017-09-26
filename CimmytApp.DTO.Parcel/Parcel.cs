@@ -471,6 +471,8 @@
         public string SowingType { get; set; }
         public string HarvestingType { get; set; }
         public string StorageType { get; set; }
+        public string MaturityClass { get; set; }
+        public string ClimateType { get; set; }
 
         //ToDo:Move to another Class
         /// <summary>
