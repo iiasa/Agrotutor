@@ -242,6 +242,48 @@
         }
 
         /// <summary>
+        /// Gets or sets the PickerSowingTypesSelectedIndex
+        /// </summary>
+        public int PickerSowingTypesSelectedIndex
+        {
+            get => _pickerSowingTypesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerSowingTypesSelectedIndex, value);
+                if (!EditModeActive) return;
+                Parcel.SowingType = SowingTypes.ElementAt(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the PickerHarvestingTypesSelectedIndex
+        /// </summary>
+        public int PickerHarvestingTypesSelectedIndex
+        {
+            get => _pickerHarvestingTypesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerHarvestingTypesSelectedIndex, value);
+                if (!EditModeActive) return;
+                Parcel.HarvestingType = HarvestingTypes.ElementAt(value);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the PickerStorageTypesSelectedIndex
+        /// </summary>
+        public int PickerStorageTypesSelectedIndex
+        {
+            get => _pickerStorageTypesSelectedIndex;
+            set
+            {
+                SetProperty(ref _pickerStorageTypesSelectedIndex, value);
+                if (!EditModeActive) return;
+                Parcel.StorageType = StorageTypes.ElementAt(value);
+            }
+        }
+
+        /// <summary>
         /// Defines the _pickerCropTypesSelectedIndex
         /// </summary>
         private int _pickerCropTypesSelectedIndex;
@@ -743,7 +785,28 @@
         /// </summary>
         public List<string> IrrigationTypes { get; }
 
-    = new List<string> { "Riego", "Riego de punteo", "Temporal" };
+            = new List<string> { "Riego", "Riego de punteo", "Temporal" };
+
+        /// <summary>
+        /// Gets the HarvestingTypes
+        /// </summary>
+        public List<string> HarvestingTypes { get; }
+
+            = new List<string> { "Cosecha manual", "Cosecha mecánica" };
+
+        /// <summary>
+        /// Gets the StorageTypes
+        /// </summary>
+        public List<string> StorageTypes { get; }
+
+            = new List<string> { "Almacenamiento poscosecha con tecnologías herméticas", "Almacenamiento poscosecha tradicional" };
+
+        /// <summary>
+        /// Gets the SowingTypes
+        /// </summary>
+        public List<string> SowingTypes { get; }
+
+            = new List<string> { "Resiembra", "Siembra" };
 
         /// <summary>
         /// Defines the _pickerAgriculturalCycleSelectedIndex
@@ -894,6 +957,21 @@
         /// Defines the _navigationService
         /// </summary>
         private INavigationService _navigationService;
+
+        /// <summary>
+        /// Defines the _pickerSowingTypesSelectedIndex
+        /// </summary>
+        private int _pickerSowingTypesSelectedIndex;
+
+        /// <summary>
+        /// Defines the _pickerHarvestingTypesSelectedIndex
+        /// </summary>
+        private int _pickerHarvestingTypesSelectedIndex;
+
+        /// <summary>
+        /// Defines the _pickerStorageTypesSelectedIndex
+        /// </summary>
+        private int _pickerStorageTypesSelectedIndex;
 
         /// <summary>
         /// The OnTakePhotoClick

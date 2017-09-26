@@ -53,6 +53,9 @@
             <Label Text="{localization:Translate hint_cultivar}" FontSize="10" />
             <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" Margin="0,0,0,16" />
 
+            <Label Text="{localization:Translate siembra}" FontSize="10" />
+            <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+
             <Label Text="{localization:Translate hint_additional_information}" />
 
             <Label Text="{localization:Translate hint_performance}" FontSize="10" />
@@ -67,6 +70,11 @@
 
             <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
             <controls:CheckBox DefaultText="{localization:Translate hint_user_at_parcel}" Margin="0,0,0,16" Checked="{Binding UserIsAtParcel}" />
+            <Label Text="{localization:Translate cosecha}" FontSize="10" />
+            <controls:ExtendedPicker ItemsSource="{Binding HarvestingTypes}" SelectedIndex="{Binding PickerHarvestingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate poscosecha}" FontSize="10" />
+            <controls:ExtendedPicker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />
             <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />

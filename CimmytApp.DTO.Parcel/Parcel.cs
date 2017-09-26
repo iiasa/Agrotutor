@@ -468,6 +468,10 @@
             }
         }
 
+        public string SowingType { get; set; }
+        public string HarvestingType { get; set; }
+        public string StorageType { get; set; }
+
         //ToDo:Move to another Class
         /// <summary>
         /// The LoadParcelsFromServer

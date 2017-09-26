@@ -314,6 +314,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cosecha.
+        /// </summary>
+        public static string cosecha {
+            get {
+                return ResourceManager.GetString("cosecha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Maíz.
         /// </summary>
         public static string crop_types_1 {
@@ -1385,6 +1394,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Almacenamiento poscosecha.
+        /// </summary>
+        public static string poscosecha {
+            get {
+                return ResourceManager.GetString("poscosecha", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Precipitación.
         /// </summary>
         public static string precipitation {
@@ -1529,6 +1547,15 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resiembra.
+        /// </summary>
+        public static string resiembra {
+            get {
+                return ResourceManager.GetString("resiembra", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Humedad relativa.
         /// </summary>
         public static string rh {
@@ -1552,6 +1579,15 @@ namespace Helper.Localization.Resx {
         public static string september {
             get {
                 return ResourceManager.GetString("september", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Siembra.
+        /// </summary>
+        public static string siembra {
+            get {
+                return ResourceManager.GetString("siembra", resourceCulture);
             }
         }
         
