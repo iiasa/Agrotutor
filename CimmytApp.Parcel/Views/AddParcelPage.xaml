@@ -82,6 +82,7 @@
             <Label Text="{localization:Translate poscosecha}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
+            <Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" />
             <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />
             <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
         </StackLayout>

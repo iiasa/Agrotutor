@@ -142,7 +142,7 @@
     <value>Agosto</value>
   </data>
   <data name="btn_choose_location" xml:space="preserve">
-    <value>Obtener la ubicación de la parcela (GPS)</value>
+    <value>Escoja una ubicación en el mapa</value>
   </data>
   <data name="btn_save_and_new" xml:space="preserve">
     <value>Guardar</value>
@@ -655,7 +655,7 @@
     <value>Tomar una foto</value>
   </data>
   <data name="btn_get_location" xml:space="preserve">
-    <value>Test</value>
+    <value>Obtener la ubicación de la parcela (GPS)</value>
   </data>
   <data name="irrigated" xml:space="preserve">
     <value>Irrigado:</value>

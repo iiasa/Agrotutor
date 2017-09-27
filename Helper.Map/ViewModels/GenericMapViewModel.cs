@@ -229,33 +229,50 @@ namespace Helper.Map.ViewModels
 
         private void MapClicked(object obj)
         {
-            if (CurrentDeliniationState == DeliniationState.Inactive) return;
+            if ((CurrentDeliniationState == DeliniationState.Inactive) && (!ChooseLocation)) return;
             var position = (Position)obj;
             // var polygonsList = MapPolygons;
 
-            var pointId = MapPolygons.ElementAt(0).Coordinates.Count;
-
-            MapPolygons.ElementAt(0).Coordinates.Add(position);
-
-            if (MapPolygons.ElementAt(0).Coordinates.Count > 2)
+            if (CurrentDeliniationState != DeliniationState.Inactive)
             {
-                CurrentDeliniationState = DeliniationState.ActiveEnoughPoints;
-                var listCoordinate = MapPolygons[0].Coordinates;
-                listCoordinate.Add(position);
-                MapPolygons[0].Coordinates = new List<Position>(listCoordinate);
+                var pointId = MapPolygons.ElementAt(0).Coordinates.Count;
+
+                MapPolygons.ElementAt(0).Coordinates.Add(position);
+
+                if (MapPolygons.ElementAt(0).Coordinates.Count > 2)
+                {
+                    CurrentDeliniationState = DeliniationState.ActiveEnoughPoints;
+                    var listCoordinate = MapPolygons[0].Coordinates;
+                    listCoordinate.Add(position);
+                    MapPolygons[0].Coordinates = new List<Position>(listCoordinate);
+                }
+                else
+                {
+                    CurrentDeliniationState = DeliniationState.ActiveNotEnoughPoints;
+                }
+
+                ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
+
+                CustomPinsList.Add(new TKCustomMapPin
+                {
+                    ID = "polygon_marker_" + pointId,
+                    Position = position,
+                });
             }
             else
             {
-                CurrentDeliniationState = DeliniationState.ActiveNotEnoughPoints;
+                CustomPinsList.Clear();
+                _currentGeoPosition = new Base.DTO.GeoPosition
+                {
+                    Latitude = position.Latitude,
+                    Longitude = position.Longitude
+                };
+                CustomPinsList.Add(new TKCustomMapPin
+                {
+                    ID = "polygon_marker",
+                    Position = position,
+                });
             }
-
-            ButtonAcceptDeliniationEnabled = CurrentDeliniationState == DeliniationState.ActiveEnoughPoints;
-
-            CustomPinsList.Add(new TKCustomMapPin
-            {
-                ID = "polygon_marker_" + pointId,
-                Position = position,
-            });
         }
 
         private async void MapLongPress(object obj)
@@ -341,6 +358,12 @@ namespace Helper.Map.ViewModels
                 }
             }
 
+            if (parameters.ContainsKey("ChooseLocation"))
+            {
+                ReturnGeolocationButtonVisible = true;
+                ChooseLocation = true;
+            }
+
             if (parameters.ContainsKey("GetPolygon"))
             {
                 object getLocation;
@@ -365,6 +388,8 @@ namespace Helper.Map.ViewModels
                 AdjustMapZoom();
             }
         }
+
+        public bool ChooseLocation { get; set; }
 
         private void AdjustMapZoom(GeoPosition center)
         {

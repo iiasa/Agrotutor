@@ -258,6 +258,18 @@
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
+        public void ChooseLocation()
+        {
+            var parameters = new NavigationParameters
+            {
+                {"Latitude", _parcel.Latitude},
+                {"Longitude", _parcel.Longitude},
+                {"ChooseLocation", true},
+                {"parcelId",_parcel.ParcelId }
+            };
+            _navigationService.NavigateAsync("GenericMap", parameters);
+        }
+
         /// <summary>
         /// Gets the AgriculturalCycles
         /// </summary>
@@ -926,6 +938,11 @@
         public DelegateCommand ClickChooseLocation { get; set; }
 
         /// <summary>
+        /// Gets or sets the ClickChooseLocation
+        /// </summary>
+        public DelegateCommand ClickGetLocation { get; set; }
+
+        /// <summary>
         /// Defines the _scheduler
         /// </summary>
         private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
@@ -973,6 +990,7 @@
             ClickSave = new DelegateCommand(SaveParcel);
             DeliniateParcelCommand = new DelegateCommand(DeliniateParcel);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
+            ClickGetLocation = new DelegateCommand(GetLocation);
             DeleteParcelCommand = new DelegateCommand(DeleteParcel);
             EditModeActive = false;
         }
@@ -989,7 +1007,7 @@
         /// <summary>
         /// The ChooseLocation
         /// </summary>
-        private void ChooseLocation()
+        private void GetLocation()
         {
             var parameters = new NavigationParameters { { "GetLocation", true } };
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)

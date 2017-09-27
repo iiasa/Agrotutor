@@ -233,7 +233,7 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Obtener la ubicación de la parcela (GPS).
+        ///   Looks up a localized string similar to Escoja una ubicación en el mapa.
         /// </summary>
         public static string btn_choose_location {
             get {
@@ -242,7 +242,7 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test.
+        ///   Looks up a localized string similar to Obtener la ubicación de la parcela (GPS).
         /// </summary>
         public static string btn_get_location {
             get {

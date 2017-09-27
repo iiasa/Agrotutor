@@ -193,9 +193,16 @@
             Years = new List<string>();
 
             ClickSave = new DelegateCommand(SaveParcel).ObservesCanExecute(o => IsSaveBtnEnabled);
-            ClickChooseLocation = new Command(ChooseLocation);
+            ClickChooseLocation = new DelegateCommand(ChooseLocation);
+            ClickGetLocation = new DelegateCommand(GetLocation);
 
             Parcel = new Parcel();
+        }
+
+        private void GetLocation()
+        {
+            var parameters = new NavigationParameters { { "ChooseLocation", true } };
+            _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
         /// <summary>
@@ -231,7 +238,9 @@
         /// <summary>
         /// Gets or sets the ClickChooseLocation
         /// </summary>
-        public ICommand ClickChooseLocation { get; set; }
+        public DelegateCommand ClickChooseLocation { get; set; }
+
+        public DelegateCommand ClickGetLocation { get; set; }
 
         /// <summary>
         /// Gets or sets the ClickSave
@@ -605,7 +614,7 @@
         /// </summary>
         private void ChooseLocation()
         {
-            var parameters = new NavigationParameters { { "GetLocation", true } };
+            var parameters = new NavigationParameters { { "ChooseLocation", true } };
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
