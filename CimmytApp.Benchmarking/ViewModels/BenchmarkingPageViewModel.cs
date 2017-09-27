@@ -67,8 +67,7 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// <returns>The <see cref="Task{BenchmarkingInformation}"/></returns>
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)
         {
-            if (parcelLatitude == 0 && parcelLongitude == 0) return null;
-            if (parcelLongitude > 0)
+            if (parcelLongitude >= 0)
             {
                 parcelLatitude = 20;
                 parcelLongitude = -100;
