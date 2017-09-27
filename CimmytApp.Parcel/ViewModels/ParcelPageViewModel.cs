@@ -781,7 +781,7 @@
                         break;
 
                     case Activity9:
-                        Activity8Checked = true;
+                        Activity9Checked = true;
                         break;
                 }
             }
