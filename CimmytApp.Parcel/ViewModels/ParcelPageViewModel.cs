@@ -128,10 +128,10 @@
         /// <returns>The <see cref="bool"/></returns>
         protected override bool SetProperty<T>(ref T storage, T value, string propertyName = null)
         {
-            if (typeof(T) != Parcel.GetType())
+            /*if (typeof(T) != Parcel.GetType())
             {
                 EditsDone = true;
-            }
+            }*/
             return base.SetProperty(ref storage, value, propertyName);
         }
 
@@ -194,6 +194,50 @@
                 if (Years[i] == Parcel.Year)
                 {
                     PickerYearsSelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < MaturityClasses.Count; i++)
+            {
+                if (MaturityClasses[i] == Parcel.MaturityClass)
+                {
+                    PickerMaturityClassesSelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < StorageTypes.Count; i++)
+            {
+                if (StorageTypes[i] == Parcel.StorageType)
+                {
+                    PickerStorageTypesSelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < SowingTypes.Count; i++)
+            {
+                if (SowingTypes[i] == Parcel.SowingType)
+                {
+                    PickerSowingTypesSelectedIndex = i;
+                    break;
+                }
+            }
+            for (int i = 0; i < ClimateTypes.Count; i++)
+            {
+                if (ClimateTypes[i] == Parcel.ClimateType)
+                {
+                    PickerClimateTypesSelectedIndex = i;
+                    break;
+                }
+            }
+
+            for (int i = 0; i < HarvestingTypes.Count; i++)
+            {
+                if (HarvestingTypes[i] == Parcel.HarvestingType)
+                {
+                    PickerHarvestingTypesSelectedIndex = i;
                     break;
                 }
             }

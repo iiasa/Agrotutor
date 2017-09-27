@@ -59,10 +59,10 @@
             <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate siembra}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
