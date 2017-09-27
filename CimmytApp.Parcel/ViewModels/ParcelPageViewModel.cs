@@ -743,6 +743,7 @@
         /// </summary>
         private void UpdateActivityCheckedUI()
         {
+            if (Parcel.Activities == null) return;
             foreach (var activity in Parcel.Activities)
             {
                 switch (activity)
@@ -791,6 +792,7 @@
         /// </summary>
         private void UpdateTechCheckedUI()
         {
+            if (Parcel.TechnologiesUsed == null) return;
             foreach (var technology in Parcel.TechnologiesUsed)
             {
                 switch (technology)
@@ -1147,6 +1149,7 @@
         {
             if (parameters.ContainsKey("Deliniation"))
             {
+                EditModeActive = false;
                 object deliniation;
                 parameters.TryGetValue("Deliniation", out deliniation);
                 //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
@@ -1157,6 +1160,7 @@
                     Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
                     Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
                 }
+                Parcel.SetDeliniation(polygonObj.ListPoints);
                 //if (polygonObj.ListPoints != null && polygonObj.ListPoints.Count > 2)
                 //{
                 //    NeedsDeliniation = false;

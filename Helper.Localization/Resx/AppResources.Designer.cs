@@ -188,7 +188,7 @@ namespace Helper.Localization.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to México Produce!.
+        ///   Looks up a localized string similar to México Produce.
         /// </summary>
         public static string app_name {
             get {

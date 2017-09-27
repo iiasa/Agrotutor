@@ -39,6 +39,6 @@
             </Image.GestureRecognizers>
         </Image>
 
-        <Button Text="Ver pantalla de introducción" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding ShowIntroductionCommand}" />
+        <Button Text="Ver guía rápida (ayuda)" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding ShowIntroductionCommand}" />
     </Grid>
 </ContentPage>

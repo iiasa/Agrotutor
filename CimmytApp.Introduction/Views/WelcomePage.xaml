@@ -13,7 +13,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Source="welcome_1.png" />
-            <Label Grid.Row="1" Text="Crear y administrar sus parcelas (Deslízate a la izquierda)" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+            <Label Grid.Row="1" Text="Crear y administrar parcelas (Deslízate a la izquierda)" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
         </Grid>
     </ContentPage>
     <ContentPage>
@@ -23,7 +23,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Source="welcome_2.png" />
-            <Label Grid.Row="1" Text="Proporcionar información sobre su parcelas"  HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+            <Label Grid.Row="1" Text="Proporcionar información sobre parcelas"  HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
         </Grid>
     </ContentPage>
     <ContentPage>
@@ -33,7 +33,7 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Source="welcome_3.png" />
-            <Label Grid.Row="1" Text="Delinee sus parcelas (Mantenga presionada la pantalla para crear el primer punto. Luego marque las esquinas de la parcela.)" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+            <Label Grid.Row="1" Text="Delinear parcelas. Mantenga presionada la pantalla para crear el primer punto. Luego marque las esquinas de la parcela." HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
         </Grid>
     </ContentPage>
     <ContentPage>
@@ -43,12 +43,12 @@
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
             <Image Grid.Row="0" Source="welcome_4.png" />
-            <Label Grid.Row="1" Text="Recibir información útil" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+            <Label Grid.Row="1" Text="Reciba información útil" HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
         </Grid>
     </ContentPage>
     <ContentPage>
         <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-            <Button Text="Empieza ahora" Command="{Binding NavigateToMainPageCommand}" />
+            <Button Text="Empezar ahora" Command="{Binding NavigateToMainPageCommand}" />
         </StackLayout>
     </ContentPage>
 </CarouselPage>

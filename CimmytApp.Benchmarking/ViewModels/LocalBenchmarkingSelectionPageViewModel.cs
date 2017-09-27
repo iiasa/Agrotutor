@@ -19,14 +19,14 @@ namespace CimmytApp.Benchmarking.ViewModels
         private BemData _bemData;
         private bool _filterCycle;
         private bool _filterYears;
-		private bool _dataAvailable;
-		private bool _downloading;
+        private bool _dataAvailable;
+        private bool _downloading;
 
-		public bool Downloading
-		{
-			get => _downloading;
-			set => SetProperty(ref _downloading, value);
-		}
+        public bool Downloading
+        {
+            get => _downloading;
+            set => SetProperty(ref _downloading, value);
+        }
 
         public bool DataAvailable
         {
@@ -62,6 +62,7 @@ namespace CimmytApp.Benchmarking.ViewModels
 
         private async void LoadData()
         {
+            if (Downloading) return;
             _bemData = await RefreshData();
         }
 
