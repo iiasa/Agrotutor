@@ -8859,1362 +8859,6 @@ namespace CimmytApp.Droid
 			global::Xamarin.Forms.Labs.Droid.Resource.Style.CalendarCell_DayHeader = global::CimmytApp.Droid.Resource.Style.CalendarCell_DayHeader;
 			global::Xamarin.Forms.Labs.Droid.Resource.Style.CalendarTitle = global::CimmytApp.Droid.Resource.Style.CalendarTitle;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::CimmytApp.Droid.Resource.Attribute.actionBarSize;
-			global::XLabs.Forms.Resource.Animation.abc_fade_in = global::CimmytApp.Droid.Resource.Animation.abc_fade_in;
-			global::XLabs.Forms.Resource.Animation.abc_fade_out = global::CimmytApp.Droid.Resource.Animation.abc_fade_out;
-			global::XLabs.Forms.Resource.Animation.abc_grow_fade_in_from_bottom = global::CimmytApp.Droid.Resource.Animation.abc_grow_fade_in_from_bottom;
-			global::XLabs.Forms.Resource.Animation.abc_popup_enter = global::CimmytApp.Droid.Resource.Animation.abc_popup_enter;
-			global::XLabs.Forms.Resource.Animation.abc_popup_exit = global::CimmytApp.Droid.Resource.Animation.abc_popup_exit;
-			global::XLabs.Forms.Resource.Animation.abc_shrink_fade_out_from_bottom = global::CimmytApp.Droid.Resource.Animation.abc_shrink_fade_out_from_bottom;
-			global::XLabs.Forms.Resource.Animation.abc_slide_in_bottom = global::CimmytApp.Droid.Resource.Animation.abc_slide_in_bottom;
-			global::XLabs.Forms.Resource.Animation.abc_slide_in_top = global::CimmytApp.Droid.Resource.Animation.abc_slide_in_top;
-			global::XLabs.Forms.Resource.Animation.abc_slide_out_bottom = global::CimmytApp.Droid.Resource.Animation.abc_slide_out_bottom;
-			global::XLabs.Forms.Resource.Animation.abc_slide_out_top = global::CimmytApp.Droid.Resource.Animation.abc_slide_out_top;
-			global::XLabs.Forms.Resource.Animation.design_fab_in = global::CimmytApp.Droid.Resource.Animation.design_fab_in;
-			global::XLabs.Forms.Resource.Animation.design_fab_out = global::CimmytApp.Droid.Resource.Animation.design_fab_out;
-			global::XLabs.Forms.Resource.Animation.design_snackbar_in = global::CimmytApp.Droid.Resource.Animation.design_snackbar_in;
-			global::XLabs.Forms.Resource.Animation.design_snackbar_out = global::CimmytApp.Droid.Resource.Animation.design_snackbar_out;
-			global::XLabs.Forms.Resource.Attribute.actionBarDivider = global::CimmytApp.Droid.Resource.Attribute.actionBarDivider;
-			global::XLabs.Forms.Resource.Attribute.actionBarItemBackground = global::CimmytApp.Droid.Resource.Attribute.actionBarItemBackground;
-			global::XLabs.Forms.Resource.Attribute.actionBarPopupTheme = global::CimmytApp.Droid.Resource.Attribute.actionBarPopupTheme;
-			global::XLabs.Forms.Resource.Attribute.actionBarSize = global::CimmytApp.Droid.Resource.Attribute.actionBarSize;
-			global::XLabs.Forms.Resource.Attribute.actionBarSplitStyle = global::CimmytApp.Droid.Resource.Attribute.actionBarSplitStyle;
-			global::XLabs.Forms.Resource.Attribute.actionBarStyle = global::CimmytApp.Droid.Resource.Attribute.actionBarStyle;
-			global::XLabs.Forms.Resource.Attribute.actionBarTabBarStyle = global::CimmytApp.Droid.Resource.Attribute.actionBarTabBarStyle;
-			global::XLabs.Forms.Resource.Attribute.actionBarTabStyle = global::CimmytApp.Droid.Resource.Attribute.actionBarTabStyle;
-			global::XLabs.Forms.Resource.Attribute.actionBarTabTextStyle = global::CimmytApp.Droid.Resource.Attribute.actionBarTabTextStyle;
-			global::XLabs.Forms.Resource.Attribute.actionBarTheme = global::CimmytApp.Droid.Resource.Attribute.actionBarTheme;
-			global::XLabs.Forms.Resource.Attribute.actionBarWidgetTheme = global::CimmytApp.Droid.Resource.Attribute.actionBarWidgetTheme;
-			global::XLabs.Forms.Resource.Attribute.actionButtonStyle = global::CimmytApp.Droid.Resource.Attribute.actionButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.actionDropDownStyle = global::CimmytApp.Droid.Resource.Attribute.actionDropDownStyle;
-			global::XLabs.Forms.Resource.Attribute.actionLayout = global::CimmytApp.Droid.Resource.Attribute.actionLayout;
-			global::XLabs.Forms.Resource.Attribute.actionMenuTextAppearance = global::CimmytApp.Droid.Resource.Attribute.actionMenuTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.actionMenuTextColor = global::CimmytApp.Droid.Resource.Attribute.actionMenuTextColor;
-			global::XLabs.Forms.Resource.Attribute.actionModeBackground = global::CimmytApp.Droid.Resource.Attribute.actionModeBackground;
-			global::XLabs.Forms.Resource.Attribute.actionModeCloseButtonStyle = global::CimmytApp.Droid.Resource.Attribute.actionModeCloseButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.actionModeCloseDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeCloseDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModeCopyDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeCopyDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModeCutDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeCutDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModeFindDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeFindDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModePasteDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModePasteDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModePopupWindowStyle = global::CimmytApp.Droid.Resource.Attribute.actionModePopupWindowStyle;
-			global::XLabs.Forms.Resource.Attribute.actionModeSelectAllDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeSelectAllDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModeShareDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeShareDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionModeSplitBackground = global::CimmytApp.Droid.Resource.Attribute.actionModeSplitBackground;
-			global::XLabs.Forms.Resource.Attribute.actionModeStyle = global::CimmytApp.Droid.Resource.Attribute.actionModeStyle;
-			global::XLabs.Forms.Resource.Attribute.actionModeWebSearchDrawable = global::CimmytApp.Droid.Resource.Attribute.actionModeWebSearchDrawable;
-			global::XLabs.Forms.Resource.Attribute.actionOverflowButtonStyle = global::CimmytApp.Droid.Resource.Attribute.actionOverflowButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.actionOverflowMenuStyle = global::CimmytApp.Droid.Resource.Attribute.actionOverflowMenuStyle;
-			global::XLabs.Forms.Resource.Attribute.actionProviderClass = global::CimmytApp.Droid.Resource.Attribute.actionProviderClass;
-			global::XLabs.Forms.Resource.Attribute.actionViewClass = global::CimmytApp.Droid.Resource.Attribute.actionViewClass;
-			global::XLabs.Forms.Resource.Attribute.activityChooserViewStyle = global::CimmytApp.Droid.Resource.Attribute.activityChooserViewStyle;
-			global::XLabs.Forms.Resource.Attribute.alertDialogButtonGroupStyle = global::CimmytApp.Droid.Resource.Attribute.alertDialogButtonGroupStyle;
-			global::XLabs.Forms.Resource.Attribute.alertDialogCenterButtons = global::CimmytApp.Droid.Resource.Attribute.alertDialogCenterButtons;
-			global::XLabs.Forms.Resource.Attribute.alertDialogStyle = global::CimmytApp.Droid.Resource.Attribute.alertDialogStyle;
-			global::XLabs.Forms.Resource.Attribute.alertDialogTheme = global::CimmytApp.Droid.Resource.Attribute.alertDialogTheme;
-			global::XLabs.Forms.Resource.Attribute.arrowHeadLength = global::CimmytApp.Droid.Resource.Attribute.arrowHeadLength;
-			global::XLabs.Forms.Resource.Attribute.arrowShaftLength = global::CimmytApp.Droid.Resource.Attribute.arrowShaftLength;
-			global::XLabs.Forms.Resource.Attribute.autoCompleteTextViewStyle = global::CimmytApp.Droid.Resource.Attribute.autoCompleteTextViewStyle;
-			global::XLabs.Forms.Resource.Attribute.background = global::CimmytApp.Droid.Resource.Attribute.background;
-			global::XLabs.Forms.Resource.Attribute.backgroundSplit = global::CimmytApp.Droid.Resource.Attribute.backgroundSplit;
-			global::XLabs.Forms.Resource.Attribute.backgroundStacked = global::CimmytApp.Droid.Resource.Attribute.backgroundStacked;
-			global::XLabs.Forms.Resource.Attribute.backgroundTint = global::CimmytApp.Droid.Resource.Attribute.backgroundTint;
-			global::XLabs.Forms.Resource.Attribute.backgroundTintMode = global::CimmytApp.Droid.Resource.Attribute.backgroundTintMode;
-			global::XLabs.Forms.Resource.Attribute.barLength = global::CimmytApp.Droid.Resource.Attribute.barLength;
-			global::XLabs.Forms.Resource.Attribute.behavior_overlapTop = global::CimmytApp.Droid.Resource.Attribute.behavior_overlapTop;
-			global::XLabs.Forms.Resource.Attribute.borderWidth = global::CimmytApp.Droid.Resource.Attribute.borderWidth;
-			global::XLabs.Forms.Resource.Attribute.borderlessButtonStyle = global::CimmytApp.Droid.Resource.Attribute.borderlessButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonBarButtonStyle = global::CimmytApp.Droid.Resource.Attribute.buttonBarButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonBarNegativeButtonStyle = global::CimmytApp.Droid.Resource.Attribute.buttonBarNegativeButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonBarNeutralButtonStyle = global::CimmytApp.Droid.Resource.Attribute.buttonBarNeutralButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonBarPositiveButtonStyle = global::CimmytApp.Droid.Resource.Attribute.buttonBarPositiveButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonBarStyle = global::CimmytApp.Droid.Resource.Attribute.buttonBarStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonPanelSideLayout = global::CimmytApp.Droid.Resource.Attribute.buttonPanelSideLayout;
-			global::XLabs.Forms.Resource.Attribute.buttonStyle = global::CimmytApp.Droid.Resource.Attribute.buttonStyle;
-			global::XLabs.Forms.Resource.Attribute.buttonStyleSmall = global::CimmytApp.Droid.Resource.Attribute.buttonStyleSmall;
-			global::XLabs.Forms.Resource.Attribute.buttonTint = global::CimmytApp.Droid.Resource.Attribute.buttonTint;
-			global::XLabs.Forms.Resource.Attribute.buttonTintMode = global::CimmytApp.Droid.Resource.Attribute.buttonTintMode;
-			global::XLabs.Forms.Resource.Attribute.cardBackgroundColor = global::CimmytApp.Droid.Resource.Attribute.cardBackgroundColor;
-			global::XLabs.Forms.Resource.Attribute.cardCornerRadius = global::CimmytApp.Droid.Resource.Attribute.cardCornerRadius;
-			global::XLabs.Forms.Resource.Attribute.cardElevation = global::CimmytApp.Droid.Resource.Attribute.cardElevation;
-			global::XLabs.Forms.Resource.Attribute.cardMaxElevation = global::CimmytApp.Droid.Resource.Attribute.cardMaxElevation;
-			global::XLabs.Forms.Resource.Attribute.cardPreventCornerOverlap = global::CimmytApp.Droid.Resource.Attribute.cardPreventCornerOverlap;
-			global::XLabs.Forms.Resource.Attribute.cardUseCompatPadding = global::CimmytApp.Droid.Resource.Attribute.cardUseCompatPadding;
-			global::XLabs.Forms.Resource.Attribute.checkboxStyle = global::CimmytApp.Droid.Resource.Attribute.checkboxStyle;
-			global::XLabs.Forms.Resource.Attribute.checkedTextViewStyle = global::CimmytApp.Droid.Resource.Attribute.checkedTextViewStyle;
-			global::XLabs.Forms.Resource.Attribute.closeIcon = global::CimmytApp.Droid.Resource.Attribute.closeIcon;
-			global::XLabs.Forms.Resource.Attribute.closeItemLayout = global::CimmytApp.Droid.Resource.Attribute.closeItemLayout;
-			global::XLabs.Forms.Resource.Attribute.collapseContentDescription = global::CimmytApp.Droid.Resource.Attribute.collapseContentDescription;
-			global::XLabs.Forms.Resource.Attribute.collapseIcon = global::CimmytApp.Droid.Resource.Attribute.collapseIcon;
-			global::XLabs.Forms.Resource.Attribute.collapsedTitleGravity = global::CimmytApp.Droid.Resource.Attribute.collapsedTitleGravity;
-			global::XLabs.Forms.Resource.Attribute.collapsedTitleTextAppearance = global::CimmytApp.Droid.Resource.Attribute.collapsedTitleTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.color = global::CimmytApp.Droid.Resource.Attribute.color;
-			global::XLabs.Forms.Resource.Attribute.colorAccent = global::CimmytApp.Droid.Resource.Attribute.colorAccent;
-			global::XLabs.Forms.Resource.Attribute.colorButtonNormal = global::CimmytApp.Droid.Resource.Attribute.colorButtonNormal;
-			global::XLabs.Forms.Resource.Attribute.colorControlActivated = global::CimmytApp.Droid.Resource.Attribute.colorControlActivated;
-			global::XLabs.Forms.Resource.Attribute.colorControlHighlight = global::CimmytApp.Droid.Resource.Attribute.colorControlHighlight;
-			global::XLabs.Forms.Resource.Attribute.colorControlNormal = global::CimmytApp.Droid.Resource.Attribute.colorControlNormal;
-			global::XLabs.Forms.Resource.Attribute.colorPrimary = global::CimmytApp.Droid.Resource.Attribute.colorPrimary;
-			global::XLabs.Forms.Resource.Attribute.colorPrimaryDark = global::CimmytApp.Droid.Resource.Attribute.colorPrimaryDark;
-			global::XLabs.Forms.Resource.Attribute.colorSwitchThumbNormal = global::CimmytApp.Droid.Resource.Attribute.colorSwitchThumbNormal;
-			global::XLabs.Forms.Resource.Attribute.commitIcon = global::CimmytApp.Droid.Resource.Attribute.commitIcon;
-			global::XLabs.Forms.Resource.Attribute.contentInsetEnd = global::CimmytApp.Droid.Resource.Attribute.contentInsetEnd;
-			global::XLabs.Forms.Resource.Attribute.contentInsetLeft = global::CimmytApp.Droid.Resource.Attribute.contentInsetLeft;
-			global::XLabs.Forms.Resource.Attribute.contentInsetRight = global::CimmytApp.Droid.Resource.Attribute.contentInsetRight;
-			global::XLabs.Forms.Resource.Attribute.contentInsetStart = global::CimmytApp.Droid.Resource.Attribute.contentInsetStart;
-			global::XLabs.Forms.Resource.Attribute.contentPadding = global::CimmytApp.Droid.Resource.Attribute.contentPadding;
-			global::XLabs.Forms.Resource.Attribute.contentPaddingBottom = global::CimmytApp.Droid.Resource.Attribute.contentPaddingBottom;
-			global::XLabs.Forms.Resource.Attribute.contentPaddingLeft = global::CimmytApp.Droid.Resource.Attribute.contentPaddingLeft;
-			global::XLabs.Forms.Resource.Attribute.contentPaddingRight = global::CimmytApp.Droid.Resource.Attribute.contentPaddingRight;
-			global::XLabs.Forms.Resource.Attribute.contentPaddingTop = global::CimmytApp.Droid.Resource.Attribute.contentPaddingTop;
-			global::XLabs.Forms.Resource.Attribute.contentScrim = global::CimmytApp.Droid.Resource.Attribute.contentScrim;
-			global::XLabs.Forms.Resource.Attribute.controlBackground = global::CimmytApp.Droid.Resource.Attribute.controlBackground;
-			global::XLabs.Forms.Resource.Attribute.customNavigationLayout = global::CimmytApp.Droid.Resource.Attribute.customNavigationLayout;
-			global::XLabs.Forms.Resource.Attribute.defaultQueryHint = global::CimmytApp.Droid.Resource.Attribute.defaultQueryHint;
-			global::XLabs.Forms.Resource.Attribute.dialogPreferredPadding = global::CimmytApp.Droid.Resource.Attribute.dialogPreferredPadding;
-			global::XLabs.Forms.Resource.Attribute.dialogTheme = global::CimmytApp.Droid.Resource.Attribute.dialogTheme;
-			global::XLabs.Forms.Resource.Attribute.displayOptions = global::CimmytApp.Droid.Resource.Attribute.displayOptions;
-			global::XLabs.Forms.Resource.Attribute.divider = global::CimmytApp.Droid.Resource.Attribute.divider;
-			global::XLabs.Forms.Resource.Attribute.dividerHorizontal = global::CimmytApp.Droid.Resource.Attribute.dividerHorizontal;
-			global::XLabs.Forms.Resource.Attribute.dividerPadding = global::CimmytApp.Droid.Resource.Attribute.dividerPadding;
-			global::XLabs.Forms.Resource.Attribute.dividerVertical = global::CimmytApp.Droid.Resource.Attribute.dividerVertical;
-			global::XLabs.Forms.Resource.Attribute.drawableSize = global::CimmytApp.Droid.Resource.Attribute.drawableSize;
-			global::XLabs.Forms.Resource.Attribute.drawerArrowStyle = global::CimmytApp.Droid.Resource.Attribute.drawerArrowStyle;
-			global::XLabs.Forms.Resource.Attribute.dropDownListViewStyle = global::CimmytApp.Droid.Resource.Attribute.dropDownListViewStyle;
-			global::XLabs.Forms.Resource.Attribute.dropdownListPreferredItemHeight = global::CimmytApp.Droid.Resource.Attribute.dropdownListPreferredItemHeight;
-			global::XLabs.Forms.Resource.Attribute.editTextBackground = global::CimmytApp.Droid.Resource.Attribute.editTextBackground;
-			global::XLabs.Forms.Resource.Attribute.editTextColor = global::CimmytApp.Droid.Resource.Attribute.editTextColor;
-			global::XLabs.Forms.Resource.Attribute.editTextStyle = global::CimmytApp.Droid.Resource.Attribute.editTextStyle;
-			global::XLabs.Forms.Resource.Attribute.elevation = global::CimmytApp.Droid.Resource.Attribute.elevation;
-			global::XLabs.Forms.Resource.Attribute.errorEnabled = global::CimmytApp.Droid.Resource.Attribute.errorEnabled;
-			global::XLabs.Forms.Resource.Attribute.errorTextAppearance = global::CimmytApp.Droid.Resource.Attribute.errorTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.expandActivityOverflowButtonDrawable = global::CimmytApp.Droid.Resource.Attribute.expandActivityOverflowButtonDrawable;
-			global::XLabs.Forms.Resource.Attribute.expanded = global::CimmytApp.Droid.Resource.Attribute.expanded;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleGravity = global::CimmytApp.Droid.Resource.Attribute.expandedTitleGravity;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleMargin = global::CimmytApp.Droid.Resource.Attribute.expandedTitleMargin;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleMarginBottom = global::CimmytApp.Droid.Resource.Attribute.expandedTitleMarginBottom;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleMarginEnd = global::CimmytApp.Droid.Resource.Attribute.expandedTitleMarginEnd;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleMarginStart = global::CimmytApp.Droid.Resource.Attribute.expandedTitleMarginStart;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleMarginTop = global::CimmytApp.Droid.Resource.Attribute.expandedTitleMarginTop;
-			global::XLabs.Forms.Resource.Attribute.expandedTitleTextAppearance = global::CimmytApp.Droid.Resource.Attribute.expandedTitleTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.externalRouteEnabledDrawable = global::CimmytApp.Droid.Resource.Attribute.externalRouteEnabledDrawable;
-			global::XLabs.Forms.Resource.Attribute.fabSize = global::CimmytApp.Droid.Resource.Attribute.fabSize;
-			global::XLabs.Forms.Resource.Attribute.gapBetweenBars = global::CimmytApp.Droid.Resource.Attribute.gapBetweenBars;
-			global::XLabs.Forms.Resource.Attribute.goIcon = global::CimmytApp.Droid.Resource.Attribute.goIcon;
-			global::XLabs.Forms.Resource.Attribute.headerLayout = global::CimmytApp.Droid.Resource.Attribute.headerLayout;
-			global::XLabs.Forms.Resource.Attribute.height = global::CimmytApp.Droid.Resource.Attribute.height;
-			global::XLabs.Forms.Resource.Attribute.hideOnContentScroll = global::CimmytApp.Droid.Resource.Attribute.hideOnContentScroll;
-			global::XLabs.Forms.Resource.Attribute.hintAnimationEnabled = global::CimmytApp.Droid.Resource.Attribute.hintAnimationEnabled;
-			global::XLabs.Forms.Resource.Attribute.hintTextAppearance = global::CimmytApp.Droid.Resource.Attribute.hintTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.homeAsUpIndicator = global::CimmytApp.Droid.Resource.Attribute.homeAsUpIndicator;
-			global::XLabs.Forms.Resource.Attribute.homeLayout = global::CimmytApp.Droid.Resource.Attribute.homeLayout;
-			global::XLabs.Forms.Resource.Attribute.icon = global::CimmytApp.Droid.Resource.Attribute.icon;
-			global::XLabs.Forms.Resource.Attribute.iconifiedByDefault = global::CimmytApp.Droid.Resource.Attribute.iconifiedByDefault;
-			global::XLabs.Forms.Resource.Attribute.indeterminateProgressStyle = global::CimmytApp.Droid.Resource.Attribute.indeterminateProgressStyle;
-			global::XLabs.Forms.Resource.Attribute.initialActivityCount = global::CimmytApp.Droid.Resource.Attribute.initialActivityCount;
-			global::XLabs.Forms.Resource.Attribute.insetForeground = global::CimmytApp.Droid.Resource.Attribute.insetForeground;
-			global::XLabs.Forms.Resource.Attribute.isLightTheme = global::CimmytApp.Droid.Resource.Attribute.isLightTheme;
-			global::XLabs.Forms.Resource.Attribute.itemBackground = global::CimmytApp.Droid.Resource.Attribute.itemBackground;
-			global::XLabs.Forms.Resource.Attribute.itemIconTint = global::CimmytApp.Droid.Resource.Attribute.itemIconTint;
-			global::XLabs.Forms.Resource.Attribute.itemPadding = global::CimmytApp.Droid.Resource.Attribute.itemPadding;
-			global::XLabs.Forms.Resource.Attribute.itemTextAppearance = global::CimmytApp.Droid.Resource.Attribute.itemTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.itemTextColor = global::CimmytApp.Droid.Resource.Attribute.itemTextColor;
-			global::XLabs.Forms.Resource.Attribute.keylines = global::CimmytApp.Droid.Resource.Attribute.keylines;
-			global::XLabs.Forms.Resource.Attribute.layout = global::CimmytApp.Droid.Resource.Attribute.layout;
-			global::XLabs.Forms.Resource.Attribute.layout_anchor = global::CimmytApp.Droid.Resource.Attribute.layout_anchor;
-			global::XLabs.Forms.Resource.Attribute.layout_anchorGravity = global::CimmytApp.Droid.Resource.Attribute.layout_anchorGravity;
-			global::XLabs.Forms.Resource.Attribute.layout_behavior = global::CimmytApp.Droid.Resource.Attribute.layout_behavior;
-			global::XLabs.Forms.Resource.Attribute.layout_collapseMode = global::CimmytApp.Droid.Resource.Attribute.layout_collapseMode;
-			global::XLabs.Forms.Resource.Attribute.layout_collapseParallaxMultiplier = global::CimmytApp.Droid.Resource.Attribute.layout_collapseParallaxMultiplier;
-			global::XLabs.Forms.Resource.Attribute.layout_keyline = global::CimmytApp.Droid.Resource.Attribute.layout_keyline;
-			global::XLabs.Forms.Resource.Attribute.layout_scrollFlags = global::CimmytApp.Droid.Resource.Attribute.layout_scrollFlags;
-			global::XLabs.Forms.Resource.Attribute.layout_scrollInterpolator = global::CimmytApp.Droid.Resource.Attribute.layout_scrollInterpolator;
-			global::XLabs.Forms.Resource.Attribute.listChoiceBackgroundIndicator = global::CimmytApp.Droid.Resource.Attribute.listChoiceBackgroundIndicator;
-			global::XLabs.Forms.Resource.Attribute.listDividerAlertDialog = global::CimmytApp.Droid.Resource.Attribute.listDividerAlertDialog;
-			global::XLabs.Forms.Resource.Attribute.listItemLayout = global::CimmytApp.Droid.Resource.Attribute.listItemLayout;
-			global::XLabs.Forms.Resource.Attribute.listLayout = global::CimmytApp.Droid.Resource.Attribute.listLayout;
-			global::XLabs.Forms.Resource.Attribute.listPopupWindowStyle = global::CimmytApp.Droid.Resource.Attribute.listPopupWindowStyle;
-			global::XLabs.Forms.Resource.Attribute.listPreferredItemHeight = global::CimmytApp.Droid.Resource.Attribute.listPreferredItemHeight;
-			global::XLabs.Forms.Resource.Attribute.listPreferredItemHeightLarge = global::CimmytApp.Droid.Resource.Attribute.listPreferredItemHeightLarge;
-			global::XLabs.Forms.Resource.Attribute.listPreferredItemHeightSmall = global::CimmytApp.Droid.Resource.Attribute.listPreferredItemHeightSmall;
-			global::XLabs.Forms.Resource.Attribute.listPreferredItemPaddingLeft = global::CimmytApp.Droid.Resource.Attribute.listPreferredItemPaddingLeft;
-			global::XLabs.Forms.Resource.Attribute.listPreferredItemPaddingRight = global::CimmytApp.Droid.Resource.Attribute.listPreferredItemPaddingRight;
-			global::XLabs.Forms.Resource.Attribute.logo = global::CimmytApp.Droid.Resource.Attribute.logo;
-			global::XLabs.Forms.Resource.Attribute.logoDescription = global::CimmytApp.Droid.Resource.Attribute.logoDescription;
-			global::XLabs.Forms.Resource.Attribute.maxActionInlineWidth = global::CimmytApp.Droid.Resource.Attribute.maxActionInlineWidth;
-			global::XLabs.Forms.Resource.Attribute.maxButtonHeight = global::CimmytApp.Droid.Resource.Attribute.maxButtonHeight;
-			global::XLabs.Forms.Resource.Attribute.measureWithLargestChild = global::CimmytApp.Droid.Resource.Attribute.measureWithLargestChild;
-			global::XLabs.Forms.Resource.Attribute.mediaRouteButtonStyle = global::CimmytApp.Droid.Resource.Attribute.mediaRouteButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.mediaRoutePauseDrawable = global::CimmytApp.Droid.Resource.Attribute.mediaRoutePauseDrawable;
-			global::XLabs.Forms.Resource.Attribute.mediaRoutePlayDrawable = global::CimmytApp.Droid.Resource.Attribute.mediaRoutePlayDrawable;
-			global::XLabs.Forms.Resource.Attribute.menu = global::CimmytApp.Droid.Resource.Attribute.menu;
-			global::XLabs.Forms.Resource.Attribute.multiChoiceItemLayout = global::CimmytApp.Droid.Resource.Attribute.multiChoiceItemLayout;
-			global::XLabs.Forms.Resource.Attribute.navigationContentDescription = global::CimmytApp.Droid.Resource.Attribute.navigationContentDescription;
-			global::XLabs.Forms.Resource.Attribute.navigationIcon = global::CimmytApp.Droid.Resource.Attribute.navigationIcon;
-			global::XLabs.Forms.Resource.Attribute.navigationMode = global::CimmytApp.Droid.Resource.Attribute.navigationMode;
-			global::XLabs.Forms.Resource.Attribute.overlapAnchor = global::CimmytApp.Droid.Resource.Attribute.overlapAnchor;
-			global::XLabs.Forms.Resource.Attribute.paddingEnd = global::CimmytApp.Droid.Resource.Attribute.paddingEnd;
-			global::XLabs.Forms.Resource.Attribute.paddingStart = global::CimmytApp.Droid.Resource.Attribute.paddingStart;
-			global::XLabs.Forms.Resource.Attribute.panelBackground = global::CimmytApp.Droid.Resource.Attribute.panelBackground;
-			global::XLabs.Forms.Resource.Attribute.panelMenuListTheme = global::CimmytApp.Droid.Resource.Attribute.panelMenuListTheme;
-			global::XLabs.Forms.Resource.Attribute.panelMenuListWidth = global::CimmytApp.Droid.Resource.Attribute.panelMenuListWidth;
-			global::XLabs.Forms.Resource.Attribute.popupMenuStyle = global::CimmytApp.Droid.Resource.Attribute.popupMenuStyle;
-			global::XLabs.Forms.Resource.Attribute.popupTheme = global::CimmytApp.Droid.Resource.Attribute.popupTheme;
-			global::XLabs.Forms.Resource.Attribute.popupWindowStyle = global::CimmytApp.Droid.Resource.Attribute.popupWindowStyle;
-			global::XLabs.Forms.Resource.Attribute.preserveIconSpacing = global::CimmytApp.Droid.Resource.Attribute.preserveIconSpacing;
-			global::XLabs.Forms.Resource.Attribute.pressedTranslationZ = global::CimmytApp.Droid.Resource.Attribute.pressedTranslationZ;
-			global::XLabs.Forms.Resource.Attribute.progressBarPadding = global::CimmytApp.Droid.Resource.Attribute.progressBarPadding;
-			global::XLabs.Forms.Resource.Attribute.progressBarStyle = global::CimmytApp.Droid.Resource.Attribute.progressBarStyle;
-			global::XLabs.Forms.Resource.Attribute.queryBackground = global::CimmytApp.Droid.Resource.Attribute.queryBackground;
-			global::XLabs.Forms.Resource.Attribute.queryHint = global::CimmytApp.Droid.Resource.Attribute.queryHint;
-			global::XLabs.Forms.Resource.Attribute.radioButtonStyle = global::CimmytApp.Droid.Resource.Attribute.radioButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.ratingBarStyle = global::CimmytApp.Droid.Resource.Attribute.ratingBarStyle;
-			global::XLabs.Forms.Resource.Attribute.rippleColor = global::CimmytApp.Droid.Resource.Attribute.rippleColor;
-			global::XLabs.Forms.Resource.Attribute.searchHintIcon = global::CimmytApp.Droid.Resource.Attribute.searchHintIcon;
-			global::XLabs.Forms.Resource.Attribute.searchIcon = global::CimmytApp.Droid.Resource.Attribute.searchIcon;
-			global::XLabs.Forms.Resource.Attribute.searchViewStyle = global::CimmytApp.Droid.Resource.Attribute.searchViewStyle;
-			global::XLabs.Forms.Resource.Attribute.selectableItemBackground = global::CimmytApp.Droid.Resource.Attribute.selectableItemBackground;
-			global::XLabs.Forms.Resource.Attribute.selectableItemBackgroundBorderless = global::CimmytApp.Droid.Resource.Attribute.selectableItemBackgroundBorderless;
-			global::XLabs.Forms.Resource.Attribute.showAsAction = global::CimmytApp.Droid.Resource.Attribute.showAsAction;
-			global::XLabs.Forms.Resource.Attribute.showDividers = global::CimmytApp.Droid.Resource.Attribute.showDividers;
-			global::XLabs.Forms.Resource.Attribute.showText = global::CimmytApp.Droid.Resource.Attribute.showText;
-			global::XLabs.Forms.Resource.Attribute.singleChoiceItemLayout = global::CimmytApp.Droid.Resource.Attribute.singleChoiceItemLayout;
-			global::XLabs.Forms.Resource.Attribute.spinBars = global::CimmytApp.Droid.Resource.Attribute.spinBars;
-			global::XLabs.Forms.Resource.Attribute.spinnerDropDownItemStyle = global::CimmytApp.Droid.Resource.Attribute.spinnerDropDownItemStyle;
-			global::XLabs.Forms.Resource.Attribute.spinnerStyle = global::CimmytApp.Droid.Resource.Attribute.spinnerStyle;
-			global::XLabs.Forms.Resource.Attribute.splitTrack = global::CimmytApp.Droid.Resource.Attribute.splitTrack;
-			global::XLabs.Forms.Resource.Attribute.state_above_anchor = global::CimmytApp.Droid.Resource.Attribute.state_above_anchor;
-			global::XLabs.Forms.Resource.Attribute.statusBarBackground = global::CimmytApp.Droid.Resource.Attribute.statusBarBackground;
-			global::XLabs.Forms.Resource.Attribute.statusBarScrim = global::CimmytApp.Droid.Resource.Attribute.statusBarScrim;
-			global::XLabs.Forms.Resource.Attribute.submitBackground = global::CimmytApp.Droid.Resource.Attribute.submitBackground;
-			global::XLabs.Forms.Resource.Attribute.subtitle = global::CimmytApp.Droid.Resource.Attribute.subtitle;
-			global::XLabs.Forms.Resource.Attribute.subtitleTextAppearance = global::CimmytApp.Droid.Resource.Attribute.subtitleTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.subtitleTextColor = global::CimmytApp.Droid.Resource.Attribute.subtitleTextColor;
-			global::XLabs.Forms.Resource.Attribute.subtitleTextStyle = global::CimmytApp.Droid.Resource.Attribute.subtitleTextStyle;
-			global::XLabs.Forms.Resource.Attribute.suggestionRowLayout = global::CimmytApp.Droid.Resource.Attribute.suggestionRowLayout;
-			global::XLabs.Forms.Resource.Attribute.switchMinWidth = global::CimmytApp.Droid.Resource.Attribute.switchMinWidth;
-			global::XLabs.Forms.Resource.Attribute.switchPadding = global::CimmytApp.Droid.Resource.Attribute.switchPadding;
-			global::XLabs.Forms.Resource.Attribute.switchStyle = global::CimmytApp.Droid.Resource.Attribute.switchStyle;
-			global::XLabs.Forms.Resource.Attribute.switchTextAppearance = global::CimmytApp.Droid.Resource.Attribute.switchTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.tabBackground = global::CimmytApp.Droid.Resource.Attribute.tabBackground;
-			global::XLabs.Forms.Resource.Attribute.tabContentStart = global::CimmytApp.Droid.Resource.Attribute.tabContentStart;
-			global::XLabs.Forms.Resource.Attribute.tabGravity = global::CimmytApp.Droid.Resource.Attribute.tabGravity;
-			global::XLabs.Forms.Resource.Attribute.tabIndicatorColor = global::CimmytApp.Droid.Resource.Attribute.tabIndicatorColor;
-			global::XLabs.Forms.Resource.Attribute.tabIndicatorHeight = global::CimmytApp.Droid.Resource.Attribute.tabIndicatorHeight;
-			global::XLabs.Forms.Resource.Attribute.tabMaxWidth = global::CimmytApp.Droid.Resource.Attribute.tabMaxWidth;
-			global::XLabs.Forms.Resource.Attribute.tabMinWidth = global::CimmytApp.Droid.Resource.Attribute.tabMinWidth;
-			global::XLabs.Forms.Resource.Attribute.tabMode = global::CimmytApp.Droid.Resource.Attribute.tabMode;
-			global::XLabs.Forms.Resource.Attribute.tabPadding = global::CimmytApp.Droid.Resource.Attribute.tabPadding;
-			global::XLabs.Forms.Resource.Attribute.tabPaddingBottom = global::CimmytApp.Droid.Resource.Attribute.tabPaddingBottom;
-			global::XLabs.Forms.Resource.Attribute.tabPaddingEnd = global::CimmytApp.Droid.Resource.Attribute.tabPaddingEnd;
-			global::XLabs.Forms.Resource.Attribute.tabPaddingStart = global::CimmytApp.Droid.Resource.Attribute.tabPaddingStart;
-			global::XLabs.Forms.Resource.Attribute.tabPaddingTop = global::CimmytApp.Droid.Resource.Attribute.tabPaddingTop;
-			global::XLabs.Forms.Resource.Attribute.tabSelectedTextColor = global::CimmytApp.Droid.Resource.Attribute.tabSelectedTextColor;
-			global::XLabs.Forms.Resource.Attribute.tabTextAppearance = global::CimmytApp.Droid.Resource.Attribute.tabTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.tabTextColor = global::CimmytApp.Droid.Resource.Attribute.tabTextColor;
-			global::XLabs.Forms.Resource.Attribute.textAllCaps = global::CimmytApp.Droid.Resource.Attribute.textAllCaps;
-			global::XLabs.Forms.Resource.Attribute.textAppearanceLargePopupMenu = global::CimmytApp.Droid.Resource.Attribute.textAppearanceLargePopupMenu;
-			global::XLabs.Forms.Resource.Attribute.textAppearanceListItem = global::CimmytApp.Droid.Resource.Attribute.textAppearanceListItem;
-			global::XLabs.Forms.Resource.Attribute.textAppearanceListItemSmall = global::CimmytApp.Droid.Resource.Attribute.textAppearanceListItemSmall;
-			global::XLabs.Forms.Resource.Attribute.textAppearanceSearchResultSubtitle = global::CimmytApp.Droid.Resource.Attribute.textAppearanceSearchResultSubtitle;
-			global::XLabs.Forms.Resource.Attribute.textAppearanceSearchResultTitle = global::CimmytApp.Droid.Resource.Attribute.textAppearanceSearchResultTitle;
-			global::XLabs.Forms.Resource.Attribute.textAppearanceSmallPopupMenu = global::CimmytApp.Droid.Resource.Attribute.textAppearanceSmallPopupMenu;
-			global::XLabs.Forms.Resource.Attribute.textColorAlertDialogListItem = global::CimmytApp.Droid.Resource.Attribute.textColorAlertDialogListItem;
-			global::XLabs.Forms.Resource.Attribute.textColorSearchUrl = global::CimmytApp.Droid.Resource.Attribute.textColorSearchUrl;
-			global::XLabs.Forms.Resource.Attribute.theme = global::CimmytApp.Droid.Resource.Attribute.theme;
-			global::XLabs.Forms.Resource.Attribute.thickness = global::CimmytApp.Droid.Resource.Attribute.thickness;
-			global::XLabs.Forms.Resource.Attribute.thumbTextPadding = global::CimmytApp.Droid.Resource.Attribute.thumbTextPadding;
-			global::XLabs.Forms.Resource.Attribute.title = global::CimmytApp.Droid.Resource.Attribute.title;
-			global::XLabs.Forms.Resource.Attribute.titleEnabled = global::CimmytApp.Droid.Resource.Attribute.titleEnabled;
-			global::XLabs.Forms.Resource.Attribute.titleMarginBottom = global::CimmytApp.Droid.Resource.Attribute.titleMarginBottom;
-			global::XLabs.Forms.Resource.Attribute.titleMarginEnd = global::CimmytApp.Droid.Resource.Attribute.titleMarginEnd;
-			global::XLabs.Forms.Resource.Attribute.titleMarginStart = global::CimmytApp.Droid.Resource.Attribute.titleMarginStart;
-			global::XLabs.Forms.Resource.Attribute.titleMarginTop = global::CimmytApp.Droid.Resource.Attribute.titleMarginTop;
-			global::XLabs.Forms.Resource.Attribute.titleMargins = global::CimmytApp.Droid.Resource.Attribute.titleMargins;
-			global::XLabs.Forms.Resource.Attribute.titleTextAppearance = global::CimmytApp.Droid.Resource.Attribute.titleTextAppearance;
-			global::XLabs.Forms.Resource.Attribute.titleTextColor = global::CimmytApp.Droid.Resource.Attribute.titleTextColor;
-			global::XLabs.Forms.Resource.Attribute.titleTextStyle = global::CimmytApp.Droid.Resource.Attribute.titleTextStyle;
-			global::XLabs.Forms.Resource.Attribute.toolbarId = global::CimmytApp.Droid.Resource.Attribute.toolbarId;
-			global::XLabs.Forms.Resource.Attribute.toolbarNavigationButtonStyle = global::CimmytApp.Droid.Resource.Attribute.toolbarNavigationButtonStyle;
-			global::XLabs.Forms.Resource.Attribute.toolbarStyle = global::CimmytApp.Droid.Resource.Attribute.toolbarStyle;
-			global::XLabs.Forms.Resource.Attribute.track = global::CimmytApp.Droid.Resource.Attribute.track;
-			global::XLabs.Forms.Resource.Attribute.voiceIcon = global::CimmytApp.Droid.Resource.Attribute.voiceIcon;
-			global::XLabs.Forms.Resource.Attribute.windowActionBar = global::CimmytApp.Droid.Resource.Attribute.windowActionBar;
-			global::XLabs.Forms.Resource.Attribute.windowActionBarOverlay = global::CimmytApp.Droid.Resource.Attribute.windowActionBarOverlay;
-			global::XLabs.Forms.Resource.Attribute.windowActionModeOverlay = global::CimmytApp.Droid.Resource.Attribute.windowActionModeOverlay;
-			global::XLabs.Forms.Resource.Attribute.windowFixedHeightMajor = global::CimmytApp.Droid.Resource.Attribute.windowFixedHeightMajor;
-			global::XLabs.Forms.Resource.Attribute.windowFixedHeightMinor = global::CimmytApp.Droid.Resource.Attribute.windowFixedHeightMinor;
-			global::XLabs.Forms.Resource.Attribute.windowFixedWidthMajor = global::CimmytApp.Droid.Resource.Attribute.windowFixedWidthMajor;
-			global::XLabs.Forms.Resource.Attribute.windowFixedWidthMinor = global::CimmytApp.Droid.Resource.Attribute.windowFixedWidthMinor;
-			global::XLabs.Forms.Resource.Attribute.windowMinWidthMajor = global::CimmytApp.Droid.Resource.Attribute.windowMinWidthMajor;
-			global::XLabs.Forms.Resource.Attribute.windowMinWidthMinor = global::CimmytApp.Droid.Resource.Attribute.windowMinWidthMinor;
-			global::XLabs.Forms.Resource.Attribute.windowNoTitle = global::CimmytApp.Droid.Resource.Attribute.windowNoTitle;
-			global::XLabs.Forms.Resource.Boolean.abc_action_bar_embed_tabs = global::CimmytApp.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
-			global::XLabs.Forms.Resource.Boolean.abc_config_actionMenuItemAllCaps = global::CimmytApp.Droid.Resource.Boolean.abc_config_actionMenuItemAllCaps;
-			global::XLabs.Forms.Resource.Boolean.abc_config_closeDialogWhenTouchOutside = global::CimmytApp.Droid.Resource.Boolean.abc_config_closeDialogWhenTouchOutside;
-			global::XLabs.Forms.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent = global::CimmytApp.Droid.Resource.Boolean.abc_config_showMenuShortcutsWhenKeyboardPresent;
-			global::XLabs.Forms.Resource.Color.abc_background_cache_hint_selector_material_dark = global::CimmytApp.Droid.Resource.Color.abc_background_cache_hint_selector_material_dark;
-			global::XLabs.Forms.Resource.Color.abc_background_cache_hint_selector_material_light = global::CimmytApp.Droid.Resource.Color.abc_background_cache_hint_selector_material_light;
-			global::XLabs.Forms.Resource.Color.abc_color_highlight_material = global::CimmytApp.Droid.Resource.Color.abc_color_highlight_material;
-			global::XLabs.Forms.Resource.Color.abc_input_method_navigation_guard = global::CimmytApp.Droid.Resource.Color.abc_input_method_navigation_guard;
-			global::XLabs.Forms.Resource.Color.abc_primary_text_disable_only_material_dark = global::CimmytApp.Droid.Resource.Color.abc_primary_text_disable_only_material_dark;
-			global::XLabs.Forms.Resource.Color.abc_primary_text_disable_only_material_light = global::CimmytApp.Droid.Resource.Color.abc_primary_text_disable_only_material_light;
-			global::XLabs.Forms.Resource.Color.abc_primary_text_material_dark = global::CimmytApp.Droid.Resource.Color.abc_primary_text_material_dark;
-			global::XLabs.Forms.Resource.Color.abc_primary_text_material_light = global::CimmytApp.Droid.Resource.Color.abc_primary_text_material_light;
-			global::XLabs.Forms.Resource.Color.abc_search_url_text = global::CimmytApp.Droid.Resource.Color.abc_search_url_text;
-			global::XLabs.Forms.Resource.Color.abc_search_url_text_normal = global::CimmytApp.Droid.Resource.Color.abc_search_url_text_normal;
-			global::XLabs.Forms.Resource.Color.abc_search_url_text_pressed = global::CimmytApp.Droid.Resource.Color.abc_search_url_text_pressed;
-			global::XLabs.Forms.Resource.Color.abc_search_url_text_selected = global::CimmytApp.Droid.Resource.Color.abc_search_url_text_selected;
-			global::XLabs.Forms.Resource.Color.abc_secondary_text_material_dark = global::CimmytApp.Droid.Resource.Color.abc_secondary_text_material_dark;
-			global::XLabs.Forms.Resource.Color.abc_secondary_text_material_light = global::CimmytApp.Droid.Resource.Color.abc_secondary_text_material_light;
-			global::XLabs.Forms.Resource.Color.accent_material_dark = global::CimmytApp.Droid.Resource.Color.accent_material_dark;
-			global::XLabs.Forms.Resource.Color.accent_material_light = global::CimmytApp.Droid.Resource.Color.accent_material_light;
-			global::XLabs.Forms.Resource.Color.background_floating_material_dark = global::CimmytApp.Droid.Resource.Color.background_floating_material_dark;
-			global::XLabs.Forms.Resource.Color.background_floating_material_light = global::CimmytApp.Droid.Resource.Color.background_floating_material_light;
-			global::XLabs.Forms.Resource.Color.background_material_dark = global::CimmytApp.Droid.Resource.Color.background_material_dark;
-			global::XLabs.Forms.Resource.Color.background_material_light = global::CimmytApp.Droid.Resource.Color.background_material_light;
-			global::XLabs.Forms.Resource.Color.bright_foreground_disabled_material_dark = global::CimmytApp.Droid.Resource.Color.bright_foreground_disabled_material_dark;
-			global::XLabs.Forms.Resource.Color.bright_foreground_disabled_material_light = global::CimmytApp.Droid.Resource.Color.bright_foreground_disabled_material_light;
-			global::XLabs.Forms.Resource.Color.bright_foreground_inverse_material_dark = global::CimmytApp.Droid.Resource.Color.bright_foreground_inverse_material_dark;
-			global::XLabs.Forms.Resource.Color.bright_foreground_inverse_material_light = global::CimmytApp.Droid.Resource.Color.bright_foreground_inverse_material_light;
-			global::XLabs.Forms.Resource.Color.bright_foreground_material_dark = global::CimmytApp.Droid.Resource.Color.bright_foreground_material_dark;
-			global::XLabs.Forms.Resource.Color.bright_foreground_material_light = global::CimmytApp.Droid.Resource.Color.bright_foreground_material_light;
-			global::XLabs.Forms.Resource.Color.button_material_dark = global::CimmytApp.Droid.Resource.Color.button_material_dark;
-			global::XLabs.Forms.Resource.Color.button_material_light = global::CimmytApp.Droid.Resource.Color.button_material_light;
-			global::XLabs.Forms.Resource.Color.calendar_active_month_bg = global::CimmytApp.Droid.Resource.Color.calendar_active_month_bg;
-			global::XLabs.Forms.Resource.Color.calendar_bg = global::CimmytApp.Droid.Resource.Color.calendar_bg;
-			global::XLabs.Forms.Resource.Color.calendar_divider = global::CimmytApp.Droid.Resource.Color.calendar_divider;
-			global::XLabs.Forms.Resource.Color.calendar_highlighted_day_bg = global::CimmytApp.Droid.Resource.Color.calendar_highlighted_day_bg;
-			global::XLabs.Forms.Resource.Color.calendar_inactive_month_bg = global::CimmytApp.Droid.Resource.Color.calendar_inactive_month_bg;
-			global::XLabs.Forms.Resource.Color.calendar_selected_day_bg = global::CimmytApp.Droid.Resource.Color.calendar_selected_day_bg;
-			global::XLabs.Forms.Resource.Color.calendar_selected_range_bg = global::CimmytApp.Droid.Resource.Color.calendar_selected_range_bg;
-			global::XLabs.Forms.Resource.Color.calendar_text_active = global::CimmytApp.Droid.Resource.Color.calendar_text_active;
-			global::XLabs.Forms.Resource.Color.calendar_text_inactive = global::CimmytApp.Droid.Resource.Color.calendar_text_inactive;
-			global::XLabs.Forms.Resource.Color.calendar_text_selected = global::CimmytApp.Droid.Resource.Color.calendar_text_selected;
-			global::XLabs.Forms.Resource.Color.calendar_text_selector = global::CimmytApp.Droid.Resource.Color.calendar_text_selector;
-			global::XLabs.Forms.Resource.Color.calendar_text_unselectable = global::CimmytApp.Droid.Resource.Color.calendar_text_unselectable;
-			global::XLabs.Forms.Resource.Color.cardview_dark_background = global::CimmytApp.Droid.Resource.Color.cardview_dark_background;
-			global::XLabs.Forms.Resource.Color.cardview_light_background = global::CimmytApp.Droid.Resource.Color.cardview_light_background;
-			global::XLabs.Forms.Resource.Color.cardview_shadow_end_color = global::CimmytApp.Droid.Resource.Color.cardview_shadow_end_color;
-			global::XLabs.Forms.Resource.Color.cardview_shadow_start_color = global::CimmytApp.Droid.Resource.Color.cardview_shadow_start_color;
-			global::XLabs.Forms.Resource.Color.design_fab_shadow_end_color = global::CimmytApp.Droid.Resource.Color.design_fab_shadow_end_color;
-			global::XLabs.Forms.Resource.Color.design_fab_shadow_mid_color = global::CimmytApp.Droid.Resource.Color.design_fab_shadow_mid_color;
-			global::XLabs.Forms.Resource.Color.design_fab_shadow_start_color = global::CimmytApp.Droid.Resource.Color.design_fab_shadow_start_color;
-			global::XLabs.Forms.Resource.Color.design_fab_stroke_end_inner_color = global::CimmytApp.Droid.Resource.Color.design_fab_stroke_end_inner_color;
-			global::XLabs.Forms.Resource.Color.design_fab_stroke_end_outer_color = global::CimmytApp.Droid.Resource.Color.design_fab_stroke_end_outer_color;
-			global::XLabs.Forms.Resource.Color.design_fab_stroke_top_inner_color = global::CimmytApp.Droid.Resource.Color.design_fab_stroke_top_inner_color;
-			global::XLabs.Forms.Resource.Color.design_fab_stroke_top_outer_color = global::CimmytApp.Droid.Resource.Color.design_fab_stroke_top_outer_color;
-			global::XLabs.Forms.Resource.Color.design_snackbar_background_color = global::CimmytApp.Droid.Resource.Color.design_snackbar_background_color;
-			global::XLabs.Forms.Resource.Color.dim_foreground_disabled_material_dark = global::CimmytApp.Droid.Resource.Color.dim_foreground_disabled_material_dark;
-			global::XLabs.Forms.Resource.Color.dim_foreground_disabled_material_light = global::CimmytApp.Droid.Resource.Color.dim_foreground_disabled_material_light;
-			global::XLabs.Forms.Resource.Color.dim_foreground_material_dark = global::CimmytApp.Droid.Resource.Color.dim_foreground_material_dark;
-			global::XLabs.Forms.Resource.Color.dim_foreground_material_light = global::CimmytApp.Droid.Resource.Color.dim_foreground_material_light;
-			global::XLabs.Forms.Resource.Color.foreground_material_dark = global::CimmytApp.Droid.Resource.Color.foreground_material_dark;
-			global::XLabs.Forms.Resource.Color.foreground_material_light = global::CimmytApp.Droid.Resource.Color.foreground_material_light;
-			global::XLabs.Forms.Resource.Color.highlighted_text_material_dark = global::CimmytApp.Droid.Resource.Color.highlighted_text_material_dark;
-			global::XLabs.Forms.Resource.Color.highlighted_text_material_light = global::CimmytApp.Droid.Resource.Color.highlighted_text_material_light;
-			global::XLabs.Forms.Resource.Color.material_blue_grey_800 = global::CimmytApp.Droid.Resource.Color.material_blue_grey_800;
-			global::XLabs.Forms.Resource.Color.material_blue_grey_900 = global::CimmytApp.Droid.Resource.Color.material_blue_grey_900;
-			global::XLabs.Forms.Resource.Color.material_blue_grey_950 = global::CimmytApp.Droid.Resource.Color.material_blue_grey_950;
-			global::XLabs.Forms.Resource.Color.material_deep_teal_200 = global::CimmytApp.Droid.Resource.Color.material_deep_teal_200;
-			global::XLabs.Forms.Resource.Color.material_deep_teal_500 = global::CimmytApp.Droid.Resource.Color.material_deep_teal_500;
-			global::XLabs.Forms.Resource.Color.material_grey_100 = global::CimmytApp.Droid.Resource.Color.material_grey_100;
-			global::XLabs.Forms.Resource.Color.material_grey_300 = global::CimmytApp.Droid.Resource.Color.material_grey_300;
-			global::XLabs.Forms.Resource.Color.material_grey_50 = global::CimmytApp.Droid.Resource.Color.material_grey_50;
-			global::XLabs.Forms.Resource.Color.material_grey_600 = global::CimmytApp.Droid.Resource.Color.material_grey_600;
-			global::XLabs.Forms.Resource.Color.material_grey_800 = global::CimmytApp.Droid.Resource.Color.material_grey_800;
-			global::XLabs.Forms.Resource.Color.material_grey_850 = global::CimmytApp.Droid.Resource.Color.material_grey_850;
-			global::XLabs.Forms.Resource.Color.material_grey_900 = global::CimmytApp.Droid.Resource.Color.material_grey_900;
-			global::XLabs.Forms.Resource.Color.primary_dark_material_dark = global::CimmytApp.Droid.Resource.Color.primary_dark_material_dark;
-			global::XLabs.Forms.Resource.Color.primary_dark_material_light = global::CimmytApp.Droid.Resource.Color.primary_dark_material_light;
-			global::XLabs.Forms.Resource.Color.primary_material_dark = global::CimmytApp.Droid.Resource.Color.primary_material_dark;
-			global::XLabs.Forms.Resource.Color.primary_material_light = global::CimmytApp.Droid.Resource.Color.primary_material_light;
-			global::XLabs.Forms.Resource.Color.primary_text_default_material_dark = global::CimmytApp.Droid.Resource.Color.primary_text_default_material_dark;
-			global::XLabs.Forms.Resource.Color.primary_text_default_material_light = global::CimmytApp.Droid.Resource.Color.primary_text_default_material_light;
-			global::XLabs.Forms.Resource.Color.primary_text_disabled_material_dark = global::CimmytApp.Droid.Resource.Color.primary_text_disabled_material_dark;
-			global::XLabs.Forms.Resource.Color.primary_text_disabled_material_light = global::CimmytApp.Droid.Resource.Color.primary_text_disabled_material_light;
-			global::XLabs.Forms.Resource.Color.ripple_material_dark = global::CimmytApp.Droid.Resource.Color.ripple_material_dark;
-			global::XLabs.Forms.Resource.Color.ripple_material_light = global::CimmytApp.Droid.Resource.Color.ripple_material_light;
-			global::XLabs.Forms.Resource.Color.secondary_text_default_material_dark = global::CimmytApp.Droid.Resource.Color.secondary_text_default_material_dark;
-			global::XLabs.Forms.Resource.Color.secondary_text_default_material_light = global::CimmytApp.Droid.Resource.Color.secondary_text_default_material_light;
-			global::XLabs.Forms.Resource.Color.secondary_text_disabled_material_dark = global::CimmytApp.Droid.Resource.Color.secondary_text_disabled_material_dark;
-			global::XLabs.Forms.Resource.Color.secondary_text_disabled_material_light = global::CimmytApp.Droid.Resource.Color.secondary_text_disabled_material_light;
-			global::XLabs.Forms.Resource.Color.switch_thumb_disabled_material_dark = global::CimmytApp.Droid.Resource.Color.switch_thumb_disabled_material_dark;
-			global::XLabs.Forms.Resource.Color.switch_thumb_disabled_material_light = global::CimmytApp.Droid.Resource.Color.switch_thumb_disabled_material_light;
-			global::XLabs.Forms.Resource.Color.switch_thumb_material_dark = global::CimmytApp.Droid.Resource.Color.switch_thumb_material_dark;
-			global::XLabs.Forms.Resource.Color.switch_thumb_material_light = global::CimmytApp.Droid.Resource.Color.switch_thumb_material_light;
-			global::XLabs.Forms.Resource.Color.switch_thumb_normal_material_dark = global::CimmytApp.Droid.Resource.Color.switch_thumb_normal_material_dark;
-			global::XLabs.Forms.Resource.Color.switch_thumb_normal_material_light = global::CimmytApp.Droid.Resource.Color.switch_thumb_normal_material_light;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_content_inset_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_content_inset_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_default_height_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_default_height_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_default_padding_end_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_default_padding_end_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_default_padding_start_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_default_padding_start_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_icon_vertical_padding_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_icon_vertical_padding_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_overflow_padding_end_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_overflow_padding_end_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_overflow_padding_start_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_overflow_padding_start_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_progress_bar_size = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_progress_bar_size;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_stacked_max_height = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_stacked_max_height;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_stacked_tab_max_width = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_stacked_tab_max_width;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_subtitle_bottom_margin_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_bar_subtitle_top_margin_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_bar_subtitle_top_margin_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_button_min_height_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_button_min_height_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_button_min_width_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_button_min_width_material;
-			global::XLabs.Forms.Resource.Dimension.abc_action_button_min_width_overflow_material = global::CimmytApp.Droid.Resource.Dimension.abc_action_button_min_width_overflow_material;
-			global::XLabs.Forms.Resource.Dimension.abc_alert_dialog_button_bar_height = global::CimmytApp.Droid.Resource.Dimension.abc_alert_dialog_button_bar_height;
-			global::XLabs.Forms.Resource.Dimension.abc_button_inset_horizontal_material = global::CimmytApp.Droid.Resource.Dimension.abc_button_inset_horizontal_material;
-			global::XLabs.Forms.Resource.Dimension.abc_button_inset_vertical_material = global::CimmytApp.Droid.Resource.Dimension.abc_button_inset_vertical_material;
-			global::XLabs.Forms.Resource.Dimension.abc_button_padding_horizontal_material = global::CimmytApp.Droid.Resource.Dimension.abc_button_padding_horizontal_material;
-			global::XLabs.Forms.Resource.Dimension.abc_button_padding_vertical_material = global::CimmytApp.Droid.Resource.Dimension.abc_button_padding_vertical_material;
-			global::XLabs.Forms.Resource.Dimension.abc_config_prefDialogWidth = global::CimmytApp.Droid.Resource.Dimension.abc_config_prefDialogWidth;
-			global::XLabs.Forms.Resource.Dimension.abc_control_corner_material = global::CimmytApp.Droid.Resource.Dimension.abc_control_corner_material;
-			global::XLabs.Forms.Resource.Dimension.abc_control_inset_material = global::CimmytApp.Droid.Resource.Dimension.abc_control_inset_material;
-			global::XLabs.Forms.Resource.Dimension.abc_control_padding_material = global::CimmytApp.Droid.Resource.Dimension.abc_control_padding_material;
-			global::XLabs.Forms.Resource.Dimension.abc_dialog_min_width_major = global::CimmytApp.Droid.Resource.Dimension.abc_dialog_min_width_major;
-			global::XLabs.Forms.Resource.Dimension.abc_dialog_min_width_minor = global::CimmytApp.Droid.Resource.Dimension.abc_dialog_min_width_minor;
-			global::XLabs.Forms.Resource.Dimension.abc_dialog_padding_material = global::CimmytApp.Droid.Resource.Dimension.abc_dialog_padding_material;
-			global::XLabs.Forms.Resource.Dimension.abc_dialog_padding_top_material = global::CimmytApp.Droid.Resource.Dimension.abc_dialog_padding_top_material;
-			global::XLabs.Forms.Resource.Dimension.abc_disabled_alpha_material_dark = global::CimmytApp.Droid.Resource.Dimension.abc_disabled_alpha_material_dark;
-			global::XLabs.Forms.Resource.Dimension.abc_disabled_alpha_material_light = global::CimmytApp.Droid.Resource.Dimension.abc_disabled_alpha_material_light;
-			global::XLabs.Forms.Resource.Dimension.abc_dropdownitem_icon_width = global::CimmytApp.Droid.Resource.Dimension.abc_dropdownitem_icon_width;
-			global::XLabs.Forms.Resource.Dimension.abc_dropdownitem_text_padding_left = global::CimmytApp.Droid.Resource.Dimension.abc_dropdownitem_text_padding_left;
-			global::XLabs.Forms.Resource.Dimension.abc_dropdownitem_text_padding_right = global::CimmytApp.Droid.Resource.Dimension.abc_dropdownitem_text_padding_right;
-			global::XLabs.Forms.Resource.Dimension.abc_edit_text_inset_bottom_material = global::CimmytApp.Droid.Resource.Dimension.abc_edit_text_inset_bottom_material;
-			global::XLabs.Forms.Resource.Dimension.abc_edit_text_inset_horizontal_material = global::CimmytApp.Droid.Resource.Dimension.abc_edit_text_inset_horizontal_material;
-			global::XLabs.Forms.Resource.Dimension.abc_edit_text_inset_top_material = global::CimmytApp.Droid.Resource.Dimension.abc_edit_text_inset_top_material;
-			global::XLabs.Forms.Resource.Dimension.abc_floating_window_z = global::CimmytApp.Droid.Resource.Dimension.abc_floating_window_z;
-			global::XLabs.Forms.Resource.Dimension.abc_list_item_padding_horizontal_material = global::CimmytApp.Droid.Resource.Dimension.abc_list_item_padding_horizontal_material;
-			global::XLabs.Forms.Resource.Dimension.abc_panel_menu_list_width = global::CimmytApp.Droid.Resource.Dimension.abc_panel_menu_list_width;
-			global::XLabs.Forms.Resource.Dimension.abc_search_view_preferred_width = global::CimmytApp.Droid.Resource.Dimension.abc_search_view_preferred_width;
-			global::XLabs.Forms.Resource.Dimension.abc_switch_padding = global::CimmytApp.Droid.Resource.Dimension.abc_switch_padding;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_body_1_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_body_1_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_body_2_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_body_2_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_button_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_button_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_caption_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_caption_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_display_1_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_display_1_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_display_2_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_display_2_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_display_3_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_display_3_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_display_4_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_display_4_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_headline_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_headline_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_large_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_large_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_medium_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_medium_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_menu_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_menu_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_small_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_small_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_subhead_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_subhead_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_subtitle_material_toolbar = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_subtitle_material_toolbar;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_title_material = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_title_material;
-			global::XLabs.Forms.Resource.Dimension.abc_text_size_title_material_toolbar = global::CimmytApp.Droid.Resource.Dimension.abc_text_size_title_material_toolbar;
-			global::XLabs.Forms.Resource.Dimension.calendar_day_headers_paddingbottom = global::CimmytApp.Droid.Resource.Dimension.calendar_day_headers_paddingbottom;
-			global::XLabs.Forms.Resource.Dimension.calendar_month_title_bottommargin = global::CimmytApp.Droid.Resource.Dimension.calendar_month_title_bottommargin;
-			global::XLabs.Forms.Resource.Dimension.calendar_month_topmargin = global::CimmytApp.Droid.Resource.Dimension.calendar_month_topmargin;
-			global::XLabs.Forms.Resource.Dimension.calendar_text_medium = global::CimmytApp.Droid.Resource.Dimension.calendar_text_medium;
-			global::XLabs.Forms.Resource.Dimension.calendar_text_small = global::CimmytApp.Droid.Resource.Dimension.calendar_text_small;
-			global::XLabs.Forms.Resource.Dimension.cardview_compat_inset_shadow = global::CimmytApp.Droid.Resource.Dimension.cardview_compat_inset_shadow;
-			global::XLabs.Forms.Resource.Dimension.cardview_default_elevation = global::CimmytApp.Droid.Resource.Dimension.cardview_default_elevation;
-			global::XLabs.Forms.Resource.Dimension.cardview_default_radius = global::CimmytApp.Droid.Resource.Dimension.cardview_default_radius;
-			global::XLabs.Forms.Resource.Dimension.design_appbar_elevation = global::CimmytApp.Droid.Resource.Dimension.design_appbar_elevation;
-			global::XLabs.Forms.Resource.Dimension.design_fab_border_width = global::CimmytApp.Droid.Resource.Dimension.design_fab_border_width;
-			global::XLabs.Forms.Resource.Dimension.design_fab_elevation = global::CimmytApp.Droid.Resource.Dimension.design_fab_elevation;
-			global::XLabs.Forms.Resource.Dimension.design_fab_size_mini = global::CimmytApp.Droid.Resource.Dimension.design_fab_size_mini;
-			global::XLabs.Forms.Resource.Dimension.design_fab_size_normal = global::CimmytApp.Droid.Resource.Dimension.design_fab_size_normal;
-			global::XLabs.Forms.Resource.Dimension.design_fab_translation_z_pressed = global::CimmytApp.Droid.Resource.Dimension.design_fab_translation_z_pressed;
-			global::XLabs.Forms.Resource.Dimension.design_navigation_elevation = global::CimmytApp.Droid.Resource.Dimension.design_navigation_elevation;
-			global::XLabs.Forms.Resource.Dimension.design_navigation_icon_padding = global::CimmytApp.Droid.Resource.Dimension.design_navigation_icon_padding;
-			global::XLabs.Forms.Resource.Dimension.design_navigation_icon_size = global::CimmytApp.Droid.Resource.Dimension.design_navigation_icon_size;
-			global::XLabs.Forms.Resource.Dimension.design_navigation_max_width = global::CimmytApp.Droid.Resource.Dimension.design_navigation_max_width;
-			global::XLabs.Forms.Resource.Dimension.design_navigation_padding_bottom = global::CimmytApp.Droid.Resource.Dimension.design_navigation_padding_bottom;
-			global::XLabs.Forms.Resource.Dimension.design_navigation_separator_vertical_padding = global::CimmytApp.Droid.Resource.Dimension.design_navigation_separator_vertical_padding;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_action_inline_max_width = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_action_inline_max_width;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_background_corner_radius = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_background_corner_radius;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_elevation = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_elevation;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_extra_spacing_horizontal = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_extra_spacing_horizontal;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_max_width = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_max_width;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_min_width = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_min_width;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_padding_horizontal = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_padding_horizontal;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_padding_vertical = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_padding_vertical;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_padding_vertical_2lines = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_padding_vertical_2lines;
-			global::XLabs.Forms.Resource.Dimension.design_snackbar_text_size = global::CimmytApp.Droid.Resource.Dimension.design_snackbar_text_size;
-			global::XLabs.Forms.Resource.Dimension.design_tab_max_width = global::CimmytApp.Droid.Resource.Dimension.design_tab_max_width;
-			global::XLabs.Forms.Resource.Dimension.disabled_alpha_material_dark = global::CimmytApp.Droid.Resource.Dimension.disabled_alpha_material_dark;
-			global::XLabs.Forms.Resource.Dimension.disabled_alpha_material_light = global::CimmytApp.Droid.Resource.Dimension.disabled_alpha_material_light;
-			global::XLabs.Forms.Resource.Dimension.highlight_alpha_material_colored = global::CimmytApp.Droid.Resource.Dimension.highlight_alpha_material_colored;
-			global::XLabs.Forms.Resource.Dimension.highlight_alpha_material_dark = global::CimmytApp.Droid.Resource.Dimension.highlight_alpha_material_dark;
-			global::XLabs.Forms.Resource.Dimension.highlight_alpha_material_light = global::CimmytApp.Droid.Resource.Dimension.highlight_alpha_material_light;
-			global::XLabs.Forms.Resource.Dimension.notification_large_icon_height = global::CimmytApp.Droid.Resource.Dimension.notification_large_icon_height;
-			global::XLabs.Forms.Resource.Dimension.notification_large_icon_width = global::CimmytApp.Droid.Resource.Dimension.notification_large_icon_width;
-			global::XLabs.Forms.Resource.Dimension.notification_subtext_size = global::CimmytApp.Droid.Resource.Dimension.notification_subtext_size;
-			global::XLabs.Forms.Resource.Drawable.abc_ab_share_pack_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ab_share_pack_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_action_bar_item_background_material = global::CimmytApp.Droid.Resource.Drawable.abc_action_bar_item_background_material;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_borderless_material = global::CimmytApp.Droid.Resource.Drawable.abc_btn_borderless_material;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_check_material = global::CimmytApp.Droid.Resource.Drawable.abc_btn_check_material;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_check_to_on_mtrl_000 = global::CimmytApp.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_000;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_check_to_on_mtrl_015 = global::CimmytApp.Droid.Resource.Drawable.abc_btn_check_to_on_mtrl_015;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_colored_material = global::CimmytApp.Droid.Resource.Drawable.abc_btn_colored_material;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_default_mtrl_shape = global::CimmytApp.Droid.Resource.Drawable.abc_btn_default_mtrl_shape;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_radio_material = global::CimmytApp.Droid.Resource.Drawable.abc_btn_radio_material;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_radio_to_on_mtrl_000 = global::CimmytApp.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_000;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_radio_to_on_mtrl_015 = global::CimmytApp.Droid.Resource.Drawable.abc_btn_radio_to_on_mtrl_015;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001 = global::CimmytApp.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00001;
-			global::XLabs.Forms.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012 = global::CimmytApp.Droid.Resource.Drawable.abc_btn_switch_to_on_mtrl_00012;
-			global::XLabs.Forms.Resource.Drawable.abc_cab_background_internal_bg = global::CimmytApp.Droid.Resource.Drawable.abc_cab_background_internal_bg;
-			global::XLabs.Forms.Resource.Drawable.abc_cab_background_top_material = global::CimmytApp.Droid.Resource.Drawable.abc_cab_background_top_material;
-			global::XLabs.Forms.Resource.Drawable.abc_cab_background_top_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_cab_background_top_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_control_background_material = global::CimmytApp.Droid.Resource.Drawable.abc_control_background_material;
-			global::XLabs.Forms.Resource.Drawable.abc_edit_text_material = global::CimmytApp.Droid.Resource.Drawable.abc_edit_text_material;
-			global::XLabs.Forms.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ic_commit_search_api_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ic_menu_copy_mtrl_am_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ic_menu_cut_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ic_menu_paste_mtrl_am_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ic_menu_selectall_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_ic_menu_share_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_ic_menu_share_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_item_background_holo_dark = global::CimmytApp.Droid.Resource.Drawable.abc_item_background_holo_dark;
-			global::XLabs.Forms.Resource.Drawable.abc_item_background_holo_light = global::CimmytApp.Droid.Resource.Drawable.abc_item_background_holo_light;
-			global::XLabs.Forms.Resource.Drawable.abc_list_divider_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_list_divider_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_list_focused_holo = global::CimmytApp.Droid.Resource.Drawable.abc_list_focused_holo;
-			global::XLabs.Forms.Resource.Drawable.abc_list_longpressed_holo = global::CimmytApp.Droid.Resource.Drawable.abc_list_longpressed_holo;
-			global::XLabs.Forms.Resource.Drawable.abc_list_pressed_holo_dark = global::CimmytApp.Droid.Resource.Drawable.abc_list_pressed_holo_dark;
-			global::XLabs.Forms.Resource.Drawable.abc_list_pressed_holo_light = global::CimmytApp.Droid.Resource.Drawable.abc_list_pressed_holo_light;
-			global::XLabs.Forms.Resource.Drawable.abc_list_selector_background_transition_holo_dark = global::CimmytApp.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_dark;
-			global::XLabs.Forms.Resource.Drawable.abc_list_selector_background_transition_holo_light = global::CimmytApp.Droid.Resource.Drawable.abc_list_selector_background_transition_holo_light;
-			global::XLabs.Forms.Resource.Drawable.abc_list_selector_disabled_holo_dark = global::CimmytApp.Droid.Resource.Drawable.abc_list_selector_disabled_holo_dark;
-			global::XLabs.Forms.Resource.Drawable.abc_list_selector_disabled_holo_light = global::CimmytApp.Droid.Resource.Drawable.abc_list_selector_disabled_holo_light;
-			global::XLabs.Forms.Resource.Drawable.abc_list_selector_holo_dark = global::CimmytApp.Droid.Resource.Drawable.abc_list_selector_holo_dark;
-			global::XLabs.Forms.Resource.Drawable.abc_list_selector_holo_light = global::CimmytApp.Droid.Resource.Drawable.abc_list_selector_holo_light;
-			global::XLabs.Forms.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult = global::CimmytApp.Droid.Resource.Drawable.abc_menu_hardkey_panel_mtrl_mult;
-			global::XLabs.Forms.Resource.Drawable.abc_popup_background_mtrl_mult = global::CimmytApp.Droid.Resource.Drawable.abc_popup_background_mtrl_mult;
-			global::XLabs.Forms.Resource.Drawable.abc_spinner_mtrl_am_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_spinner_mtrl_am_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_spinner_textfield_background_material = global::CimmytApp.Droid.Resource.Drawable.abc_spinner_textfield_background_material;
-			global::XLabs.Forms.Resource.Drawable.abc_switch_thumb_material = global::CimmytApp.Droid.Resource.Drawable.abc_switch_thumb_material;
-			global::XLabs.Forms.Resource.Drawable.abc_switch_track_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_switch_track_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_tab_indicator_material = global::CimmytApp.Droid.Resource.Drawable.abc_tab_indicator_material;
-			global::XLabs.Forms.Resource.Drawable.abc_tab_indicator_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_tab_indicator_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_text_cursor_material = global::CimmytApp.Droid.Resource.Drawable.abc_text_cursor_material;
-			global::XLabs.Forms.Resource.Drawable.abc_textfield_activated_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_textfield_activated_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_textfield_default_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_textfield_default_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_textfield_search_activated_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_textfield_search_default_mtrl_alpha = global::CimmytApp.Droid.Resource.Drawable.abc_textfield_search_default_mtrl_alpha;
-			global::XLabs.Forms.Resource.Drawable.abc_textfield_search_material = global::CimmytApp.Droid.Resource.Drawable.abc_textfield_search_material;
-			global::XLabs.Forms.Resource.Drawable.ad16 = global::CimmytApp.Droid.Resource.Drawable.ad16;
-			global::XLabs.Forms.Resource.Drawable.calendar_bg_selector = global::CimmytApp.Droid.Resource.Drawable.calendar_bg_selector;
-			global::XLabs.Forms.Resource.Drawable.design_fab_background = global::CimmytApp.Droid.Resource.Drawable.design_fab_background;
-			global::XLabs.Forms.Resource.Drawable.design_snackbar_background = global::CimmytApp.Droid.Resource.Drawable.design_snackbar_background;
-			global::XLabs.Forms.Resource.Drawable.notification_template_icon_bg = global::CimmytApp.Droid.Resource.Drawable.notification_template_icon_bg;
-			global::XLabs.Forms.Resource.Id.action0 = global::CimmytApp.Droid.Resource.Id.action0;
-			global::XLabs.Forms.Resource.Id.action_bar = global::CimmytApp.Droid.Resource.Id.action_bar;
-			global::XLabs.Forms.Resource.Id.action_bar_activity_content = global::CimmytApp.Droid.Resource.Id.action_bar_activity_content;
-			global::XLabs.Forms.Resource.Id.action_bar_container = global::CimmytApp.Droid.Resource.Id.action_bar_container;
-			global::XLabs.Forms.Resource.Id.action_bar_root = global::CimmytApp.Droid.Resource.Id.action_bar_root;
-			global::XLabs.Forms.Resource.Id.action_bar_spinner = global::CimmytApp.Droid.Resource.Id.action_bar_spinner;
-			global::XLabs.Forms.Resource.Id.action_bar_subtitle = global::CimmytApp.Droid.Resource.Id.action_bar_subtitle;
-			global::XLabs.Forms.Resource.Id.action_bar_title = global::CimmytApp.Droid.Resource.Id.action_bar_title;
-			global::XLabs.Forms.Resource.Id.action_context_bar = global::CimmytApp.Droid.Resource.Id.action_context_bar;
-			global::XLabs.Forms.Resource.Id.action_divider = global::CimmytApp.Droid.Resource.Id.action_divider;
-			global::XLabs.Forms.Resource.Id.action_menu_divider = global::CimmytApp.Droid.Resource.Id.action_menu_divider;
-			global::XLabs.Forms.Resource.Id.action_menu_presenter = global::CimmytApp.Droid.Resource.Id.action_menu_presenter;
-			global::XLabs.Forms.Resource.Id.action_mode_bar = global::CimmytApp.Droid.Resource.Id.action_mode_bar;
-			global::XLabs.Forms.Resource.Id.action_mode_bar_stub = global::CimmytApp.Droid.Resource.Id.action_mode_bar_stub;
-			global::XLabs.Forms.Resource.Id.action_mode_close_button = global::CimmytApp.Droid.Resource.Id.action_mode_close_button;
-			global::XLabs.Forms.Resource.Id.activity_chooser_view_content = global::CimmytApp.Droid.Resource.Id.activity_chooser_view_content;
-			global::XLabs.Forms.Resource.Id.alertTitle = global::CimmytApp.Droid.Resource.Id.alertTitle;
-			global::XLabs.Forms.Resource.Id.always = global::CimmytApp.Droid.Resource.Id.always;
-			global::XLabs.Forms.Resource.Id.beginning = global::CimmytApp.Droid.Resource.Id.beginning;
-			global::XLabs.Forms.Resource.Id.bottom = global::CimmytApp.Droid.Resource.Id.bottom;
-			global::XLabs.Forms.Resource.Id.buttonPanel = global::CimmytApp.Droid.Resource.Id.buttonPanel;
-			global::XLabs.Forms.Resource.Id.calendar_grid = global::CimmytApp.Droid.Resource.Id.calendar_grid;
-			global::XLabs.Forms.Resource.Id.calendar_view = global::CimmytApp.Droid.Resource.Id.calendar_view;
-			global::XLabs.Forms.Resource.Id.cancel_action = global::CimmytApp.Droid.Resource.Id.cancel_action;
-			global::XLabs.Forms.Resource.Id.center = global::CimmytApp.Droid.Resource.Id.center;
-			global::XLabs.Forms.Resource.Id.center_horizontal = global::CimmytApp.Droid.Resource.Id.center_horizontal;
-			global::XLabs.Forms.Resource.Id.center_vertical = global::CimmytApp.Droid.Resource.Id.center_vertical;
-			global::XLabs.Forms.Resource.Id.checkbox = global::CimmytApp.Droid.Resource.Id.checkbox;
-			global::XLabs.Forms.Resource.Id.chronometer = global::CimmytApp.Droid.Resource.Id.chronometer;
-			global::XLabs.Forms.Resource.Id.clip_horizontal = global::CimmytApp.Droid.Resource.Id.clip_horizontal;
-			global::XLabs.Forms.Resource.Id.clip_vertical = global::CimmytApp.Droid.Resource.Id.clip_vertical;
-			global::XLabs.Forms.Resource.Id.collapseActionView = global::CimmytApp.Droid.Resource.Id.collapseActionView;
-			global::XLabs.Forms.Resource.Id.contentPanel = global::CimmytApp.Droid.Resource.Id.contentPanel;
-			global::XLabs.Forms.Resource.Id.custom = global::CimmytApp.Droid.Resource.Id.custom;
-			global::XLabs.Forms.Resource.Id.customPanel = global::CimmytApp.Droid.Resource.Id.customPanel;
-			global::XLabs.Forms.Resource.Id.decor_content_parent = global::CimmytApp.Droid.Resource.Id.decor_content_parent;
-			global::XLabs.Forms.Resource.Id.default_activity_button = global::CimmytApp.Droid.Resource.Id.default_activity_button;
-			global::XLabs.Forms.Resource.Id.disableHome = global::CimmytApp.Droid.Resource.Id.disableHome;
-			global::XLabs.Forms.Resource.Id.edit_query = global::CimmytApp.Droid.Resource.Id.edit_query;
-			global::XLabs.Forms.Resource.Id.end = global::CimmytApp.Droid.Resource.Id.end;
-			global::XLabs.Forms.Resource.Id.end_padder = global::CimmytApp.Droid.Resource.Id.end_padder;
-			global::XLabs.Forms.Resource.Id.enterAlways = global::CimmytApp.Droid.Resource.Id.enterAlways;
-			global::XLabs.Forms.Resource.Id.enterAlwaysCollapsed = global::CimmytApp.Droid.Resource.Id.enterAlwaysCollapsed;
-			global::XLabs.Forms.Resource.Id.exitUntilCollapsed = global::CimmytApp.Droid.Resource.Id.exitUntilCollapsed;
-			global::XLabs.Forms.Resource.Id.expand_activities_button = global::CimmytApp.Droid.Resource.Id.expand_activities_button;
-			global::XLabs.Forms.Resource.Id.expanded_menu = global::CimmytApp.Droid.Resource.Id.expanded_menu;
-			global::XLabs.Forms.Resource.Id.fill = global::CimmytApp.Droid.Resource.Id.fill;
-			global::XLabs.Forms.Resource.Id.fill_horizontal = global::CimmytApp.Droid.Resource.Id.fill_horizontal;
-			global::XLabs.Forms.Resource.Id.fill_vertical = global::CimmytApp.Droid.Resource.Id.fill_vertical;
-			global::XLabs.Forms.Resource.Id.@fixed = global::CimmytApp.Droid.Resource.Id.@fixed;
-			global::XLabs.Forms.Resource.Id.home = global::CimmytApp.Droid.Resource.Id.home;
-			global::XLabs.Forms.Resource.Id.homeAsUp = global::CimmytApp.Droid.Resource.Id.homeAsUp;
-			global::XLabs.Forms.Resource.Id.icon = global::CimmytApp.Droid.Resource.Id.icon;
-			global::XLabs.Forms.Resource.Id.ifRoom = global::CimmytApp.Droid.Resource.Id.ifRoom;
-			global::XLabs.Forms.Resource.Id.image = global::CimmytApp.Droid.Resource.Id.image;
-			global::XLabs.Forms.Resource.Id.info = global::CimmytApp.Droid.Resource.Id.info;
-			global::XLabs.Forms.Resource.Id.left = global::CimmytApp.Droid.Resource.Id.left;
-			global::XLabs.Forms.Resource.Id.line1 = global::CimmytApp.Droid.Resource.Id.line1;
-			global::XLabs.Forms.Resource.Id.line3 = global::CimmytApp.Droid.Resource.Id.line3;
-			global::XLabs.Forms.Resource.Id.listMode = global::CimmytApp.Droid.Resource.Id.listMode;
-			global::XLabs.Forms.Resource.Id.list_item = global::CimmytApp.Droid.Resource.Id.list_item;
-			global::XLabs.Forms.Resource.Id.media_actions = global::CimmytApp.Droid.Resource.Id.media_actions;
-			global::XLabs.Forms.Resource.Id.middle = global::CimmytApp.Droid.Resource.Id.middle;
-			global::XLabs.Forms.Resource.Id.mini = global::CimmytApp.Droid.Resource.Id.mini;
-			global::XLabs.Forms.Resource.Id.multiply = global::CimmytApp.Droid.Resource.Id.multiply;
-			global::XLabs.Forms.Resource.Id.never = global::CimmytApp.Droid.Resource.Id.never;
-			global::XLabs.Forms.Resource.Id.none = global::CimmytApp.Droid.Resource.Id.none;
-			global::XLabs.Forms.Resource.Id.normal = global::CimmytApp.Droid.Resource.Id.normal;
-			global::XLabs.Forms.Resource.Id.parallax = global::CimmytApp.Droid.Resource.Id.parallax;
-			global::XLabs.Forms.Resource.Id.parentPanel = global::CimmytApp.Droid.Resource.Id.parentPanel;
-			global::XLabs.Forms.Resource.Id.pin = global::CimmytApp.Droid.Resource.Id.pin;
-			global::XLabs.Forms.Resource.Id.progress_circular = global::CimmytApp.Droid.Resource.Id.progress_circular;
-			global::XLabs.Forms.Resource.Id.progress_horizontal = global::CimmytApp.Droid.Resource.Id.progress_horizontal;
-			global::XLabs.Forms.Resource.Id.radio = global::CimmytApp.Droid.Resource.Id.radio;
-			global::XLabs.Forms.Resource.Id.right = global::CimmytApp.Droid.Resource.Id.right;
-			global::XLabs.Forms.Resource.Id.screen = global::CimmytApp.Droid.Resource.Id.screen;
-			global::XLabs.Forms.Resource.Id.scroll = global::CimmytApp.Droid.Resource.Id.scroll;
-			global::XLabs.Forms.Resource.Id.scrollView = global::CimmytApp.Droid.Resource.Id.scrollView;
-			global::XLabs.Forms.Resource.Id.scrollable = global::CimmytApp.Droid.Resource.Id.scrollable;
-			global::XLabs.Forms.Resource.Id.search_badge = global::CimmytApp.Droid.Resource.Id.search_badge;
-			global::XLabs.Forms.Resource.Id.search_bar = global::CimmytApp.Droid.Resource.Id.search_bar;
-			global::XLabs.Forms.Resource.Id.search_button = global::CimmytApp.Droid.Resource.Id.search_button;
-			global::XLabs.Forms.Resource.Id.search_close_btn = global::CimmytApp.Droid.Resource.Id.search_close_btn;
-			global::XLabs.Forms.Resource.Id.search_edit_frame = global::CimmytApp.Droid.Resource.Id.search_edit_frame;
-			global::XLabs.Forms.Resource.Id.search_go_btn = global::CimmytApp.Droid.Resource.Id.search_go_btn;
-			global::XLabs.Forms.Resource.Id.search_mag_icon = global::CimmytApp.Droid.Resource.Id.search_mag_icon;
-			global::XLabs.Forms.Resource.Id.search_plate = global::CimmytApp.Droid.Resource.Id.search_plate;
-			global::XLabs.Forms.Resource.Id.search_src_text = global::CimmytApp.Droid.Resource.Id.search_src_text;
-			global::XLabs.Forms.Resource.Id.search_voice_btn = global::CimmytApp.Droid.Resource.Id.search_voice_btn;
-			global::XLabs.Forms.Resource.Id.select_dialog_listview = global::CimmytApp.Droid.Resource.Id.select_dialog_listview;
-			global::XLabs.Forms.Resource.Id.shortcut = global::CimmytApp.Droid.Resource.Id.shortcut;
-			global::XLabs.Forms.Resource.Id.showCustom = global::CimmytApp.Droid.Resource.Id.showCustom;
-			global::XLabs.Forms.Resource.Id.showHome = global::CimmytApp.Droid.Resource.Id.showHome;
-			global::XLabs.Forms.Resource.Id.showTitle = global::CimmytApp.Droid.Resource.Id.showTitle;
-			global::XLabs.Forms.Resource.Id.snackbar_action = global::CimmytApp.Droid.Resource.Id.snackbar_action;
-			global::XLabs.Forms.Resource.Id.snackbar_text = global::CimmytApp.Droid.Resource.Id.snackbar_text;
-			global::XLabs.Forms.Resource.Id.split_action_bar = global::CimmytApp.Droid.Resource.Id.split_action_bar;
-			global::XLabs.Forms.Resource.Id.src_atop = global::CimmytApp.Droid.Resource.Id.src_atop;
-			global::XLabs.Forms.Resource.Id.src_in = global::CimmytApp.Droid.Resource.Id.src_in;
-			global::XLabs.Forms.Resource.Id.src_over = global::CimmytApp.Droid.Resource.Id.src_over;
-			global::XLabs.Forms.Resource.Id.start = global::CimmytApp.Droid.Resource.Id.start;
-			global::XLabs.Forms.Resource.Id.status_bar_latest_event_content = global::CimmytApp.Droid.Resource.Id.status_bar_latest_event_content;
-			global::XLabs.Forms.Resource.Id.submit_area = global::CimmytApp.Droid.Resource.Id.submit_area;
-			global::XLabs.Forms.Resource.Id.tabMode = global::CimmytApp.Droid.Resource.Id.tabMode;
-			global::XLabs.Forms.Resource.Id.text = global::CimmytApp.Droid.Resource.Id.text;
-			global::XLabs.Forms.Resource.Id.text2 = global::CimmytApp.Droid.Resource.Id.text2;
-			global::XLabs.Forms.Resource.Id.textSpacerNoButtons = global::CimmytApp.Droid.Resource.Id.textSpacerNoButtons;
-			global::XLabs.Forms.Resource.Id.time = global::CimmytApp.Droid.Resource.Id.time;
-			global::XLabs.Forms.Resource.Id.title = global::CimmytApp.Droid.Resource.Id.title;
-			global::XLabs.Forms.Resource.Id.title_template = global::CimmytApp.Droid.Resource.Id.title_template;
-			global::XLabs.Forms.Resource.Id.top = global::CimmytApp.Droid.Resource.Id.top;
-			global::XLabs.Forms.Resource.Id.topPanel = global::CimmytApp.Droid.Resource.Id.topPanel;
-			global::XLabs.Forms.Resource.Id.up = global::CimmytApp.Droid.Resource.Id.up;
-			global::XLabs.Forms.Resource.Id.useLogo = global::CimmytApp.Droid.Resource.Id.useLogo;
-			global::XLabs.Forms.Resource.Id.view_offset_helper = global::CimmytApp.Droid.Resource.Id.view_offset_helper;
-			global::XLabs.Forms.Resource.Id.withText = global::CimmytApp.Droid.Resource.Id.withText;
-			global::XLabs.Forms.Resource.Id.wrap_content = global::CimmytApp.Droid.Resource.Id.wrap_content;
-			global::XLabs.Forms.Resource.Integer.abc_config_activityDefaultDur = global::CimmytApp.Droid.Resource.Integer.abc_config_activityDefaultDur;
-			global::XLabs.Forms.Resource.Integer.abc_config_activityShortDur = global::CimmytApp.Droid.Resource.Integer.abc_config_activityShortDur;
-			global::XLabs.Forms.Resource.Integer.cancel_button_image_alpha = global::CimmytApp.Droid.Resource.Integer.cancel_button_image_alpha;
-			global::XLabs.Forms.Resource.Integer.design_snackbar_text_max_lines = global::CimmytApp.Droid.Resource.Integer.design_snackbar_text_max_lines;
-			global::XLabs.Forms.Resource.Integer.status_bar_notification_info_maxnum = global::CimmytApp.Droid.Resource.Integer.status_bar_notification_info_maxnum;
-			global::XLabs.Forms.Resource.Layout.abc_action_bar_title_item = global::CimmytApp.Droid.Resource.Layout.abc_action_bar_title_item;
-			global::XLabs.Forms.Resource.Layout.abc_action_bar_up_container = global::CimmytApp.Droid.Resource.Layout.abc_action_bar_up_container;
-			global::XLabs.Forms.Resource.Layout.abc_action_bar_view_list_nav_layout = global::CimmytApp.Droid.Resource.Layout.abc_action_bar_view_list_nav_layout;
-			global::XLabs.Forms.Resource.Layout.abc_action_menu_item_layout = global::CimmytApp.Droid.Resource.Layout.abc_action_menu_item_layout;
-			global::XLabs.Forms.Resource.Layout.abc_action_menu_layout = global::CimmytApp.Droid.Resource.Layout.abc_action_menu_layout;
-			global::XLabs.Forms.Resource.Layout.abc_action_mode_bar = global::CimmytApp.Droid.Resource.Layout.abc_action_mode_bar;
-			global::XLabs.Forms.Resource.Layout.abc_action_mode_close_item_material = global::CimmytApp.Droid.Resource.Layout.abc_action_mode_close_item_material;
-			global::XLabs.Forms.Resource.Layout.abc_activity_chooser_view = global::CimmytApp.Droid.Resource.Layout.abc_activity_chooser_view;
-			global::XLabs.Forms.Resource.Layout.abc_activity_chooser_view_list_item = global::CimmytApp.Droid.Resource.Layout.abc_activity_chooser_view_list_item;
-			global::XLabs.Forms.Resource.Layout.abc_alert_dialog_material = global::CimmytApp.Droid.Resource.Layout.abc_alert_dialog_material;
-			global::XLabs.Forms.Resource.Layout.abc_dialog_title_material = global::CimmytApp.Droid.Resource.Layout.abc_dialog_title_material;
-			global::XLabs.Forms.Resource.Layout.abc_expanded_menu_layout = global::CimmytApp.Droid.Resource.Layout.abc_expanded_menu_layout;
-			global::XLabs.Forms.Resource.Layout.abc_list_menu_item_checkbox = global::CimmytApp.Droid.Resource.Layout.abc_list_menu_item_checkbox;
-			global::XLabs.Forms.Resource.Layout.abc_list_menu_item_icon = global::CimmytApp.Droid.Resource.Layout.abc_list_menu_item_icon;
-			global::XLabs.Forms.Resource.Layout.abc_list_menu_item_layout = global::CimmytApp.Droid.Resource.Layout.abc_list_menu_item_layout;
-			global::XLabs.Forms.Resource.Layout.abc_list_menu_item_radio = global::CimmytApp.Droid.Resource.Layout.abc_list_menu_item_radio;
-			global::XLabs.Forms.Resource.Layout.abc_popup_menu_item_layout = global::CimmytApp.Droid.Resource.Layout.abc_popup_menu_item_layout;
-			global::XLabs.Forms.Resource.Layout.abc_screen_content_include = global::CimmytApp.Droid.Resource.Layout.abc_screen_content_include;
-			global::XLabs.Forms.Resource.Layout.abc_screen_simple = global::CimmytApp.Droid.Resource.Layout.abc_screen_simple;
-			global::XLabs.Forms.Resource.Layout.abc_screen_simple_overlay_action_mode = global::CimmytApp.Droid.Resource.Layout.abc_screen_simple_overlay_action_mode;
-			global::XLabs.Forms.Resource.Layout.abc_screen_toolbar = global::CimmytApp.Droid.Resource.Layout.abc_screen_toolbar;
-			global::XLabs.Forms.Resource.Layout.abc_search_dropdown_item_icons_2line = global::CimmytApp.Droid.Resource.Layout.abc_search_dropdown_item_icons_2line;
-			global::XLabs.Forms.Resource.Layout.abc_search_view = global::CimmytApp.Droid.Resource.Layout.abc_search_view;
-			global::XLabs.Forms.Resource.Layout.abc_select_dialog_material = global::CimmytApp.Droid.Resource.Layout.abc_select_dialog_material;
-			global::XLabs.Forms.Resource.Layout.calendar_pager_layout = global::CimmytApp.Droid.Resource.Layout.calendar_pager_layout;
-			global::XLabs.Forms.Resource.Layout.calendar_picker = global::CimmytApp.Droid.Resource.Layout.calendar_picker;
-			global::XLabs.Forms.Resource.Layout.design_layout_snackbar = global::CimmytApp.Droid.Resource.Layout.design_layout_snackbar;
-			global::XLabs.Forms.Resource.Layout.design_layout_snackbar_include = global::CimmytApp.Droid.Resource.Layout.design_layout_snackbar_include;
-			global::XLabs.Forms.Resource.Layout.design_layout_tab_icon = global::CimmytApp.Droid.Resource.Layout.design_layout_tab_icon;
-			global::XLabs.Forms.Resource.Layout.design_layout_tab_text = global::CimmytApp.Droid.Resource.Layout.design_layout_tab_text;
-			global::XLabs.Forms.Resource.Layout.design_navigation_item = global::CimmytApp.Droid.Resource.Layout.design_navigation_item;
-			global::XLabs.Forms.Resource.Layout.design_navigation_item_header = global::CimmytApp.Droid.Resource.Layout.design_navigation_item_header;
-			global::XLabs.Forms.Resource.Layout.design_navigation_item_separator = global::CimmytApp.Droid.Resource.Layout.design_navigation_item_separator;
-			global::XLabs.Forms.Resource.Layout.design_navigation_item_subheader = global::CimmytApp.Droid.Resource.Layout.design_navigation_item_subheader;
-			global::XLabs.Forms.Resource.Layout.design_navigation_menu = global::CimmytApp.Droid.Resource.Layout.design_navigation_menu;
-			global::XLabs.Forms.Resource.Layout.dialog = global::CimmytApp.Droid.Resource.Layout.dialog;
-			global::XLabs.Forms.Resource.Layout.month = global::CimmytApp.Droid.Resource.Layout.month;
-			global::XLabs.Forms.Resource.Layout.notification_media_action = global::CimmytApp.Droid.Resource.Layout.notification_media_action;
-			global::XLabs.Forms.Resource.Layout.notification_media_cancel_action = global::CimmytApp.Droid.Resource.Layout.notification_media_cancel_action;
-			global::XLabs.Forms.Resource.Layout.notification_template_big_media = global::CimmytApp.Droid.Resource.Layout.notification_template_big_media;
-			global::XLabs.Forms.Resource.Layout.notification_template_big_media_narrow = global::CimmytApp.Droid.Resource.Layout.notification_template_big_media_narrow;
-			global::XLabs.Forms.Resource.Layout.notification_template_media = global::CimmytApp.Droid.Resource.Layout.notification_template_media;
-			global::XLabs.Forms.Resource.Layout.notification_template_part_chronometer = global::CimmytApp.Droid.Resource.Layout.notification_template_part_chronometer;
-			global::XLabs.Forms.Resource.Layout.notification_template_part_time = global::CimmytApp.Droid.Resource.Layout.notification_template_part_time;
-			global::XLabs.Forms.Resource.Layout.select_dialog_item_material = global::CimmytApp.Droid.Resource.Layout.select_dialog_item_material;
-			global::XLabs.Forms.Resource.Layout.select_dialog_multichoice_material = global::CimmytApp.Droid.Resource.Layout.select_dialog_multichoice_material;
-			global::XLabs.Forms.Resource.Layout.select_dialog_singlechoice_material = global::CimmytApp.Droid.Resource.Layout.select_dialog_singlechoice_material;
-			global::XLabs.Forms.Resource.Layout.support_simple_spinner_dropdown_item = global::CimmytApp.Droid.Resource.Layout.support_simple_spinner_dropdown_item;
-			global::XLabs.Forms.Resource.Layout.week = global::CimmytApp.Droid.Resource.Layout.week;
-			global::XLabs.Forms.Resource.String.ApplicationName = global::CimmytApp.Droid.Resource.String.ApplicationName;
-			global::XLabs.Forms.Resource.String.Hello = global::CimmytApp.Droid.Resource.String.Hello;
-			global::XLabs.Forms.Resource.String.abc_action_bar_home_description = global::CimmytApp.Droid.Resource.String.abc_action_bar_home_description;
-			global::XLabs.Forms.Resource.String.abc_action_bar_home_description_format = global::CimmytApp.Droid.Resource.String.abc_action_bar_home_description_format;
-			global::XLabs.Forms.Resource.String.abc_action_bar_home_subtitle_description_format = global::CimmytApp.Droid.Resource.String.abc_action_bar_home_subtitle_description_format;
-			global::XLabs.Forms.Resource.String.abc_action_bar_up_description = global::CimmytApp.Droid.Resource.String.abc_action_bar_up_description;
-			global::XLabs.Forms.Resource.String.abc_action_menu_overflow_description = global::CimmytApp.Droid.Resource.String.abc_action_menu_overflow_description;
-			global::XLabs.Forms.Resource.String.abc_action_mode_done = global::CimmytApp.Droid.Resource.String.abc_action_mode_done;
-			global::XLabs.Forms.Resource.String.abc_activity_chooser_view_see_all = global::CimmytApp.Droid.Resource.String.abc_activity_chooser_view_see_all;
-			global::XLabs.Forms.Resource.String.abc_activitychooserview_choose_application = global::CimmytApp.Droid.Resource.String.abc_activitychooserview_choose_application;
-			global::XLabs.Forms.Resource.String.abc_search_hint = global::CimmytApp.Droid.Resource.String.abc_search_hint;
-			global::XLabs.Forms.Resource.String.abc_searchview_description_clear = global::CimmytApp.Droid.Resource.String.abc_searchview_description_clear;
-			global::XLabs.Forms.Resource.String.abc_searchview_description_query = global::CimmytApp.Droid.Resource.String.abc_searchview_description_query;
-			global::XLabs.Forms.Resource.String.abc_searchview_description_search = global::CimmytApp.Droid.Resource.String.abc_searchview_description_search;
-			global::XLabs.Forms.Resource.String.abc_searchview_description_submit = global::CimmytApp.Droid.Resource.String.abc_searchview_description_submit;
-			global::XLabs.Forms.Resource.String.abc_searchview_description_voice = global::CimmytApp.Droid.Resource.String.abc_searchview_description_voice;
-			global::XLabs.Forms.Resource.String.abc_shareactionprovider_share_with = global::CimmytApp.Droid.Resource.String.abc_shareactionprovider_share_with;
-			global::XLabs.Forms.Resource.String.abc_shareactionprovider_share_with_application = global::CimmytApp.Droid.Resource.String.abc_shareactionprovider_share_with_application;
-			global::XLabs.Forms.Resource.String.abc_toolbar_collapse_description = global::CimmytApp.Droid.Resource.String.abc_toolbar_collapse_description;
-			global::XLabs.Forms.Resource.String.appbar_scrolling_view_behavior = global::CimmytApp.Droid.Resource.String.appbar_scrolling_view_behavior;
-			global::XLabs.Forms.Resource.String.day_name_format = global::CimmytApp.Droid.Resource.String.day_name_format;
-			global::XLabs.Forms.Resource.String.full_date_format = global::CimmytApp.Droid.Resource.String.full_date_format;
-			global::XLabs.Forms.Resource.String.invalid_date = global::CimmytApp.Droid.Resource.String.invalid_date;
-			global::XLabs.Forms.Resource.String.library_name = global::CimmytApp.Droid.Resource.String.library_name;
-			global::XLabs.Forms.Resource.String.month_name_format = global::CimmytApp.Droid.Resource.String.month_name_format;
-			global::XLabs.Forms.Resource.String.mr_system_route_name = global::CimmytApp.Droid.Resource.String.mr_system_route_name;
-			global::XLabs.Forms.Resource.String.mr_user_route_category_name = global::CimmytApp.Droid.Resource.String.mr_user_route_category_name;
-			global::XLabs.Forms.Resource.String.status_bar_notification_info_overflow = global::CimmytApp.Droid.Resource.String.status_bar_notification_info_overflow;
-			global::XLabs.Forms.Resource.Style.AlertDialog_AppCompat = global::CimmytApp.Droid.Resource.Style.AlertDialog_AppCompat;
-			global::XLabs.Forms.Resource.Style.AlertDialog_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.AlertDialog_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Animation_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Animation_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Animation_AppCompat_DropDownUp = global::CimmytApp.Droid.Resource.Style.Animation_AppCompat_DropDownUp;
-			global::XLabs.Forms.Resource.Style.Base_AlertDialog_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_AlertDialog_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_AlertDialog_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_AlertDialog_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_Animation_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Base_Animation_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_Animation_AppCompat_DropDownUp = global::CimmytApp.Droid.Resource.Style.Base_Animation_AppCompat_DropDownUp;
-			global::XLabs.Forms.Resource.Style.Base_DialogWindowTitle_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_DialogWindowTitle_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_DialogWindowTitleBackground_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_DialogWindowTitleBackground_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Body1 = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body1;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Body2 = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Body2;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Button = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Button;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Caption = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Caption;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display1 = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display1;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display2 = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display2;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display3 = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display3;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Display4 = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Display4;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Headline = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Headline;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Large = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Large_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Medium = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Medium_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Menu = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Menu;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_SearchResult = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_SearchResult_Title;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Small = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Small_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Subhead = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Subhead_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Title = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Title_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_DropDownItem;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_Switch;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::XLabs.Forms.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title = global::CimmytApp.Droid.Resource.Style.Base_TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_CompactMenu = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_CompactMenu;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Dialog_Alert = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_Alert;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_FixedSize;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Dialog_MinWidth;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_DialogWhenLarge;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_DarkActionBar;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_Alert;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_FixedSize;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_Dialog_MinWidth;
-			global::XLabs.Forms.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge = global::CimmytApp.Droid.Resource.Style.Base_Theme_AppCompat_Light_DialogWhenLarge;
-			global::XLabs.Forms.Resource.Style.Base_ThemeOverlay_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar = global::CimmytApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_ActionBar;
-			global::XLabs.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Dark = global::CimmytApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark;
-			global::XLabs.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar = global::CimmytApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::XLabs.Forms.Resource.Style.Base_ThemeOverlay_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_ThemeOverlay_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_V11_Theme_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Base_V11_Theme_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog = global::CimmytApp.Droid.Resource.Style.Base_V11_Theme_AppCompat_Light_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView = global::CimmytApp.Droid.Resource.Style.Base_V12_Widget_AppCompat_AutoCompleteTextView;
-			global::XLabs.Forms.Resource.Style.Base_V12_Widget_AppCompat_EditText = global::CimmytApp.Droid.Resource.Style.Base_V12_Widget_AppCompat_EditText;
-			global::XLabs.Forms.Resource.Style.Base_V21_Theme_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_V21_Theme_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_V21_Theme_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Base_V21_Theme_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_V21_Theme_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog = global::CimmytApp.Droid.Resource.Style.Base_V21_Theme_AppCompat_Light_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_V22_Theme_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_V22_Theme_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_V22_Theme_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_V22_Theme_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_V23_Theme_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_V23_Theme_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_V23_Theme_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_V23_Theme_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_V7_Theme_AppCompat = global::CimmytApp.Droid.Resource.Style.Base_V7_Theme_AppCompat;
-			global::XLabs.Forms.Resource.Style.Base_V7_Theme_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Base_V7_Theme_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_V7_Theme_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog = global::CimmytApp.Droid.Resource.Style.Base_V7_Theme_AppCompat_Light_Dialog;
-			global::XLabs.Forms.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView = global::CimmytApp.Droid.Resource.Style.Base_V7_Widget_AppCompat_AutoCompleteTextView;
-			global::XLabs.Forms.Resource.Style.Base_V7_Widget_AppCompat_EditText = global::CimmytApp.Droid.Resource.Style.Base_V7_Widget_AppCompat_EditText;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_Solid;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabText;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionBar_TabView;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionButton = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_CloseMode;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionButton_Overflow;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActionMode = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActionMode;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ActivityChooserView = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ActivityChooserView;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_AutoCompleteTextView;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Button = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Button;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Button_Borderless = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Borderless_Colored;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Button_Colored = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Colored;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Button_Small = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Button_Small;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ButtonBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ButtonBar_AlertDialog;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_CheckBox;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_RadioButton;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_CompoundButton_Switch;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_DrawerArrowToggle_Common;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_DropDownItem_Spinner;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_EditText = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_EditText;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_Solid;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_ActionBar_TabView;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ListPopupWindow = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ListPopupWindow;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ListView = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ListView;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ListView_DropDown = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ListView_DropDown;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ListView_Menu = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ListView_Menu;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_PopupMenu = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_PopupMenu_Overflow;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_PopupWindow = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_PopupWindow;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ProgressBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_ProgressBar_Horizontal;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_RatingBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_RatingBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_SearchView = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_SearchView;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_SearchView_ActionBar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Spinner = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Spinner;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Spinner_Underlined;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_TextView_SpinnerItem;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Toolbar = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar;
-			global::XLabs.Forms.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation = global::CimmytApp.Droid.Resource.Style.Base_Widget_AppCompat_Toolbar_Button_Navigation;
-			global::XLabs.Forms.Resource.Style.Base_Widget_Design_TabLayout = global::CimmytApp.Droid.Resource.Style.Base_Widget_Design_TabLayout;
-			global::XLabs.Forms.Resource.Style.CalendarCell = global::CimmytApp.Droid.Resource.Style.CalendarCell;
-			global::XLabs.Forms.Resource.Style.CalendarCell_CalendarDate = global::CimmytApp.Droid.Resource.Style.CalendarCell_CalendarDate;
-			global::XLabs.Forms.Resource.Style.CalendarCell_DayHeader = global::CimmytApp.Droid.Resource.Style.CalendarCell_DayHeader;
-			global::XLabs.Forms.Resource.Style.CalendarTitle = global::CimmytApp.Droid.Resource.Style.CalendarTitle;
-			global::XLabs.Forms.Resource.Style.CardView = global::CimmytApp.Droid.Resource.Style.CardView;
-			global::XLabs.Forms.Resource.Style.CardView_Dark = global::CimmytApp.Droid.Resource.Style.CardView_Dark;
-			global::XLabs.Forms.Resource.Style.CardView_Light = global::CimmytApp.Droid.Resource.Style.CardView_Light;
-			global::XLabs.Forms.Resource.Style.Platform_AppCompat = global::CimmytApp.Droid.Resource.Style.Platform_AppCompat;
-			global::XLabs.Forms.Resource.Style.Platform_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Platform_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Platform_ThemeOverlay_AppCompat = global::CimmytApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat;
-			global::XLabs.Forms.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark = global::CimmytApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Dark;
-			global::XLabs.Forms.Resource.Style.Platform_ThemeOverlay_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Platform_ThemeOverlay_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Platform_V11_AppCompat = global::CimmytApp.Droid.Resource.Style.Platform_V11_AppCompat;
-			global::XLabs.Forms.Resource.Style.Platform_V11_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Platform_V11_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Platform_V14_AppCompat = global::CimmytApp.Droid.Resource.Style.Platform_V14_AppCompat;
-			global::XLabs.Forms.Resource.Style.Platform_V14_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Platform_V14_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Platform_Widget_AppCompat_Spinner = global::CimmytApp.Droid.Resource.Style.Platform_Widget_AppCompat_Spinner;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat = global::CimmytApp.Droid.Resource.Style.RtlOverlay_DialogWindowTitle_AppCompat;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_ActionBar_TitleItem;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_DialogTitle_Icon;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_InternalGroup;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_PopupMenuItem_Text;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1 = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon1;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2 = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Icon2;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Query;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_Search_DropDown_Text;
-			global::XLabs.Forms.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon = global::CimmytApp.Droid.Resource.Style.RtlOverlay_Widget_AppCompat_SearchView_MagIcon;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Body1 = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Body1;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Body2 = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Body2;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Button = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Button;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Caption = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Caption;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Display1 = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Display1;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Display2 = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Display2;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Display3 = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Display3;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Display4 = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Display4;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Headline = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Headline;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Large = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Large;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Large_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Large_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Subtitle;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_SearchResult_Title;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Large;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Light_Widget_PopupMenu_Small;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Medium = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Medium;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Medium_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Medium_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Menu = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Menu;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Subtitle;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_SearchResult_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_SearchResult_Title;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Small = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Small;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Small_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Small_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Subhead = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Subhead;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Subhead_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Title;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Title_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Title_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Menu;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Subtitle_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionBar_Title_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Subtitle_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_ActionMode_Title_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Button = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Button_Inverse;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_DropDownItem;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Large;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_PopupMenu_Small;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_Switch = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_Switch;
-			global::XLabs.Forms.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem = global::CimmytApp.Droid.Resource.Style.TextAppearance_AppCompat_Widget_TextView_SpinnerItem;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded = global::CimmytApp.Droid.Resource.Style.TextAppearance_Design_CollapsingToolbar_Expanded;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Design_Error = global::CimmytApp.Droid.Resource.Style.TextAppearance_Design_Error;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Design_Hint = global::CimmytApp.Droid.Resource.Style.TextAppearance_Design_Hint;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Design_Snackbar_Message = global::CimmytApp.Droid.Resource.Style.TextAppearance_Design_Snackbar_Message;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Design_Tab = global::CimmytApp.Droid.Resource.Style.TextAppearance_Design_Tab;
-			global::XLabs.Forms.Resource.Style.TextAppearance_StatusBar_EventContent = global::CimmytApp.Droid.Resource.Style.TextAppearance_StatusBar_EventContent;
-			global::XLabs.Forms.Resource.Style.TextAppearance_StatusBar_EventContent_Info = global::CimmytApp.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Info;
-			global::XLabs.Forms.Resource.Style.TextAppearance_StatusBar_EventContent_Line2 = global::CimmytApp.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Line2;
-			global::XLabs.Forms.Resource.Style.TextAppearance_StatusBar_EventContent_Time = global::CimmytApp.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Time;
-			global::XLabs.Forms.Resource.Style.TextAppearance_StatusBar_EventContent_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_StatusBar_EventContent_Title;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item = global::CimmytApp.Droid.Resource.Style.TextAppearance_Widget_AppCompat_ExpandedMenu_Item;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle = global::CimmytApp.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Subtitle;
-			global::XLabs.Forms.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title = global::CimmytApp.Droid.Resource.Style.TextAppearance_Widget_AppCompat_Toolbar_Title;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_CompactMenu = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_CompactMenu;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Dialog = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Dialog;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Dialog_Alert = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Dialog_Alert;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Dialog_MinWidth = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Dialog_MinWidth;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_DialogWhenLarge = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_DialogWhenLarge;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light_DarkActionBar = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light_DarkActionBar;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light_Dialog = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light_Dialog;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light_Dialog_Alert = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_Alert;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light_Dialog_MinWidth;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light_DialogWhenLarge;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_Light_NoActionBar = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_Light_NoActionBar;
-			global::XLabs.Forms.Resource.Style.Theme_AppCompat_NoActionBar = global::CimmytApp.Droid.Resource.Style.Theme_AppCompat_NoActionBar;
-			global::XLabs.Forms.Resource.Style.Theme_MediaRouter = global::CimmytApp.Droid.Resource.Style.Theme_MediaRouter;
-			global::XLabs.Forms.Resource.Style.Theme_MediaRouter_Light = global::CimmytApp.Droid.Resource.Style.Theme_MediaRouter_Light;
-			global::XLabs.Forms.Resource.Style.ThemeOverlay_AppCompat = global::CimmytApp.Droid.Resource.Style.ThemeOverlay_AppCompat;
-			global::XLabs.Forms.Resource.Style.ThemeOverlay_AppCompat_ActionBar = global::CimmytApp.Droid.Resource.Style.ThemeOverlay_AppCompat_ActionBar;
-			global::XLabs.Forms.Resource.Style.ThemeOverlay_AppCompat_Dark = global::CimmytApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark;
-			global::XLabs.Forms.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar = global::CimmytApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Dark_ActionBar;
-			global::XLabs.Forms.Resource.Style.ThemeOverlay_AppCompat_Light = global::CimmytApp.Droid.Resource.Style.ThemeOverlay_AppCompat_Light;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionBar_Solid = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_Solid;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionBar_TabBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionBar_TabText = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabText;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionBar_TabView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionBar_TabView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionButton = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionButton;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionButton_CloseMode = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionButton_CloseMode;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionButton_Overflow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionButton_Overflow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActionMode = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActionMode;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ActivityChooserView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ActivityChooserView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_AutoCompleteTextView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_AutoCompleteTextView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Button = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Button;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Button_Borderless = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Button_Borderless;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Button_Borderless_Colored = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Button_Borderless_Colored;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Button_ButtonBar_AlertDialog;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Button_Colored = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Button_Colored;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Button_Small = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Button_Small;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ButtonBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ButtonBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ButtonBar_AlertDialog;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_CompoundButton_CheckBox;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_CompoundButton_RadioButton;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_CompoundButton_Switch = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_CompoundButton_Switch;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_DrawerArrowToggle = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_DrawerArrowToggle;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_DropDownItem_Spinner = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_DropDownItem_Spinner;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_EditText = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_EditText;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_Solid_Inverse;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabBar_Inverse;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabText_Inverse;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionBar_TabView_Inverse;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionButton = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_CloseMode;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionButton_Overflow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActionMode_Inverse;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ActivityChooserView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ActivityChooserView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_AutoCompleteTextView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_DropDownItem_Spinner;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ListPopupWindow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ListPopupWindow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_ListView_DropDown = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_ListView_DropDown;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_PopupMenu = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_PopupMenu_Overflow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_SearchView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_SearchView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Light_Spinner_DropDown_ActionBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ListPopupWindow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ListPopupWindow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ListView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ListView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ListView_DropDown = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ListView_DropDown;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ListView_Menu = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ListView_Menu;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_PopupMenu = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_PopupMenu;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_PopupMenu_Overflow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_PopupMenu_Overflow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_PopupWindow = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_PopupWindow;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ProgressBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ProgressBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_ProgressBar_Horizontal;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_RatingBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_RatingBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_SearchView = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_SearchView;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_SearchView_ActionBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_SearchView_ActionBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Spinner = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Spinner;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Spinner_DropDown = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Spinner_DropDown_ActionBar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Spinner_Underlined = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Spinner_Underlined;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_TextView_SpinnerItem = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_TextView_SpinnerItem;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Toolbar = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Toolbar;
-			global::XLabs.Forms.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation = global::CimmytApp.Droid.Resource.Style.Widget_AppCompat_Toolbar_Button_Navigation;
-			global::XLabs.Forms.Resource.Style.Widget_Design_AppBarLayout = global::CimmytApp.Droid.Resource.Style.Widget_Design_AppBarLayout;
-			global::XLabs.Forms.Resource.Style.Widget_Design_CollapsingToolbar = global::CimmytApp.Droid.Resource.Style.Widget_Design_CollapsingToolbar;
-			global::XLabs.Forms.Resource.Style.Widget_Design_CoordinatorLayout = global::CimmytApp.Droid.Resource.Style.Widget_Design_CoordinatorLayout;
-			global::XLabs.Forms.Resource.Style.Widget_Design_FloatingActionButton = global::CimmytApp.Droid.Resource.Style.Widget_Design_FloatingActionButton;
-			global::XLabs.Forms.Resource.Style.Widget_Design_NavigationView = global::CimmytApp.Droid.Resource.Style.Widget_Design_NavigationView;
-			global::XLabs.Forms.Resource.Style.Widget_Design_ScrimInsetsFrameLayout = global::CimmytApp.Droid.Resource.Style.Widget_Design_ScrimInsetsFrameLayout;
-			global::XLabs.Forms.Resource.Style.Widget_Design_Snackbar = global::CimmytApp.Droid.Resource.Style.Widget_Design_Snackbar;
-			global::XLabs.Forms.Resource.Style.Widget_Design_TabLayout = global::CimmytApp.Droid.Resource.Style.Widget_Design_TabLayout;
-			global::XLabs.Forms.Resource.Style.Widget_Design_TextInputLayout = global::CimmytApp.Droid.Resource.Style.Widget_Design_TextInputLayout;
-			global::XLabs.Forms.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton = global::CimmytApp.Droid.Resource.Style.Widget_MediaRouter_Light_MediaRouteButton;
-			global::XLabs.Forms.Resource.Style.Widget_MediaRouter_MediaRouteButton = global::CimmytApp.Droid.Resource.Style.Widget_MediaRouter_MediaRouteButton;
-			global::XLabs.Forms.Resource.Styleable.ActionBar = global::CimmytApp.Droid.Resource.Styleable.ActionBar;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_background = global::CimmytApp.Droid.Resource.Styleable.ActionBar_background;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_backgroundSplit = global::CimmytApp.Droid.Resource.Styleable.ActionBar_backgroundSplit;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_backgroundStacked = global::CimmytApp.Droid.Resource.Styleable.ActionBar_backgroundStacked;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_contentInsetEnd = global::CimmytApp.Droid.Resource.Styleable.ActionBar_contentInsetEnd;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_contentInsetLeft = global::CimmytApp.Droid.Resource.Styleable.ActionBar_contentInsetLeft;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_contentInsetRight = global::CimmytApp.Droid.Resource.Styleable.ActionBar_contentInsetRight;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_contentInsetStart = global::CimmytApp.Droid.Resource.Styleable.ActionBar_contentInsetStart;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_customNavigationLayout = global::CimmytApp.Droid.Resource.Styleable.ActionBar_customNavigationLayout;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_displayOptions = global::CimmytApp.Droid.Resource.Styleable.ActionBar_displayOptions;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_divider = global::CimmytApp.Droid.Resource.Styleable.ActionBar_divider;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_elevation = global::CimmytApp.Droid.Resource.Styleable.ActionBar_elevation;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_height = global::CimmytApp.Droid.Resource.Styleable.ActionBar_height;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_hideOnContentScroll = global::CimmytApp.Droid.Resource.Styleable.ActionBar_hideOnContentScroll;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_homeAsUpIndicator = global::CimmytApp.Droid.Resource.Styleable.ActionBar_homeAsUpIndicator;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_homeLayout = global::CimmytApp.Droid.Resource.Styleable.ActionBar_homeLayout;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_icon = global::CimmytApp.Droid.Resource.Styleable.ActionBar_icon;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_indeterminateProgressStyle = global::CimmytApp.Droid.Resource.Styleable.ActionBar_indeterminateProgressStyle;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_itemPadding = global::CimmytApp.Droid.Resource.Styleable.ActionBar_itemPadding;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_logo = global::CimmytApp.Droid.Resource.Styleable.ActionBar_logo;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_navigationMode = global::CimmytApp.Droid.Resource.Styleable.ActionBar_navigationMode;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_popupTheme = global::CimmytApp.Droid.Resource.Styleable.ActionBar_popupTheme;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_progressBarPadding = global::CimmytApp.Droid.Resource.Styleable.ActionBar_progressBarPadding;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_progressBarStyle = global::CimmytApp.Droid.Resource.Styleable.ActionBar_progressBarStyle;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_subtitle = global::CimmytApp.Droid.Resource.Styleable.ActionBar_subtitle;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_subtitleTextStyle = global::CimmytApp.Droid.Resource.Styleable.ActionBar_subtitleTextStyle;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_title = global::CimmytApp.Droid.Resource.Styleable.ActionBar_title;
-			global::XLabs.Forms.Resource.Styleable.ActionBar_titleTextStyle = global::CimmytApp.Droid.Resource.Styleable.ActionBar_titleTextStyle;
-			global::XLabs.Forms.Resource.Styleable.ActionBarLayout = global::CimmytApp.Droid.Resource.Styleable.ActionBarLayout;
-			global::XLabs.Forms.Resource.Styleable.ActionBarLayout_android_layout_gravity = global::CimmytApp.Droid.Resource.Styleable.ActionBarLayout_android_layout_gravity;
-			global::XLabs.Forms.Resource.Styleable.ActionMenuItemView = global::CimmytApp.Droid.Resource.Styleable.ActionMenuItemView;
-			global::XLabs.Forms.Resource.Styleable.ActionMenuItemView_android_minWidth = global::CimmytApp.Droid.Resource.Styleable.ActionMenuItemView_android_minWidth;
-			global::XLabs.Forms.Resource.Styleable.ActionMenuView = global::CimmytApp.Droid.Resource.Styleable.ActionMenuView;
-			global::XLabs.Forms.Resource.Styleable.ActionMode = global::CimmytApp.Droid.Resource.Styleable.ActionMode;
-			global::XLabs.Forms.Resource.Styleable.ActionMode_background = global::CimmytApp.Droid.Resource.Styleable.ActionMode_background;
-			global::XLabs.Forms.Resource.Styleable.ActionMode_backgroundSplit = global::CimmytApp.Droid.Resource.Styleable.ActionMode_backgroundSplit;
-			global::XLabs.Forms.Resource.Styleable.ActionMode_closeItemLayout = global::CimmytApp.Droid.Resource.Styleable.ActionMode_closeItemLayout;
-			global::XLabs.Forms.Resource.Styleable.ActionMode_height = global::CimmytApp.Droid.Resource.Styleable.ActionMode_height;
-			global::XLabs.Forms.Resource.Styleable.ActionMode_subtitleTextStyle = global::CimmytApp.Droid.Resource.Styleable.ActionMode_subtitleTextStyle;
-			global::XLabs.Forms.Resource.Styleable.ActionMode_titleTextStyle = global::CimmytApp.Droid.Resource.Styleable.ActionMode_titleTextStyle;
-			global::XLabs.Forms.Resource.Styleable.ActivityChooserView = global::CimmytApp.Droid.Resource.Styleable.ActivityChooserView;
-			global::XLabs.Forms.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable = global::CimmytApp.Droid.Resource.Styleable.ActivityChooserView_expandActivityOverflowButtonDrawable;
-			global::XLabs.Forms.Resource.Styleable.ActivityChooserView_initialActivityCount = global::CimmytApp.Droid.Resource.Styleable.ActivityChooserView_initialActivityCount;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog = global::CimmytApp.Droid.Resource.Styleable.AlertDialog;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog_android_layout = global::CimmytApp.Droid.Resource.Styleable.AlertDialog_android_layout;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog_buttonPanelSideLayout = global::CimmytApp.Droid.Resource.Styleable.AlertDialog_buttonPanelSideLayout;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog_listItemLayout = global::CimmytApp.Droid.Resource.Styleable.AlertDialog_listItemLayout;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog_listLayout = global::CimmytApp.Droid.Resource.Styleable.AlertDialog_listLayout;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog_multiChoiceItemLayout = global::CimmytApp.Droid.Resource.Styleable.AlertDialog_multiChoiceItemLayout;
-			global::XLabs.Forms.Resource.Styleable.AlertDialog_singleChoiceItemLayout = global::CimmytApp.Droid.Resource.Styleable.AlertDialog_singleChoiceItemLayout;
-			global::XLabs.Forms.Resource.Styleable.AppBarLayout = global::CimmytApp.Droid.Resource.Styleable.AppBarLayout;
-			global::XLabs.Forms.Resource.Styleable.AppBarLayout_android_background = global::CimmytApp.Droid.Resource.Styleable.AppBarLayout_android_background;
-			global::XLabs.Forms.Resource.Styleable.AppBarLayout_elevation = global::CimmytApp.Droid.Resource.Styleable.AppBarLayout_elevation;
-			global::XLabs.Forms.Resource.Styleable.AppBarLayout_expanded = global::CimmytApp.Droid.Resource.Styleable.AppBarLayout_expanded;
-			global::XLabs.Forms.Resource.Styleable.AppCompatTextView = global::CimmytApp.Droid.Resource.Styleable.AppCompatTextView;
-			global::XLabs.Forms.Resource.Styleable.AppCompatTextView_android_textAppearance = global::CimmytApp.Droid.Resource.Styleable.AppCompatTextView_android_textAppearance;
-			global::XLabs.Forms.Resource.Styleable.AppCompatTextView_textAllCaps = global::CimmytApp.Droid.Resource.Styleable.AppCompatTextView_textAllCaps;
-			global::XLabs.Forms.Resource.Styleable.CardView = global::CimmytApp.Droid.Resource.Styleable.CardView;
-			global::XLabs.Forms.Resource.Styleable.CardView_cardBackgroundColor = global::CimmytApp.Droid.Resource.Styleable.CardView_cardBackgroundColor;
-			global::XLabs.Forms.Resource.Styleable.CardView_cardCornerRadius = global::CimmytApp.Droid.Resource.Styleable.CardView_cardCornerRadius;
-			global::XLabs.Forms.Resource.Styleable.CardView_cardElevation = global::CimmytApp.Droid.Resource.Styleable.CardView_cardElevation;
-			global::XLabs.Forms.Resource.Styleable.CardView_cardMaxElevation = global::CimmytApp.Droid.Resource.Styleable.CardView_cardMaxElevation;
-			global::XLabs.Forms.Resource.Styleable.CardView_cardPreventCornerOverlap = global::CimmytApp.Droid.Resource.Styleable.CardView_cardPreventCornerOverlap;
-			global::XLabs.Forms.Resource.Styleable.CardView_cardUseCompatPadding = global::CimmytApp.Droid.Resource.Styleable.CardView_cardUseCompatPadding;
-			global::XLabs.Forms.Resource.Styleable.CardView_contentPadding = global::CimmytApp.Droid.Resource.Styleable.CardView_contentPadding;
-			global::XLabs.Forms.Resource.Styleable.CardView_contentPaddingBottom = global::CimmytApp.Droid.Resource.Styleable.CardView_contentPaddingBottom;
-			global::XLabs.Forms.Resource.Styleable.CardView_contentPaddingLeft = global::CimmytApp.Droid.Resource.Styleable.CardView_contentPaddingLeft;
-			global::XLabs.Forms.Resource.Styleable.CardView_contentPaddingRight = global::CimmytApp.Droid.Resource.Styleable.CardView_contentPaddingRight;
-			global::XLabs.Forms.Resource.Styleable.CardView_contentPaddingTop = global::CimmytApp.Droid.Resource.Styleable.CardView_contentPaddingTop;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleGravity;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_collapsedTitleTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_contentScrim = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_contentScrim;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleGravity;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMargin;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginBottom;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginEnd;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginStart;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleMarginTop;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_expandedTitleTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_statusBarScrim;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_title = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_title;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_titleEnabled = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_titleEnabled;
-			global::XLabs.Forms.Resource.Styleable.CollapsingToolbarLayout_toolbarId = global::CimmytApp.Droid.Resource.Styleable.CollapsingToolbarLayout_toolbarId;
-			global::XLabs.Forms.Resource.Styleable.CompoundButton = global::CimmytApp.Droid.Resource.Styleable.CompoundButton;
-			global::XLabs.Forms.Resource.Styleable.CompoundButton_android_button = global::CimmytApp.Droid.Resource.Styleable.CompoundButton_android_button;
-			global::XLabs.Forms.Resource.Styleable.CompoundButton_buttonTint = global::CimmytApp.Droid.Resource.Styleable.CompoundButton_buttonTint;
-			global::XLabs.Forms.Resource.Styleable.CompoundButton_buttonTintMode = global::CimmytApp.Droid.Resource.Styleable.CompoundButton_buttonTintMode;
-			global::XLabs.Forms.Resource.Styleable.CoordinatorLayout = global::CimmytApp.Droid.Resource.Styleable.CoordinatorLayout;
-			global::XLabs.Forms.Resource.Styleable.CoordinatorLayout_keylines = global::CimmytApp.Droid.Resource.Styleable.CoordinatorLayout_keylines;
-			global::XLabs.Forms.Resource.Styleable.CoordinatorLayout_statusBarBackground = global::CimmytApp.Droid.Resource.Styleable.CoordinatorLayout_statusBarBackground;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_arrowHeadLength = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_arrowHeadLength;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_arrowShaftLength = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_arrowShaftLength;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_barLength = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_barLength;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_color = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_color;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_drawableSize = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_drawableSize;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_gapBetweenBars = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_gapBetweenBars;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_spinBars = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_spinBars;
-			global::XLabs.Forms.Resource.Styleable.DrawerArrowToggle_thickness = global::CimmytApp.Droid.Resource.Styleable.DrawerArrowToggle_thickness;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_backgroundTint = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_backgroundTint;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_backgroundTintMode = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_backgroundTintMode;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_borderWidth = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_borderWidth;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_elevation = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_elevation;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_fabSize = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_fabSize;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_pressedTranslationZ = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_pressedTranslationZ;
-			global::XLabs.Forms.Resource.Styleable.FloatingActionButton_rippleColor = global::CimmytApp.Droid.Resource.Styleable.FloatingActionButton_rippleColor;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_android_baselineAligned = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAligned;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_android_baselineAlignedChildIndex;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_android_gravity = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_android_gravity;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_android_orientation = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_android_orientation;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_android_weightSum = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_android_weightSum;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_divider = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_divider;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_dividerPadding = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_dividerPadding;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_measureWithLargestChild;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_showDividers = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_showDividers;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_Layout = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_gravity;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_height;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_weight;
-			global::XLabs.Forms.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width = global::CimmytApp.Droid.Resource.Styleable.LinearLayoutCompat_Layout_android_layout_width;
-			global::XLabs.Forms.Resource.Styleable.ListPopupWindow = global::CimmytApp.Droid.Resource.Styleable.ListPopupWindow;
-			global::XLabs.Forms.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset = global::CimmytApp.Droid.Resource.Styleable.ListPopupWindow_android_dropDownHorizontalOffset;
-			global::XLabs.Forms.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset = global::CimmytApp.Droid.Resource.Styleable.ListPopupWindow_android_dropDownVerticalOffset;
-			global::XLabs.Forms.Resource.Styleable.MediaRouteButton = global::CimmytApp.Droid.Resource.Styleable.MediaRouteButton;
-			global::XLabs.Forms.Resource.Styleable.MediaRouteButton_android_minHeight = global::CimmytApp.Droid.Resource.Styleable.MediaRouteButton_android_minHeight;
-			global::XLabs.Forms.Resource.Styleable.MediaRouteButton_android_minWidth = global::CimmytApp.Droid.Resource.Styleable.MediaRouteButton_android_minWidth;
-			global::XLabs.Forms.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable = global::CimmytApp.Droid.Resource.Styleable.MediaRouteButton_externalRouteEnabledDrawable;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup = global::CimmytApp.Droid.Resource.Styleable.MenuGroup;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup_android_checkableBehavior = global::CimmytApp.Droid.Resource.Styleable.MenuGroup_android_checkableBehavior;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup_android_enabled = global::CimmytApp.Droid.Resource.Styleable.MenuGroup_android_enabled;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup_android_id = global::CimmytApp.Droid.Resource.Styleable.MenuGroup_android_id;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup_android_menuCategory = global::CimmytApp.Droid.Resource.Styleable.MenuGroup_android_menuCategory;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup_android_orderInCategory = global::CimmytApp.Droid.Resource.Styleable.MenuGroup_android_orderInCategory;
-			global::XLabs.Forms.Resource.Styleable.MenuGroup_android_visible = global::CimmytApp.Droid.Resource.Styleable.MenuGroup_android_visible;
-			global::XLabs.Forms.Resource.Styleable.MenuItem = global::CimmytApp.Droid.Resource.Styleable.MenuItem;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_actionLayout = global::CimmytApp.Droid.Resource.Styleable.MenuItem_actionLayout;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_actionProviderClass = global::CimmytApp.Droid.Resource.Styleable.MenuItem_actionProviderClass;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_actionViewClass = global::CimmytApp.Droid.Resource.Styleable.MenuItem_actionViewClass;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_alphabeticShortcut = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_alphabeticShortcut;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_checkable = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_checkable;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_checked = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_checked;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_enabled = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_enabled;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_icon = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_icon;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_id = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_id;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_menuCategory = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_menuCategory;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_numericShortcut = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_numericShortcut;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_onClick = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_onClick;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_orderInCategory = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_orderInCategory;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_title = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_title;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_titleCondensed = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_titleCondensed;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_android_visible = global::CimmytApp.Droid.Resource.Styleable.MenuItem_android_visible;
-			global::XLabs.Forms.Resource.Styleable.MenuItem_showAsAction = global::CimmytApp.Droid.Resource.Styleable.MenuItem_showAsAction;
-			global::XLabs.Forms.Resource.Styleable.MenuView = global::CimmytApp.Droid.Resource.Styleable.MenuView;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_headerBackground = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_headerBackground;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_horizontalDivider = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_horizontalDivider;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_itemBackground = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_itemBackground;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_itemIconDisabledAlpha = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_itemIconDisabledAlpha;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_itemTextAppearance = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_itemTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_verticalDivider = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_verticalDivider;
-			global::XLabs.Forms.Resource.Styleable.MenuView_android_windowAnimationStyle = global::CimmytApp.Droid.Resource.Styleable.MenuView_android_windowAnimationStyle;
-			global::XLabs.Forms.Resource.Styleable.MenuView_preserveIconSpacing = global::CimmytApp.Droid.Resource.Styleable.MenuView_preserveIconSpacing;
-			global::XLabs.Forms.Resource.Styleable.NavigationView = global::CimmytApp.Droid.Resource.Styleable.NavigationView;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_android_background = global::CimmytApp.Droid.Resource.Styleable.NavigationView_android_background;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_android_fitsSystemWindows = global::CimmytApp.Droid.Resource.Styleable.NavigationView_android_fitsSystemWindows;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_android_maxWidth = global::CimmytApp.Droid.Resource.Styleable.NavigationView_android_maxWidth;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_elevation = global::CimmytApp.Droid.Resource.Styleable.NavigationView_elevation;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_headerLayout = global::CimmytApp.Droid.Resource.Styleable.NavigationView_headerLayout;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_itemBackground = global::CimmytApp.Droid.Resource.Styleable.NavigationView_itemBackground;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_itemIconTint = global::CimmytApp.Droid.Resource.Styleable.NavigationView_itemIconTint;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_itemTextAppearance = global::CimmytApp.Droid.Resource.Styleable.NavigationView_itemTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_itemTextColor = global::CimmytApp.Droid.Resource.Styleable.NavigationView_itemTextColor;
-			global::XLabs.Forms.Resource.Styleable.NavigationView_menu = global::CimmytApp.Droid.Resource.Styleable.NavigationView_menu;
-			global::XLabs.Forms.Resource.Styleable.PopupWindow = global::CimmytApp.Droid.Resource.Styleable.PopupWindow;
-			global::XLabs.Forms.Resource.Styleable.PopupWindow_android_popupBackground = global::CimmytApp.Droid.Resource.Styleable.PopupWindow_android_popupBackground;
-			global::XLabs.Forms.Resource.Styleable.PopupWindow_overlapAnchor = global::CimmytApp.Droid.Resource.Styleable.PopupWindow_overlapAnchor;
-			global::XLabs.Forms.Resource.Styleable.PopupWindowBackgroundState = global::CimmytApp.Droid.Resource.Styleable.PopupWindowBackgroundState;
-			global::XLabs.Forms.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor = global::CimmytApp.Droid.Resource.Styleable.PopupWindowBackgroundState_state_above_anchor;
-			global::XLabs.Forms.Resource.Styleable.ScrimInsetsFrameLayout = global::CimmytApp.Droid.Resource.Styleable.ScrimInsetsFrameLayout;
-			global::XLabs.Forms.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground = global::CimmytApp.Droid.Resource.Styleable.ScrimInsetsFrameLayout_insetForeground;
-			global::XLabs.Forms.Resource.Styleable.SearchView = global::CimmytApp.Droid.Resource.Styleable.SearchView;
-			global::XLabs.Forms.Resource.Styleable.SearchView_android_focusable = global::CimmytApp.Droid.Resource.Styleable.SearchView_android_focusable;
-			global::XLabs.Forms.Resource.Styleable.SearchView_android_imeOptions = global::CimmytApp.Droid.Resource.Styleable.SearchView_android_imeOptions;
-			global::XLabs.Forms.Resource.Styleable.SearchView_android_inputType = global::CimmytApp.Droid.Resource.Styleable.SearchView_android_inputType;
-			global::XLabs.Forms.Resource.Styleable.SearchView_android_maxWidth = global::CimmytApp.Droid.Resource.Styleable.SearchView_android_maxWidth;
-			global::XLabs.Forms.Resource.Styleable.SearchView_closeIcon = global::CimmytApp.Droid.Resource.Styleable.SearchView_closeIcon;
-			global::XLabs.Forms.Resource.Styleable.SearchView_commitIcon = global::CimmytApp.Droid.Resource.Styleable.SearchView_commitIcon;
-			global::XLabs.Forms.Resource.Styleable.SearchView_defaultQueryHint = global::CimmytApp.Droid.Resource.Styleable.SearchView_defaultQueryHint;
-			global::XLabs.Forms.Resource.Styleable.SearchView_goIcon = global::CimmytApp.Droid.Resource.Styleable.SearchView_goIcon;
-			global::XLabs.Forms.Resource.Styleable.SearchView_iconifiedByDefault = global::CimmytApp.Droid.Resource.Styleable.SearchView_iconifiedByDefault;
-			global::XLabs.Forms.Resource.Styleable.SearchView_layout = global::CimmytApp.Droid.Resource.Styleable.SearchView_layout;
-			global::XLabs.Forms.Resource.Styleable.SearchView_queryBackground = global::CimmytApp.Droid.Resource.Styleable.SearchView_queryBackground;
-			global::XLabs.Forms.Resource.Styleable.SearchView_queryHint = global::CimmytApp.Droid.Resource.Styleable.SearchView_queryHint;
-			global::XLabs.Forms.Resource.Styleable.SearchView_searchHintIcon = global::CimmytApp.Droid.Resource.Styleable.SearchView_searchHintIcon;
-			global::XLabs.Forms.Resource.Styleable.SearchView_searchIcon = global::CimmytApp.Droid.Resource.Styleable.SearchView_searchIcon;
-			global::XLabs.Forms.Resource.Styleable.SearchView_submitBackground = global::CimmytApp.Droid.Resource.Styleable.SearchView_submitBackground;
-			global::XLabs.Forms.Resource.Styleable.SearchView_suggestionRowLayout = global::CimmytApp.Droid.Resource.Styleable.SearchView_suggestionRowLayout;
-			global::XLabs.Forms.Resource.Styleable.SearchView_voiceIcon = global::CimmytApp.Droid.Resource.Styleable.SearchView_voiceIcon;
-			global::XLabs.Forms.Resource.Styleable.SnackbarLayout = global::CimmytApp.Droid.Resource.Styleable.SnackbarLayout;
-			global::XLabs.Forms.Resource.Styleable.SnackbarLayout_android_maxWidth = global::CimmytApp.Droid.Resource.Styleable.SnackbarLayout_android_maxWidth;
-			global::XLabs.Forms.Resource.Styleable.SnackbarLayout_elevation = global::CimmytApp.Droid.Resource.Styleable.SnackbarLayout_elevation;
-			global::XLabs.Forms.Resource.Styleable.SnackbarLayout_maxActionInlineWidth = global::CimmytApp.Droid.Resource.Styleable.SnackbarLayout_maxActionInlineWidth;
-			global::XLabs.Forms.Resource.Styleable.Spinner = global::CimmytApp.Droid.Resource.Styleable.Spinner;
-			global::XLabs.Forms.Resource.Styleable.Spinner_android_dropDownWidth = global::CimmytApp.Droid.Resource.Styleable.Spinner_android_dropDownWidth;
-			global::XLabs.Forms.Resource.Styleable.Spinner_android_popupBackground = global::CimmytApp.Droid.Resource.Styleable.Spinner_android_popupBackground;
-			global::XLabs.Forms.Resource.Styleable.Spinner_android_prompt = global::CimmytApp.Droid.Resource.Styleable.Spinner_android_prompt;
-			global::XLabs.Forms.Resource.Styleable.Spinner_popupTheme = global::CimmytApp.Droid.Resource.Styleable.Spinner_popupTheme;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_android_textOff = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_android_textOff;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_android_textOn = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_android_textOn;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_android_thumb = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_android_thumb;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_showText = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_showText;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_splitTrack = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_splitTrack;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_switchMinWidth = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_switchMinWidth;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_switchPadding = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_switchPadding;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_switchTextAppearance = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_switchTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_thumbTextPadding = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_thumbTextPadding;
-			global::XLabs.Forms.Resource.Styleable.SwitchCompat_track = global::CimmytApp.Droid.Resource.Styleable.SwitchCompat_track;
-			global::XLabs.Forms.Resource.Styleable.TabLayout = global::CimmytApp.Droid.Resource.Styleable.TabLayout;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabBackground = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabBackground;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabContentStart = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabContentStart;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabGravity = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabGravity;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabIndicatorColor = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabIndicatorColor;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabIndicatorHeight = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabIndicatorHeight;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabMaxWidth = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabMaxWidth;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabMinWidth = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabMinWidth;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabMode = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabMode;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabPadding = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabPadding;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabPaddingBottom = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabPaddingBottom;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabPaddingEnd = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabPaddingEnd;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabPaddingStart = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabPaddingStart;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabPaddingTop = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabPaddingTop;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabSelectedTextColor = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabSelectedTextColor;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabTextAppearance = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.TabLayout_tabTextColor = global::CimmytApp.Droid.Resource.Styleable.TabLayout_tabTextColor;
-			global::XLabs.Forms.Resource.Styleable.TextAppearance = global::CimmytApp.Droid.Resource.Styleable.TextAppearance;
-			global::XLabs.Forms.Resource.Styleable.TextAppearance_android_textColor = global::CimmytApp.Droid.Resource.Styleable.TextAppearance_android_textColor;
-			global::XLabs.Forms.Resource.Styleable.TextAppearance_android_textSize = global::CimmytApp.Droid.Resource.Styleable.TextAppearance_android_textSize;
-			global::XLabs.Forms.Resource.Styleable.TextAppearance_android_textStyle = global::CimmytApp.Droid.Resource.Styleable.TextAppearance_android_textStyle;
-			global::XLabs.Forms.Resource.Styleable.TextAppearance_android_typeface = global::CimmytApp.Droid.Resource.Styleable.TextAppearance_android_typeface;
-			global::XLabs.Forms.Resource.Styleable.TextAppearance_textAllCaps = global::CimmytApp.Droid.Resource.Styleable.TextAppearance_textAllCaps;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout_android_hint = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout_android_hint;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout_android_textColorHint = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout_android_textColorHint;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout_errorEnabled = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout_errorEnabled;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout_errorTextAppearance = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout_errorTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout_hintAnimationEnabled = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout_hintAnimationEnabled;
-			global::XLabs.Forms.Resource.Styleable.TextInputLayout_hintTextAppearance = global::CimmytApp.Droid.Resource.Styleable.TextInputLayout_hintTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.Toolbar = global::CimmytApp.Droid.Resource.Styleable.Toolbar;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_android_gravity = global::CimmytApp.Droid.Resource.Styleable.Toolbar_android_gravity;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_android_minHeight = global::CimmytApp.Droid.Resource.Styleable.Toolbar_android_minHeight;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_collapseContentDescription = global::CimmytApp.Droid.Resource.Styleable.Toolbar_collapseContentDescription;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_collapseIcon = global::CimmytApp.Droid.Resource.Styleable.Toolbar_collapseIcon;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_contentInsetEnd = global::CimmytApp.Droid.Resource.Styleable.Toolbar_contentInsetEnd;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_contentInsetLeft = global::CimmytApp.Droid.Resource.Styleable.Toolbar_contentInsetLeft;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_contentInsetRight = global::CimmytApp.Droid.Resource.Styleable.Toolbar_contentInsetRight;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_contentInsetStart = global::CimmytApp.Droid.Resource.Styleable.Toolbar_contentInsetStart;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_logo = global::CimmytApp.Droid.Resource.Styleable.Toolbar_logo;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_logoDescription = global::CimmytApp.Droid.Resource.Styleable.Toolbar_logoDescription;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_maxButtonHeight = global::CimmytApp.Droid.Resource.Styleable.Toolbar_maxButtonHeight;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_navigationContentDescription = global::CimmytApp.Droid.Resource.Styleable.Toolbar_navigationContentDescription;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_navigationIcon = global::CimmytApp.Droid.Resource.Styleable.Toolbar_navigationIcon;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_popupTheme = global::CimmytApp.Droid.Resource.Styleable.Toolbar_popupTheme;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_subtitle = global::CimmytApp.Droid.Resource.Styleable.Toolbar_subtitle;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_subtitleTextAppearance = global::CimmytApp.Droid.Resource.Styleable.Toolbar_subtitleTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_subtitleTextColor = global::CimmytApp.Droid.Resource.Styleable.Toolbar_subtitleTextColor;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_title = global::CimmytApp.Droid.Resource.Styleable.Toolbar_title;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleMarginBottom = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleMarginBottom;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleMarginEnd = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleMarginEnd;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleMarginStart = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleMarginStart;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleMarginTop = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleMarginTop;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleMargins = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleMargins;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleTextAppearance = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
-			global::XLabs.Forms.Resource.Styleable.Toolbar_titleTextColor = global::CimmytApp.Droid.Resource.Styleable.Toolbar_titleTextColor;
-			global::XLabs.Forms.Resource.Styleable.View = global::CimmytApp.Droid.Resource.Styleable.View;
-			global::XLabs.Forms.Resource.Styleable.View_android_focusable = global::CimmytApp.Droid.Resource.Styleable.View_android_focusable;
-			global::XLabs.Forms.Resource.Styleable.View_android_theme = global::CimmytApp.Droid.Resource.Styleable.View_android_theme;
-			global::XLabs.Forms.Resource.Styleable.View_paddingEnd = global::CimmytApp.Droid.Resource.Styleable.View_paddingEnd;
-			global::XLabs.Forms.Resource.Styleable.View_paddingStart = global::CimmytApp.Droid.Resource.Styleable.View_paddingStart;
-			global::XLabs.Forms.Resource.Styleable.View_theme = global::CimmytApp.Droid.Resource.Styleable.View_theme;
-			global::XLabs.Forms.Resource.Styleable.ViewBackgroundHelper = global::CimmytApp.Droid.Resource.Styleable.ViewBackgroundHelper;
-			global::XLabs.Forms.Resource.Styleable.ViewBackgroundHelper_android_background = global::CimmytApp.Droid.Resource.Styleable.ViewBackgroundHelper_android_background;
-			global::XLabs.Forms.Resource.Styleable.ViewBackgroundHelper_backgroundTint = global::CimmytApp.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTint;
-			global::XLabs.Forms.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode = global::CimmytApp.Droid.Resource.Styleable.ViewBackgroundHelper_backgroundTintMode;
-			global::XLabs.Forms.Resource.Styleable.ViewStubCompat = global::CimmytApp.Droid.Resource.Styleable.ViewStubCompat;
-			global::XLabs.Forms.Resource.Styleable.ViewStubCompat_android_id = global::CimmytApp.Droid.Resource.Styleable.ViewStubCompat_android_id;
-			global::XLabs.Forms.Resource.Styleable.ViewStubCompat_android_inflatedId = global::CimmytApp.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
-			global::XLabs.Forms.Resource.Styleable.ViewStubCompat_android_layout = global::CimmytApp.Droid.Resource.Styleable.ViewStubCompat_android_layout;
-			global::XLabs.Platform.Resource.String.ApplicationName = global::CimmytApp.Droid.Resource.String.ApplicationName;
-			global::XLabs.Platform.Resource.String.Hello = global::CimmytApp.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation
@@ -11751,41 +10395,41 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f090029
 			public const int button_material_light = 2131296297;
 			
-			// aapt resource value: 0x7f090004
-			public const int calendar_active_month_bg = 2131296260;
-			
-			// aapt resource value: 0x7f090005
-			public const int calendar_bg = 2131296261;
-			
-			// aapt resource value: 0x7f090006
-			public const int calendar_divider = 2131296262;
-			
-			// aapt resource value: 0x7f090009
-			public const int calendar_highlighted_day_bg = 2131296265;
-			
-			// aapt resource value: 0x7f090007
-			public const int calendar_inactive_month_bg = 2131296263;
-			
-			// aapt resource value: 0x7f090008
-			public const int calendar_selected_day_bg = 2131296264;
-			
-			// aapt resource value: 0x7f09000a
-			public const int calendar_selected_range_bg = 2131296266;
-			
 			// aapt resource value: 0x7f09000c
-			public const int calendar_text_active = 2131296268;
-			
-			// aapt resource value: 0x7f09000b
-			public const int calendar_text_inactive = 2131296267;
+			public const int calendar_active_month_bg = 2131296268;
 			
 			// aapt resource value: 0x7f09000d
-			public const int calendar_text_selected = 2131296269;
+			public const int calendar_bg = 2131296269;
+			
+			// aapt resource value: 0x7f09000e
+			public const int calendar_divider = 2131296270;
+			
+			// aapt resource value: 0x7f090011
+			public const int calendar_highlighted_day_bg = 2131296273;
+			
+			// aapt resource value: 0x7f09000f
+			public const int calendar_inactive_month_bg = 2131296271;
+			
+			// aapt resource value: 0x7f090010
+			public const int calendar_selected_day_bg = 2131296272;
+			
+			// aapt resource value: 0x7f090012
+			public const int calendar_selected_range_bg = 2131296274;
+			
+			// aapt resource value: 0x7f090014
+			public const int calendar_text_active = 2131296276;
+			
+			// aapt resource value: 0x7f090013
+			public const int calendar_text_inactive = 2131296275;
+			
+			// aapt resource value: 0x7f090015
+			public const int calendar_text_selected = 2131296277;
 			
 			// aapt resource value: 0x7f090087
 			public const int calendar_text_selector = 2131296391;
 			
-			// aapt resource value: 0x7f09000e
-			public const int calendar_text_unselectable = 2131296270;
+			// aapt resource value: 0x7f090016
+			public const int calendar_text_unselectable = 2131296278;
 			
 			// aapt resource value: 0x7f090000
 			public const int cardview_dark_background = 2131296256;
@@ -11802,32 +10446,32 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f090088
 			public const int common_google_signin_btn_text_dark = 2131296392;
 			
-			// aapt resource value: 0x7f09000f
-			public const int common_google_signin_btn_text_dark_default = 2131296271;
+			// aapt resource value: 0x7f090004
+			public const int common_google_signin_btn_text_dark_default = 2131296260;
 			
-			// aapt resource value: 0x7f090010
-			public const int common_google_signin_btn_text_dark_disabled = 2131296272;
+			// aapt resource value: 0x7f090005
+			public const int common_google_signin_btn_text_dark_disabled = 2131296261;
 			
-			// aapt resource value: 0x7f090011
-			public const int common_google_signin_btn_text_dark_focused = 2131296273;
+			// aapt resource value: 0x7f090006
+			public const int common_google_signin_btn_text_dark_focused = 2131296262;
 			
-			// aapt resource value: 0x7f090012
-			public const int common_google_signin_btn_text_dark_pressed = 2131296274;
+			// aapt resource value: 0x7f090007
+			public const int common_google_signin_btn_text_dark_pressed = 2131296263;
 			
 			// aapt resource value: 0x7f090089
 			public const int common_google_signin_btn_text_light = 2131296393;
 			
-			// aapt resource value: 0x7f090013
-			public const int common_google_signin_btn_text_light_default = 2131296275;
+			// aapt resource value: 0x7f090008
+			public const int common_google_signin_btn_text_light_default = 2131296264;
 			
-			// aapt resource value: 0x7f090014
-			public const int common_google_signin_btn_text_light_disabled = 2131296276;
+			// aapt resource value: 0x7f090009
+			public const int common_google_signin_btn_text_light_disabled = 2131296265;
 			
-			// aapt resource value: 0x7f090015
-			public const int common_google_signin_btn_text_light_focused = 2131296277;
+			// aapt resource value: 0x7f09000a
+			public const int common_google_signin_btn_text_light_focused = 2131296266;
 			
-			// aapt resource value: 0x7f090016
-			public const int common_google_signin_btn_text_light_pressed = 2131296278;
+			// aapt resource value: 0x7f09000b
+			public const int common_google_signin_btn_text_light_pressed = 2131296267;
 			
 			// aapt resource value: 0x7f09008a
 			public const int common_google_signin_btn_tint = 2131296394;
@@ -12830,26 +11474,8 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f020056
 			public const int avd_hide_password = 2130837590;
 			
-			// aapt resource value: 0x7f020175
-			public const int avd_hide_password_1 = 2130837877;
-			
-			// aapt resource value: 0x7f020176
-			public const int avd_hide_password_2 = 2130837878;
-			
-			// aapt resource value: 0x7f020177
-			public const int avd_hide_password_3 = 2130837879;
-			
 			// aapt resource value: 0x7f020057
 			public const int avd_show_password = 2130837591;
-			
-			// aapt resource value: 0x7f020178
-			public const int avd_show_password_1 = 2130837880;
-			
-			// aapt resource value: 0x7f020179
-			public const int avd_show_password_2 = 2130837881;
-			
-			// aapt resource value: 0x7f02017a
-			public const int avd_show_password_3 = 2130837882;
 			
 			// aapt resource value: 0x7f020058
 			public const int bullet_black = 2130837592;
@@ -14620,44 +13246,44 @@ namespace CimmytApp.Droid
 		public partial class Integer
 		{
 			
-			// aapt resource value: 0x7f0c0004
-			public const int abc_config_activityDefaultDur = 2131492868;
+			// aapt resource value: 0x7f0b0004
+			public const int abc_config_activityDefaultDur = 2131427332;
 			
-			// aapt resource value: 0x7f0c0005
-			public const int abc_config_activityShortDur = 2131492869;
+			// aapt resource value: 0x7f0b0005
+			public const int abc_config_activityShortDur = 2131427333;
 			
-			// aapt resource value: 0x7f0c0009
-			public const int app_bar_elevation_anim_duration = 2131492873;
+			// aapt resource value: 0x7f0b0009
+			public const int app_bar_elevation_anim_duration = 2131427337;
 			
-			// aapt resource value: 0x7f0c000a
-			public const int bottom_sheet_slide_duration = 2131492874;
+			// aapt resource value: 0x7f0b000a
+			public const int bottom_sheet_slide_duration = 2131427338;
 			
-			// aapt resource value: 0x7f0c0006
-			public const int cancel_button_image_alpha = 2131492870;
+			// aapt resource value: 0x7f0b0006
+			public const int cancel_button_image_alpha = 2131427334;
 			
-			// aapt resource value: 0x7f0c0008
-			public const int design_snackbar_text_max_lines = 2131492872;
+			// aapt resource value: 0x7f0b0008
+			public const int design_snackbar_text_max_lines = 2131427336;
 			
-			// aapt resource value: 0x7f0c0000
-			public const int google_play_services_version = 2131492864;
+			// aapt resource value: 0x7f0b0000
+			public const int google_play_services_version = 2131427328;
 			
-			// aapt resource value: 0x7f0c000b
-			public const int hide_password_duration = 2131492875;
+			// aapt resource value: 0x7f0b000b
+			public const int hide_password_duration = 2131427339;
 			
-			// aapt resource value: 0x7f0c0001
-			public const int mr_controller_volume_group_list_animation_duration_ms = 2131492865;
+			// aapt resource value: 0x7f0b0001
+			public const int mr_controller_volume_group_list_animation_duration_ms = 2131427329;
 			
-			// aapt resource value: 0x7f0c0002
-			public const int mr_controller_volume_group_list_fade_in_duration_ms = 2131492866;
+			// aapt resource value: 0x7f0b0002
+			public const int mr_controller_volume_group_list_fade_in_duration_ms = 2131427330;
 			
-			// aapt resource value: 0x7f0c0003
-			public const int mr_controller_volume_group_list_fade_out_duration_ms = 2131492867;
+			// aapt resource value: 0x7f0b0003
+			public const int mr_controller_volume_group_list_fade_out_duration_ms = 2131427331;
 			
-			// aapt resource value: 0x7f0c000c
-			public const int show_password_duration = 2131492876;
+			// aapt resource value: 0x7f0b000c
+			public const int show_password_duration = 2131427340;
 			
-			// aapt resource value: 0x7f0c0007
-			public const int status_bar_notification_info_maxnum = 2131492871;
+			// aapt resource value: 0x7f0b0007
+			public const int status_bar_notification_info_maxnum = 2131427335;
 			
 			static Integer()
 			{
@@ -14779,316 +13405,313 @@ namespace CimmytApp.Droid
 			public const int calendar_day_event_view = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int calendar_pager_layout = 2130903069;
+			public const int calendar_picker = 2130903069;
 			
 			// aapt resource value: 0x7f03001e
-			public const int calendar_picker = 2130903070;
+			public const int data_form_autocomplete_editor = 2130903070;
 			
 			// aapt resource value: 0x7f03001f
-			public const int data_form_autocomplete_editor = 2130903071;
+			public const int data_form_checkbox_editor = 2130903071;
 			
 			// aapt resource value: 0x7f030020
-			public const int data_form_checkbox_editor = 2130903072;
+			public const int data_form_date_editor = 2130903072;
 			
 			// aapt resource value: 0x7f030021
-			public const int data_form_date_editor = 2130903073;
+			public const int data_form_decimal_editor = 2130903073;
 			
 			// aapt resource value: 0x7f030022
-			public const int data_form_decimal_editor = 2130903074;
+			public const int data_form_default_group_layout = 2130903074;
 			
 			// aapt resource value: 0x7f030023
-			public const int data_form_default_group_layout = 2130903075;
+			public const int data_form_editor_header_layout_1 = 2130903075;
 			
 			// aapt resource value: 0x7f030024
-			public const int data_form_editor_header_layout_1 = 2130903076;
+			public const int data_form_editor_header_layout_2 = 2130903076;
 			
 			// aapt resource value: 0x7f030025
-			public const int data_form_editor_header_layout_2 = 2130903077;
+			public const int data_form_editor_layout_1 = 2130903077;
 			
 			// aapt resource value: 0x7f030026
-			public const int data_form_editor_layout_1 = 2130903078;
+			public const int data_form_editor_layout_2 = 2130903078;
 			
 			// aapt resource value: 0x7f030027
-			public const int data_form_editor_layout_2 = 2130903079;
+			public const int data_form_editor_validation_layout_1 = 2130903079;
 			
 			// aapt resource value: 0x7f030028
-			public const int data_form_editor_validation_layout_1 = 2130903080;
+			public const int data_form_expandable_group_layout = 2130903080;
 			
 			// aapt resource value: 0x7f030029
-			public const int data_form_expandable_group_layout = 2130903081;
+			public const int data_form_group_layout = 2130903081;
 			
 			// aapt resource value: 0x7f03002a
-			public const int data_form_group_layout = 2130903082;
+			public const int data_form_integer_editor = 2130903082;
 			
 			// aapt resource value: 0x7f03002b
-			public const int data_form_integer_editor = 2130903083;
+			public const int data_form_linear_layout = 2130903083;
 			
 			// aapt resource value: 0x7f03002c
-			public const int data_form_linear_layout = 2130903084;
+			public const int data_form_list_editor = 2130903084;
 			
 			// aapt resource value: 0x7f03002d
-			public const int data_form_list_editor = 2130903085;
+			public const int data_form_list_editor_item = 2130903085;
 			
 			// aapt resource value: 0x7f03002e
-			public const int data_form_list_editor_item = 2130903086;
+			public const int data_form_number_picker = 2130903086;
 			
 			// aapt resource value: 0x7f03002f
-			public const int data_form_number_picker = 2130903087;
+			public const int data_form_rad_autocomplete_editor = 2130903087;
 			
 			// aapt resource value: 0x7f030030
-			public const int data_form_rad_autocomplete_editor = 2130903088;
+			public const int data_form_radio_group_editor = 2130903088;
 			
 			// aapt resource value: 0x7f030031
-			public const int data_form_radio_group_editor = 2130903089;
+			public const int data_form_root_layout = 2130903089;
 			
 			// aapt resource value: 0x7f030032
-			public const int data_form_root_layout = 2130903090;
+			public const int data_form_seek_bar_editor = 2130903090;
 			
 			// aapt resource value: 0x7f030033
-			public const int data_form_seek_bar_editor = 2130903091;
+			public const int data_form_segmented_editor = 2130903091;
 			
 			// aapt resource value: 0x7f030034
-			public const int data_form_segmented_editor = 2130903092;
+			public const int data_form_spinner_editor = 2130903092;
 			
 			// aapt resource value: 0x7f030035
-			public const int data_form_spinner_editor = 2130903093;
+			public const int data_form_spinner_item = 2130903093;
 			
 			// aapt resource value: 0x7f030036
-			public const int data_form_spinner_item = 2130903094;
+			public const int data_form_switch_editor = 2130903094;
 			
 			// aapt resource value: 0x7f030037
-			public const int data_form_switch_editor = 2130903095;
+			public const int data_form_text_editor = 2130903095;
 			
 			// aapt resource value: 0x7f030038
-			public const int data_form_text_editor = 2130903096;
+			public const int data_form_text_viewer = 2130903096;
 			
 			// aapt resource value: 0x7f030039
-			public const int data_form_text_viewer = 2130903097;
+			public const int data_form_time_editor = 2130903097;
 			
 			// aapt resource value: 0x7f03003a
-			public const int data_form_time_editor = 2130903098;
+			public const int data_form_toggle_button_editor = 2130903098;
 			
 			// aapt resource value: 0x7f03003b
-			public const int data_form_toggle_button_editor = 2130903099;
+			public const int default_tooltip_content = 2130903099;
 			
 			// aapt resource value: 0x7f03003c
-			public const int default_tooltip_content = 2130903100;
+			public const int default_tooltip_ohlc_content = 2130903100;
 			
 			// aapt resource value: 0x7f03003d
-			public const int default_tooltip_ohlc_content = 2130903101;
+			public const int default_tooltip_scatter_bubble_content = 2130903101;
 			
 			// aapt resource value: 0x7f03003e
-			public const int default_tooltip_scatter_bubble_content = 2130903102;
+			public const int default_tooltip_scatter_content = 2130903102;
 			
 			// aapt resource value: 0x7f03003f
-			public const int default_tooltip_scatter_content = 2130903103;
+			public const int default_trackball_content = 2130903103;
 			
 			// aapt resource value: 0x7f030040
-			public const int default_trackball_content = 2130903104;
+			public const int default_trackball_item_content = 2130903104;
 			
 			// aapt resource value: 0x7f030041
-			public const int default_trackball_item_content = 2130903105;
+			public const int design_bottom_navigation_item = 2130903105;
 			
 			// aapt resource value: 0x7f030042
-			public const int design_bottom_navigation_item = 2130903106;
+			public const int design_bottom_sheet_dialog = 2130903106;
 			
 			// aapt resource value: 0x7f030043
-			public const int design_bottom_sheet_dialog = 2130903107;
+			public const int design_layout_snackbar = 2130903107;
 			
 			// aapt resource value: 0x7f030044
-			public const int design_layout_snackbar = 2130903108;
+			public const int design_layout_snackbar_include = 2130903108;
 			
 			// aapt resource value: 0x7f030045
-			public const int design_layout_snackbar_include = 2130903109;
+			public const int design_layout_tab_icon = 2130903109;
 			
 			// aapt resource value: 0x7f030046
-			public const int design_layout_tab_icon = 2130903110;
+			public const int design_layout_tab_text = 2130903110;
 			
 			// aapt resource value: 0x7f030047
-			public const int design_layout_tab_text = 2130903111;
+			public const int design_menu_item_action_area = 2130903111;
 			
 			// aapt resource value: 0x7f030048
-			public const int design_menu_item_action_area = 2130903112;
+			public const int design_navigation_item = 2130903112;
 			
 			// aapt resource value: 0x7f030049
-			public const int design_navigation_item = 2130903113;
+			public const int design_navigation_item_header = 2130903113;
 			
 			// aapt resource value: 0x7f03004a
-			public const int design_navigation_item_header = 2130903114;
+			public const int design_navigation_item_separator = 2130903114;
 			
 			// aapt resource value: 0x7f03004b
-			public const int design_navigation_item_separator = 2130903115;
+			public const int design_navigation_item_subheader = 2130903115;
 			
 			// aapt resource value: 0x7f03004c
-			public const int design_navigation_item_subheader = 2130903116;
+			public const int design_navigation_menu = 2130903116;
 			
 			// aapt resource value: 0x7f03004d
-			public const int design_navigation_menu = 2130903117;
+			public const int design_navigation_menu_item = 2130903117;
 			
 			// aapt resource value: 0x7f03004e
-			public const int design_navigation_menu_item = 2130903118;
+			public const int design_text_input_password_icon = 2130903118;
 			
 			// aapt resource value: 0x7f03004f
-			public const int design_text_input_password_icon = 2130903119;
+			public const int dialog = 2130903119;
 			
 			// aapt resource value: 0x7f030050
-			public const int dialog = 2130903120;
+			public const int drawer_blur_fade_layer = 2130903120;
 			
 			// aapt resource value: 0x7f030051
-			public const int drawer_blur_fade_layer = 2130903121;
+			public const int inline_event = 2130903121;
 			
 			// aapt resource value: 0x7f030052
-			public const int inline_event = 2130903122;
+			public const int legend_item_view = 2130903122;
 			
 			// aapt resource value: 0x7f030053
-			public const int legend_item_view = 2130903123;
+			public const int linear_layout = 2130903123;
 			
 			// aapt resource value: 0x7f030054
-			public const int linear_layout = 2130903124;
+			public const int month = 2130903124;
 			
 			// aapt resource value: 0x7f030055
-			public const int month = 2130903125;
+			public const int mr_chooser_dialog = 2130903125;
 			
 			// aapt resource value: 0x7f030056
-			public const int mr_chooser_dialog = 2130903126;
+			public const int mr_chooser_list_item = 2130903126;
 			
 			// aapt resource value: 0x7f030057
-			public const int mr_chooser_list_item = 2130903127;
+			public const int mr_controller_material_dialog_b = 2130903127;
 			
 			// aapt resource value: 0x7f030058
-			public const int mr_controller_material_dialog_b = 2130903128;
+			public const int mr_controller_volume_item = 2130903128;
 			
 			// aapt resource value: 0x7f030059
-			public const int mr_controller_volume_item = 2130903129;
+			public const int mr_playback_control = 2130903129;
 			
 			// aapt resource value: 0x7f03005a
-			public const int mr_playback_control = 2130903130;
+			public const int mr_volume_control = 2130903130;
 			
 			// aapt resource value: 0x7f03005b
-			public const int mr_volume_control = 2130903131;
+			public const int navigation_drawer_content = 2130903131;
 			
 			// aapt resource value: 0x7f03005c
-			public const int navigation_drawer_content = 2130903132;
+			public const int navigation_item_view = 2130903132;
 			
 			// aapt resource value: 0x7f03005d
-			public const int navigation_item_view = 2130903133;
+			public const int notification_action = 2130903133;
 			
 			// aapt resource value: 0x7f03005e
-			public const int notification_action = 2130903134;
+			public const int notification_action_tombstone = 2130903134;
 			
 			// aapt resource value: 0x7f03005f
-			public const int notification_action_tombstone = 2130903135;
+			public const int notification_media_action = 2130903135;
 			
 			// aapt resource value: 0x7f030060
-			public const int notification_media_action = 2130903136;
+			public const int notification_media_cancel_action = 2130903136;
 			
 			// aapt resource value: 0x7f030061
-			public const int notification_media_cancel_action = 2130903137;
+			public const int notification_template_big_media = 2130903137;
 			
 			// aapt resource value: 0x7f030062
-			public const int notification_template_big_media = 2130903138;
+			public const int notification_template_big_media_custom = 2130903138;
 			
 			// aapt resource value: 0x7f030063
-			public const int notification_template_big_media_custom = 2130903139;
+			public const int notification_template_big_media_narrow = 2130903139;
 			
 			// aapt resource value: 0x7f030064
-			public const int notification_template_big_media_narrow = 2130903140;
+			public const int notification_template_big_media_narrow_custom = 2130903140;
 			
 			// aapt resource value: 0x7f030065
-			public const int notification_template_big_media_narrow_custom = 2130903141;
+			public const int notification_template_custom_big = 2130903141;
 			
 			// aapt resource value: 0x7f030066
-			public const int notification_template_custom_big = 2130903142;
+			public const int notification_template_icon_group = 2130903142;
 			
 			// aapt resource value: 0x7f030067
-			public const int notification_template_icon_group = 2130903143;
+			public const int notification_template_lines_media = 2130903143;
 			
 			// aapt resource value: 0x7f030068
-			public const int notification_template_lines_media = 2130903144;
+			public const int notification_template_media = 2130903144;
 			
 			// aapt resource value: 0x7f030069
-			public const int notification_template_media = 2130903145;
+			public const int notification_template_media_custom = 2130903145;
 			
 			// aapt resource value: 0x7f03006a
-			public const int notification_template_media_custom = 2130903146;
+			public const int notification_template_part_chronometer = 2130903146;
 			
 			// aapt resource value: 0x7f03006b
-			public const int notification_template_part_chronometer = 2130903147;
+			public const int notification_template_part_time = 2130903147;
 			
 			// aapt resource value: 0x7f03006c
-			public const int notification_template_part_time = 2130903148;
+			public const int number_picker = 2130903148;
 			
 			// aapt resource value: 0x7f03006d
-			public const int number_picker = 2130903149;
+			public const int ohlc_trackball_item_content = 2130903149;
 			
 			// aapt resource value: 0x7f03006e
-			public const int ohlc_trackball_item_content = 2130903150;
+			public const int on_demand_automatic = 2130903150;
 			
 			// aapt resource value: 0x7f03006f
-			public const int on_demand_automatic = 2130903151;
+			public const int on_demand_manual = 2130903151;
 			
 			// aapt resource value: 0x7f030070
-			public const int on_demand_manual = 2130903152;
+			public const int popup_event = 2130903152;
 			
 			// aapt resource value: 0x7f030071
-			public const int popup_event = 2130903153;
+			public const int radchartbase = 2130903153;
 			
 			// aapt resource value: 0x7f030072
-			public const int radchartbase = 2130903154;
+			public const int radlegendcontrol = 2130903154;
 			
 			// aapt resource value: 0x7f030073
-			public const int radlegendcontrol = 2130903155;
+			public const int range_trackball_item_content = 2130903155;
 			
 			// aapt resource value: 0x7f030074
-			public const int range_trackball_item_content = 2130903156;
+			public const int select_dialog_item_material = 2130903156;
 			
 			// aapt resource value: 0x7f030075
-			public const int select_dialog_item_material = 2130903157;
+			public const int select_dialog_multichoice_material = 2130903157;
 			
 			// aapt resource value: 0x7f030076
-			public const int select_dialog_multichoice_material = 2130903158;
+			public const int select_dialog_singlechoice_material = 2130903158;
 			
 			// aapt resource value: 0x7f030077
-			public const int select_dialog_singlechoice_material = 2130903159;
+			public const int simple_empty_content = 2130903159;
 			
 			// aapt resource value: 0x7f030078
-			public const int simple_empty_content = 2130903160;
+			public const int simple_group_header_item = 2130903160;
 			
 			// aapt resource value: 0x7f030079
-			public const int simple_group_header_item = 2130903161;
+			public const int simple_list_item = 2130903161;
 			
 			// aapt resource value: 0x7f03007a
-			public const int simple_list_item = 2130903162;
+			public const int suggestion_item_layout = 2130903162;
 			
 			// aapt resource value: 0x7f03007b
-			public const int suggestion_item_layout = 2130903163;
+			public const int support_simple_spinner_dropdown_item = 2130903163;
 			
 			// aapt resource value: 0x7f03007c
-			public const int support_simple_spinner_dropdown_item = 2130903164;
+			public const int tab_item_view = 2130903164;
 			
 			// aapt resource value: 0x7f03007d
-			public const int tab_item_view = 2130903165;
+			public const int table_layout = 2130903165;
 			
 			// aapt resource value: 0x7f03007e
-			public const int table_layout = 2130903166;
+			public const int tabs = 2130903166;
 			
 			// aapt resource value: 0x7f03007f
-			public const int tabs = 2130903167;
+			public const int toolbar = 2130903167;
 			
 			// aapt resource value: 0x7f030080
-			public const int toolbar = 2130903168;
+			public const int tooltip_container = 2130903168;
 			
 			// aapt resource value: 0x7f030081
-			public const int tooltip_container = 2130903169;
+			public const int trackball_container = 2130903169;
 			
 			// aapt resource value: 0x7f030082
-			public const int trackball_container = 2130903170;
+			public const int trial_message = 2130903170;
 			
 			// aapt resource value: 0x7f030083
-			public const int trial_message = 2130903171;
-			
-			// aapt resource value: 0x7f030084
-			public const int week = 2130903172;
+			public const int week = 2130903171;
 			
 			static Layout()
 			{
@@ -15103,281 +13726,281 @@ namespace CimmytApp.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0b0001
-			public const int ApplicationName = 2131427329;
+			// aapt resource value: 0x7f0c0056
+			public const int ApplicationName = 2131492950;
 			
-			// aapt resource value: 0x7f0b0000
-			public const int Hello = 2131427328;
+			// aapt resource value: 0x7f0c0055
+			public const int Hello = 2131492949;
 			
-			// aapt resource value: 0x7f0b002e
-			public const int abc_action_bar_home_description = 2131427374;
+			// aapt resource value: 0x7f0c002c
+			public const int abc_action_bar_home_description = 2131492908;
 			
-			// aapt resource value: 0x7f0b002f
-			public const int abc_action_bar_home_description_format = 2131427375;
+			// aapt resource value: 0x7f0c002d
+			public const int abc_action_bar_home_description_format = 2131492909;
 			
-			// aapt resource value: 0x7f0b0030
-			public const int abc_action_bar_home_subtitle_description_format = 2131427376;
+			// aapt resource value: 0x7f0c002e
+			public const int abc_action_bar_home_subtitle_description_format = 2131492910;
 			
-			// aapt resource value: 0x7f0b0031
-			public const int abc_action_bar_up_description = 2131427377;
+			// aapt resource value: 0x7f0c002f
+			public const int abc_action_bar_up_description = 2131492911;
 			
-			// aapt resource value: 0x7f0b0032
-			public const int abc_action_menu_overflow_description = 2131427378;
+			// aapt resource value: 0x7f0c0030
+			public const int abc_action_menu_overflow_description = 2131492912;
 			
-			// aapt resource value: 0x7f0b0033
-			public const int abc_action_mode_done = 2131427379;
+			// aapt resource value: 0x7f0c0031
+			public const int abc_action_mode_done = 2131492913;
 			
-			// aapt resource value: 0x7f0b0034
-			public const int abc_activity_chooser_view_see_all = 2131427380;
+			// aapt resource value: 0x7f0c0032
+			public const int abc_activity_chooser_view_see_all = 2131492914;
 			
-			// aapt resource value: 0x7f0b0035
-			public const int abc_activitychooserview_choose_application = 2131427381;
+			// aapt resource value: 0x7f0c0033
+			public const int abc_activitychooserview_choose_application = 2131492915;
 			
-			// aapt resource value: 0x7f0b0036
-			public const int abc_capital_off = 2131427382;
+			// aapt resource value: 0x7f0c0034
+			public const int abc_capital_off = 2131492916;
 			
-			// aapt resource value: 0x7f0b0037
-			public const int abc_capital_on = 2131427383;
+			// aapt resource value: 0x7f0c0035
+			public const int abc_capital_on = 2131492917;
 			
-			// aapt resource value: 0x7f0b0043
-			public const int abc_font_family_body_1_material = 2131427395;
+			// aapt resource value: 0x7f0c0041
+			public const int abc_font_family_body_1_material = 2131492929;
 			
-			// aapt resource value: 0x7f0b0044
-			public const int abc_font_family_body_2_material = 2131427396;
+			// aapt resource value: 0x7f0c0042
+			public const int abc_font_family_body_2_material = 2131492930;
 			
-			// aapt resource value: 0x7f0b0045
-			public const int abc_font_family_button_material = 2131427397;
+			// aapt resource value: 0x7f0c0043
+			public const int abc_font_family_button_material = 2131492931;
 			
-			// aapt resource value: 0x7f0b0046
-			public const int abc_font_family_caption_material = 2131427398;
+			// aapt resource value: 0x7f0c0044
+			public const int abc_font_family_caption_material = 2131492932;
 			
-			// aapt resource value: 0x7f0b0047
-			public const int abc_font_family_display_1_material = 2131427399;
+			// aapt resource value: 0x7f0c0045
+			public const int abc_font_family_display_1_material = 2131492933;
 			
-			// aapt resource value: 0x7f0b0048
-			public const int abc_font_family_display_2_material = 2131427400;
+			// aapt resource value: 0x7f0c0046
+			public const int abc_font_family_display_2_material = 2131492934;
 			
-			// aapt resource value: 0x7f0b0049
-			public const int abc_font_family_display_3_material = 2131427401;
+			// aapt resource value: 0x7f0c0047
+			public const int abc_font_family_display_3_material = 2131492935;
 			
-			// aapt resource value: 0x7f0b004a
-			public const int abc_font_family_display_4_material = 2131427402;
+			// aapt resource value: 0x7f0c0048
+			public const int abc_font_family_display_4_material = 2131492936;
 			
-			// aapt resource value: 0x7f0b004b
-			public const int abc_font_family_headline_material = 2131427403;
+			// aapt resource value: 0x7f0c0049
+			public const int abc_font_family_headline_material = 2131492937;
 			
-			// aapt resource value: 0x7f0b004c
-			public const int abc_font_family_menu_material = 2131427404;
+			// aapt resource value: 0x7f0c004a
+			public const int abc_font_family_menu_material = 2131492938;
 			
-			// aapt resource value: 0x7f0b004d
-			public const int abc_font_family_subhead_material = 2131427405;
+			// aapt resource value: 0x7f0c004b
+			public const int abc_font_family_subhead_material = 2131492939;
 			
-			// aapt resource value: 0x7f0b004e
-			public const int abc_font_family_title_material = 2131427406;
+			// aapt resource value: 0x7f0c004c
+			public const int abc_font_family_title_material = 2131492940;
 			
-			// aapt resource value: 0x7f0b0038
-			public const int abc_search_hint = 2131427384;
+			// aapt resource value: 0x7f0c0036
+			public const int abc_search_hint = 2131492918;
 			
-			// aapt resource value: 0x7f0b0039
-			public const int abc_searchview_description_clear = 2131427385;
+			// aapt resource value: 0x7f0c0037
+			public const int abc_searchview_description_clear = 2131492919;
 			
-			// aapt resource value: 0x7f0b003a
-			public const int abc_searchview_description_query = 2131427386;
+			// aapt resource value: 0x7f0c0038
+			public const int abc_searchview_description_query = 2131492920;
 			
-			// aapt resource value: 0x7f0b003b
-			public const int abc_searchview_description_search = 2131427387;
+			// aapt resource value: 0x7f0c0039
+			public const int abc_searchview_description_search = 2131492921;
 			
-			// aapt resource value: 0x7f0b003c
-			public const int abc_searchview_description_submit = 2131427388;
+			// aapt resource value: 0x7f0c003a
+			public const int abc_searchview_description_submit = 2131492922;
 			
-			// aapt resource value: 0x7f0b003d
-			public const int abc_searchview_description_voice = 2131427389;
+			// aapt resource value: 0x7f0c003b
+			public const int abc_searchview_description_voice = 2131492923;
 			
-			// aapt resource value: 0x7f0b003e
-			public const int abc_shareactionprovider_share_with = 2131427390;
+			// aapt resource value: 0x7f0c003c
+			public const int abc_shareactionprovider_share_with = 2131492924;
 			
-			// aapt resource value: 0x7f0b003f
-			public const int abc_shareactionprovider_share_with_application = 2131427391;
+			// aapt resource value: 0x7f0c003d
+			public const int abc_shareactionprovider_share_with_application = 2131492925;
 			
-			// aapt resource value: 0x7f0b0040
-			public const int abc_toolbar_collapse_description = 2131427392;
+			// aapt resource value: 0x7f0c003e
+			public const int abc_toolbar_collapse_description = 2131492926;
 			
-			// aapt resource value: 0x7f0b0018
-			public const int app_name = 2131427352;
+			// aapt resource value: 0x7f0c0016
+			public const int app_name = 2131492886;
 			
-			// aapt resource value: 0x7f0b004f
-			public const int appbar_scrolling_view_behavior = 2131427407;
+			// aapt resource value: 0x7f0c004d
+			public const int appbar_scrolling_view_behavior = 2131492941;
 			
-			// aapt resource value: 0x7f0b0050
-			public const int bottom_sheet_behavior = 2131427408;
+			// aapt resource value: 0x7f0c004e
+			public const int bottom_sheet_behavior = 2131492942;
 			
-			// aapt resource value: 0x7f0b0051
-			public const int character_counter_pattern = 2131427409;
+			// aapt resource value: 0x7f0c004f
+			public const int character_counter_pattern = 2131492943;
 			
-			// aapt resource value: 0x7f0b0008
-			public const int common_google_play_services_enable_button = 2131427336;
+			// aapt resource value: 0x7f0c0001
+			public const int common_google_play_services_enable_button = 2131492865;
 			
-			// aapt resource value: 0x7f0b0009
-			public const int common_google_play_services_enable_text = 2131427337;
+			// aapt resource value: 0x7f0c0002
+			public const int common_google_play_services_enable_text = 2131492866;
 			
-			// aapt resource value: 0x7f0b000a
-			public const int common_google_play_services_enable_title = 2131427338;
+			// aapt resource value: 0x7f0c0003
+			public const int common_google_play_services_enable_title = 2131492867;
 			
-			// aapt resource value: 0x7f0b000b
-			public const int common_google_play_services_install_button = 2131427339;
+			// aapt resource value: 0x7f0c0004
+			public const int common_google_play_services_install_button = 2131492868;
 			
-			// aapt resource value: 0x7f0b000c
-			public const int common_google_play_services_install_text = 2131427340;
+			// aapt resource value: 0x7f0c0005
+			public const int common_google_play_services_install_text = 2131492869;
 			
-			// aapt resource value: 0x7f0b000d
-			public const int common_google_play_services_install_title = 2131427341;
+			// aapt resource value: 0x7f0c0006
+			public const int common_google_play_services_install_title = 2131492870;
 			
-			// aapt resource value: 0x7f0b000e
-			public const int common_google_play_services_notification_ticker = 2131427342;
+			// aapt resource value: 0x7f0c0007
+			public const int common_google_play_services_notification_ticker = 2131492871;
 			
-			// aapt resource value: 0x7f0b0007
-			public const int common_google_play_services_unknown_issue = 2131427335;
+			// aapt resource value: 0x7f0c0000
+			public const int common_google_play_services_unknown_issue = 2131492864;
 			
-			// aapt resource value: 0x7f0b000f
-			public const int common_google_play_services_unsupported_text = 2131427343;
+			// aapt resource value: 0x7f0c0008
+			public const int common_google_play_services_unsupported_text = 2131492872;
 			
-			// aapt resource value: 0x7f0b0010
-			public const int common_google_play_services_update_button = 2131427344;
+			// aapt resource value: 0x7f0c0009
+			public const int common_google_play_services_update_button = 2131492873;
 			
-			// aapt resource value: 0x7f0b0011
-			public const int common_google_play_services_update_text = 2131427345;
+			// aapt resource value: 0x7f0c000a
+			public const int common_google_play_services_update_text = 2131492874;
 			
-			// aapt resource value: 0x7f0b0012
-			public const int common_google_play_services_update_title = 2131427346;
+			// aapt resource value: 0x7f0c000b
+			public const int common_google_play_services_update_title = 2131492875;
 			
-			// aapt resource value: 0x7f0b0013
-			public const int common_google_play_services_updating_text = 2131427347;
+			// aapt resource value: 0x7f0c000c
+			public const int common_google_play_services_updating_text = 2131492876;
 			
-			// aapt resource value: 0x7f0b0014
-			public const int common_google_play_services_wear_update_text = 2131427348;
+			// aapt resource value: 0x7f0c000d
+			public const int common_google_play_services_wear_update_text = 2131492877;
 			
-			// aapt resource value: 0x7f0b0015
-			public const int common_open_on_phone = 2131427349;
+			// aapt resource value: 0x7f0c000e
+			public const int common_open_on_phone = 2131492878;
 			
-			// aapt resource value: 0x7f0b0016
-			public const int common_signin_button_text = 2131427350;
+			// aapt resource value: 0x7f0c000f
+			public const int common_signin_button_text = 2131492879;
 			
-			// aapt resource value: 0x7f0b0017
-			public const int common_signin_button_text_long = 2131427351;
+			// aapt resource value: 0x7f0c0010
+			public const int common_signin_button_text_long = 2131492880;
 			
-			// aapt resource value: 0x7f0b0003
-			public const int day_name_format = 2131427331;
+			// aapt resource value: 0x7f0c0012
+			public const int day_name_format = 2131492882;
 			
-			// aapt resource value: 0x7f0b0006
-			public const int full_date_format = 2131427334;
+			// aapt resource value: 0x7f0c0015
+			public const int full_date_format = 2131492885;
 			
-			// aapt resource value: 0x7f0b0004
-			public const int invalid_date = 2131427332;
+			// aapt resource value: 0x7f0c0013
+			public const int invalid_date = 2131492883;
 			
-			// aapt resource value: 0x7f0b0002
-			public const int library_name = 2131427330;
+			// aapt resource value: 0x7f0c0011
+			public const int library_name = 2131492881;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int list_view_default_empty_content = 2131427417;
+			// aapt resource value: 0x7f0c0059
+			public const int list_view_default_empty_content = 2131492953;
 			
-			// aapt resource value: 0x7f0b0005
-			public const int month_name_format = 2131427333;
+			// aapt resource value: 0x7f0c0014
+			public const int month_name_format = 2131492884;
 			
-			// aapt resource value: 0x7f0b0019
-			public const int mr_button_content_description = 2131427353;
+			// aapt resource value: 0x7f0c0017
+			public const int mr_button_content_description = 2131492887;
 			
-			// aapt resource value: 0x7f0b001a
-			public const int mr_cast_button_connected = 2131427354;
+			// aapt resource value: 0x7f0c0018
+			public const int mr_cast_button_connected = 2131492888;
 			
-			// aapt resource value: 0x7f0b001b
-			public const int mr_cast_button_connecting = 2131427355;
+			// aapt resource value: 0x7f0c0019
+			public const int mr_cast_button_connecting = 2131492889;
 			
-			// aapt resource value: 0x7f0b001c
-			public const int mr_cast_button_disconnected = 2131427356;
+			// aapt resource value: 0x7f0c001a
+			public const int mr_cast_button_disconnected = 2131492890;
 			
-			// aapt resource value: 0x7f0b001d
-			public const int mr_chooser_searching = 2131427357;
+			// aapt resource value: 0x7f0c001b
+			public const int mr_chooser_searching = 2131492891;
 			
-			// aapt resource value: 0x7f0b001e
-			public const int mr_chooser_title = 2131427358;
+			// aapt resource value: 0x7f0c001c
+			public const int mr_chooser_title = 2131492892;
 			
-			// aapt resource value: 0x7f0b001f
-			public const int mr_controller_album_art = 2131427359;
+			// aapt resource value: 0x7f0c001d
+			public const int mr_controller_album_art = 2131492893;
 			
-			// aapt resource value: 0x7f0b0020
-			public const int mr_controller_casting_screen = 2131427360;
+			// aapt resource value: 0x7f0c001e
+			public const int mr_controller_casting_screen = 2131492894;
 			
-			// aapt resource value: 0x7f0b0021
-			public const int mr_controller_close_description = 2131427361;
+			// aapt resource value: 0x7f0c001f
+			public const int mr_controller_close_description = 2131492895;
 			
-			// aapt resource value: 0x7f0b0022
-			public const int mr_controller_collapse_group = 2131427362;
+			// aapt resource value: 0x7f0c0020
+			public const int mr_controller_collapse_group = 2131492896;
 			
-			// aapt resource value: 0x7f0b0023
-			public const int mr_controller_disconnect = 2131427363;
+			// aapt resource value: 0x7f0c0021
+			public const int mr_controller_disconnect = 2131492897;
 			
-			// aapt resource value: 0x7f0b0024
-			public const int mr_controller_expand_group = 2131427364;
+			// aapt resource value: 0x7f0c0022
+			public const int mr_controller_expand_group = 2131492898;
 			
-			// aapt resource value: 0x7f0b0025
-			public const int mr_controller_no_info_available = 2131427365;
+			// aapt resource value: 0x7f0c0023
+			public const int mr_controller_no_info_available = 2131492899;
 			
-			// aapt resource value: 0x7f0b0026
-			public const int mr_controller_no_media_selected = 2131427366;
+			// aapt resource value: 0x7f0c0024
+			public const int mr_controller_no_media_selected = 2131492900;
 			
-			// aapt resource value: 0x7f0b0027
-			public const int mr_controller_pause = 2131427367;
+			// aapt resource value: 0x7f0c0025
+			public const int mr_controller_pause = 2131492901;
 			
-			// aapt resource value: 0x7f0b0028
-			public const int mr_controller_play = 2131427368;
+			// aapt resource value: 0x7f0c0026
+			public const int mr_controller_play = 2131492902;
 			
-			// aapt resource value: 0x7f0b002d
-			public const int mr_controller_stop = 2131427373;
+			// aapt resource value: 0x7f0c002b
+			public const int mr_controller_stop = 2131492907;
 			
-			// aapt resource value: 0x7f0b0029
-			public const int mr_controller_stop_casting = 2131427369;
+			// aapt resource value: 0x7f0c0027
+			public const int mr_controller_stop_casting = 2131492903;
 			
-			// aapt resource value: 0x7f0b002a
-			public const int mr_controller_volume_slider = 2131427370;
+			// aapt resource value: 0x7f0c0028
+			public const int mr_controller_volume_slider = 2131492904;
 			
-			// aapt resource value: 0x7f0b002b
-			public const int mr_system_route_name = 2131427371;
+			// aapt resource value: 0x7f0c0029
+			public const int mr_system_route_name = 2131492905;
 			
-			// aapt resource value: 0x7f0b002c
-			public const int mr_user_route_category_name = 2131427372;
+			// aapt resource value: 0x7f0c002a
+			public const int mr_user_route_category_name = 2131492906;
 			
-			// aapt resource value: 0x7f0b0058
-			public const int on_demand_manual_button_busy = 2131427416;
+			// aapt resource value: 0x7f0c0058
+			public const int on_demand_manual_button_busy = 2131492952;
 			
-			// aapt resource value: 0x7f0b0057
-			public const int on_demand_manual_button_idle = 2131427415;
+			// aapt resource value: 0x7f0c0057
+			public const int on_demand_manual_button_idle = 2131492951;
 			
-			// aapt resource value: 0x7f0b0052
-			public const int password_toggle_content_description = 2131427410;
+			// aapt resource value: 0x7f0c0050
+			public const int password_toggle_content_description = 2131492944;
 			
-			// aapt resource value: 0x7f0b0053
-			public const int path_password_eye = 2131427411;
+			// aapt resource value: 0x7f0c0051
+			public const int path_password_eye = 2131492945;
 			
-			// aapt resource value: 0x7f0b0054
-			public const int path_password_eye_mask_strike_through = 2131427412;
+			// aapt resource value: 0x7f0c0052
+			public const int path_password_eye_mask_strike_through = 2131492946;
 			
-			// aapt resource value: 0x7f0b0055
-			public const int path_password_eye_mask_visible = 2131427413;
+			// aapt resource value: 0x7f0c0053
+			public const int path_password_eye_mask_visible = 2131492947;
 			
-			// aapt resource value: 0x7f0b0056
-			public const int path_password_strike_through = 2131427414;
+			// aapt resource value: 0x7f0c0054
+			public const int path_password_strike_through = 2131492948;
 			
-			// aapt resource value: 0x7f0b0041
-			public const int search_menu_title = 2131427393;
+			// aapt resource value: 0x7f0c003f
+			public const int search_menu_title = 2131492927;
 			
-			// aapt resource value: 0x7f0b0042
-			public const int status_bar_notification_info_overflow = 2131427394;
+			// aapt resource value: 0x7f0c0040
+			public const int status_bar_notification_info_overflow = 2131492928;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int trial_message = 2131427418;
+			// aapt resource value: 0x7f0c005a
+			public const int trial_message = 2131492954;
 			
-			// aapt resource value: 0x7f0b005b
-			public const int trial_message_caption = 2131427419;
+			// aapt resource value: 0x7f0c005b
+			public const int trial_message_caption = 2131492955;
 			
 			static String()
 			{

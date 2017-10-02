@@ -3,7 +3,6 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Parcel.Views.ParcelPage"
@@ -31,41 +30,58 @@
 
             <Label Text="{localization:Translate hint_technologies_used}" FontSize="10" />
 
-            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="{localization:Translate technology_2}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="{localization:Translate technology_3}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="{localization:Translate technology_4}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="{localization:Translate technology_5}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="{localization:Translate technology_6}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="{localization:Translate technology_7}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="{localization:Translate technology_8}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity1Checked}" DefaultText="{localization:Translate activity_1}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity2Checked}" DefaultText="{localization:Translate activity_2}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity3Checked}" DefaultText="{localization:Translate activity_3}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity4Checked}" DefaultText="{localization:Translate activity_4}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity5Checked}" DefaultText="{localization:Translate activity_5}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity6Checked}" DefaultText="{localization:Translate activity_6}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity7Checked}" DefaultText="{localization:Translate activity_7}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity8Checked}" DefaultText="{localization:Translate activity_8}" IsEnabled="{Binding EditModeActive}" />
-            <controls:CheckBox Checked="{Binding Activity9Checked}" DefaultText="{localization:Translate activity_9}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech1Checked}" />
+            <Label Text="{localization:Translate technology_1}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech2Checked}" />
+            <Label Text="{localization:Translate technology_2}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech3Checked}" />
+            <Label Text="{localization:Translate technology_3}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech4Checked}" />
+            <Label Text="{localization:Translate technology_4}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech5Checked}" />
+            <Label Text="{localization:Translate technology_5}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech6Checked}" />
+            <Label Text="{localization:Translate technology_6}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech7Checked}" />
+            <Label Text="{localization:Translate technology_7}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Tech8Checked}" />
+            <Label Text="{localization:Translate technology_8}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity1Checked}" />
+            <Label Text="{localization:Translate activity_1}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity2Checked}" />
+            <Label Text="{localization:Translate activity_2}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity3Checked}" />
+            <Label Text="{localization:Translate activity_3}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity4Checked}" />
+            <Label Text="{localization:Translate activity_4}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity5Checked}" />
+            <Label Text="{localization:Translate activity_5}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity6Checked}" />
+            <Label Text="{localization:Translate activity_6}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity7Checked}" />
+            <Label Text="{localization:Translate activity_7}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity8Checked}" />
+            <Label Text="{localization:Translate activity_8}" IsEnabled="{Binding EditModeActive}" />
+            <Switch IsToggled="{Binding Activity9Checked}" />
+            <Label Text="{localization:Translate activity_9}" IsEnabled="{Binding EditModeActive}" />
 
             <Label  Text="{localization:Translate hint_technology_other}" Margin="0,16,0,0" FontSize="10" />
             <Entry  Placeholder="{localization:Translate hint_other_technology_used}" Text="{Binding Parcel.OtherTechnologies}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_crop}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_cultivar}" FontSize="10" />
             <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate siembra}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_additional_information}" />
 
@@ -75,17 +91,17 @@
 
             <Label Text="{localization:Translate hint_irrigation}" FontSize="10" />
 
-            <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" FontSize="10" />
 
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate cosecha}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding HarvestingTypes}" SelectedIndex="{Binding PickerHarvestingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding HarvestingTypes}" SelectedIndex="{Binding PickerHarvestingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate poscosecha}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" />
             <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />

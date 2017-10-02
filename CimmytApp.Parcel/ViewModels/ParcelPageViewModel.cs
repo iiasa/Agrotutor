@@ -14,9 +14,6 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Xamarin.Forms;
-    using XLabs.Ioc;
-    using XLabs.Platform.Device;
-    using XLabs.Platform.Services.Media;
 
     /// <summary>
     /// Defines the <see cref="ParcelPageViewModel" />
@@ -986,7 +983,6 @@
             _navigationService = navigationService;
             Years = _singleYears;
             _cimmytDbOperations = cimmytDbOperations;
-            ClickPhoto = new DelegateCommand(OnTakePhotoClick);
             ClickSave = new DelegateCommand(SaveParcel);
             DeliniateParcelCommand = new DelegateCommand(DeliniateParcel);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
@@ -1034,27 +1030,6 @@
         }
 
         /// <summary>
-        /// The Setup
-        /// </summary>
-        private void Setup()
-        {
-            if (_mediaPicker != null)
-            {
-                return;
-            }
-
-            var device = Resolver.Resolve<IDevice>();
-
-            ////RM: hack for working on windows phone?
-            _mediaPicker = DependencyService.Get<IMediaPicker>() ?? device.MediaPicker;
-        }
-
-        /// <summary>
-        /// Defines the _mediaPicker
-        /// </summary>
-        private IMediaPicker _mediaPicker;
-
-        /// <summary>
         /// Defines the _cimmytDbOperations
         /// </summary>
         private ICimmytDbOperations _cimmytDbOperations;
@@ -1088,40 +1063,6 @@
         /// Defines the _pickerClimateTypesSelectedIndex
         /// </summary>
         private int _pickerClimateTypesSelectedIndex;
-
-        /// <summary>
-        /// The OnTakePhotoClick
-        /// </summary>
-        private async void OnTakePhotoClick()
-        {
-            var _mediaPicker = DependencyService.Get<IMediaPicker>();
-
-            Setup();
-
-            ImageSource = null;
-
-            await this._mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
-            {
-                if (t.IsFaulted)
-                {
-                    var s = t.Exception.InnerException.ToString();
-                }
-                else if (t.IsCanceled)
-                {
-                    var canceled = true;
-                }
-                else
-                {
-                    var mediaFile = t.Result;
-
-                    ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-
-                    return mediaFile;
-                }
-
-                return null;
-            }, _scheduler);
-        }
 
         /// <summary>
         /// Gets or sets a value indicating whether IsActive
