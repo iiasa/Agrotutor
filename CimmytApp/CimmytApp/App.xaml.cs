@@ -13,7 +13,6 @@ namespace CimmytApp
     using Helper.Base.Contract;
     using Helper.Geolocator;
     using Helper.Localization.Localization;
-    using Helper.Map;
     using Helper.UserRegistration;
 
     using BusinessContract;
@@ -102,15 +101,6 @@ namespace CimmytApp
                     {
                         ModuleName = introductionModule.Name,
                         ModuleType = introductionModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
-
-                var mapModule = typeof(MapModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = mapModule.Name,
-                        ModuleType = mapModule,
                         InitializationMode = InitializationMode.WhenAvailable
                     });
 

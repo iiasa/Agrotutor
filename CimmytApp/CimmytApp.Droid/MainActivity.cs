@@ -45,10 +45,9 @@ namespace CimmytApp.Droid
                 base.OnCreate(bundle);
 
                 global::Xamarin.Forms.Forms.Init(this, bundle);
-                Xamarin.FormsMaps.Init(this, bundle);
                 XamForms.Controls.Droid.Calendar.Init();
                 //base.OnCreate (bundle);
-
+               
                 //// Set your view from the "main" layout resource
                 //SetContentView (Resource.Layout.Main);
 
