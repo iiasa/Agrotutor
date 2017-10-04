@@ -37,6 +37,6 @@
         </ScrollView>
         <Label Grid.Row="0" Text="Aún no has creado una parcela. Presione 'nueva parcela' para agregar una parcela." IsVisible="{Binding AddParcelHintIsVisible}" />
         <Button Text="Nueva parcela" Command="{Binding AddParcelCommand}"  Grid.Row="1" />
-        <Button Text="Subir cambios" Command="{Binding UploadCommand}" IsVisible="{Binding ShowUploadButton}" Grid.Row="2" />
+        <Button Text="Subir cambios" Command="{Binding UploadCommand}" IsEnabled="{Binding ShowUploadButton}" Grid.Row="2" />
     </Grid>
 </ContentPage>

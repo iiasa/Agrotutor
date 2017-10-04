@@ -8,7 +8,7 @@
         //GetPath,
         GetPolygon,
 
-        SelectLocation,
+        ChooseLocation,
 
         //SelectPath,
         //SelectPolygon,

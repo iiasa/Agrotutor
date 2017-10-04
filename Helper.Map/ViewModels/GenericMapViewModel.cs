@@ -82,6 +82,12 @@ namespace Helper.Map.ViewModels
             set => SetProperty(ref _returnGeolocationButtonEnabled, value);
         }
 
+        public MapType MapType
+        {
+            get => _mapType;
+            set => SetProperty(ref _mapType, value);
+        }
+
         private readonly IPosition _geoLocator;
         private readonly ICimmytDbOperations _cimmytDbOperations;
         private Base.DTO.GeoPosition _currentGeoPosition;
@@ -140,7 +146,6 @@ namespace Helper.Map.ViewModels
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
             _cimmytDbOperations = cimmytDbOperations;
-            // _mapPolygonsList=new ObservableCollection<TKPolygon>();
             CurrentDeliniationState = DeliniationState.Inactive;
             MapClickedCommand = new DelegateCommand<object>(MapClicked);
             MapLongPressCommand = new DelegateCommand<object>(MapLongPress);
@@ -149,8 +154,6 @@ namespace Helper.Map.ViewModels
             OverrideDeliniationCommand = new DelegateCommand(OverrideDelinationMethod);
             ReturnGeolocationButtonEnabled = false;
             UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
-
-            //  DrawPolygonsOnMap();
         }
 
         private void OverrideDelinationMethod()
@@ -343,7 +346,6 @@ namespace Helper.Map.ViewModels
 
         public async void OnNavigatedTo(NavigationParameters parameters)
         {
-            //  await GetPosition();
             if (parameters.ContainsKey("GetLocation"))
             {
                 parameters.TryGetValue("GetLocation", out object getLocation);
@@ -361,6 +363,7 @@ namespace Helper.Map.ViewModels
             if (parameters.ContainsKey("ChooseLocation"))
             {
                 ReturnGeolocationButtonVisible = true;
+                _mapTask = MapTask.ChooseLocation;
                 ChooseLocation = true;
             }
 
@@ -465,6 +468,7 @@ namespace Helper.Map.ViewModels
         private bool _buttonAcceptDeliniationEnabled = false;
         private bool _buttonCancelDeliniationEnabled = false;
         private bool _showOverrideButton;
+        private MapType _mapType;
 
         public bool IsActive
         {
@@ -498,6 +502,7 @@ namespace Helper.Map.ViewModels
         {
             AdjustMapZoom();
             GetPosition();
+            MapType = MapType.Hybrid;
         }
     }
 }

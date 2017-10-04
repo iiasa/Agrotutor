@@ -1194,9 +1194,11 @@
             {
                 parameters.TryGetValue("GeoPosition", out object geoPosition);
                 if (geoPosition == null) return;
-                var position = (GeoPosition)geoPosition;
+                var position = (Helper.Base.DTO.GeoPosition)geoPosition;
                 Parcel.Latitude = position.Latitude;
                 Parcel.Longitude = position.Longitude;
+                _cimmytDbOperations.UpdateParcel(Parcel);
+                PublishDataset(Parcel);
             }
         }
 

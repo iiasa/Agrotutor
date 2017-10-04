@@ -37,6 +37,30 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// </summary>
         public Parcel Parcel { get => _parcel; set => SetProperty(ref _parcel, value); }
 
+        private bool _downloadButtonActive;
+
+        public bool DownloadButtonActive
+        {
+            get => _downloadButtonActive;
+            set => SetProperty(ref _downloadButtonActive, value);
+        }
+
+        private bool _downloading;
+
+        public bool Downloading
+        {
+            get => _downloading;
+            set => SetProperty(ref _downloading, value);
+        }
+
+        private bool _noData;
+
+        public bool NoData
+        {
+            get => _noData;
+            set => SetProperty(ref _noData, value);
+        }
+
         /// <summary>
         /// Gets or sets the LoadDataCommand
         /// </summary>
@@ -56,6 +80,8 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// </summary>
         private async void LoadData()
         {
+            DownloadButtonActive = false;
+            Downloading = true;
             MyData = await DownloadData(Parcel.Latitude, Parcel.Longitude);
         }
 
@@ -67,7 +93,8 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// <returns>The <see cref="Task{BenchmarkingInformation}"/></returns>
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)
         {
-            if (parcelLongitude >= 0)
+            if (parcelLatitude == 0 && parcelLongitude == 0) return null;
+            if (parcelLongitude > 0)
             {
                 parcelLatitude = 20;
                 parcelLongitude = -100;
@@ -129,8 +156,17 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// <param name="value">The <see cref="BenchmarkingInformation"/></param>
         private void UpdateData(BenchmarkingInformation value)
         {
-            if (value == null) return;
-                if (value.BenchmarkingDatasets.Count == 0) return;
+            if (value == null)
+            {
+                Downloading = false;
+                DownloadButtonActive = true;
+            }
+            if (value.BenchmarkingDatasets.Count == 0)
+            {
+                NoData = true;
+                Downloading = false;
+                return;
+            }
             var dataIrrigated = new BenchmarkingInformation();
             var dataRainfed = new BenchmarkingInformation();
 
@@ -153,6 +189,7 @@ namespace CimmytApp.Benchmarking.ViewModels
 			dataRainfed.KeepNewest(5);
             DataIrrigated = dataIrrigated;
             DataRainfed = dataRainfed;
+            Downloading = false;
         }
 
         /// <summary>
@@ -161,7 +198,11 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// <param name="dataset">The <see cref="IDataset"/></param>
         protected override void ReadDataset(IDataset dataset)
         {
-            if (dataset != null) Parcel = (Parcel)dataset;
+            if (dataset != null)
+            {
+                Parcel = (Parcel)dataset;
+                DownloadButtonActive = true;
+            }
         }
     }
 }
