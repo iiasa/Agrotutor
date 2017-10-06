@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Parcel.Views.ActivityDetail">
+  <Grid>
+      <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackLayout IsVisible="{ActivityNameVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="0" >
+            <Label Text="Nombre de la actividad" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{ActivityNameVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="1" >
+            <Label Text="Fecha de la actividad" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{ActivityTotalCostVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="2" >
+            <Label Text="Costo total de la actividad ($)"  HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{AppliedProductsVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="3" >
+            <Label Text="Productos aplicados " HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{DosageVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="4" >
+            <Label Text="Dosis/ha" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{AppliedAmountVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="5" >
+            <Label Text="Cantidad aplicada" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{VarietySownVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="6" >
+            <Label Text="Variedad sembrada" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{PlantingDensityVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="7" >
+            <Label Text="Densidad de siembra" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{ProductObtainedVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="8" >
+            <Label Text="Producto obtenido" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+        <StackLayout IsVisible="{PerformanceVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="9" >
+            <Label Text="Rendimiento" HorizontalOptions="Start"></Label>
+          <Entry Margin="10,0,0,0"></Entry>
+      </StackLayout>
+
+        <Button Text="Guardar cambios" Grid.Row="10"></Button>
+    </Grid>
+</ContentPage>

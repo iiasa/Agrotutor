@@ -167,7 +167,7 @@ namespace CimmytApp
             //{
             //}
             //return;
-
+           // NavigationService.NavigateAsync("ActivityPage");
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
                 NavigationService.NavigateAsync("MainPage");
