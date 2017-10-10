@@ -1,4 +1,5 @@
 ﻿using Microsoft.Practices.ServiceLocation;
+using Prism.Navigation;
 
 namespace CimmytApp
 {
@@ -175,7 +176,8 @@ namespace CimmytApp
             else
             {
                 Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("WelcomePage");
+                var parameters = new NavigationParameters { { "ShowGuide", true } };
+                NavigationService.NavigateAsync("MainPage", parameters);
             }
         }
 

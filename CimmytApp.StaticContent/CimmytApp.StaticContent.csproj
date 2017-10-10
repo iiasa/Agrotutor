@@ -42,8 +42,12 @@
       <DependentUpon>StaticContentResources.resx</DependentUpon>
     </Compile>
     <Compile Include="StaticContentModule.cs" />
+    <Compile Include="ViewModels\CitationPageViewModel.cs" />
     <Compile Include="ViewModels\LinksPageViewModel.cs" />
     <Compile Include="ViewModels\SplashScreenPageViewModel.cs" />
+    <Compile Include="Views\CitationPage.xaml.cs">
+      <DependentUpon>CitationPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LinksPage.xaml.cs">
       <DependentUpon>LinksPage.xaml</DependentUpon>
     </Compile>
@@ -98,6 +102,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SplashScreenPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\CitationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

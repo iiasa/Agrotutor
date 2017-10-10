@@ -19,6 +19,7 @@
         {
             _unityContainer.RegisterTypeForNavigation<LinksPage>();
             _unityContainer.RegisterTypeForNavigation<SplashScreenPage>();
+            _unityContainer.RegisterTypeForNavigation<CitationPage>();
         }
     }
 }

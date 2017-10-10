@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.StaticContent.Views.CitationPage">
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <Label Text="Special thanks to the following providers of icons for this app and www.flaticon.com: " />
+            <Label Text="Anatoly" />
+            <Label Text="http://a-maslennikov.com/" />
+            <Label Text="Flat Icons" />
+            <Label Text="https://flat-icons.com/" />
+            <Label Text="Freepik" />
+            <Label Text="http://www.freepik.com" />
+            <Label Text="Nikita Golubev" />
+            <Label Text="https://www.flaticon.com/authors/nikita-golubev" />
+            <Label Text="Roundicons" />
+            <Label Text="https://roundicons.com/" />
+            <Label Text="Smashicons" />
+            <Label Text="https://smashicons.com/" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

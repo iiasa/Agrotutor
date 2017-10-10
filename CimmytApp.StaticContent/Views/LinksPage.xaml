@@ -12,6 +12,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -40,5 +41,7 @@
         </Image>
 
         <Button Text="Ver guía rápida (ayuda)" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding ShowIntroductionCommand}" />
+
+        <Button Text="Licencias" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding ShowLicensesCommand}" />
     </Grid>
 </ContentPage>

@@ -2,7 +2,13 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.StaticContent.Views.SplashScreenPage">
-  
+    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+        <Label Text="México produce" FontSize="36" FontFamily="Rounded" HorizontalOptions="CenterAndExpand" Margin="32" />
+        <Image Source="logo_big.png" Margin="32" />
+        <Label Text="Aplicación móvil para manejo de parcelas" FontAttributes="Bold" HorizontalOptions="End" Margin="16" FontSize="18" />
+        <Label Text="Iniciando aplicación..." FontAttributes="Italic" HorizontalOptions="End" Margin="16" />
+    </StackLayout>
 </ContentPage>

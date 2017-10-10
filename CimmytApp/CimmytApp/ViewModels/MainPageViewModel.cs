@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.ViewModels
+﻿using Prism.Commands;
+
+namespace CimmytApp.ViewModels
 {
     using System;
     using Prism.Events;
@@ -18,6 +20,8 @@
         private INavigationService _navigationService;
         private string _title;
 
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
+
         public MainPageViewModel(IModuleManager moduleManager, IEventAggregator eventAggregator, INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _moduleManager = moduleManager;
@@ -26,6 +30,13 @@
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
             _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
+
+            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+        }
+
+        private void NavigateAsync(string page)
+        {
+            _navigationService.NavigateAsync(page);
         }
 
         public string Title
