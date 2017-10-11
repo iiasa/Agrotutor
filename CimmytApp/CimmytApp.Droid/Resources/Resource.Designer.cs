@@ -12912,10 +12912,17 @@ namespace CimmytApp.Droid
 			public const int app_icon = 2130837589;
 			
 			// aapt resource value: 0x7f020056
+<<<<<<< HEAD
 			public const int app_logo = 2130837590;
 			
 			// aapt resource value: 0x7f020057
 			public const int autocomplete_default_backgound = 2130837591;
+=======
+			public const int avd_hide_password = 2130837590;
+			
+			// aapt resource value: 0x7f020057
+			public const int avd_show_password = 2130837591;
+>>>>>>> master
 			
 			// aapt resource value: 0x7f020058
 			public const int avd_hide_password = 2130837592;
