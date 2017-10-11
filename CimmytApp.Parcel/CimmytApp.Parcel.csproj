@@ -30,6 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ActivityManagement\ActivityBaseClass.cs" />
+    <Compile Include="ActivityManagement\ActivityDynamicUIVisibility.cs" />
+    <Compile Include="ActivityManagement\ActivityType.cs" />
+    <Compile Include="ActivityManagement\PestAndDiseaseControlAndPreventionActivity.cs" />
+    <Compile Include="ActivityManagement\SowingActivity.cs" />
+    <Compile Include="ActivityManagement\FertilizationActivity.cs" />
+    <Compile Include="ActivityManagement\IrrigationActivity.cs" />
+    <Compile Include="ActivityManagement\WeedPreventionControlActivity.cs" />
+    <Compile Include="ActivityManagement\HarvestActivity.cs" />
+    <Compile Include="ActivityManagement\PostHarvestStorageActivity.cs" />
+    <Compile Include="ActivityManagement\CommercializationActivity.cs" />
+    <Compile Include="ActivityManagement\OtherActivitiesActivity.cs" />
+    <Compile Include="ActivityManagement\GroundPreperationActivity.cs" />
+    <Compile Include="ActivityManagement\SoilImproversActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ParcelModule.cs" />
     <Compile Include="ViewModels\ActivityDetailViewModel.cs" />

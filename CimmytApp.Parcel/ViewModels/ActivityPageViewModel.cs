@@ -17,9 +17,9 @@ namespace CimmytApp.Parcel.ViewModels
             ActivityClickedCommand=new DelegateCommand<string>(ExecuteMethod);
         }
 
-        private void ExecuteMethod(string s)
+        private void ExecuteMethod(string activityType)
         {
-            _navigationService.NavigateAsync("ActivityDetail");
+            _navigationService.NavigateAsync("ActivityDetail",new NavigationParameters(){{ "activityType", activityType} });
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
