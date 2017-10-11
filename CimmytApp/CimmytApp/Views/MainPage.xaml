@@ -7,7 +7,7 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Views.MainPage"
     Title="Title"
-    Padding="16">
+    Padding="16,16,16,0">
     <ScrollView>
         <StackLayout>
             <Label Text="¡Bienvenido!" FontSize="Large" />
@@ -68,43 +68,43 @@
                     </Label.GestureRecognizers>
                 </Label>
 
-                <Image Source="add.png" forms:Grid.Row="0" forms:Grid.Column="0" WidthRequest="140">
+                <Image Source="add.png" forms:Grid.Row="0" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="AddParcelPage" />
                     </Image.GestureRecognizers>
                 </Image>
 
-                <Image Source="edit.png" forms:Grid.Row="0" forms:Grid.Column="1" WidthRequest="140">
+                <Image Source="edit.png" forms:Grid.Row="0" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelOverviewPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="info.png" forms:Grid.Row="2" forms:Grid.Column="0" WidthRequest="140">
+                <Image Source="info.png" forms:Grid.Row="2" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelOverviewPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="globe.png" forms:Grid.Row="2" forms:Grid.Column="1" WidthRequest="140">
+                <Image Source="globe.png" forms:Grid.Row="2" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="calendar.png" forms:Grid.Row="4" forms:Grid.Column="0" WidthRequest="140">
+                <Image Source="calendar.png" forms:Grid.Row="4" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CalendarPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="link.png" forms:Grid.Row="4" forms:Grid.Column="1" WidthRequest="140">
+                <Image Source="link.png" forms:Grid.Row="4" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LinksPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="question.png" forms:Grid.Row="6" forms:Grid.Column="0" WidthRequest="140">
+                <Image Source="question.png" forms:Grid.Row="6" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WelcomePage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="profile.png" forms:Grid.Row="6" forms:Grid.Column="1" WidthRequest="140">
+                <Image Source="profile.png" forms:Grid.Row="6" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
                     </Image.GestureRecognizers>

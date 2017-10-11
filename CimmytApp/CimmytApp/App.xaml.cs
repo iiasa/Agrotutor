@@ -160,24 +160,15 @@ namespace CimmytApp
         {
             InitializeComponent();
 
-            //try
-            //{
-            //    NavigationService.NavigateAsync("MainPage");
-            //}
-            //catch (Exception e)
-            //{
-            //}
-            //return;
-            //NavigationService.NavigateAsync("ActivityPage");
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
-                NavigationService.NavigateAsync("MainPage");
+                NavigationService.NavigateAsync("MainPage");//change to splashscreen
             }
             else
             {
                 Current.Properties.Add("not_first_launch", true);
                 var parameters = new NavigationParameters { { "ShowGuide", true } };
-                NavigationService.NavigateAsync("MainPage", parameters);
+                NavigationService.NavigateAsync("MainPage", parameters); //change to splashscreen
             }
         }
 
