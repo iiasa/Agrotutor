@@ -62,7 +62,7 @@
             <Label Text="{localization:Translate siembra}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_additional_information}" />
+            <!--<Label Text="{localization:Translate hint_additional_information}" />-->
 
             <Label Text="{localization:Translate hint_performance}" FontSize="10" />
 

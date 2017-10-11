@@ -9,7 +9,9 @@
              x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
         <StackLayout>
-            <Button Text="{localization:Translate load_data}" Command="{Binding LoadDataCommand}" Margin="0,0,0,16" />
+            <Button Text="{localization:Translate load_data}" Command="{Binding LoadDataCommand}" IsEnabled="{Binding DownloadButtonActive}" Margin="0,0,0,16" />
+            <Label Text="Descargando datos, por favor espere..." IsVisible="{Binding Downloading}" />
+            <Label Text="Lo sentimos, no hay datos disponibles para esta parcela." IsVisible="{Binding NoData}" />
 
             <Label Text="{localization:Translate irrigated}" />
             <Label Text="{Binding DataIrrigated.GetMin}" />

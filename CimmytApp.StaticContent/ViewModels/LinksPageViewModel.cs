@@ -13,12 +13,19 @@ namespace CimmytApp.StaticContent.ViewModels
         private INavigationService _navigationService;
         public ICommand TapLinkCommand { get; set; }
         public DelegateCommand ShowIntroductionCommand { get; set; }
+        public DelegateCommand ShowLicensesCommand { get; set; }
 
         public LinksPageViewModel(INavigationService navigationService)
         {
             TapLinkCommand = new Command(OpenLink);
             _navigationService = navigationService;
             ShowIntroductionCommand = new DelegateCommand(ShowIntroduction);
+            ShowLicensesCommand = new DelegateCommand(ShowLicenses);
+        }
+
+        private void ShowLicenses()
+        {
+            _navigationService.NavigateAsync("CitationPage");
         }
 
         private void ShowIntroduction()

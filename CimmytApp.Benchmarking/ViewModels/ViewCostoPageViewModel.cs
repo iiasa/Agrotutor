@@ -12,6 +12,12 @@ namespace CimmytApp.Benchmarking.ViewModels
 
     public class ViewCostoPageViewModel : BindableBase, INavigationAware
     {
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
         private ObservableCollection<Costo> _datasets;
 
         private ObservableCollection<Dataset> _stats;
@@ -48,6 +54,7 @@ namespace CimmytApp.Benchmarking.ViewModels
 
         public void CalculateStats()
         {
+            IsLoading = true;
             Datasets = new ObservableCollection<Costo>(Datasets.OrderBy(x => int.Parse(x.ProductionCost)));
             Stats = new ObservableCollection<Dataset>
             {
@@ -57,6 +64,7 @@ namespace CimmytApp.Benchmarking.ViewModels
                 new Dataset{Value = int.Parse(Datasets.ElementAt((int) Math.Floor(3 * Datasets.Count / 4.0))?.ProductionCost), Category = "75%"},
                 new Dataset{Value = int.Parse(Datasets.ElementAt(Datasets.Count - 1)?.ProductionCost), Category = "Max"}
             };
+            IsLoading = false;
         }
 
         public class Dataset
