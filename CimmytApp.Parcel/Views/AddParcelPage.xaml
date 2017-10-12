@@ -8,7 +8,12 @@
                 x:Class="CimmytApp.Parcel.Views.AddParcelPage"
                 Padding="16">
     <ScrollView>
-        <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Vertical" HorizontalOptions="End">
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Agregar parcela" FontAttributes="Italic" />
+                <Image Source="add_small.png" />
+            </StackLayout>
+
             <Label Text="{localization:Translate hint_agronomical_cycle}" FontSize="10" />
             <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" Margin="0,0,0,16" />
 
@@ -61,8 +66,6 @@
 
             <Label Text="{localization:Translate siembra}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
-
-            <!--<Label Text="{localization:Translate hint_additional_information}" />-->
 
             <Label Text="{localization:Translate hint_performance}" FontSize="10" />
 

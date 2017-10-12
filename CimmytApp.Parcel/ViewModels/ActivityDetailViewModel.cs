@@ -26,93 +26,64 @@ namespace CimmytApp.Parcel.ViewModels
         private DateTime _minimumCalenderDateTime;
 
         public DelegateCommand SaveCommand { get; set; }
+
         public List<string> ListSownVariety
         {
-            get { return _listSownVariety; }
-            set
-            {
-                SetProperty(ref _listSownVariety, value);
-            }
+            get => _listSownVariety;
+            set => SetProperty(ref _listSownVariety, value);
         }
 
         public ActivityDynamicUIVisibility ActivityDynamicUIVisibility
         {
-            get { return _activityDynamicUIVisibility; }
-            set
-            {
-      
-                SetProperty(ref _activityDynamicUIVisibility, value);
-            }
+            get => _activityDynamicUIVisibility;
+            set => SetProperty(ref _activityDynamicUIVisibility, value);
         }
 
         public string ActivityName
         {
-            get { return _activityName; }
-            set
-            {
-         
-                SetProperty(ref _activityName, value);
-            }
+            get => _activityName;
+            set => SetProperty(ref _activityName, value);
         }
 
         public DateTime ActivityDate
         {
-            get { return _activityDate; }
-            set
-            {
-                SetProperty(ref _activityDate, value);
-            }
+            get => _activityDate;
+            set => SetProperty(ref _activityDate, value);
         }
 
         public double ActivityCost
         {
-            get { return _activityCost; }
-            set
-            {
-                SetProperty(ref _activityCost, value);
-            }
+            get => _activityCost;
+            set => SetProperty(ref _activityCost, value);
         }
 
         public string AmountApplied
         {
-            get { return _amountApplied; }
-            set
-            {
-                SetProperty(ref _amountApplied, value);
-            }
+            get => _amountApplied;
+            set => SetProperty(ref _amountApplied, value);
         }
-
 
         public string SelectedSown
         {
-            get { return _selectedSown; }
-            set
-            {
-                SetProperty(ref _selectedSown, value);
-            }
+            get => _selectedSown;
+            set => SetProperty(ref _selectedSown, value);
         }
 
         public string AppliedProduct
         {
-            get { return _appliedProduct; }
-            set
-            {
-                SetProperty(ref _appliedProduct, value);
-            }
+            get => _appliedProduct;
+            set => SetProperty(ref _appliedProduct, value);
         }
 
         public double ActivityDose
         {
-            get { return _activityDose; }
-            set
-            {
-                SetProperty(ref _activityDose, value);
-            }
+            get => _activityDose;
+            set => SetProperty(ref _activityDose, value);
         }
 
         public double WeightOfSeeds
         {
-            get { return _weightOfSeeds; }
+            get => _weightOfSeeds;
             set
             {
                 _weightOfSeeds = value;
@@ -122,98 +93,94 @@ namespace CimmytApp.Parcel.ViewModels
 
         public double NumberOfSeeds
         {
-            get { return _numberOfSeeds; }
-            set
-            {
-                SetProperty(ref _numberOfSeeds, value);
-            }
+            get => _numberOfSeeds;
+            set => SetProperty(ref _numberOfSeeds, value);
         }
 
         public string ProductObtained
         {
-            get { return _productObtained; }
-            set
-            {
-                SetProperty(ref _productObtained, value);
-            }
+            get => _productObtained;
+            set => SetProperty(ref _productObtained, value);
         }
 
         public string ActivityYield
         {
-            get { return _activityYield; }
-            set
-            {
-                SetProperty(ref _activityYield, value);
-            }
+            get => _activityYield;
+            set => SetProperty(ref _activityYield, value);
         }
 
         public DateTime MinimumCalenderDateTime
         {
-            get { return _minimumCalenderDateTime; }
-            set
-            {
-                SetProperty(ref _minimumCalenderDateTime, value);
-            }
+            get => _minimumCalenderDateTime;
+            set => SetProperty(ref _minimumCalenderDateTime, value);
         }
 
         public ActivityDetailViewModel()
         {
-            ListSownVariety=new List<string>{ "Criollo", "Mejorado" };
-            MinimumCalenderDateTime=DateTime.Now.Subtract(new TimeSpan(672,0,0,0));
-            SaveCommand =new DelegateCommand(SaveCommandExecution);
+            ListSownVariety = new List<string> { "Criollo", "Mejorado" };
+            MinimumCalenderDateTime = DateTime.Now.Subtract(new TimeSpan(672, 0, 0, 0));
+            SaveCommand = new DelegateCommand(SaveCommandExecution);
         }
 
         private void SaveCommandExecution()
         {
-            
+            //TODO
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-          
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            var activityName =(String)parameters["activityType"];
-         var activityType= (ActivityType)Enum.Parse(typeof(ActivityType), activityName);
+            var activityName = (String)parameters["activityType"];
+            var activityType = (ActivityType)Enum.Parse(typeof(ActivityType), activityName);
             ActivityBaseClass baseClass = null;
             switch (activityType)
             {
                 case ActivityType.SoilImprovers:
-                    baseClass =new SoilImproversActivity();
+                    baseClass = new SoilImproversActivity();
                     break;
+
                 case ActivityType.GroundPreperation:
-                    baseClass =new GroundPreperationActivity();
+                    baseClass = new GroundPreperationActivity();
                     break;
+
                 case ActivityType.Sowing:
                     baseClass = new SowingActivity();
                     break;
+
                 case ActivityType.Fertilization:
                     baseClass = new FertilizationActivity();
                     break;
+
                 case ActivityType.Irrigation:
                     baseClass = new IrrigationActivity();
                     break;
+
                 case ActivityType.WeedPreventionControl:
                     baseClass = new WeedPreventionControlActivity();
                     break;
+
                 case ActivityType.PestAndDiseaseControlAndPrevention:
                     baseClass = new PestAndDiseaseControlAndPreventionActivity();
                     break;
+
                 case ActivityType.Harvest:
                     baseClass = new HarvestActivity();
                     break;
+
                 case ActivityType.PostHarvestStorage:
                     baseClass = new PostHarvestStorageActivity();
                     break;
+
                 case ActivityType.Commercialization:
                     baseClass = new CommercializationActivity();
                     break;
+
                 case ActivityType.OtherActivities:
                     baseClass = new OtherActivitiesActivity();
                     break;
-   
             }
             if (baseClass != null)
             {

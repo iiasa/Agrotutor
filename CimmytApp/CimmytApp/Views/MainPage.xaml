@@ -34,12 +34,12 @@
                 </Label>
                 <Label Text="Modificar información de parcela" forms:Grid.Row="1" forms:Grid.Column="1" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelOverviewPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelsOverviewPage" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Text="Información de parcela" forms:Grid.Row="3" forms:Grid.Column="0" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelOverviewPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelsOverviewPage" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Text="Mapa de parcelas" forms:Grid.Row="3" forms:Grid.Column="1" HorizontalTextAlignment="Center">
@@ -49,7 +49,7 @@
                 </Label>
                 <Label Text="Calendario" forms:Grid.Row="5" forms:Grid.Column="0" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Text="Ver enlaces y herramientas" forms:Grid.Row="5" forms:Grid.Column="1" HorizontalTextAlignment="Center">
