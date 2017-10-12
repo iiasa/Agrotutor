@@ -52,7 +52,11 @@ namespace CimmytApp.Parcel.ViewModels
         /// <summary>
         /// Gets or sets a value indicating whether ShowUploadButton
         /// </summary>
-        public bool ShowUploadButton { get => _showUploadButton; set => SetProperty(ref _showUploadButton, value); }
+        public bool ShowUploadButton
+        {
+            get => _showUploadButton;
+            set => SetProperty(ref _showUploadButton, value);
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether ParcelsListIsVisible
@@ -75,6 +79,7 @@ namespace CimmytApp.Parcel.ViewModels
                 SetProperty(ref _parcels, value);
                 ParcelsListIsVisible = (value.Count > 0);
                 AddParcelHintIsVisible = !ParcelsListIsVisible;
+                ShowUploadButton = ParcelsListIsVisible;
             }
         }
 
@@ -144,12 +149,12 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private void UploadParcels()
         {
-            ShowUploadButton = false;
             foreach (var parcel in Parcels)
             {
                 parcel.Submit();
             }
             Parcels = Parcels; // Just for triggering setproperty
+            ShowUploadButton = false;
         }
 
         /// <summary>

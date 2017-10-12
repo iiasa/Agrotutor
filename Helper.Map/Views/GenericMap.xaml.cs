@@ -72,6 +72,7 @@ namespace Helper.Map.Views
                     map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
                     map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
                     map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
+                    map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
 
                     map.HasZoomEnabled = true;
                     map.MapType = MapType.Hybrid;

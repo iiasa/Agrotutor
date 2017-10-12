@@ -7,12 +7,9 @@
                  xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
                  Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
     <Grid>
-
         <Grid.RowDefinitions>
-            <RowDefinition>
-            </RowDefinition>
-            <RowDefinition Height="Auto">
-            </RowDefinition>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
         </Grid.RowDefinitions>
         <StackLayout x:Name="MapLayout">
         </StackLayout>

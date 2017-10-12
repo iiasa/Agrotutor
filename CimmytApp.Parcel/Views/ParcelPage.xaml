@@ -67,7 +67,7 @@
             <Label Text="{localization:Translate siembra}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_additional_information}" />
+            <!--<Label Text="{localization:Translate hint_additional_information}" />-->
 
             <Label Text="{localization:Translate hint_performance}" FontSize="10" />
 
@@ -87,8 +87,8 @@
             <Label Text="{localization:Translate poscosecha}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
-            <Button Text="{localization:Translate btn_get_location}" Command="{Binding ClickGetLocation}" />
-            <Button Text="{localization:Translate btn_choose_location}" Command="{Binding ClickChooseLocation}" />
+            <Button Text="{localization:Translate btn_get_location}" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickGetLocation}" />
+            <Button Text="{localization:Translate btn_choose_location}" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickChooseLocation}" />
             <Button Text="Delinear parcela" IsEnabled="{Binding EditModeActive}" Command="{Binding DeliniateParcelCommand}" />
             <Button Text="Guardar cambios" IsEnabled="{Binding EditModeActive}" Command="{Binding ClickSave}" />
             <Button Text="Borrar parcela" IsEnabled="{Binding EditModeActive}" Command="{Binding DeleteParcelCommand}" />
