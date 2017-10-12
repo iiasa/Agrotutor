@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using System.Collections.ObjectModel;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using BusinessContract;
     using DTO.Parcel;
@@ -29,10 +31,13 @@
         /// </summary>
         private List<Parcel> _parcels;
 
-        /// <summary>
-        /// Gets or sets the AddParcelCommand
-        /// </summary>
-        public DelegateCommand AddParcelCommand { get; set; }
+
+		public ObservableCollection<ParcelViewModel> ObservableParcel { get; set; }
+
+		/// <summary>
+		/// Gets or sets the AddParcelCommand
+		/// </summary>
+		public DelegateCommand AddParcelCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the UploadCommand
@@ -108,7 +113,9 @@
         /// </summary>
         private bool _addParcelHintIsVisible = true;
 
-        /// <summary>
+	    private ParcelViewModel _oldParcel;
+
+	    /// <summary>
         /// Initializes a new instance of the <see cref="ParcelsOverviewPageViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">The <see cref="INavigationService"/></param>
@@ -125,9 +132,19 @@
 
             _parcels = new List<Parcel>();
             Parcels = cimmytDbOperations.GetAllParcels();
+	        SetObservableParcel();
         }
 
-        /// <summary>
+	    private void SetObservableParcel()
+	    {
+		    ObservableParcel = new ObservableCollection<ParcelViewModel>();
+		    foreach (var parcel in _parcels)
+		    {
+			    ObservableParcel.Add(new ParcelViewModel {Parcel = parcel, IsOptionsVisible = false});
+		    }
+	    }
+
+	    /// <summary>
         /// The UploadParcels
         /// </summary>
         private void UploadParcels()
@@ -150,7 +167,7 @@
             {
                 // IsParcelListEnabled = false;
                 var navigationParameters = new NavigationParameters { { "Id", (int)id } };
-                _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+                _navigationService.NavigateAsync("ParcelMainPage", navigationParameters);
             }
             catch (Exception e)
             {
@@ -190,5 +207,32 @@
             _parcels = new List<Parcel>();
             Parcels = _cimmytDbOperations.GetAllParcels();
         }
+
+	    public void HideOrShowParcel(ParcelViewModel parcel)
+	    {
+		    if (_oldParcel == parcel)
+		    {
+			    parcel.IsOptionsVisible = !parcel.IsOptionsVisible;
+			    UpdateObservaleParcel(parcel);
+			}
+		    else
+		    {
+			    if (_oldParcel != null)
+			    {
+				    _oldParcel.IsOptionsVisible = false;
+				    UpdateObservaleParcel(_oldParcel);
+				}
+			    parcel.IsOptionsVisible = true;
+			    UpdateObservaleParcel(parcel);
+			}
+		    _oldParcel = parcel;
+	    }
+
+	    private void UpdateObservaleParcel(ParcelViewModel parcel)
+	    {
+		    var index = ObservableParcel.IndexOf(parcel);
+		    ObservableParcel.Remove(parcel);
+		    ObservableParcel.Insert(index,parcel);
+	    }
     }
 }

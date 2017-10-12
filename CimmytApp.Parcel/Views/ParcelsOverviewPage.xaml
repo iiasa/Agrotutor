@@ -15,21 +15,32 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <ScrollView Grid.Row="0" IsVisible="{Binding ParcelsListIsVisible}">
-            <ListView ItemsSource="{Binding Parcels}" RowHeight="72">
+            <ListView ItemsSource="{Binding ObservableParcel}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped">
                 <!-- TODO RowHeight auto -->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="16">
+                            <!--<Grid Margin="16">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="auto" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="auto" />
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding IconSource}" Margin="0,0,16,0" Grid.Column="0" />
-                                <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="1" />
+                                <Label Text="{Binding OverviewString}" VerticalTextAlignment="Center" Grid.Column="0" />
                                 <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding ParcelId}"  Grid.Column="2" />
-                            </Grid>
+                            </Grid>-->
+                            <StackLayout Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
+                                    <Image Source="{Binding Parcel.IconSource}" WidthRequest="75"  HeightRequest="75" VerticalOptions="Center" HorizontalOptions="Center" />
+                                    <Label Text="{Binding Parcel.OverviewString}" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                                    <StackLayout Orientation="Horizontal" IsVisible="{Binding IsOptionsVisible}">
+                                        <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="StartAndExpand"/>
+                                        <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="CenterAndExpand"/>
+                                        <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="EndAndExpand"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

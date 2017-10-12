@@ -179,8 +179,8 @@ namespace CimmytApp
                 Container.RegisterTypeForNavigation<MainPage>();
                 Container.RegisterTypeForNavigation<LoginPage>();
                 Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
-                Container.RegisterTypeForNavigation<ParcelPage>();
-                Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
+	            Container.RegisterTypeForNavigation<ParcelMainPage>();
+				Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
                     new ContainerControlledLifetimeManager());
                 Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
                     new ContainerControlledLifetimeManager());
@@ -190,7 +190,8 @@ namespace CimmytApp
             catch (Exception e)
             {
             }
-        }
+			
+		}
 
         protected override void OnSleep()
         {
