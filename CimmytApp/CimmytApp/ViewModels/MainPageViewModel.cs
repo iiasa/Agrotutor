@@ -17,7 +17,7 @@ namespace CimmytApp.ViewModels
         private readonly IEventAggregator _eventAggregator;
         private readonly IModuleManager _moduleManager;
         private readonly ICimmytDbOperations _cimmytDbOperations;
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
         private string _title;
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
@@ -30,7 +30,7 @@ namespace CimmytApp.ViewModels
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
             _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
-
+            
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
         }
 

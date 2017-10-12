@@ -6,17 +6,15 @@ using Android.Util;
 using Gcm.Client;
 using Prism.Unity;
 using Microsoft.Practices.Unity;
-using Xamarin.Forms.Platform.Android;
 using Android.Runtime;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Xamarin.Forms;
 
 [assembly: ExportRenderer(typeof(Telerik.XamarinForms.Input.RadCalendar), typeof(Telerik.XamarinForms.InputRenderer.Android.CalendarRenderer))]
-
 namespace CimmytApp.Droid
 {
-    [Activity(Label = "Mexico Produce", Icon = "@drawable/app_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "México Produce", Icon = "@drawable/app_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
