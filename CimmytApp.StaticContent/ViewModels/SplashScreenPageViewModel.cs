@@ -27,6 +27,9 @@ namespace CimmytApp.StaticContent.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            Task.Delay(secondsActive * 1000);
+            _navigationService.NavigateAsync("MainPage");
+            /*
             Task.Run(async () =>
             {
                 await Task.Delay(secondsActive * 1000);
@@ -44,7 +47,7 @@ namespace CimmytApp.StaticContent.ViewModels
                         _navigationService.NavigateAsync("MainPage");
                     });
                 }
-            });
+            });*/
         }
     }
 }

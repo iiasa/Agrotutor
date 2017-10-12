@@ -162,13 +162,13 @@ namespace CimmytApp
 
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
-                NavigationService.NavigateAsync("MainPage");//change to splashscreen
+                NavigationService.NavigateAsync("SplashScreenPage");
             }
             else
             {
                 Current.Properties.Add("not_first_launch", true);
                 var parameters = new NavigationParameters { { "ShowGuide", true } };
-                NavigationService.NavigateAsync("MainPage", parameters); //change to splashscreen
+                NavigationService.NavigateAsync("SplashScreenPage", parameters);
             }
         }
 
