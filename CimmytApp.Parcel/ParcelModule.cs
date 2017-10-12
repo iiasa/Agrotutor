@@ -22,6 +22,7 @@
             _unityContainer.RegisterTypeForNavigation<DeleteParcelPage>();
             _unityContainer.RegisterTypeForNavigation<ParcelsOverviewPage>();
             _unityContainer.RegisterTypeForNavigation<ViewParcelInformationPage>();
+            _unityContainer.RegisterTypeForNavigation<ParcelPage>();
         }
     }
 }

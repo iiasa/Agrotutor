@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Xaml;
+﻿using CimmytApp.Parcel.ViewModels;
+using Xamarin.Forms.Xaml;
 
 namespace CimmytApp.Parcel.Views
 {
@@ -10,5 +11,14 @@ namespace CimmytApp.Parcel.Views
         {
             InitializeComponent();
         }
-    }
+
+		private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+		{
+			var vm = BindingContext as ParcelsOverviewPageViewModel;
+			ParcelViewModel selectedItem = e.Item as ParcelViewModel;
+
+			vm?.HideOrShowParcel(selectedItem);
+		}
+
+	}
 }

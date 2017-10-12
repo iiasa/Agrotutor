@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Views.ParcelMainPage">
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+                <StackLayout Orientation="Horizontal" VerticalOptions="Start"  HorizontalOptions="Fill">
+                    <Button Image="icon_overview.png" HorizontalOptions="StartAndExpand" Command="{Binding OverviewCommand}"></Button>
+                    <Button Image="icon_map.png" HorizontalOptions="EndAndExpand" Command="{Binding MapCommand}"></Button>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
+                    <Button Image="icon_weather.png" HorizontalOptions="StartAndExpand" Command="{Binding WeatherCommand}"></Button>
+                    <Button Image="icon_info.png" HorizontalOptions="EndAndExpand" Command="{Binding OverviewCommand}"></Button>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" VerticalOptions="End"  HorizontalOptions="Fill">
+                    <Button Image="icon_edit.png" HorizontalOptions="StartAndExpand" Command="{Binding ApplicationCommands.SaveCommand}"></Button>
+                    <Button Image="icon_calendar.png" HorizontalOptions="EndAndExpand" Command="{Binding CalenderCommand}"></Button>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
