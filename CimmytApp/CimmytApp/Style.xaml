@@ -11,10 +11,6 @@
         <!--<Setter Property="TextColor" Value="Crimson" />-->
     </Style>
 
-    <!--<Style TargetType="{x:Type TabbedPage}">
-        <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryGreen}" />
-    </Style> This breaks MainPage! -->
-
     <Color x:Key="PrimaryGreen">#7BC142</Color>
     <Color x:Key="PrimaryGrey">#696A6C</Color>
     <Color x:Key="SecondaryBlue">#00A7CE</Color>

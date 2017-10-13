@@ -8,10 +8,10 @@
                  Disappearing="GenericMap_OnDisappearing" Appearing="GenericMap_OnAppearing">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
             <RowDefinition />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <StackLayout x:Name="MapLayout">
+        <StackLayout x:Name="MapLayout" Grid.Row="0">
         </StackLayout>
         <Button Text="{localization:Translate use_this_location}" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}" />
         <StackLayout IsVisible="{Binding DeliniationButtonsVisible}" Orientation="Horizontal" Grid.Row="1" VerticalOptions="Center">
