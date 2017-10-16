@@ -13,11 +13,13 @@
         </Grid.RowDefinitions>
         <StackLayout x:Name="MapLayout" Grid.Row="0">
         </StackLayout>
-        <Button Text="{localization:Translate use_this_location}" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="1" IsVisible="{Binding ReturnGeolocationButtonVisible}" />
-        <StackLayout IsVisible="{Binding DeliniationButtonsVisible}" Orientation="Horizontal" Grid.Row="1" VerticalOptions="Center">
-            <Button Text="{localization:Translate ok}" Command="{Binding AcceptDeliniationCommand}" IsEnabled="{Binding ButtonAcceptDeliniationEnabled}" />
-            <Button Text="{localization:Translate cancel}" Command="{Binding CancelDeliniationCommand}" IsEnabled="{Binding ButtonCancelDeliniationEnabled}" />
-            <!--<Button Text="Override current deliniation" IsVisible="{Binding ShowOverrideButton}" Command="{Binding OverrideDeliniationCommand}" />-->
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
+            <Button Text="{localization:Translate use_this_location}" Command="{Binding UseLocationCommand}" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="{Binding ReturnGeolocationButtonVisible}" />
+            <StackLayout IsVisible="{Binding DeliniationButtonsVisible}" Orientation="Horizontal" VerticalOptions="Center">
+                <Button Text="{localization:Translate ok}" Command="{Binding AcceptDeliniationCommand}" IsEnabled="{Binding ButtonAcceptDeliniationEnabled}" />
+                <Button Text="{localization:Translate cancel}" Command="{Binding CancelDeliniationCommand}" IsEnabled="{Binding ButtonCancelDeliniationEnabled}" />
+                <!--<Button Text="Override current deliniation" IsVisible="{Binding ShowOverrideButton}" Command="{Binding OverrideDeliniationCommand}" />-->
+            </StackLayout>
         </StackLayout>
     </Grid>
 </ContentPage>

@@ -6,42 +6,40 @@
              x:Class="CimmytApp.StaticContent.Views.LinksPage"
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              Padding="16">
-    <!--Title="{localization:Translate page_title_links}"-->
-    <Grid HorizontalOptions="Center">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
-            <ColumnDefinition Width="Auto" />
-        </Grid.ColumnDefinitions>
 
-        <Label Text="{localization:Translate weblink1}" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
-            </Label.GestureRecognizers>
-        </Label>
-        <Image Source="ic_weblink.png" Grid.Row="0" Grid.Column="1">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
-            </Image.GestureRecognizers>
-        </Image>
-        <Label Text="{localization:Translate weblink2}" Grid.Row="1" Grid.Column="0" VerticalTextAlignment="Center">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
-            </Label.GestureRecognizers>
-        </Label>
-        <Image Source="ic_weblink.png" Grid.Row="1" Grid.Column="1">
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
-            </Image.GestureRecognizers>
-        </Image>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <Label Text="Ver enlaces y herramientas" FontAttributes="Italic" />
+            <Image Source="link_small.png" />
+        </StackLayout>
 
-        <Button Text="Ver guía rápida (ayuda)" Grid.Row="2" Grid.ColumnSpan="2" Command="{Binding ShowIntroductionCommand}" />
+        <StackLayout Orientation="Horizontal" Margin="16">
+            <Image Source="ic_weblink.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{localization:Translate weblink1}" VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
 
-        <Button Text="Licencias" Grid.Row="3" Grid.ColumnSpan="2" Command="{Binding ShowLicensesCommand}" />
-    </Grid>
+        <StackLayout Orientation="Horizontal" Margin="16">
+            <Image Source="ic_weblink.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
+                </Image.GestureRecognizers>
+            </Image>
+            <Label Text="{localization:Translate weblink2}" VerticalTextAlignment="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
+                </Label.GestureRecognizers>
+            </Label>
+        </StackLayout>
+
+        <Button Text="Ver guía rápida (ayuda)" Command="{Binding ShowIntroductionCommand}" Margin="16" />
+        <Button Text="Licencias" Command="{Binding ShowLicensesCommand}" VerticalOptions="End" Margin="16" />
+    </StackLayout>
 </ContentPage>

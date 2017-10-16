@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Map\CustomMap.cs" />
+    <Compile Include="ViewModels\ProfilePageViewModel.cs" />
     <Compile Include="Views\ParcelMainPage.xaml.cs">
       <DependentUpon>ParcelMainPage.xaml</DependentUpon>
     </Compile>
@@ -52,6 +53,9 @@
     </Compile>
     <Compile Include="Views\OfflineTilesDownloadPage.xaml.cs">
       <DependentUpon>OfflineTilesDownloadPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProfilePage.xaml.cs">
+      <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +278,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ParcelMainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

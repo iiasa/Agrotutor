@@ -8,8 +8,6 @@
     using Prism.Navigation;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Windows.Input;
-    using Xamarin.Forms;
 
     /// <summary>
     /// Defines the <see cref="AddParcelPageViewModel" />
@@ -57,46 +55,6 @@
         private int _pickerYearsSelectedIndex;
 
         /// <summary>
-        /// Defines the _tech1Checked
-        /// </summary>
-        private bool _tech1Checked;
-
-        /// <summary>
-        /// Defines the _tech2Checked
-        /// </summary>
-        private bool _tech2Checked;
-
-        /// <summary>
-        /// Defines the _tech3Checked
-        /// </summary>
-        private bool _tech3Checked;
-
-        /// <summary>
-        /// Defines the _tech4Checked
-        /// </summary>
-        private bool _tech4Checked;
-
-        /// <summary>
-        /// Defines the _tech5Checked
-        /// </summary>
-        private bool _tech5Checked;
-
-        /// <summary>
-        /// Defines the _tech6Checked
-        /// </summary>
-        private bool _tech6Checked;
-
-        /// <summary>
-        /// Defines the _tech7Checked
-        /// </summary>
-        private bool _tech7Checked;
-
-        /// <summary>
-        /// Defines the _tech8Checked
-        /// </summary>
-        private bool _tech8Checked;
-
-        /// <summary>
         /// Defines the _userIsAtParcel
         /// </summary>
         private bool _userIsAtParcel;
@@ -110,51 +68,6 @@
         /// Defines the _isSaveBtnEnabled
         /// </summary>
         private bool _isSaveBtnEnabled = true;
-
-        /// <summary>
-        /// Defines the _activity1Checked
-        /// </summary>
-        private bool _activity1Checked;
-
-        /// <summary>
-        /// Defines the _activity9Checked
-        /// </summary>
-        private bool _activity9Checked;
-
-        /// <summary>
-        /// Defines the _activity8Checked
-        /// </summary>
-        private bool _activity8Checked;
-
-        /// <summary>
-        /// Defines the _activity7Checked
-        /// </summary>
-        private bool _activity7Checked;
-
-        /// <summary>
-        /// Defines the _activity6Checked
-        /// </summary>
-        private bool _activity6Checked;
-
-        /// <summary>
-        /// Defines the _activity5Checked
-        /// </summary>
-        private bool _activity5Checked;
-
-        /// <summary>
-        /// Defines the _activity4Checked
-        /// </summary>
-        private bool _activity4Checked;
-
-        /// <summary>
-        /// Defines the _activity3Checked
-        /// </summary>
-        private bool _activity3Checked;
-
-        /// <summary>
-        /// Defines the _activity2Checked
-        /// </summary>
-        private bool _activity2Checked;
 
         /// <summary>
         /// Defines the _pickerSowingTypesSelectedIndex
@@ -325,227 +238,6 @@
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether Tech1Checked
-        /// </summary>
-        public bool Tech1Checked
-        {
-            get => _tech1Checked;
-            set
-            {
-                _tech1Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech2Checked
-        /// </summary>
-        public bool Tech2Checked
-        {
-            get => _tech2Checked;
-            set
-            {
-                _tech2Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech3Checked
-        /// </summary>
-        public bool Tech3Checked
-        {
-            get => _tech3Checked;
-            set
-            {
-                _tech3Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech4Checked
-        /// </summary>
-        public bool Tech4Checked
-        {
-            get => _tech4Checked;
-            set
-            {
-                _tech4Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech5Checked
-        /// </summary>
-        public bool Tech5Checked
-        {
-            get => _tech5Checked;
-            set
-            {
-                _tech5Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech6Checked
-        /// </summary>
-        public bool Tech6Checked
-        {
-            get => _tech6Checked;
-            set
-            {
-                _tech6Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech7Checked
-        /// </summary>
-        public bool Tech7Checked
-        {
-            get => _tech7Checked;
-            set
-            {
-                _tech7Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Tech8Checked
-        /// </summary>
-        public bool Tech8Checked
-        {
-            get => _tech8Checked;
-            set
-            {
-                _tech8Checked = value;
-                UpdateTechChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity1Checked
-        /// </summary>
-        public bool Activity1Checked
-        {
-            get => _activity1Checked;
-            set
-            {
-                SetProperty(ref _activity1Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity2Checked
-        /// </summary>
-        public bool Activity2Checked
-        {
-            get => _activity2Checked;
-            set
-            {
-                SetProperty(ref _activity2Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity3Checked
-        /// </summary>
-        public bool Activity3Checked
-        {
-            get => _activity3Checked;
-            set
-            {
-                SetProperty(ref _activity3Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity4Checked
-        /// </summary>
-        public bool Activity4Checked
-        {
-            get => _activity4Checked;
-            set
-            {
-                SetProperty(ref _activity4Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity5Checked
-        /// </summary>
-        public bool Activity5Checked
-        {
-            get => _activity5Checked;
-            set
-            {
-                SetProperty(ref _activity5Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity6Checked
-        /// </summary>
-        public bool Activity6Checked
-        {
-            get => _activity6Checked;
-            set
-            {
-                SetProperty(ref _activity6Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity7Checked
-        /// </summary>
-        public bool Activity7Checked
-        {
-            get => _activity7Checked;
-            set
-            {
-                SetProperty(ref _activity7Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity8Checked
-        /// </summary>
-        public bool Activity8Checked
-        {
-            get => _activity8Checked;
-            set
-            {
-                SetProperty(ref _activity8Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether Activity9Checked
-        /// </summary>
-        public bool Activity9Checked
-        {
-            get => _activity9Checked;
-            set
-            {
-                SetProperty(ref _activity9Checked, value);
-                UpdateActivityChecked();
-            }
-        }
-
-        /// <summary>
         /// Gets or sets a value indicating whether Test
         /// </summary>
         public bool Test { get; set; }
@@ -631,23 +323,6 @@
                 { "id", Parcel.ParcelId }
             };
             _navigationService.NavigateAsync("MainPage", navigationParameters, true);
-        }
-
-        /// <summary>
-        /// The UpdateTechChecked
-        /// </summary>
-        private void UpdateTechChecked()
-        {
-            var technologies = new List<string>();
-            if (_tech1Checked) technologies.Add("Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento ");
-            if (_tech2Checked) technologies.Add("Interpretación y uso del análisis de suelo");
-            if (_tech3Checked) technologies.Add("Uso del sensor infrarrojo para fertilización óptima");
-            if (_tech4Checked) technologies.Add("Uso de biofertilizantes");
-            if (_tech5Checked) technologies.Add("Mejoradores de suelo para complementar fertilización");
-            if (_tech6Checked) technologies.Add("Mínimo movimiento de suelo, retención de residuos y rotación de cultivos");
-            if (_tech7Checked) technologies.Add("Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)");
-            if (_tech8Checked) technologies.Add("Tecnología para mejorar el almacenamiento del grano");
-            Parcel.TechnologiesUsed = technologies;
         }
 
         /// <summary>
@@ -749,23 +424,5 @@
         public List<string> SowingTypes { get; }
 
             = new List<string> { "Resiembra", "Siembra" };
-
-        /// <summary>
-        /// The UpdateActivityChecked
-        /// </summary>
-        private void UpdateActivityChecked()
-        {
-            var activities = new List<string>();
-            if (_activity1Checked) activities.Add("Preparación del terreno");
-            if (_activity2Checked) activities.Add("Aplicación de fertilizante foliar");
-            if (_activity3Checked) activities.Add("Aplicación de fertilizante orgánico");
-            if (_activity4Checked) activities.Add("Fertilización química al suelo");
-            if (_activity5Checked) activities.Add("Aplicación de herbicidas después de la siembra");
-            if (_activity6Checked) activities.Add("Aplicación de herbicidas presiembra");
-            if (_activity7Checked) activities.Add("Labores culturales y control físico de malezas");
-            if (_activity8Checked) activities.Add("Aplicación de fungicidas");
-            if (_activity9Checked) activities.Add("Aplicación de insecticidas");
-            Parcel.Activities = activities;
-        }
     }
 }

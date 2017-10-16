@@ -1,111 +1,136 @@
-﻿using CimmytApp.BusinessContract;
-using Helper.BusinessContract;
-using Helper.DatasetSyncEvents.ViewModelBase;
-using Prism;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Navigation;
-using System;
-using System.ComponentModel;
-using System.Windows.Input;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
-	public class ParcelMainPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
-	{
-		private DTO.Parcel.Parcel _parcel;
-		private readonly INavigationService _navigationService;
-		private readonly ICimmytDbOperations _cimmytDbOperations;
-		public ICommand OverviewCommand { get; set; }
-		public ICommand BenchmarkingCommand { get; set; }
-		public ICommand CalenderCommand { get; set; }
-		public ICommand WeatherCommand { get; set; }
-		public ICommand MapCommand { get; set; }
+    using CimmytApp.BusinessContract;
+    using Helper.BusinessContract;
+    using Helper.DatasetSyncEvents.ViewModelBase;
+    using Prism;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Navigation;
+    using System;
+    using System.ComponentModel;
+    using System.Windows.Input;
 
-		public DTO.Parcel.Parcel Parcel
-		{
-			get => _parcel;
-			set
-			{
-				SetProperty(ref _parcel, value);
-				OnPropertyChanged("Parcel");
-				if (value != null)
-					PublishDataset(value);
-			}
-		}
+    /// <summary>
+    /// Defines the <see cref="ParcelMainPageViewModel" />
+    /// </summary>
+    public class ParcelMainPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware
+    {
+        /// <summary>
+        /// Defines the _parcel
+        /// </summary>
+        private DTO.Parcel.Parcel _parcel;
 
-		public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations, IEventAggregator eventAggregator) : base(eventAggregator)
-		{
-			_navigationService = navigationService;
-			OverviewCommand = new DelegateCommand(NavigateToOverview);
-			BenchmarkingCommand = new DelegateCommand(NavigateToBenchMark);
-			CalenderCommand = new DelegateCommand(NavigateToCalender);
-			WeatherCommand = new DelegateCommand(NavigateToWeather);
-			MapCommand = new DelegateCommand(NavigateToMap);
-			
-			try
+        /// <summary>
+        /// Defines the _navigationService
+        /// </summary>
+        private readonly INavigationService _navigationService;
+
+        /// <summary>
+        /// Defines the _cimmytDbOperations
+        /// </summary>
+        private readonly ICimmytDbOperations _cimmytDbOperations;
+
+        /// <summary>
+        /// Gets or sets the Parcel
+        /// </summary>
+        public DTO.Parcel.Parcel Parcel
+        {
+            get => _parcel;
+            set
+            {
+                SetProperty(ref _parcel, value);
+                OnPropertyChanged("Parcel");
+                if (value != null)
+                    PublishDataset(value);
+            }
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ParcelMainPageViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">The <see cref="INavigationService"/></param>
+        /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations"/></param>
+        /// <param name="eventAggregator">The <see cref="IEventAggregator"/></param>
+        public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations, IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+            _navigationService = navigationService;
+
+            try
             {
                 _cimmytDbOperations = cimmytDbOperations;
             }
             catch (Exception e)
             {
             }
-		}
+            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+        }
 
-		private void NavigateToOverview()
-		{
-			_navigationService.NavigateAsync("ViewParcelInformationPage");
-		}
+        /// <summary>
+        /// Gets or sets the NavigateAsyncCommand
+        /// </summary>
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
-		private void NavigateToBenchMark()
-		{
-			_navigationService.NavigateAsync("BenchmarkingPage");
-		}
+        /// <summary>
+        /// The NavigateAsync
+        /// </summary>
+        /// <param name="page">The <see cref="string"/></param>
+        private void NavigateAsync(string page)
+        {
+            _navigationService.NavigateAsync(page);
+        }
 
-		private void NavigateToMap()
-		{
-			_navigationService.NavigateAsync("GenericMap");
-		}
+        /// <summary>
+        /// The GetDataset
+        /// </summary>
+        /// <returns>The <see cref="IDataset"/></returns>
+        protected override IDataset GetDataset()
+        {
+            return Parcel;
+        }
 
-		private void NavigateToCalender()
-		{
-			_navigationService.NavigateAsync("TelerikCalendarPage");
-		}
+        /// <summary>
+        /// The ReadDataset
+        /// </summary>
+        /// <param name="dataset">The <see cref="IDataset"/></param>
+        protected override void ReadDataset(IDataset dataset)
+        {
+            Parcel = (DTO.Parcel.Parcel)dataset;
+        }
 
-		private void NavigateToWeather()
-		{
-			_navigationService.NavigateAsync("WeatherDataSelection");
-		}
+        /// <summary>
+        /// The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
 
-		protected override IDataset GetDataset()
-		{
-			return Parcel;
-		}
+        /// <summary>
+        /// The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            try
+            {
+                var id = (int)parameters["Id"];
 
-		protected override void ReadDataset(IDataset dataset)
-		{
-			Parcel = (DTO.Parcel.Parcel)dataset;
-		}
+                Parcel = _cimmytDbOperations.GetParcelById(id);
+            }
+            catch (Exception e)
+            {
+            }
+        }
 
-		public void OnNavigatedFrom(NavigationParameters parameters)
-		{
-			throw new NotImplementedException();
-		}
+        /// <summary>
+        /// Gets or sets a value indicating whether IsActive
+        /// </summary>
+        public bool IsActive { get; set; }
 
-		public void OnNavigatedTo(NavigationParameters parameters)
-		{
-			try
-			{
-				var id = (int)parameters["Id"];
-
-				Parcel = _cimmytDbOperations.GetParcelById(id);
-			}
-			catch (Exception e)
-			{
-			}
-		}
-
-		public bool IsActive { get; set; }
-		public event EventHandler IsActiveChanged;
-	}
+        /// <summary>
+        /// Defines the IsActiveChanged
+        /// </summary>
+        public event EventHandler IsActiveChanged;
+    }
 }

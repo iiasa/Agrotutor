@@ -4,23 +4,20 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.ParcelMainPage">
-    
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-                <StackLayout Orientation="Horizontal" VerticalOptions="Start"  HorizontalOptions="Fill">
-                    <Button Image="icon_overview.png" HorizontalOptions="StartAndExpand" Command="{Binding OverviewCommand}"></Button>
-                    <Button Image="icon_map.png" HorizontalOptions="EndAndExpand" Command="{Binding MapCommand}"></Button>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
-                    <Button Image="icon_weather.png" HorizontalOptions="StartAndExpand" Command="{Binding WeatherCommand}"></Button>
-                    <Button Image="icon_info.png" HorizontalOptions="EndAndExpand" Command="{Binding OverviewCommand}"></Button>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="End"  HorizontalOptions="Fill">
-                    <Button Image="icon_edit.png" HorizontalOptions="StartAndExpand" Command="{Binding ApplicationCommands.SaveCommand}"></Button>
-                    <Button Image="icon_calendar.png" HorizontalOptions="EndAndExpand" Command="{Binding CalenderCommand}"></Button>
-                </StackLayout>
+    <ScrollView>
+        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
+            <StackLayout Orientation="Horizontal" VerticalOptions="Start"  HorizontalOptions="Fill">
+                <Button Image="data.png" HorizontalOptions="StartAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelPage"></Button>
+                <Button Image="map.png" HorizontalOptions="EndAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap"></Button>
             </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+            <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
+                <Button Image="weather.png" HorizontalOptions="StartAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection"></Button>
+                <Button Image="comparison.png" HorizontalOptions="EndAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="LocalBenchmarkingSelectionPage"></Button>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" VerticalOptions="End"  HorizontalOptions="Fill">
+                <Button Image="money.png" HorizontalOptions="StartAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="BenchmarkingPage"></Button>
+                <Button Image="calendar_medium.png" HorizontalOptions="EndAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

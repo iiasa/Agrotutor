@@ -91,7 +91,7 @@
                 </Image>
                 <Image Source="calendar.png" forms:Grid.Row="4" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="link.png" forms:Grid.Row="4" forms:Grid.Column="1" WidthRequest="70" Margin="16">
