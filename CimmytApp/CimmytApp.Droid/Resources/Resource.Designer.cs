@@ -12923,8 +12923,26 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f020059
 			public const int avd_hide_password = 2130837593;
 			
+			// aapt resource value: 0x7f020194
+			public const int avd_hide_password_1 = 2130837908;
+			
+			// aapt resource value: 0x7f020195
+			public const int avd_hide_password_2 = 2130837909;
+			
+			// aapt resource value: 0x7f020196
+			public const int avd_hide_password_3 = 2130837910;
+			
 			// aapt resource value: 0x7f02005a
 			public const int avd_show_password = 2130837594;
+			
+			// aapt resource value: 0x7f020197
+			public const int avd_show_password_1 = 2130837911;
+			
+			// aapt resource value: 0x7f020198
+			public const int avd_show_password_2 = 2130837912;
+			
+			// aapt resource value: 0x7f020199
+			public const int avd_show_password_3 = 2130837913;
 			
 			// aapt resource value: 0x7f02005b
 			public const int bullet_black = 2130837595;

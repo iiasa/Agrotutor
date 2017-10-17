@@ -67,14 +67,14 @@
             <Label Text="{localization:Translate poscosecha}" FontSize="10" />
             <controls:ExtendedPicker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
-            <Label Text="Selecciona la ubicación de tu parcela" FontSize="10" />
+            <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" />
             <StackLayout Orientation="Horizontal" Margin="24">
                 <Image Source="get_location.png" WidthRequest="32">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Usando GPS" VerticalOptions="Center" Margin="16">
+                <Label Text="Usando GPS" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding ClickGetLocation}" />
                     </Label.GestureRecognizers>
@@ -86,21 +86,21 @@
                         <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16">
+                <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding ClickChooseLocation}" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
 
-            <Label Text="Agrega información de manejo de parcela" FontSize="10" />
+            <Label Text="Agrega información de manejo de parcela" FontSize="18" />
             <StackLayout Orientation="Horizontal" Margin="24">
                 <Image Source="wand.png" WidthRequest="32">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16">
+                <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
                     </Label.GestureRecognizers>
@@ -112,7 +112,7 @@
                         <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Agregar actividades de parcela" VerticalOptions="Center" Margin="16">
+                <Label Text="Agregar actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
                     </Label.GestureRecognizers>
