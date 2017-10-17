@@ -14,58 +14,20 @@
                 <Image Source="add_small.png" />
             </StackLayout>
 
-            <Label Text="{localization:Translate hint_agronomical_cycle}" FontSize="10" />
-            <Picker ItemsSource="{Binding AgriculturalCycles}" SelectedIndex="{Binding PickerAgriculturalCycleSelectedIndex}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_year}" FontSize="10" />
-            <Picker ItemsSource="{Binding Years}" SelectedIndex="{Binding PickerYearsSelectedIndex}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_area}" FontSize="10" />
-            <Entry Keyboard="Numeric" Placeholder="{localization:Translate unit_hectares}" Text="{Binding Parcel.EstimatedParcelArea}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
-            <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding Parcel.ProducerName}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_parcel_name}" FontSize="10" />
-            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_technologies_used}" FontSize="10" />
-
-            <Label  Text="{localization:Translate hint_technology_other}" Margin="0,16,0,0" FontSize="10" />
-            <Entry  Placeholder="{localization:Translate hint_other_technology_used}" Text="{Binding Parcel.OtherTechnologies}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_crop}" FontSize="10" />
+            <Label Text="{localization:Translate hint_crop}" />
             <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_cultivar}" FontSize="10" />
-            <Entry Placeholder="{localization:Translate hint_cultivar_placeholder}"  Text="{Binding Parcel.Cultivar}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate madurez}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate tipo_clima}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate siembra}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_performance}" FontSize="10" />
-
-            <Entry Placeholder="{localization:Translate unit_performance}" Text="{Binding Parcel.Performance}"  Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_irrigation}" FontSize="10" />
-
-            <controls:ExtendedPicker ItemsSource="{Binding IrrigationTypes}" SelectedIndex="{Binding PickerIrrigationTypesSelectedIndex}" Margin="0,0,0,16" />
-
-            <Label Text="{localization:Translate hint_planting_date}" FontSize="10" />
-
+            <Label Text="{localization:Translate hint_planting_date}" />
             <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate cosecha}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding HarvestingTypes}" SelectedIndex="{Binding PickerHarvestingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Label Text="{localization:Translate madurez}" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate poscosecha}" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding StorageTypes}" SelectedIndex="{Binding PickerStorageTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Label Text="{localization:Translate tipo_clima}" />
+            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Margin="0,0,0,16" />
+
+            <Label Text="{localization:Translate hint_parcel_name}" />
+            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
 
             <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" />
             <StackLayout Orientation="Horizontal" Margin="24">
@@ -89,6 +51,18 @@
                 <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding ClickChooseLocation}" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" Margin="24">
+                <Image Source="delineate.png" WidthRequest="32">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ClickDelineate}" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="Delimita tu parcela" VerticalOptions="Center" Margin="16" FontSize="16">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer  Command="{Binding ClickDelineate}" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
