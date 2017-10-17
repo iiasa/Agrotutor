@@ -44,6 +44,7 @@
     <Compile Include="ActivityManagement\OtherActivitiesActivity.cs" />
     <Compile Include="ActivityManagement\GroundPreperationActivity.cs" />
     <Compile Include="ActivityManagement\SoilImproversActivity.cs" />
+    <Compile Include="Constants.cs" />
     <Compile Include="Views\SelectTechnologiesPage.xaml.cs">
       <DependentUpon>SelectTechnologiesPage.xaml</DependentUpon>
     </Compile>

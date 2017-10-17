@@ -217,6 +217,15 @@
 
                 OnPropertyChanged("Parcel");
             }
+
+            if (parameters.ContainsKey(Constants.TechnologiesParameterName))
+            {
+                parameters.TryGetValue(Constants.TechnologiesParameterName, out var technologies);
+                if (Parcel != null)
+                {
+                    Parcel.TechnologiesUsed = (List<string>)technologies;
+                }
+            }
         }
 
         /// <summary>

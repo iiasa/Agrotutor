@@ -11,11 +11,6 @@
     public class SelectTechnologiesPageViewModel : BindableBase, INavigationAware
     {
         /// <summary>
-        /// Defines the TechnologiesParameterName
-        /// </summary>
-        public const string TechnologiesParameterName = "Technologies";
-
-        /// <summary>
         /// Defines the Technology1
         /// </summary>
         private const string Technology1 = "Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento ";
@@ -304,7 +299,7 @@
         /// </summary>
         private void Save()
         {
-            var navigationParameters = new NavigationParameters { { TechnologiesParameterName, Technologies } };
+            var navigationParameters = new NavigationParameters { { Constants.TechnologiesParameterName, Technologies } };
             _navigationService.GoBackAsync(navigationParameters);
         }
 
@@ -322,9 +317,9 @@
         /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey(TechnologiesParameterName))
+            if (parameters.ContainsKey(Constants.TechnologiesParameterName))
             {
-                Technologies = (List<string>)parameters[TechnologiesParameterName];
+                Technologies = (List<string>)parameters[Constants.TechnologiesParameterName];
             }
         }
     }
