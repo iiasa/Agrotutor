@@ -59,7 +59,7 @@ namespace CimmytApp.ViewModels
 
 		private void NavigateToBenchMark()
 		{
-			_navigationService.NavigateAsync("BenchmarkingPage");
+			_navigationService.NavigateAsync("LocalBenchmarkingSelectionPage");
 		}
 
 		private void NavigateToMap()
@@ -89,7 +89,7 @@ namespace CimmytApp.ViewModels
 
 		public void OnNavigatedFrom(NavigationParameters parameters)
 		{
-			throw new NotImplementedException();
+			
 		}
 
 		public void OnNavigatedTo(NavigationParameters parameters)

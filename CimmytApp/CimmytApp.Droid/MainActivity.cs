@@ -39,9 +39,6 @@ namespace CimmytApp.Droid
                     var x = args;
                 };
 
-                TabLayoutResource = Resource.Layout.tabs;
-                ToolbarResource = Resource.Layout.toolbar;
-
                 base.OnCreate(bundle);
 
                 global::Xamarin.Forms.Forms.Init(this, bundle);

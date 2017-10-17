@@ -14,7 +14,7 @@
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
                     <Button Image="icon_weather.png" HorizontalOptions="StartAndExpand" Command="{Binding WeatherCommand}"></Button>
-                    <Button Image="icon_info.png" HorizontalOptions="EndAndExpand" Command="{Binding OverviewCommand}"></Button>
+                    <Button Image="icon_info.png" HorizontalOptions="EndAndExpand" Command="{Binding BenchmarkingCommand}"></Button>
                 </StackLayout>
                 <StackLayout Orientation="Horizontal" VerticalOptions="End"  HorizontalOptions="Fill">
                     <Button Image="icon_edit.png" HorizontalOptions="StartAndExpand" Command="{Binding ApplicationCommands.SaveCommand}"></Button>
