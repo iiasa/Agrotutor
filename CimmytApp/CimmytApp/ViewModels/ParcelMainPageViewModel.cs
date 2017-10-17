@@ -115,7 +115,6 @@
             try
             {
                 var id = (int)parameters["Id"];
-
                 Parcel = _cimmytDbOperations.GetParcelById(id);
             }
             catch (Exception e)
