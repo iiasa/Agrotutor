@@ -1,6 +1,6 @@
 ﻿namespace CimmytApp.Parcel
 {
-    internal static class Constants
+    public static class ParcelConstants
     {
         public static string TechnologiesParameterName = "Technologies";
     }

@@ -218,9 +218,9 @@
                 OnPropertyChanged("Parcel");
             }
 
-            if (parameters.ContainsKey(Constants.TechnologiesParameterName))
+            if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                parameters.TryGetValue(Constants.TechnologiesParameterName, out var technologies);
+                parameters.TryGetValue(ParcelConstants.TechnologiesParameterName, out var technologies);
                 if (Parcel != null)
                 {
                     Parcel.TechnologiesUsed = (List<string>)technologies;

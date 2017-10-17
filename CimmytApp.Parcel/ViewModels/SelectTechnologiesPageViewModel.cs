@@ -299,7 +299,7 @@
         /// </summary>
         private void Save()
         {
-            var navigationParameters = new NavigationParameters { { Constants.TechnologiesParameterName, Technologies } };
+            var navigationParameters = new NavigationParameters { { ParcelConstants.TechnologiesParameterName, Technologies } };
             _navigationService.GoBackAsync(navigationParameters);
         }
 
@@ -317,9 +317,9 @@
         /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey(Constants.TechnologiesParameterName))
+            if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                Technologies = (List<string>)parameters[Constants.TechnologiesParameterName];
+                Technologies = (List<string>)parameters[ParcelConstants.TechnologiesParameterName];
             }
         }
     }
