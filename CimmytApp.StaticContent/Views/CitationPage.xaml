@@ -19,6 +19,8 @@
             <Label Text="https://roundicons.com/" />
             <Label Text="Smashicons" />
             <Label Text="https://smashicons.com/" />
+            <Label Text="icons8" />
+            <Label Text="https://icons8.com/" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
