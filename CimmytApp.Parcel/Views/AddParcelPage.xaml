@@ -11,7 +11,7 @@
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Label Text="Agregar parcela" FontAttributes="Italic" />
-                <Image Source="add_small.png" />
+                <Image Source="add_small.png" HeightRequest="18" />
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" />

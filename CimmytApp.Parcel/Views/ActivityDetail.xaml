@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Parcel.Views.ActivityDetail"
-             Padding="16">
+             x:Class="CimmytApp.Parcel.Views.ActivityDetail">
     <ScrollView>
-        <Grid>
+        <Grid Margin="16,16,16,0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="Auto"></RowDefinition>
@@ -20,58 +20,57 @@
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <StackLayout  Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0">
-                <Label Text="{Binding PageLabel}" FontAttributes="Italic" />
-                <Image Source="{Binding PageIcon}" />
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0">
+                <Label Text="{Binding PageTitle}" FontAttributes="Italic" />
+                <Image Source="{Binding PageIcon}" HeightRequest="18" />
             </StackLayout>
-            <StackLayout  Orientation="Vertical" HorizontalOptions="Center" Grid.Row="1">
-                <Label Text="Nombre de la actividad" Margin="10,0,0,0"  HorizontalOptions="Start"></Label>
-                <Label Text="{Binding ActivityName}" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameVisibility}"></Label>
-                <Picker ItemsSource="{Binding ActivityDynamicUIVisibility.ActivityNameList}" Margin="10,0,0,0" SelectedItem="{Binding ActivityName}"
-                    ItemDisplayBinding="{Binding}" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}"></Picker>
+            <StackLayout  Orientation="Vertical" HorizontalOptions="Start" Grid.Row="1">
+                <Label Text="Nombre de la actividad" Margin="16"  HorizontalOptions="Start" />
+                <Label Text="{Binding ActivityName}" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameVisibility}" />
+                <Picker ItemsSource="{Binding ActivityDynamicUIVisibility.ActivityNameList}" Margin="16" SelectedItem="{Binding ActivityName}"
+                    ItemDisplayBinding="{Binding}" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}" />
             </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="1">
-                <Label Text="Fecha de la actividad" HorizontalOptions="Start"></Label>
-                <DatePicker Date="{Binding ActivityDate}" Margin="10,0,0,0" MinimumDate="{Binding MinimumCalenderDateTime}"></DatePicker>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
+                <Label Text="Fecha de la actividad" HorizontalOptions="Start" />
+                <DatePicker Date="{Binding ActivityDate}" Margin="16" MinimumDate="{Binding MinimumCalenderDateTime}" />
             </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityTotalCostVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="2">
-                <Label Text="Costo total de la actividad ($)"  HorizontalOptions="Start"></Label>
-                <Entry Keyboard="Numeric" Text="{Binding ActivityCost}" Margin="10,0,0,0"></Entry>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityTotalCostVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">
+                <Label Text="Costo total de la actividad ($)"  HorizontalOptions="Start" />
+                <Entry Keyboard="Numeric" Text="{Binding ActivityCost}" Margin="16" />
             </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AppliedProductsVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="3">
-                <Label Text="Productos aplicados" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Text="{Binding AppliedProduct}"></Entry>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AppliedProductsVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="4">
+                <Label Text="Productos aplicados" HorizontalOptions="Start" />
+                <Entry Margin="16" Text="{Binding AppliedProduct}" />
             </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.DosageVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="4">
-                <Label Text="Dosis/ha" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Keyboard="Numeric" Text="{Binding ActivityDose}"></Entry>
-            </StackLayout>
-
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AppliedAmountVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="5">
-                <Label Text="Cantidad aplicada" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Text="{Binding AmountApplied}"></Entry>
-            </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.VarietySownVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="6">
-                <Label Text="Variedad sembrada" HorizontalOptions="Start"></Label>
-                <Picker ItemsSource="{Binding ListSownVariety}" Margin="10,0,0,0" SelectedItem="{Binding SelectedSown}" ItemDisplayBinding="{Binding}">
-                </Picker>
-            </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PlantingDensityVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="7">
-                <Label Text="kilogramos de siembra" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Text="{Binding WeightOfSeeds}" Keyboard="Numeric"></Entry>
-                <Label Text="Número de semillas" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Text="{Binding NumberOfSeeds}" Keyboard="Numeric"></Entry>
-            </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ProductObtainedVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="8">
-                <Label Text="Producto obtenido" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Text="{Binding ProductObtained}"></Entry>
-            </StackLayout>
-            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PerformanceVisibility}" Orientation="Vertical" HorizontalOptions="Center" Grid.Row="9">
-                <Label Text="Rendimiento" HorizontalOptions="Start"></Label>
-                <Entry Margin="10,0,0,0" Text="{Binding ActivityYield}"></Entry>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.DosageVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="5">
+                <Label Text="Dosis/ha" HorizontalOptions="Start" />
+                <Entry Margin="16" Keyboard="Numeric" Text="{Binding ActivityDose}" />
             </StackLayout>
 
-            <Button Text="Guardar cambios" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="10" CommandParameter="{Binding SaveCommand}"></Button>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AppliedAmountVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="6">
+                <Label Text="Cantidad aplicada" HorizontalOptions="Start" />
+                <Entry Margin="16" Text="{Binding AmountApplied}" />
+            </StackLayout>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.VarietySownVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="7">
+                <Label Text="Variedad sembrada" HorizontalOptions="Start" />
+                <Picker ItemsSource="{Binding ListSownVariety}" Margin="16" SelectedItem="{Binding SelectedSown}" ItemDisplayBinding="{Binding}" />
+            </StackLayout>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PlantingDensityVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="8">
+                <Label Text="kilogramos de siembra" HorizontalOptions="Start" />
+                <Entry Margin="16" Text="{Binding WeightOfSeeds}" Keyboard="Numeric" />
+                <Label Text="Número de semillas" HorizontalOptions="Start" />
+                <Entry Margin="16" Text="{Binding NumberOfSeeds}" Keyboard="Numeric" />
+            </StackLayout>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ProductObtainedVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="9">
+                <Label Text="Producto obtenido" HorizontalOptions="Start" />
+                <Entry Margin="16" Text="{Binding ProductObtained}" />
+            </StackLayout>
+            <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PerformanceVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="10">
+                <Label Text="Rendimiento" HorizontalOptions="Start" />
+                <Entry Margin="16" Text="{Binding ActivityYield}" />
+            </StackLayout>
+
+            <Button Text="Guardar cambios" VerticalOptions="End" HorizontalOptions="Start" Grid.Row="11" CommandParameter="{Binding SaveCommand}" />
         </Grid>
     </ScrollView>
 </ContentPage>

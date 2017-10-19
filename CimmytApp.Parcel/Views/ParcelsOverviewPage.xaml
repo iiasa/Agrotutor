@@ -10,11 +10,16 @@
     <!--Title="{localization:Translate page_title_parcels_overview}"-->
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <ScrollView Grid.Row="0" IsVisible="{Binding ParcelsListIsVisible}">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0">
+            <Label Text="Información de parcela" FontAttributes="Italic" />
+            <Image Source="farmer_small.png" HeightRequest="18" />
+        </StackLayout>
+        <ScrollView Grid.Row="1" IsVisible="{Binding ParcelsListIsVisible}">
             <ListView ItemsSource="{Binding ObservableParcel}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped">
                 <!-- TODO RowHeight auto -->
                 <ListView.ItemTemplate>
@@ -46,8 +51,6 @@
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Label Grid.Row="0" Text="Aún no has creado una parcela. Presione 'nueva parcela' para agregar una parcela." IsVisible="{Binding AddParcelHintIsVisible}" />
-        <Button Text="Nueva parcela" Command="{Binding AddParcelCommand}"  Grid.Row="1" />
-        <Button Text="Subir cambios" Command="{Binding UploadCommand}" IsEnabled="{Binding ShowUploadButton}" Grid.Row="2" />
+        <Label Grid.Row="1" Text="Aún no has creado una parcela. Presione 'nueva parcela' para agregar una parcela." IsVisible="{Binding AddParcelHintIsVisible}" />
     </Grid>
 </ContentPage>

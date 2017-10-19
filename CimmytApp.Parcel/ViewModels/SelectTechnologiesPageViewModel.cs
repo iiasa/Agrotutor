@@ -90,6 +90,8 @@
         /// </summary>
         private bool _tech8Checked;
 
+        public bool Initializing { get; set; } = true;
+
         /// <summary>
         /// Gets or sets a value indicating whether Tech1Checked
         /// </summary>
@@ -264,8 +266,8 @@
             get => _technologies;
             set
             {
-                UpdateTechCheckedUI();
                 SetProperty(ref _technologies, value);
+                if (Initializing) UpdateTechCheckedUI();
             }
         }
 
@@ -321,6 +323,7 @@
             {
                 Technologies = (List<string>)parameters[ParcelConstants.TechnologiesParameterName];
             }
+            Initializing = false;
         }
     }
 }

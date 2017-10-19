@@ -9,7 +9,7 @@
         <StackLayout Margin="16,16,16,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Label Text="Agregar actividades de parcela" FontAttributes="Italic" />
-                <Image Source="farmer_small.png" />
+                <Image Source="farmer_small.png" HeightRequest="18" />
             </StackLayout>
             <Grid Margin="16">
                 <Grid.RowDefinitions>

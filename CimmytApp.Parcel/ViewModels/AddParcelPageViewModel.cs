@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using System;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using BusinessContract;
     using DTO.Parcel;
@@ -75,7 +77,16 @@
             ClickGetLocation = new DelegateCommand(GetLocation);
             ClickDelineate = new DelegateCommand(Delineate);
 
+            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+
             Parcel = new Parcel();
+        }
+
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
+
+        private void NavigateAsync(string page)
+        {
+            _navigationService.NavigateAsync(page);
         }
 
         /// <summary>
