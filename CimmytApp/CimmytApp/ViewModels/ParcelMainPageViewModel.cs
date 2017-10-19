@@ -16,11 +16,7 @@ namespace CimmytApp.ViewModels
 		private DTO.Parcel.Parcel _parcel;
 		private readonly INavigationService _navigationService;
 		private readonly ICimmytDbOperations _cimmytDbOperations;
-		public ICommand OverviewCommand { get; set; }
-		public ICommand BenchmarkingCommand { get; set; }
-		public ICommand CalenderCommand { get; set; }
-		public ICommand WeatherCommand { get; set; }
-		public ICommand MapCommand { get; set; }
+		public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
 		public DTO.Parcel.Parcel Parcel
 		{
@@ -37,12 +33,8 @@ namespace CimmytApp.ViewModels
 		public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations, IEventAggregator eventAggregator) : base(eventAggregator)
 		{
 			_navigationService = navigationService;
-			OverviewCommand = new DelegateCommand(NavigateToOverview);
-			BenchmarkingCommand = new DelegateCommand(NavigateToBenchMark);
-			CalenderCommand = new DelegateCommand(NavigateToCalender);
-			WeatherCommand = new DelegateCommand(NavigateToWeather);
-			MapCommand = new DelegateCommand(NavigateToMap);
-			
+			NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+
 			try
             {
                 _cimmytDbOperations = cimmytDbOperations;
@@ -52,29 +44,9 @@ namespace CimmytApp.ViewModels
             }
 		}
 
-		private void NavigateToOverview()
+		private void NavigateAsync(string page)
 		{
-			_navigationService.NavigateAsync("ViewParcelInformationPage");
-		}
-
-		private void NavigateToBenchMark()
-		{
-			_navigationService.NavigateAsync("LocalBenchmarkingSelectionPage");
-		}
-
-		private void NavigateToMap()
-		{
-			_navigationService.NavigateAsync("GenericMap");
-		}
-
-		private void NavigateToCalender()
-		{
-			_navigationService.NavigateAsync("TelerikCalendarPage");
-		}
-
-		private void NavigateToWeather()
-		{
-			_navigationService.NavigateAsync("WeatherDataSelection");
+			_navigationService.NavigateAsync(page);
 		}
 
 		protected override IDataset GetDataset()

@@ -35,8 +35,8 @@
                                     <Image Source="{Binding Parcel.IconSource}" WidthRequest="75"  HeightRequest="75" VerticalOptions="Center" HorizontalOptions="Center" />
                                     <Label Text="{Binding Parcel.OverviewString}" HorizontalOptions="Center"  VerticalOptions="Center"/>
                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding IsOptionsVisible}">
-                                        <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="StartAndExpand"/>
-                                        <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="CenterAndExpand"/>
+                                        <Button Text="Editar"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="StartAndExpand"/>
+                                        <Button Text="borrar"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="CenterAndExpand"/>
                                         <Button Text="Detalle"  Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}" CommandParameter="{Binding Parcel.ParcelId}" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="EndAndExpand"/>
                                     </StackLayout>
                                 </StackLayout>

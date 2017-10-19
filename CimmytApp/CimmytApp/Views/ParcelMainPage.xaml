@@ -1,25 +1,105 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:forms="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.ParcelMainPage">
-    
+
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-                <StackLayout Orientation="Horizontal" VerticalOptions="Start"  HorizontalOptions="Fill">
-                    <Button Image="icon_overview.png" HorizontalOptions="StartAndExpand" Command="{Binding OverviewCommand}"></Button>
-                    <Button Image="icon_map.png" HorizontalOptions="EndAndExpand" Command="{Binding MapCommand}"></Button>
+            <StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Image Source="{Binding Parcel.IconSource}" WidthRequest="75"  HeightRequest="75" VerticalOptions="Center" HorizontalOptions="Center" />
+                    <Label Text="{Binding Parcel.OverviewString}" HorizontalOptions="Center"  VerticalOptions="Center"/>
                 </StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
-                    <Button Image="icon_weather.png" HorizontalOptions="StartAndExpand" Command="{Binding WeatherCommand}"></Button>
-                    <Button Image="icon_info.png" HorizontalOptions="EndAndExpand" Command="{Binding BenchmarkingCommand}"></Button>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" VerticalOptions="End"  HorizontalOptions="Fill">
-                    <Button Image="icon_edit.png" HorizontalOptions="StartAndExpand" Command="{Binding ApplicationCommands.SaveCommand}"></Button>
-                    <Button Image="icon_calendar.png" HorizontalOptions="EndAndExpand" Command="{Binding CalenderCommand}"></Button>
-                </StackLayout>
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                        <Image Source="icon_info_squared_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ViewParcelInformationPage" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Informacion general" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ViewParcelInformationPage" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout forms:Grid.Row="0" forms:Grid.Column="1" Orientation="Vertical">
+                        <Image Source="icon_map_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Ubicacion" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout forms:Grid.Row="1" forms:Grid.Column="0" Orientation="Vertical">
+                        <Image Source="icon_weather_96.png"  WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Clima" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout forms:Grid.Row="1" forms:Grid.Column="1" Orientation="Vertical">
+                        <Image Source="icon_scales_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LocalBenchmarkingSelectionPage" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="informacion comparativa" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LocalBenchmarkingSelectionPage" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <StackLayout forms:Grid.Row="2" forms:Grid.Column="0" Orientation="Vertical">
+                        <Image Source="icon_performance_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Rendimiento potencial" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+
+                    <StackLayout forms:Grid.Row="2" forms:Grid.Column="1">
+                        <Image Source="icon_planner_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Calendario de actividades" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

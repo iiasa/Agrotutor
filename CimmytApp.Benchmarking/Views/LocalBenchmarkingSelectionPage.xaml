@@ -5,29 +5,79 @@
              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Benchmarking.Views.LocalBenchmarkingSelectionPage"
-
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-            >
-    <!--Title="{localization:Translate benchmarking}"-->
-    <StackLayout Margin="16">
+>
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <Image Source="icon_scales_96.png" WidthRequest="70" Margin="16"></Image>
+                    <Label Text="informacion comparativa" HorizontalOptions="Center"  VerticalOptions="Center"/>
+                </StackLayout>
+                <Grid Margin="16">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50*" />
+                        <RowDefinition Height="50*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50*" />
+                        <ColumnDefinition Width="50*" />
+                    </Grid.ColumnDefinitions>
 
-        <Label Text="{localization:Translate bem_data_type}" FontSize="10" />
-        <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-        <Picker ItemsSource="{Binding DatasetSelection}" SelectedIndex="{Binding DatasetSelectedIndex}" Margin="0,0,0,16" />
+                    <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
+                        <Image Source="icons_pricetag_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ViewParcelInformationPage" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Costos" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ViewParcelInformationPage" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
 
-        <Label Text="{localization:Translate filter_years}" FontSize="10" />
-        <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-        <controls:CheckBox Checked="{Binding FilterYears}" DefaultText="{localization:Translate filter_years}" />
-        <Picker ItemsSource="{Binding YearsSelection}" SelectedIndex="{Binding YearsSelectedIndex}" IsVisible="{Binding FilterYears}" Margin="0,0,0,16" />
+                    <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
+                        <Image Source="icon_profit_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Ingresos" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
 
-        <Label Text="{localization:Translate filter_cycle}" FontSize="10" />
-        <BoxView Color="CadetBlue" HeightRequest="2" WidthRequest="100" />
-        <controls:CheckBox Checked="{Binding FilterCycle}" DefaultText="{localization:Translate filter_cycle}" />
-        <Picker ItemsSource="{Binding CycleSelection}" SelectedIndex="{Binding CycleSelectedIndex}"  IsVisible="{Binding FilterCycle}" Margin="0,0,0,16" />
+                    <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                        <Image Source="icons_datasheet_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Rendimiento" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
 
-        <Button Command="{Binding ViewDataCommand}" Text="{localization:Translate view}" IsEnabled="{Binding DataAvailable}" />
-        <Button Command="{Binding RefreshDataCommand}" Text="{localization:Translate refresh_benchmarking_data}" />
-        <Label Text="Por favor espere mientras recuperamos sus registros." IsVisible="{Binding Downloading}" />
-        
-    </StackLayout>
+                    <StackLayout  Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                        <Image Source="icons_settings_96.png" WidthRequest="70" Margin="16">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LocalBenchmarkingSelectionPage" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                        <Label Text="Utilidad" HorizontalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LocalBenchmarkingSelectionPage" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
 </ContentPage>
