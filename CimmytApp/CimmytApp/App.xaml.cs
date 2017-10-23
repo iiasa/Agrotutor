@@ -13,7 +13,6 @@ namespace CimmytApp
 
     using Helper.Base.Contract;
     using Helper.Geolocator;
-    using Helper.Localization.Localization;
     using Helper.Map;
     using Helper.UserRegistration;
 
@@ -30,13 +29,10 @@ namespace CimmytApp
 
     public partial class App : PrismApplication
     {
-        private static IDictionary<string, object> _properties;
-
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
             try
             {
-                _properties = Current.Properties;
                 System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
                 var assembly = typeof(App).GetTypeInfo().Assembly;
                 foreach (var res in assembly.GetManifestResourceNames())
@@ -63,7 +59,24 @@ namespace CimmytApp
 
         public static IDictionary<string, object> GetProperties()
         {
-            return _properties;
+            return Current.Properties;
+        }
+
+        public static object GetProperty(string propertyName)
+        {
+            return Current.Properties.ContainsKey(propertyName) ? Current.Properties[propertyName] : null;
+        }
+
+        public static void InsertOrUpdateProperty(string propertyName, object value)
+        {
+            if (Current.Properties.ContainsKey(propertyName))
+            {
+                Current.Properties[propertyName] = value;
+            }
+            else
+            {
+                Current.Properties.Add(propertyName, value);
+            }
         }
 
         protected override void ConfigureModuleCatalog()

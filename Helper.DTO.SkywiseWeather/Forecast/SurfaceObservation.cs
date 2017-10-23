@@ -1,6 +1,6 @@
 ﻿namespace Helper.DTO.SkywiseWeather.Forecast
 {
-    internal class SurfaceObservation
+    public class SurfaceObservation
     {
         public string Station { get; set; }
         public double StationLatitude { get; set; }

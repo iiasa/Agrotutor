@@ -54,18 +54,6 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="24">
-                <Image Source="delineate.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ClickDelineate}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Delimita tu parcela" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ClickDelineate}" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
 
             <Label Text="Agrega información de manejo de parcela" FontSize="18" />
             <StackLayout Orientation="Horizontal" Margin="24">

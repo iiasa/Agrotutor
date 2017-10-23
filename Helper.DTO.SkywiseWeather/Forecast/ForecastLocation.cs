@@ -14,7 +14,7 @@
         public string Offset { get; set; }
         public string LocalOffsetHours { get; set; }
         public SurfaceObservation CurrentWeatherObservation { get; set; }
-        public List<DailySummary> DailySummaries { get; set; }
-        public List<HourlySummary> HourlySummaries { get; set; }
+        //public List<DailySummary> DailySummaries { get; set; }
+        //public List<HourlySummary> HourlySummaries { get; set; }
     }
 }

@@ -9,7 +9,8 @@
   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <uses-permission android:name="android.permission.CAMERA" />
-  <application android:label="México Produce" android:theme="@style/MyTheme" android:icon="@drawable/cloud">
+  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+  <application android:label="México Produce" android:theme="@style/MyTheme" android:icon="@drawable/app_icon">
     <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCFVDQBvLzdNzm5ZfweMKfTHEKmZyHA4ug" />
   </application>
 </manifest>

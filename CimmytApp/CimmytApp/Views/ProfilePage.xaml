@@ -5,7 +5,8 @@
              xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
              xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.ProfilePage">
+             x:Class="CimmytApp.Views.ProfilePage"
+             Padding="16">
     <StackLayout Orientation="Vertical">
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
@@ -14,9 +15,12 @@
         </StackLayout>
 
         <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
-        <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding Parcel.ProducerName}" Margin="0,0,0,16" />
+        <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}" Margin="0,0,0,16" />
 
         <Label Text="Estado" FontSize="10" />
-        <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+        <Entry Text="{Binding UserProfile.State}" Margin="0,0,0,16" />
+
+        <Button Text="Tomar una foto" IsVisible="{Binding TakePictureButtonVisible}" Command="{Binding TakePictureCommand}" />
+        <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350" Source="{Binding ImageSource}"/>
     </StackLayout>
 </ContentPage>

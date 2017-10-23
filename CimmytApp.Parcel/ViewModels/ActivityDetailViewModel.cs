@@ -26,7 +26,7 @@ namespace CimmytApp.Parcel.ViewModels
         private DateTime _minimumCalenderDateTime;
         private string _pageIcon;
         private string _pageTitle;
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
 
         public DelegateCommand SaveCommand { get; set; }
 

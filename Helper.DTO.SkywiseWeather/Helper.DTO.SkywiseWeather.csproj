@@ -28,6 +28,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Forecast\ForecastData.cs" />
+    <Compile Include="Forecast\ForecastLocation.cs" />
+    <Compile Include="Forecast\SurfaceObservation.cs" />
     <Compile Include="Historical\DailySeries.cs" />
     <Compile Include="Historical\HourlySeries.cs" />
     <Compile Include="Historical\Temperature\CoolingDegreeDays.cs" />

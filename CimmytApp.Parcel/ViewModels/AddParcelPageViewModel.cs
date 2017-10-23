@@ -205,13 +205,11 @@ namespace CimmytApp.Parcel.ViewModels
         /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Activity"))
+            if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue("Activity", out var activity);
-                if (Parcel.Activities == null) Parcel.AgriculturalActivities = new List<AgriculturalActivity>();
-                Parcel.AgriculturalActivities.Add((AgriculturalActivity)activity);
+                parameters.TryGetValue("Activities", out var activities);
+                Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
             }
-
             if (parameters.ContainsKey("GeoPosition"))
             {
                 parameters.TryGetValue("GeoPosition", out var geoPosition);

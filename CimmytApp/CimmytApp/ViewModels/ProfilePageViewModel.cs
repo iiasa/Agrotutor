@@ -1,16 +1,96 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
+    using Plugin.Media;
+    using Prism.Commands;
+    using Prism.Mvvm;
+
+    using DTO;
+
+    /// <summary>
+    /// Defines the <see cref="ProfilePageViewModel" />
+    /// </summary>
     public class ProfilePageViewModel : BindableBase
     {
+        /// <summary>
+        /// Defines the _imageSource
+        /// </summary>
+        private string _imageSource;
+
+        /// <summary>
+        /// Defines the _takePictureButtonVisible
+        /// </summary>
+        private bool _takePictureButtonVisible = true;
+
+        /// <summary>
+        /// Defines the _pictureVisible
+        /// </summary>
+        private bool _pictureVisible = false;
+
+        /// <summary>
+        /// Gets or sets the UserProfile
+        /// </summary>
+        public UserProfile UserProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets the TakePictureCommand
+        /// </summary>
+        public DelegateCommand TakePictureCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether TakePictureButtonVisible
+        /// </summary>
+        public bool TakePictureButtonVisible { get => _takePictureButtonVisible; set => SetProperty(ref _takePictureButtonVisible, value); }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether PictureVisible
+        /// </summary>
+        public bool PictureVisible { get => _pictureVisible; set => SetProperty(ref _pictureVisible, value); }
+
+        /// <summary>
+        /// Gets or sets the ImageSource
+        /// </summary>
+        public string ImageSource { get => _imageSource; set => SetProperty(ref _imageSource, value); }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProfilePageViewModel"/> class.
+        /// </summary>
         public ProfilePageViewModel()
         {
+            TakePictureCommand = new DelegateCommand(TakePicture);
+            var picture = (string)App.GetProperty("UserPicture");
+            if (picture != null)
+            {
+                ImageSource = picture;
+                PictureVisible = true;
+                TakePictureButtonVisible = false;
+            }
+        }
 
+        /// <summary>
+        /// The TakePicture
+        /// </summary>
+        private async void TakePicture()
+        {
+            await CrossMedia.Current.Initialize();
+
+            if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+            {
+                return;
+            }
+
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                Directory = "Cimmyt",
+                Name = "user.jpg"
+            });
+
+            if (file == null)
+                return;
+
+            ImageSource = file.Path;
+            PictureVisible = true;
+            TakePictureButtonVisible = false;
+            App.InsertOrUpdateProperty("UserPicture", file.Path);
         }
     }
 }

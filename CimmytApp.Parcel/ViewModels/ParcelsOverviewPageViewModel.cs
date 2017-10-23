@@ -1,6 +1,4 @@
-﻿using System.Collections.ObjectModel;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
     using BusinessContract;
     using DTO.Parcel;
@@ -10,6 +8,7 @@ namespace CimmytApp.Parcel.ViewModels
     using Prism.Navigation;
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Defines the <see cref="ParcelsOverviewPageViewModel" />
@@ -31,6 +30,9 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private List<Parcel> _parcels;
 
+        /// <summary>
+        /// Gets or sets the ObservableParcel
+        /// </summary>
         public ObservableCollection<ParcelViewModel> ObservableParcel { get; set; }
 
         /// <summary>
@@ -51,11 +53,7 @@ namespace CimmytApp.Parcel.ViewModels
         /// <summary>
         /// Gets or sets a value indicating whether ShowUploadButton
         /// </summary>
-        public bool ShowUploadButton
-        {
-            get => _showUploadButton;
-            set => SetProperty(ref _showUploadButton, value);
-        }
+        public bool ShowUploadButton { get => _showUploadButton; set => SetProperty(ref _showUploadButton, value); }
 
         /// <summary>
         /// Gets or sets a value indicating whether ParcelsListIsVisible
@@ -112,6 +110,9 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private bool _addParcelHintIsVisible = true;
 
+        /// <summary>
+        /// Defines the _oldParcel
+        /// </summary>
         private ParcelViewModel _oldParcel;
 
         /// <summary>
@@ -128,12 +129,61 @@ namespace CimmytApp.Parcel.ViewModels
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand = new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
+            ParcelEditCommand = new DelegateCommand<object>(NavigateToParcelEditPage).ObservesCanExecute(o => IsParcelListEnabled);
+            ParcelDeleteCommand = new DelegateCommand<object>(NavigateToParcelDeletePage).ObservesCanExecute(o => IsParcelListEnabled);
 
             _parcels = new List<Parcel>();
             Parcels = cimmytDbOperations.GetAllParcels();
             SetObservableParcel();
         }
 
+        /// <summary>
+        /// The NavigateToParcelDeletePage
+        /// </summary>
+        /// <param name="obj">The <see cref="object"/></param>
+        private void NavigateToParcelDeletePage(object id)
+        {
+            try
+            {
+                // IsParcelListEnabled = false;
+                var navigationParameters = new NavigationParameters { { "Id", (int)id } };
+                _navigationService.NavigateAsync("DeleteParcelPage", navigationParameters);
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        /// <summary>
+        /// The NavigateToParcelEditPage
+        /// </summary>
+        /// <param name="obj">The <see cref="object"/></param>
+        private void NavigateToParcelEditPage(object id)
+        {
+            try
+            {
+                // IsParcelListEnabled = false;
+                var navigationParameters = new NavigationParameters { { "Id", (int)id }, { "EditEnabled", true } };
+                _navigationService.NavigateAsync("ParcelPage", navigationParameters);
+            }
+            catch (Exception e)
+            {
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the ParcelDeleteCommand
+        /// </summary>
+        public DelegateCommand<object> ParcelDeleteCommand { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ParcelEditCommand
+        /// </summary>
+        public DelegateCommand<object> ParcelEditCommand { get; set; }
+
+        /// <summary>
+        /// The SetObservableParcel
+        /// </summary>
         private void SetObservableParcel()
         {
             ObservableParcel = new ObservableCollection<ParcelViewModel>();
@@ -207,6 +257,10 @@ namespace CimmytApp.Parcel.ViewModels
             Parcels = _cimmytDbOperations.GetAllParcels();
         }
 
+        /// <summary>
+        /// The HideOrShowParcel
+        /// </summary>
+        /// <param name="parcel">The <see cref="ParcelViewModel"/></param>
         public void HideOrShowParcel(ParcelViewModel parcel)
         {
             if (_oldParcel == parcel)
@@ -227,6 +281,10 @@ namespace CimmytApp.Parcel.ViewModels
             _oldParcel = parcel;
         }
 
+        /// <summary>
+        /// The UpdateObservaleParcel
+        /// </summary>
+        /// <param name="parcel">The <see cref="ParcelViewModel"/></param>
         private void UpdateObservaleParcel(ParcelViewModel parcel)
         {
             var index = ObservableParcel.IndexOf(parcel);
