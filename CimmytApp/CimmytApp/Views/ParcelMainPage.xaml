@@ -6,7 +6,6 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Views.ParcelMainPage">
-<<<<<<< HEAD
 
     <ContentPage.Content>
         <ScrollView>
@@ -101,13 +100,6 @@
                         </Label>
                     </StackLayout>
                 </Grid>
-=======
-    <ScrollView>
-        <StackLayout Orientation="Vertical" VerticalOptions="Center" HorizontalOptions="Center">
-            <StackLayout Orientation="Horizontal" VerticalOptions="Start"  HorizontalOptions="Fill">
-                <Button Image="data.png" HorizontalOptions="StartAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelPage"></Button>
-                <Button Image="map.png" HorizontalOptions="EndAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap"></Button>
->>>>>>> temp
             </StackLayout>
             <StackLayout Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
                 <Button Image="weather.png" HorizontalOptions="StartAndExpand" Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection"></Button>
