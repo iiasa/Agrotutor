@@ -3,6 +3,7 @@ using Prism.Mvvm;
 using Prism.Navigation;
 using System;
 using System.Collections.Generic;
+using CimmytApp.DTO.Parcel;
 using CimmytApp.Parcel.ActivityManagement;
 
 namespace CimmytApp.Parcel.ViewModels
@@ -25,6 +26,7 @@ namespace CimmytApp.Parcel.ViewModels
         private DateTime _minimumCalenderDateTime;
         private string _pageIcon;
         private string _pageTitle;
+        private INavigationService _navigationService;
 
         public DelegateCommand SaveCommand { get; set; }
 
@@ -128,8 +130,9 @@ namespace CimmytApp.Parcel.ViewModels
             set => SetProperty(ref _pageTitle, value);
         }
 
-        public ActivityDetailViewModel()
+        public ActivityDetailViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             ListSownVariety = new List<string> { "Criollo", "Mejorado" };
             MinimumCalenderDateTime = DateTime.Now.Subtract(new TimeSpan(672, 0, 0, 0));
             SaveCommand = new DelegateCommand(SaveCommandExecution);
@@ -137,7 +140,23 @@ namespace CimmytApp.Parcel.ViewModels
 
         private void SaveCommandExecution()
         {
-            //TODO
+            var activity = new AgriculturalActivity
+            {
+                AmountApplied = AmountApplied,
+                AppliedProduct = AppliedProduct,
+                Cost = ActivityCost,
+                Date = ActivityDate,
+                Dose = ActivityDose,
+                Name = ActivityName,
+                NumberOfSeeds = NumberOfSeeds,
+                ProductObtained = ProductObtained,
+                Sown = SelectedSown,
+                WeightOfSeeds = WeightOfSeeds,
+                Yield = ActivityYield
+            };
+
+            var parameters = new NavigationParameters { { "Activity", activity } };
+            _navigationService.GoBackAsync(parameters);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

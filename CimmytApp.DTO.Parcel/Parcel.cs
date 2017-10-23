@@ -19,6 +19,11 @@
     public class Parcel : GeoPosition, IDataset, INotifyPropertyChanged
     {
         /// <summary>
+        /// Gets or sets the AgriculturalActivities
+        /// </summary>
+        public List<AgriculturalActivity> AgriculturalActivities { get; set; }
+
+        /// <summary>
         /// Defines the geoWikiDatasetGroupId
         /// </summary>
         private static int geoWikiDatasetGroupId = 1;
@@ -468,10 +473,29 @@
             }
         }
 
+        /// <summary>
+        /// Gets or sets the SowingType
+        /// </summary>
         public string SowingType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the HarvestingType
+        /// </summary>
         public string HarvestingType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the StorageType
+        /// </summary>
         public string StorageType { get; set; }
+
+        /// <summary>
+        /// Gets or sets the MaturityClass
+        /// </summary>
         public string MaturityClass { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ClimateType
+        /// </summary>
         public string ClimateType { get; set; }
 
         //ToDo:Move to another Class
