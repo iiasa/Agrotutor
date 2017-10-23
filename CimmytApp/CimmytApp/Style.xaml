@@ -9,11 +9,8 @@
     <Style x:Key="LabelKey" TargetType="{x:Type Label}">
         <!-- Style applied to all labels with x:Key set to LabelKey -->
         <!--<Setter Property="TextColor" Value="Crimson" />-->
+        <Setter Property="FontSize" Value="16" />
     </Style>
-
-    <!--<Style TargetType="{x:Type TabbedPage}">
-        <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryGreen}" />
-    </Style> This breaks MainPage! -->
 
     <Color x:Key="PrimaryGreen">#7BC142</Color>
     <Color x:Key="PrimaryGrey">#696A6C</Color>

@@ -31,13 +31,12 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private List<Parcel> _parcels;
 
+        public ObservableCollection<ParcelViewModel> ObservableParcel { get; set; }
 
-		public ObservableCollection<ParcelViewModel> ObservableParcel { get; set; }
-
-		/// <summary>
-		/// Gets or sets the AddParcelCommand
-		/// </summary>
-		public DelegateCommand AddParcelCommand { get; set; }
+        /// <summary>
+        /// Gets or sets the AddParcelCommand
+        /// </summary>
+        public DelegateCommand AddParcelCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the UploadCommand
@@ -113,9 +112,9 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private bool _addParcelHintIsVisible = true;
 
-	    private ParcelViewModel _oldParcel;
+        private ParcelViewModel _oldParcel;
 
-	    /// <summary>
+        /// <summary>
         /// Initializes a new instance of the <see cref="ParcelsOverviewPageViewModel"/> class.
         /// </summary>
         /// <param name="navigationService">The <see cref="INavigationService"/></param>
@@ -132,19 +131,19 @@ namespace CimmytApp.Parcel.ViewModels
 
             _parcels = new List<Parcel>();
             Parcels = cimmytDbOperations.GetAllParcels();
-	        SetObservableParcel();
+            SetObservableParcel();
         }
 
-	    private void SetObservableParcel()
-	    {
-		    ObservableParcel = new ObservableCollection<ParcelViewModel>();
-		    foreach (var parcel in _parcels)
-		    {
-			    ObservableParcel.Add(new ParcelViewModel {Parcel = parcel, IsOptionsVisible = false});
-		    }
-	    }
+        private void SetObservableParcel()
+        {
+            ObservableParcel = new ObservableCollection<ParcelViewModel>();
+            foreach (var parcel in _parcels)
+            {
+                ObservableParcel.Add(new ParcelViewModel { Parcel = parcel, IsOptionsVisible = false });
+            }
+        }
 
-	    /// <summary>
+        /// <summary>
         /// The UploadParcels
         /// </summary>
         private void UploadParcels()
@@ -208,31 +207,31 @@ namespace CimmytApp.Parcel.ViewModels
             Parcels = _cimmytDbOperations.GetAllParcels();
         }
 
-	    public void HideOrShowParcel(ParcelViewModel parcel)
-	    {
-		    if (_oldParcel == parcel)
-		    {
-			    parcel.IsOptionsVisible = !parcel.IsOptionsVisible;
-			    UpdateObservaleParcel(parcel);
-			}
-		    else
-		    {
-			    if (_oldParcel != null)
-			    {
-				    _oldParcel.IsOptionsVisible = false;
-				    UpdateObservaleParcel(_oldParcel);
-				}
-			    parcel.IsOptionsVisible = true;
-			    UpdateObservaleParcel(parcel);
-			}
-		    _oldParcel = parcel;
-	    }
+        public void HideOrShowParcel(ParcelViewModel parcel)
+        {
+            if (_oldParcel == parcel)
+            {
+                parcel.IsOptionsVisible = !parcel.IsOptionsVisible;
+                UpdateObservaleParcel(parcel);
+            }
+            else
+            {
+                if (_oldParcel != null)
+                {
+                    _oldParcel.IsOptionsVisible = false;
+                    UpdateObservaleParcel(_oldParcel);
+                }
+                parcel.IsOptionsVisible = true;
+                UpdateObservaleParcel(parcel);
+            }
+            _oldParcel = parcel;
+        }
 
-	    private void UpdateObservaleParcel(ParcelViewModel parcel)
-	    {
-		    var index = ObservableParcel.IndexOf(parcel);
-		    ObservableParcel.Remove(parcel);
-		    ObservableParcel.Insert(index,parcel);
-	    }
+        private void UpdateObservaleParcel(ParcelViewModel parcel)
+        {
+            var index = ObservableParcel.IndexOf(parcel);
+            ObservableParcel.Remove(parcel);
+            ObservableParcel.Insert(index, parcel);
+        }
     }
 }

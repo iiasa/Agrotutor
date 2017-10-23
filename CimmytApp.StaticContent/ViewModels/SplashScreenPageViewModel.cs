@@ -1,20 +1,15 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Prism.Events;
-using Prism.Navigation;
-using Xamarin.Forms;
-
-namespace CimmytApp.StaticContent.ViewModels
+﻿namespace CimmytApp.StaticContent.ViewModels
 {
+    using System.Threading.Tasks;
+    using Prism.Mvvm;
+    using Prism.Navigation;
+
     public class SplashScreenPageViewModel : BindableBase, INavigationAware
     {
-        private const int secondsActive = 5;
-        private INavigationService _navigationService;
-        private bool showGuide = false;
+        private const int SecondsActive = 5;
+
+        private readonly INavigationService _navigationService;
+        private string _nextPage = "MainPage";
 
         public SplashScreenPageViewModel(INavigationService navigationService)
         {
@@ -27,24 +22,17 @@ namespace CimmytApp.StaticContent.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            Task.Run(async () =>
+            if (parameters.ContainsKey("ShowGuide") && (bool)parameters["ShowGuide"])
             {
-                await Task.Delay(secondsActive * 1000);
-                if (parameters.ContainsKey("ShowGuide") && (bool)parameters["ShowGuide"])
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.NavigateAsync("WelcomePage");
-                    });
-                }
-                else
-                {
-                    Device.BeginInvokeOnMainThread(() =>
-                    {
-                        _navigationService.NavigateAsync("MainPage");
-                    });
-                }
-            });
+                _nextPage = "WelcomePage";
+            }
+            GoToNextPage();
+        }
+
+        private async void GoToNextPage()
+        {
+            await Task.Delay(SecondsActive * 1000);
+            _navigationService.NavigateAsync(_nextPage);
         }
     }
 }

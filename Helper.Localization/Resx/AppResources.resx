@@ -298,7 +298,7 @@
     <value>Seleccione el año</value>
   </data>
   <data name="hint_crop" xml:space="preserve">
-    <value>Cultivo sembrado</value>
+    <value>Tipo de cultivo</value>
   </data>
   <data name="hint_cultivar" xml:space="preserve">
     <value>Cultivar</value>

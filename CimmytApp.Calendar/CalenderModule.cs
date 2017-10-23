@@ -19,6 +19,7 @@ namespace CimmytApp.Calendar
         public void Initialize()
         {
             _unityContainer.RegisterTypeForNavigation<CalendarPage>();
+            _unityContainer.RegisterTypeForNavigation<TelerikCalendarPage>();
         }
     }
 }

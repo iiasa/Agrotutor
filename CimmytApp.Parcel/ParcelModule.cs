@@ -25,6 +25,7 @@
             _unityContainer.RegisterTypeForNavigation<ParcelsOverviewPage>();
             _unityContainer.RegisterTypeForNavigation<ViewParcelInformationPage>();
             _unityContainer.RegisterTypeForNavigation<ParcelPage>();
+            _unityContainer.RegisterTypeForNavigation<SelectTechnologiesPage>();
         }
     }
 }

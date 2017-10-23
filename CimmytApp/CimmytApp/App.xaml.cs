@@ -162,13 +162,14 @@ namespace CimmytApp
 
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
-                NavigationService.NavigateAsync("MainPage");//change to splashscreen
+                NavigationService.NavigateAsync("MainPage");
+                //NavigationService.NavigateAsync("SplashScreenPage");
             }
             else
             {
                 Current.Properties.Add("not_first_launch", true);
                 var parameters = new NavigationParameters { { "ShowGuide", true } };
-                NavigationService.NavigateAsync("MainPage", parameters); //change to splashscreen
+                NavigationService.NavigateAsync("SplashScreenPage", parameters);
             }
         }
 
@@ -179,8 +180,9 @@ namespace CimmytApp
                 Container.RegisterTypeForNavigation<MainPage>();
                 Container.RegisterTypeForNavigation<LoginPage>();
                 Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
-	            Container.RegisterTypeForNavigation<ParcelMainPage>();
-				Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
+                Container.RegisterTypeForNavigation<ParcelMainPage>();
+                Container.RegisterTypeForNavigation<ProfilePage>();
+                Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
                     new ContainerControlledLifetimeManager());
                 Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
                     new ContainerControlledLifetimeManager());
@@ -190,8 +192,8 @@ namespace CimmytApp
             catch (Exception e)
             {
             }
-			
-		}
+            Container.RegisterTypeForNavigation<ProfilePage>();
+        }
 
         protected override void OnSleep()
         {

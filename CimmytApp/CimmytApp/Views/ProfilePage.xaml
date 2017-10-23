@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Views.ProfilePage">
+    <StackLayout Orientation="Vertical">
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <Label Text="Agregar parcela" FontAttributes="Italic" />
+            <Image Source="profile_small.png" />
+        </StackLayout>
+
+        <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
+        <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding Parcel.ProducerName}" Margin="0,0,0,16" />
+
+        <Label Text="Estado" FontSize="10" />
+        <controls:ExtendedPicker ItemsSource="{Binding SowingTypes}" SelectedIndex="{Binding PickerSowingTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+    </StackLayout>
+</ContentPage>

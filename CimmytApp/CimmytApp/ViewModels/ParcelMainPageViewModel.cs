@@ -1,16 +1,16 @@
-﻿using CimmytApp.BusinessContract;
-using Helper.BusinessContract;
-using Helper.DatasetSyncEvents.ViewModelBase;
-using Prism;
-using Prism.Commands;
-using Prism.Events;
-using Prism.Navigation;
-using System;
-using System.ComponentModel;
-using System.Windows.Input;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
+    using CimmytApp.BusinessContract;
+    using Helper.BusinessContract;
+    using Helper.DatasetSyncEvents.ViewModelBase;
+    using Prism;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Navigation;
+    using System;
+    using System.ComponentModel;
+    using System.Windows.Input;
+
 	public class ParcelMainPageViewModel : DatasetSyncBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
 	{
 		private DTO.Parcel.Parcel _parcel;
@@ -30,9 +30,9 @@ namespace CimmytApp.ViewModels
 			}
 		}
 
-		public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations, IEventAggregator eventAggregator) : base(eventAggregator)
-		{
-			_navigationService = navigationService;
+        public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations, IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+            _navigationService = navigationService;
 			NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
 
 			try
@@ -42,12 +42,15 @@ namespace CimmytApp.ViewModels
             catch (Exception e)
             {
             }
-		}
+            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+        }
 
 		private void NavigateAsync(string page)
 		{
 			_navigationService.NavigateAsync(page);
 		}
+
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
 		protected override IDataset GetDataset()
 		{
