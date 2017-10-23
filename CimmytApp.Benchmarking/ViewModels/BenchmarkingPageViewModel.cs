@@ -1,23 +1,21 @@
-﻿using System.Collections.Generic;
-
-namespace CimmytApp.Benchmarking.ViewModels
+﻿namespace CimmytApp.Benchmarking.ViewModels
 {
     using DTO.Benchmarking;
     using DTO.Parcel;
-    using Helper.BusinessContract;
-    using Helper.DatasetSyncEvents.ViewModelBase;
     using Helper.GeoWiki.API;
-    using Prism;
     using Prism.Commands;
     using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Windows.Input;
 
     /// <summary>
     /// Defines the <see cref="BenchmarkingPageViewModel" />
     /// </summary>
-    public class BenchmarkingPageViewModel : DatasetReceiverBindableBase
+    public class BenchmarkingPageViewModel : BindableBase, INavigationAware
     {
         /// <summary>
         /// Defines the _parcel
@@ -29,7 +27,14 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// </summary>
         private BenchmarkingInformation _myData;
 
+        /// <summary>
+        /// Defines the _dataIrrigated
+        /// </summary>
         private BenchmarkingInformation _dataIrrigated;
+
+        /// <summary>
+        /// Defines the _dataRainfed
+        /// </summary>
         private BenchmarkingInformation _dataRainfed;
 
         /// <summary>
@@ -37,29 +42,35 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// </summary>
         public Parcel Parcel { get => _parcel; set => SetProperty(ref _parcel, value); }
 
+        /// <summary>
+        /// Defines the _downloadButtonActive
+        /// </summary>
         private bool _downloadButtonActive;
 
-        public bool DownloadButtonActive
-        {
-            get => _downloadButtonActive;
-            set => SetProperty(ref _downloadButtonActive, value);
-        }
+        /// <summary>
+        /// Gets or sets a value indicating whether DownloadButtonActive
+        /// </summary>
+        public bool DownloadButtonActive { get => _downloadButtonActive; set => SetProperty(ref _downloadButtonActive, value); }
 
+        /// <summary>
+        /// Defines the _downloading
+        /// </summary>
         private bool _downloading;
 
-        public bool Downloading
-        {
-            get => _downloading;
-            set => SetProperty(ref _downloading, value);
-        }
+        /// <summary>
+        /// Gets or sets a value indicating whether Downloading
+        /// </summary>
+        public bool Downloading { get => _downloading; set => SetProperty(ref _downloading, value); }
 
+        /// <summary>
+        /// Defines the _noData
+        /// </summary>
         private bool _noData;
 
-        public bool NoData
-        {
-            get => _noData;
-            set => SetProperty(ref _noData, value);
-        }
+        /// <summary>
+        /// Gets or sets a value indicating whether NoData
+        /// </summary>
+        public bool NoData { get => _noData; set => SetProperty(ref _noData, value); }
 
         /// <summary>
         /// Gets or sets the LoadDataCommand
@@ -70,7 +81,7 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// Initializes a new instance of the <see cref="BenchmarkingPageViewModel"/> class.
         /// </summary>
         /// <param name="eventAggregator">The <see cref="IEventAggregator"/></param>
-        public BenchmarkingPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        public BenchmarkingPageViewModel(IEventAggregator eventAggregator)
         {
             LoadDataCommand = new DelegateCommand(LoadData);
         }
@@ -122,20 +133,12 @@ namespace CimmytApp.Benchmarking.ViewModels
         /// <summary>
         /// Gets or sets the DataIrrigated
         /// </summary>
-        public BenchmarkingInformation DataIrrigated
-        {
-            get => _dataIrrigated;
-            set => SetProperty(ref _dataIrrigated, value);
-        }
+        public BenchmarkingInformation DataIrrigated { get => _dataIrrigated; set => SetProperty(ref _dataIrrigated, value); }
 
         /// <summary>
         /// Gets or sets the DataRainfed
         /// </summary>
-        public BenchmarkingInformation DataRainfed
-        {
-            get => _dataRainfed;
-            set => SetProperty(ref _dataRainfed, value);
-        }
+        public BenchmarkingInformation DataRainfed { get => _dataRainfed; set => SetProperty(ref _dataRainfed, value); }
 
         /// <summary>
         /// Gets or sets the MyData
@@ -185,23 +188,33 @@ namespace CimmytApp.Benchmarking.ViewModels
                 }
             }
 
-			dataIrrigated.KeepNewest(5);
-			dataRainfed.KeepNewest(5);
+            dataIrrigated.KeepNewest(5);
+            dataRainfed.KeepNewest(5);
             DataIrrigated = dataIrrigated;
             DataRainfed = dataRainfed;
             Downloading = false;
         }
 
+        /// <inheritdoc />
         /// <summary>
-        /// The ReadDataset
+        /// The OnNavigatedFrom
         /// </summary>
-        /// <param name="dataset">The <see cref="IDataset"/></param>
-        protected override void ReadDataset(IDataset dataset)
+        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            if (dataset != null)
+        }
+
+        /// <inheritdoc />
+        /// <summary>
+        /// The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("Parcel"))
             {
-                Parcel = (Parcel)dataset;
-                DownloadButtonActive = true;
+                parameters.TryGetValue("Parcel", out var parcel);
+                if (parcel != null) Parcel = (Parcel)parcel;
             }
         }
     }

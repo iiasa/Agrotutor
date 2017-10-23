@@ -1,8 +1,6 @@
-﻿using System;
-using SQLiteNetExtensions.Extensions.TextBlob;
-
-namespace CimmytApp.SQLiteDB
+﻿namespace CimmytApp.SQLiteDB
 {
+    using System;
     using System.Collections.Generic;
     using SqLite.Contract;
     using SQLite.Net;
@@ -23,16 +21,18 @@ namespace CimmytApp.SQLiteDB
             {
                 _databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
 
-                _databaseConn.CreateTable<Parcel>();
+                _databaseConn.CreateTable<AgriculturalActivity>();
                 _databaseConn.CreateTable<PolygonDto>();
                 _databaseConn.CreateTable<PesticideApplication>();
                 _databaseConn.CreateTable<Costo>();
                 _databaseConn.CreateTable<Ingreso>();
                 _databaseConn.CreateTable<Rendimiento>();
                 _databaseConn.CreateTable<Utilidad>();
+                _databaseConn.CreateTable<Parcel>();
             }
-            catch (Exception)
+            catch (Exception e)
             {
+                System.Diagnostics.Debug.WriteLine(e.Message, e);
             }
         }
 

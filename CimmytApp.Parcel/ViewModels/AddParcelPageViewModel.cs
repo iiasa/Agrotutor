@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
     using BusinessContract;
     using DTO.Parcel;

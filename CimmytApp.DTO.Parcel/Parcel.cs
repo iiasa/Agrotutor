@@ -21,6 +21,7 @@
         /// <summary>
         /// Gets or sets the AgriculturalActivities
         /// </summary>
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<AgriculturalActivity> AgriculturalActivities { get; set; }
 
         /// <summary>

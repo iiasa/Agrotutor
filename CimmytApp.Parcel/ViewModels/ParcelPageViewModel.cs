@@ -1,5 +1,8 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
+    using BusinessContract;
+    using DTO;
+    using DTO.Parcel;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
@@ -12,10 +15,6 @@
     using XLabs.Ioc;
     using XLabs.Platform.Device;
     using XLabs.Platform.Services.Media;
-
-    using BusinessContract;
-    using DTO;
-    using DTO.Parcel;
 
     /// <summary>
     /// Defines the <see cref="ParcelPageViewModel" />
@@ -55,7 +54,7 @@
         /// </summary>
         private void UpdateSelections()
         {
-            for (int i = 0; i < CropTypes.Count; i++)
+            for (var i = 0; i < CropTypes.Count; i++)
             {
                 if (CropTypes[i] == Parcel.Crop)
                 {
@@ -64,7 +63,7 @@
                 }
             }
 
-            for (int i = 0; i < MaturityClasses.Count; i++)
+            for (var i = 0; i < MaturityClasses.Count; i++)
             {
                 if (MaturityClasses[i] == Parcel.MaturityClass)
                 {
@@ -73,7 +72,7 @@
                 }
             }
 
-            for (int i = 0; i < ClimateTypes.Count; i++)
+            for (var i = 0; i < ClimateTypes.Count; i++)
             {
                 if (ClimateTypes[i] == Parcel.ClimateType)
                 {
@@ -84,9 +83,9 @@
         }
 
         /// <summary>
-        /// The DeliniateParcel
+        /// The DelineateParcel
         /// </summary>
-        public void DeliniateParcel()
+        public void DelineateParcel()
         {
             var parameters = new NavigationParameters
             {
@@ -164,20 +163,17 @@
         /// <summary>
         /// Gets the CropTypes
         /// </summary>
-        public List<string> CropTypes { get; }
-    = new List<string> { "Maíz", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro" };
+        public List<string> CropTypes { get; } = new List<string> { "Maíz", "Cebada", "Frijol", "Trigo", "Triticale", "Sorgo", "Alfalfa", "Avena", "Ajonjolí", "Amaranto", "Arroz", "Canola", "Cartamo", "Calabacín", "Garbanzo", "Haba", "Soya", "Ninguno", "Otro" };
 
         /// <summary>
         /// Gets the MaturityClasses
         /// </summary>
-        public List<string> MaturityClasses { get; }
-            = new List<string> { "Temprana", "Semi-temprana", "Intermedia", "Semi-tardía", "Tardía" };
+        public List<string> MaturityClasses { get; } = new List<string> { "Temprana", "Semi-temprana", "Intermedia", "Semi-tardía", "Tardía" };
 
         /// <summary>
         /// Gets the ClimateTypes
         /// </summary>
-        public List<string> ClimateTypes { get; }
-            = new List<string> { "Frío", "Templado/Subtropical", "Tropical", "Híbrido" };
+        public List<string> ClimateTypes { get; } = new List<string> { "Frío", "Templado/Subtropical", "Tropical", "Híbrido" };
 
         /// <summary>
         /// Gets or sets the ClickChooseLocation
@@ -234,7 +230,7 @@
             _cimmytDbOperations = cimmytDbOperations;
             ClickPhoto = new DelegateCommand(OnTakePhotoClick);
             ClickSave = new DelegateCommand(SaveParcel);
-            DeliniateParcelCommand = new DelegateCommand(DeliniateParcel);
+            DelineateParcelCommand = new DelegateCommand(DelineateParcel);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
             ClickGetLocation = new DelegateCommand(GetLocation);
             DeleteParcelCommand = new DelegateCommand(DeleteParcel);
@@ -264,18 +260,18 @@
         }
 
         /// <summary>
-        /// Gets or sets the DeliniateParcelCommand
+        /// Gets or sets the DelineateParcelCommand
         /// </summary>
-        public DelegateCommand DeliniateParcelCommand { get; set; }
+        public DelegateCommand DelineateParcelCommand { get; set; }
 
         /// <summary>
         /// The SaveParcel
         /// </summary>
         private void SaveParcel()
         {
-            _cimmytDbOperations.UpdateParcel(Parcel);
             EditModeActive = false;
             EditsDone = false;
+            _cimmytDbOperations.UpdateParcel(Parcel);
         }
 
         /// <summary>
@@ -308,21 +304,6 @@
         /// Defines the _navigationService
         /// </summary>
         private readonly INavigationService _navigationService;
-
-        /// <summary>
-        /// Defines the _pickerSowingTypesSelectedIndex
-        /// </summary>
-        private int _pickerSowingTypesSelectedIndex;
-
-        /// <summary>
-        /// Defines the _pickerHarvestingTypesSelectedIndex
-        /// </summary>
-        private int _pickerHarvestingTypesSelectedIndex;
-
-        /// <summary>
-        /// Defines the _pickerStorageTypesSelectedIndex
-        /// </summary>
-        private int _pickerStorageTypesSelectedIndex;
 
         /// <summary>
         /// Defines the _pickerMaturityClassesSelectedIndex
@@ -375,23 +356,19 @@
 
         /// <inheritdoc />
         /// <summary>
-        /// Gets or sets a value indicating whether IsActive
-        /// </summary>
-        public bool IsActive { get; set; }
-
-        /// <inheritdoc />
-        /// <summary>
-        /// Defines the IsActiveChanged
-        /// </summary>
-        public event EventHandler IsActiveChanged;
-
-        /// <inheritdoc />
-        /// <summary>
         /// The OnNavigatedFrom
         /// </summary>
         /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
+        }
+
+        /// <summary>
+        /// The Back
+        /// </summary>
+        private void Back()
+        {
+            _navigationService.GoBackAsync();
         }
 
         /// <inheritdoc />
@@ -405,6 +382,19 @@
             {
                 parameters.TryGetValue("Parcel", out var parcel);
                 if (parcel != null) Parcel = (Parcel)parcel;
+            }
+            else
+            {
+                try
+                {
+                    var id = (int)parameters["Id"];
+
+                    _parcel = _cimmytDbOperations.GetParcelById(id);
+                }
+                catch (Exception e)
+                {
+                    Back();
+                }
             }
             if (parameters.ContainsKey("EditEnabled"))
             {

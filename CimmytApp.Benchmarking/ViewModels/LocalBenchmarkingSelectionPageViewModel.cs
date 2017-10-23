@@ -111,16 +111,6 @@ namespace CimmytApp.Benchmarking.ViewModels
             return datasets;
         }
 
-        private async void GetData()
-        {
-            _bemData = _cimmytDbOperations.GetBemData();
-            if (_bemData.IsEmpty)
-            {
-                _bemData = await RefreshData();
-            }
-            DataAvailable = true;
-        }
-
         private async Task<BemData> RefreshData()
         {
             DataAvailable = false;
@@ -136,7 +126,7 @@ namespace CimmytApp.Benchmarking.ViewModels
             return bemData;
         }
 
-        private void ViewData() //todo crash here
+        private void ViewData()
         {
             if (_bemData == null) return;
 

@@ -21,11 +21,6 @@
         private readonly INavigationService _navigationService;
 
         /// <summary>
-        /// Defines the _eventAggregator
-        /// </summary>
-        private readonly IEventAggregator _eventAggregator;
-
-        /// <summary>
         /// Defines the _parcels
         /// </summary>
         private List<Parcel> _parcels;
@@ -121,10 +116,9 @@
         /// <param name="navigationService">The <see cref="INavigationService"/></param>
         /// <param name="eventAggregator">The <see cref="IEventAggregator"/></param>
         /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations"/></param>
-        public ParcelsOverviewPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator, ICimmytDbOperations cimmytDbOperations)
+        public ParcelsOverviewPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
-            _eventAggregator = eventAggregator;
             _cimmytDbOperations = cimmytDbOperations;
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             UploadCommand = new DelegateCommand(UploadParcels);
@@ -147,6 +141,7 @@
             {
                 // IsParcelListEnabled = false;
                 var navigationParameters = new NavigationParameters { { "Id", (int)id } };
+
                 _navigationService.NavigateAsync("DeleteParcelPage", navigationParameters);
             }
             catch (Exception e)

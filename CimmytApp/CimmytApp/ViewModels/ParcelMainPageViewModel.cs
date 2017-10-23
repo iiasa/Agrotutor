@@ -60,7 +60,7 @@
             {
                 parameters.Add("EditEnabled", false);
             }
-            _navigationService.NavigateAsync(page);
+            _navigationService.NavigateAsync(page, parameters);
         }
 
         protected override IDataset GetDataset()
