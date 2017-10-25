@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
-   public class GroundPreperationActivity : ActivityBaseClass
+    public class GroundPreperationActivity : ActivityBaseClass
     {
-        // public override ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
-
         public override void SetActivityDynamicUIVisibility()
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = true,
-               
+
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
                 DosageVisibility = false,
@@ -25,7 +17,9 @@ namespace CimmytApp.Parcel.ActivityManagement
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = "Preparación del terreno"
+                ActivityName = "Preparación del terreno",
+                ActivityIcon = "shovel_small.png",
+                ActivityTitle = "Preparación del terreno"
             };
         }
     }

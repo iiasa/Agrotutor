@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
-   public class WeedPreventionControlActivity : ActivityBaseClass
-    {
-       // public override ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
+    using System.Collections.Generic;
 
+    public class WeedPreventionControlActivity : ActivityBaseClass
+    {
         public override void SetActivityDynamicUIVisibility()
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
@@ -29,9 +23,10 @@ namespace CimmytApp.Parcel.ActivityManagement
                     "Aplicación de herbicidas después de la siembra",
                     "Aplicación de herbicidas presiembra",
                     "Labores culturales y control físico de malezas"
-                }
+                },
+                ActivityIcon = "weeds_small.png",
+                ActivityTitle = "Control de prevención de malezas"
             };
-
         }
     }
 }

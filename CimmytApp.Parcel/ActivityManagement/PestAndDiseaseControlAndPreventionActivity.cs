@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
-   public class PestAndDiseaseControlAndPreventionActivity : ActivityBaseClass
-    {
-        // public override ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
+    using System.Collections.Generic;
 
+    public class PestAndDiseaseControlAndPreventionActivity : ActivityBaseClass
+    {
         public override void SetActivityDynamicUIVisibility()
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
@@ -24,7 +18,9 @@ namespace CimmytApp.Parcel.ActivityManagement
                 PlantingDensityVisibility = false,
                 ProductObtainedVisibility = false,
                 VarietySownVisibility = false,
-                ActivityNameList = new List<string> { "Aplicación de fungicidas", "Aplicación de insecticidas" }
+                ActivityNameList = new List<string> { "Aplicación de fungicidas", "Aplicación de insecticidas" },
+                ActivityIcon = "cockroach_small.png",
+                ActivityTitle = "Control y prevención de plagas y enfermedades"
             };
         }
     }

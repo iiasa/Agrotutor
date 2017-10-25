@@ -3,7 +3,6 @@
     using BusinessContract;
     using DTO.Parcel;
     using Prism.Commands;
-    using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
     using System;
@@ -86,6 +85,11 @@
         private readonly ICimmytDbOperations _cimmytDbOperations;
 
         /// <summary>
+        /// Gets or sets the BackToMainPageCommand
+        /// </summary>
+        public DelegateCommand BackToMainPageCommand { get; set; }
+
+        /// <summary>
         /// Defines the _isParcelListEnabled
         /// </summary>
         private bool _isParcelListEnabled = true;
@@ -125,10 +129,19 @@
             ParcelDetailCommand = new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
             ParcelEditCommand = new DelegateCommand<object>(NavigateToParcelEditPage).ObservesCanExecute(o => IsParcelListEnabled);
             ParcelDeleteCommand = new DelegateCommand<object>(NavigateToParcelDeletePage).ObservesCanExecute(o => IsParcelListEnabled);
+            BackToMainPageCommand = new DelegateCommand(BackToMainPage);
 
             _parcels = new List<Parcel>();
             Parcels = cimmytDbOperations.GetAllParcels();
             SetObservableParcel();
+        }
+
+        /// <summary>
+        /// The BackToMainPage
+        /// </summary>
+        private void BackToMainPage()
+        {
+            _navigationService.GoBackAsync();
         }
 
         /// <summary>

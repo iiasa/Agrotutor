@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
-   public class PostHarvestStorageActivity : ActivityBaseClass
-    {
-        // public override ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
+    using System.Collections.Generic;
 
+    public class PostHarvestStorageActivity : ActivityBaseClass
+    {
         public override void SetActivityDynamicUIVisibility()
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
@@ -24,7 +18,9 @@ namespace CimmytApp.Parcel.ActivityManagement
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityNameList = new List<string> { "Almacenamiento poscosecha con tecnologías herméticas", "Almacenamiento poscosecha tradicional" }
+                ActivityNameList = new List<string> { "Almacenamiento poscosecha con tecnologías herméticas", "Almacenamiento poscosecha tradicional" },
+                ActivityIcon = "storage_small.png",
+                ActivityTitle = "Almacenamiento poscosecha"
             };
         }
     }

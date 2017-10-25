@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
     public abstract class ActivityBaseClass
     {
-        public  ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
+        public ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
 
         protected ActivityBaseClass()
         {
@@ -16,7 +10,5 @@ namespace CimmytApp.Parcel.ActivityManagement
         }
 
         public abstract void SetActivityDynamicUIVisibility();
-
-
     }
 }

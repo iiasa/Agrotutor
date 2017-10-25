@@ -21,8 +21,8 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0">
-                <Label Text="{Binding PageTitle}" FontAttributes="Italic" />
-                <Image Source="{Binding PageIcon}" HeightRequest="18" />
+                <Label Text="{Binding ActivityDynamicUIVisibility.ActivityTitle}" FontAttributes="Italic" />
+                <Image Source="{Binding ActivityDynamicUIVisibility.ActivityIcon}" HeightRequest="18" />
             </StackLayout>
             <StackLayout  Orientation="Vertical" HorizontalOptions="Start" Grid.Row="1">
                 <Label Text="Nombre de la actividad" HorizontalOptions="Start" />

@@ -24,8 +24,6 @@ namespace CimmytApp.Parcel.ViewModels
         private string _productObtained;
         private string _activityYield;
         private DateTime _minimumCalenderDateTime;
-        private string _pageIcon;
-        private string _pageTitle;
         private readonly INavigationService _navigationService;
 
         public DelegateCommand SaveCommand { get; set; }
@@ -118,18 +116,6 @@ namespace CimmytApp.Parcel.ViewModels
             set => SetProperty(ref _minimumCalenderDateTime, value);
         }
 
-        public string PageIcon
-        {
-            get => _pageIcon;
-            set => SetProperty(ref _pageIcon, value);
-        }
-
-        public string PageTitle
-        {
-            get => _pageTitle;
-            set => SetProperty(ref _pageTitle, value);
-        }
-
         public ActivityDetailViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -172,68 +158,46 @@ namespace CimmytApp.Parcel.ViewModels
             {
                 case ActivityType.SoilImprovers:
                     baseClass = new SoilImproversActivity();
-                    PageIcon = "flask_small.png";
-                    PageTitle = "Aplicación de mejoradores de suelo";
                     break;
 
                 case ActivityType.GroundPreperation:
                     baseClass = new GroundPreperationActivity();
-                    PageIcon = "shovel_small.png";
-                    PageTitle = "Preparación del terreno";
                     break;
 
                 case ActivityType.Sowing:
                     baseClass = new SowingActivity();
-                    PageIcon = "sowing_small.png";
-                    PageTitle = "Siembra";
                     break;
 
                 case ActivityType.Fertilization:
                     baseClass = new FertilizationActivity();
-                    PageIcon = "fertilizer_small.png";
-                    PageTitle = "Fertilización";
                     break;
 
                 case ActivityType.Irrigation:
                     baseClass = new IrrigationActivity();
-                    PageIcon = "irrigation_small.png";
-                    PageTitle = "Riego";
                     break;
 
                 case ActivityType.WeedPreventionControl:
                     baseClass = new WeedPreventionControlActivity();
-                    PageIcon = "weeds_small.png";
-                    PageTitle = "Control de prevención de malezas";
                     break;
 
                 case ActivityType.PestAndDiseaseControlAndPrevention:
                     baseClass = new PestAndDiseaseControlAndPreventionActivity();
-                    PageIcon = "cockroach_small.png";
-                    PageTitle = "Cosecha";
                     break;
 
                 case ActivityType.Harvest:
                     baseClass = new HarvestActivity();
-                    PageIcon = "harvest_small.png";
-                    PageTitle = "Almacenamiento poscosecha";
                     break;
 
                 case ActivityType.PostHarvestStorage:
                     baseClass = new PostHarvestStorageActivity();
-                    PageIcon = "storage_small.png";
-                    PageTitle = "Comercialización";
                     break;
 
                 case ActivityType.Commercialization:
                     baseClass = new CommercializationActivity();
-                    PageIcon = "money_small.png";
-                    PageTitle = "Otras actividades";
                     break;
 
                 case ActivityType.OtherActivities:
                     baseClass = new OtherActivitiesActivity();
-                    PageIcon = "farmer_small.png";
-                    PageTitle = "Control y prevención de plagas y enfermedades";
                     break;
             }
             if (baseClass != null)

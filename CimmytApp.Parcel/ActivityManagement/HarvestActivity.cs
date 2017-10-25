@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
-   public class HarvestActivity : ActivityBaseClass
-    {
-        // public override ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
+    using System.Collections.Generic;
 
+    public class HarvestActivity : ActivityBaseClass
+    {
         public override void SetActivityDynamicUIVisibility()
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
@@ -24,7 +18,9 @@ namespace CimmytApp.Parcel.ActivityManagement
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = true,
                 ProductObtainedVisibility = true,
-                ActivityNameList = new List<string>() { "Cosecha ", "Cosecha manual", "Cosecha mecánica" }
+                ActivityNameList = new List<string>() { "Cosecha ", "Cosecha manual", "Cosecha mecánica" },
+                ActivityIcon = "harvest_small.png",
+                ActivityTitle = "Cosecha"
             };
         }
     }

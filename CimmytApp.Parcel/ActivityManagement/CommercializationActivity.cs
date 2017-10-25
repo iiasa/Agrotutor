@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.Parcel.ActivityManagement
 {
     public class CommercializationActivity : ActivityBaseClass
     {
-        // public override ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
-
         public override void SetActivityDynamicUIVisibility()
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
@@ -25,7 +17,8 @@ namespace CimmytApp.Parcel.ActivityManagement
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = "Comercialización",
-
+                ActivityIcon = "money_small.png",
+                ActivityTitle = "Comercialización"
             };
         }
     }
