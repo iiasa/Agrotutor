@@ -1,21 +1,20 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
+    using BusinessContract;
+    using DTO;
+    using DTO.Parcel;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
     using XLabs.Ioc;
     using XLabs.Platform.Device;
     using XLabs.Platform.Services.Media;
-
-    using BusinessContract;
-    using DTO;
-    using DTO.Parcel;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -238,7 +237,16 @@
             DeleteParcelCommand = new DelegateCommand(DeleteParcel);
             EditModeActive = false;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+            ViewActivitiesCommand = new DelegateCommand(ViewActivities);
         }
+
+        private void ViewActivities()
+        {
+            var parameters = new NavigationParameters { { "Activities", Parcel.Activities } };
+            _navigationService.NavigateAsync("ViewActivitiesPage", parameters);
+        }
+
+        public DelegateCommand ViewActivitiesCommand { get; set; }
 
         /// <summary>
         /// The NavigateAsync
@@ -457,5 +465,10 @@
         /// Gets or sets a value indicating whether ShowEditToggle
         /// </summary>
         public bool ShowEditToggle { get => _showEditToggle; set => SetProperty(ref _showEditToggle, value); }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether ViewModeActive
+        /// </summary>
+        public bool ViewModeActive => !EditModeActive;
     }
 }

@@ -5,12 +5,12 @@
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-
     using ActivityManagement;
     using DTO.Parcel;
 
+    /// <inheritdoc cref="BindableBase" />
     /// <summary>
-    /// Defines the <see cref="ActivityDetailViewModel" />
+    /// Defines the <see cref="T:CimmytApp.Parcel.ViewModels.ActivityDetailViewModel" />
     /// </summary>
     public class ActivityDetailViewModel : BindableBase, INavigationAware
     {
@@ -207,6 +207,7 @@
             {
                 AmountApplied = AmountApplied,
                 AppliedProduct = AppliedProduct,
+                ActivityType = ActivityType,
                 Cost = ActivityCost,
                 Date = ActivityDate,
                 Dose = ActivityDose,
@@ -228,6 +229,11 @@
         public string ActivityNameText { get => _activityNameText; set => SetProperty(ref _activityNameText, value); }
 
         /// <summary>
+        /// Gets or sets the ActivityType
+        /// </summary>
+        public ActivityType ActivityType { get; private set; }
+
+        /// <summary>
         /// The OnNavigatedFrom
         /// </summary>
         /// <param name="parameters">The <see cref="NavigationParameters"/></param>
@@ -241,10 +247,10 @@
         /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            var activityName = (String)parameters["activityType"];
-            var activityType = (ActivityType)Enum.Parse(typeof(ActivityType), activityName);
+            var activityName = (string)parameters["activityType"];
+            ActivityType = (ActivityType)Enum.Parse(typeof(ActivityType), activityName);
             ActivityBaseClass baseClass = null;
-            switch (activityType)
+            switch (ActivityType)
             {
                 case ActivityType.SoilImprovers:
                     baseClass = new SoilImproversActivity();
@@ -290,6 +296,7 @@
                     baseClass = new OtherActivitiesActivity();
                     break;
             }
+
             if (baseClass != null)
             {
                 ActivityDynamicUIVisibility = baseClass.ActivityDynamicUIVisibility;

@@ -35,6 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ActivityType.cs" />
+    <Compile Include="AgrgiculturalActivityType.cs" />
     <Compile Include="AgriculturalActivity.cs" />
     <Compile Include="CropType.cs" />
     <Compile Include="Parcel.cs" />

@@ -20,7 +20,7 @@
         <Label Text="Estado" FontSize="10" />
         <Entry Text="{Binding UserProfile.State}" Margin="0,0,0,16" />
 
-        <Button Text="Tomar una foto" IsVisible="{Binding TakePictureButtonVisible}" Command="{Binding TakePictureCommand}" />
+        <Button Text="Tomar una foto" Command="{Binding TakePictureCommand}" />
         <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350" Source="{Binding ImageSource}" />
     </StackLayout>
 </ContentPage>

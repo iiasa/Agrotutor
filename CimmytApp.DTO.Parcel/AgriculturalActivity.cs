@@ -76,6 +76,51 @@
         /// </summary>
         public ActivityType ActivityType { get; set; }
 
+        public string Logo
+        {
+            get
+            {
+                switch (ActivityType)
+                {
+                    case ActivityType.SoilImprovers:
+                        return "flask.png";
+
+                    case ActivityType.GroundPreperation:
+                        return "shovel.png";
+
+                    case ActivityType.Sowing:
+                        return "sowing.png";
+
+                    case ActivityType.Fertilization:
+                        return "fertilizer.png";
+
+                    case ActivityType.Irrigation:
+                        return "irrigation.png";
+
+                    case ActivityType.WeedPreventionControl:
+                        return "weeds.png";
+
+                    case ActivityType.Harvest:
+                        return "harvest.png";
+
+                    case ActivityType.PostHarvestStorage:
+                        return "storage.png";
+
+                    case ActivityType.Commercialization:
+                        return "money.png";
+
+                    case ActivityType.OtherActivities:
+                        return "farmer.png";
+
+                    case ActivityType.PestAndDiseaseControlAndPrevention:
+                        return "cockroach.png";
+
+                    default:
+                        return "farmer.png";
+                }
+            }
+        }
+
         /// <summary>
         /// Gets or sets the ParcelId
         /// </summary>

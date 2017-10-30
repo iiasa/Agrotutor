@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DeliniationState.cs" />
+    <Compile Include="DelineationState.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Views\GenericMap.xaml.cs">
       <DependentUpon>GenericMap.xaml</DependentUpon>

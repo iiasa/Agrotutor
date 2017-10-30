@@ -32,7 +32,6 @@
   <ItemGroup>
     <Compile Include="ActivityManagement\ActivityBaseClass.cs" />
     <Compile Include="ActivityManagement\ActivityDynamicUIVisibility.cs" />
-    <Compile Include="ActivityManagement\ActivityType.cs" />
     <Compile Include="ActivityManagement\PestAndDiseaseControlAndPreventionActivity.cs" />
     <Compile Include="ActivityManagement\SowingActivity.cs" />
     <Compile Include="ActivityManagement\FertilizationActivity.cs" />
@@ -45,6 +44,7 @@
     <Compile Include="ActivityManagement\GroundPreperationActivity.cs" />
     <Compile Include="ActivityManagement\SoilImproversActivity.cs" />
     <Compile Include="ParcelConstants.cs" />
+    <Compile Include="ViewModels\ViewActivitiesPageViewModel.cs" />
     <Compile Include="Views\SelectTechnologiesPage.xaml.cs">
       <DependentUpon>SelectTechnologiesPage.xaml</DependentUpon>
     </Compile>
@@ -76,6 +76,9 @@
     </Compile>
     <Compile Include="Views\ParcelsOverviewPage.xaml.cs">
       <DependentUpon>ParcelsOverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ViewActivitiesPage.xaml.cs">
+      <DependentUpon>ViewActivitiesPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewParcelInformationPage.xaml.cs">
       <DependentUpon>ViewParcelInformationPage.xaml</DependentUpon>
@@ -219,6 +222,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\SelectTechnologiesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\ViewActivitiesPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

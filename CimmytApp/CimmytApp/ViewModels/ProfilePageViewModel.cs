@@ -17,11 +17,6 @@
         private string _imageSource;
 
         /// <summary>
-        /// Defines the _takePictureButtonVisible
-        /// </summary>
-        private bool _takePictureButtonVisible = true;
-
-        /// <summary>
         /// Defines the _pictureVisible
         /// </summary>
         private bool _pictureVisible = false;
@@ -35,11 +30,6 @@
         /// Gets or sets the TakePictureCommand
         /// </summary>
         public DelegateCommand TakePictureCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether TakePictureButtonVisible
-        /// </summary>
-        public bool TakePictureButtonVisible { get => _takePictureButtonVisible; set => SetProperty(ref _takePictureButtonVisible, value); }
 
         /// <summary>
         /// Gets or sets a value indicating whether PictureVisible
@@ -62,7 +52,6 @@
             {
                 ImageSource = picture;
                 PictureVisible = true;
-                TakePictureButtonVisible = false;
             }
         }
 
@@ -89,7 +78,6 @@
 
             ImageSource = file.Path;
             PictureVisible = true;
-            TakePictureButtonVisible = false;
             App.InsertOrUpdateProperty("UserPicture", file.Path);
         }
     }
