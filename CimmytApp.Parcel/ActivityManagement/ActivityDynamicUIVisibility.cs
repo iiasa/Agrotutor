@@ -85,17 +85,14 @@
         private string _activityIcon;
 
         /// <summary>
+        /// Defines the _activityNameTextVisibility
+        /// </summary>
+        private bool _activityNameTextVisibility;
+
+        /// <summary>
         /// Gets or sets a value indicating whether ActivityNameVisibility
         /// </summary>
-        public bool ActivityNameVisibility
-        {
-            get => _activityNameVisibility;
-            set
-            {
-                SetProperty(ref _activityNameVisibility, value);
-                ActivityNameListVisibility = !ActivityNameVisibility;
-            }
-        }
+        public bool ActivityNameVisibility { get => _activityNameVisibility; set { SetProperty(ref _activityNameVisibility, value); ActivityNameListVisibility = !ActivityNameVisibility; } }
 
         /// <summary>
         /// Gets or sets a value indicating whether ActivityNameListVisibility
@@ -121,6 +118,11 @@
         /// Gets or sets a value indicating whether ActivityTotalCostVisibility
         /// </summary>
         public bool ActivityTotalCostVisibility { get => _activityTotalCostVisibility; set => SetProperty(ref _activityTotalCostVisibility, value); }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether ActivityNameTextVisibility
+        /// </summary>
+        public bool ActivityNameTextVisibility { get => _activityNameTextVisibility; set => SetProperty(ref _activityNameTextVisibility, value); }
 
         /// <summary>
         /// Gets or sets a value indicating whether AppliedProductsVisibility

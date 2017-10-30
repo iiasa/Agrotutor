@@ -90,6 +90,11 @@
         private readonly INavigationService _navigationService;
 
         /// <summary>
+        /// Defines the _activityNameText
+        /// </summary>
+        private string _activityNameText;
+
+        /// <summary>
         /// Gets or sets the SaveCommand
         /// </summary>
         public DelegateCommand SaveCommand { get; set; }
@@ -189,6 +194,15 @@
         /// </summary>
         private void SaveCommandExecution()
         {
+            string activityName;
+            if ((ActivityDynamicUIVisibility.ActivityNameListVisibility) || (ActivityDynamicUIVisibility.ActivityNameVisibility))
+            {
+                activityName = ActivityName;
+            }
+            else
+            {
+                activityName = ActivityNameText;
+            }
             var activity = new AgriculturalActivity
             {
                 AmountApplied = AmountApplied,
@@ -196,7 +210,7 @@
                 Cost = ActivityCost,
                 Date = ActivityDate,
                 Dose = ActivityDose,
-                Name = ActivityName,
+                Name = activityName,
                 NumberOfSeeds = NumberOfSeeds,
                 ProductObtained = ProductObtained,
                 Sown = SelectedSown,
@@ -207,6 +221,11 @@
             var parameters = new NavigationParameters { { "Activity", activity } };
             _navigationService.GoBackAsync(parameters);
         }
+
+        /// <summary>
+        /// Gets or sets the ActivityNameText
+        /// </summary>
+        public string ActivityNameText { get => _activityNameText; set => SetProperty(ref _activityNameText, value); }
 
         /// <summary>
         /// The OnNavigatedFrom

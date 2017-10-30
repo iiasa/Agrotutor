@@ -29,6 +29,7 @@
                 <Label Text="{Binding ActivityName}" Margin="16,16,0,0" WidthRequest="250" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameVisibility}" />
                 <Picker ItemsSource="{Binding ActivityDynamicUIVisibility.ActivityNameList}" Margin="16,16,0,0" WidthRequest="250" SelectedItem="{Binding ActivityName}"
                     ItemDisplayBinding="{Binding}" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}" />
+                <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityNameText}" IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameTextVisibility}" />
             </StackLayout>
             <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}" Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
                 <Label Text="Fecha de la actividad" HorizontalOptions="Start" />

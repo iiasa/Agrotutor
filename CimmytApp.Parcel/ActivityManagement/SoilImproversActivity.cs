@@ -8,6 +8,7 @@
             {
                 ActivityNameVisibility = true,
                 ActivityDateVisibility = true,
+                ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = true,
                 DosageVisibility = true,

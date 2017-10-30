@@ -10,6 +10,7 @@
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = false,
+                ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = true,
                 DosageVisibility = true,
@@ -18,7 +19,7 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityNameList = new List<string> { "Resiembra", "Siembra" },
+                ActivityNameList = new List<string> { "Aplicación de fertilizante foliar", "Aplicación de fertilizante orgánico", "Fertilización química al suelo" },
                 ActivityIcon = "fertilizer_small.png",
                 ActivityTitle = "Fertilización"
             };

@@ -1,8 +1,8 @@
 ﻿namespace CimmytApp.DTO.Parcel
 {
-    using System;
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="AgriculturalActivity" />
@@ -71,7 +71,10 @@
         /// </summary>
         public string Yield { get; set; }
 
-        public ActivityType Type { get; set; }
+        /// <summary>
+        /// Gets or sets the ActivityType
+        /// </summary>
+        public ActivityType ActivityType { get; set; }
 
         /// <summary>
         /// Gets or sets the ParcelId
