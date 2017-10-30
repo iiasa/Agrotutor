@@ -1,23 +1,25 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
-    using BusinessContract;
-    using DTO;
-    using DTO.Parcel;
-    using Prism.Commands;
-    using Prism.Events;
-    using Prism.Mvvm;
-    using Prism.Navigation;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
     using Xamarin.Forms;
     using XLabs.Ioc;
     using XLabs.Platform.Device;
     using XLabs.Platform.Services.Media;
 
+    using BusinessContract;
+    using DTO;
+    using DTO.Parcel;
+
+    /// <inheritdoc cref="BindableBase" />
     /// <summary>
-    /// Defines the <see cref="ParcelPageViewModel" />
+    /// Defines the <see cref="T:CimmytApp.Parcel.ViewModels.ParcelPageViewModel" />
     /// </summary>
     public class ParcelPageViewModel : BindableBase, INavigationAware
     {
@@ -235,7 +237,22 @@
             ClickGetLocation = new DelegateCommand(GetLocation);
             DeleteParcelCommand = new DelegateCommand(DeleteParcel);
             EditModeActive = false;
+            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
         }
+
+        /// <summary>
+        /// The NavigateAsync
+        /// </summary>
+        /// <param name="page">The <see cref="string"/></param>
+        private void NavigateAsync(string page)
+        {
+            _navigationService.NavigateAsync(page);
+        }
+
+        /// <summary>
+        /// Gets or sets the NavigateAsyncCommand
+        /// </summary>
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
         /// <summary>
         /// The DeleteParcel
@@ -272,6 +289,7 @@
             EditModeActive = false;
             EditsDone = false;
             _cimmytDbOperations.UpdateParcel(Parcel);
+            _navigationService.GoBackAsync();
         }
 
         /// <summary>

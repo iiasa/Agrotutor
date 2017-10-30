@@ -15,23 +15,28 @@
                 <Image Source="add_small.png" HeightRequest="18" />
             </StackLayout>
 
+            <StackLayout Orientation="Horizontal" Padding="16" IsVisible="{Binding ShowEditToggle}">
+                <Label Text="Permitir edición" />
+                <Switch IsToggled="{Binding EditModeActive}" />
+            </StackLayout>
+
             <Label Text="{localization:Translate hint_crop}" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" />
-            <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
+            <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_parcel_name}" />
-            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
+            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
-            <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" />
-            <StackLayout Orientation="Horizontal" Margin="24">
+            <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" IsVisible="{Binding EditModeActive}" />
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <Image Source="get_location.png" WidthRequest="32">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
@@ -43,7 +48,7 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="24">
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <Image Source="choose_location.png" WidthRequest="32">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
@@ -56,21 +61,21 @@
                 </Label>
             </StackLayout>
 
-            <StackLayout Orientation="Horizontal" Margin="24">
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <Image Source="delineate.png" WidthRequest="32">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ClickDelineate}" />
+                        <TapGestureRecognizer Command="{Binding DelineateParcelCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Delimita tu parcela" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ClickDelineate}" />
+                        <TapGestureRecognizer  Command="{Binding DelineateParcelCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
 
-            <Label Text="Agrega información de manejo de parcela" FontSize="18" />
-            <StackLayout Orientation="Horizontal" Margin="24">
+            <Label Text="Agrega información de manejo de parcela" FontSize="18"  IsVisible="{Binding EditModeActive}" />
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <Image Source="wand.png" WidthRequest="32">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
@@ -82,7 +87,7 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="24">
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <Image Source="farmer.png" WidthRequest="32">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
@@ -94,7 +99,7 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
+            <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}"  IsVisible="{Binding EditModeActive}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
