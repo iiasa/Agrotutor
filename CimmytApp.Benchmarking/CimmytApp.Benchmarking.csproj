@@ -108,6 +108,10 @@
       <Project>{cc7252b9-f950-4859-82be-0798fd05007b}</Project>
       <Name>Helper.GeoWiki.API</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.HTTP\Helper.HTTP.csproj">
+      <Project>{01ED90D5-7B33-4771-856B-4D15D72FA66F}</Project>
+      <Name>Helper.HTTP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>
