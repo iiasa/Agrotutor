@@ -6,28 +6,48 @@
     using Prism.Navigation;
 
     using DTO.BEM;
+    using Helper.HTTP;
 
+    /// <summary>
+    /// Defines the <see cref="ViewRendimientoPageViewModel" />
+    /// </summary>
     public class ViewRendimientoPageViewModel : BindableBase, INavigationAware
     {
+        /// <summary>
+        /// Defines the _datasets
+        /// </summary>
         private ObservableCollection<Rendimiento> _datasets;
 
-        public ObservableCollection<Rendimiento> Datasets
-        {
-            get => _datasets;
-            set => SetProperty(ref _datasets, value);
-        }
+        /// <summary>
+        /// Gets or sets the Datasets
+        /// </summary>
+        public ObservableCollection<Rendimiento> Datasets { get => _datasets; set => SetProperty(ref _datasets, value); }
 
+        /// <summary>
+        /// The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
+        /// <summary>
+        /// The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (!parameters.ContainsKey("Datasets")) return;
-            parameters.TryGetValue("Datasets", out object datasets);
+            LoadData();
+        }
+
+        /// <summary>
+        /// The LoadData
+        /// </summary>
+        public async void LoadData()
+        {
+            var rendimiento = await RequestJson.Get<List<Rendimiento>>("http://104.239.158.49/api.php?type=rendimiento&tkn=E31C5F8478566357BA6875B32DC59");
             var ds = new ObservableCollection<Rendimiento>();
-            if (datasets == null) return;
-            foreach (var dataset in (List<Rendimiento>)datasets)
+            foreach (var dataset in rendimiento)
             {
                 ds.Add(dataset);
             }
