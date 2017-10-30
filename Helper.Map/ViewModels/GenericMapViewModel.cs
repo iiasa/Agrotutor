@@ -1,38 +1,45 @@
-﻿using Prism;
-using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Input;
-using CimmytApp.BusinessContract;
-using CimmytApp.DTO;
-using CimmytApp.DTO.Parcel;
-using Helper.Base.Contract;
-using Xamarin.Forms.Maps;
-using Prism.Events;
-using Prism.Mvvm;
-using Prism.Navigation;
-using TK.CustomMap;
-using Helper.Base.PublishSubscriberEvents;
-using TK.CustomMap.Overlays;
-using Xamarin.Forms;
-
-namespace Helper.Map.ViewModels
+﻿namespace Helper.Map.ViewModels
 {
+	using System;
+	using System.Collections.Generic;
+	using System.Collections.ObjectModel;
+	using System.Linq;
+	using Prism;
+	using Prism.Commands;
+	using Prism.Events;
+	using Prism.Mvvm;
+	using Prism.Navigation;
+	using Xamarin.Forms;
+	using Xamarin.Forms.Maps;
+	using TK.CustomMap;
+	using TK.CustomMap.Overlays;
+
+    using CimmytApp.BusinessContract;
+    using CimmytApp.DTO;
+    using CimmytApp.DTO.Parcel;
+	using Helper.Base.Contract;
+	using Helper.Base.PublishSubscriberEvents;
+
     public class GenericMapViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private readonly INavigationService _navigationService;
 
-        public IEventAggregator _eventAggregator;
+        private IEventAggregator _eventAggregator;
         private bool _isGetLocationFeatureExist;
         private bool _isGeolocationEnabled;
         private MapTask _mapTask = MapTask.DisplayGeometriesOnly;
         private int _parcelId;
         private DeliniationState _currentDeliniationState;
-        private bool _finishDeliniationDrawing;
-        public DelegateCommand<object> MapClickedCommand { get; set; }
+		private bool _finishDeliniationDrawing; private bool _isActive;
+		private bool _returnGeolocationButtonVisible;
+		private bool _returnGeolocationButtonEnabled;
+		private bool _deliniationButtonsVisible;
+		private bool _buttonAcceptDeliniationEnabled = false;
+		private bool _buttonCancelDeliniationEnabled = false;
+		private bool _showOverrideButton;
+		private MapType _mapType;
+
+		public DelegateCommand<object> MapClickedCommand { get; set; }
         public DelegateCommand<object> MapLongPressCommand { get; set; }
 
         public DelegateCommand AcceptDeliniationCommand { get; set; }
@@ -139,7 +146,6 @@ namespace Helper.Map.ViewModels
             }
         }
 
-        //IPosition geoLocator,
         public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
@@ -289,7 +295,7 @@ namespace Helper.Map.ViewModels
             }
 
             MapPolygons = new ObservableCollection<TKPolygon>();
-            var polygon = new TKPolygon // TODO: following settings don't affect stroke in polygon object
+            var polygon = new TKPolygon 
             {
                 StrokeColor = Color.Green,
                 StrokeWidth = 2f,
@@ -461,15 +467,6 @@ namespace Helper.Map.ViewModels
         {
         }
 
-        private bool _isActive;
-        private bool _returnGeolocationButtonVisible;
-        private bool _returnGeolocationButtonEnabled;
-        private bool _deliniationButtonsVisible;
-        private bool _buttonAcceptDeliniationEnabled = false;
-        private bool _buttonCancelDeliniationEnabled = false;
-        private bool _showOverrideButton;
-        private MapType _mapType;
-
         public bool IsActive
         {
             get => _isActive;
@@ -477,17 +474,6 @@ namespace Helper.Map.ViewModels
             {
                 if (value == IsActive) return;
                 _isActive = value;
-                if (_isActive)
-                {
-                    // Well, it seems we don't have to put anything here - it works now and I won't touch this
-                    // The error was that ImageView can't be cast to ViewGroup when using the map in a tab and exiting the TabbedPage
-                    // I assumed the map component didn't realize it is no more and still tries to draw.
-                    // Back to .net greatness: no actual change leading to fixing a problem which shouldn't exist.
-                    // Hope these comments don't break anything...
-                }
-                else
-                {
-                }
             }
         }
 
@@ -501,7 +487,10 @@ namespace Helper.Map.ViewModels
         public void OnAppearing()
         {
             AdjustMapZoom();
-            GetPosition();
+            if (_mapTask == MapTask.GetLocation)
+            {
+                GetPosition();
+            }
             MapType = MapType.Hybrid;
         }
     }
