@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Parcel.ActivityManagement
+﻿namespace CimmytApp.DTO.Parcel
 {
     public enum ActivityType
     {

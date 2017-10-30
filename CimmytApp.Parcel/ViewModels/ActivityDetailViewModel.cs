@@ -1,87 +1,147 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Navigation;
-using System;
-using System.Collections.Generic;
-using CimmytApp.DTO.Parcel;
-using CimmytApp.Parcel.ActivityManagement;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
+    using System;
+    using System.Collections.Generic;
+    using Prism.Commands;
+    using Prism.Mvvm;
+    using Prism.Navigation;
+
+    using ActivityManagement;
+    using DTO.Parcel;
+
+    /// <summary>
+    /// Defines the <see cref="ActivityDetailViewModel" />
+    /// </summary>
     public class ActivityDetailViewModel : BindableBase, INavigationAware
     {
+        /// <summary>
+        /// Defines the _activityDynamicUIVisibility
+        /// </summary>
         private ActivityDynamicUIVisibility _activityDynamicUIVisibility;
+
+        /// <summary>
+        /// Defines the _listSownVariety
+        /// </summary>
         private List<string> _listSownVariety;
+
+        /// <summary>
+        /// Defines the _selectedSown
+        /// </summary>
         private string _selectedSown;
+
+        /// <summary>
+        /// Defines the _activityName
+        /// </summary>
         private string _activityName;
+
+        /// <summary>
+        /// Defines the _activityDate
+        /// </summary>
         private DateTime _activityDate;
+
+        /// <summary>
+        /// Defines the _activityCost
+        /// </summary>
         private double _activityCost;
+
+        /// <summary>
+        /// Defines the _appliedProduct
+        /// </summary>
         private string _appliedProduct;
+
+        /// <summary>
+        /// Defines the _activityDose
+        /// </summary>
         private double _activityDose;
+
+        /// <summary>
+        /// Defines the _weightOfSeeds
+        /// </summary>
         private double _weightOfSeeds;
+
+        /// <summary>
+        /// Defines the _numberOfSeeds
+        /// </summary>
         private double _numberOfSeeds;
+
+        /// <summary>
+        /// Defines the _amountApplied
+        /// </summary>
         private string _amountApplied;
+
+        /// <summary>
+        /// Defines the _productObtained
+        /// </summary>
         private string _productObtained;
+
+        /// <summary>
+        /// Defines the _activityYield
+        /// </summary>
         private string _activityYield;
+
+        /// <summary>
+        /// Defines the _minimumCalenderDateTime
+        /// </summary>
         private DateTime _minimumCalenderDateTime;
+
+        /// <summary>
+        /// Defines the _navigationService
+        /// </summary>
         private readonly INavigationService _navigationService;
 
+        /// <summary>
+        /// Gets or sets the SaveCommand
+        /// </summary>
         public DelegateCommand SaveCommand { get; set; }
 
-        public List<string> ListSownVariety
-        {
-            get => _listSownVariety;
-            set => SetProperty(ref _listSownVariety, value);
-        }
+        /// <summary>
+        /// Gets or sets the ListSownVariety
+        /// </summary>
+        public List<string> ListSownVariety { get => _listSownVariety; set => SetProperty(ref _listSownVariety, value); }
 
-        public ActivityDynamicUIVisibility ActivityDynamicUIVisibility
-        {
-            get => _activityDynamicUIVisibility;
-            set => SetProperty(ref _activityDynamicUIVisibility, value);
-        }
+        /// <summary>
+        /// Gets or sets the ActivityDynamicUIVisibility
+        /// </summary>
+        public ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get => _activityDynamicUIVisibility; set => SetProperty(ref _activityDynamicUIVisibility, value); }
 
-        public string ActivityName
-        {
-            get => _activityName;
-            set => SetProperty(ref _activityName, value);
-        }
+        /// <summary>
+        /// Gets or sets the ActivityName
+        /// </summary>
+        public string ActivityName { get => _activityName; set => SetProperty(ref _activityName, value); }
 
-        public DateTime ActivityDate
-        {
-            get => _activityDate;
-            set => SetProperty(ref _activityDate, value);
-        }
+        /// <summary>
+        /// Gets or sets the ActivityDate
+        /// </summary>
+        public DateTime ActivityDate { get => _activityDate; set => SetProperty(ref _activityDate, value); }
 
-        public double ActivityCost
-        {
-            get => _activityCost;
-            set => SetProperty(ref _activityCost, value);
-        }
+        /// <summary>
+        /// Gets or sets the ActivityCost
+        /// </summary>
+        public double ActivityCost { get => _activityCost; set => SetProperty(ref _activityCost, value); }
 
-        public string AmountApplied
-        {
-            get => _amountApplied;
-            set => SetProperty(ref _amountApplied, value);
-        }
+        /// <summary>
+        /// Gets or sets the AmountApplied
+        /// </summary>
+        public string AmountApplied { get => _amountApplied; set => SetProperty(ref _amountApplied, value); }
 
-        public string SelectedSown
-        {
-            get => _selectedSown;
-            set => SetProperty(ref _selectedSown, value);
-        }
+        /// <summary>
+        /// Gets or sets the SelectedSown
+        /// </summary>
+        public string SelectedSown { get => _selectedSown; set => SetProperty(ref _selectedSown, value); }
 
-        public string AppliedProduct
-        {
-            get => _appliedProduct;
-            set => SetProperty(ref _appliedProduct, value);
-        }
+        /// <summary>
+        /// Gets or sets the AppliedProduct
+        /// </summary>
+        public string AppliedProduct { get => _appliedProduct; set => SetProperty(ref _appliedProduct, value); }
 
-        public double ActivityDose
-        {
-            get => _activityDose;
-            set => SetProperty(ref _activityDose, value);
-        }
+        /// <summary>
+        /// Gets or sets the ActivityDose
+        /// </summary>
+        public double ActivityDose { get => _activityDose; set => SetProperty(ref _activityDose, value); }
 
+        /// <summary>
+        /// Gets or sets the WeightOfSeeds
+        /// </summary>
         public double WeightOfSeeds
         {
             get => _weightOfSeeds;
@@ -92,30 +152,30 @@ namespace CimmytApp.Parcel.ViewModels
             }
         }
 
-        public double NumberOfSeeds
-        {
-            get => _numberOfSeeds;
-            set => SetProperty(ref _numberOfSeeds, value);
-        }
+        /// <summary>
+        /// Gets or sets the NumberOfSeeds
+        /// </summary>
+        public double NumberOfSeeds { get => _numberOfSeeds; set => SetProperty(ref _numberOfSeeds, value); }
 
-        public string ProductObtained
-        {
-            get => _productObtained;
-            set => SetProperty(ref _productObtained, value);
-        }
+        /// <summary>
+        /// Gets or sets the ProductObtained
+        /// </summary>
+        public string ProductObtained { get => _productObtained; set => SetProperty(ref _productObtained, value); }
 
-        public string ActivityYield
-        {
-            get => _activityYield;
-            set => SetProperty(ref _activityYield, value);
-        }
+        /// <summary>
+        /// Gets or sets the ActivityYield
+        /// </summary>
+        public string ActivityYield { get => _activityYield; set => SetProperty(ref _activityYield, value); }
 
-        public DateTime MinimumCalenderDateTime
-        {
-            get => _minimumCalenderDateTime;
-            set => SetProperty(ref _minimumCalenderDateTime, value);
-        }
+        /// <summary>
+        /// Gets or sets the MinimumCalenderDateTime
+        /// </summary>
+        public DateTime MinimumCalenderDateTime { get => _minimumCalenderDateTime; set => SetProperty(ref _minimumCalenderDateTime, value); }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ActivityDetailViewModel"/> class.
+        /// </summary>
+        /// <param name="navigationService">The <see cref="INavigationService"/></param>
         public ActivityDetailViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -124,6 +184,9 @@ namespace CimmytApp.Parcel.ViewModels
             SaveCommand = new DelegateCommand(SaveCommandExecution);
         }
 
+        /// <summary>
+        /// The SaveCommandExecution
+        /// </summary>
         private void SaveCommandExecution()
         {
             var activity = new AgriculturalActivity
@@ -145,10 +208,18 @@ namespace CimmytApp.Parcel.ViewModels
             _navigationService.GoBackAsync(parameters);
         }
 
+        /// <summary>
+        /// The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
+        /// <summary>
+        /// The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             var activityName = (String)parameters["activityType"];

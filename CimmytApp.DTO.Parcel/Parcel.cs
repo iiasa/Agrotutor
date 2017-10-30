@@ -90,9 +90,9 @@
         private List<PesticideApplication> _pesticidesApplied;
 
         /// <summary>
-        /// Defines the _deliniation
+        /// Defines the _delineation
         /// </summary>
-        private string _deliniation;
+        private string _delineation;
 
         /// <summary>
         /// Defines the _plantingDate
@@ -556,22 +556,22 @@
 
         //ToDo:Move to another Class
         /// <summary>
-        /// The GetDeliniation
+        /// The GetDelineation
         /// </summary>
         /// <returns>The <see cref="List{GeoPosition}"/></returns>
-        public List<GeoPosition> GetDeliniation()
+        public List<GeoPosition> GetDelineation()
         {
-            return string.IsNullOrEmpty(_deliniation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_deliniation);
+            return string.IsNullOrEmpty(_delineation) ? null : JsonConvert.DeserializeObject<List<GeoPosition>>(_delineation);
         }
 
         //ToDo:Move to another Class
         /// <summary>
-        /// The SetDeliniation
+        /// The SetDelineation
         /// </summary>
-        /// <param name="deliniation">The <see cref="List{GeoPosition}"/></param>
-        public void SetDeliniation(List<GeoPosition> deliniation)
+        /// <param name="delineation">The <see cref="List{GeoPosition}"/></param>
+        public void SetDelineation(List<GeoPosition> delineation)
         {
-            _deliniation = JsonConvert.SerializeObject(deliniation);
+            _delineation = JsonConvert.SerializeObject(delineation);
         }
     }
 }

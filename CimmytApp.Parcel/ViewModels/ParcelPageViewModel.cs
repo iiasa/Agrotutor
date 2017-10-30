@@ -420,21 +420,21 @@
                 parameters.TryGetValue("EditEnabled", out var editEnabled);
                 if (editEnabled != null) EditModeActive = (bool)editEnabled;
             }
-            if (parameters.ContainsKey("Deliniation"))
+            if (parameters.ContainsKey("Delineation"))
             {
                 EditModeActive = false;
-                parameters.TryGetValue("Deliniation", out var deliniation);
-                //   Parcel.SetDeliniation((List<GeoPosition>)deliniation);
-                var polygonObj = new PolygonDto { ListPoints = (List<GeoPosition>)deliniation };
+                parameters.TryGetValue("Delineation", out var delineation);
+                //   Parcel.SetDelineation((List<GeoPosition>)delineation);
+                var polygonObj = new PolygonDto { ListPoints = (List<GeoPosition>)delineation };
                 if (polygonObj.ListPoints.Count > 0)
                 {
                     Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
                     Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
                 }
-                Parcel.SetDeliniation(polygonObj.ListPoints);
+                Parcel.SetDelineation(polygonObj.ListPoints);
                 //if (polygonObj.ListPoints != null && polygonObj.ListPoints.Count > 2)
                 //{
-                //    NeedsDeliniation = false;
+                //    NeedsDelineation = false;
                 //}
                 _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
 

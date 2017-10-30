@@ -10,7 +10,7 @@
     <StackLayout Orientation="Vertical">
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-            <Label Text="Agregar parcela" FontAttributes="Italic" />
+            <Label Text="Perfil de productor" FontAttributes="Italic" />
             <Image Source="profile_small.png" />
         </StackLayout>
 
@@ -21,6 +21,6 @@
         <Entry Text="{Binding UserProfile.State}" Margin="0,0,0,16" />
 
         <Button Text="Tomar una foto" IsVisible="{Binding TakePictureButtonVisible}" Command="{Binding TakePictureCommand}" />
-        <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350" Source="{Binding ImageSource}"/>
+        <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350" Source="{Binding ImageSource}" />
     </StackLayout>
 </ContentPage>

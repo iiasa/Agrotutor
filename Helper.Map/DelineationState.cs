@@ -1,6 +1,6 @@
 ﻿namespace Helper.Map
 {
-    public enum DeliniationState
+    public enum DelineationState
     {
         Inactive,
         ActiveNotEnoughPoints,

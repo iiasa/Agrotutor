@@ -217,16 +217,16 @@
                 Parcel.Longitude = position.Longitude;
             }
 
-            if (parameters.ContainsKey("Deliniation"))
+            if (parameters.ContainsKey("Delineation"))
             {
-                parameters.TryGetValue("Deliniation", out var delineation);
+                parameters.TryGetValue("Delineation", out var delineation);
                 var polygonObj = new PolygonDto { ListPoints = (List<DTO.GeoPosition>)delineation };
                 if (polygonObj.ListPoints.Count > 0)
                 {
                     Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
                     Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
                 }
-                Parcel.SetDeliniation(polygonObj.ListPoints);
+                Parcel.SetDelineation(polygonObj.ListPoints);
                 _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
 
                 OnPropertyChanged("Parcel");
