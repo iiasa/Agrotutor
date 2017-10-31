@@ -502,6 +502,25 @@
         /// <param name="json">The <see cref="string"/></param>
         /// <returns>The <see cref="WeatherForecast"/></returns>
         public static WeatherForecast FromJson(string json) => JsonConvert.DeserializeObject<WeatherForecast>(json, Converter.Settings);
+
+
+		/// <summary>
+		/// The Download
+		/// </summary>
+		/// <param name="latitude">The <see cref="double"/></param>
+		/// <param name="longitude">The <see cref="double"/></param>
+		/// <returns>The <see cref="Task{WeatherForecast}"/></returns>
+		public static async Task<WeatherForecast> Download(double latitude, double longitude)
+		{
+			var serviceUrl = $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
+			using (var wc = new HttpClient())
+			{
+				wc.DefaultRequestHeaders.Add("app_id", "dc9e4567");
+				wc.DefaultRequestHeaders.Add("app_key", "9547e002315e9cf9d6f7362675d63f1f");
+				var json = await wc.GetStringAsync(serviceUrl);
+				return WeatherForecast.FromJson(json);
+			}
+		}
     }
 
     /// <summary>
@@ -615,23 +634,5 @@
             DateParseHandling = DateParseHandling.None,
             Converters = { new Converter() },
         };
-
-        /// <summary>
-        /// The Download
-        /// </summary>
-        /// <param name="latitude">The <see cref="double"/></param>
-        /// <param name="longitude">The <see cref="double"/></param>
-        /// <returns>The <see cref="Task{WeatherForecast}"/></returns>
-        public static async Task<WeatherForecast> Download(double latitude, double longitude)
-        {
-            var serviceUrl = $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
-            using (var wc = new HttpClient())
-            {
-                wc.DefaultRequestHeaders.Add("app_id", "dc9e4567");
-                wc.DefaultRequestHeaders.Add("app_key", "9547e002315e9cf9d6f7362675d63f1f");
-                var json = await wc.GetStringAsync(serviceUrl);
-                return WeatherForecast.FromJson(json);
-            }
-        }
     }
 }

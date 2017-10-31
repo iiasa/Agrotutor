@@ -54,6 +54,10 @@
       <DependentUpon>WeatherDataSelection.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\WeatherDataSelectionViewModel.cs" />
+    <Compile Include="Views\WeatherMainPage.xaml.cs">
+      <DependentUpon>WeatherMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\WeatherMainPageViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Helper.RestfulClient">
@@ -178,6 +182,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\WeatherDataSelection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\WeatherMainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
