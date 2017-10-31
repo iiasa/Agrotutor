@@ -219,7 +219,10 @@
         /// <summary>
         /// Gets or sets a value indicating whether EditModeActive
         /// </summary>
-        public bool EditModeActive { get => _editModeActive; set => SetProperty(ref _editModeActive, value); }
+        public bool EditModeActive { get => _editModeActive; set { 
+                SetProperty(ref _editModeActive, value);
+                ViewModeActive = !EditModeActive;
+            } }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ParcelPageViewModel"/> class.
@@ -465,10 +468,22 @@
         /// Gets or sets a value indicating whether ShowEditToggle
         /// </summary>
         public bool ShowEditToggle { get => _showEditToggle; set => SetProperty(ref _showEditToggle, value); }
+        bool viewModeActive;
 
         /// <summary>
         /// Gets or sets a value indicating whether ViewModeActive
         /// </summary>
-        public bool ViewModeActive => !EditModeActive;
+        public bool ViewModeActive
+        {
+            get
+            {
+                return viewModeActive;
+            }
+
+            set
+            {
+                SetProperty(ref viewModeActive, value);
+            }
+        }
     }
 }

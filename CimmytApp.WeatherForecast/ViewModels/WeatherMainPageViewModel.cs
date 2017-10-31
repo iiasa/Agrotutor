@@ -34,10 +34,14 @@
                     LoadData();
                 }
             }
+
+            LoadData();
         }
 
-        private async void LoadData(){
-            WeatherForecast = await WeatherForecast.Download(Parcel.Latitude, Parcel.Longitude);
+		private async void LoadData()
+		{
+			//WeatherForecast = await WeatherForecast.Download(47.800239, 16.292656);
+			WeatherForecast = await WeatherForecast.Download(Parcel.Latitude, Parcel.Longitude);
         }
     }
 }

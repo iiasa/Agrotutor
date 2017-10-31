@@ -29,8 +29,9 @@
         /// The Initialize
         /// </summary>
         public void Initialize()
-        {
-            _unityContainer.RegisterTypeForNavigation<ActivityPage>();
+		{
+			_unityContainer.RegisterTypeForNavigation<ActivityPage>();
+			_unityContainer.RegisterTypeForNavigation<ViewActivitiesPage>();
             _unityContainer.RegisterTypeForNavigation<ActivityDetail>();
             _unityContainer.RegisterTypeForNavigation<AddParcelPage>();
             _unityContainer.RegisterTypeForNavigation<DeleteParcelPage>();
