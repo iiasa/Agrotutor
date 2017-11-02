@@ -461,7 +461,21 @@
                 Parcel.Latitude = position.Latitude;
                 Parcel.Longitude = position.Longitude;
                 _cimmytDbOperations.UpdateParcel(Parcel);
-            }
+			}
+			if (parameters.ContainsKey("Activities"))
+			{
+				parameters.TryGetValue("Activities", out var activities);
+				Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+			}
+
+			if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
+			{
+				parameters.TryGetValue(ParcelConstants.TechnologiesParameterName, out var technologies);
+				if (Parcel != null)
+				{
+					Parcel.TechnologiesUsed = (List<string>)technologies;
+				}
+			}
         }
 
         /// <summary>

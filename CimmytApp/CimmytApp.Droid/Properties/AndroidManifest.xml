@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="org.geo_wiki.cimmyt.droid" android:versionCode="12" android:versionName="1.0.5" android:largeHeap="true">
-  <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
-  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
-  <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.CAMERA" />
-  <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-  <application android:label="México Produce" android:theme="@style/MyTheme" android:icon="@drawable/app_icon">
-    <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCFVDQBvLzdNzm5ZfweMKfTHEKmZyHA4ug" />
-  </application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal" package="org.geo_wiki.cimmyt.droid" android:versionCode="13" android:versionName="1.0.6" android:largeHeap="true">
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+	<uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	<application android:label="México Produce" android:theme="@style/MyTheme" android:icon="@drawable/app_icon">
+		<meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyCFVDQBvLzdNzm5ZfweMKfTHEKmZyHA4ug" />
+	</application>
 </manifest>

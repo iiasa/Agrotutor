@@ -6,6 +6,7 @@
     using System.Collections.Generic;
 
     using DTO.Parcel;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="ActivityPageViewModel" />
@@ -40,6 +41,16 @@
         {
             _navigationService = navigationService;
             ActivityClickedCommand = new DelegateCommand<string>(ExecuteMethod);
+            SaveCommand = new DelegateCommand(Save);
+        }
+
+        private void Save()
+        {
+            var parameters = new NavigationParameters
+            {
+                { "Activities", Activities }
+            };
+            _navigationService.GoBackAsync(parameters);
         }
 
         /// <summary>
@@ -88,5 +99,6 @@
         /// Gets or sets the Activities
         /// </summary>
         public List<AgriculturalActivity> Activities { get; set; }
+        public DelegateCommand SaveCommand { get; private set; }
     }
 }

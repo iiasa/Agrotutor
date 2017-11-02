@@ -586,10 +586,6 @@
                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                 }
             }
-            else
-            {
-                MapRegion = MapSpan.FromCenterAndRadius(new Position(19.432476, -99.131128), Distance.FromMeters(200));
-            }
         }
 
         /// <summary>
