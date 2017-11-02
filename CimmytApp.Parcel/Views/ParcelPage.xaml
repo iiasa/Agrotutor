@@ -11,8 +11,8 @@
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Agregar parcela" FontAttributes="Italic" />
-                <Image Source="add_small.png" HeightRequest="18" />
+                <Label Text="{Binding Parcel.OverviewString}" VerticalOptions="Center" />
+                <Image Source="{Binding Parcel.IconSource}" WidthRequest="32" HeightRequest="32" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Padding="16" IsVisible="{Binding ShowEditToggle}">

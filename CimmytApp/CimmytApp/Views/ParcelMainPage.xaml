@@ -11,7 +11,7 @@
         <StackLayout Margin="16,16,16,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Label Text="{Binding Parcel.OverviewString}" VerticalOptions="Center" />
-                <Image Source="{Binding Parcel.IconSource}" WidthRequest="18" HeightRequest="18" />
+                <Image Source="{Binding Parcel.IconSource}" WidthRequest="32" HeightRequest="32" />
             </StackLayout>
             <Grid HorizontalOptions="Center">
                 <Grid.RowDefinitions>

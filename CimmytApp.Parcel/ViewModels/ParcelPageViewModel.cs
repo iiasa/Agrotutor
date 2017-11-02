@@ -1,20 +1,21 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
-    using BusinessContract;
-    using DTO;
-    using DTO.Parcel;
-    using Prism.Commands;
-    using Prism.Events;
-    using Prism.Mvvm;
-    using Prism.Navigation;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
     using Xamarin.Forms;
     using XLabs.Ioc;
     using XLabs.Platform.Device;
     using XLabs.Platform.Services.Media;
+
+    using BusinessContract;
+    using DTO;
+    using DTO.Parcel;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -219,10 +220,14 @@
         /// <summary>
         /// Gets or sets a value indicating whether EditModeActive
         /// </summary>
-        public bool EditModeActive { get => _editModeActive; set { 
+        public bool EditModeActive
+        {
+            get => _editModeActive; set
+            {
                 SetProperty(ref _editModeActive, value);
                 ViewModeActive = !EditModeActive;
-            } }
+            }
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ParcelPageViewModel"/> class.
@@ -243,12 +248,18 @@
             ViewActivitiesCommand = new DelegateCommand(ViewActivities);
         }
 
+        /// <summary>
+        /// The ViewActivities
+        /// </summary>
         private void ViewActivities()
         {
             var parameters = new NavigationParameters { { "Activities", Parcel.Activities } };
             _navigationService.NavigateAsync("ViewActivitiesPage", parameters);
         }
 
+        /// <summary>
+        /// Gets or sets the ViewActivitiesCommand
+        /// </summary>
         public DelegateCommand ViewActivitiesCommand { get; set; }
 
         /// <summary>
@@ -435,7 +446,6 @@
             {
                 EditModeActive = false;
                 parameters.TryGetValue("Delineation", out var delineation);
-                //   Parcel.SetDelineation((List<GeoPosition>)delineation);
                 var polygonObj = new PolygonDto { ListPoints = (List<GeoPosition>)delineation };
                 if (polygonObj.ListPoints.Count > 0)
                 {
@@ -443,15 +453,9 @@
                     Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
                 }
                 Parcel.SetDelineation(polygonObj.ListPoints);
-                //if (polygonObj.ListPoints != null && polygonObj.ListPoints.Count > 2)
-                //{
-                //    NeedsDelineation = false;
-                //}
                 _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
 
-                //var res=_cimmytDbOperations.GetAllParcels();
-                OnPropertyChanged("Parcel"); //TODO improve this...
-                                             //  _cimmytDbOperations.UpdateParcel(Parcel);
+                OnPropertyChanged("Parcel");
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
@@ -461,43 +465,40 @@
                 Parcel.Latitude = position.Latitude;
                 Parcel.Longitude = position.Longitude;
                 _cimmytDbOperations.UpdateParcel(Parcel);
-			}
-			if (parameters.ContainsKey("Activities"))
-			{
-				parameters.TryGetValue("Activities", out var activities);
-				Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
-			}
+            }
+            if (parameters.ContainsKey("Activities"))
+            {
+                parameters.TryGetValue("Activities", out var activities);
+                Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+            }
 
-			if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
-			{
-				parameters.TryGetValue(ParcelConstants.TechnologiesParameterName, out var technologies);
-				if (Parcel != null)
-				{
-					Parcel.TechnologiesUsed = (List<string>)technologies;
-				}
-			}
+            if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
+            {
+                parameters.TryGetValue(ParcelConstants.TechnologiesParameterName, out var technologies);
+                if (Parcel != null)
+                {
+                    Parcel.TechnologiesUsed = (List<string>)technologies;
+                }
+            }
         }
 
         /// <summary>
         /// Gets or sets a value indicating whether ShowEditToggle
         /// </summary>
         public bool ShowEditToggle { get => _showEditToggle; set => SetProperty(ref _showEditToggle, value); }
-        bool viewModeActive;
+
+        /// <summary>
+        /// Defines the viewModeActive
+        /// </summary>
+        private bool _viewModeActive;
 
         /// <summary>
         /// Gets or sets a value indicating whether ViewModeActive
         /// </summary>
         public bool ViewModeActive
         {
-            get
-            {
-                return viewModeActive;
-            }
-
-            set
-            {
-                SetProperty(ref viewModeActive, value);
-            }
+            get => _viewModeActive;
+            set => SetProperty(ref _viewModeActive, value);
         }
     }
 }
