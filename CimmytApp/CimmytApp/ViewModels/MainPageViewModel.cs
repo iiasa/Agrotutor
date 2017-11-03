@@ -30,7 +30,7 @@ namespace CimmytApp.ViewModels
             _eventAggregator = eventAggregator;
             _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
             _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
-            
+
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
         }
 

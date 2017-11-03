@@ -1,30 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
-    x:Class="CimmytApp.WeatherForecast.Views.WeatherMainPage">
-        <Label Text="Fuck!"/>
-        <!--<ScrollView>
-            <StackLayout Orientation="Vertical">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                    <Label Text="Clima" FontAttributes="Italic" />
-                    <Image Source="icon_weather_96.png" HeightRequest="18" />
-                </StackLayout>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                </Grid>
+    x:Class="CimmytApp.WeatherForecast.Views.WeatherMainPage"
+    Padding="16">
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Clima" FontAttributes="Italic" />
+                <Image Source="icon_weather_96.png" HeightRequest="18" />
             </StackLayout>
-        </ScrollView>-->
+
+            <Label Text="3. November, 14:31" />
+            <Label Text="Forecast for Vienna"  />
+            
+            <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Day: 13C - Night: 4C" />
+                    <Label Text="13C" FontSize="48" />
+                    <Label Text="Realfeel: 13C" />
+                </StackLayout>
+                <Image Source="rain.png" />
+            </StackLayout>
+
+                <Label Text="Temperature: " HorizontalTextAlignment="End" FontAttributes="Bold" />
+                <Label Text="15 C" />
+
+                <Label Text="Humidity: " HorizontalTextAlignment="End" FontAttributes="Bold" />
+            <Label Text="55 %" />
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

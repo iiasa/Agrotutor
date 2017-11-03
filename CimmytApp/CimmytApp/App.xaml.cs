@@ -173,17 +173,18 @@ namespace CimmytApp
         {
             InitializeComponent();
 
+            NavigationService.NavigateAsync("WeatherMainPage");
+            /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
-                NavigationService.NavigateAsync("MainPage");
-                //NavigationService.NavigateAsync("SplashScreenPage");
+                NavigationService.NavigateAsync("app:///MainPage");
             }
             else
             {
                 Current.Properties.Add("not_first_launch", true);
                 var parameters = new NavigationParameters { { "ShowGuide", true } };
                 NavigationService.NavigateAsync("SplashScreenPage", parameters);
-            }
+            }*/
         }
 
         protected override void RegisterTypes()

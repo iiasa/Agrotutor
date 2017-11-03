@@ -23,7 +23,7 @@
 
         private void NavigateToMainPage()
         {
-            _navigationService.NavigateAsync("MainPage");
+            _navigationService.NavigateAsync("app:///MainPage");
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

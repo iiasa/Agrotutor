@@ -57,7 +57,7 @@ namespace CimmytApp.Parcel.ViewModels
         private void DeleteParcel()
         {
             _cimmytDbOperations.DeleteParcel(_parcel);
-            _navigationService.NavigateAsync("MainPage");
+            _navigationService.NavigateAsync("app:///MainPage");
         }
 
         /// <summary>

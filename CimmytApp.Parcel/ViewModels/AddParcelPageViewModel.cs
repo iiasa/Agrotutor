@@ -30,19 +30,9 @@
         private int _pickerCropTypesSelectedIndex;
 
         /// <summary>
-        /// Defines the _pickerYearsSelectedIndex
-        /// </summary>
-        private int _pickerYearsSelectedIndex;
-
-        /// <summary>
         /// Defines the _userIsAtParcel
         /// </summary>
         private bool _userIsAtParcel;
-
-        /// <summary>
-        /// Defines the _years
-        /// </summary>
-        private List<string> _years;
 
         /// <summary>
         /// Defines the _isSaveBtnEnabled
@@ -68,7 +58,6 @@
         {
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
-            Years = new List<string>();
 
             ClickSave = new DelegateCommand(SaveParcel).ObservesCanExecute(o => IsSaveBtnEnabled);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
@@ -78,6 +67,10 @@
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
 
             Parcel = new Parcel();
+
+            PickerCropTypesSelectedIndex = -1;
+            PickerClimateTypesSelectedIndex = -1;
+            PickerMaturityClassesSelectedIndex = -1;
         }
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
@@ -159,22 +152,17 @@
             get => _pickerCropTypesSelectedIndex;
             set
             {
-                _pickerCropTypesSelectedIndex = value;
-                Parcel.Crop = CropTypes.ElementAt(value);
-                Parcel.CropType = (CropType)(value + 1);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the PickerYearsSelectedIndex
-        /// </summary>
-        public int PickerYearsSelectedIndex
-        {
-            get => _pickerYearsSelectedIndex;
-            set
-            {
-                _pickerYearsSelectedIndex = value;
-                Parcel.Year = Years.ElementAt(value);
+                SetProperty(ref _pickerCropTypesSelectedIndex, value);
+                if (value == -1)
+                {
+                    Parcel.Crop = "Ninguno";
+                    Parcel.CropType = CropType.None;
+                }
+                else
+                {
+                    Parcel.Crop = CropTypes.ElementAt(value);
+                    Parcel.CropType = (CropType)(value + 1);
+                }
             }
         }
 
@@ -182,11 +170,6 @@
         /// Gets or sets a value indicating whether UserIsAtParcel
         /// </summary>
         public bool UserIsAtParcel { get => _userIsAtParcel; set => SetProperty(ref _userIsAtParcel, value); }
-
-        /// <summary>
-        /// Gets or sets the Years
-        /// </summary>
-        public List<string> Years { get => _years; set => SetProperty(ref _years, value); }
 
         /// <summary>
         /// The OnNavigatedFrom
@@ -271,7 +254,7 @@
             {
                 { "id", Parcel.ParcelId }
             };
-            _navigationService.NavigateAsync("MainPage", navigationParameters, true);
+            _navigationService.NavigateAsync("app:///MainPage", navigationParameters, true);
         }
 
         /// <summary>
@@ -293,7 +276,7 @@
             set
             {
                 SetProperty(ref _pickerMaturityClassesSelectedIndex, value);
-                Parcel.MaturityClass = MaturityClasses.ElementAt(value);
+                Parcel.MaturityClass = value == -1 ? null : MaturityClasses.ElementAt(value);
             }
         }
 
@@ -306,7 +289,7 @@
             set
             {
                 SetProperty(ref _pickerClimateTypesSelectedIndex, value);
-                Parcel.ClimateType = ClimateTypes.ElementAt(value);
+                Parcel.ClimateType = value == -1 ? null : ClimateTypes.ElementAt(value);
             }
         }
     }

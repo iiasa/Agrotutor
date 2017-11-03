@@ -15,16 +15,16 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" />
-            <DatePicker Date="{Binding Parcel.PlantingDate}"  Margin="0,0,0,16" />
+            <DatePicker Date="{Binding Parcel.PlantingDate}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_parcel_name}" />
             <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />

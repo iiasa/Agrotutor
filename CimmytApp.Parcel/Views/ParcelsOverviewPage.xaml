@@ -28,7 +28,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="FillAndExpand">
                                     <Image Source="{Binding Parcel.IconSource}" WidthRequest="75"  HeightRequest="75" VerticalOptions="Center" HorizontalOptions="Center" />
-                                    <Label Text="{Binding Parcel.OverviewString}" HorizontalOptions="Center"  VerticalOptions="Center" />
+                                    <Label Text="{Binding Parcel.OverviewString}" HorizontalOptions="Center"  VerticalOptions="Center" HorizontalTextAlignment="Center"/>
                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="Center">
                                         <Label Text="Editar" IsVisible="{Binding IsOptionsVisible}" HorizontalOptions="Start" Margin="16" FontAttributes="Bold" FontSize="18">
                                             <Label.GestureRecognizers>
