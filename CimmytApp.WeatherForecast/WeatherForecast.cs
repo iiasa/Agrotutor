@@ -1,9 +1,19 @@
-﻿namespace CimmytApp.WeatherForecast
+﻿// To parse this JSON data, add NuGet 'Newtonsoft.Json' then do:
+//
+//    using CimmytApp.WeatherForecast;
+//
+//    var data = WeatherForecast.FromJson(jsonString);
+//
+
+using System.Net.Http;
+using System.Threading.Tasks;
+
+namespace CimmytApp.WeatherForecast
 {
     using System;
+    using System.Net;
     using System.Collections.Generic;
-    using System.Net.Http;
-    using System.Threading.Tasks;
+
     using Newtonsoft.Json;
 
     public partial class WeatherForecast
@@ -57,7 +67,7 @@
         public string ObTime { get; set; }
 
         [JsonProperty("press_mb")]
-        public string PressMb { get; set; }
+        public PressMb PressMb { get; set; }
 
         [JsonProperty("rh_pct")]
         public string RhPct { get; set; }
@@ -78,10 +88,10 @@
         public string VisibilityM { get; set; }
 
         [JsonProperty("wnd_dir")]
-        public string WndDir { get; set; }
+        public PressMb WndDir { get; set; }
 
         [JsonProperty("wnd_dir_degs")]
-        public string WndDirDegs { get; set; }
+        public PressMb WndDirDegs { get; set; }
 
         [JsonProperty("wnd_spd_kph")]
         public string WndSpdKph { get; set; }
@@ -225,7 +235,7 @@
         public string Qpf24hrMm { get; set; }
 
         [JsonProperty("solunar_moon_state")]
-        public string SolunarMoonState { get; set; }
+        public PressMb SolunarMoonState { get; set; }
 
         [JsonProperty("solunar_moonrise_utc")]
         public string SolunarMoonriseUtc { get; set; }
@@ -234,7 +244,7 @@
         public string SolunarMoonsetUtc { get; set; }
 
         [JsonProperty("solunar_sun_state")]
-        public string SolunarSunState { get; set; }
+        public PressMb SolunarSunState { get; set; }
 
         [JsonProperty("solunar_sunrise_utc")]
         public string SolunarSunriseUtc { get; set; }
@@ -273,6 +283,10 @@
         public string WxIconUrlPng { get; set; }
     }
 
+    public partial class PressMb
+    {
+    }
+
     public partial class Attributes
     {
         [JsonProperty("city")]
@@ -306,7 +320,7 @@
     public partial struct Qpf01hrMm
     {
         public string String;
-        public string PressMb;
+        public PressMb PressMb;
     }
 
     public partial class WeatherForecast
@@ -347,7 +361,7 @@
                     break;
 
                 case JsonToken.StartObject:
-                    PressMb = serializer.Deserialize<string>(reader);
+                    PressMb = serializer.Deserialize<PressMb>(reader);
                     break;
 
                 default: throw new Exception("Cannot convert Qpf01hrMm");
