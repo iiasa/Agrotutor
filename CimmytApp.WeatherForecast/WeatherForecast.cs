@@ -67,7 +67,7 @@ namespace CimmytApp.WeatherForecast
         public string ObTime { get; set; }
 
         [JsonProperty("press_mb")]
-        public PressMb PressMb { get; set; }
+        public List<string> PressMb { get; set; }
 
         [JsonProperty("rh_pct")]
         public string RhPct { get; set; }
@@ -88,10 +88,10 @@ namespace CimmytApp.WeatherForecast
         public string VisibilityM { get; set; }
 
         [JsonProperty("wnd_dir")]
-        public PressMb WndDir { get; set; }
+        public string WndDir { get; set; }
 
         [JsonProperty("wnd_dir_degs")]
-        public PressMb WndDirDegs { get; set; }
+        public string WndDirDegs { get; set; }
 
         [JsonProperty("wnd_spd_kph")]
         public string WndSpdKph { get; set; }
@@ -235,7 +235,7 @@ namespace CimmytApp.WeatherForecast
         public string Qpf24hrMm { get; set; }
 
         [JsonProperty("solunar_moon_state")]
-        public PressMb SolunarMoonState { get; set; }
+        public List<string> SolunarMoonState { get; set; }
 
         [JsonProperty("solunar_moonrise_utc")]
         public string SolunarMoonriseUtc { get; set; }
@@ -244,7 +244,7 @@ namespace CimmytApp.WeatherForecast
         public string SolunarMoonsetUtc { get; set; }
 
         [JsonProperty("solunar_sun_state")]
-        public PressMb SolunarSunState { get; set; }
+        public List<string> SolunarSunState { get; set; }
 
         [JsonProperty("solunar_sunrise_utc")]
         public string SolunarSunriseUtc { get; set; }
@@ -283,10 +283,6 @@ namespace CimmytApp.WeatherForecast
         public string WxIconUrlPng { get; set; }
     }
 
-    public partial class PressMb
-    {
-    }
-
     public partial class Attributes
     {
         [JsonProperty("city")]
@@ -320,7 +316,7 @@ namespace CimmytApp.WeatherForecast
     public partial struct Qpf01hrMm
     {
         public string String;
-        public PressMb PressMb;
+        public List<object> PressMb;
     }
 
     public partial class WeatherForecast
@@ -361,7 +357,7 @@ namespace CimmytApp.WeatherForecast
                     break;
 
                 case JsonToken.StartObject:
-                    PressMb = serializer.Deserialize<PressMb>(reader);
+                    PressMb = serializer.Deserialize<List<object>>(reader);
                     break;
 
                 default: throw new Exception("Cannot convert Qpf01hrMm");

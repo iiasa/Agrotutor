@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using CimmytApp.ViewModels;
+using Xamarin.Forms;
 
 namespace CimmytApp.Views
 {
@@ -7,6 +8,12 @@ namespace CimmytApp.Views
         public ProfilePage()
         {
             InitializeComponent();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            ((ProfilePageViewModel)BindingContext).Save();
         }
     }
 }

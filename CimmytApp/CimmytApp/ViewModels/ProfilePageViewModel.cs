@@ -1,8 +1,8 @@
 ﻿namespace CimmytApp.ViewModels
 {
-    using Plugin.Media;
     using Prism.Commands;
     using Prism.Mvvm;
+    using Plugin.Media;
 
     using DTO;
 
@@ -53,6 +53,12 @@
                 ImageSource = picture;
                 PictureVisible = true;
             }
+
+            UserProfile = new UserProfile
+            {
+                UserName = (string)App.GetProperty("UserName"),
+                State = (string)App.GetProperty("UserState")
+            };
         }
 
         /// <summary>
@@ -79,6 +85,15 @@
             ImageSource = file.Path;
             PictureVisible = true;
             App.InsertOrUpdateProperty("UserPicture", file.Path);
+        }
+
+        /// <summary>
+        /// The Save
+        /// </summary>
+        public void Save()
+        {
+            App.InsertOrUpdateProperty("UserName", UserProfile.UserName);
+            App.InsertOrUpdateProperty("UserState", UserProfile.State);
         }
     }
 }

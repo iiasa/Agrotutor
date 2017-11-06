@@ -423,7 +423,7 @@
                 parameters.TryGetValue("Parcel", out var parcel);
                 if (parcel != null) Parcel = (Parcel)parcel;
             }
-            else
+            if (parameters.ContainsKey("Id"))
             {
                 try
                 {

@@ -1,16 +1,19 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
-    using BusinessContract;
-    using DTO.Parcel;
-    using Helper.Base.DTO;
+    using System.Collections.Generic;
+    using System.Linq;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using System.Collections.Generic;
-    using System.Linq;
 
+    using Helper.Base.DTO;
+
+    using BusinessContract;
+    using DTO.Parcel;
+
+    /// <inheritdoc cref="BindableBase" />
     /// <summary>
-    /// Defines the <see cref="AddParcelPageViewModel" />
+    /// Defines the <see cref="T:CimmytApp.Parcel.ViewModels.AddParcelPageViewModel" />
     /// </summary>
     public class AddParcelPageViewModel : BindableBase, INavigationAware
     {
