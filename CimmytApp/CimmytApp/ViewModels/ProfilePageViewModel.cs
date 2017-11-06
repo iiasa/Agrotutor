@@ -1,13 +1,16 @@
 ﻿namespace CimmytApp.ViewModels
 {
+    using System.Collections.Generic;
+    using System.Linq;
     using Prism.Commands;
     using Prism.Mvvm;
     using Plugin.Media;
 
     using DTO;
 
+    /// <inheritdoc />
     /// <summary>
-    /// Defines the <see cref="ProfilePageViewModel" />
+    /// Defines the <see cref="T:CimmytApp.ViewModels.ProfilePageViewModel" />
     /// </summary>
     public class ProfilePageViewModel : BindableBase
     {
@@ -20,6 +23,29 @@
         /// Defines the _pictureVisible
         /// </summary>
         private bool _pictureVisible = false;
+
+        /// <summary>
+        /// Defines the _statesSelectedIndex
+        /// </summary>
+        private int _statesSelectedIndex = -1;
+
+        /// <summary>
+        /// Gets or sets the States
+        /// </summary>
+        public List<string> States { get; set; } = new List<string> { "México", "Ciudad de México", "Veracruz", "Jalisco", "Puebla", "Guanajuato", "Chiapas", "Nuevo León", "Michoacán", "Oaxaca", "Chihuahua", "Guerrero", "Tamaulipas", "Baja California", "Sinaloa", "Coahuila de Zaragoza", "Hidalgo", "Sonora", "San Luis Potosí", "Tabasco", "Yucatán", "Querétaro de Arteaga", "Morelos", "Durango", "Zacatecas", "Quintana Roo", "Aguascalientes", "Tlaxcala", "Campeche", "Nayarit", "Baja California Sur", "Colima" };
+
+        /// <summary>
+        /// Gets or sets the StatesSelectedIndex
+        /// </summary>
+        public int StatesSelectedIndex
+        {
+            get => _statesSelectedIndex;
+            set
+            {
+                SetProperty(ref _statesSelectedIndex, value);
+                UserProfile.State = value == -1 ? "" : States.ElementAt(value);
+            }
+        }
 
         /// <summary>
         /// Gets or sets the UserProfile
@@ -59,6 +85,16 @@
                 UserName = (string)App.GetProperty("UserName"),
                 State = (string)App.GetProperty("UserState")
             };
+
+            if (UserProfile?.State != "")
+            {
+                for (var i = 0; i < States.Count; i++)
+                {
+                    if (States.ElementAt(i) != UserProfile.State) continue;
+                    StatesSelectedIndex = i;
+                    break;
+                }
+            }
         }
 
         /// <summary>

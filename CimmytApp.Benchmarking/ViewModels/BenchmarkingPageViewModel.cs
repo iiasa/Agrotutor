@@ -1,16 +1,17 @@
 ﻿namespace CimmytApp.Benchmarking.ViewModels
 {
-    using DTO.Benchmarking;
-    using DTO.Parcel;
-    using Helper.GeoWiki.API;
-    using Prism.Commands;
-    using Prism.Events;
-    using Prism.Mvvm;
-    using Prism.Navigation;
     using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
+
+    using DTO.Benchmarking;
+    using DTO.Parcel;
+    using Helper.GeoWiki.API;
 
     /// <summary>
     /// Defines the <see cref="BenchmarkingPageViewModel" />
@@ -67,6 +68,8 @@
         /// </summary>
         private bool _noData;
 
+        private INavigationService _navigationService;
+
         /// <summary>
         /// Gets or sets a value indicating whether NoData
         /// </summary>
@@ -80,10 +83,11 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="BenchmarkingPageViewModel"/> class.
         /// </summary>
-        /// <param name="eventAggregator">The <see cref="IEventAggregator"/></param>
-        public BenchmarkingPageViewModel(IEventAggregator eventAggregator)
+        /// <param name="navigationService"></param>
+        public BenchmarkingPageViewModel(INavigationService navigationService)
         {
             LoadDataCommand = new DelegateCommand(LoadData);
+            _navigationService = navigationService;
         }
 
         /// <summary>
@@ -104,7 +108,6 @@
         /// <returns>The <see cref="Task{BenchmarkingInformation}"/></returns>
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)
         {
-            if (parcelLatitude == 0 && parcelLongitude == 0) return null;
             if (parcelLongitude > 0)
             {
                 parcelLatitude = 20;
@@ -214,7 +217,15 @@
             if (parameters.ContainsKey("Parcel"))
             {
                 parameters.TryGetValue("Parcel", out var parcel);
-                if (parcel != null) Parcel = (Parcel)parcel;
+                if (parcel != null)
+                {
+                    Parcel = (Parcel)parcel;
+                    DownloadButtonActive = true;
+                }
+                else
+                {
+                    _navigationService.GoBackAsync();
+                }
             }
         }
     }

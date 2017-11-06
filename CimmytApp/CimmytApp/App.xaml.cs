@@ -1,15 +1,14 @@
-﻿using Microsoft.Practices.ServiceLocation;
-using Prism.Navigation;
-
-namespace CimmytApp
+﻿namespace CimmytApp
 {
     using System;
     using System.Collections.Generic;
     using System.Reflection;
     using Prism.Modularity;
+    using Prism.Navigation;
     using Prism.Unity;
     using Xamarin.Forms;
     using Microsoft.Practices.Unity;
+    using Microsoft.Practices.ServiceLocation;
 
     using Helper.Base.Contract;
     using Helper.Geolocator;
@@ -173,8 +172,8 @@ namespace CimmytApp
         {
             InitializeComponent();
 
-            NavigationService.NavigateAsync("WeatherMainPage");
-            /*
+            //NavigationService.NavigateAsync("WeatherMainPage");
+
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
                 NavigationService.NavigateAsync("app:///MainPage");
@@ -184,7 +183,7 @@ namespace CimmytApp
                 Current.Properties.Add("not_first_launch", true);
                 var parameters = new NavigationParameters { { "ShowGuide", true } };
                 NavigationService.NavigateAsync("SplashScreenPage", parameters);
-            }*/
+            }
         }
 
         protected override void RegisterTypes()

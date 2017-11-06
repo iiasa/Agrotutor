@@ -34,7 +34,7 @@
         /// <summary>
         /// Defines the _eventAggregator
         /// </summary>
-        private IEventAggregator _eventAggregator;
+        private readonly IEventAggregator _eventAggregator;
 
         /// <summary>
         /// Defines the _isGetLocationFeatureExist
@@ -216,11 +216,8 @@
         /// </summary>
         public ObservableCollection<TKCustomMapPin> CustomPinsList
         {
-            get { return _customPinsList; }
-            set
-            {
-                SetProperty(ref _customPinsList, value);
-            }
+            get => _customPinsList;
+            set => SetProperty(ref _customPinsList, value);
         }
 
         /// <summary>
@@ -233,11 +230,8 @@
         /// </summary>
         public Position MapsPosition
         {
-            get { return _mapsPosition; }
-            set
-            {
-                SetProperty(ref _mapsPosition, value);
-            }
+            get => _mapsPosition;
+            set => SetProperty(ref _mapsPosition, value);
         }
 
         /// <summary>
@@ -245,11 +239,8 @@
         /// </summary>
         public MapSpan MapRegion
         {
-            get { return _mapRegion; }
-            set
-            {
-                SetProperty(ref _mapRegion, value);
-            }
+            get => _mapRegion;
+            set => SetProperty(ref _mapRegion, value);
         }
 
         /// <summary>
@@ -257,11 +248,8 @@
         /// </summary>
         public bool IsGeolocationEnabled
         {
-            get { return _isGeolocationEnabled; }
-            set
-            {
-                SetProperty(ref _isGeolocationEnabled, value);
-            }
+            get => _isGeolocationEnabled;
+            set => SetProperty(ref _isGeolocationEnabled, value);
         }
 
         /// <summary>
@@ -585,6 +573,10 @@
                 {
                     MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
                 }
+            }
+            else
+            {
+                MapRegion = MapSpan.FromCenterAndRadius(new Position(13.5651305, -62.4328784), Distance.FromKilometers(900));
             }
         }
 
