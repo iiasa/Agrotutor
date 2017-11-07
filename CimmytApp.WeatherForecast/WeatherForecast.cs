@@ -1,18 +1,9 @@
-﻿// To parse this JSON data, add NuGet 'Newtonsoft.Json' then do:
-//
-//    using CimmytApp.WeatherForecast;
-//
-//    var data = WeatherForecast.FromJson(jsonString);
-//
-
-using System.Net.Http;
-using System.Threading.Tasks;
-
-namespace CimmytApp.WeatherForecast
+﻿namespace CimmytApp.WeatherForecast
 {
     using System;
-    using System.Net;
     using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Threading.Tasks;
 
     using Newtonsoft.Json;
 
@@ -48,29 +39,17 @@ namespace CimmytApp.WeatherForecast
         [JsonProperty("apparent_temp_C")]
         public string ApparentTempC { get; set; }
 
-        [JsonProperty("cld_cover")]
-        public string CldCover { get; set; }
-
         [JsonProperty("day_night")]
         public string DayNight { get; set; }
 
         [JsonProperty("day_of_week_local")]
         public string DayOfWeekLocal { get; set; }
 
-        [JsonProperty("dewp_C")]
-        public string DewpC { get; set; }
-
         [JsonProperty("moon_phase")]
         public string MoonPhase { get; set; }
 
         [JsonProperty("ob_time")]
         public string ObTime { get; set; }
-
-        [JsonProperty("press_mb")]
-        public List<string> PressMb { get; set; }
-
-        [JsonProperty("rh_pct")]
-        public string RhPct { get; set; }
 
         [JsonProperty("stn")]
         public string Stn { get; set; }
@@ -84,17 +63,14 @@ namespace CimmytApp.WeatherForecast
         [JsonProperty("temp_C")]
         public string TempC { get; set; }
 
-        [JsonProperty("visibility_m")]
-        public string VisibilityM { get; set; }
+        //[JsonProperty("wnd_dir")]
+        //public string WndDir { get; set; }
 
-        [JsonProperty("wnd_dir")]
-        public string WndDir { get; set; }
+        //[JsonProperty("wnd_dir_degs")]
+        //public string WndDirDegs { get; set; }
 
-        [JsonProperty("wnd_dir_degs")]
-        public string WndDirDegs { get; set; }
-
-        [JsonProperty("wnd_spd_kph")]
-        public string WndSpdKph { get; set; }
+        //[JsonProperty("wnd_spd_kph")]
+        //public string WndSpdKph { get; set; }
 
         [JsonProperty("wx")]
         public string Wx { get; set; }
@@ -134,9 +110,6 @@ namespace CimmytApp.WeatherForecast
 
         [JsonProperty("pop")]
         public string Pop { get; set; }
-
-        [JsonProperty("qpf_01hr_mm")]
-        public Qpf01hrMm Qpf01hrMm { get; set; }
 
         [JsonProperty("rh_pct")]
         public string RhPct { get; set; }
@@ -185,6 +158,11 @@ namespace CimmytApp.WeatherForecast
 
         [JsonProperty("wx_icon_url_png")]
         public string WxIconUrlPng { get; set; }
+
+        public string GetWxAsString()
+        {
+            return Util.GetTextForWx(WxCode);
+        }
     }
 
     public partial class DailySummaries
@@ -234,17 +212,11 @@ namespace CimmytApp.WeatherForecast
         [JsonProperty("qpf_24hr_mm")]
         public string Qpf24hrMm { get; set; }
 
-        [JsonProperty("solunar_moon_state")]
-        public List<string> SolunarMoonState { get; set; }
-
         [JsonProperty("solunar_moonrise_utc")]
         public string SolunarMoonriseUtc { get; set; }
 
         [JsonProperty("solunar_moonset_utc")]
         public string SolunarMoonsetUtc { get; set; }
-
-        [JsonProperty("solunar_sun_state")]
-        public List<string> SolunarSunState { get; set; }
 
         [JsonProperty("solunar_sunrise_utc")]
         public string SolunarSunriseUtc { get; set; }
@@ -281,6 +253,11 @@ namespace CimmytApp.WeatherForecast
 
         [JsonProperty("wx_icon_url_png")]
         public string WxIconUrlPng { get; set; }
+
+        public string GetWxAsString()
+        {
+            return Util.GetTextForWx(WxCode);
+        }
     }
 
     public partial class Attributes
@@ -310,7 +287,7 @@ namespace CimmytApp.WeatherForecast
         public string Timezone { get; set; }
 
         [JsonProperty("zipcode")]
-        public string Zipcode { get; set; }
+        public String Zipcode { get; set; }
     }
 
     public partial struct Qpf01hrMm
@@ -413,5 +390,146 @@ namespace CimmytApp.WeatherForecast
             DateParseHandling = DateParseHandling.None,
             Converters = { new Converter() },
         };
+    }
+
+    internal static class Util
+    {
+        public static string GetTextForWx(string wxCode)
+        {
+            switch (wxCode)
+            {
+                case "3":
+                    return "smoke";
+
+                case "5":
+                    return "haze";
+
+                case "7":
+                    return "blowing dust";
+
+                case "10":
+                    return "light fog";
+
+                case "18":
+                    return "squall";
+
+                case "31":
+                    return "dust storm";
+
+                case "34":
+                    return "severe dust storm";
+
+                case "36":
+                    return "drifting snow";
+
+                case "38":
+                    return "blowing snow";
+
+                case "41":
+                    return "patchy fog";
+
+                case "45":
+                    return "fog";
+
+                case "49":
+                    return "freezing fog";
+
+                case "51":
+                    return "light drizzle";
+
+                case "53":
+                    return "drizzle";
+
+                case "55":
+                    return "heavy drizzle";
+
+                case "56":
+                    return "light freezing drizzle";
+
+                case "57":
+                    return "freezing drizzle";
+
+                case "61":
+                    return "light rain";
+
+                case "63":
+                    return "rain";
+
+                case "65":
+                    return "heavy rain";
+
+                case "66":
+                    return "light freezing rain";
+
+                case "67":
+                    return "freezing rain";
+
+                case "68":
+                    return "light rain and snow";
+
+                case "69":
+                    return "rain and snow";
+
+                case "71":
+                    return "light snow";
+
+                case "73":
+                    return "snow";
+
+                case "75":
+                    return "heavy snow";
+
+                case "79":
+                    return "sleet";
+
+                case "80":
+                    return "light rain shower";
+
+                case "81":
+                    return "rain shower";
+
+                case "83":
+                    return "light rain and snow shower";
+
+                case "84":
+                    return "rain and snow shower";
+
+                case "85":
+                    return "light snow shower";
+
+                case "86":
+                    return "snow shower";
+
+                case "89":
+                    return "light hail";
+
+                case "90":
+                    return "hail";
+
+                case "95":
+                    return "thunderstorm";
+
+                case "97":
+                    return "heavy thunderstorm";
+
+                case "100":
+                    return "clear";
+
+                case "101":
+                    return "mostly clear";
+
+                case "102":
+                    return "partly cloudy";
+
+                case "103":
+                    return "mostly cloudy";
+
+                case "104":
+                    return "Overcast";
+
+                default:
+                    return "unknown";
+            }
+        }
     }
 }

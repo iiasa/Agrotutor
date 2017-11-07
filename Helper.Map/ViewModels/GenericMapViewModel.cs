@@ -576,7 +576,7 @@
             }
             else
             {
-                MapRegion = MapSpan.FromCenterAndRadius(new Position(13.5651305, -62.4328784), Distance.FromKilometers(900));
+                MapRegion = MapSpan.FromCenterAndRadius(new Position(21.4474647791868, -100.371987260878), Distance.FromKilometers(900));
             }
         }
 

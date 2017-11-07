@@ -12,23 +12,33 @@
                 <Image Source="icon_weather_96.png" HeightRequest="18" />
             </StackLayout>
 
-            <Label Text="3. November, 14:31" />
-            <Label Text="Forecast for Vienna"  />
-            
-            <StackLayout Orientation="Horizontal">
+            <Label Text="{Binding ForecastDate}" />
+            <Label Text="{Binding ForecastLocation}" />
+
+            <StackLayout Orientation="Horizontal" Margin="16" HorizontalOptions="Center">
                 <StackLayout Orientation="Vertical">
-                    <Label Text="Day: 13C - Night: 4C" />
-                    <Label Text="13C" FontSize="48" />
-                    <Label Text="Realfeel: 13C" />
+                    <Label Text="{Binding MinMaxTemperature}" />
+                    <Label Text="{Binding CurrentTemperature}" FontSize="48" />
+                    <Label Text="{Binding FealtTemperature}" />
                 </StackLayout>
-                <Image Source="rain.png" />
+                <Image Source="rain.png" WidthRequest="150" />
             </StackLayout>
 
-                <Label Text="Temperature: " HorizontalTextAlignment="End" FontAttributes="Bold" />
-                <Label Text="15 C" />
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Label Text="Temperature: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
+                <Label Text="15 C" Grid.Row="0" Grid.Column="1" />
 
-                <Label Text="Humidity: " HorizontalTextAlignment="End" FontAttributes="Bold" />
-            <Label Text="55 %" />
+                <Label Text="Humidity: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                <Label Text="55 %" Grid.Row="1" Grid.Column="1" />
+            </Grid>
         </StackLayout>
     </ScrollView>
 </ContentPage>

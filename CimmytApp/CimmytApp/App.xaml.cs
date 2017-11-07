@@ -172,8 +172,8 @@
         {
             InitializeComponent();
 
-            //NavigationService.NavigateAsync("WeatherMainPage");
-
+            NavigationService.NavigateAsync("WeatherMainPage");
+            /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
                 NavigationService.NavigateAsync("app:///MainPage");
@@ -183,7 +183,7 @@
                 Current.Properties.Add("not_first_launch", true);
                 var parameters = new NavigationParameters { { "ShowGuide", true } };
                 NavigationService.NavigateAsync("SplashScreenPage", parameters);
-            }
+            }*/
         }
 
         protected override void RegisterTypes()
