@@ -108,7 +108,7 @@
         /// <returns>The <see cref="Task{BenchmarkingInformation}"/></returns>
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)
         {
-            if (parcelLongitude > 0)
+            if (parcelLongitude >= 0)
             {
                 parcelLatitude = 20;
                 parcelLongitude = -100;

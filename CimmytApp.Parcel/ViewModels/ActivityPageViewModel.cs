@@ -28,6 +28,8 @@
         /// </summary>
         private bool _isActive;
 
+        private Parcel _parcel;
+
         /// <summary>
         /// Gets or sets the ActivityClickedCommand
         /// </summary>
@@ -48,9 +50,10 @@
         {
             var parameters = new NavigationParameters
             {
-                { "Activities", Activities }
+                { "Activities", Activities },
+                { "Parcel", Parcel }
             };
-            _navigationService.GoBackAsync(parameters);
+            _navigationService.NavigateAsync("app:///ParcelPage", parameters);
         }
 
         /// <summary>
@@ -93,12 +96,24 @@
                 parameters.TryGetValue("Activities", out var activities);
                 Activities = (List<AgriculturalActivity>)activities;
             }
+            if (parameters.ContainsKey("Parcel"))
+            {
+                parameters.TryGetValue("Parcel", out var parcel);
+                Parcel = (Parcel)parcel;
+            }
         }
 
         /// <summary>
         /// Gets or sets the Activities
         /// </summary>
         public List<AgriculturalActivity> Activities { get; set; }
+
         public DelegateCommand SaveCommand { get; private set; }
+
+        public Parcel Parcel
+        {
+            get => _parcel;
+            private set => SetProperty(ref _parcel, value);
+        }
     }
 }

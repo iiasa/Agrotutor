@@ -1,12 +1,11 @@
-﻿using System;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
-    using System.Linq;
+    using DTO.Parcel;
+    using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-
-    using DTO.Parcel;
+    using System;
+    using System.Linq;
 
     /// <summary>
     /// Defines the <see cref="WeatherMainPageViewModel" />
@@ -16,7 +15,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
         /// <summary>
         /// Defines the _navigationService
         /// </summary>
-        private INavigationService _navigationService;
+        private readonly INavigationService _navigationService;
 
         /// <summary>
         /// Defines the _weatherForecast
@@ -48,8 +47,30 @@ namespace CimmytApp.WeatherForecast.ViewModels
         /// </summary>
         private string _feltTemperature;
 
+        /// <summary>
+        /// Defines the _currentHour
+        /// </summary>
         private HourlySummary _currentHour;
+
+        /// <summary>
+        /// Defines the _currentDay
+        /// </summary>
         private DailySummary _currentDay;
+
+        /// <summary>
+        /// Defines the _weatherIcon
+        /// </summary>
+        private string _weatherIcon;
+
+        /// <summary>
+        /// Defines the _weatherText
+        /// </summary>
+        private string _weatherText;
+
+        private string _growingDegreeDays;
+        private string _windSpeed;
+        private string _windDirection;
+        private string _cloudCover;
 
         /// <summary>
         /// Gets or sets the WeatherForecast
@@ -67,6 +88,9 @@ namespace CimmytApp.WeatherForecast.ViewModels
             }
         }
 
+        /// <summary>
+        /// Gets or sets the CurrentHour
+        /// </summary>
         public HourlySummary CurrentHour
         {
             get => _currentHour;
@@ -75,19 +99,63 @@ namespace CimmytApp.WeatherForecast.ViewModels
                 CurrentTemperature = $"{value.TempC}°C";
                 var date = DateTime.Parse(value.TimeUtc);
                 ForecastDate = date.ToString("yyyy-MM-dd, HH:mm");
+                FeltTemperature = $"sensación: {value.AppTempC}°C";
+                WindSpeed = value.WndSpdKph + " kph";
+                WindDirection = value.WndDir;
+                CloudCover = value.SkyCovPct + " %";
                 SetProperty(ref _currentHour, value);
             }
         }
 
+        public string CloudCover
+        {
+            get => _cloudCover;
+            set => SetProperty(ref _cloudCover, value);
+        }
+
+        public string WindDirection
+        {
+            get => _windDirection;
+            set => SetProperty(ref _windDirection, value);
+        }
+
+        public string WindSpeed
+        {
+            get => _windSpeed;
+            set => SetProperty(ref _windSpeed, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the CurrentDay
+        /// </summary>
         public DailySummary CurrentDay
         {
             get => _currentDay;
             set
             {
-                MinMaxTemperature = $"High: {value.MaxTempC}°C - Low: {value.MinTempC}°C";
+                MinMaxTemperature = $"Máx: {value.MaxTempC}°C - Mín: {value.MinTempC}°C";
+                GrowingDegreeDays = value.Gdd;
+                WeatherIcon = value.WxIcon;
+                WeatherText = value.WxText;
                 SetProperty(ref _currentDay, value);
             }
         }
+
+        public string GrowingDegreeDays
+        {
+            get => _growingDegreeDays;
+            set => SetProperty(ref _growingDegreeDays, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the WeatherText
+        /// </summary>
+        public string WeatherText { get => _weatherText; set => SetProperty(ref _weatherText, value); }
+
+        /// <summary>
+        /// Gets or sets the WeatherIcon
+        /// </summary>
+        public string WeatherIcon { get => _weatherIcon; set => SetProperty(ref _weatherIcon, value); }
 
         /// <summary>
         /// Gets or sets the FeltTemperature
@@ -98,6 +166,28 @@ namespace CimmytApp.WeatherForecast.ViewModels
         /// Gets or sets the ForecastLocation
         /// </summary>
         public string ForecastLocation { get => _forecastLocation; set => SetProperty(ref _forecastLocation, value); }
+
+        /// <summary>
+        /// The NavigateAsync
+        /// </summary>
+        /// <param name="page">The <see cref="string"/></param>
+        private void NavigateAsync(string page)
+        {
+            if (page == "DailyForecastPage")
+            {
+                var parameters = new NavigationParameters { { "DailyForecast", WeatherForecast.Location.DailySummaries.DailySummary } };
+                _navigationService.NavigateAsync(page, parameters);
+            }
+            else
+            {
+                _navigationService.NavigateAsync(page);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the NavigateAsyncCommand
+        /// </summary>
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the ForecastDate
@@ -126,6 +216,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
         public WeatherMainPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
         }
 
         /// <summary>
@@ -151,8 +242,6 @@ namespace CimmytApp.WeatherForecast.ViewModels
                     LoadData();
                 }
             }
-
-            LoadData();
         }
 
         /// <summary>
@@ -160,7 +249,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
         /// </summary>
         private async void LoadData()
         {
-            WeatherForecast = await WeatherForecast.Download(47.800239, 16.292656);
+            WeatherForecast = await WeatherForecast.Download(Parcel.Latitude, Parcel.Longitude);
         }
     }
 }

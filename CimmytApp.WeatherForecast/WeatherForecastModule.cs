@@ -18,9 +18,10 @@
         public void Initialize()
         {
             _unityContainer.RegisterTypeForNavigation<WeatherDataSelection>();
-			_unityContainer.RegisterTypeForNavigation<DailyWeatherDataPage>();
-			_unityContainer.RegisterTypeForNavigation<HourlyWeatherDataPage>();
+            _unityContainer.RegisterTypeForNavigation<DailyWeatherDataPage>();
+            _unityContainer.RegisterTypeForNavigation<HourlyWeatherDataPage>();
             _unityContainer.RegisterTypeForNavigation<WeatherMainPage>();
+            _unityContainer.RegisterTypeForNavigation<DailyForecastPage>();
         }
     }
 }

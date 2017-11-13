@@ -15,14 +15,24 @@
             <Label Text="{Binding ForecastDate}" />
             <Label Text="{Binding ForecastLocation}" />
 
-            <StackLayout Orientation="Horizontal" Margin="16" HorizontalOptions="Center">
-                <StackLayout Orientation="Vertical">
-                    <Label Text="{Binding MinMaxTemperature}" />
-                    <Label Text="{Binding CurrentTemperature}" FontSize="48" />
-                    <Label Text="{Binding FealtTemperature}" />
-                </StackLayout>
-                <Image Source="rain.png" WidthRequest="150" />
-            </StackLayout>
+            <Grid Margin="16">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="{Binding MinMaxTemperature}" HorizontalOptions="Center" HorizontalTextAlignment="Start" Grid.Column="0" Grid.Row="0" />
+                <Label Text="{Binding CurrentTemperature}" FontSize="56" HorizontalOptions="Center" HorizontalTextAlignment="Start" Grid.Column="0" Grid.Row="1" />
+                <Label Text="{Binding FeltTemperature}" HorizontalOptions="Center" HorizontalTextAlignment="Start" Grid.Column="0" Grid.Row="2" />
+
+                <Image Source="{Binding WeatherIcon}" WidthRequest="100" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" />
+                <Label Text="{Binding WeatherText}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Grid.Column="1" Grid.Row="2" />
+            </Grid>
 
             <Grid>
                 <Grid.ColumnDefinitions>
@@ -32,13 +42,37 @@
                 <Grid.RowDefinitions>
                     <RowDefinition />
                     <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
                 </Grid.RowDefinitions>
-                <Label Text="Temperature: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
-                <Label Text="15 C" Grid.Row="0" Grid.Column="1" />
+                <Label Text="Crecimiento grados días: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="0" Grid.Column="0" />
+                <Label Text="{Binding GrowingDegreeDays}" Grid.Row="0" Grid.Column="1" />
 
-                <Label Text="Humidity: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
-                <Label Text="55 %" Grid.Row="1" Grid.Column="1" />
+                <Label Text="Velocidad del viento: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                <Label Text="{Binding WindSpeed}" Grid.Row="1" Grid.Column="1" />
+
+                <Label Text="Dirección del viento: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                <Label Text="{Binding WindDirection}" Grid.Row="2" Grid.Column="1" />
+
+                <Label Text="Cubierto de nubes: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                <Label Text="{Binding CloudCover}" Grid.Row="3" Grid.Column="1" />
             </Grid>
+
+            <StackLayout Orientation="Horizontal" Margin="24,16,0,16">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="DailyForecastPage" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="forecast.png" WidthRequest="32" />
+                <Label Text="Pronóstico del tiempo" VerticalOptions="Center" Margin="16" FontSize="16" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="24,16,0,16">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="history.png" WidthRequest="32" />
+                <Label Text="Historia del tiempo" VerticalOptions="Center" Margin="16" FontSize="16" />
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -51,12 +51,12 @@
                 <StackLayout forms:Grid.Row="1" forms:Grid.Column="0" Orientation="Vertical">
                     <Image Source="icon_weather_96.png"  WidthRequest="70" Margin="16">
                         <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherMainPage" />
                         </Image.GestureRecognizers>
                     </Image>
                     <Label Text="Clima" HorizontalTextAlignment="Center">
                         <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherDataSelection" />
+                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherMainPage" />
                         </Label.GestureRecognizers>
                     </Label>
                 </StackLayout>

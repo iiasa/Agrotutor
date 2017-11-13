@@ -268,7 +268,15 @@
         /// <param name="page">The <see cref="string"/></param>
         private void NavigateAsync(string page)
         {
-            _navigationService.NavigateAsync(page);
+            if (page == "ActivityPage")
+            {
+                var parameters = new NavigationParameters { { "Parcel", Parcel } };
+                _navigationService.NavigateAsync("ActivityPage", parameters);
+            }
+            else
+            {
+                _navigationService.NavigateAsync(page);
+            }
         }
 
         /// <summary>

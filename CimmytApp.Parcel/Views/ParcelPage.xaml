@@ -37,80 +37,54 @@
 
             <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" IsVisible="{Binding EditModeActive}" />
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
-                <Image Source="get_location.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Usando GPS" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ClickGetLocation}" />
-                    </Label.GestureRecognizers>
-                </Label>
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
-                <Image Source="choose_location.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ClickChooseLocation}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="get_location.png" WidthRequest="32" />
+                <Label Text="Usando GPS" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
-                <Image Source="delineate.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding DelineateParcelCommand}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Delimita tu parcela" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding DelineateParcelCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="choose_location.png" WidthRequest="32" />
+                <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding DelineateParcelCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="delineate.png" WidthRequest="32" />
+                <Label Text="Delimita tu parcela" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
 
             <Label Text="Agrega información de manejo de parcela" FontSize="18"  IsVisible="{Binding EditModeActive}" />
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
-                <Image Source="wand.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="wand.png" WidthRequest="32" />
+                <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
+
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
-                <Image Source="farmer.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Agregar actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="farmer.png" WidthRequest="32" />
+                <Label Text="Agregar actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
+
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding ViewModeActive}">
-                <Image Source="farmer.png" WidthRequest="32">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ViewActivitiesCommand}" CommandParameter="ViewActivitiesPage" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="Actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ViewActivitiesCommand}" CommandParameter="ViewActivitiesPage" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ViewActivitiesCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="farmer.png" WidthRequest="32" />
+                <Label Text="Actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
+
             <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}"  IsVisible="{Binding EditModeActive}" />
         </StackLayout>
     </ScrollView>

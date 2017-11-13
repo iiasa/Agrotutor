@@ -396,6 +396,7 @@
             }
             else
             {
+                if (CustomPinsList == null) CustomPinsList = new ObservableCollection<TKCustomMapPin>();
                 CustomPinsList.Clear();
                 _currentGeoPosition = new Base.DTO.GeoPosition
                 {
@@ -556,6 +557,7 @@
         {
             var position = new Position(center.Latitude, center.Longitude);
             MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
+            MapsPosition = position;
         }
 
         /// <summary>

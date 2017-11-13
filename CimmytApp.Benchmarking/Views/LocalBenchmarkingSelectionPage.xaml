@@ -76,6 +76,8 @@
                         </Label>
                     </StackLayout>
                 </Grid>
+
+                <Label Text="Estas páginas requieren mayores cantidades de datos. Abrir una página enviará solicitudes de datos de alrededor de 10 megabytes cada uno. Por favor sea paciente." />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

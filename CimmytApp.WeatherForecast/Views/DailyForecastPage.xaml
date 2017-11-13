@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.WeatherForecast.Views.DailyForecastPage">
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Pronóstico del tiempo" FontAttributes="Italic" />
+                <Image Source="forecast_small.png" HeightRequest="18" />
+            </StackLayout>
+
+            <ListView ItemsSource="{Binding DailySummaries}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView Orientation="Horizontal">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding GetWxAsString}" />
+                                </StackLayout>
+                            </ScrollView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
