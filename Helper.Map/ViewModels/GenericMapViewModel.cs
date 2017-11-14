@@ -403,6 +403,8 @@
                     Latitude = position.Latitude,
                     Longitude = position.Longitude
                 };
+                ReturnGeolocationButtonVisible = true;
+                ReturnGeolocationButtonEnabled = true;
                 CustomPinsList.Add(new TKCustomMapPin
                 {
                     ID = "polygon_marker",
