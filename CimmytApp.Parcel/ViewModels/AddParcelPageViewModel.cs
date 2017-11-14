@@ -80,6 +80,10 @@
 
         private void NavigateAsync(string page)
         {
+            var parameters = new NavigationParameters
+            {
+                { "Caller", "AddParcelPage" }
+            };
             _navigationService.NavigateAsync(page);
         }
 

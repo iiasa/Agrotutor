@@ -27,7 +27,7 @@
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMadurezSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" />
             <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />

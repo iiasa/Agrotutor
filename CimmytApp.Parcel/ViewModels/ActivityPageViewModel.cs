@@ -29,6 +29,7 @@
         private bool _isActive;
 
         private Parcel _parcel;
+        private string _caller = "ParcelPage";
 
         /// <summary>
         /// Gets or sets the ActivityClickedCommand
@@ -53,7 +54,7 @@
                 { "Activities", Activities },
                 { "Parcel", Parcel }
             };
-            _navigationService.NavigateAsync("app:///ParcelPage", parameters);
+            _navigationService.NavigateAsync($"app:///{_caller}", parameters);
         }
 
         /// <summary>
@@ -72,10 +73,6 @@
         /// <param name="parameters">The <see cref="NavigationParameters"/></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            if (!CallingDetailPage) //TODO doesn't fire on back button pressed
-            {
-                parameters.Add("Activities", Activities);
-            }
         }
 
         /// <summary>
@@ -100,6 +97,10 @@
             {
                 parameters.TryGetValue("Parcel", out var parcel);
                 Parcel = (Parcel)parcel;
+            }
+            if (parameters.ContainsKey("Caller")){
+                parameters.TryGetValue("Caller", out var caller );
+                _caller = (string)caller;
             }
         }
 
