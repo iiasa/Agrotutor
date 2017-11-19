@@ -80,6 +80,10 @@ namespace CimmytApp.Parcel.ViewModels
 
         private void NavigateAsync(string page)
         {
+            var parameters = new NavigationParameters
+            {
+                { "Caller", "AddParcelPage" }
+            };
             _navigationService.NavigateAsync(page);
         }
 
@@ -192,7 +196,10 @@ namespace CimmytApp.Parcel.ViewModels
             if (parameters.ContainsKey("Activities"))
             {
                 parameters.TryGetValue("Activities", out var activities);
-                Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                if (Parcel.AgriculturalActivities == null)
+                    Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                else
+                    Parcel.AgriculturalActivities.AddRange((List<AgriculturalActivity>)activities);
             }
             if (parameters.ContainsKey("GeoPosition"))
             {

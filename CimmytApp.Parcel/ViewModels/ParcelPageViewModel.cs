@@ -239,7 +239,6 @@ namespace CimmytApp.Parcel.ViewModels
         {
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
-            ClickPhoto = new DelegateCommand(OnTakePhotoClick);
             ClickSave = new DelegateCommand(SaveParcel);
             DelineateParcelCommand = new DelegateCommand(DelineateParcel);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
@@ -270,15 +269,13 @@ namespace CimmytApp.Parcel.ViewModels
         /// <param name="page">The <see cref="string"/></param>
         private void NavigateAsync(string page)
         {
-            if (page == "ActivityPage")
+
+            var parameters = new NavigationParameters
             {
-                var parameters = new NavigationParameters { { "Parcel", Parcel } };
-                _navigationService.NavigateAsync("ActivityPage", parameters);
-            }
-            else
-            {
-                _navigationService.NavigateAsync(page);
-            }
+                { "Caller", "AddParcelPage" },
+                { "Parcel", Parcel }
+            };
+            _navigationService.NavigateAsync(page, parameters);
         }
 
         /// <summary>
@@ -370,40 +367,6 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private bool _showEditToggle;
 
-        /// <summary>
-        /// The OnTakePhotoClick
-        /// </summary>
-        private async void OnTakePhotoClick()
-        {
-            var _mediaPicker = DependencyService.Get<IMediaPicker>();
-
-            Setup();
-
-            ImageSource = null;
-
-            await this._mediaPicker.TakePhotoAsync(new CameraMediaStorageOptions { DefaultCamera = CameraDevice.Front, MaxPixelDimension = 400 }).ContinueWith(t =>
-            {
-                if (t.IsFaulted)
-                {
-                    var s = t.Exception.InnerException.ToString();
-                }
-                else if (t.IsCanceled)
-                {
-                    var canceled = true;
-                }
-                else
-                {
-                    var mediaFile = t.Result;
-
-                    ImageSource = ImageSource.FromStream(() => mediaFile.Source);
-
-                    return mediaFile;
-                }
-
-                return null;
-            }, _scheduler);
-        }
-
         /// <inheritdoc />
         /// <summary>
         /// The OnNavigatedFrom
@@ -479,7 +442,10 @@ namespace CimmytApp.Parcel.ViewModels
             if (parameters.ContainsKey("Activities"))
             {
                 parameters.TryGetValue("Activities", out var activities);
-                Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                if (Parcel.AgriculturalActivities == null)
+                    Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                else
+                    Parcel.AgriculturalActivities.AddRange((List<AgriculturalActivity>)activities);
             }
 
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
