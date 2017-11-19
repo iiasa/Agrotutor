@@ -10,8 +10,6 @@
     using Microsoft.Practices.Unity;
     using Microsoft.Practices.ServiceLocation;
 
-    using Helper.Base.Contract;
-    using Helper.Geolocator;
     using Helper.Map;
     using Helper.UserRegistration;
 

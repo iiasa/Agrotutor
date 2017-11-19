@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using CimmytApp.BusinessContract;
 using CimmytApp.DTO;
 using Helper.DTO.SkywiseWeather.Historical;
+using Helper.Map;
 using Helper.RestfulClient;
 
 namespace CimmytApp.WeatherForecast

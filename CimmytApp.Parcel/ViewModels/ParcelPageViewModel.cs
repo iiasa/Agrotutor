@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using Helper.Map;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -100,7 +102,7 @@
         }
 
         /// <summary>
-        /// The ChooseLocation
+        /// The SelectLocation
         /// </summary>
         public void ChooseLocation()
         {
@@ -108,7 +110,7 @@
             {
                 {"Latitude", _parcel.Latitude},
                 {"Longitude", _parcel.Longitude},
-                {"ChooseLocation", true},
+                {"SelectLocation", true},
                 {"parcelId",_parcel.ParcelId }
             };
             _navigationService.NavigateAsync("GenericMap", parameters);
@@ -291,7 +293,7 @@
         }
 
         /// <summary>
-        /// The ChooseLocation
+        /// The SelectLocation
         /// </summary>
         private void GetLocation()
         {
@@ -432,7 +434,7 @@
             {
                 parameters.TryGetValue("GeoPosition", out var geoPosition);
                 if (geoPosition == null) return;
-                var position = (Helper.Base.DTO.GeoPosition)geoPosition;
+                var position = (GeoPosition)geoPosition;
                 Parcel.Latitude = position.Latitude;
                 Parcel.Longitude = position.Longitude;
                 _cimmytDbOperations.UpdateParcel(Parcel);
@@ -469,10 +471,6 @@
         /// <summary>
         /// Gets or sets a value indicating whether ViewModeActive
         /// </summary>
-        public bool ViewModeActive
-        {
-            get => _viewModeActive;
-            set => SetProperty(ref _viewModeActive, value);
-        }
+        public bool ViewModeActive { get => _viewModeActive; set => SetProperty(ref _viewModeActive, value); }
     }
 }

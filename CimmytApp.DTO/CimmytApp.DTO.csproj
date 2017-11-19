@@ -37,7 +37,6 @@
   <ItemGroup>
     <Compile Include="Benchmarking\BenchmarkingInformation.cs" />
     <Compile Include="Benchmarking\BenchmarkingRequestParams.cs" />
-    <Compile Include="GeoPosition.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfile.cs" />
   </ItemGroup>

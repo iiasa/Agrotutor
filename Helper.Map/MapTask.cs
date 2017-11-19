@@ -2,16 +2,13 @@
 {
     public enum MapTask
     {
-        
         GetLocation,
+        //GetPath, // not yet implemented
+        //GetPolygon, // not yet implemented
 
-        //GetPath,
-        GetPolygon,
+        SelectLocation,
 
-        ChooseLocation,
-
-        //SelectPath,
-        //SelectPolygon,
-        DisplayGeometriesOnly
+        //SelectPath, // not yet implemented
+        SelectPolygon
     }
 }

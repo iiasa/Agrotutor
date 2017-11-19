@@ -36,6 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DelineationState.cs" />
+    <Compile Include="GeoPosition.cs" />
+    <Compile Include="IPosition.cs" />
+    <Compile Include="LivePositionEvent.cs" />
+    <Compile Include="LocationBusiness.cs" />
     <Compile Include="Test.cs" />
     <Compile Include="Views\GenericMap.xaml.cs">
       <DependentUpon>GenericMap.xaml</DependentUpon>
@@ -116,18 +120,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CimmytApp.BusinessContract\CimmytApp.BusinessContract.csproj">
-      <Project>{8fa589b1-356e-4a97-b4c9-c1681a8906d7}</Project>
-      <Name>CimmytApp.BusinessContract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
-      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
-      <Name>CimmytApp.DTO.Parcel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
-      <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
-      <Name>CimmytApp.DTO</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>
