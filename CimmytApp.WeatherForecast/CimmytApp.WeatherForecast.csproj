@@ -183,6 +183,10 @@
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
+      <Project>{E26AC875-8F9C-4468-AD54-03D7A71F3A60}</Project>
+      <Name>Helper.Map</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\WeatherForecastPage.xaml">

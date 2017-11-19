@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.WeatherForecast.ViewModels
+﻿using Helper.Map;
+
+namespace CimmytApp.WeatherForecast.ViewModels
 {
     using BusinessContract;
     using DTO;

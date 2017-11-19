@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.DTO.Parcel
+﻿using Helper.Map;
+
+namespace CimmytApp.DTO.Parcel
 {
     using Helper.BusinessContract;
     using Helper.GeoWiki.GenericDatasetStorage;

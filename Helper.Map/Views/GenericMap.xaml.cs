@@ -1,28 +1,26 @@
-﻿using System.Linq;
-
-namespace Helper.Map.Views
+﻿namespace Helper.Map.Views
 {
     using System;
     using TK.CustomMap;
+    using ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
-    using ViewModels;
-
+    /// <inheritdoc />
     /// <summary>
-    /// Defines the <see cref="GenericMap" />
+    /// Defines the <see cref="T:Helper.Map.Views.GenericMap" />
     /// </summary>
     public partial class GenericMap : ContentPage
     {
         /// <summary>
         /// Defines the contextObj
         /// </summary>
-        private GenericMapViewModel contextObj;
+        private readonly GenericMapViewModel _contextObj;
 
         /// <summary>
         /// Defines the map
         /// </summary>
-        private TKCustomMap map;
+        private TKCustomMap _map;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericMap"/> class.
@@ -30,14 +28,9 @@ namespace Helper.Map.Views
         public GenericMap()
         {
             InitializeComponent();
-            contextObj = (GenericMapViewModel)BindingContext;
+            _contextObj = (GenericMapViewModel)BindingContext;
         }
 
-        //private void TestMethod(string s)
-        //{
-        //    if(map!=null)
-        //    map.MoveToRegion(contextObj.MapRegion);
-        //}
         /// <summary>
         /// The GenericMap_OnDisappearing
         /// </summary>
@@ -46,7 +39,7 @@ namespace Helper.Map.Views
         private void GenericMap_OnDisappearing(object sender, EventArgs e)
         {
             MapLayout?.Children?.Clear();
-            contextObj?.OnDisappearing();
+            _contextObj?.OnDisappearing();
         }
 
         /// <summary>
@@ -58,27 +51,27 @@ namespace Helper.Map.Views
         {
             if (MapLayout?.Children?.Count == 0)
             {
-                if (contextObj != null)
+                if (_contextObj != null)
                 {
-                    contextObj.OnAppearing();
-                    contextObj.DrawPolygonsOnMap();
-                    contextObj.AdjustMapZoom();
+                    _contextObj.OnAppearing();
+                    _contextObj.DrawPolygonsOnMap();
+                    _contextObj.AdjustMapZoom();
 
-                    map = new TKCustomMap();
+                    _map = new TKCustomMap();
 
-                    map.SetBinding(TKCustomMap.CustomPinsProperty, "CustomPinsList");
-                    map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
-                    map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
-                    map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
-                    map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
-                    map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
-                    map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
+                    _map.SetBinding(TKCustomMap.CustomPinsProperty, "CustomPinsList");
+                    _map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
+                    _map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
+                    _map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
+                    _map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
+                    _map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
+                    _map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
 
-                    map.HasZoomEnabled = true;
-                    map.MapType = MapType.Hybrid;
-                    map.IsShowingUser = false;
+                    _map.HasZoomEnabled = true;
+                    _map.MapType = MapType.Hybrid;
+                    _map.IsShowingUser = false;
 
-                    MapLayout.Children.Add(map);
+                    MapLayout.Children.Add(_map);
                 }
             }
         }

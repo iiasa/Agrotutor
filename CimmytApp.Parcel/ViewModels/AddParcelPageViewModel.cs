@@ -1,12 +1,12 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿using Helper.Map;
+
+namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-
-    using Helper.Base.DTO;
 
     using BusinessContract;
     using DTO.Parcel;
@@ -108,7 +108,7 @@
         /// </summary>
         private void GetLocation()
         {
-            var parameters = new NavigationParameters { { "ChooseLocation", true } };
+            var parameters = new NavigationParameters { { "SelectLocation", true } };
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -206,7 +206,7 @@
             if (parameters.ContainsKey("Delineation"))
             {
                 parameters.TryGetValue("Delineation", out var delineation);
-                var polygonObj = new PolygonDto { ListPoints = (List<DTO.GeoPosition>)delineation };
+                var polygonObj = new PolygonDto { ListPoints = (List<GeoPosition>)delineation };
                 if (polygonObj.ListPoints.Count > 0)
                 {
                     Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
@@ -237,11 +237,11 @@
         }
 
         /// <summary>
-        /// The ChooseLocation
+        /// The SelectLocation
         /// </summary>
         private void ChooseLocation()
         {
-            var parameters = new NavigationParameters { { "ChooseLocation", true } };
+            var parameters = new NavigationParameters { { "SelectLocation", true } };
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 

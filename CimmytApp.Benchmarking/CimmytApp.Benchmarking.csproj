@@ -116,6 +116,10 @@
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
+      <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
+      <Name>Helper.Map</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Helper.RestfulClient">

@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.DTO
+﻿using System;
+
+namespace Helper.Map
 {
     /// <summary>
     /// Defines the <see cref="GeoPosition" />
@@ -23,15 +25,8 @@
             Longitude = longitude;
         }
 
-        //[PrimaryKey, AutoIncrement]
-        //public int Id { get; set; }
+        public DateTime Timestamp { get; set; }
 
-        //   public DateTimeOffset Timestamp { get; set; }
-
-        //[PrimaryKey, AutoIncrement]
-        //public int Id { get; set; }
-
-        //   public DateTimeOffset Timestamp { get; set; }
         /// <summary>
         /// Gets or sets the Latitude
         /// </summary>
@@ -41,5 +36,10 @@
         /// Gets or sets the Longitude
         /// </summary>
         public double Longitude { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Accuracy
+        /// </summary>
+        public double Accuracy { get; set; }
     }
 }

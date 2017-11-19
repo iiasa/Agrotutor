@@ -126,9 +126,9 @@
       <Project>{fe0baf91-231e-4d28-81c3-02dd54bec9fa}</Project>
       <Name>Helper.DatasetSyncEvents</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Helper.UI\Helper.UI.csproj">
-      <Project>{FC3EAE0D-7DBA-4973-9816-36688CB7098F}</Project>
-      <Name>Helper.UI</Name>
+    <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
+      <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
+      <Name>Helper.Map</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

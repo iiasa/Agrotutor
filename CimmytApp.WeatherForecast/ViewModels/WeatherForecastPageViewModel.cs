@@ -1,4 +1,6 @@
-﻿namespace CimmytApp.WeatherForecast.ViewModels
+﻿using Helper.Map;
+
+namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System.Windows.Input;
     using Xamarin.Forms;
@@ -104,11 +106,10 @@
         private async void LoadWeatherDataAsync()
         {
             WeatherData = await WeatherService.GetWeatherData(position);
-            if (WeatherData!=null)
+            if (WeatherData != null)
             {
                 DailyHighTemperature = WeatherData.DailyHighTemperature;
             }
-       
         }
     }
 }
