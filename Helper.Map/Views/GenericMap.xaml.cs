@@ -38,7 +38,7 @@
         /// <param name="e">The <see cref="EventArgs"/></param>
         private void GenericMap_OnDisappearing(object sender, EventArgs e)
         {
-            MapLayout?.Children?.Clear();
+            Map?.Children?.Clear();
             _contextObj?.OnDisappearing();
         }
 
@@ -49,13 +49,13 @@
         /// <param name="e">The <see cref="EventArgs"/></param>
         private void GenericMap_OnAppearing(object sender, EventArgs e)
         {
-            if (MapLayout?.Children?.Count == 0)
+            if (Map?.Children?.Count == 0)
             {
                 if (_contextObj != null)
                 {
                     _contextObj.OnAppearing();
-                    _contextObj.DrawPolygonsOnMap();
-                    _contextObj.AdjustMapZoom();
+                    //_contextObj.DrawPolygonsOnMap();
+                    //_contextObj.AdjustMapZoom();
 
                     _map = new TKCustomMap();
 
@@ -70,8 +70,9 @@
                     _map.HasZoomEnabled = true;
                     _map.MapType = MapType.Hybrid;
                     _map.IsShowingUser = false;
+                    _map.MapRegion = GenericMapViewModel.InitialMapRegion;
 
-                    MapLayout.Children.Add(_map);
+                    Map.Children.Add(_map);
                 }
             }
         }

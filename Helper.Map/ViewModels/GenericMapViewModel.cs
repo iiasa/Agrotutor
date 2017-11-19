@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Threading.Tasks;
+    using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -13,33 +14,101 @@
     public class GenericMapViewModel : BindableBase, INavigationAware
     {
         public const string MapTaskParameterName = "MapTask";
-        public const string MapSpanParameterName = "MapSpan";
+        public const string MapRegionParameterName = "MapRegion";
         public const string ListenForUserLocationParameterName = "ListenForUserLocation";
         public const string FollowUserLocationParameterName = "FollowUserLocation";
         public const string MaximumLocationAccuracyParameterName = "MaximumLocationAccuracy";
 
-        private static readonly MapSpan InitialMapSpan = MapSpan.FromCenterAndRadius(new Position(20, -100), new Distance(200000));
+        public static readonly MapSpan InitialMapRegion = MapSpan.FromCenterAndRadius(new Position(20, -100), new Distance(200000));
 
         private readonly INavigationService _navigationService;
         private readonly IEventAggregator _eventAggregator;
         private readonly IPosition _geoLocator;
 
         private MapTask _mapTask;
-        private MapSpan _mapSpan;
+        private MapSpan _mapRegion;
         private bool _listenForUserLocation;
         private bool _followUserLocation;
         private int? _maximumLocationAccuracy;
+        private bool _lockMapRegion = true;
 
         private GeoPosition _point;
         private List<GeoPosition> _polygon;
 
         private GeoPosition _userLocation;
+        private MapType _mapType;
+
+        public MapType MapType { get => _mapType; set => SetProperty(ref _mapType, value); }
+
+
+        public MapSpan MapRegion
+        {
+            get
+            {
+                return _mapRegion;
+            }
+
+            set
+            {
+                SetProperty(ref _mapRegion, value);
+            }
+        }
+
+        public GeoPosition UserLocation
+        {
+            get { return _userLocation; }
+            set
+            {
+
+                SetProperty(ref _userLocation, value);
+
+
+
+                switch (_mapTask)
+                {
+                    case MapTask.GetLocation:
+
+                        break;
+
+                    case MapTask.SelectLocation:
+                    case MapTask.SelectPolygon:
+                        break;
+                }
+                /*
+
+                IsGeolocationEnabled = true;
+
+                var tkCustomMapPin = CustomPinsList?.FirstOrDefault(x => x.ID == "userCurrLocation");
+                if (tkCustomMapPin != null)
+                {
+                    tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
+                    if (_isGetLocationFeatureExist)
+                    {
+                        MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
+                    }
+                    //Enable use Location button in case the map is open from AddParcel Page and there is point already exist on the map
+                    ReturnGeolocationButtonEnabled = true;
+                }*/
+            }
+        }
+
+        public DelegateCommand UseLocationCommand { get; private set; }
+        public bool ReturnGeolocationButtonEnabled { get; private set; } = true; //todo remove true
 
         public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
             _geoLocator = geoLocator;
+
+            UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
+        }
+
+        private void UseLocation()
+        {
+            MapRegion = (InitialMapRegion);
+            /*var parameters = new NavigationParameters { { "GeoPosition", _currentGeoPosition } };
+            _navigationService.GoBackAsync(parameters);*/
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -55,10 +124,14 @@
                 if (mapTask != null) SetMapTask((MapTask)mapTask);
             }
 
-            if (parameters.ContainsKey(MapSpanParameterName))
+            if (parameters.ContainsKey(MapRegionParameterName))
             {
-                parameters.TryGetValue(MapSpanParameterName, out var mapSpan);
-                if (mapSpan != null) _mapSpan = (MapSpan)mapSpan;
+                parameters.TryGetValue(MapRegionParameterName, out var mapRegion);
+                if (mapRegion != null) MapRegion = (MapSpan) mapRegion;
+            } else{
+
+                MapRegion = InitialMapRegion;
+                
             }
 
             if (parameters.ContainsKey(ListenForUserLocationParameterName))
@@ -107,53 +180,31 @@
             if (position == null) return;
             if ((_maximumLocationAccuracy != null) && (_maximumLocationAccuracy < position.Accuracy)) return;
 
-            switch (_mapTask)
-            {
-                case MapTask.GetLocation:
 
-                    break;
-
-                case MapTask.SelectLocation:
-                case MapTask.SelectPolygon:
-                    break;
-            }
-
-            IsGeolocationEnabled = true;
-
-            var tkCustomMapPin = CustomPinsList?.FirstOrDefault(x => x.ID == "userCurrLocation");
-            if (tkCustomMapPin != null)
-            {
-                tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
-                if (_isGetLocationFeatureExist)
-                {
-                    MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
-                }
-                //Enable use Location button in case the map is open from AddParcel Page and there is point already exist on the map
-                ReturnGeolocationButtonEnabled = true;
-            }
+            UserLocation = position;
         }
 
         private void InitializeGetLocation()
         {
-            throw new NotImplementedException();
+            //TODO
         }
 
         private void InitializeSelectLocation()
         {
-            throw new NotImplementedException();
+            //Todo
         }
 
         private void InitializeSelectPolygon()
         {
-            throw new NotImplementedException();
+            //TODo
         }
 
         public void OnAppearing()
         {
-            AdjustMapZoom();
+            //AdjustMapZoom();
             if (_mapTask == MapTask.GetLocation)
             {
-                GetPosition();
+                //GetPosition();
             }
             MapType = MapType.Hybrid;
         }
@@ -163,6 +214,7 @@
             _geoLocator.StopListening();
         }
 
+        /*
         private async Task GetPosition()
         {
             if (_geoLocator != null)
@@ -199,6 +251,6 @@
 
                 _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
-        }
+        }*/
     }
 }
