@@ -51,10 +51,10 @@
                 <Label Text="Velocidad del viento: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
                 <Label Text="{Binding WindSpeed}" Grid.Row="1" Grid.Column="1" />
 
-                <Label Text="Dirección del viento: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                <Label Text="Dirección del viento: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="2" Grid.Column="0" />
                 <Label Text="{Binding WindDirection}" Grid.Row="2" Grid.Column="1" />
 
-                <Label Text="Cubierto de nubes: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="1" Grid.Column="0" />
+                <Label Text="Cubierto de nubes: " HorizontalTextAlignment="End" FontAttributes="Bold" Grid.Row="3" Grid.Column="0" />
                 <Label Text="{Binding CloudCover}" Grid.Row="3" Grid.Column="1" />
             </Grid>
 
