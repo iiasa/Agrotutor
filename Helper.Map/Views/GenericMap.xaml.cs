@@ -54,8 +54,6 @@
                 if (_contextObj != null)
                 {
                     _contextObj.OnAppearing();
-                    //_contextObj.DrawPolygonsOnMap();
-                    //_contextObj.AdjustMapZoom();
 
                     _map = new TKCustomMap();
 

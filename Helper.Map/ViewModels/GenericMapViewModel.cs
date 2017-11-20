@@ -9,6 +9,8 @@
     using Prism.Mvvm;
     using Prism.Navigation;
     using TK.CustomMap;
+    using TK.CustomMap.Overlays;
+    using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
     public class GenericMapViewModel : BindableBase, INavigationAware
@@ -31,13 +33,20 @@
         private bool _followUserLocation;
         private int? _maximumLocationAccuracy;
         private bool _lockMapRegion = true;
+        private DelineationState _delineationState;
 
         private GeoPosition _point;
-        private List<GeoPosition> _polygon;
+        private ObservableCollection<GeoPosition> _polygon; 
+        private ObservableCollection<TKPolygon> _viewPolygons;
+        private ObservableCollection<TKCustomMapPin> _viewPins;
 
         private GeoPosition _userLocation;
         private MapType _mapType;
 
+        public GeoPosition Point { get { return _point; } set { SetProperty(ref _point, value); }}
+        public ObservableCollection<GeoPosition> Polygon { get { return _polygon; } set { SetProperty(ref _polygon, value); } }
+        public ObservableCollection<TKPolygon> ViewPolygons { get { return _viewPolygons; } set { SetProperty(ref _viewPolygons, value); } }
+        public ObservableCollection<TKCustomMapPin> ViewPins { get { return _viewPins; } set { SetProperty(ref _viewPins, value); } }
         public MapType MapType { get => _mapType; set => SetProperty(ref _mapType, value); }
 
 
@@ -93,7 +102,10 @@
         }
 
         public DelegateCommand UseLocationCommand { get; private set; }
-        public bool ReturnGeolocationButtonEnabled { get; private set; } = true; //todo remove true
+        public bool ReturnGeolocationButtonEnabled { get; private set; }
+        public bool ButtonCancelDelineationEnabled { get; private set; }
+        public DelineationState CurrentDelineationState { get; private set; }
+        public bool ButtonAcceptDelineationEnabled { get; private set; }
 
         public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
         {
@@ -104,11 +116,90 @@
             UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
         }
 
+        private void MapClicked(object obj)
+        {
+            if ((CurrentDelineationState == DelineationState.Inactive) && (_mapTask != MapTask.SelectLocation)) return;
+            var position = (Position)obj;
+            // var polygonsList = MapPolygons;
+
+            if (CurrentDelineationState != DelineationState.Inactive)
+            {
+                var pointId = ViewPolygons[0].Coordinates.Count; //todo not use ViewPolygons[0]
+
+                ViewPolygons[0].Coordinates.Add(position);
+
+                if (ViewPolygons[0].Coordinates.Count > 2)
+                {
+                    CurrentDelineationState = DelineationState.ActiveEnoughPoints;
+                    var listCoordinate = ViewPolygons[0].Coordinates;
+                    listCoordinate.Add(position);
+                    ViewPolygons[0].Coordinates = new List<Position>(listCoordinate);
+                }
+                else
+                {
+                    CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
+                }
+
+                ButtonAcceptDelineationEnabled = CurrentDelineationState == DelineationState.ActiveEnoughPoints;
+
+                ViewPins.Add(new TKCustomMapPin
+                {
+                    ID = "polygon_marker_" + pointId,
+                    Position = position,
+                });
+            }
+            else
+            {
+                if (ViewPins == null) ViewPins = new ObservableCollection<TKCustomMapPin>();
+                ViewPins.Clear();
+                Point = new GeoPosition
+                {
+                    Latitude = position.Latitude,
+                    Longitude = position.Longitude
+                };
+                ViewPins.Add(new TKCustomMapPin
+                {
+                    ID = "polygon_marker",
+                    Position = position,
+                });
+            }
+        }
+
+        private async void MapLongPress(object obj)
+        {
+            if (_mapTask != MapTask.SelectPolygon) return;
+            var position = (Position)obj;
+            if (_delineationState != DelineationState.Inactive)
+            {
+                MapClicked(obj);
+                return;
+            }
+
+            ViewPolygons = new ObservableCollection<TKPolygon>();
+            var polygon = new TKPolygon
+            {
+                StrokeColor = Color.Green,
+                StrokeWidth = 2f,
+                Color = Color.Red,
+            };
+
+            polygon.Coordinates.Add(position);
+
+            ViewPolygons.Add(polygon);
+            if (ViewPins == null) ViewPins = new ObservableCollection<TKCustomMapPin>();
+            ViewPins.Add(new TKCustomMapPin
+            {
+                ID = "polygon_marker_0",
+                Position = position,
+            });
+            ButtonCancelDelineationEnabled = true;
+            CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
+        }
+
         private void UseLocation()
         {
-            MapRegion = (InitialMapRegion);
-            /*var parameters = new NavigationParameters { { "GeoPosition", _currentGeoPosition } };
-            _navigationService.GoBackAsync(parameters);*/
+            var parameters = new NavigationParameters { { "GeoPosition", Point } };
+            _navigationService.GoBackAsync(parameters);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
