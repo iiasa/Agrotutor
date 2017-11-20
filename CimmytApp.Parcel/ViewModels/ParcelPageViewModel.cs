@@ -1,4 +1,6 @@
 ﻿using Helper.Map;
+using Helper.Map.ViewModels;
+using Xamarin.Forms.Maps;
 
 namespace CimmytApp.Parcel.ViewModels
 {
@@ -93,11 +95,12 @@ namespace CimmytApp.Parcel.ViewModels
         {
             var parameters = new NavigationParameters
             {
-                {"Latitude", _parcel.Latitude},
-                {"Longitude", _parcel.Longitude},
-                {"GetPolygon", true},
-                {"parcelId",_parcel.ParcelId }
+                {GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon}
             };
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            {
+                parameters.Add(GenericMapViewModel.MapRegionParameterName, MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+            }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -106,13 +109,12 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         public void ChooseLocation()
         {
-            var parameters = new NavigationParameters
+            var parameters = new NavigationParameters { { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation } };
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
-                {"Latitude", _parcel.Latitude},
-                {"Longitude", _parcel.Longitude},
-                {"SelectLocation", true},
-                {"parcelId",_parcel.ParcelId }
-            };
+                parameters.Add(GenericMapViewModel.MapRegionParameterName,
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+            }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -254,7 +256,7 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private void ViewActivities()
         {
-            var parameters = new NavigationParameters { { "Activities", Parcel.Activities } };
+            var parameters = new NavigationParameters { { "Activities", Parcel.AgriculturalActivities } };
             _navigationService.NavigateAsync("ViewActivitiesPage", parameters);
         }
 
@@ -269,7 +271,6 @@ namespace CimmytApp.Parcel.ViewModels
         /// <param name="page">The <see cref="string"/></param>
         private void NavigateAsync(string page)
         {
-
             var parameters = new NavigationParameters
             {
                 { "Caller", "AddParcelPage" },
@@ -297,10 +298,10 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private void GetLocation()
         {
-            var parameters = new NavigationParameters { { "GetLocation", true } };
+            var parameters = new NavigationParameters { { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation } };
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
-                parameters.Add("Center", new GeoPosition(Parcel.Latitude, Parcel.Longitude));
+                parameters.Add(GenericMapViewModel.MapRegionParameterName, MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }

@@ -6,7 +6,6 @@
     using System.Collections.Generic;
 
     using DTO.Parcel;
-    using System;
 
     /// <summary>
     /// Defines the <see cref="ActivityPageViewModel" />
@@ -98,8 +97,9 @@
                 parameters.TryGetValue("Parcel", out var parcel);
                 Parcel = (Parcel)parcel;
             }
-            if (parameters.ContainsKey("Caller")){
-                parameters.TryGetValue("Caller", out var caller );
+            if (parameters.ContainsKey("Caller"))
+            {
+                parameters.TryGetValue("Caller", out var caller);
                 _caller = (string)caller;
             }
         }

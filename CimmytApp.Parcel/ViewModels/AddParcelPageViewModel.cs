@@ -1,4 +1,6 @@
 ﻿using Helper.Map;
+using Helper.Map.ViewModels;
+using Xamarin.Forms.Maps;
 
 namespace CimmytApp.Parcel.ViewModels
 {
@@ -94,11 +96,12 @@ namespace CimmytApp.Parcel.ViewModels
         {
             var parameters = new NavigationParameters
             {
-                {"Latitude", Parcel.Latitude},
-                {"Longitude", Parcel.Longitude},
-                {"GetPolygon", true},
-                {"parcelId", Parcel.ParcelId }
+                {GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon}
             };
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            {
+                parameters.Add(GenericMapViewModel.MapRegionParameterName, MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+            }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -112,7 +115,7 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private void GetLocation()
         {
-            var parameters = new NavigationParameters { { "SelectLocation", true } };
+            var parameters = new NavigationParameters { { GenericMapViewModel.MapTaskParameterName, MapTask.GetLocation } };
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -248,7 +251,7 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private void ChooseLocation()
         {
-            var parameters = new NavigationParameters { { "SelectLocation", true } };
+            var parameters = new NavigationParameters { { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation } };
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 

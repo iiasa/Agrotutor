@@ -49,30 +49,25 @@
         /// <param name="e">The <see cref="EventArgs"/></param>
         private void GenericMap_OnAppearing(object sender, EventArgs e)
         {
-            if (Map?.Children?.Count == 0)
-            {
-                if (_contextObj != null)
-                {
-                    _contextObj.OnAppearing();
+            if ((Map?.Children?.Count != 0)|| (_contextObj == null)) return;
+            _contextObj.OnAppearing();
 
-                    _map = new TKCustomMap();
+            _map = new TKCustomMap();
 
-                    _map.SetBinding(TKCustomMap.CustomPinsProperty, "CustomPinsList");
-                    _map.SetBinding(TKCustomMap.PolygonsProperty, "MapPolygons");
-                    _map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
-                    _map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
-                    _map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
-                    _map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
-                    _map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
+            _map.SetBinding(TKCustomMap.CustomPinsProperty, "ViewPins");
+            _map.SetBinding(TKCustomMap.PolygonsProperty, "ViewPolygons");
+            _map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
+            _map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
+            _map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
+            _map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
+            _map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
 
-                    _map.HasZoomEnabled = true;
-                    _map.MapType = MapType.Hybrid;
-                    _map.IsShowingUser = false;
-                    _map.MapRegion = GenericMapViewModel.InitialMapRegion;
+            _map.HasZoomEnabled = true;
+            _map.MapType = MapType.Hybrid;
+            _map.IsShowingUser = false;
+            _map.MapRegion = GenericMapViewModel.InitialMapRegion;
 
-                    Map.Children.Add(_map);
-                }
-            }
+            Map.Children.Add(_map);
         }
     }
 }

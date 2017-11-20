@@ -71,7 +71,7 @@
                 <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityYield}" />
             </StackLayout>
 
-            <Button Text="Guardar cambios" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="11" Command="{Binding SaveCommand}" />
+            <Button Text="Aggregar actividad" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="11" Command="{Binding SaveCommand}" />
         </Grid>
     </ScrollView>
 </ContentPage>

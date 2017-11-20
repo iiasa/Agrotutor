@@ -1,4 +1,9 @@
-﻿using Prism.Commands;
+﻿using System.Collections.ObjectModel;
+using System.Linq;
+using Helper.Map.ViewModels;
+using Prism.Commands;
+using TK.CustomMap.Overlays;
+using Xamarin.Forms;
 
 namespace CimmytApp.ViewModels
 {
@@ -11,6 +16,7 @@ namespace CimmytApp.ViewModels
 
     using BusinessContract;
     using Parcel.Events;
+    using Xamarin.Forms.Maps;
 
     public class MainPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
@@ -32,7 +38,34 @@ namespace CimmytApp.ViewModels
             _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
 
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+            NavigateToMapCommand = new DelegateCommand(NavigateToMap);
         }
+
+        private void NavigateToMap()
+        {
+            var polygons = new ObservableCollection<TKPolygon>();
+            var parcels = _cimmytDbOperations.GetAllParcels();
+
+            foreach (var item in parcels)
+            {
+                if (item.Polygon == null) continue;
+                var polygon = new TKPolygon
+                {
+                    StrokeColor = Color.Green,
+                    StrokeWidth = 2f,
+                    Color = Color.Red,
+                };
+                var listPosition = item.Polygon.ListPoints.Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude)).ToList();
+                if (listPosition.Count <= 2) continue;
+                polygon.Coordinates = listPosition;
+                polygons.Add(polygon);
+            }
+            var parameters = new NavigationParameters { { GenericMapViewModel.PolygonsParameterName, polygons } };
+
+            _navigationService.NavigateAsync("GenericMap", parameters);
+        }
+
+        public DelegateCommand NavigateToMapCommand { get; set; }
 
         private void NavigateAsync(string page)
         {

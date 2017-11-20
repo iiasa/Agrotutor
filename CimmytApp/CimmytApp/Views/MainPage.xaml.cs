@@ -14,13 +14,7 @@ namespace CimmytApp.Views
 
         public MainPage()
         {
-            try
-            {
-                InitializeComponent();
-            }
-            catch (Exception e)
-            {
-            }
+            InitializeComponent();
         }
 
         protected override bool OnBackButtonPressed()

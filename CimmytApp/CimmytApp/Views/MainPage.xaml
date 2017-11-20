@@ -59,7 +59,7 @@
                 </Label>
                 <Label Text="Mapa de parcelas" forms:Grid.Row="3" forms:Grid.Column="0" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                        <TapGestureRecognizer Command="{Binding NavigateToMapCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Text="Calendario" forms:Grid.Row="3" forms:Grid.Column="1" HorizontalTextAlignment="Center">
