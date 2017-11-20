@@ -54,6 +54,8 @@ namespace CimmytApp.Parcel.ViewModels
         /// </summary>
         private int _pickerClimateTypesSelectedIndex;
 
+        private Parcel _parcel;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="AddParcelPageViewModel"/> class.
         /// </summary>
@@ -152,7 +154,39 @@ namespace CimmytApp.Parcel.ViewModels
         /// <summary>
         /// Gets or sets the Parcel
         /// </summary>
-        public Parcel Parcel { get; set; }
+        public Parcel Parcel
+        {
+            get => _parcel;
+            set
+            {
+                SetProperty(ref _parcel, value);
+                UpdateSelections();
+            }
+        }
+
+        private void UpdateSelections()
+        {
+            for (var i = 0; i < CropTypes.Count; i++)
+            {
+                if (CropTypes[i] != Parcel.Crop) continue;
+                PickerCropTypesSelectedIndex = i;
+                break;
+            }
+
+            for (var i = 0; i < MaturityClasses.Count; i++)
+            {
+                if (MaturityClasses[i] != Parcel.MaturityClass) continue;
+                PickerMaturityClassesSelectedIndex = i;
+                break;
+            }
+
+            for (var i = 0; i < ClimateTypes.Count; i++)
+            {
+                if (ClimateTypes[i] != Parcel.ClimateType) continue;
+                PickerClimateTypesSelectedIndex = i;
+                break;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the PickerCropTypesSelectedIndex

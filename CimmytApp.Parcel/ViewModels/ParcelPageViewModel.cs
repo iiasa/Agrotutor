@@ -62,29 +62,23 @@ namespace CimmytApp.Parcel.ViewModels
         {
             for (var i = 0; i < CropTypes.Count; i++)
             {
-                if (CropTypes[i] == Parcel.Crop)
-                {
-                    PickerCropTypesSelectedIndex = i;
-                    break;
-                }
+                if (CropTypes[i] != Parcel.Crop) continue;
+                PickerCropTypesSelectedIndex = i;
+                break;
             }
 
             for (var i = 0; i < MaturityClasses.Count; i++)
             {
-                if (MaturityClasses[i] == Parcel.MaturityClass)
-                {
-                    PickerMaturityClassesSelectedIndex = i;
-                    break;
-                }
+                if (MaturityClasses[i] != Parcel.MaturityClass) continue;
+                PickerMaturityClassesSelectedIndex = i;
+                break;
             }
 
             for (var i = 0; i < ClimateTypes.Count; i++)
             {
-                if (ClimateTypes[i] == Parcel.ClimateType)
-                {
-                    PickerClimateTypesSelectedIndex = i;
-                    break;
-                }
+                if (ClimateTypes[i] != Parcel.ClimateType) continue;
+                PickerClimateTypesSelectedIndex = i;
+                break;
             }
         }
 

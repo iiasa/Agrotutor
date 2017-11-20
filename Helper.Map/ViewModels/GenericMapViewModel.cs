@@ -139,6 +139,9 @@
         /// </summary>
         private bool _delineationButtonsVisible;
 
+        private bool _buttonCancelDelineationEnabled;
+        private bool _buttonAcceptDelineationEnabled;
+
         /// <summary>
         /// Gets or sets the Point
         /// </summary>
@@ -182,28 +185,22 @@
                 switch (_mapTask)
                 {
                     case MapTask.GetLocation:
-
+                        IsGeolocationEnabled = true;
+                        ViewPins.Clear();
+                        var position = new Position(value.Latitude, value.Longitude);
+                        ViewPins.Add(new TKCustomMapPin
+                        {
+                            ID = "polygon_marker_user",
+                            Position = position
+                        });
+                        MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
+                        ReturnGeolocationButtonEnabled = true;
                         break;
 
                     case MapTask.SelectLocation:
                     case MapTask.SelectPolygon:
                         break;
                 }
-                /*
-
-                IsGeolocationEnabled = true;
-
-                var tkCustomMapPin = CustomPinsList?.FirstOrDefault(x => x.ID == "userCurrLocation");
-                if (tkCustomMapPin != null)
-                {
-                    tkCustomMapPin.Position = new Position(position.Latitude, position.Longitude);
-                    if (_isGetLocationFeatureExist)
-                    {
-                        MapRegion = MapSpan.FromCenterAndRadius(MapsPosition, Distance.FromMeters(200));
-                    }
-                    //Enable use Location button in case the map is open from AddParcel Page and there is point already exist on the map
-                    ReturnGeolocationButtonEnabled = true;
-                }*/
             }
         }
 
@@ -230,7 +227,11 @@
         /// <summary>
         /// Gets or sets a value indicating whether ButtonCancelDelineationEnabled
         /// </summary>
-        public bool ButtonCancelDelineationEnabled { get; private set; }
+        public bool ButtonCancelDelineationEnabled
+        {
+            get => _buttonCancelDelineationEnabled;
+            private set => SetProperty(ref _buttonCancelDelineationEnabled, value);
+        }
 
         /// <summary>
         /// Gets or sets the CurrentDelineationState
@@ -240,7 +241,11 @@
         /// <summary>
         /// Gets or sets a value indicating whether ButtonAcceptDelineationEnabled
         /// </summary>
-        public bool ButtonAcceptDelineationEnabled { get; private set; }
+        public bool ButtonAcceptDelineationEnabled
+        {
+            get => _buttonAcceptDelineationEnabled;
+            private set => SetProperty(ref _buttonAcceptDelineationEnabled, value);
+        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GenericMapViewModel"/> class.
@@ -316,6 +321,7 @@
                     var listCoordinate = ViewPolygons[0].Coordinates;
                     listCoordinate.Add(position);
                     ViewPolygons[0].Coordinates = new List<Position>(listCoordinate);
+                    ButtonAcceptDelineationEnabled = true;
                 }
                 else
                 {
@@ -344,6 +350,7 @@
                     ID = "polygon_marker",
                     Position = position,
                 });
+                ReturnGeolocationButtonEnabled = true;
             }
         }
 
@@ -495,6 +502,7 @@
         private void InitializeGetLocation()
         {
             ReturnGeolocationButtonVisible = true;
+            GetPosition();
         }
 
         /// <summary>
@@ -591,6 +599,7 @@
                             ID = "userCurrLocation",
                             Position = position}
                     });
+                    Point = new GeoPosition(position.Latitude, position.Longitude);
                 }
 
                 _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
