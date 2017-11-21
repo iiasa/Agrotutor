@@ -22,16 +22,12 @@
                 <Label Text="¡Bienvenido!" FontSize="Large" forms:Grid.Row="0" forms:Grid.Column="0" />
                 <Label Text="Selecciona una actividad para comenzar:"  forms:Grid.Row="1" forms:Grid.Column="0" />
                 <StackLayout Orientation="Vertical" forms:Grid.Row="0" forms:Grid.Column="1" forms:Grid.RowSpan="2" HorizontalOptions="End">
-                    <Image Source="question.png" WidthRequest="50">
-                        <Image.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WelcomePage" />
-                        </Image.GestureRecognizers>
-                    </Image>
-                    <Label Text="Guía rápida" HorizontalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WelcomePage" />
-                        </Label.GestureRecognizers>
-                    </Label>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WelcomePage" />
+                    </StackLayout.GestureRecognizers>
+
+                    <Image Source="question.png" WidthRequest="50" />
+                    <Label Text="Guía rápida" HorizontalTextAlignment="Center" />
                 </StackLayout>
             </Grid>
             <Grid Margin="16">

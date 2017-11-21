@@ -451,12 +451,19 @@
                 parameters.TryGetValue(PolygonsParameterName, out var polygons);
                 if (polygons != null) ViewPolygons = (ObservableCollection<TKPolygon>)polygons;
             }
+            if (parameters.ContainsKey(PointsParameterName))
+            {
+                parameters.TryGetValue(PointsParameterName, out var points);
+                if (points != null) ViewPins = (ObservableCollection<TKCustomMapPin>)points;
+            }
         }
 
         /// <summary>
         /// Defines the PolygonsParameterName
         /// </summary>
         public const string PolygonsParameterName = "Polygons";
+
+        public const string PointsParameterName = "Points";
 
         /// <summary>
         /// The SetMapTask
