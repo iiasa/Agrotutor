@@ -1,8 +1,7 @@
 ﻿namespace Helper.DatasetSyncEvents.Event
 {
+    using Helper.BusinessContract;
     using Prism.Events;
-
-    using BusinessContract;
 
     public class DatasetSyncEvent : PubSubEvent<IDataset>
     {

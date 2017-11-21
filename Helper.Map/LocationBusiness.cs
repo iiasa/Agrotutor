@@ -1,18 +1,17 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Helper.Base.PublishSubscriberEvents;
-using Plugin.Geolocator;
-using Plugin.Geolocator.Abstractions;
-using Prism.Events;
-
-namespace Helper.Map
+﻿namespace Helper.Map
 {
+    using System;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Plugin.Geolocator;
+    using Plugin.Geolocator.Abstractions;
+    using Prism.Events;
+
     public class LocationBusiness : IPosition
     {
         private readonly IEventAggregator _eventAggregator;
-        private CancellationTokenSource cancelSource;
         private readonly IGeolocator locator;
+        private CancellationTokenSource cancelSource;
 
         public LocationBusiness(IEventAggregator eventAggregator)
         {
@@ -26,9 +25,9 @@ namespace Helper.Map
 
         public bool IsBusy { get; set; }
 
-        public string PositionLongitude { get; set; }
-
         public string PositionLatitude { get; set; }
+
+        public string PositionLongitude { get; set; }
 
         public string PositionStatus { get; set; }
 
@@ -36,17 +35,15 @@ namespace Helper.Map
         {
             if (locator != null)
             {
-                var isGeolocationAvailable = locator.IsGeolocationAvailable;
-                var isGeolocationEnabled = locator.IsGeolocationEnabled;
+                bool isGeolocationAvailable = locator.IsGeolocationAvailable;
+                bool isGeolocationEnabled = locator.IsGeolocationEnabled;
                 if (isGeolocationAvailable && isGeolocationEnabled)
+                {
                     return true;
+                }
             }
-            return false;
-        }
 
-        public Task<bool> StopListening()
-        {
-            return locator?.StopListeningAsync();
+            return false;
         }
 
         public async Task<GeoPosition> GetCurrentPosition()
@@ -69,11 +66,17 @@ namespace Helper.Map
                     {
                         IsBusy = false;
                         if (t.IsFaulted)
+                        {
                             PositionStatus = ((GeolocationException)t.Exception.InnerException).Error.ToString();
+                        }
                         else if (t.IsCanceled)
+                        {
                             PositionStatus = "Canceled";
+                        }
                         else
+                        {
                             return posRes = MapPosition(t.Result);
+                        }
 
                         return posRes;
                     });
@@ -81,24 +84,31 @@ namespace Helper.Map
             return posRes;
         }
 
+        public Task<bool> StopListening()
+        {
+            return locator?.StopListeningAsync();
+        }
+
         private void Locator_PositionChanged(object sender, PositionEventArgs e)
         {
-            var position = e.Position;
+            Position position = e.Position;
 
-            var pos = MapPosition(position);
+            GeoPosition pos = MapPosition(position);
             _eventAggregator.GetEvent<LivePositionEvent>().Publish(pos);
         }
 
         private GeoPosition MapPosition(Position position)
         {
             if (position == null)
+            {
                 throw new ArgumentNullException();
+            }
 
-            var pos = new GeoPosition
+            GeoPosition pos = new GeoPosition
             {
                 Accuracy = position.Accuracy,
                 Latitude = position.Latitude,
-                Longitude = position.Longitude,
+                Longitude = position.Longitude
             };
             return pos;
         }

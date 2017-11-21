@@ -1,26 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using Android.App;
-using Android.Content;
-using Android.Content.Res;
-using Android.OS;
-using Android.Runtime;
-using Android.Support.Design.Widget;
-using Android.Views;
-using Android.Widget;
-using CimmytApp.Droid;
-using CimmytApp.Views;
-using Xamarin.Forms;
-using Xamarin.Forms.Platform.Android;
-using Xamarin.Forms.Platform.Android.AppCompat;
-
-//[assembly: ExportRenderer(typeof(MainPage), typeof(CustomTabbedPageRenderer))]
-//[assembly: ExportRenderer(typeof(ParcelPage), typeof(CustomTabbedPageRenderer))]
-namespace CimmytApp.Droid
+﻿namespace CimmytApp.Droid
 {
+    using Android.Support.Design.Widget;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Platform.Android;
+    using Xamarin.Forms.Platform.Android.AppCompat;
 
     public class CustomTabbedPageRenderer : TabbedPageRenderer
     {
@@ -36,18 +19,23 @@ namespace CimmytApp.Droid
                 layout = GetChildAt(i) as TabLayout;
 
                 if (layout != null)
+                {
                     break;
+                }
             }
+
             if (layout != null)
             {
                 for (int tabIndex = 0; tabIndex < layout.TabCount; tabIndex++)
+                {
                     SetTabIcon(layout, tabIndex);
+                }
             }
         }
 
         private void SetTabIcon(TabLayout layout, int tabIndex)
         {
-            var tab = layout.GetTabAt(tabIndex);
+            TabLayout.Tab tab = layout.GetTabAt(tabIndex);
             tab.SetIcon(tab.Icon);
 
             //from local resource
@@ -74,7 +62,6 @@ namespace CimmytApp.Droid
             //    case 4:
             //        tab.SetIcon(Resource.Drawable.icon_info); //from Android system, depends on version !
             //        break;
-
 
             //}
             //  }

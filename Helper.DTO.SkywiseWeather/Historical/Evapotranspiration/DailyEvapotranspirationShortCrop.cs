@@ -6,7 +6,8 @@
     [Table("DailyEvapotranspirationShortCrop")]
     public class DailyEvapotranspirationShortCrop : DailySeries
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
         [ForeignKey(typeof(WeatherData))]

@@ -4,10 +4,12 @@
 
     public class Unit
     {
-        [PrimaryKey, AutoIncrement]
+        public string Description { get; set; }
+
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
-        public string Description { get; set; }
         public string Label { get; set; }
     }
 }

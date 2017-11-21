@@ -1,10 +1,9 @@
 ﻿namespace CimmytApp.StaticContent
 {
+    using CimmytApp.StaticContent.Views;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-
-    using Views;
 
     public class StaticContentModule : IModule
     {

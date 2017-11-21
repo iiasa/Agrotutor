@@ -2,12 +2,12 @@
 {
     public abstract class ActivityBaseClass
     {
-        public ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
-
         protected ActivityBaseClass()
         {
             SetActivityDynamicUIVisibility();
         }
+
+        public ActivityDynamicUIVisibility ActivityDynamicUIVisibility { get; set; }
 
         public abstract void SetActivityDynamicUIVisibility();
     }

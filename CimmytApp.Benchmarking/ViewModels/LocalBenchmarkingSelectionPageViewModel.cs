@@ -5,19 +5,19 @@
     using Prism.Navigation;
 
     /// <summary>
-    /// Defines the <see cref="LocalBenchmarkingSelectionPageViewModel" />
+    ///     Defines the <see cref="LocalBenchmarkingSelectionPageViewModel" />
     /// </summary>
     public class LocalBenchmarkingSelectionPageViewModel : BindableBase
     {
         /// <summary>
-        /// Defines the _navigationService
+        ///     Defines the _navigationService
         /// </summary>
         private readonly INavigationService _navigationService;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LocalBenchmarkingSelectionPageViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="LocalBenchmarkingSelectionPageViewModel" /> class.
         /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService"/></param>
+        /// <param name="navigationService">The <see cref="INavigationService" /></param>
         public LocalBenchmarkingSelectionPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -25,14 +25,14 @@
         }
 
         /// <summary>
-        /// Gets or sets the NavigateAsyncCommand
+        ///     Gets or sets the NavigateAsyncCommand
         /// </summary>
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
         /// <summary>
-        /// The NavigateAsync
+        ///     The NavigateAsync
         /// </summary>
-        /// <param name="page">The <see cref="string"/></param>
+        /// <param name="page">The <see cref="string" /></param>
         private void NavigateAsync(string page)
         {
             _navigationService.NavigateAsync(page);

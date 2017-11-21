@@ -19,7 +19,11 @@
                 PlantingDensityVisibility = true,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityNameList = new List<string> { "Resiembra", "Siembra" },
+                ActivityNameList = new List<string>
+                {
+                    "Resiembra",
+                    "Siembra"
+                },
                 ActivityIcon = "sowing_small.png",
                 ActivityTitle = "Siembra"
             };

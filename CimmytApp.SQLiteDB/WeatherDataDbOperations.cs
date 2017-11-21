@@ -1,15 +1,13 @@
 ﻿namespace CimmytApp.SQLiteDB
 {
+    using System;
+    using System.Collections.Generic;
+    using CimmytApp.BusinessContract;
+    using Helper.DTO.SkywiseWeather.Historical;
     using SqLite.Contract;
     using SQLite.Net;
     using SQLiteNetExtensions.Extensions;
-    using System;
-    using System.Collections.Generic;
     using Xamarin.Forms;
-
-    using Helper.DTO.SkywiseWeather.Historical;
-
-    using BusinessContract;
 
     public class WeatherDataDbOperations : IWeatherDbOperations
     {
@@ -23,7 +21,7 @@
 
             try
             {
-                var res = _databaseConn.CreateTable<WeatherData>();
+                int res = _databaseConn.CreateTable<WeatherData>();
             }
             catch (Exception e)
             {
@@ -35,14 +33,14 @@
             _databaseConn.InsertWithChildren(weatherData, true);
         }
 
+        public int DeleteAllWeatherData()
+        {
+            return _databaseConn.DeleteAll<WeatherData>();
+        }
+
         public int DeleteWeatherData(int id)
         {
             return _databaseConn.Delete<WeatherData>(id);
-        }
-
-        public WeatherData GetWeatherData(int weatherDataId)
-        {
-            return _databaseConn.GetWithChildren<WeatherData>(weatherDataId);
         }
 
         public List<WeatherData> GetAllWeatherData()
@@ -50,14 +48,14 @@
             return _databaseConn.GetAllWithChildren<WeatherData>();
         }
 
+        public WeatherData GetWeatherData(int weatherDataId)
+        {
+            return _databaseConn.GetWithChildren<WeatherData>(weatherDataId);
+        }
+
         public int UpdateWeatherData(WeatherData weatherData)
         {
             return _databaseConn.Update(weatherData);
-        }
-
-        public int DeleteAllWeatherData()
-        {
-            return _databaseConn.DeleteAll<WeatherData>();
         }
     }
 }

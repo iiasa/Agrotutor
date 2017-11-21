@@ -1,44 +1,39 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
+    using System.Collections.Generic;
+    using CimmytApp.DTO.Parcel;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using System.Collections.Generic;
-
-    using DTO.Parcel;
 
     /// <summary>
-    /// Defines the <see cref="ActivityPageViewModel" />
+    ///     Defines the <see cref="ActivityPageViewModel" />
     /// </summary>
     public class ActivityPageViewModel : BindableBase, INavigationAware
     {
         /// <summary>
-        /// Defines the _navigationService
+        ///     Defines the _navigationService
         /// </summary>
         private readonly INavigationService _navigationService;
 
-        /// <summary>
-        /// Defines the CallingDetailPage
-        /// </summary>
-        private bool CallingDetailPage = false;
+        private string _caller = "ParcelPage";
 
         /// <summary>
-        /// Defines the _isActive
+        ///     Defines the _isActive
         /// </summary>
         private bool _isActive;
 
         private Parcel _parcel;
-        private string _caller = "ParcelPage";
 
         /// <summary>
-        /// Gets or sets the ActivityClickedCommand
+        ///     Defines the CallingDetailPage
         /// </summary>
-        public DelegateCommand<string> ActivityClickedCommand { get; set; }
+        private bool CallingDetailPage;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ActivityPageViewModel"/> class.
+        ///     Initializes a new instance of the <see cref="ActivityPageViewModel" /> class.
         /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService"/></param>
+        /// <param name="navigationService">The <see cref="INavigationService" /></param>
         public ActivityPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -46,75 +41,86 @@
             SaveCommand = new DelegateCommand(Save);
         }
 
-        private void Save()
-        {
-            var parameters = new NavigationParameters
-            {
-                { "Activities", Activities },
-                { "Parcel", Parcel }
-            };
-            _navigationService.NavigateAsync($"app:///{_caller}", parameters);
-        }
-
         /// <summary>
-        /// The ExecuteMethod
-        /// </summary>
-        /// <param name="activityType">The <see cref="string"/></param>
-        private void ExecuteMethod(string activityType)
-        {
-            CallingDetailPage = true;
-            _navigationService.NavigateAsync("ActivityDetail", new NavigationParameters() { { "activityType", activityType } });
-        }
-
-        /// <summary>
-        /// The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
-        /// <summary>
-        /// The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            CallingDetailPage = false;
-            if (parameters.ContainsKey("Activity"))
-            {
-                parameters.TryGetValue("Activity", out var activity);
-                if (Activities == null) Activities = new List<AgriculturalActivity>();
-                Activities.Add((AgriculturalActivity)activity);
-            }
-            if (parameters.ContainsKey("Activities"))
-            {
-                parameters.TryGetValue("Activities", out var activities);
-                Activities = (List<AgriculturalActivity>)activities;
-            }
-            if (parameters.ContainsKey("Parcel"))
-            {
-                parameters.TryGetValue("Parcel", out var parcel);
-                Parcel = (Parcel)parcel;
-            }
-            if (parameters.ContainsKey("Caller"))
-            {
-                parameters.TryGetValue("Caller", out var caller);
-                _caller = (string)caller;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the Activities
+        ///     Gets or sets the Activities
         /// </summary>
         public List<AgriculturalActivity> Activities { get; set; }
 
-        public DelegateCommand SaveCommand { get; private set; }
+        /// <summary>
+        ///     Gets or sets the ActivityClickedCommand
+        /// </summary>
+        public DelegateCommand<string> ActivityClickedCommand { get; set; }
 
         public Parcel Parcel
         {
             get => _parcel;
             private set => SetProperty(ref _parcel, value);
+        }
+
+        public DelegateCommand SaveCommand { get; private set; }
+
+        /// <summary>
+        ///     The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        /// <summary>
+        ///     The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            CallingDetailPage = false;
+            if (parameters.ContainsKey("Activity"))
+            {
+                parameters.TryGetValue("Activity", out object activity);
+                if (Activities == null)
+                {
+                    Activities = new List<AgriculturalActivity>();
+                }
+                Activities.Add((AgriculturalActivity)activity);
+            }
+            if (parameters.ContainsKey("Activities"))
+            {
+                parameters.TryGetValue("Activities", out object activities);
+                Activities = (List<AgriculturalActivity>)activities;
+            }
+            if (parameters.ContainsKey("Parcel"))
+            {
+                parameters.TryGetValue("Parcel", out object parcel);
+                Parcel = (Parcel)parcel;
+            }
+            if (parameters.ContainsKey("Caller"))
+            {
+                parameters.TryGetValue("Caller", out object caller);
+                _caller = (string)caller;
+            }
+        }
+
+        /// <summary>
+        ///     The ExecuteMethod
+        /// </summary>
+        /// <param name="activityType">The <see cref="string" /></param>
+        private void ExecuteMethod(string activityType)
+        {
+            CallingDetailPage = true;
+            _navigationService.NavigateAsync("ActivityDetail", new NavigationParameters
+            {
+                { "activityType", activityType }
+            });
+        }
+
+        private void Save()
+        {
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { "Activities", Activities },
+                { "Parcel", Parcel }
+            };
+            _navigationService.NavigateAsync($"app:///{_caller}", parameters);
         }
     }
 }

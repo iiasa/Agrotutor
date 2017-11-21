@@ -35,13 +35,13 @@
         /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
         public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
-            this._navigationService = navigationService;
+            _navigationService = navigationService;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
 
             try
             {
-                this._cimmytDbOperations = cimmytDbOperations;
+                _cimmytDbOperations = cimmytDbOperations;
             }
             catch (Exception e)
             {
@@ -74,8 +74,8 @@
         /// </summary>
         public Parcel Parcel
         {
-            get => this._parcel;
-            set => SetProperty(ref this._parcel, value);
+            get => _parcel;
+            set => SetProperty(ref _parcel, value);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@
             {
                 int id = (int)parameters["Id"];
 
-                Parcel = this._cimmytDbOperations.GetParcelById(id);
+                Parcel = _cimmytDbOperations.GetParcelById(id);
             }
             catch
             {
@@ -118,7 +118,7 @@
             {
                 parameters.Add("EditEnabled", false);
             }
-            this._navigationService.NavigateAsync(page, parameters);
+            _navigationService.NavigateAsync(page, parameters);
         }
 
         /// <summary>

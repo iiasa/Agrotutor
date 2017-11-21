@@ -3,6 +3,7 @@
     public enum MapTask
     {
         GetLocation,
+
         //GetPath, // not yet implemented
         //GetPolygon, // not yet implemented
 

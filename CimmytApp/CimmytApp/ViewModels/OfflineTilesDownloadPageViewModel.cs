@@ -4,8 +4,5 @@
 
     public class OfflineTilesDownloadPageViewModel : BindableBase
     {
-        public OfflineTilesDownloadPageViewModel()
-        {
-        }
     }
 }

@@ -1,27 +1,37 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System;
-    using System.Windows.Input;
-    using Prism;
-    using Prism.Events;
-    using Prism.Commands;
-    using Prism.Navigation;
-    using Xamarin.Forms;
-
+    using System.ComponentModel;
+    using CimmytApp.DTO.Parcel;
     using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.ViewModelBase;
+    using Prism;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Navigation;
 
-    using DTO.Parcel;
-    using System.ComponentModel;
-
-    public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
+    public class ViewParcelInformationPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware,
+        INotifyPropertyChanged
     {
         private Parcel _parcel;
-        private bool isActive;
+
+        public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
+        {
+            TestCommand = new DelegateCommand(Test);
+        }
+
+        public event EventHandler IsActiveChanged;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public bool IsActive { get; set; }
 
         public Parcel Parcel
         {
-            get { return _parcel; }
+            get
+            {
+                return _parcel;
+            }
             set
             {
                 _parcel = value;
@@ -29,28 +39,7 @@
             }
         }
 
-        public DelegateCommand TestCommand {get; set;}
-
-        public ViewParcelInformationPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
-            TestCommand = new DelegateCommand(Test);
-        }
-
-        private void Test()
-        {
-            //Parcel.Submit();
-        }
-
-        public bool IsActive
-        {
-            get { return isActive; }
-            set
-            {
-                isActive = value;
-            }
-        }
-
-        public event EventHandler IsActiveChanged;
+        public DelegateCommand TestCommand { get; set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -64,17 +53,20 @@
         {
         }
 
+        protected virtual void OnPropertyChanged(string aName)
+        {
+            PropertyChangedEventHandler iHandler = PropertyChanged;
+            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+        }
+
         protected override void ReadDataset(IDataset dataset)
         {
             Parcel = (Parcel)dataset;
         }
 
-        protected virtual void OnPropertyChanged(string aName)
+        private void Test()
         {
-            var iHandler = PropertyChanged;
-            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+            //Parcel.Submit();
         }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

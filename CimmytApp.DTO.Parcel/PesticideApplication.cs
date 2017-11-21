@@ -1,17 +1,22 @@
-﻿using SQLite.Net.Attributes;
-using SQLiteNetExtensions.Attributes;
-
-namespace CimmytApp.DTO.Parcel
+﻿namespace CimmytApp.DTO.Parcel
 {
+    using SQLite.Net.Attributes;
+    using SQLiteNetExtensions.Attributes;
+
     [Table("PesticideApplicaiton")]
     public class PesticideApplication
     {
-        [PrimaryKey, AutoIncrement]
+        public string ApplicationDate { get; set; }
+
+        [PrimaryKey]
+        [AutoIncrement]
         public int Id { get; set; }
+
+        [ForeignKey(typeof(Parcel))]
+        public int ParcelID { get; set; }
+
         public string ProductName { get; set; }
-		public string ApplicationDate { get; set; }
-		[ForeignKey(typeof(Parcel))]
-		public int ParcelID { get; set; }
+
         //[ManyToOne]      // Many to one relationship with Parcel
         //public Parcel Parcel { get; set; }
     }

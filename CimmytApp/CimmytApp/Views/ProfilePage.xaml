@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.ProfilePage"
-             Padding="16">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.ProfilePage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
 
@@ -16,13 +14,16 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
-            <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}" Margin="0,0,0,16" />
+            <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}"
+                Margin="0,0,0,16" />
 
             <Label Text="Estado" FontSize="10" />
-            <controls:ExtendedPicker ItemsSource="{Binding States}" SelectedIndex="{Binding StatesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding States}" SelectedIndex="{Binding StatesSelectedIndex}"
+                Title="seleccionar" Margin="0,0,0,16" />
 
             <Button Text="Tomar una foto" Command="{Binding TakePictureCommand}" />
-            <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350" Source="{Binding ImageSource}" />
+            <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350"
+                Source="{Binding ImageSource}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

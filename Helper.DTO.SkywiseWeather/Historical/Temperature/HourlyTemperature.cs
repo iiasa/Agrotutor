@@ -6,7 +6,8 @@
     [Table("HourlyTemperature")]
     public class HourlyTemperature : HourlySeries
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
         [ForeignKey(typeof(WeatherData))]

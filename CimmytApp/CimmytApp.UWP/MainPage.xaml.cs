@@ -1,7 +1,7 @@
 ﻿namespace CimmytApp.UWP
 {
-    using Prism.Unity;
     using Microsoft.Practices.Unity;
+    using Prism.Unity;
 
     public sealed partial class MainPage
     {

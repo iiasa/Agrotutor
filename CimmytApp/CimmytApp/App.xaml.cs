@@ -2,27 +2,26 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Reflection;
+    using CimmytApp.AgronomicalRecommendations;
+    using CimmytApp.Benchmarking;
+    using CimmytApp.BusinessContract;
+    using CimmytApp.Calendar;
+    using CimmytApp.Introduction;
+    using CimmytApp.Parcel;
+    using CimmytApp.SQLiteDB;
+    using CimmytApp.StaticContent;
+    using CimmytApp.Views;
+    using CimmytApp.WeatherForecast;
+    using Helper.Map;
+    using Helper.UserRegistration;
+    using Microsoft.Practices.ServiceLocation;
+    using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Navigation;
     using Prism.Unity;
     using Xamarin.Forms;
-    using Microsoft.Practices.Unity;
-    using Microsoft.Practices.ServiceLocation;
-
-    using Helper.Map;
-    using Helper.UserRegistration;
-
-    using BusinessContract;
-    using Calendar;
-    using SQLiteDB;
-    using Views;
-    using AgronomicalRecommendations;
-    using Benchmarking;
-    using Introduction;
-    using StaticContent;
-    using WeatherForecast;
-    using Parcel;
 
     public partial class App : PrismApplication
     {
@@ -30,11 +29,14 @@
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("====== resource debug info =========");
-                var assembly = typeof(App).GetTypeInfo().Assembly;
-                foreach (var res in assembly.GetManifestResourceNames())
-                    System.Diagnostics.Debug.WriteLine("found resource: " + res);
-                System.Diagnostics.Debug.WriteLine("====================================");
+                Debug.WriteLine("====== resource debug info =========");
+                Assembly assembly = typeof(App).GetTypeInfo().Assembly;
+                foreach (string res in assembly.GetManifestResourceNames())
+                {
+                    Debug.WriteLine("found resource: " + res);
+                }
+
+                Debug.WriteLine("====================================");
 
                 //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
                 if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
@@ -52,6 +54,7 @@
         }
 
         public static DTO.Parcel.Parcel CurrentParcel { get; set; }
+
         public static List<DTO.Parcel.Parcel> Parcels { get; set; }
 
         public static IDictionary<string, object> GetProperties()
@@ -80,86 +83,77 @@
         {
             try
             {
-                var agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = agronomicalRecommendationsModule.Name,
-                        ModuleType = agronomicalRecommendationsModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = agronomicalRecommendationsModule.Name,
+                    ModuleType = agronomicalRecommendationsModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var benchmarkingModule = typeof(BenchmarkingModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = benchmarkingModule.Name,
-                        ModuleType = benchmarkingModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type benchmarkingModule = typeof(BenchmarkingModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = benchmarkingModule.Name,
+                    ModuleType = benchmarkingModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var calendarModule = typeof(CalenderModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = calendarModule.Name,
-                        ModuleType = calendarModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type calendarModule = typeof(CalenderModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = calendarModule.Name,
+                    ModuleType = calendarModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var introductionModule = typeof(IntroductionModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = introductionModule.Name,
-                        ModuleType = introductionModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type introductionModule = typeof(IntroductionModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = introductionModule.Name,
+                    ModuleType = introductionModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var mapModule = typeof(MapModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = mapModule.Name,
-                        ModuleType = mapModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type mapModule = typeof(MapModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = mapModule.Name,
+                    ModuleType = mapModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var parcelModule = typeof(ParcelModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = parcelModule.Name,
-                        ModuleType = parcelModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type parcelModule = typeof(ParcelModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = parcelModule.Name,
+                    ModuleType = parcelModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var staticContentModule = typeof(StaticContentModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = staticContentModule.Name,
-                        ModuleType = staticContentModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type staticContentModule = typeof(StaticContentModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = staticContentModule.Name,
+                    ModuleType = staticContentModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var userRegistrationModule = typeof(UserRegistrationModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = userRegistrationModule.Name,
-                        ModuleType = userRegistrationModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type userRegistrationModule = typeof(UserRegistrationModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = userRegistrationModule.Name,
+                    ModuleType = userRegistrationModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
 
-                var weatherForecastModule = typeof(WeatherForecastModule);
-                ModuleCatalog.AddModule(
-                    new ModuleInfo()
-                    {
-                        ModuleName = weatherForecastModule.Name,
-                        ModuleType = weatherForecastModule,
-                        InitializationMode = InitializationMode.WhenAvailable
-                    });
+                Type weatherForecastModule = typeof(WeatherForecastModule);
+                ModuleCatalog.AddModule(new ModuleInfo
+                {
+                    ModuleName = weatherForecastModule.Name,
+                    ModuleType = weatherForecastModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
             }
             catch (Exception e)
             {
@@ -177,8 +171,28 @@
             else
             {
                 Current.Properties.Add("not_first_launch", true);
-                var parameters = new NavigationParameters { { "ShowGuide", true } };
+                NavigationParameters parameters = new NavigationParameters
+                {
+                    { "ShowGuide", true }
+                };
                 NavigationService.NavigateAsync("SplashScreenPage", parameters);
+            }
+        }
+
+        protected override void OnSleep()
+        {
+            base.OnSleep();
+
+            if (ServiceLocator.IsLocationProviderSet)
+            {
+                try
+                {
+                    IPosition geolocator = ServiceLocator.Current.GetInstance<IPosition>();
+                    geolocator?.StopListening();
+                }
+                catch (Exception ignored)
+                {
+                }
             }
         }
 
@@ -202,23 +216,6 @@
             {
             }
             Container.RegisterTypeForNavigation<ProfilePage>();
-        }
-
-        protected override void OnSleep()
-        {
-            base.OnSleep();
-
-            if (ServiceLocator.IsLocationProviderSet)
-            {
-                try
-                {
-                    var geolocator = ServiceLocator.Current.GetInstance<IPosition>();
-                    geolocator?.StopListening();
-                }
-                catch (Exception ignored)
-                {
-                }
-            }
         }
     }
 }

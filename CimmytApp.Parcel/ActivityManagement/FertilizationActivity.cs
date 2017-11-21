@@ -19,7 +19,12 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityNameList = new List<string> { "Aplicación de fertilizante foliar", "Aplicación de fertilizante orgánico", "Fertilización química al suelo" },
+                ActivityNameList = new List<string>
+                {
+                    "Aplicación de fertilizante foliar",
+                    "Aplicación de fertilizante orgánico",
+                    "Fertilización química al suelo"
+                },
                 ActivityIcon = "fertilizer_small.png",
                 ActivityTitle = "Fertilización"
             };

@@ -1,8 +1,8 @@
-﻿using CimmytApp.ViewModels;
-using Xamarin.Forms;
-
-namespace CimmytApp.Views
+﻿namespace CimmytApp.Views
 {
+    using CimmytApp.ViewModels;
+    using Xamarin.Forms;
+
     public partial class ProfilePage : ContentPage
     {
         public ProfilePage()

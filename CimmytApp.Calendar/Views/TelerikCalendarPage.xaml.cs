@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.Calendar.Views
+﻿namespace CimmytApp.Calendar.Views
 {
+    using Xamarin.Forms;
+
     public partial class TelerikCalendarPage : ContentPage
     {
         public TelerikCalendarPage()

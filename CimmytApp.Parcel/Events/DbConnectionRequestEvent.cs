@@ -1,12 +1,8 @@
-﻿using System;
-using Prism.Events;
-
-namespace CimmytApp.Parcel.Events
+﻿namespace CimmytApp.Parcel.Events
 {
+    using Prism.Events;
+
     public class DbConnectionRequestEvent : PubSubEvent
     {
-        public DbConnectionRequestEvent()
-        {
-        }
     }
 }

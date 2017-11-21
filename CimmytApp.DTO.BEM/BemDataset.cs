@@ -3,8 +3,11 @@
     public abstract class BemDataset
     {
         public string OutCycle => GetCycle();
+
         public string OutType => GetDataType();
+
         public string OutValue => GetValue();
+
         public string OutYear => GetYear();
 
         public abstract string GetCycle();

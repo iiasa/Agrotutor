@@ -1,5 +1,4 @@
-﻿using System;
-namespace CimmytApp.DTO.Parcel
+﻿namespace CimmytApp.DTO.Parcel
 {
     internal enum DatasetUploadStatus
     {

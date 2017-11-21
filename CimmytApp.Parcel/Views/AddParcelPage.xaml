@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-                xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-                prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-                x:Class="CimmytApp.Parcel.Views.AddParcelPage"
-                Padding="16">
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    x:Class="CimmytApp.Parcel.Views.AddParcelPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
@@ -15,19 +14,23 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}"
+                SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" />
             <DatePicker Date="{Binding Parcel.PlantingDate}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}"
+                SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}"
+                SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_parcel_name}" />
-            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" Margin="0,0,0,16" />
+            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}"
+                Margin="0,0,0,16" />
 
             <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" />
             <StackLayout Orientation="Horizontal" Margin="24">
@@ -38,7 +41,7 @@
                 </Image>
                 <Label Text="Usando GPS" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ClickGetLocation}" />
+                        <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
@@ -50,7 +53,7 @@
                 </Image>
                 <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding ClickChooseLocation}" />
+                        <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
@@ -59,24 +62,26 @@
             <StackLayout Orientation="Horizontal" Margin="24">
                 <Image Source="wand.png" WidthRequest="32">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="SelectTechnologiesPage" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="SelectTechnologiesPage" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
             <StackLayout Orientation="Horizontal" Margin="24">
                 <Image Source="farmer.png" WidthRequest="32">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Label Text="Agregar actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer  Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ActivityPage" />
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>

@@ -1,8 +1,7 @@
 ﻿namespace Helper.DTO
 {
+    using Helper.Map;
     using Prism.Events;
-
-    using Map;
 
     public class LivePositionEvent : PubSubEvent<GeoPosition>
     {

@@ -1,10 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:forms="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Views.ParcelMainPage">
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:forms="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.ParcelMainPage">
 
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
@@ -43,16 +41,18 @@
                 </StackLayout>
                 <StackLayout forms:Grid.Row="1" forms:Grid.Column="0" Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WeatherMainPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="WeatherMainPage" />
                     </StackLayout.GestureRecognizers>
 
-                    <Image Source="icon_weather_96.png"  WidthRequest="70" Margin="16" />
+                    <Image Source="icon_weather_96.png" WidthRequest="70" Margin="16" />
                     <Label Text="Clima" HorizontalTextAlignment="Center" />
                 </StackLayout>
 
                 <StackLayout forms:Grid.Row="1" forms:Grid.Column="1" Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LocalBenchmarkingSelectionPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="LocalBenchmarkingSelectionPage" />
                     </StackLayout.GestureRecognizers>
 
                     <Image Source="icon_scales_96.png" WidthRequest="70" Margin="16" />
@@ -61,7 +61,8 @@
 
                 <StackLayout forms:Grid.Row="2" forms:Grid.Column="0" Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="BenchmarkingPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="BenchmarkingPage" />
                     </StackLayout.GestureRecognizers>
 
                     <Image Source="icon_performance_96.png" WidthRequest="70" Margin="16" />
@@ -70,7 +71,8 @@
 
                 <StackLayout forms:Grid.Row="2" forms:Grid.Column="1">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="TelerikCalendarPage" />
                     </StackLayout.GestureRecognizers>
 
                     <Image Source="icon_planner_96.png" WidthRequest="70" Margin="16" />

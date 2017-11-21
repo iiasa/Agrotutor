@@ -1,21 +1,18 @@
 ﻿namespace CimmytApp.BusinessContract
 {
     using System.Collections.Generic;
-
-    using DTO.BEM;
-    using DTO.Parcel;
+    using CimmytApp.DTO.BEM;
+    using CimmytApp.DTO.Parcel;
 
     public interface ICimmytDbOperations
     {
         void AddParcel(Parcel parcel);
 
-        void DeleteParcel(Parcel parcel);
-
         int DeleteAllData();
 
-        List<Parcel> GetAllParcels();
+        void DeleteParcel(Parcel parcel);
 
-        void SaveParcelPolygon(int parcelId, PolygonDto polygonObj);
+        List<Parcel> GetAllParcels();
 
         BemData GetBemData();
 
@@ -24,6 +21,8 @@
         void SaveCostos(List<Costo> listCostos);
 
         void SaveIngresos(List<Ingreso> listIngresos);
+
+        void SaveParcelPolygon(int parcelId, PolygonDto polygonObj);
 
         void SaveRendimientos(List<Rendimiento> listRendimientos);
 

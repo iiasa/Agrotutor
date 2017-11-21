@@ -19,7 +19,11 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityNameList = new List<string> { "Almacenamiento poscosecha con tecnologías herméticas", "Almacenamiento poscosecha tradicional" },
+                ActivityNameList = new List<string>
+                {
+                    "Almacenamiento poscosecha con tecnologías herméticas",
+                    "Almacenamiento poscosecha tradicional"
+                },
                 ActivityIcon = "storage_small.png",
                 ActivityTitle = "Almacenamiento poscosecha"
             };

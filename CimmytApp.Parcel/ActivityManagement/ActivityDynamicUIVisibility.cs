@@ -1,172 +1,240 @@
 ﻿namespace CimmytApp.Parcel.ActivityManagement
 {
-    using Prism.Mvvm;
     using System.Collections.Generic;
+    using Prism.Mvvm;
 
     /// <inheritdoc />
     /// <summary>
-    /// Defines the <see cref="T:CimmytApp.Parcel.ActivityManagement.ActivityDynamicUIVisibility" />
+    ///     Defines the <see cref="T:CimmytApp.Parcel.ActivityManagement.ActivityDynamicUIVisibility" />
     /// </summary>
     public class ActivityDynamicUIVisibility : BindableBase
     {
         /// <summary>
-        /// Defines the _activityNameVisibility
-        /// </summary>
-        private bool _activityNameVisibility;
-
-        /// <summary>
-        /// Defines the _activityDateVisibility
+        ///     Defines the _activityDateVisibility
         /// </summary>
         private bool _activityDateVisibility;
 
         /// <summary>
-        /// Defines the _activityTotalCostVisibility
-        /// </summary>
-        private bool _activityTotalCostVisibility;
-
-        /// <summary>
-        /// Defines the _appliedProductsVisibility
-        /// </summary>
-        private bool _appliedProductsVisibility;
-
-        /// <summary>
-        /// Defines the _dosageVisibility
-        /// </summary>
-        private bool _dosageVisibility;
-
-        /// <summary>
-        /// Defines the _appliedAmountVisibility
-        /// </summary>
-        private bool _appliedAmountVisibility;
-
-        /// <summary>
-        /// Defines the _varietySownVisibility
-        /// </summary>
-        private bool _varietySownVisibility;
-
-        /// <summary>
-        /// Defines the _plantingDensityVisibility
-        /// </summary>
-        private bool _plantingDensityVisibility;
-
-        /// <summary>
-        /// Defines the _productObtainedVisibility
-        /// </summary>
-        private bool _productObtainedVisibility;
-
-        /// <summary>
-        /// Defines the _performanceVisibility
-        /// </summary>
-        private bool _performanceVisibility;
-
-        /// <summary>
-        /// Defines the _activityNameListVisibility
-        /// </summary>
-        private bool _activityNameListVisibility;
-
-        /// <summary>
-        /// Defines the _activityNameList
-        /// </summary>
-        private List<string> _activityNameList;
-
-        /// <summary>
-        /// Defines the _activityName
-        /// </summary>
-        private string _activityName;
-
-        /// <summary>
-        /// Defines the _activityTitle
-        /// </summary>
-        private string _activityTitle;
-
-        /// <summary>
-        /// Defines the _activityIcon
+        ///     Defines the _activityIcon
         /// </summary>
         private string _activityIcon;
 
         /// <summary>
-        /// Defines the _activityNameTextVisibility
+        ///     Defines the _activityName
+        /// </summary>
+        private string _activityName;
+
+        /// <summary>
+        ///     Defines the _activityNameList
+        /// </summary>
+        private List<string> _activityNameList;
+
+        /// <summary>
+        ///     Defines the _activityNameListVisibility
+        /// </summary>
+        private bool _activityNameListVisibility;
+
+        /// <summary>
+        ///     Defines the _activityNameTextVisibility
         /// </summary>
         private bool _activityNameTextVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether ActivityNameVisibility
+        ///     Defines the _activityNameVisibility
         /// </summary>
-        public bool ActivityNameVisibility { get => _activityNameVisibility; set { SetProperty(ref _activityNameVisibility, value); ActivityNameListVisibility = !ActivityNameVisibility; } }
+        private bool _activityNameVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether ActivityNameListVisibility
+        ///     Defines the _activityTitle
         /// </summary>
-        public bool ActivityNameListVisibility { get => _activityNameListVisibility; set => SetProperty(ref _activityNameListVisibility, value); }
+        private string _activityTitle;
 
         /// <summary>
-        /// Gets or sets the ActivityNameList
+        ///     Defines the _activityTotalCostVisibility
         /// </summary>
-        public List<string> ActivityNameList { get => _activityNameList; set => SetProperty(ref _activityNameList, value); }
+        private bool _activityTotalCostVisibility;
 
         /// <summary>
-        /// Gets or sets the ActivityName
+        ///     Defines the _appliedAmountVisibility
         /// </summary>
-        public string ActivityName { get => _activityName; set => SetProperty(ref _activityName, value); }
+        private bool _appliedAmountVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether ActivityDateVisibility
+        ///     Defines the _appliedProductsVisibility
         /// </summary>
-        public bool ActivityDateVisibility { get => _activityDateVisibility; set => SetProperty(ref _activityDateVisibility, value); }
+        private bool _appliedProductsVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether ActivityTotalCostVisibility
+        ///     Defines the _dosageVisibility
         /// </summary>
-        public bool ActivityTotalCostVisibility { get => _activityTotalCostVisibility; set => SetProperty(ref _activityTotalCostVisibility, value); }
+        private bool _dosageVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether ActivityNameTextVisibility
+        ///     Defines the _performanceVisibility
         /// </summary>
-        public bool ActivityNameTextVisibility { get => _activityNameTextVisibility; set => SetProperty(ref _activityNameTextVisibility, value); }
+        private bool _performanceVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether AppliedProductsVisibility
+        ///     Defines the _plantingDensityVisibility
         /// </summary>
-        public bool AppliedProductsVisibility { get => _appliedProductsVisibility; set => SetProperty(ref _appliedProductsVisibility, value); }
+        private bool _plantingDensityVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether DosageVisibility
+        ///     Defines the _productObtainedVisibility
         /// </summary>
-        public bool DosageVisibility { get => _dosageVisibility; set => SetProperty(ref _dosageVisibility, value); }
+        private bool _productObtainedVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether AppliedAmountVisibility
+        ///     Defines the _varietySownVisibility
         /// </summary>
-        public bool AppliedAmountVisibility { get => _appliedAmountVisibility; set => SetProperty(ref _appliedAmountVisibility, value); }
+        private bool _varietySownVisibility;
 
         /// <summary>
-        /// Gets or sets a value indicating whether VarietySownVisibility
+        ///     Gets or sets a value indicating whether ActivityDateVisibility
         /// </summary>
-        public bool VarietySownVisibility { get => _varietySownVisibility; set => SetProperty(ref _varietySownVisibility, value); }
+        public bool ActivityDateVisibility
+        {
+            get => _activityDateVisibility;
+            set => SetProperty(ref _activityDateVisibility, value);
+        }
 
         /// <summary>
-        /// Gets or sets a value indicating whether PlantingDensityVisibility
+        ///     Gets or sets the ActivityIcon
         /// </summary>
-        public bool PlantingDensityVisibility { get => _plantingDensityVisibility; set => SetProperty(ref _plantingDensityVisibility, value); }
+        public string ActivityIcon
+        {
+            get => _activityIcon;
+            set => SetProperty(ref _activityIcon, value);
+        }
 
         /// <summary>
-        /// Gets or sets a value indicating whether ProductObtainedVisibility
+        ///     Gets or sets the ActivityName
         /// </summary>
-        public bool ProductObtainedVisibility { get => _productObtainedVisibility; set => SetProperty(ref _productObtainedVisibility, value); }
+        public string ActivityName
+        {
+            get => _activityName;
+            set => SetProperty(ref _activityName, value);
+        }
 
         /// <summary>
-        /// Gets or sets a value indicating whether PerformanceVisibility
+        ///     Gets or sets the ActivityNameList
         /// </summary>
-        public bool PerformanceVisibility { get => _performanceVisibility; set => SetProperty(ref _performanceVisibility, value); }
+        public List<string> ActivityNameList
+        {
+            get => _activityNameList;
+            set => SetProperty(ref _activityNameList, value);
+        }
 
         /// <summary>
-        /// Gets or sets the ActivityTitle
+        ///     Gets or sets a value indicating whether ActivityNameListVisibility
         /// </summary>
-        public string ActivityTitle { get => _activityTitle; set => SetProperty(ref _activityTitle, value); }
+        public bool ActivityNameListVisibility
+        {
+            get => _activityNameListVisibility;
+            set => SetProperty(ref _activityNameListVisibility, value);
+        }
 
         /// <summary>
-        /// Gets or sets the ActivityIcon
+        ///     Gets or sets a value indicating whether ActivityNameTextVisibility
         /// </summary>
-        public string ActivityIcon { get => _activityIcon; set => SetProperty(ref _activityIcon, value); }
+        public bool ActivityNameTextVisibility
+        {
+            get => _activityNameTextVisibility;
+            set => SetProperty(ref _activityNameTextVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether ActivityNameVisibility
+        /// </summary>
+        public bool ActivityNameVisibility
+        {
+            get => _activityNameVisibility;
+            set
+            {
+                SetProperty(ref _activityNameVisibility, value);
+                ActivityNameListVisibility = !ActivityNameVisibility;
+            }
+        }
+
+        /// <summary>
+        ///     Gets or sets the ActivityTitle
+        /// </summary>
+        public string ActivityTitle
+        {
+            get => _activityTitle;
+            set => SetProperty(ref _activityTitle, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether ActivityTotalCostVisibility
+        /// </summary>
+        public bool ActivityTotalCostVisibility
+        {
+            get => _activityTotalCostVisibility;
+            set => SetProperty(ref _activityTotalCostVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether AppliedAmountVisibility
+        /// </summary>
+        public bool AppliedAmountVisibility
+        {
+            get => _appliedAmountVisibility;
+            set => SetProperty(ref _appliedAmountVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether AppliedProductsVisibility
+        /// </summary>
+        public bool AppliedProductsVisibility
+        {
+            get => _appliedProductsVisibility;
+            set => SetProperty(ref _appliedProductsVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether DosageVisibility
+        /// </summary>
+        public bool DosageVisibility
+        {
+            get => _dosageVisibility;
+            set => SetProperty(ref _dosageVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether PerformanceVisibility
+        /// </summary>
+        public bool PerformanceVisibility
+        {
+            get => _performanceVisibility;
+            set => SetProperty(ref _performanceVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether PlantingDensityVisibility
+        /// </summary>
+        public bool PlantingDensityVisibility
+        {
+            get => _plantingDensityVisibility;
+            set => SetProperty(ref _plantingDensityVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether ProductObtainedVisibility
+        /// </summary>
+        public bool ProductObtainedVisibility
+        {
+            get => _productObtainedVisibility;
+            set => SetProperty(ref _productObtainedVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether VarietySownVisibility
+        /// </summary>
+        public bool VarietySownVisibility
+        {
+            get => _varietySownVisibility;
+            set => SetProperty(ref _varietySownVisibility, value);
+        }
     }
 }

@@ -1,23 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.StaticContent.Views.CitationPage"
-             Padding="16">
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.StaticContent.Views.CitationPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <Image Source="creative-commons.png" Margin="16" />
             <Label Text="Special thanks to the following providers of icons for this app and:" />
             <Label Text="www.flaticon.com" HorizontalOptions="Center" Margin="16">
                 <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.flaticon.com/" />
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                        CommandParameter="https://www.flaticon.com/" />
                 </Label.GestureRecognizers>
             </Label>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="350">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="http://a-maslennikov.com/" />
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                        CommandParameter="http://a-maslennikov.com/" />
                 </StackLayout.GestureRecognizers>
 
                 <Image Source="ic_weblink.png" Margin="16" />
@@ -53,7 +53,8 @@
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="350">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.flaticon.com/authors/nikita-golubev" />
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                        CommandParameter="https://www.flaticon.com/authors/nikita-golubev" />
                 </StackLayout.GestureRecognizers>
 
                 <Image Source="ic_weblink.png" Margin="16" />
@@ -77,7 +78,8 @@
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="350">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.flaticon.com/authors/linector" />
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                        CommandParameter="https://www.flaticon.com/authors/linector" />
                 </StackLayout.GestureRecognizers>
 
                 <Image Source="ic_weblink.png" Margin="16" />

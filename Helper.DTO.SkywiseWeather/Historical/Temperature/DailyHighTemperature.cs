@@ -6,7 +6,8 @@
     [Table("DailyHighTemperature")]
     public class DailyHighTemperature : DailySeries
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
         [ForeignKey(typeof(WeatherData))]

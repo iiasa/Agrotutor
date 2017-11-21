@@ -6,7 +6,8 @@ namespace Helper.DTO.SkywiseWeather.Historical.Temperature
     [Table("CoolingDegreeDays")]
     public class CoolingDegreeDays : DegreeDays
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
         [ForeignKey(typeof(WeatherData))]

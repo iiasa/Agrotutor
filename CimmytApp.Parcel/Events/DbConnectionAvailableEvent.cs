@@ -1,12 +1,8 @@
-﻿using System;
-using Prism.Events;
-
-namespace CimmytApp.Parcel.Events
+﻿namespace CimmytApp.Parcel.Events
 {
-    public class DbConnectionAvailableEvent:PubSubEvent
+    using Prism.Events;
+
+    public class DbConnectionAvailableEvent : PubSubEvent
     {
-        public DbConnectionAvailableEvent()
-        {
-        }
     }
 }

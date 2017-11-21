@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
-
-namespace CimmytApp.WeatherForecast.Views
+﻿namespace CimmytApp.WeatherForecast.Views
 {
+    using Xamarin.Forms;
+
     public partial class WeatherDataSelection : ContentPage
     {
         public WeatherDataSelection()

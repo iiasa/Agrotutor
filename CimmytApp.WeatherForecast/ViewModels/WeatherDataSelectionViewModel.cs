@@ -1,96 +1,85 @@
-﻿using Helper.Map;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
-    using BusinessContract;
-    using DTO;
-    using DTO.Parcel;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using CimmytApp.BusinessContract;
+    using CimmytApp.DTO.Parcel;
     using Helper.DTO.SkywiseWeather.Historical;
+    using Helper.Map;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
 
     /// <summary>
-    /// Defines the <see cref="WeatherDataSelectionViewModel" />
+    ///     Defines the <see cref="WeatherDataSelectionViewModel" />
     /// </summary>
     public class WeatherDataSelectionViewModel : BindableBase, INavigationAware
     {
         /// <summary>
-        /// Defines the _datasetNames
-        /// </summary>
-        private List<string> _datasetNames;
-
-        /// <summary>
-        /// Defines the _navigationService
+        ///     Defines the _navigationService
         /// </summary>
         private readonly INavigationService _navigationService;
 
         /// <summary>
-        /// Defines the _parcel
+        ///     Defines the _weatherDbOperations
         /// </summary>
-        private Parcel _parcel;
+        private readonly IWeatherDbOperations _weatherDbOperations;
 
         /// <summary>
-        /// Defines the _selectedDataset
+        ///     Defines the _datasetNames
         /// </summary>
-        private int _selectedDataset;
+        private List<string> _datasetNames;
 
         /// <summary>
-        /// Defines the _weatherData
-        /// </summary>
-        private WeatherData _weatherData;
-
-        /// <summary>
-        /// Defines the _weatherDbOperations
-        /// </summary>
-        private IWeatherDbOperations _weatherDbOperations;
-
-        /// <summary>
-        /// Defines the _weatherDataAvailable
-        /// </summary>
-        private bool _weatherDataAvailable = true;
-
-        /// <summary>
-        /// Defines the isActive
-        /// </summary>
-        private bool _isActive;
-
-        /// <summary>
-        /// Defines the position
-        /// </summary>
-        private GeoPosition _position;
-
-        /// <summary>
-        /// Defines the refreshedFromServer
-        /// </summary>
-        private bool _refreshedFromServer = false;
-
-        /// <summary>
-        /// Defines the _downloading
+        ///     Defines the _downloading
         /// </summary>
         private bool _downloading;
 
         /// <summary>
-        /// Gets or sets a value indicating whether Downloading
+        ///     Defines the isActive
         /// </summary>
-        public bool Downloading { get => _downloading; set => SetProperty(ref _downloading, value); }
+        private bool _isActive;
 
         /// <summary>
-        /// Gets a value indicating whether ViewInactive
+        ///     Defines the _parcel
         /// </summary>
-        public bool ViewInactive => !Downloading;
+        private Parcel _parcel;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeatherDataSelectionViewModel"/> class.
+        ///     Defines the position
         /// </summary>
-        /// <param name="eventAggregator">The <see cref="IEventAggregator"/></param>
-        /// <param name="navigationService">The <see cref="INavigationService"/></param>
-        /// <param name="weatherDbOperations">The <see cref="IWeatherDbOperations"/></param>
-        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService, IWeatherDbOperations weatherDbOperations)
+        private GeoPosition _position;
+
+        /// <summary>
+        ///     Defines the refreshedFromServer
+        /// </summary>
+        private bool _refreshedFromServer;
+
+        /// <summary>
+        ///     Defines the _selectedDataset
+        /// </summary>
+        private int _selectedDataset;
+
+        /// <summary>
+        ///     Defines the _weatherData
+        /// </summary>
+        private WeatherData _weatherData;
+
+        /// <summary>
+        ///     Defines the _weatherDataAvailable
+        /// </summary>
+        private bool _weatherDataAvailable = true;
+
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="WeatherDataSelectionViewModel" /> class.
+        /// </summary>
+        /// <param name="eventAggregator">The <see cref="IEventAggregator" /></param>
+        /// <param name="navigationService">The <see cref="INavigationService" /></param>
+        /// <param name="weatherDbOperations">The <see cref="IWeatherDbOperations" /></param>
+        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService,
+            IWeatherDbOperations weatherDbOperations)
         {
             Downloading = false;
             DatasetNames = new List<string>
@@ -122,17 +111,56 @@ namespace CimmytApp.WeatherForecast.ViewModels
         }
 
         /// <summary>
-        /// Defines the IsActiveChanged
+        ///     Defines the IsActiveChanged
         /// </summary>
         public event EventHandler IsActiveChanged;
 
         /// <summary>
-        /// Gets or sets the DatasetNames
+        ///     Gets a value indicating whether ParcelLocationNotSet
         /// </summary>
-        public List<string> DatasetNames { get => _datasetNames; set => SetProperty(ref _datasetNames, value); }
+        public bool ParcelLocationNotSet
+        {
+            get
+            {
+                if (Parcel == null)
+                {
+                    return true;
+                }
+
+                return Parcel.Latitude == 0 && Parcel.Longitude == 0;
+            }
+        }
 
         /// <summary>
-        /// Gets or sets the MyWeatherData
+        ///     Gets a value indicating whether ShowRefreshText
+        /// </summary>
+        public bool ShowRefreshText => !_weatherDataAvailable;
+
+        /// <summary>
+        ///     Gets a value indicating whether ViewInactive
+        /// </summary>
+        public bool ViewInactive => !Downloading;
+
+        /// <summary>
+        ///     Gets or sets the DatasetNames
+        /// </summary>
+        public List<string> DatasetNames
+        {
+            get => _datasetNames;
+            set => SetProperty(ref _datasetNames, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether Downloading
+        /// </summary>
+        public bool Downloading
+        {
+            get => _downloading;
+            set => SetProperty(ref _downloading, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets the MyWeatherData
         /// </summary>
         public WeatherData MyWeatherData
         {
@@ -140,14 +168,19 @@ namespace CimmytApp.WeatherForecast.ViewModels
 
             set
             {
-                var data = value;
+                WeatherData data = value;
                 if (data == null)
                 {
-                    if (!_refreshedFromServer) return;
+                    if (!_refreshedFromServer)
+                    {
+                        return;
+                    }
+
                     _refreshedFromServer = false;
                     Downloading = false;
                     return;
                 }
+
                 WeatherDataAvailable = true;
                 data.ParcelId = Parcel.ParcelId;
                 SetProperty(ref _weatherData, data);
@@ -161,7 +194,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the Parcel
+        ///     Gets or sets the Parcel
         /// </summary>
         public Parcel Parcel
         {
@@ -173,49 +206,66 @@ namespace CimmytApp.WeatherForecast.ViewModels
                 {
                     LoadWeatherFromDb(value.ParcelId);
                 }
-                catch { }
+                catch
+                {
+                }
             }
         }
 
         /// <summary>
-        /// Gets or sets the RefreshWeatherDataCommand
+        ///     Gets or sets the RefreshWeatherDataCommand
         /// </summary>
         public DelegateCommand RefreshWeatherDataCommand { get; set; }
 
         /// <summary>
-        /// Gets or sets the SelectedDataset
+        ///     Gets or sets the SelectedDataset
         /// </summary>
-        public int SelectedDataset { get => _selectedDataset; set => SetProperty(ref _selectedDataset, value); }
+        public int SelectedDataset
+        {
+            get => _selectedDataset;
+            set => SetProperty(ref _selectedDataset, value);
+        }
 
         /// <summary>
-        /// Gets or sets the ShowWeatherDataCommand
+        ///     Gets or sets the ShowWeatherDataCommand
         /// </summary>
         public DelegateCommand ShowWeatherDataCommand { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether WeatherDataAvailable
+        ///     Gets or sets a value indicating whether WeatherDataAvailable
         /// </summary>
-        public bool WeatherDataAvailable { get => _weatherDataAvailable; set => SetProperty(ref _weatherDataAvailable, value); }
-
-        /// <summary>
-        /// Gets a value indicating whether ShowRefreshText
-        /// </summary>
-        public bool ShowRefreshText => !_weatherDataAvailable;
-
-        /// <summary>
-        /// Gets a value indicating whether ParcelLocationNotSet
-        /// </summary>
-        public bool ParcelLocationNotSet
+        public bool WeatherDataAvailable
         {
-            get
+            get => _weatherDataAvailable;
+            set => SetProperty(ref _weatherDataAvailable, value);
+        }
+
+        /// <summary>
+        ///     The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+        }
+
+        /// <summary>
+        ///     The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("Parcel"))
             {
-                if (Parcel == null) return true;
-                return (Parcel.Latitude == 0 && Parcel.Longitude == 0);
+                parameters.TryGetValue("Parcel", out object parcel);
+                if (parcel != null)
+                {
+                    Parcel = (Parcel)parcel;
+                }
             }
         }
 
         /// <summary>
-        /// The LoadWeatherDataAsync
+        ///     The LoadWeatherDataAsync
         /// </summary>
         private async void LoadWeatherDataAsync()
         {
@@ -225,16 +275,16 @@ namespace CimmytApp.WeatherForecast.ViewModels
         }
 
         /// <summary>
-        /// The LoadWeatherFromDb
+        ///     The LoadWeatherFromDb
         /// </summary>
-        /// <param name="parcelId">The <see cref="int"/></param>
+        /// <param name="parcelId">The <see cref="int" /></param>
         private void LoadWeatherFromDb(int parcelId)
         {
             MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
         }
 
         /// <summary>
-        /// The RefreshWeatherData
+        ///     The RefreshWeatherData
         /// </summary>
         private void RefreshWeatherData()
         {
@@ -258,11 +308,11 @@ namespace CimmytApp.WeatherForecast.ViewModels
         }
 
         /// <summary>
-        /// The ShowWeatherData
+        ///     The ShowWeatherData
         /// </summary>
         private void ShowWeatherData()
         {
-            var page = "";
+            string page = "";
             if (MyWeatherData == null)
             {
                 WeatherDataAvailable = false;
@@ -364,33 +414,12 @@ namespace CimmytApp.WeatherForecast.ViewModels
             }
 
             series?.Sort();
-            var parameters = new NavigationParameters
+            NavigationParameters parameters = new NavigationParameters
             {
-                {"Series", series},
-                {"VariableName", DatasetNames.ElementAt(SelectedDataset)}
+                { "Series", series },
+                { "VariableName", DatasetNames.ElementAt(SelectedDataset) }
             };
             _navigationService.NavigateAsync(page, parameters);
-        }
-
-        /// <summary>
-        /// The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-        }
-
-        /// <summary>
-        /// The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("Parcel"))
-            {
-                parameters.TryGetValue("Parcel", out var parcel);
-                if (parcel != null) Parcel = (Parcel)parcel;
-            }
         }
     }
 }

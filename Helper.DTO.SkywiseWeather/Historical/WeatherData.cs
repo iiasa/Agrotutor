@@ -1,15 +1,14 @@
 ﻿namespace Helper.DTO.SkywiseWeather.Historical
 {
+    using Helper.DTO.SkywiseWeather.Historical.Evapotranspiration;
+    using Helper.DTO.SkywiseWeather.Historical.Humidity;
+    using Helper.DTO.SkywiseWeather.Historical.Precipitation;
+    using Helper.DTO.SkywiseWeather.Historical.SolarRadiation;
+    using Helper.DTO.SkywiseWeather.Historical.Temperature;
+    using Helper.DTO.SkywiseWeather.Historical.Wind;
+    using Newtonsoft.Json;
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
-    using Newtonsoft.Json;
-
-    using Evapotranspiration;
-    using Humidity;
-    using Precipitation;
-    using SolarRadiation;
-    using Temperature;
-    using Wind;
 
     [Table("WeatherData")]
     public class WeatherData
@@ -86,9 +85,10 @@
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]
         public HourlyWindSpeed HourlyWindSpeed { get; set; }
 
-        public int ParcelId { get; set; }
-
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
+
+        public int ParcelId { get; set; }
     }
 }

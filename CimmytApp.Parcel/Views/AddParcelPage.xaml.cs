@@ -1,8 +1,8 @@
-﻿using Xamarin.Forms.Xaml;
-
-namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Parcel.Views
 {
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddParcelPage : ContentPage
     {

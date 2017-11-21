@@ -1,12 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:forms="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    prism:ViewModelLocator.AutowireViewModel="True"
-    x:Class="CimmytApp.Views.MainPage"
-    Title="Title"
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:forms="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.MainPage" Title="Title"
     Padding="16,16,16,0">
     <ScrollView>
         <StackLayout>
@@ -20,8 +16,9 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="¡Bienvenido!" FontSize="Large" forms:Grid.Row="0" forms:Grid.Column="0" />
-                <Label Text="Selecciona una actividad para comenzar:"  forms:Grid.Row="1" forms:Grid.Column="0" />
-                <StackLayout Orientation="Vertical" forms:Grid.Row="0" forms:Grid.Column="1" forms:Grid.RowSpan="2" HorizontalOptions="End">
+                <Label Text="Selecciona una actividad para comenzar:" forms:Grid.Row="1" forms:Grid.Column="0" />
+                <StackLayout Orientation="Vertical" forms:Grid.Row="0" forms:Grid.Column="1" forms:Grid.RowSpan="2"
+                    HorizontalOptions="End">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="WelcomePage" />
                     </StackLayout.GestureRecognizers>
@@ -48,27 +45,33 @@
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="AddParcelPage" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="Información de parcela" forms:Grid.Row="1" forms:Grid.Column="1" HorizontalTextAlignment="Center">
+                <Label Text="Información de parcela" forms:Grid.Row="1" forms:Grid.Column="1"
+                    HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelsOverviewPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="ParcelsOverviewPage" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="Mapa de parcelas" forms:Grid.Row="3" forms:Grid.Column="0" HorizontalTextAlignment="Center">
+                <Label Text="Mapa de parcelas" forms:Grid.Row="3" forms:Grid.Column="0"
+                    HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateToMapCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Text="Calendario" forms:Grid.Row="3" forms:Grid.Column="1" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="TelerikCalendarPage" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="Ver enlaces y herramientas" forms:Grid.Row="5" forms:Grid.Column="0" HorizontalTextAlignment="Center">
+                <Label Text="Ver enlaces y herramientas" forms:Grid.Row="5" forms:Grid.Column="0"
+                    HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LinksPage" />
                     </Label.GestureRecognizers>
                 </Label>
-                <Label Text="Perfil de productor" forms:Grid.Row="5" forms:Grid.Column="1" HorizontalTextAlignment="Center">
+                <Label Text="Perfil de productor" forms:Grid.Row="5" forms:Grid.Column="1"
+                    HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
                     </Label.GestureRecognizers>
@@ -82,7 +85,8 @@
 
                 <Image Source="farm.png" forms:Grid.Row="0" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelsOverviewPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="ParcelsOverviewPage" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="globe.png" forms:Grid.Row="2" forms:Grid.Column="0" WidthRequest="70" Margin="16">
@@ -92,7 +96,8 @@
                 </Image>
                 <Image Source="calendar.png" forms:Grid.Row="2" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="TelerikCalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                            CommandParameter="TelerikCalendarPage" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="link.png" forms:Grid.Row="4" forms:Grid.Column="0" WidthRequest="70" Margin="16">

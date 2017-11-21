@@ -1,13 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    mvvm:ViewModelLocator.AutowireViewModel="True"
-    x:Class="CimmytApp.Parcel.Views.ParcelPage"
-    Padding="16">
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" mvvm:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.Parcel.Views.ParcelPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
@@ -21,19 +18,26 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}"
+                SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
+                Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" />
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}" SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}"
+                SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
+                Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}"
+                SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
+                Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_parcel_name}" />
-            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}"
+                IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="Selecciona la ubicación de tu parcela" FontSize="18" IsVisible="{Binding EditModeActive}" />
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
@@ -60,10 +64,11 @@
                 <Label Text="Delimita tu parcela" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
 
-            <Label Text="Agrega información de manejo de parcela" FontSize="18"  IsVisible="{Binding EditModeActive}" />
+            <Label Text="Agrega información de manejo de parcela" FontSize="18" IsVisible="{Binding EditModeActive}" />
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="SelectTechnologiesPage" />
+                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                        CommandParameter="SelectTechnologiesPage" />
                 </StackLayout.GestureRecognizers>
                 <Image Source="wand.png" WidthRequest="32" />
                 <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16" />
@@ -85,7 +90,8 @@
                 <Label Text="Actividades de parcela" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
 
-            <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}"  IsVisible="{Binding EditModeActive}" />
+            <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}"
+                IsVisible="{Binding EditModeActive}" />
         </StackLayout>
     </ScrollView>
 </ContentPage>

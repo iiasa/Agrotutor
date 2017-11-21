@@ -1,9 +1,6 @@
-﻿
-
-namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Parcel.Views
 {
-
-	using Xamarin.Forms;
+    using Xamarin.Forms;
 
     public partial class ParcelPage : ContentPage
     {

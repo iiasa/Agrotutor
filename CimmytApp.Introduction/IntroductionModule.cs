@@ -1,9 +1,9 @@
 ﻿namespace CimmytApp.Introduction
 {
+    using CimmytApp.Introduction.Views;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-    using Views;
 
     public class IntroductionModule : IModule
     {

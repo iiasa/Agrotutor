@@ -1,12 +1,13 @@
-﻿using System;
-using System.Linq;
-
-namespace Helper.DTO.SkywiseWeather.Historical
+﻿namespace Helper.DTO.SkywiseWeather.Historical
 {
+    using System;
+    using System.Linq;
+
     public abstract class DailySeries : HistoricalSeries
     {
-        public string startDate { get; set; }
         public string endDate { get; set; }
+
+        public string startDate { get; set; }
 
         public override void Sort()
         {

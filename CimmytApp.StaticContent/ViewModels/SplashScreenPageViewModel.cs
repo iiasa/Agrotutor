@@ -31,7 +31,7 @@
 
         private async void GoToNextPage()
         {
-            await Task.Delay(SecondsActive * 1000);
+            await Task.Delay(SplashScreenPageViewModel.SecondsActive * 1000);
             _navigationService.NavigateAsync(_nextPage);
         }
     }

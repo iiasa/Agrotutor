@@ -6,7 +6,8 @@
     [Table("HeatingDegreeDays")]
     public class HeatingDegreeDays : DegreeDays
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
         [ForeignKey(typeof(WeatherData))]

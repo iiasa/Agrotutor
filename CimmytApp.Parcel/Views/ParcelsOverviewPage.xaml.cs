@@ -1,9 +1,9 @@
-﻿using CimmytApp.Parcel.ViewModels;
-using Xamarin.Forms.Xaml;
-
-namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Parcel.Views
 {
+    using CimmytApp.Parcel.ViewModels;
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ParcelsOverviewPage : ContentPage
     {
@@ -12,13 +12,12 @@ namespace CimmytApp.Parcel.Views
             InitializeComponent();
         }
 
-		private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-		{
-			var vm = BindingContext as ParcelsOverviewPageViewModel;
-			ParcelViewModel selectedItem = e.Item as ParcelViewModel;
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            ParcelsOverviewPageViewModel vm = BindingContext as ParcelsOverviewPageViewModel;
+            ParcelViewModel selectedItem = e.Item as ParcelViewModel;
 
-			vm?.HideOrShowParcel(selectedItem);
-		}
-
-	}
+            vm?.HideOrShowParcel(selectedItem);
+        }
+    }
 }

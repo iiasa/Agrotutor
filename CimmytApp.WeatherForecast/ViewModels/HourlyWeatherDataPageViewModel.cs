@@ -1,9 +1,8 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
+    using Helper.DTO.SkywiseWeather.Historical;
     using Prism.Mvvm;
     using Prism.Navigation;
-
-    using Helper.DTO.SkywiseWeather.Historical;
 
     public class HourlyWeatherDataPageViewModel : BindableBase, INavigationAware
     {
@@ -22,10 +21,6 @@
             set => SetProperty(ref _variableName, value);
         }
 
-        public HourlyWeatherDataPageViewModel()
-        {
-        }
-
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
@@ -37,6 +32,7 @@
                 VariableName = "Lo sentimos, no hay datos disponibles";
                 return;
             }
+
             parameters.TryGetValue("Series", out object series);
             Series = (HourlySeries)series;
 

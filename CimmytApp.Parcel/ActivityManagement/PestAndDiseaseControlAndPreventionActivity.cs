@@ -19,7 +19,11 @@
                 PlantingDensityVisibility = false,
                 ProductObtainedVisibility = false,
                 VarietySownVisibility = false,
-                ActivityNameList = new List<string> { "Aplicación de fungicidas", "Aplicación de insecticidas" },
+                ActivityNameList = new List<string>
+                {
+                    "Aplicación de fungicidas",
+                    "Aplicación de insecticidas"
+                },
                 ActivityIcon = "cockroach_small.png",
                 ActivityTitle = "Control y prevención de plagas y enfermedades"
             };

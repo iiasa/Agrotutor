@@ -1,30 +1,27 @@
 ﻿namespace CimmytApp.Introduction.ViewModels
 {
-    using Prism.Commands;
-    using Prism.Mvvm;
     using System.Windows.Input;
+    using Prism.Commands;
     using Prism.Modularity;
+    using Prism.Mvvm;
     using Prism.Navigation;
 
     public class WelcomePageViewModel : BindableBase, INavigationAware
     {
-        private readonly INavigationService _navigationService;
         private readonly IModuleManager _moduleManager;
-        public ICommand NavigateToMainPageCommand { get; set; }
+        private readonly INavigationService _navigationService;
 
         public WelcomePageViewModel(IModuleManager moduleManager, INavigationService navigationService)
         {
             _navigationService = navigationService;
             _moduleManager = moduleManager;
             NavigateToMainPageCommand = new DelegateCommand(NavigateToMainPage);
+
             //_moduleManager.LoadModule("CalenderModuleIntialize");
             //_moduleManager.LoadModule("MapModuleIntialize");
         }
 
-        private void NavigateToMainPage()
-        {
-            _navigationService.NavigateAsync("app:///MainPage");
-        }
+        public ICommand NavigateToMainPageCommand { get; set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -36,6 +33,11 @@
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+        }
+
+        private void NavigateToMainPage()
+        {
+            _navigationService.NavigateAsync("app:///MainPage");
         }
     }
 }

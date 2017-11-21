@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
-using Prism.Navigation;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
+    using System.Collections.Generic;
     using Prism.Mvvm;
+    using Prism.Navigation;
 
     public class DailyForecastPageViewModel : BindableBase, INavigationAware
     {
         private readonly INavigationService _navigationService;
-        public List<DailySummary> DailySummaries { get; set; }
 
         public DailyForecastPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
+
+        public List<DailySummary> DailySummaries { get; set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -23,7 +23,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
         {
             if (parameters.ContainsKey("DailyForecast"))
             {
-                parameters.TryGetValue("DailyForecast", out var forecast);
+                parameters.TryGetValue("DailyForecast", out object forecast);
                 if (forecast != null)
                 {
                     DailySummaries = (List<DailySummary>)forecast;

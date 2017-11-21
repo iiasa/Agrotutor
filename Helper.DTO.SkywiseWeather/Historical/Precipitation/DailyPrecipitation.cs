@@ -6,7 +6,8 @@
     [Table("DailyPrecipitation")]
     public class DailyPrecipitation : DailySeries
     {
-        [PrimaryKey, AutoIncrement]
+        [PrimaryKey]
+        [AutoIncrement]
         public int ID { get; set; }
 
         public float precipitation { get; set; }

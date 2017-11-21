@@ -1,6 +1,4 @@
 using Android.App;
-using Android.Content;
-using Gcm.Client;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -13,13 +11,15 @@ using Gcm.Client;
 
 namespace CimmytApp.Droid
 {
+    using Android.Content;
+    using Gcm.Client;
+
     [BroadcastReceiver(Permission = Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
-    [IntentFilter(new[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE },
-        Categories = new[] { "@PACKAGE_NAME@" })]
-    [IntentFilter(new[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK },
-        Categories = new[] { "@PACKAGE_NAME@" })]
-    [IntentFilter(new[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY },
-        Categories = new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE }, Categories = new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] { Gcm.Client.Constants.INTENT_FROM_GCM_REGISTRATION_CALLBACK }, Categories =
+        new[] { "@PACKAGE_NAME@" })]
+    [IntentFilter(new[] { Gcm.Client.Constants.INTENT_FROM_GCM_LIBRARY_RETRY }, Categories =
+        new[] { "@PACKAGE_NAME@" })]
     public class AzurePushBroadcastReceiver : GcmBroadcastReceiverBase<PushHandlerService>
     {
         public const string Tag = "NotificationHubSample-LOG";
