@@ -11,13 +11,14 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <StackLayout x:Name="Map" Grid.Row="0" Grid.RowSpan="2" />
+        <Label Grid.Row="0" IsVisible="{Binding ShowGPSHint}" Text="Please enable GPS to get the location." Margin="16" />
         <StackLayout Orientation="Horizontal" Grid.Row="1">
             <Button Text="{localization:Translate use_this_location}" Command="{Binding UseLocationCommand}"
                 VerticalOptions="Center" HorizontalOptions="Center"
                 IsVisible="{Binding ReturnGeolocationButtonVisible}" />
             <StackLayout IsVisible="{Binding DelineationButtonsVisible}" Orientation="Horizontal"
                 VerticalOptions="Center">
-                <Button Text="{localization:Translate ok}" Command="{Binding AcceptDelineationCommand}"
+                <Button Text="Guardar" Command="{Binding AcceptDelineationCommand}"
                     IsEnabled="{Binding ButtonAcceptDelineationEnabled}" />
                 <Button Text="{localization:Translate cancel}" Command="{Binding CancelDelineationCommand}"
                     IsEnabled="{Binding ButtonCancelDelineationEnabled}" />

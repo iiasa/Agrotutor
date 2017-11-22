@@ -369,7 +369,7 @@
                 {
                     int id = (int)parameters["Id"];
 
-                    _parcel = _cimmytDbOperations.GetParcelById(id);
+                    Parcel = _cimmytDbOperations.GetParcelById(id);
                 }
                 catch (Exception e)
                 {

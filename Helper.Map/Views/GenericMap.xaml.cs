@@ -53,7 +53,9 @@
             _map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
             _map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
             _map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
-            _map.SetBinding(Map.MapTypeProperty, "MapType");
+            // ReSharper disable once ArrangeStaticMemberQualifier
+            // ReSharper disable once AccessToStaticMemberViaDerivedType
+            _map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
 
             _map.HasZoomEnabled = true;
             _map.MapType = MapType.Hybrid;

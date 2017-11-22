@@ -16,8 +16,9 @@
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
+    /// <inheritdoc cref="BindableBase" />
     /// <summary>
-    ///     Defines the <see cref="MainPageViewModel" />
+    ///     Defines the <see cref="T:CimmytApp.ViewModels.MainPageViewModel" />
     /// </summary>
     public class MainPageViewModel : BindableBase, INavigationAware
     {

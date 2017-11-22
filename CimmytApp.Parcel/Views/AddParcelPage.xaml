@@ -13,22 +13,22 @@
                 <Image Source="add_small.png" HeightRequest="18" />
             </StackLayout>
 
-            <Label Text="{localization:Translate hint_crop}" />
+            <Label Text="{localization:Translate hint_crop}" FontSize="18" />
             <controls:ExtendedPicker ItemsSource="{Binding CropTypes}"
                 SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_planting_date}" />
+            <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
             <DatePicker Date="{Binding Parcel.PlantingDate}" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate madurez}" />
+            <Label Text="{localization:Translate madurez}" FontSize="18" />
             <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}"
                 SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate tipo_clima}" />
+            <Label Text="{localization:Translate tipo_clima}" FontSize="18" />
             <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}"
                 SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_parcel_name}" />
+            <Label Text="{localization:Translate hint_parcel_name}" FontSize="18" />
             <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}"
                 Margin="0,0,0,16" />
 

@@ -151,6 +151,8 @@
         /// </summary>
         private ObservableCollection<TKPolygon> _viewPolygons;
 
+        private bool _showEnableLocationHint;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="GenericMapViewModel" /> class.
         /// </summary>
@@ -311,7 +313,7 @@
                             ID = "polygon_marker_user",
                             Position = position
                         });
-                        MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
+                        if (_followUserLocation) MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
                         ReturnGeolocationButtonEnabled = true;
                         break;
 
@@ -458,12 +460,12 @@
             else
             {
                 List<GeoPosition> geoPositions = positions.Select(position => new GeoPosition
-                    {
-                        Latitude = position.Latitude,
-                        Longitude = position.Longitude
+                {
+                    Latitude = position.Latitude,
+                    Longitude = position.Longitude
 
-                        //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
-                    })
+                    //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
+                })
                     .ToList();
 
                 NavigationParameters parameters = new NavigationParameters
@@ -492,6 +494,7 @@
         /// <returns>The <see cref="Task" /></returns>
         private async Task GetPosition()
         {
+            ShowEnableLocationHint = !_geoLocator.CheckIfGPSIsEnabled();
             if (_geoLocator != null)
             {
                 GeoPosition positionRes = await _geoLocator.GetCurrentPosition();
@@ -524,6 +527,12 @@
 
                 _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
+        }
+
+        public bool ShowEnableLocationHint
+        {
+            get => _showEnableLocationHint;
+            set => SetProperty(ref _showEnableLocationHint, value);
         }
 
         /// <summary>
