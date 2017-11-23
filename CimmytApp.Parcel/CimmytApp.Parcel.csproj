@@ -44,8 +44,12 @@
     <Compile Include="ActivityManagement\GroundPreperationActivity.cs" />
     <Compile Include="ActivityManagement\SoilImproversActivity.cs" />
     <Compile Include="ParcelConstants.cs" />
+    <Compile Include="ViewModels\DeleteActivityPageViewModel.cs" />
     <Compile Include="ViewModels\ParcelViewModel.cs" />
     <Compile Include="ViewModels\ViewActivitiesPageViewModel.cs" />
+    <Compile Include="Views\DeleteActivityPage.xaml.cs">
+      <DependentUpon>DeleteActivityPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectTechnologiesPage.xaml.cs">
       <DependentUpon>SelectTechnologiesPage.xaml</DependentUpon>
     </Compile>
@@ -221,6 +225,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\ViewActivitiesPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\DeleteActivityPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

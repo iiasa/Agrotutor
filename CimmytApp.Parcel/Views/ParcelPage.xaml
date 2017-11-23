@@ -17,25 +17,25 @@
                 <Switch IsToggled="{Binding EditModeActive}" />
             </StackLayout>
 
-            <Label Text="{localization:Translate hint_crop}" />
+            <Label Text="{localization:Translate hint_crop}" FontSize="18" />
             <controls:ExtendedPicker ItemsSource="{Binding CropTypes}"
                 SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
                 Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_planting_date}" />
+            <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate madurez}" />
+            <Label Text="{localization:Translate madurez}" FontSize="18" />
             <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}"
                 SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
                 Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate tipo_clima}" />
+            <Label Text="{localization:Translate tipo_clima}" FontSize="18" />
             <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}"
                 SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
                 Margin="0,0,0,16" />
 
-            <Label Text="{localization:Translate hint_parcel_name}" />
+            <Label Text="{localization:Translate hint_parcel_name}" FontSize="18" />
             <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}"
                 IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
@@ -72,6 +72,15 @@
                 </StackLayout.GestureRecognizers>
                 <Image Source="wand.png" WidthRequest="32" />
                 <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16" />
+            </StackLayout>
+
+            <Label Text="Agrega información de manejo de parcela" FontSize="18" IsVisible="{Binding ViewModeActive}" />
+            <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding ViewModeActive}">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ViewTechnologiesCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image Source="wand.png" WidthRequest="32" />
+                <Label Text="Ver technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">

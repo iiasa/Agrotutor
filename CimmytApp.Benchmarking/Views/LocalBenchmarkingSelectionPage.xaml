@@ -24,63 +24,39 @@
                     </Grid.ColumnDefinitions>
 
                     <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-                        <Image Source="icons_pricetag_96.png" WidthRequest="70" Margin="16">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewCostoPage" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Costos" HorizontalTextAlignment="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewCostoPage" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                                CommandParameter="ViewCostoPage" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="icons_pricetag_96.png" WidthRequest="70" Margin="16" />
+                        <Label Text="Costos" HorizontalTextAlignment="Center" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
-                        <Image Source="icon_profit_96.png" WidthRequest="70" Margin="16">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewIngresoPage" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Ingresos" HorizontalTextAlignment="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewIngresoPage" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                                CommandParameter="ViewIngresoPage" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="icon_profit_96.png" WidthRequest="70" Margin="16" />
+                        <Label Text="Ingresos" HorizontalTextAlignment="Center" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
-                        <Image Source="icons_datasheet_96.png" WidthRequest="70" Margin="16">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewRendimientoPage" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Rendimiento" HorizontalTextAlignment="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewRendimientoPage" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                                CommandParameter="ViewRendimientoPage" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="icons_datasheet_96.png" WidthRequest="70" Margin="16" />
+                        <Label Text="Rendimiento" HorizontalTextAlignment="Center" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-                        <Image Source="icons_settings_96.png" WidthRequest="70" Margin="16">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewUtilidadPage" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Text="Utilidad" HorizontalTextAlignment="Center">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                                    CommandParameter="ViewUtilidadPage" />
-                            </Label.GestureRecognizers>
-                        </Label>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
+                                CommandParameter="ViewUtilidadPage" />
+                        </StackLayout.GestureRecognizers>
+                        <Image Source="icons_settings_96.png" WidthRequest="70" Margin="16" />
+                        <Label Text="Utilidad" HorizontalTextAlignment="Center" />
                     </StackLayout>
                 </Grid>
 

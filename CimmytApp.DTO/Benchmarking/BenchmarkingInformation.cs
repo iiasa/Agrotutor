@@ -10,7 +10,7 @@
         {
             get
             {
-                return "\tAverage: " + BenchmarkingDatasets.Average(r => r.val);
+                return "\tPromedio: " + BenchmarkingDatasets.Average(r => r.val);
             }
         }
 
@@ -18,7 +18,7 @@
         {
             get
             {
-                return "\tMax: " + BenchmarkingDatasets.Max(r => r.val);
+                return "\tMáximo: " + BenchmarkingDatasets.Max(r => r.val);
             }
         }
 
@@ -26,7 +26,7 @@
         {
             get
             {
-                return "\tMin: " + BenchmarkingDatasets.Min(r => r.val);
+                return "\tMínimo: " + BenchmarkingDatasets.Min(r => r.val);
             }
         }
 

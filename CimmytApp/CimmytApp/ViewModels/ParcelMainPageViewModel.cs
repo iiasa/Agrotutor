@@ -1,12 +1,20 @@
 ﻿namespace CimmytApp.ViewModels
 {
     using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using CimmytApp.BusinessContract;
     using CimmytApp.DTO.Parcel;
+    using Helper.Map;
+    using Helper.Map.ViewModels;
     using Prism;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
+    using TK.CustomMap;
+    using TK.CustomMap.Overlays;
+    using Xamarin.Forms;
+    using Xamarin.Forms.Maps;
 
     /// <summary>
     ///     Defines the <see cref="ParcelMainPageViewModel" />
@@ -126,8 +134,40 @@
         /// </summary>
         private void NavigateToMap()
         {
-            //TODO parameters!!
-            _navigationService.NavigateAsync("GenericMap");
+            NavigationParameters parameters = new NavigationParameters();
+            List<GeoPosition> delineation = Parcel.GetDelineation();
+            if (delineation != null && delineation.Count > 2)
+            {
+                TKPolygon polygon = new TKPolygon
+                {
+                    StrokeColor = Color.Green,
+                    StrokeWidth = 2f,
+                    Color = Color.Red
+                };
+                foreach (GeoPosition geoPosition in delineation)
+                {
+                    polygon.Coordinates.Add(new Position(geoPosition.Latitude, geoPosition.Longitude));
+                }
+
+                ObservableCollection<TKPolygon> viewPolygons = new ObservableCollection<TKPolygon>
+                {
+                    polygon
+                };
+                parameters.Add(GenericMapViewModel.PolygonsParameterName, viewPolygons);
+            }
+
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            {
+                parameters.Add(GenericMapViewModel.PointsParameterName, new ObservableCollection<TKCustomMapPin>
+                {
+                    new TKCustomMapPin
+                    {
+                        Position = new Position(Parcel.Latitude, Parcel.Longitude)
+                    }
+                });
+            }
+
+            _navigationService.NavigateAsync("GenericMap", parameters);
         }
     }
 }

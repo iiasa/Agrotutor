@@ -8,6 +8,7 @@
     using CimmytApp.DTO.Parcel;
     using Helper.Map;
     using Helper.Map.ViewModels;
+    using Newtonsoft.Json;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
@@ -17,6 +18,7 @@
     using XLabs.Ioc;
     using XLabs.Platform.Device;
     using XLabs.Platform.Services.Media;
+    using XLabs.Serialization;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -101,7 +103,10 @@
             EditModeActive = false;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             ViewActivitiesCommand = new DelegateCommand(ViewActivities);
+            ViewTechnologiesCommand = new DelegateCommand(ViewTechnologies);
         }
+
+        public DelegateCommand ViewTechnologiesCommand { get; set; }
 
         /// <summary>
         ///     Gets the ClimateTypes
@@ -567,6 +572,19 @@
                 { "Activities", Parcel.AgriculturalActivities }
             };
             _navigationService.NavigateAsync("ViewActivitiesPage", parameters);
+        }
+
+        private void ViewTechnologies()
+        {
+            List<string> technologies = JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed);
+            if (technologies == null) return;
+
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { ParcelConstants.TechnologiesParameterName, technologies },
+                { "ViewOnly", true }
+            };
+            _navigationService.NavigateAsync("SelectTechnologiesViewModel", parameters);
         }
     }
 }

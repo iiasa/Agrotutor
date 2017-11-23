@@ -103,6 +103,8 @@
         /// </summary>
         private List<string> _technologies;
 
+        private bool _selectEnabled;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="SelectTechnologiesPageViewModel" /> class.
         /// </summary>
@@ -248,17 +250,34 @@
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     The OnNavigatedTo
         /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
                 Technologies = (List<string>)parameters[ParcelConstants.TechnologiesParameterName];
             }
+            if (parameters.ContainsKey("ViewOnly"))
+            {
+                parameters.TryGetValue("ViewOnly", out object viewOnly);
+                if (viewOnly != null)
+                    SelectEnabled = !(bool)viewOnly;
+            }
+            else
+            {
+                SelectEnabled = true;
+            }
             Initializing = false;
+        }
+
+        public bool SelectEnabled
+        {
+            get => _selectEnabled;
+            set => SetProperty(ref _selectEnabled, value);
         }
 
         /// <summary>

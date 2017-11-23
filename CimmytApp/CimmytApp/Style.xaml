@@ -9,7 +9,7 @@
     <Style x:Key="LabelKey" TargetType="{x:Type Label}">
         <!-- Style applied to all labels with x:Key set to LabelKey -->
         <!--<Setter Property="TextColor" Value="Crimson" />-->
-        <Setter Property="FontSize" Value="16" />
+        <Setter Property="FontSize" Value="18" />
     </Style>
 
     <Color x:Key="PrimaryGreen">#7BC142</Color>
