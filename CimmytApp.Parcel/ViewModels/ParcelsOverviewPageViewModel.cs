@@ -204,6 +204,8 @@
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            _parcels = new List<Parcel>();
+            Parcels = _cimmytDbOperations.GetAllParcels();
         }
 
         /// <summary>
@@ -212,8 +214,6 @@
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-            _parcels = new List<Parcel>();
-            Parcels = _cimmytDbOperations.GetAllParcels();
         }
 
         /// <summary>

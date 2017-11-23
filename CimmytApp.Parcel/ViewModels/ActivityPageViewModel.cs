@@ -118,7 +118,8 @@
             NavigationParameters parameters = new NavigationParameters
             {
                 { "Activities", Activities },
-                { "Parcel", Parcel }
+                { "Parcel", Parcel },
+                { "EditEnabled", true }
             };
             _navigationService.NavigateAsync($"app:///{_caller}", parameters);
         }

@@ -18,7 +18,6 @@
     using XLabs.Ioc;
     using XLabs.Platform.Device;
     using XLabs.Platform.Services.Media;
-    using XLabs.Serialization;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -106,17 +105,6 @@
             ViewTechnologiesCommand = new DelegateCommand(ViewTechnologies);
             GoBackCommand = new DelegateCommand(GoBack);
         }
-
-        private void GoBack()
-        {
-            NavigationParameters parameters = new NavigationParameters
-            {
-                { "Id", Parcel.ParcelId }
-            };
-            _navigationService.GoBackAsync(parameters);
-        }
-
-        public DelegateCommand ViewTechnologiesCommand { get; set; }
 
         /// <summary>
         ///     Gets the ClimateTypes
@@ -214,6 +202,8 @@
         ///     Gets or sets a value indicating whether EditsDone
         /// </summary>
         public bool EditsDone { get; set; }
+
+        public DelegateCommand GoBackCommand { get; set; }
 
         /// <summary>
         ///     Gets or sets the ImageSource
@@ -320,7 +310,7 @@
             set => SetProperty(ref _viewModeActive, value);
         }
 
-        public DelegateCommand GoBackCommand { get; set; }
+        public DelegateCommand ViewTechnologiesCommand { get; set; }
 
         /// <summary>
         ///     The SelectLocation
@@ -334,7 +324,7 @@
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -351,7 +341,7 @@
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -390,7 +380,7 @@
                 }
                 catch (Exception e)
                 {
-                    Back();
+                    GoBackCommand?.Execute();
                 }
             }
             if (parameters.ContainsKey("EditEnabled"))
@@ -457,14 +447,6 @@
         }
 
         /// <summary>
-        ///     The Back
-        /// </summary>
-        private void Back()
-        {
-            _navigationService.GoBackAsync();
-        }
-
-        /// <summary>
         ///     The DeleteParcel
         /// </summary>
         private void DeleteParcel()
@@ -488,9 +470,14 @@
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
+        }
+
+        private void GoBack()
+        {
+            _navigationService.GoBackAsync();
         }
 
         /// <summary>
@@ -501,7 +488,7 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { "Caller", "AddParcelPage" },
+                { "Caller", "ParcelPage" },
                 { "Parcel", Parcel }
             };
             _navigationService.NavigateAsync(page, parameters);
@@ -515,23 +502,11 @@
             EditModeActive = false;
             EditsDone = false;
             _cimmytDbOperations.UpdateParcel(Parcel);
-            _navigationService.GoBackAsync();
-        }
-
-        /// <summary>
-        ///     The Setup
-        /// </summary>
-        private void Setup()
-        {
-            if (_mediaPicker != null)
+            NavigationParameters parameters = new NavigationParameters
             {
-                return;
-            }
-
-            IDevice device = Resolver.Resolve<IDevice>();
-
-            ////RM: hack for working on windows phone?
-            _mediaPicker = DependencyService.Get<IMediaPicker>() ?? device.MediaPicker;
+                { "Id", Parcel.ParcelId }
+            };
+            _navigationService.GoBackAsync(parameters);
         }
 
         /// <summary>
@@ -588,7 +563,10 @@
         private void ViewTechnologies()
         {
             List<string> technologies = JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed);
-            if (technologies == null) return;
+            if (technologies == null)
+            {
+                return;
+            }
 
             NavigationParameters parameters = new NavigationParameters
             {

@@ -135,8 +135,8 @@
         private void NavigateToMap()
         {
             NavigationParameters parameters = new NavigationParameters();
-            List<GeoPosition> delineation = Parcel.GetDelineation();
-            if (delineation != null && delineation.Count > 2)
+            PolygonDto delineation = Parcel.Polygon;
+            if (delineation != null && delineation.ListPoints.Count > 2)
             {
                 TKPolygon polygon = new TKPolygon
                 {
@@ -144,7 +144,7 @@
                     StrokeWidth = 2f,
                     Color = Color.Red
                 };
-                foreach (GeoPosition geoPosition in delineation)
+                foreach (GeoPosition geoPosition in delineation.ListPoints)
                 {
                     polygon.Coordinates.Add(new Position(geoPosition.Latitude, geoPosition.Longitude));
                 }

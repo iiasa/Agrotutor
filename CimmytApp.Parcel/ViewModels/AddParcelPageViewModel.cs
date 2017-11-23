@@ -318,6 +318,11 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            {
+                parameters.Add(GenericMapViewModel.MapRegionParameterName,
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+            }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -333,7 +338,7 @@
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(5000)));
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -347,6 +352,11 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
+            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            {
+                parameters.Add(GenericMapViewModel.MapRegionParameterName,
+                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+            }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -356,7 +366,7 @@
             {
                 { "Caller", "AddParcelPage" }
             };
-            _navigationService.NavigateAsync(page);
+            _navigationService.NavigateAsync(page, parameters);
         }
 
         /// <summary>

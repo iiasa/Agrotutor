@@ -91,7 +91,7 @@
                 </Image>
                 <Image Source="globe.png" forms:Grid.Row="2" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="GenericMap" />
+                        <TapGestureRecognizer Command="{Binding NavigateToMapCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="calendar.png" forms:Grid.Row="2" forms:Grid.Column="1" WidthRequest="70" Margin="16">
