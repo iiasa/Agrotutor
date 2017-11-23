@@ -278,6 +278,8 @@
         {
             if (page == "DailyForecastPage")
             {
+                if (WeatherForecast == null)
+                    return;
                 NavigationParameters parameters = new NavigationParameters
                 {
                     { "DailyForecast", WeatherForecast.Location.DailySummaries.DailySummary }
@@ -286,7 +288,11 @@
             }
             else
             {
-                _navigationService.NavigateAsync(page);
+                NavigationParameters parameters = new NavigationParameters
+                {
+                    { "Parcel", Parcel }
+                };
+                _navigationService.NavigateAsync(page, parameters);
             }
         }
     }

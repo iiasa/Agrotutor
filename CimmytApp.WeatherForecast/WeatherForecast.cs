@@ -396,6 +396,8 @@
         [JsonProperty("max_temp_C")]
         public string MaxTempC { get; set; }
 
+        public string TemperatureString => $"{MaxTempC}°C ({MinTempC}°C)";
+
         /// <summary>
         ///     Gets or sets the MaxWndSpdKph
         /// </summary>

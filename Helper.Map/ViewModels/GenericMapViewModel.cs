@@ -314,6 +314,7 @@
                             Position = position
                         });
                         if (_followUserLocation) MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
+                        Point = value;
                         ReturnGeolocationButtonEnabled = true;
                         break;
 

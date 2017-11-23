@@ -4,7 +4,6 @@
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Reflection;
-    using CimmytApp.AgronomicalRecommendations;
     using CimmytApp.Benchmarking;
     using CimmytApp.BusinessContract;
     using CimmytApp.Calendar;
@@ -83,14 +82,6 @@
         {
             try
             {
-                Type agronomicalRecommendationsModule = typeof(AgronomicalRecommendationsModule);
-                ModuleCatalog.AddModule(new ModuleInfo
-                {
-                    ModuleName = agronomicalRecommendationsModule.Name,
-                    ModuleType = agronomicalRecommendationsModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
-
                 Type benchmarkingModule = typeof(BenchmarkingModule);
                 ModuleCatalog.AddModule(new ModuleInfo
                 {

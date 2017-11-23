@@ -104,6 +104,16 @@
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             ViewActivitiesCommand = new DelegateCommand(ViewActivities);
             ViewTechnologiesCommand = new DelegateCommand(ViewTechnologies);
+            GoBackCommand = new DelegateCommand(GoBack);
+        }
+
+        private void GoBack()
+        {
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { "Id", Parcel.ParcelId }
+            };
+            _navigationService.GoBackAsync(parameters);
         }
 
         public DelegateCommand ViewTechnologiesCommand { get; set; }
@@ -310,6 +320,8 @@
             set => SetProperty(ref _viewModeActive, value);
         }
 
+        public DelegateCommand GoBackCommand { get; set; }
+
         /// <summary>
         ///     The SelectLocation
         /// </summary>
@@ -392,13 +404,12 @@
             }
             if (parameters.ContainsKey("Delineation"))
             {
-                EditModeActive = false;
                 parameters.TryGetValue("Delineation", out object delineation);
                 PolygonDto polygonObj = new PolygonDto
                 {
                     ListPoints = (List<GeoPosition>)delineation
                 };
-                if (polygonObj.ListPoints.Count > 0)
+                if (polygonObj.ListPoints.Count > 0 && Parcel.Latitude == 0 && Parcel.Longitude == 0)
                 {
                     Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
                     Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;

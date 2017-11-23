@@ -187,7 +187,6 @@
                             HorizontalOptions="Center" HorizontalTextAlignment="Center" />
                     </Grid>
                 </Grid>
-                <Button Text="Guardar" Command="{Binding SaveCommand}" />
             </StackLayout>
         </StackLayout>
     </ScrollView>

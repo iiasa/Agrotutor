@@ -4,7 +4,7 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
     xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
     xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
-    x:Class="CimmytApp.WeatherForecast.Views.DailyWeatherDataPage">
+    x:Class="CimmytApp.WeatherForecast.Views.DailyWeatherDataPage" Padding="16">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

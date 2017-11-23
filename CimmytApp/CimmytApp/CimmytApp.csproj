@@ -183,10 +183,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CimmytApp.AgronomicalRecommendations\CimmytApp.AgronomicalRecommendations.csproj">
-      <Project>{009E8E87-7B24-414B-B157-C7018EF75DB5}</Project>
-      <Name>CimmytApp.AgronomicalRecommendations</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\CimmytApp.Benchmarking\CimmytApp.Benchmarking.csproj">
       <Project>{64F6473F-181E-4F13-AC1A-AEBADC74EAD4}</Project>
       <Name>CimmytApp.Benchmarking</Name>

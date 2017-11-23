@@ -7,13 +7,18 @@
     public class DailyForecastPageViewModel : BindableBase, INavigationAware
     {
         private readonly INavigationService _navigationService;
+        private List<DailySummary> _dailySummaries;
 
         public DailyForecastPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
 
-        public List<DailySummary> DailySummaries { get; set; }
+        public List<DailySummary> DailySummaries
+        {
+            get => _dailySummaries;
+            set => SetProperty(ref _dailySummaries, value);
+        }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
