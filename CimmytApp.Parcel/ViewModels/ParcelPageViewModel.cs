@@ -15,9 +15,6 @@
     using Prism.Navigation;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
-    using XLabs.Ioc;
-    using XLabs.Platform.Device;
-    using XLabs.Platform.Services.Media;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -49,11 +46,6 @@
         ///     Defines the _imageSource
         /// </summary>
         private ImageSource _imageSource;
-
-        /// <summary>
-        ///     Defines the _mediaPicker
-        /// </summary>
-        private IMediaPicker _mediaPicker;
 
         /// <summary>
         ///     Defines the _parcel
@@ -362,6 +354,12 @@
         /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            if (parameters.ContainsKey("Caller"))
+            {
+                parameters.TryGetValue("Caller", out object caller);
+                if (caller != null)
+                    _caller = (string)caller;
+            }
             if (parameters.ContainsKey("Parcel"))
             {
                 parameters.TryGetValue("Parcel", out object parcel);
@@ -446,6 +444,8 @@
             }
         }
 
+        private string _caller;
+
         /// <summary>
         ///     The DeleteParcel
         /// </summary>
@@ -477,7 +477,14 @@
 
         private void GoBack()
         {
-            _navigationService.GoBackAsync();
+            if (_caller == null)
+            {
+                _navigationService.GoBackAsync();
+            }
+            else
+            {
+                _navigationService.NavigateAsync($"app:///{_caller}", new NavigationParameters { { "Id", Parcel.ParcelId } });
+            }
         }
 
         /// <summary>

@@ -2,7 +2,6 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" mvvm:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Parcel.Views.ParcelPage" Padding="16">
     <ScrollView>
@@ -18,7 +17,7 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" FontSize="18" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}"
+            <Picker ItemsSource="{Binding CropTypes}"
                 SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
                 Margin="0,0,0,16" />
 
@@ -26,12 +25,12 @@
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" FontSize="18" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}"
+            <Picker ItemsSource="{Binding MaturityClasses}"
                 SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
                 Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" FontSize="18" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}"
+            <Picker ItemsSource="{Binding ClimateTypes}"
                 SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
                 Margin="0,0,0,16" />
 

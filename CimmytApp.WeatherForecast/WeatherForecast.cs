@@ -14,8 +14,8 @@
         /// <summary>
         ///     Gets or sets the Language
         /// </summary>
-        [JsonProperty("language")]
-        public string Language { get; set; }
+        //[JsonProperty("language")]
+        //public string Language { get; set; }
 
         /// <summary>
         ///     Gets or sets the Location
@@ -56,8 +56,8 @@
         /// <summary>
         ///     Gets or sets the SfcOb
         /// </summary>
-        [JsonProperty("sfc_ob")]
-        public SfcOb SfcOb { get; set; }
+        //[JsonProperty("sfc_ob")]
+        //public SfcOb SfcOb { get; set; }
     }
 
     /// <summary>
@@ -197,8 +197,8 @@
         /// <summary>
         ///     Gets or sets the DayNight
         /// </summary>
-        [JsonProperty("day_night")]
-        public string DayNight { get; set; }
+        //[JsonProperty("day_night")]
+        //public string DayNight { get; set; }
 
         /// <summary>
         ///     Gets or sets the DayOfWeekUtc
@@ -209,20 +209,20 @@
         /// <summary>
         ///     Gets or sets the DewpC
         /// </summary>
-        [JsonProperty("dewp_C")]
-        public string DewpC { get; set; }
+        //[JsonProperty("dewp_C")]
+        //public string DewpC { get; set; }
 
         /// <summary>
         ///     Gets or sets the PmslMb
         /// </summary>
-        [JsonProperty("pmsl_mb")]
-        public string PmslMb { get; set; }
+        //[JsonProperty("pmsl_mb")]
+        //public string PmslMb { get; set; }
 
         /// <summary>
         ///     Gets or sets the Pop
         /// </summary>
-        [JsonProperty("pop")]
-        public string Pop { get; set; }
+        //[JsonProperty("pop")]
+        //public string Pop { get; set; }
 
         /// <summary>
         ///     Gets or sets the RhPct
@@ -311,14 +311,14 @@
         /// <summary>
         ///     Gets or sets the WxIconUrl
         /// </summary>
-        [JsonProperty("wx_icon_url")]
-        public string WxIconUrl { get; set; }
+        //[JsonProperty("wx_icon_url")]
+        //public string WxIconUrl { get; set; }
 
         /// <summary>
         ///     Gets or sets the WxIconUrlPng
         /// </summary>
-        [JsonProperty("wx_icon_url_png")]
-        public string WxIconUrlPng { get; set; }
+        //[JsonProperty("wx_icon_url_png")]
+        //public string WxIconUrlPng { get; set; }
     }
 
     /// <summary>
@@ -351,14 +351,14 @@
         /// <summary>
         ///     Gets or sets the Cdd1
         /// </summary>
-        [JsonProperty("cdd1")]
-        public string Cdd1 { get; set; }
+        //[JsonProperty("cdd1")]
+        //public string Cdd1 { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Cdd2
-        /// </summary>
-        [JsonProperty("cdd2")]
-        public string Cdd2 { get; set; }
+        ///// <summary>
+        /////     Gets or sets the Cdd2
+        ///// </summary>
+        //[JsonProperty("cdd2")]
+        //public string Cdd2 { get; set; }
 
         /// <summary>
         ///     Gets or sets the DayOfWeek
@@ -375,20 +375,20 @@
         /// <summary>
         ///     Gets or sets the Gdu
         /// </summary>
-        [JsonProperty("gdu")]
-        public string Gdu { get; set; }
+        //[JsonProperty("gdu")]
+        //public string Gdu { get; set; }
 
         /// <summary>
         ///     Gets or sets the Hdd1
         /// </summary>
-        [JsonProperty("hdd1")]
-        public string Hdd1 { get; set; }
+        //[JsonProperty("hdd1")]
+        //public string Hdd1 { get; set; }
 
         /// <summary>
         ///     Gets or sets the Hdd2
         /// </summary>
-        [JsonProperty("hdd2")]
-        public string Hdd2 { get; set; }
+        //[JsonProperty("hdd2")]
+        //public string Hdd2 { get; set; }
 
         /// <summary>
         ///     Gets or sets the MaxTempC
@@ -401,8 +401,8 @@
         /// <summary>
         ///     Gets or sets the MaxWndSpdKph
         /// </summary>
-        [JsonProperty("max_wnd_spd_kph")]
-        public string MaxWndSpdKph { get; set; }
+        //[JsonProperty("max_wnd_spd_kph")]
+        //public string MaxWndSpdKph { get; set; }
 
         /// <summary>
         ///     Gets or sets the MinTempC
@@ -413,44 +413,44 @@
         /// <summary>
         ///     Gets or sets the MinWndSpdKph
         /// </summary>
-        [JsonProperty("min_wnd_spd_kph")]
-        public string MinWndSpdKph { get; set; }
+        //[JsonProperty("min_wnd_spd_kph")]
+        //public string MinWndSpdKph { get; set; }
 
         /// <summary>
         ///     Gets or sets the Pop
         /// </summary>
-        [JsonProperty("pop")]
-        public string Pop { get; set; }
+        //[JsonProperty("pop")]
+        //public string Pop { get; set; }
 
         /// <summary>
         ///     Gets or sets the Qpf24hrMm
         /// </summary>
-        [JsonProperty("qpf_24hr_mm")]
-        public string Qpf24hrMm { get; set; }
+        //[JsonProperty("qpf_24hr_mm")]
+        //public string Qpf24hrMm { get; set; }
 
         /// <summary>
         ///     Gets or sets the SolunarMoonriseUtc
         /// </summary>
-        [JsonProperty("solunar_moonrise_utc")]
-        public string SolunarMoonriseUtc { get; set; }
+        //[JsonProperty("solunar_moonrise_utc")]
+        //public string SolunarMoonriseUtc { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the SolunarMoonsetUtc
-        /// </summary>
-        [JsonProperty("solunar_moonset_utc")]
-        public string SolunarMoonsetUtc { get; set; }
+        ///// <summary>
+        /////     Gets or sets the SolunarMoonsetUtc
+        ///// </summary>
+        //[JsonProperty("solunar_moonset_utc")]
+        //public string SolunarMoonsetUtc { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the SolunarSunriseUtc
-        /// </summary>
-        [JsonProperty("solunar_sunrise_utc")]
-        public string SolunarSunriseUtc { get; set; }
+        ///// <summary>
+        /////     Gets or sets the SolunarSunriseUtc
+        ///// </summary>
+        //[JsonProperty("solunar_sunrise_utc")]
+        //public string SolunarSunriseUtc { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the SolunarSunsetUtc
-        /// </summary>
-        [JsonProperty("solunar_sunset_utc")]
-        public string SolunarSunsetUtc { get; set; }
+        ///// <summary>
+        /////     Gets or sets the SolunarSunsetUtc
+        ///// </summary>
+        //[JsonProperty("solunar_sunset_utc")]
+        //public string SolunarSunsetUtc { get; set; }
 
         /// <summary>
         ///     Gets or sets the SummaryDate
@@ -461,8 +461,8 @@
         /// <summary>
         ///     Gets or sets the TextDescription
         /// </summary>
-        [JsonProperty("text_description")]
-        public string TextDescription { get; set; }
+        //[JsonProperty("text_description")]
+        //public string TextDescription { get; set; }
 
         /// <summary>
         ///     Gets or sets the WndDir
@@ -473,8 +473,8 @@
         /// <summary>
         ///     Gets or sets the WndGustKph
         /// </summary>
-        [JsonProperty("wnd_gust_kph")]
-        public string WndGustKph { get; set; }
+        //[JsonProperty("wnd_gust_kph")]
+        //public string WndGustKph { get; set; }
 
         /// <summary>
         ///     Gets or sets the WndSpdKph
@@ -503,14 +503,14 @@
         /// <summary>
         ///     Gets or sets the WxIconUrl
         /// </summary>
-        [JsonProperty("wx_icon_url")]
-        public string WxIconUrl { get; set; }
+        //[JsonProperty("wx_icon_url")]
+        //public string WxIconUrl { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the WxIconUrlPng
-        /// </summary>
-        [JsonProperty("wx_icon_url_png")]
-        public string WxIconUrlPng { get; set; }
+        ///// <summary>
+        /////     Gets or sets the WxIconUrlPng
+        ///// </summary>
+        //[JsonProperty("wx_icon_url_png")]
+        //public string WxIconUrlPng { get; set; }
     }
 
     /// <summary>
@@ -533,44 +533,44 @@
         /// <summary>
         ///     Gets or sets the Lat
         /// </summary>
-        [JsonProperty("lat")]
-        public string Lat { get; set; }
+        //[JsonProperty("lat")]
+        //public string Lat { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the LocalOffsetHours
-        /// </summary>
-        [JsonProperty("local_offset_hours")]
-        public string LocalOffsetHours { get; set; }
+        ///// <summary>
+        /////     Gets or sets the LocalOffsetHours
+        ///// </summary>
+        //[JsonProperty("local_offset_hours")]
+        //public string LocalOffsetHours { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Lon
-        /// </summary>
-        [JsonProperty("lon")]
-        public string Lon { get; set; }
+        ///// <summary>
+        /////     Gets or sets the Lon
+        ///// </summary>
+        //[JsonProperty("lon")]
+        //public string Lon { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Offset
-        /// </summary>
-        [JsonProperty("offset")]
-        public string Offset { get; set; }
+        ///// <summary>
+        /////     Gets or sets the Offset
+        ///// </summary>
+        //[JsonProperty("offset")]
+        //public string Offset { get; set; }
 
         /// <summary>
         ///     Gets or sets the Region
         /// </summary>
-        [JsonProperty("region")]
-        public string Region { get; set; }
+        //[JsonProperty("region")]
+        //public string Region { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Timezone
-        /// </summary>
-        [JsonProperty("timezone")]
-        public string Timezone { get; set; }
+        ///// <summary>
+        /////     Gets or sets the Timezone
+        ///// </summary>
+        //[JsonProperty("timezone")]
+        //public string Timezone { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Zipcode
-        /// </summary>
-        [JsonProperty("zipcode")]
-        public string Zipcode { get; set; }
+        ///// <summary>
+        /////     Gets or sets the Zipcode
+        ///// </summary>
+        //[JsonProperty("zipcode")]
+        //public string Zipcode { get; set; }
     }
 
     /// <summary>

@@ -46,6 +46,7 @@
             _navigationService = navigationService;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
+            GoBackCommand = new DelegateCommand(GoBack);
 
             try
             {
@@ -54,6 +55,11 @@
             catch (Exception e)
             {
             }
+        }
+
+        private void GoBack()
+        {
+            _navigationService.NavigateAsync("app:///MainPage");
         }
 
         /// <summary>
@@ -85,6 +91,8 @@
             get => _parcel;
             set => SetProperty(ref _parcel, value);
         }
+
+        public DelegateCommand GoBackCommand { get; set; }
 
         /// <summary>
         ///     The OnNavigatedFrom
@@ -125,6 +133,7 @@
             if (page == "ParcelPage")
             {
                 parameters.Add("EditEnabled", false);
+                parameters.Add("Caller", "ParcelMainPage");
             }
             _navigationService.NavigateAsync(page, parameters);
         }

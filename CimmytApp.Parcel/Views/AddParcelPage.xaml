@@ -2,7 +2,6 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
     prism:ViewModelLocator.AutowireViewModel="True"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     x:Class="CimmytApp.Parcel.Views.AddParcelPage" Padding="16">
@@ -14,18 +13,18 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" FontSize="18" />
-            <controls:ExtendedPicker ItemsSource="{Binding CropTypes}"
+            <Picker ItemsSource="{Binding CropTypes}"
                 SelectedIndex="{Binding PickerCropTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
             <DatePicker Date="{Binding Parcel.PlantingDate}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" FontSize="18" />
-            <controls:ExtendedPicker ItemsSource="{Binding MaturityClasses}"
+            <Picker ItemsSource="{Binding MaturityClasses}"
                 SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" FontSize="18" />
-            <controls:ExtendedPicker ItemsSource="{Binding ClimateTypes}"
+            <Picker ItemsSource="{Binding ClimateTypes}"
                 SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" Title="seleccionar" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_parcel_name}" FontSize="18" />

@@ -12,12 +12,20 @@
             InitializeComponent();
         }
 
+        private ParcelsOverviewPageViewModel contextObj { get; set; }
+
+        protected override bool OnBackButtonPressed()
+        {
+            contextObj.GoBackCommand.Execute();
+            return true;
+        }
+
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ParcelsOverviewPageViewModel vm = BindingContext as ParcelsOverviewPageViewModel;
+            contextObj = BindingContext as ParcelsOverviewPageViewModel;
             ParcelViewModel selectedItem = e.Item as ParcelViewModel;
 
-            vm?.HideOrShowParcel(selectedItem);
+            contextObj?.HideOrShowParcel(selectedItem);
         }
     }
 }

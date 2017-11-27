@@ -5,6 +5,7 @@
     using System.Collections.ObjectModel;
     using CimmytApp.BusinessContract;
     using CimmytApp.DTO.Parcel;
+    using Prism;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -12,7 +13,7 @@
     /// <summary>
     ///     Defines the <see cref="ParcelsOverviewPageViewModel" />
     /// </summary>
-    public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware
+    public class ParcelsOverviewPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
         /// <summary>
         ///     Defines the _cimmytDbOperations
@@ -54,6 +55,8 @@
         /// </summary>
         private bool _showUploadButton;
 
+        private bool _isActive;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParcelsOverviewPageViewModel" /> class.
         /// </summary>
@@ -74,6 +77,7 @@
             ParcelDeleteCommand =
                 new DelegateCommand<object>(NavigateToParcelDeletePage).ObservesCanExecute(o => IsParcelListEnabled);
             BackToMainPageCommand = new DelegateCommand(BackToMainPage);
+            GoBackCommand = new DelegateCommand(GoBack);
 
             _parcels = new List<Parcel>();
             Parcels = cimmytDbOperations.GetAllParcels();
@@ -98,6 +102,8 @@
         ///     Gets or sets the BackToMainPageCommand
         /// </summary>
         public DelegateCommand BackToMainPageCommand { get; set; }
+
+        public DelegateCommand GoBackCommand { get; set; }
 
         /// <summary>
         ///     Gets or sets a value indicating whether IsParcelListEnabled
@@ -190,22 +196,23 @@
             _oldParcel = parcel;
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     The OnNavigatedFrom
         /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
+        /// <inheritdoc />
         /// <summary>
         ///     The OnNavigatedTo
         /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             _parcels = new List<Parcel>();
-            Parcels = _cimmytDbOperations.GetAllParcels();
         }
 
         /// <summary>
@@ -222,6 +229,11 @@
         private void BackToMainPage()
         {
             _navigationService.GoBackAsync();
+        }
+
+        private void GoBack()
+        {
+            _navigationService.NavigateAsync("app:///MainPage");
         }
 
         /// <summary>
@@ -285,7 +297,8 @@
                 NavigationParameters navigationParameters = new NavigationParameters
                 {
                     { "Id", (int)id },
-                    { "EditEnabled", true }
+                    { "EditEnabled", true },
+                    { "Caller", "ParcelsOverviewPage" }
                 };
                 _navigationService.NavigateAsync("ParcelPage", navigationParameters);
             }
@@ -334,5 +347,20 @@
             Parcels = Parcels; // Just for triggering setproperty
             ShowUploadButton = false;
         }
+
+        public bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                _isActive = value;
+                if (value)
+                {
+                    Parcels = _cimmytDbOperations.GetAllParcels();
+                }
+            }
+        }
+
+        public event EventHandler IsActiveChanged;
     }
 }
