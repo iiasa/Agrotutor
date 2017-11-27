@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<CarouselPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    x:Class="CimmytApp.StaticContent.Views.WelcomePage" Title="MainPage">
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_1.png" />
+            <Label Grid.Row="1" Text="Crear y administrar parcelas (Deslízate a la izquierda)"
+                HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_2.png" />
+            <Label Grid.Row="1" Text="Proporcionar información sobre parcelas" HorizontalTextAlignment="Center"
+                Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_3.png" />
+            <Label Grid.Row="1"
+                Text="Delinear parcelas. Mantenga presionada la pantalla para crear el primer punto. Luego marque las esquinas de la parcela."
+                HorizontalTextAlignment="Center" Margin="16" FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Image Grid.Row="0" Source="welcome_4.png" />
+            <Label Grid.Row="1" Text="Reciba información útil" HorizontalTextAlignment="Center" Margin="16"
+                FontSize="24" FontAttributes="Bold" TextColor="DimGray" />
+        </Grid>
+    </ContentPage>
+    <ContentPage>
+        <StackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+            <Button Text="Empezar ahora" Command="{Binding NavigateToMainPageCommand}" />
+        </StackLayout>
+    </ContentPage>
+</CarouselPage>

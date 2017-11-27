@@ -7,7 +7,6 @@
     using CimmytApp.Benchmarking;
     using CimmytApp.BusinessContract;
     using CimmytApp.Calendar;
-    using CimmytApp.Introduction;
     using CimmytApp.Parcel;
     using CimmytApp.SQLiteDB;
     using CimmytApp.StaticContent;
@@ -95,14 +94,6 @@
                 {
                     ModuleName = calendarModule.Name,
                     ModuleType = calendarModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
-
-                Type introductionModule = typeof(IntroductionModule);
-                ModuleCatalog.AddModule(new ModuleInfo
-                {
-                    ModuleName = introductionModule.Name,
-                    ModuleType = introductionModule,
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 

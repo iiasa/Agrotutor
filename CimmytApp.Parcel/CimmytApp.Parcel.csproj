@@ -114,10 +114,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
-      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
-      <Name>CimmytApp.DTO.Parcel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
@@ -146,9 +142,6 @@
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExifLib.PCL.1.0.2-pre01\lib\netstandard1.0\ExifLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Helper.Base.DTO">
-      <HintPath>..\BaseDLL\Helper.Base.DTO.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>

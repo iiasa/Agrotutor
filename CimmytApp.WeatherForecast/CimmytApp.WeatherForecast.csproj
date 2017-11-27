@@ -155,10 +155,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
-      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
-      <Name>CimmytApp.DTO.Parcel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
@@ -175,9 +171,9 @@
       <Project>{8FA589B1-356E-4A97-B4C9-C1681A8906D7}</Project>
       <Name>CimmytApp.BusinessContract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Helper.DTO.SkywiseWeather\Helper.DTO.SkywiseWeather.csproj">
-      <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
-      <Name>Helper.DTO.SkywiseWeather</Name>
+    <ProjectReference Include="..\Helper.DTO\Helper.DTO.csproj">
+      <Project>{647D5F44-FD24-48AF-AFB4-26AC21180367}</Project>
+      <Name>Helper.DTO</Name>
     </ProjectReference>
     <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>

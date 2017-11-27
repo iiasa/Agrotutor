@@ -35,6 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="GenericDatasetStorage\GetDatasetsParams.cs" />
+    <Compile Include="GenericDatasetStorage\Storage.cs" />
+    <Compile Include="GenericDatasetStorage\UploadData.cs" />
     <Compile Include="GeoWikiApi.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Helper.Datatypes\Helper.Datatypes.csproj">
+      <Project>{32b74614-3203-40c3-adfa-b9d760d954a1}</Project>
+      <Name>Helper.Datatypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Helper.HTTP\Helper.HTTP.csproj">
       <Project>{01ed90d5-7b33-4771-856b-4d15d72fa66f}</Project>
       <Name>Helper.HTTP</Name>

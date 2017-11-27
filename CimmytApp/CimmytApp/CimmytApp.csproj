@@ -195,14 +195,6 @@
       <Project>{d673eec7-ddef-48e1-82d3-6c1a64517de7}</Project>
       <Name>CimmytApp.Calendar</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CimmytApp.DTO.BEM\CimmytApp.DTO.BEM.csproj">
-      <Project>{d35ef41b-7484-4544-8186-29c31ec6af4a}</Project>
-      <Name>CimmytApp.DTO.BEM</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
-      <Project>{d9acfcbc-ca0b-4228-b9d9-9f29c2d5e281}</Project>
-      <Name>CimmytApp.DTO.Parcel</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\CimmytApp.DTO\CimmytApp.DTO.csproj">
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
@@ -236,10 +228,6 @@
       <Name>Helper.Localization</Name>
       <Private>True</Private>
     </ProjectReference>
-    <ProjectReference Include="..\..\CimmytApp.Introduction\CimmytApp.Introduction.csproj">
-      <Project>{F4095A9B-FD71-48D3-996E-7B0306356160}</Project>
-      <Name>CimmytApp.Introduction</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\Helper.Map\Helper.Map.csproj">
       <Project>{e26ac875-8f9c-4468-ad54-03d7a71f3a60}</Project>
       <Name>Helper.Map</Name>
@@ -251,10 +239,6 @@
     <ProjectReference Include="..\..\CimmytApp.Parcel\CimmytApp.Parcel.csproj">
       <Project>{F7513236-DC22-4A65-803E-1892E7FA180A}</Project>
       <Name>CimmytApp.Parcel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Helper.DTO.SkywiseWeather\Helper.DTO.SkywiseWeather.csproj">
-      <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
-      <Name>Helper.DTO.SkywiseWeather</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

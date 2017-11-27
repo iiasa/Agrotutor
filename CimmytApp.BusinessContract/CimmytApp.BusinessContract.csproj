@@ -44,10 +44,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CimmytApp.DTO.BEM\CimmytApp.DTO.BEM.csproj">
-      <Project>{D35EF41B-7484-4544-8186-29C31EC6AF4A}</Project>
-      <Name>CimmytApp.DTO.BEM</Name>
-    </ProjectReference>
     <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
       <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
       <Name>CimmytApp.DTO</Name>
@@ -56,13 +52,9 @@
       <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
       <Name>Helper.BusinessContract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Helper.DTO.SkywiseWeather\Helper.DTO.SkywiseWeather.csproj">
-      <Project>{42A09536-0DA7-438A-A72D-6EB9FD87FB32}</Project>
-      <Name>Helper.DTO.SkywiseWeather</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CimmytApp.DTO.Parcel\CimmytApp.DTO.Parcel.csproj">
-      <Project>{D9ACFCBC-CA0B-4228-B9D9-9F29C2D5E281}</Project>
-      <Name>CimmytApp.DTO.Parcel</Name>
+    <ProjectReference Include="..\Helper.DTO\Helper.DTO.csproj">
+      <Project>{647D5F44-FD24-48AF-AFB4-26AC21180367}</Project>
+      <Name>Helper.DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

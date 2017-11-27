@@ -6,6 +6,8 @@
 
     public class HourlyWeatherDataPageViewModel : BindableBase, INavigationAware
     {
+        public const string SeriesParameterName = "Series";
+
         private HourlySeries _series;
         private string _variableName;
 
@@ -27,13 +29,13 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (!parameters.ContainsKey("Series"))
+            if (!parameters.ContainsKey(SeriesParameterName))
             {
                 VariableName = "Lo sentimos, no hay datos disponibles";
                 return;
             }
 
-            parameters.TryGetValue("Series", out object series);
+            parameters.TryGetValue(SeriesParameterName, out object series);
             Series = (HourlySeries)series;
 
             parameters.TryGetValue("VariableName", out object variableName);
