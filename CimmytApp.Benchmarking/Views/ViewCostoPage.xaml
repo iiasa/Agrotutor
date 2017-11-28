@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
-             xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Benchmarking.Views.ViewCostoPage"
-             Padding="16">
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+    xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.ViewCostoPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <Label Text="Ordenamiento de datos en curso, por favor espere..." IsVisible="{Binding IsLoading}" Margin="0,0,0,16"/>
+            <Label Text="Ordenamiento de datos en curso, por favor espere..." IsVisible="{Binding IsLoading}"
+                Margin="0,0,0,16" />
             <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
                 <chart:RadCartesianChart.HorizontalAxis>
                     <chart:CategoricalAxis LabelFitMode="Rotate" />

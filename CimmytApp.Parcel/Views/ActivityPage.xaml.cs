@@ -1,13 +1,10 @@
-﻿using CimmytApp.Parcel.ViewModels;
-using Xamarin.Forms;
-
-namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Parcel.Views
 {
+    using CimmytApp.Parcel.ViewModels;
+    using Xamarin.Forms;
+
     public partial class ActivityPage : ContentPage
     {
-        /// <summary>
-        /// Defines the contextObj
-        /// </summary>
         private readonly ActivityPageViewModel _contextObj;
 
         public ActivityPage()

@@ -1,8 +1,20 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
+    using CimmytApp.DTO.Parcel;
+
+    /// <summary>
+    ///     Defines the <see cref="ParcelViewModel" />
+    /// </summary>
     public class ParcelViewModel
     {
-        public DTO.Parcel.Parcel Parcel { get; set; }
+        /// <summary>
+        ///     Gets or sets a value indicating whether IsOptionsVisible
+        /// </summary>
         public bool IsOptionsVisible { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the Parcel
+        /// </summary>
+        public Parcel Parcel { get; set; }
     }
 }

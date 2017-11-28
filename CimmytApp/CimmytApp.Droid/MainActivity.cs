@@ -1,48 +1,62 @@
-﻿using System;
-using Android.App;
-using Android.Content.PM;
-using Android.OS;
-using Android.Util;
-using Gcm.Client;
-using Prism.Unity;
-using Microsoft.Practices.Unity;
-using Android.Runtime;
-using System.Threading.Tasks;
-using Plugin.Permissions;
+﻿using Telerik.XamarinForms.Input;
+using Telerik.XamarinForms.InputRenderer.Android;
 using Xamarin.Forms;
 
-[assembly: ExportRenderer(typeof(Telerik.XamarinForms.Input.RadCalendar), typeof(Telerik.XamarinForms.InputRenderer.Android.CalendarRenderer))]
+[assembly: ExportRenderer(typeof(RadCalendar), typeof(CalendarRenderer))]
 
 namespace CimmytApp.Droid
 {
-    [Activity(Label = "México Produce", Icon = "@drawable/app_logo", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+    using System;
+    using System.Threading.Tasks;
+    using Android.App;
+    using Android.Content.PM;
+    using Android.OS;
+    using Android.Runtime;
+    using Android.Util;
+    using Gcm.Client;
+    using Microsoft.Practices.Unity;
+    using Plugin.Permissions;
+    using Prism.Unity;
+    using Xamarin;
+    using Xamarin.Forms.Platform.Android;
+    using XamForms.Controls.Droid;
+
+    [Activity(Label = "México Produce", Icon = "@drawable/app_logo", MainLauncher = true,
+        ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : FormsAppCompatActivity
     {
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
+            Permission[] grantResults)
+        {
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
         protected override void OnCreate(Bundle bundle)
         {
             try
             {
                 AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
                 {
-                    var x = args;
+                    RaiseThrowableEventArgs x = args;
                 };
 
                 AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
                 {
-                    var x = args.ExceptionObject;
+                    object x = args.ExceptionObject;
                 };
 
                 // Wire up the unobserved task exception handler
                 TaskScheduler.UnobservedTaskException += (sender, args) =>
                 {
-                    var x = args;
+                    UnobservedTaskExceptionEventArgs x = args;
                 };
 
                 base.OnCreate(bundle);
 
-                global::Xamarin.Forms.Forms.Init(this, bundle);
-                Xamarin.FormsMaps.Init(this, bundle);
-                XamForms.Controls.Droid.Calendar.Init();
+                Forms.Init(this, bundle);
+                FormsMaps.Init(this, bundle);
+                Calendar.Init();
+
                 //base.OnCreate (bundle);
 
                 //// Set your view from the "main" layout resource
@@ -77,11 +91,6 @@ namespace CimmytApp.Droid
             // Register for push notifications
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderId);
-        }
-
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
-        {
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 

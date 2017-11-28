@@ -1,8 +1,8 @@
 ﻿namespace CimmytApp.ViewModels
 {
+    using System.Windows.Input;
     using Prism.Commands;
     using Prism.Mvvm;
-    using System.Windows.Input;
     using Prism.Navigation;
 
     public class LoginPageViewModel : BindableBase
@@ -17,6 +17,7 @@
         }
 
         public ICommand LoginCommand { get; set; }
+
         public ICommand NavigateToRegistrationCommand { get; set; }
 
         private void LoginClick()

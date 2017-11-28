@@ -2,9 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using Helper.HTTP;
     using Newtonsoft.Json;
-
-    using HTTP;
 
     public static class GeoWikiApi
     {
@@ -12,14 +11,17 @@
 
         public static async Task<T> Get<T>(string controller, string action, string param) where T : class
         {
-            var requestUrl = Url + controller + "/" + action + "/";
+            string requestUrl = GeoWikiApi.Url + controller + "/" + action + "/";
             return await RequestJson.Get<T>(requestUrl, param);
         }
 
         public static async Task<T> Post<T>(string controller, string action, object param) where T : class
         {
-            var requestUrl = Url + controller + "/" + action;
-            var parameters = new Dictionary<string, string>() { { "parameter", JsonConvert.SerializeObject(param) } };
+            string requestUrl = GeoWikiApi.Url + controller + "/" + action;
+            Dictionary<string, string> parameters = new Dictionary<string, string>
+            {
+                { "parameter", JsonConvert.SerializeObject(param) }
+            };
             return await RequestJson.Post<T>(requestUrl, parameters);
         }
     }

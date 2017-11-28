@@ -59,7 +59,7 @@
 
         private void DateClieckCommandAction(object obj)
         {
-            var x = SelectCurrentDate;
+            DateTime? x = SelectCurrentDate;
         }
     }
 }

@@ -1,19 +1,15 @@
-﻿using Prism.Commands;
-
-namespace CimmytApp.StaticContent.ViewModels
+﻿namespace CimmytApp.StaticContent.ViewModels
 {
     using System;
     using System.Windows.Input;
+    using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
 
     public class LinksPageViewModel : BindableBase
     {
-        private INavigationService _navigationService;
-        public ICommand TapLinkCommand { get; set; }
-        public DelegateCommand ShowIntroductionCommand { get; set; }
-        public DelegateCommand ShowLicensesCommand { get; set; }
+        private readonly INavigationService _navigationService;
 
         public LinksPageViewModel(INavigationService navigationService)
         {
@@ -23,9 +19,15 @@ namespace CimmytApp.StaticContent.ViewModels
             ShowLicensesCommand = new DelegateCommand(ShowLicenses);
         }
 
-        private void ShowLicenses()
+        public DelegateCommand ShowIntroductionCommand { get; set; }
+
+        public DelegateCommand ShowLicensesCommand { get; set; }
+
+        public ICommand TapLinkCommand { get; set; }
+
+        private static void OpenLink(object url)
         {
-            _navigationService.NavigateAsync("CitationPage");
+            Device.OpenUri(new Uri((string)url));
         }
 
         private void ShowIntroduction()
@@ -33,9 +35,9 @@ namespace CimmytApp.StaticContent.ViewModels
             _navigationService.NavigateAsync("WelcomePage");
         }
 
-        private static void OpenLink(object url)
+        private void ShowLicenses()
         {
-            Device.OpenUri(new Uri((string)url));
+            _navigationService.NavigateAsync("CitationPage");
         }
     }
 }

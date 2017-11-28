@@ -1,29 +1,25 @@
-﻿using Helper.Map;
-
-namespace CimmytApp.WeatherForecast.ViewModels
+﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
-    using System.Windows.Input;
-    using Xamarin.Forms;
-    using DTO.Parcel;
-    using Helper.DatasetSyncEvents.ViewModelBase;
     using System;
-    using Helper.BusinessContract;
-    using Prism.Events;
-    using Prism.Navigation;
     using System.ComponentModel;
-    using Prism;
-
+    using System.Windows.Input;
+    using CimmytApp.DTO.Parcel;
+    using Helper.BusinessContract;
+    using Helper.DatasetSyncEvents.ViewModelBase;
     using Helper.DTO.SkywiseWeather.Historical;
     using Helper.DTO.SkywiseWeather.Historical.Temperature;
+    using Helper.Map;
+    using Prism;
+    using Prism.Events;
+    using Prism.Navigation;
+    using Xamarin.Forms;
 
-    using DTO;
-
-    public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware, INotifyPropertyChanged
+    public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware,
+        INotifyPropertyChanged
     {
         private DailyHighTemperature _dailyHighTemperature;
         private Parcel _parcel;
         private WeatherData _weatherData;
-        private bool isActive;
         private GeoPosition position;
 
         public WeatherForecastPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
@@ -31,7 +27,9 @@ namespace CimmytApp.WeatherForecast.ViewModels
             TestCommand = new Command(Test);
         }
 
+#pragma warning disable CS0067 // The event 'WeatherForecastPageViewModel.IsActiveChanged' is never used
         public event EventHandler IsActiveChanged;
+#pragma warning restore CS0067 // The event 'WeatherForecastPageViewModel.IsActiveChanged' is never used
 
         public DailyHighTemperature DailyHighTemperature
         {
@@ -39,14 +37,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
             private set => SetProperty(ref _dailyHighTemperature, value);
         }
 
-        public bool IsActive
-        {
-            get { return isActive; }
-            set
-            {
-                isActive = value;
-            }
-        }
+        public bool IsActive { get; set; }
 
         public Parcel Parcel
         {
@@ -54,19 +45,23 @@ namespace CimmytApp.WeatherForecast.ViewModels
             set
             {
                 SetProperty(ref _parcel, value);
+#pragma warning disable CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
+#pragma warning disable CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
                 if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
+#pragma warning restore CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
+#pragma warning restore CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
                 {
-                    if (_parcel.Latitude == 0 && _parcel.Longitude == 0) return;
+                    if (_parcel.Latitude == 0 && _parcel.Longitude == 0)
+                    {
+                        return;
+                    }
+
                     position = new GeoPosition
                     {
                         Latitude = Parcel.Latitude,
                         Longitude = Parcel.Longitude
                     };
                     LoadWeatherDataAsync();
-                }
-                else
-                {
-                    //Show msg - no location
                 }
             }
         }
@@ -94,7 +89,7 @@ namespace CimmytApp.WeatherForecast.ViewModels
 
         public void Test()
         {
-            var i = 0;
+            int i = 0;
             i++;
         }
 

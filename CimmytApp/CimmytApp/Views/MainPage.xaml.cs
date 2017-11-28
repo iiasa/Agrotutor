@@ -1,11 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using CimmytApp.Messaging;
-using Xamarin.Forms.Xaml;
-
-namespace CimmytApp.Views
+﻿namespace CimmytApp.Views
 {
+    using System.Threading.Tasks;
+    using CimmytApp.Messaging;
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : ContentPage
@@ -20,7 +18,9 @@ namespace CimmytApp.Views
         protected override bool OnBackButtonPressed()
         {
             if (_backButtonRecentlyPressed)
+            {
                 return base.OnBackButtonPressed();
+            }
 
             _backButtonRecentlyPressed = true;
             StartBackButtonTimer();

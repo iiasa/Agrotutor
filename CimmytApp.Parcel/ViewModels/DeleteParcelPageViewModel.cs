@@ -1,48 +1,37 @@
-﻿using System;
-
-namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Parcel.ViewModels
 {
+    using System;
+    using CimmytApp.BusinessContract;
+    using CimmytApp.DTO.Parcel;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    using BusinessContract;
-
     /// <summary>
-    /// Defines the <see cref="DeleteParcelPageViewModel" />
+    ///     Defines the <see cref="DeleteParcelPageViewModel" />
     /// </summary>
     public class DeleteParcelPageViewModel : BindableBase, INavigationAware
     {
         /// <summary>
-        /// Defines the _navigationService
-        /// </summary>
-        private readonly INavigationService _navigationService;
-
-        /// <summary>
-        /// Defines the _cimmytDbOperations
+        ///     Defines the _cimmytDbOperations
         /// </summary>
         private readonly ICimmytDbOperations _cimmytDbOperations;
 
         /// <summary>
-        /// Defines the _parcel
+        ///     Defines the _navigationService
         /// </summary>
-        private DTO.Parcel.Parcel _parcel;
+        private readonly INavigationService _navigationService;
 
         /// <summary>
-        /// Gets or sets the Delete
+        ///     Defines the _parcel
         /// </summary>
-        public DelegateCommand Delete { get; set; }
+        private Parcel _parcel;
 
         /// <summary>
-        /// Gets or sets the GoBack
+        ///     Initializes a new instance of the <see cref="DeleteParcelPageViewModel" /> class.
         /// </summary>
-        public DelegateCommand GoBack { get; set; }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteParcelPageViewModel"/> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService"/></param>
-        /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations"/></param>
+        /// <param name="navigationService">The <see cref="INavigationService" /></param>
+        /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
         public DeleteParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
@@ -52,16 +41,52 @@ namespace CimmytApp.Parcel.ViewModels
         }
 
         /// <summary>
-        /// The DeleteParcel
+        ///     Gets or sets the Delete
         /// </summary>
-        private void DeleteParcel()
+        public DelegateCommand Delete { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the GoBack
+        /// </summary>
+        public DelegateCommand GoBack { get; set; }
+
+        /// <summary>
+        ///     The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            _cimmytDbOperations.DeleteParcel(_parcel);
-            _navigationService.NavigateAsync("app:///MainPage");
         }
 
         /// <summary>
-        /// The Back
+        ///     The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("Parcel"))
+            {
+                _parcel = (Parcel)parameters["Parcel"];
+            }
+            else
+            {
+                try
+                {
+                    int id = (int)parameters["Id"];
+
+                    _parcel = _cimmytDbOperations.GetParcelById(id);
+                }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
+                catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
+                {
+                    Back();
+                }
+            }
+        }
+
+        /// <summary>
+        ///     The Back
         /// </summary>
         private void Back()
         {
@@ -69,36 +94,16 @@ namespace CimmytApp.Parcel.ViewModels
         }
 
         /// <summary>
-        /// The OnNavigatedFrom
+        ///     The DeleteParcel
         /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        private void DeleteParcel()
         {
+            _cimmytDbOperations.DeleteParcel(_parcel);
+            _navigationService.NavigateAsync("app:///MainPage");
         }
 
-        /// <summary>
-        /// The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public void OnNavigatingTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Parcel"))
-            {
-                _parcel = (DTO.Parcel.Parcel)parameters["Parcel"];
-            }
-            else
-            {
-                try
-                {
-                    var id = (int)parameters["Id"];
-
-                    _parcel = _cimmytDbOperations.GetParcelById(id);
-                }
-                catch (Exception e)
-                {
-                    Back();
-                }
-            }
         }
     }
 }

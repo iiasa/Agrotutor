@@ -1,6 +1,7 @@
 ﻿namespace Helper.HTTP
 {
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Net;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -11,7 +12,7 @@
         public static async Task<T> Get<T>(string url) where T : class
         {
             T res;
-            using (var httpClient = new HttpClient())
+            using (HttpClient httpClient = new HttpClient())
             {
                 HttpResponseMessage response = null;
                 try
@@ -20,12 +21,16 @@
                 }
                 catch (HttpRequestException e)
                 {
-                    System.Diagnostics.Debug.WriteLine("HTTP E: " + e.Message);
+                    Debug.WriteLine("HTTP E: " + e.Message);
                     return null;
                 }
 
-                if (response == null || response.StatusCode != HttpStatusCode.OK) return null;
-                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                if (response == null || response.StatusCode != HttpStatusCode.OK)
+                {
+                    return null;
+                }
+
+                string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 res = JsonConvert.DeserializeObject<T>(responseContent);
             }
 
@@ -34,30 +39,42 @@
 
         public static async Task<T> Get<T>(string url, string param) where T : class
         {
-            var fullUrl = (url.EndsWith("/") ? url + param : url + "/" + param);
+            string fullUrl = url.EndsWith("/") ? url + param : url + "/" + param;
             return await Get<T>(fullUrl);
         }
 
         public static async Task<T> Post<T>(string url, Dictionary<string, string> param) where T : class
         {
             T res;
-            using (var httpClient = new HttpClient())
+            using (HttpClient httpClient = new HttpClient())
             {
                 HttpResponseMessage response = null;
-                var parameters = new Dictionary<string, string>() { { "parameter", JsonConvert.SerializeObject(param) } };
-                var encodedContent = new FormUrlEncodedContent(parameters); try
+                Dictionary<string, string> parameters = new Dictionary<string, string>
+                {
+                    { "parameter", JsonConvert.SerializeObject(param) }
+                };
+                FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(parameters);
+                try
                 {
                     response = await httpClient.PostAsync(url, encodedContent).ConfigureAwait(false);
                 }
                 catch (HttpRequestException e)
                 {
-                    System.Diagnostics.Debug.WriteLine("HTTP E: " + e.Message);
+                    Debug.WriteLine("HTTP E: " + e.Message);
                     return null;
                 }
 
-                if (response.StatusCode != HttpStatusCode.OK) return null;
-                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                if (string.IsNullOrEmpty(responseContent)) return null;
+                if (response.StatusCode != HttpStatusCode.OK)
+                {
+                    return null;
+                }
+
+                string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                if (string.IsNullOrEmpty(responseContent))
+                {
+                    return null;
+                }
+
                 res = JsonConvert.DeserializeObject<T>(responseContent);
             }
 

@@ -1,179 +1,299 @@
 ﻿namespace Helper.Map.ViewModels
 {
-    using Prism.Commands;
-    using Prism.Events;
-    using Prism.Mvvm;
-    using Prism.Navigation;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
+    using Prism.Commands;
+    using Prism.Events;
+    using Prism.Mvvm;
+    using Prism.Navigation;
     using TK.CustomMap;
     using TK.CustomMap.Overlays;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
     /// <summary>
-    /// Defines the <see cref="GenericMapViewModel" />
+    ///     Defines the <see cref="GenericMapViewModel" />
     /// </summary>
     public class GenericMapViewModel : BindableBase, INavigationAware
     {
         /// <summary>
-        /// Defines the MapTaskParameterName
-        /// </summary>
-        public const string MapTaskParameterName = "MapTask";
-
-        /// <summary>
-        /// Defines the MapRegionParameterName
-        /// </summary>
-        public const string MapRegionParameterName = "MapRegion";
-
-        /// <summary>
-        /// Defines the ListenForUserLocationParameterName
-        /// </summary>
-        public const string ListenForUserLocationParameterName = "ListenForUserLocation";
-
-        /// <summary>
-        /// Defines the FollowUserLocationParameterName
+        ///     Defines the FollowUserLocationParameterName
         /// </summary>
         public const string FollowUserLocationParameterName = "FollowUserLocation";
 
         /// <summary>
-        /// Defines the MaximumLocationAccuracyParameterName
+        ///     Defines the ListenForUserLocationParameterName
+        /// </summary>
+        public const string ListenForUserLocationParameterName = "ListenForUserLocation";
+
+        /// <summary>
+        ///     Defines the MapRegionParameterName
+        /// </summary>
+        public const string MapRegionParameterName = "MapRegion";
+
+        /// <summary>
+        ///     Defines the MapTaskParameterName
+        /// </summary>
+        public const string MapTaskParameterName = "MapTask";
+
+        /// <summary>
+        ///     Defines the MaximumLocationAccuracyParameterName
         /// </summary>
         public const string MaximumLocationAccuracyParameterName = "MaximumLocationAccuracy";
 
-        /// <summary>
-        /// Defines the InitialMapRegion
-        /// </summary>
-        public static readonly MapSpan InitialMapRegion = MapSpan.FromCenterAndRadius(new Position(20, -100), new Distance(200000));
+        public const string PointsParameterName = "Points";
 
         /// <summary>
-        /// Defines the _navigationService
+        ///     Defines the PolygonsParameterName
         /// </summary>
-        private readonly INavigationService _navigationService;
+        public const string PolygonsParameterName = "Polygons";
 
         /// <summary>
-        /// Defines the _eventAggregator
+        ///     Defines the InitialMapRegion
+        /// </summary>
+        public static readonly MapSpan InitialMapRegion =
+            MapSpan.FromCenterAndRadius(new Position(20, -100), new Distance(200000));
+
+        /// <summary>
+        ///     Defines the _eventAggregator
         /// </summary>
         private readonly IEventAggregator _eventAggregator;
 
         /// <summary>
-        /// Defines the _geoLocator
+        ///     Defines the _geoLocator
         /// </summary>
         private readonly IPosition _geoLocator;
 
         /// <summary>
-        /// Defines the _mapTask
+        ///     Defines the _navigationService
         /// </summary>
-        private MapTask _mapTask;
+        private readonly INavigationService _navigationService;
+
+        private bool _buttonAcceptDelineationEnabled;
+
+        private bool _buttonCancelDelineationEnabled;
 
         /// <summary>
-        /// Defines the _mapRegion
-        /// </summary>
-        private MapSpan _mapRegion;
-
-        /// <summary>
-        /// Defines the _listenForUserLocation
-        /// </summary>
-        private bool _listenForUserLocation;
-
-        /// <summary>
-        /// Defines the _followUserLocation
-        /// </summary>
-        private bool _followUserLocation;
-
-        /// <summary>
-        /// Defines the _maximumLocationAccuracy
-        /// </summary>
-        private int? _maximumLocationAccuracy;
-
-        /// <summary>
-        /// Defines the _point
-        /// </summary>
-        private GeoPosition _point;
-
-        /// <summary>
-        /// Defines the _polygon
-        /// </summary>
-        private ObservableCollection<GeoPosition> _polygon;
-
-        /// <summary>
-        /// Defines the _viewPolygons
-        /// </summary>
-        private ObservableCollection<TKPolygon> _viewPolygons;
-
-        /// <summary>
-        /// Defines the _viewPins
-        /// </summary>
-        private ObservableCollection<TKCustomMapPin> _viewPins;
-
-        /// <summary>
-        /// Defines the _userLocation
-        /// </summary>
-        private GeoPosition _userLocation;
-
-        /// <summary>
-        /// Defines the _mapType
-        /// </summary>
-        private MapType _mapType;
-
-        /// <summary>
-        /// Defines the _currentGeoPosition
+        ///     Defines the _currentGeoPosition
         /// </summary>
         private GeoPosition _currentGeoPosition;
 
         /// <summary>
-        /// Defines the _returnGeolocationButtonEnabled
+        ///     Defines the _delineationButtonsVisible
+        /// </summary>
+        private bool _delineationButtonsVisible;
+
+        /// <summary>
+        ///     Defines the _followUserLocation
+        /// </summary>
+        private bool _followUserLocation;
+
+        /// <summary>
+        ///     Defines the _listenForUserLocation
+        /// </summary>
+        private bool _listenForUserLocation;
+
+        /// <summary>
+        ///     Defines the _mapRegion
+        /// </summary>
+        private MapSpan _mapRegion;
+
+        /// <summary>
+        ///     Defines the _mapTask
+        /// </summary>
+        private MapTask _mapTask;
+
+        /// <summary>
+        ///     Defines the _mapType
+        /// </summary>
+        private MapType _mapType;
+
+        /// <summary>
+        ///     Defines the _maximumLocationAccuracy
+        /// </summary>
+        private int? _maximumLocationAccuracy;
+
+        /// <summary>
+        ///     Defines the _point
+        /// </summary>
+        private GeoPosition _point;
+
+        /// <summary>
+        ///     Defines the _polygon
+        /// </summary>
+        private ObservableCollection<GeoPosition> _polygon;
+
+        /// <summary>
+        ///     Defines the _returnGeolocationButtonEnabled
         /// </summary>
         private bool _returnGeolocationButtonEnabled;
 
         /// <summary>
-        /// Defines the _returnGeolocationButtonVisible
+        ///     Defines the _returnGeolocationButtonVisible
         /// </summary>
         private bool _returnGeolocationButtonVisible;
 
+        private bool _showEnableLocationHint;
+
         /// <summary>
-        /// Defines the _delineationButtonsVisible
+        ///     Defines the _userLocation
         /// </summary>
-        private bool _delineationButtonsVisible;
-
-        private bool _buttonCancelDelineationEnabled;
-        private bool _buttonAcceptDelineationEnabled;
+        private GeoPosition _userLocation;
 
         /// <summary>
-        /// Gets or sets the Point
+        ///     Defines the _viewPins
         /// </summary>
-        public GeoPosition Point { get => _point; set => SetProperty(ref _point, value); }
+        private ObservableCollection<TKCustomMapPin> _viewPins;
 
         /// <summary>
-        /// Gets or sets the Polygon
+        ///     Defines the _viewPolygons
         /// </summary>
-        public ObservableCollection<GeoPosition> Polygon { get => _polygon; set => SetProperty(ref _polygon, value); }
+        private ObservableCollection<TKPolygon> _viewPolygons;
 
         /// <summary>
-        /// Gets or sets the ViewPolygons
+        ///     Initializes a new instance of the <see cref="GenericMapViewModel" /> class.
         /// </summary>
-        public ObservableCollection<TKPolygon> ViewPolygons { get => _viewPolygons; set => SetProperty(ref _viewPolygons, value); }
+        /// <param name="eventAggregator">The <see cref="IEventAggregator" /></param>
+        /// <param name="geoLocator">The <see cref="IPosition" /></param>
+        /// <param name="navigationService">The <see cref="INavigationService" /></param>
+        public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator,
+            INavigationService navigationService)
+        {
+            _navigationService = navigationService;
+            _eventAggregator = eventAggregator;
+            _geoLocator = geoLocator;
+
+            UseLocationCommand =
+                new DelegateCommand(UseLocation);//.ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
+            CurrentDelineationState = DelineationState.Inactive;
+            MapClickedCommand = new DelegateCommand<object>(MapClicked);
+            AcceptDelineationCommand = new DelegateCommand(AcceptDelineation);
+            CancelDelineationCommand = new DelegateCommand(CancelDelineation);
+            ReturnGeolocationButtonEnabled = false;
+        }
 
         /// <summary>
-        /// Gets or sets the ViewPins
+        ///     Gets or sets the UseLocationCommand
         /// </summary>
-        public ObservableCollection<TKCustomMapPin> ViewPins { get => _viewPins; set => SetProperty(ref _viewPins, value); }
+        public DelegateCommand UseLocationCommand { get; }
 
         /// <summary>
-        /// Gets or sets the MapType
+        ///     Gets or sets the AcceptDelineationCommand
         /// </summary>
-        public MapType MapType { get => _mapType; set => SetProperty(ref _mapType, value); }
+        public DelegateCommand AcceptDelineationCommand { get; set; }
 
         /// <summary>
-        /// Gets or sets the MapRegion
+        ///     Gets or sets a value indicating whether ButtonAcceptDelineationEnabled
         /// </summary>
-        public MapSpan MapRegion { get => _mapRegion; set => SetProperty(ref _mapRegion, value); }
+        public bool ButtonAcceptDelineationEnabled
+        {
+            get => _buttonAcceptDelineationEnabled;
+            private set => SetProperty(ref _buttonAcceptDelineationEnabled, value);
+        }
 
         /// <summary>
-        /// Gets or sets the UserLocation
+        ///     Gets or sets a value indicating whether ButtonCancelDelineationEnabled
+        /// </summary>
+        public bool ButtonCancelDelineationEnabled
+        {
+            get => _buttonCancelDelineationEnabled;
+            private set => SetProperty(ref _buttonCancelDelineationEnabled, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets the CancelDelineationCommand
+        /// </summary>
+        public DelegateCommand CancelDelineationCommand { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the CurrentDelineationState
+        /// </summary>
+        public DelineationState CurrentDelineationState { get; private set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether DelineationButtonsVisible
+        /// </summary>
+        public bool DelineationButtonsVisible
+        {
+            get => _delineationButtonsVisible;
+            private set => SetProperty(ref _delineationButtonsVisible, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether IsGeolocationEnabled
+        /// </summary>
+        public bool IsGeolocationEnabled { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the MapClickedCommand
+        /// </summary>
+        public DelegateCommand<object> MapClickedCommand { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the MapRegion
+        /// </summary>
+        public MapSpan MapRegion
+        {
+            get => _mapRegion;
+            set => SetProperty(ref _mapRegion, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets the MapType
+        /// </summary>
+        public MapType MapType
+        {
+            get => _mapType;
+            set => SetProperty(ref _mapType, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets the Point
+        /// </summary>
+        public GeoPosition Point
+        {
+            get => _point;
+            set => SetProperty(ref _point, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets the Polygon
+        /// </summary>
+        public ObservableCollection<GeoPosition> Polygon
+        {
+            get => _polygon;
+            set => SetProperty(ref _polygon, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether ReturnGeolocationButtonEnabled
+        /// </summary>
+        public bool ReturnGeolocationButtonEnabled
+        {
+            get => _returnGeolocationButtonEnabled;
+            private set => SetProperty(ref _returnGeolocationButtonEnabled, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether ReturnGeolocationButtonVisible
+        /// </summary>
+        public bool ReturnGeolocationButtonVisible
+        {
+            get => _returnGeolocationButtonVisible;
+            private set => SetProperty(ref _returnGeolocationButtonVisible, value);
+        }
+
+        public bool ShowEnableLocationHint
+        {
+            get => _showEnableLocationHint;
+            set => SetProperty(ref _showEnableLocationHint, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets the UserLocation
         /// </summary>
         public GeoPosition UserLocation
         {
@@ -187,13 +307,17 @@
                     case MapTask.GetLocation:
                         IsGeolocationEnabled = true;
                         ViewPins.Clear();
-                        var position = new Position(value.Latitude, value.Longitude);
+                        Position position = new Position(value.Latitude, value.Longitude);
                         ViewPins.Add(new TKCustomMapPin
                         {
                             ID = "polygon_marker_user",
                             Position = position
                         });
-                        MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
+                        if (_followUserLocation)
+                        {
+                            MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromMeters(200));
+                        }
+                        Point = value;
                         ReturnGeolocationButtonEnabled = true;
                         break;
 
@@ -205,71 +329,159 @@
         }
 
         /// <summary>
-        /// Gets or sets the UseLocationCommand
+        ///     Gets or sets the ViewPins
         /// </summary>
-        public DelegateCommand UseLocationCommand { get; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether ReturnGeolocationButtonEnabled
-        /// </summary>
-        public bool ReturnGeolocationButtonEnabled { get => _returnGeolocationButtonEnabled; private set => SetProperty(ref _returnGeolocationButtonEnabled, value); }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether ReturnGeolocationButtonVisible
-        /// </summary>
-        public bool ReturnGeolocationButtonVisible { get => _returnGeolocationButtonVisible; private set => SetProperty(ref _returnGeolocationButtonVisible, value); }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether DelineationButtonsVisible
-        /// </summary>
-        public bool DelineationButtonsVisible { get => _delineationButtonsVisible; private set => SetProperty(ref _delineationButtonsVisible, value); }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether ButtonCancelDelineationEnabled
-        /// </summary>
-        public bool ButtonCancelDelineationEnabled
+        public ObservableCollection<TKCustomMapPin> ViewPins
         {
-            get => _buttonCancelDelineationEnabled;
-            private set => SetProperty(ref _buttonCancelDelineationEnabled, value);
+            get => _viewPins;
+            set => SetProperty(ref _viewPins, value);
         }
 
         /// <summary>
-        /// Gets or sets the CurrentDelineationState
+        ///     Gets or sets the ViewPolygons
         /// </summary>
-        public DelineationState CurrentDelineationState { get; private set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether ButtonAcceptDelineationEnabled
-        /// </summary>
-        public bool ButtonAcceptDelineationEnabled
+        public ObservableCollection<TKPolygon> ViewPolygons
         {
-            get => _buttonAcceptDelineationEnabled;
-            private set => SetProperty(ref _buttonAcceptDelineationEnabled, value);
+            get => _viewPolygons;
+            set => SetProperty(ref _viewPolygons, value);
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GenericMapViewModel"/> class.
+        ///     The OnAppearing
         /// </summary>
-        /// <param name="eventAggregator">The <see cref="IEventAggregator"/></param>
-        /// <param name="geoLocator">The <see cref="IPosition"/></param>
-        /// <param name="navigationService">The <see cref="INavigationService"/></param>
-        public GenericMapViewModel(IEventAggregator eventAggregator, IPosition geoLocator, INavigationService navigationService)
+        public void OnAppearing()
         {
-            _navigationService = navigationService;
-            _eventAggregator = eventAggregator;
-            _geoLocator = geoLocator;
-
-            UseLocationCommand = new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
-            CurrentDelineationState = DelineationState.Inactive;
-            MapClickedCommand = new DelegateCommand<object>(MapClicked);
-            MapLongPressCommand = new DelegateCommand<object>(MapLongPress);
-            AcceptDelineationCommand = new DelegateCommand(AcceptDelineation);
-            CancelDelineationCommand = new DelegateCommand(CancelDelineation);
-            ReturnGeolocationButtonEnabled = false;
+            //AdjustMapZoom();
+            if (_mapTask == MapTask.GetLocation)
+            {
+                //GetPosition();
+            }
+            MapType = MapType.Hybrid;
         }
 
         /// <summary>
-        /// The CancelDelineation
+        ///     The OnDisappearing
+        /// </summary>
+        public void OnDisappearing()
+        {
+            _geoLocator.StopListening();
+        }
+
+        /// <summary>
+        ///     The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedFrom(NavigationParameters parameters)
+        {
+            _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
+        }
+
+        /// <summary>
+        ///     The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey(GenericMapViewModel.MapTaskParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.MapTaskParameterName, out object mapTask);
+                if (mapTask != null)
+                {
+                    SetMapTask((MapTask)mapTask);
+                }
+            }
+
+            if (parameters.ContainsKey(GenericMapViewModel.MapRegionParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.MapRegionParameterName, out object mapRegion);
+                if (mapRegion != null)
+                {
+                    MapRegion = (MapSpan)mapRegion;
+                }
+            }
+            else
+            {
+                MapRegion = GenericMapViewModel.InitialMapRegion;
+            }
+
+            if (parameters.ContainsKey(GenericMapViewModel.ListenForUserLocationParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.ListenForUserLocationParameterName,
+                    out object listenForUserLocation);
+                if (listenForUserLocation != null)
+                {
+                    _listenForUserLocation = (bool)listenForUserLocation;
+                }
+            }
+
+            if (parameters.ContainsKey(GenericMapViewModel.FollowUserLocationParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.FollowUserLocationParameterName,
+                    out object followUserLocation);
+                if (followUserLocation != null)
+                {
+                    _followUserLocation = (bool)followUserLocation;
+                }
+            }
+
+            if (parameters.ContainsKey(GenericMapViewModel.MaximumLocationAccuracyParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.MaximumLocationAccuracyParameterName,
+                    out object maximumLocationAccuracy);
+                if (maximumLocationAccuracy != null)
+                {
+                    _maximumLocationAccuracy = (int)maximumLocationAccuracy;
+                }
+            }
+            if (parameters.ContainsKey(GenericMapViewModel.PolygonsParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.PolygonsParameterName, out object polygons);
+                if (polygons != null)
+                {
+                    ViewPolygons = (ObservableCollection<TKPolygon>)polygons;
+                }
+            }
+            if (parameters.ContainsKey(GenericMapViewModel.PointsParameterName))
+            {
+                parameters.TryGetValue(GenericMapViewModel.PointsParameterName, out object points);
+                if (points != null)
+                {
+                    ViewPins = (ObservableCollection<TKCustomMapPin>)points;
+                }
+            }
+        }
+
+        /// <summary>
+        ///     The AcceptDelineation
+        /// </summary>
+        private void AcceptDelineation()
+        {
+            List<Position> positions = ViewPolygons[0].Coordinates;
+            if (positions.Count == 0)
+            {
+                _navigationService.GoBackAsync();
+            }
+            else
+            {
+                List<GeoPosition> geoPositions = positions.Select(position => new GeoPosition
+                {
+                    Latitude = position.Latitude,
+                    Longitude = position.Longitude
+
+                    //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
+                })
+                    .ToList();
+
+                NavigationParameters parameters = new NavigationParameters
+                {
+                    { "Delineation", geoPositions }
+                };
+                _navigationService.GoBackAsync(parameters);
+            }
+        }
+
+        /// <summary>
+        ///     The CancelDelineation
         /// </summary>
         private void CancelDelineation()
         {
@@ -281,187 +493,203 @@
         }
 
         /// <summary>
-        /// Gets or sets the CancelDelineationCommand
+        ///     The GetPosition
         /// </summary>
-        public DelegateCommand CancelDelineationCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the AcceptDelineationCommand
-        /// </summary>
-        public DelegateCommand AcceptDelineationCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the MapLongPressCommand
-        /// </summary>
-        public DelegateCommand<object> MapLongPressCommand { get; set; }
-
-        /// <summary>
-        /// Gets or sets the MapClickedCommand
-        /// </summary>
-        public DelegateCommand<object> MapClickedCommand { get; set; }
-
-        /// <summary>
-        /// The MapClicked
-        /// </summary>
-        /// <param name="obj">The <see cref="object"/></param>
-        private void MapClicked(object obj)
+        /// <returns>The <see cref="Task" /></returns>
+        private async Task GetPosition()
         {
-            if ((CurrentDelineationState == DelineationState.Inactive) && (_mapTask != MapTask.SelectLocation)) return;
-            var position = (Position)obj;
-
-            if (CurrentDelineationState != DelineationState.Inactive)
+            ShowEnableLocationHint = !_geoLocator.CheckIfGPSIsEnabled();
+            if (_geoLocator != null)
             {
-                var pointId = ViewPolygons[0].Coordinates.Count; //todo not use ViewPolygons[0]
+                GeoPosition positionRes = await _geoLocator.GetCurrentPosition();
 
-                ViewPolygons[0].Coordinates.Add(position);
+                _currentGeoPosition = positionRes;
 
-                if (ViewPolygons[0].Coordinates.Count > 2)
+                if (positionRes == null)
                 {
-                    CurrentDelineationState = DelineationState.ActiveEnoughPoints;
-                    var listCoordinate = ViewPolygons[0].Coordinates;
-                    listCoordinate.Add(position);
-                    ViewPolygons[0].Coordinates = new List<Position>(listCoordinate);
-                    ButtonAcceptDelineationEnabled = true;
+                    IsGeolocationEnabled = false;
                 }
                 else
                 {
-                    CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
+                    IsGeolocationEnabled = true;
+
+                    ReturnGeolocationButtonEnabled = true;
+
+                    Position position = new Position(positionRes.Latitude, positionRes.Longitude);
+                    MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(50));
+
+                    ViewPins = new ObservableCollection<TKCustomMapPin>(new[]
+                    {
+                        new TKCustomMapPin
+                        {
+                            ID = "userCurrLocation",
+                            Position = position
+                        }
+                    });
+                    Point = new GeoPosition(position.Latitude, position.Longitude);
                 }
 
-                ButtonAcceptDelineationEnabled = CurrentDelineationState == DelineationState.ActiveEnoughPoints;
-
-                ViewPins.Add(new TKCustomMapPin
-                {
-                    ID = "polygon_marker_" + pointId,
-                    Position = position,
-                });
-            }
-            else
-            {
-                if (ViewPins == null) ViewPins = new ObservableCollection<TKCustomMapPin>();
-                ViewPins.Clear();
-                Point = new GeoPosition
-                {
-                    Latitude = position.Latitude,
-                    Longitude = position.Longitude
-                };
-                ViewPins.Add(new TKCustomMapPin
-                {
-                    ID = "polygon_marker",
-                    Position = position,
-                });
-                ReturnGeolocationButtonEnabled = true;
+                _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
             }
         }
 
         /// <summary>
-        /// The MapLongPress
+        ///     The HandlePositionEvent
         /// </summary>
-        /// <param name="obj">The <see cref="object"/></param>
-        private async void MapLongPress(object obj)
+        /// <param name="position">The <see cref="GeoPosition" /></param>
+        private void HandlePositionEvent(GeoPosition position)
         {
-            if (_mapTask != MapTask.SelectPolygon) return;
-            var position = (Position)obj;
-            if (CurrentDelineationState != DelineationState.Inactive)
+            if (position == null)
             {
-                MapClicked(obj);
+                return;
+            }
+            if (_maximumLocationAccuracy != null && _maximumLocationAccuracy < position.Accuracy)
+            {
                 return;
             }
 
-            ViewPolygons = new ObservableCollection<TKPolygon>();
-            var polygon = new TKPolygon
+            UserLocation = position;
+        }
+
+        /// <summary>
+        ///     The InitializeGetLocation
+        /// </summary>
+        private void InitializeGetLocation()
+        {
+            ReturnGeolocationButtonVisible = true;
+#pragma warning disable CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.
+            GetPosition();
+#pragma warning restore CS4014 // Because this call is not awaited, execution of the current method continues before the call is completed. Consider applying the 'await' operator to the result of the call.
+        }
+
+        /// <summary>
+        ///     The InitializeSelectLocation
+        /// </summary>
+        private void InitializeSelectLocation()
+        {
+            ReturnGeolocationButtonVisible = true;
+        }
+
+        /// <summary>
+        ///     The InitializeSelectPolygon
+        /// </summary>
+        private void InitializeSelectPolygon()
+        {
+            DelineationButtonsVisible = true;
+        }
+
+        /// <summary>
+        ///     The MapClicked
+        /// </summary>
+        /// <param name="obj">The <see cref="object" /></param>
+        private void MapClicked(object obj)
+        {
+            Position position = (Position)obj;
+
+            switch (_mapTask)
             {
-                StrokeColor = Color.Green,
-                StrokeWidth = 2f,
-                Color = Color.Red,
+                case MapTask.SelectLocation:
+                    OnMapClickedSelectLocation(position);
+                    break;
+
+                case MapTask.SelectPolygon:
+                    OnMapClickedSelectPolygon(position);
+                    break;
+
+                default:
+                    return;
+            }
+        }
+
+        private void OnMapClickedSelectLocation(Position position)
+        {
+            if (ViewPins == null)
+            {
+                ViewPins = new ObservableCollection<TKCustomMapPin>();
+            }
+            ViewPins.Clear();
+            Point = new GeoPosition
+            {
+                Latitude = position.Latitude,
+                Longitude = position.Longitude
             };
-
-            polygon.Coordinates.Add(position);
-
-            ViewPolygons.Add(polygon);
-            if (ViewPins == null) ViewPins = new ObservableCollection<TKCustomMapPin>();
             ViewPins.Add(new TKCustomMapPin
             {
-                ID = "polygon_marker_0",
-                Position = position,
+                ID = "polygon_marker",
+                Position = position
             });
-            ButtonCancelDelineationEnabled = true;
-            CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
+            ReturnGeolocationButtonEnabled = true;
         }
 
-        /// <summary>
-        /// The UseLocation
-        /// </summary>
-        private void UseLocation()
+        private void OnMapClickedSelectPolygon(Position position)
         {
-            var parameters = new NavigationParameters { { "GeoPosition", Point } };
-            _navigationService.GoBackAsync(parameters);
+            switch (CurrentDelineationState)
+            {
+                case DelineationState.Inactive:
+
+                    if (_mapTask != MapTask.SelectPolygon)
+                    {
+                        return;
+                    }
+
+                    ViewPolygons = new ObservableCollection<TKPolygon>();
+                    TKPolygon polygon = new TKPolygon
+                    {
+                        StrokeColor = Color.Green,
+                        StrokeWidth = 2f,
+                        Color = Color.Red
+                    };
+
+                    polygon.Coordinates.Add(position);
+
+                    ViewPolygons.Add(polygon);
+                    if (ViewPins == null)
+                    {
+                        ViewPins = new ObservableCollection<TKCustomMapPin>();
+                    }
+                    ViewPins.Add(new TKCustomMapPin
+                    {
+                        ID = "polygon_marker_0",
+                        Position = position
+                    });
+                    ButtonCancelDelineationEnabled = true;
+                    CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
+                    break;
+
+                case DelineationState.ActiveNotEnoughPoints:
+                case DelineationState.ActiveEnoughPoints:
+                    int pointId = ViewPolygons[0].Coordinates.Count; //todo not use ViewPolygons[0]
+
+                    ViewPolygons[0].Coordinates.Add(position);
+
+                    if (ViewPolygons[0].Coordinates.Count > 2)
+                    {
+                        CurrentDelineationState = DelineationState.ActiveEnoughPoints;
+                        List<Position> listCoordinate = ViewPolygons[0].Coordinates;
+                        listCoordinate.Add(position);
+                        ViewPolygons[0].Coordinates = new List<Position>(listCoordinate);
+                        ButtonAcceptDelineationEnabled = true;
+                    }
+                    else
+                    {
+                        CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
+                    }
+
+                    ButtonAcceptDelineationEnabled = CurrentDelineationState == DelineationState.ActiveEnoughPoints;
+
+                    ViewPins.Add(new TKCustomMapPin
+                    {
+                        ID = "polygon_marker_" + pointId,
+                        Position = position
+                    });
+                    break;
+            }
         }
 
         /// <summary>
-        /// The OnNavigatedFrom
+        ///     The SetMapTask
         /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedFrom(NavigationParameters parameters)
-        {
-            _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
-        }
-
-        /// <summary>
-        /// The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters"/></param>
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey(MapTaskParameterName))
-            {
-                parameters.TryGetValue(MapTaskParameterName, out var mapTask);
-                if (mapTask != null) SetMapTask((MapTask)mapTask);
-            }
-
-            if (parameters.ContainsKey(MapRegionParameterName))
-            {
-                parameters.TryGetValue(MapRegionParameterName, out var mapRegion);
-                if (mapRegion != null) MapRegion = (MapSpan)mapRegion;
-            }
-            else
-            {
-                MapRegion = InitialMapRegion;
-            }
-
-            if (parameters.ContainsKey(ListenForUserLocationParameterName))
-            {
-                parameters.TryGetValue(ListenForUserLocationParameterName, out var listenForUserLocation);
-                if (listenForUserLocation != null) _listenForUserLocation = (bool)listenForUserLocation;
-            }
-
-            if (parameters.ContainsKey(FollowUserLocationParameterName))
-            {
-                parameters.TryGetValue(FollowUserLocationParameterName, out var followUserLocation);
-                if (followUserLocation != null) _followUserLocation = (bool)followUserLocation;
-            }
-
-            if (parameters.ContainsKey(MaximumLocationAccuracyParameterName))
-            {
-                parameters.TryGetValue(MaximumLocationAccuracyParameterName, out var maximumLocationAccuracy);
-                if (maximumLocationAccuracy != null) _maximumLocationAccuracy = (int)maximumLocationAccuracy;
-            }
-            if (parameters.ContainsKey(PolygonsParameterName))
-            {
-                parameters.TryGetValue(PolygonsParameterName, out var polygons);
-                if (polygons != null) ViewPolygons = (ObservableCollection<TKPolygon>)polygons;
-            }
-        }
-
-        /// <summary>
-        /// Defines the PolygonsParameterName
-        /// </summary>
-        public const string PolygonsParameterName = "Polygons";
-
-        /// <summary>
-        /// The SetMapTask
-        /// </summary>
-        /// <param name="mapTask">The <see cref="MapTask"/></param>
+        /// <param name="mapTask">The <see cref="MapTask" /></param>
         private void SetMapTask(MapTask mapTask)
         {
             _mapTask = mapTask;
@@ -485,130 +713,19 @@
         }
 
         /// <summary>
-        /// The HandlePositionEvent
+        ///     The UseLocation
         /// </summary>
-        /// <param name="position">The <see cref="GeoPosition"/></param>
-        private void HandlePositionEvent(GeoPosition position)
+        private void UseLocation()
         {
-            if (position == null) return;
-            if ((_maximumLocationAccuracy != null) && (_maximumLocationAccuracy < position.Accuracy)) return;
-
-            UserLocation = position;
-        }
-
-        /// <summary>
-        /// The InitializeGetLocation
-        /// </summary>
-        private void InitializeGetLocation()
-        {
-            ReturnGeolocationButtonVisible = true;
-            GetPosition();
-        }
-
-        /// <summary>
-        /// The InitializeSelectLocation
-        /// </summary>
-        private void InitializeSelectLocation()
-        {
-            ReturnGeolocationButtonVisible = true;
-        }
-
-        /// <summary>
-        /// The InitializeSelectPolygon
-        /// </summary>
-        private void InitializeSelectPolygon()
-        {
-            DelineationButtonsVisible = true;
-        }
-
-        /// <summary>
-        /// The OnAppearing
-        /// </summary>
-        public void OnAppearing()
-        {
-            //AdjustMapZoom();
-            if (_mapTask == MapTask.GetLocation)
+            NavigationParameters parameters = new NavigationParameters
             {
-                //GetPosition();
-            }
-            MapType = MapType.Hybrid;
+                { "GeoPosition", Point }
+            };
+            _navigationService.GoBackAsync(parameters);
         }
 
-        /// <summary>
-        /// The OnDisappearing
-        /// </summary>
-        public void OnDisappearing()
+        public void OnNavigatingTo(NavigationParameters parameters)
         {
-            _geoLocator.StopListening();
         }
-
-        /// <summary>
-        /// The AcceptDelineation
-        /// </summary>
-        private void AcceptDelineation()
-        {
-            var positions = ViewPolygons[0].Coordinates;
-            if (positions.Count == 0)
-            {
-                _navigationService.GoBackAsync();
-            }
-            else
-            {
-                var geoPositions = positions.Select(position => new GeoPosition
-                {
-                    Latitude = position.Latitude,
-                    Longitude = position.Longitude,
-                    //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
-                })
-                    .ToList();
-
-                var parameters = new NavigationParameters { { "Delineation", geoPositions } };
-                _navigationService.GoBackAsync(parameters);
-            }
-        }
-
-        /// <summary>
-        /// The GetPosition
-        /// </summary>
-        /// <returns>The <see cref="Task"/></returns>
-        private async Task GetPosition()
-        {
-            if (_geoLocator != null)
-            {
-                var positionRes = await _geoLocator.GetCurrentPosition();
-
-                _currentGeoPosition = positionRes;
-
-                if (positionRes == null)
-                {
-                    IsGeolocationEnabled = false;
-                }
-                else
-                {
-                    IsGeolocationEnabled = true;
-
-                    ReturnGeolocationButtonEnabled = true;
-
-                    var position = new Position(positionRes.Latitude, positionRes.Longitude);
-                    MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(50));
-
-                    ViewPins = new ObservableCollection<TKCustomMapPin>(new[]
-                    {
-                        new TKCustomMapPin
-                        {
-                            ID = "userCurrLocation",
-                            Position = position}
-                    });
-                    Point = new GeoPosition(position.Latitude, position.Longitude);
-                }
-
-                _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether IsGeolocationEnabled
-        /// </summary>
-        public bool IsGeolocationEnabled { get; set; }
     }
 }

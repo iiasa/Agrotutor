@@ -2,14 +2,14 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Diagnostics;
+    using CimmytApp.BusinessContract;
+    using CimmytApp.DTO.BEM;
+    using CimmytApp.DTO.Parcel;
     using SqLite.Contract;
     using SQLite.Net;
     using SQLiteNetExtensions.Extensions;
     using Xamarin.Forms;
-
-    using BusinessContract;
-    using DTO.BEM;
-    using DTO.Parcel;
 
     public class CimmytDbOperations : ICimmytDbOperations
     {
@@ -32,7 +32,7 @@
             }
             catch (Exception e)
             {
-                System.Diagnostics.Debug.WriteLine(e.Message, e);
+                Debug.WriteLine(e.Message, e);
             }
         }
 
@@ -56,32 +56,9 @@
             return _databaseConn.GetAllWithChildren<Parcel>();
         }
 
-        public void SaveParcelPolygon(int parcelId, PolygonDto polygonObj)
-        {
-            if (polygonObj == null)
-                throw new ArgumentNullException();
-
-            var parcelObj = _databaseConn.GetWithChildren<Parcel>(parcelId);
-
-            if (parcelObj != null)
-            {
-                if (parcelObj.Polygon == null)
-                {
-                    parcelObj.Polygon = polygonObj;
-                    _databaseConn.InsertOrReplaceWithChildren(parcelObj);
-                }
-                else
-                {
-                    parcelObj.Polygon.ListPoints = polygonObj.ListPoints;
-                    _databaseConn.UpdateWithChildren(parcelObj);
-                }
-                // _databaseConn.Delete<Parcel>(parcelObj.ParcelId);
-            }
-        }
-
         public BemData GetBemData()
         {
-            return new BemData()
+            return new BemData
             {
                 Costo = _databaseConn.GetAllWithChildren<Costo>(),
                 Ingreso = _databaseConn.GetAllWithChildren<Ingreso>(),
@@ -105,6 +82,32 @@
         {
             _databaseConn.DeleteAll<Ingreso>();
             _databaseConn.InsertAll(listIngresos);
+        }
+
+        public void SaveParcelPolygon(int parcelId, PolygonDto polygonObj)
+        {
+            if (polygonObj == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            Parcel parcelObj = _databaseConn.GetWithChildren<Parcel>(parcelId);
+
+            if (parcelObj != null)
+            {
+                if (parcelObj.Polygon == null)
+                {
+                    parcelObj.Polygon = polygonObj;
+                    _databaseConn.InsertOrReplaceWithChildren(parcelObj);
+                }
+                else
+                {
+                    parcelObj.Polygon.ListPoints = polygonObj.ListPoints;
+                    _databaseConn.UpdateWithChildren(parcelObj);
+                }
+
+                // _databaseConn.Delete<Parcel>(parcelObj.ParcelId);
+            }
         }
 
         public void SaveRendimientos(List<Rendimiento> listRendimientos)

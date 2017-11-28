@@ -1,32 +1,32 @@
 ﻿using CimmytApp.Droid;
+using Xamarin.Forms;
 
-[assembly: Xamarin.Forms.Dependency(typeof(MessageAndroid))]
+[assembly: Dependency(typeof(MessageAndroid))]
 
 namespace CimmytApp.Droid
 {
     using Android.App;
     using Android.Widget;
-
-    using Messaging;
+    using CimmytApp.Messaging;
 
     /// <summary>
-    /// Defines the <see cref="MessageAndroid" />
+    ///     Defines the <see cref="MessageAndroid" />
     /// </summary>
     public class MessageAndroid : IMessage
     {
         /// <summary>
-        /// The LongAlert
+        ///     The LongAlert
         /// </summary>
-        /// <param name="message">The <see cref="string"/></param>
+        /// <param name="message">The <see cref="string" /></param>
         public void LongAlert(string message)
         {
             Toast.MakeText(Application.Context, message, ToastLength.Long).Show();
         }
 
         /// <summary>
-        /// The ShortAlert
+        ///     The ShortAlert
         /// </summary>
-        /// <param name="message">The <see cref="string"/></param>
+        /// <param name="message">The <see cref="string" /></param>
         public void ShortAlert(string message)
         {
             Toast.MakeText(Application.Context, message, ToastLength.Short).Show();

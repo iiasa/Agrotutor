@@ -1,36 +1,56 @@
-﻿using System.Collections.ObjectModel;
-using System.Linq;
-using Helper.Map.ViewModels;
-using Prism.Commands;
-using TK.CustomMap.Overlays;
-using Xamarin.Forms;
-
-namespace CimmytApp.ViewModels
+﻿namespace CimmytApp.ViewModels
 {
-    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using CimmytApp.BusinessContract;
+    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Parcel.Events;
+    using Helper.Map.ViewModels;
+    using Prism.Commands;
     using Prism.Events;
-    using Prism.Modularity;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using Prism;
-
-    using BusinessContract;
-    using Parcel.Events;
+    using TK.CustomMap;
+    using TK.CustomMap.Overlays;
+    using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
-    public class MainPageViewModel : BindableBase, INavigationAware, IActiveAware
+    /// <inheritdoc cref="BindableBase" />
+    /// <summary>
+    ///     Defines the <see cref="T:CimmytApp.ViewModels.MainPageViewModel" />
+    /// </summary>
+    public class MainPageViewModel : BindableBase, INavigationAware
     {
-        private readonly IEventAggregator _eventAggregator;
-        private readonly IModuleManager _moduleManager;
+        /// <summary>
+        ///     Defines the _cimmytDbOperations
+        /// </summary>
         private readonly ICimmytDbOperations _cimmytDbOperations;
+
+        /// <summary>
+        ///     Defines the _eventAggregator
+        /// </summary>
+        private readonly IEventAggregator _eventAggregator;
+
+        /// <summary>
+        ///     Defines the _navigationService
+        /// </summary>
         private readonly INavigationService _navigationService;
+
+        /// <summary>
+        ///     Defines the _title
+        /// </summary>
         private string _title;
 
-        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
-
-        public MainPageViewModel(IModuleManager moduleManager, IEventAggregator eventAggregator, INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+        /// <summary>
+        ///     Initializes a new instance of the <see cref="MainPageViewModel" /> class.
+        /// </summary>
+        /// <param name="eventAggregator">The <see cref="IEventAggregator" /></param>
+        /// <param name="navigationService">The <see cref="INavigationService" /></param>
+        /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
+        public MainPageViewModel(IEventAggregator eventAggregator, INavigationService navigationService,
+            ICimmytDbOperations cimmytDbOperations)
         {
-            _moduleManager = moduleManager;
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
             _eventAggregator = eventAggregator;
@@ -41,63 +61,114 @@ namespace CimmytApp.ViewModels
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
         }
 
-        private void NavigateToMap()
+        public MainPageViewModel()
         {
-            var polygons = new ObservableCollection<TKPolygon>();
-            var parcels = _cimmytDbOperations.GetAllParcels();
-
-            foreach (var item in parcels)
-            {
-                if (item.Polygon == null) continue;
-                var polygon = new TKPolygon
-                {
-                    StrokeColor = Color.Green,
-                    StrokeWidth = 2f,
-                    Color = Color.Red,
-                };
-                var listPosition = item.Polygon.ListPoints.Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude)).ToList();
-                if (listPosition.Count <= 2) continue;
-                polygon.Coordinates = listPosition;
-                polygons.Add(polygon);
-            }
-            var parameters = new NavigationParameters { { GenericMapViewModel.PolygonsParameterName, polygons } };
-
-            _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
+        /// <summary>
+        ///     Gets or sets the NavigateAsyncCommand
+        /// </summary>
+        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the NavigateToMapCommand
+        /// </summary>
         public DelegateCommand NavigateToMapCommand { get; set; }
 
-        private void NavigateAsync(string page)
-        {
-            _navigationService.NavigateAsync(page);
-        }
-
+        /// <summary>
+        ///     Gets or sets the Title
+        /// </summary>
         public string Title
         {
             get => _title;
             set => SetProperty(ref _title, value);
         }
 
-        public bool IsActive
-        {
-            get;
-            set;
-        }
-
-        public event EventHandler IsActiveChanged;
-
+        /// <summary>
+        ///     The OnNavigatedFrom
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
+        /// <summary>
+        ///     The OnNavigatedTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
         }
 
+        /// <summary>
+        ///     The OnNavigatingTo
+        /// </summary>
+        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatingTo(NavigationParameters parameters)
         {
         }
 
+        /// <summary>
+        ///     The NavigateAsync
+        /// </summary>
+        /// <param name="page">The <see cref="string" /></param>
+        private void NavigateAsync(string page)
+        {
+            _navigationService.NavigateAsync(page);
+        }
+
+        /// <summary>
+        ///     The NavigateToMap
+        /// </summary>
+        private void NavigateToMap()
+        {
+            ObservableCollection<TKPolygon> polygons = new ObservableCollection<TKPolygon>();
+            ObservableCollection<TKCustomMapPin> parcelLocations = new ObservableCollection<TKCustomMapPin>();
+            List<Parcel> parcels = _cimmytDbOperations.GetAllParcels();
+
+            foreach (Parcel item in parcels)
+            {
+                if (item.Polygon != null)
+                {
+                    TKPolygon polygon = new TKPolygon
+                    {
+                        StrokeColor = Color.Green,
+                        StrokeWidth = 2f,
+                        Color = Color.Red
+                    };
+                    List<Position> listPosition = item.Polygon.ListPoints
+                        .Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
+                        .ToList();
+                    if (listPosition.Count <= 2)
+                    {
+                        continue;
+                    }
+
+                    polygon.Coordinates = listPosition;
+                    polygons.Add(polygon);
+                }
+
+                if (item.Latitude != 0 && item.Longitude != 0)
+                {
+                    parcelLocations.Add(new TKCustomMapPin
+                    {
+                        Position = new Position(item.Latitude, item.Longitude)
+                    });
+                }
+            }
+
+            NavigationParameters parameters = new NavigationParameters
+            {
+                { GenericMapViewModel.PolygonsParameterName, polygons },
+                { GenericMapViewModel.PointsParameterName, parcelLocations }
+            };
+
+            _navigationService.NavigateAsync("GenericMap", parameters);
+        }
+
+        /// <summary>
+        ///     The OnDbConnectionRequest
+        /// </summary>
         private void OnDbConnectionRequest()
         {
             _eventAggregator.GetEvent<DbConnectionEvent>().Publish(_cimmytDbOperations);

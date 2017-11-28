@@ -19,7 +19,12 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = true,
                 ProductObtainedVisibility = true,
-                ActivityNameList = new List<string>() { "Cosecha ", "Cosecha manual", "Cosecha mecánica" },
+                ActivityNameList = new List<string>
+                {
+                    "Cosecha ",
+                    "Cosecha manual",
+                    "Cosecha mecánica"
+                },
                 ActivityIcon = "harvest_small.png",
                 ActivityTitle = "Cosecha"
             };

@@ -1,10 +1,9 @@
 ﻿namespace Helper.UserRegistration
 {
+    using Helper.UserRegistration.Views;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-
-    using Views;
 
     public class UserRegistrationModule : IModule
     {

@@ -1,11 +1,9 @@
-﻿//[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace CimmytApp.Calendar
+﻿namespace CimmytApp.Calendar
 {
+    using CimmytApp.Calendar.Views;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-
-    using Views;
 
     public class CalenderModule : IModule
     {

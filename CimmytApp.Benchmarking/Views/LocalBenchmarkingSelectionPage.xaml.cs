@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
-
-namespace CimmytApp.Benchmarking.Views
+﻿namespace CimmytApp.Benchmarking.Views
 {
+    using Xamarin.Forms;
+
     public partial class LocalBenchmarkingSelectionPage : ContentPage
     {
         public LocalBenchmarkingSelectionPage()

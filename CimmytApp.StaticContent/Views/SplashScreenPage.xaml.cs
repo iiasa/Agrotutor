@@ -1,7 +1,7 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.StaticContent.Views
+﻿namespace CimmytApp.StaticContent.Views
 {
+    using Xamarin.Forms;
+
     public partial class SplashScreenPage : ContentPage
     {
         public SplashScreenPage()

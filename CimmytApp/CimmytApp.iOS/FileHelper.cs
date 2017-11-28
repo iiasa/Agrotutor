@@ -1,27 +1,27 @@
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using SqLite.Contract;
-using SQLite.Net;
-using Xamarin.Forms;
 using CimmytApp.iOS;
+using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FileHelper))]
+
 namespace CimmytApp.iOS
 {
+    using System;
+    using System.IO;
+    using SqLite.Contract;
+    using SQLite.Net;
+    using SQLite.Net.Platform.XamarinIOS;
+
     public class FileHelper : IFileHelper
     {
         public SQLiteConnection GetConnection()
         {
-            var fileName = "Cimmyt.db3";
-            var documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-            var libraryPath = Path.Combine(documentsPath, "..", "Library");
-            var path = Path.Combine(libraryPath, fileName);
+            string fileName = "Cimmyt.db3";
+            string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            string libraryPath = Path.Combine(documentsPath, "..", "Library");
+            string path = Path.Combine(libraryPath, fileName);
 
-            var platform = new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS();
-            var connection = new SQLite.Net.SQLiteConnection(platform, path);
+            SQLitePlatformIOS platform = new SQLitePlatformIOS();
+            SQLiteConnection connection = new SQLiteConnection(platform, path);
 
             return connection;
         }

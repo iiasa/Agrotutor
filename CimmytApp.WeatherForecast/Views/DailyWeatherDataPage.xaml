@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
-             xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
-             x:Class="CimmytApp.WeatherForecast.Views.DailyWeatherDataPage">
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
+    xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+    x:Class="CimmytApp.WeatherForecast.Views.DailyWeatherDataPage" Padding="16">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -16,20 +15,19 @@
         <Label Grid.Row="1" Text="{Binding Series.unit.Label}" />
         <chart:RadCartesianChart Grid.Row="2">
             <chart:RadCartesianChart.HorizontalAxis>
-                <chart:CategoricalAxis/>
+                <chart:CategoricalAxis />
             </chart:RadCartesianChart.HorizontalAxis>
             <chart:RadCartesianChart.VerticalAxis>
-                <chart:NumericalAxis/>
+                <chart:NumericalAxis />
             </chart:RadCartesianChart.VerticalAxis>
-
 
             <chart:RadCartesianChart.Series>
                 <chart:BarSeries ItemsSource="{Binding Series.series}">
                     <chart:BarSeries.ValueBinding>
-                        <chart:PropertyNameDataPointBinding PropertyName="value"/>
+                        <chart:PropertyNameDataPointBinding PropertyName="value" />
                     </chart:BarSeries.ValueBinding>
                     <chart:BarSeries.CategoryBinding>
-                        <chart:PropertyNameDataPointBinding PropertyName="validDate"/>
+                        <chart:PropertyNameDataPointBinding PropertyName="validDate" />
                     </chart:BarSeries.CategoryBinding>
                 </chart:BarSeries>
             </chart:RadCartesianChart.Series>

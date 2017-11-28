@@ -1,16 +1,8 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace CimmytApp.Calendar.ViewModels
+﻿namespace CimmytApp.Calendar.ViewModels
 {
+    using Prism.Mvvm;
+
     public class TelerikCalendarPageViewModel : BindableBase
     {
-        public TelerikCalendarPageViewModel()
-        {
-
-        }
     }
 }

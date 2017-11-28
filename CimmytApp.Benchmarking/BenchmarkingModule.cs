@@ -1,9 +1,9 @@
 ﻿namespace CimmytApp.Benchmarking
 {
+    using CimmytApp.Benchmarking.Views;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-    using Views;
 
     public class BenchmarkingModule : IModule
     {
@@ -15,9 +15,9 @@
         }
 
         public void Initialize()
-		{
+        {
             _unityContainer.RegisterTypeForNavigation<BenchmarkingPage>();
-			_unityContainer.RegisterTypeForNavigation<LocalBenchmarkingSelectionPage>();
+            _unityContainer.RegisterTypeForNavigation<LocalBenchmarkingSelectionPage>();
             _unityContainer.RegisterTypeForNavigation<ViewCostoPage>();
             _unityContainer.RegisterTypeForNavigation<ViewIngresoPage>();
             _unityContainer.RegisterTypeForNavigation<ViewRendimientoPage>();

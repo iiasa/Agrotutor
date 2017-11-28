@@ -1,26 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Parcel.Views.SelectTechnologiesPage"
-             Padding="16">
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Parcel.Views.SelectTechnologiesPage"
+    Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,0,0,32">
                 <Label Text="Agregar technologias utilizadas" FontAttributes="Italic" />
                 <Image Source="wand_small.png" />
             </StackLayout>
-            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" />
-            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="{localization:Translate technology_2}" />
-            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="{localization:Translate technology_3}" />
-            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="{localization:Translate technology_4}" />
-            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="{localization:Translate technology_5}" />
-            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="{localization:Translate technology_6}" />
-            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="{localization:Translate technology_7}" />
-            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="{localization:Translate technology_8}" />
+            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="{localization:Translate technology_2}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="{localization:Translate technology_3}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="{localization:Translate technology_4}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="{localization:Translate technology_5}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="{localization:Translate technology_6}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="{localization:Translate technology_7}" IsEnabled="{Binding SelectEnabled}" />
+            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="{localization:Translate technology_8}" IsEnabled="{Binding SelectEnabled}" />
             <Button Text="Guardar cambios" Command="{Binding SaveChangesCommand}" Margin="32" />
         </StackLayout>
     </ScrollView>

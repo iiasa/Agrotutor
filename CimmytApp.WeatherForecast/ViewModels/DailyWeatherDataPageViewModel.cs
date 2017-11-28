@@ -1,9 +1,8 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
+    using Helper.DTO.SkywiseWeather.Historical;
     using Prism.Mvvm;
     using Prism.Navigation;
-
-    using Helper.DTO.SkywiseWeather.Historical;
 
     public class DailyWeatherDataPageViewModel : BindableBase, INavigationAware
     {
@@ -33,11 +32,16 @@
                 VariableName = "Lo sentimos, no hay datos disponibles";
                 return;
             }
+
             parameters.TryGetValue("Series", out object series);
             Series = (DailySeries)series;
 
             parameters.TryGetValue("VariableName", out object variableName);
             VariableName = (string)variableName;
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

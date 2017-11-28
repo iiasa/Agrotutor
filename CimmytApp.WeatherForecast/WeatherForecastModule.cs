@@ -1,10 +1,9 @@
 ﻿namespace CimmytApp.WeatherForecast
 {
+    using CimmytApp.WeatherForecast.Views;
     using Microsoft.Practices.Unity;
     using Prism.Modularity;
     using Prism.Unity;
-
-    using Views;
 
     public class WeatherForecastModule : IModule
     {
