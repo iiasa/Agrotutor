@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="preferExternal"
-    package="org.geo_wiki.cimmyt.droid" android:versionCode="16" android:versionName="1.0.9" android:largeHeap="true">
+    package="org.geo_wiki.cimmyt.droid" android:versionCode="18" android:versionName="1.0.11" android:largeHeap="true">
     <uses-sdk android:minSdkVersion="16" android:targetSdkVersion="22" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

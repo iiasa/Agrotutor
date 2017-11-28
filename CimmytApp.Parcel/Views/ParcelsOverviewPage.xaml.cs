@@ -10,6 +10,7 @@
         public ParcelsOverviewPage()
         {
             InitializeComponent();
+            contextObj = BindingContext as ParcelsOverviewPageViewModel;
         }
 
         private ParcelsOverviewPageViewModel contextObj { get; set; }
@@ -22,10 +23,15 @@
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            contextObj = BindingContext as ParcelsOverviewPageViewModel;
             ParcelViewModel selectedItem = e.Item as ParcelViewModel;
 
             contextObj?.HideOrShowParcel(selectedItem);
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            contextObj.RefreshParcelsCommand.Execute();
         }
     }
 }

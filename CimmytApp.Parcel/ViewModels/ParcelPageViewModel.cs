@@ -37,6 +37,8 @@
         /// </summary>
         private readonly TaskScheduler _scheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
+        private string _caller;
+
         /// <summary>
         ///     Defines the _editModeActive
         /// </summary>
@@ -358,7 +360,9 @@
             {
                 parameters.TryGetValue("Caller", out object caller);
                 if (caller != null)
+                {
                     _caller = (string)caller;
+                }
             }
             if (parameters.ContainsKey("Parcel"))
             {
@@ -444,8 +448,6 @@
             }
         }
 
-        private string _caller;
-
         /// <summary>
         ///     The DeleteParcel
         /// </summary>
@@ -483,7 +485,10 @@
             }
             else
             {
-                _navigationService.NavigateAsync($"app:///{_caller}", new NavigationParameters { { "Id", Parcel.ParcelId } });
+                _navigationService.NavigateAsync($"app:///{_caller}", new NavigationParameters
+                {
+                    { "Id", Parcel.ParcelId }
+                });
             }
         }
 
