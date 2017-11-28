@@ -66,5 +66,9 @@
                 _navigationService.GoBackAsync();
             }
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

@@ -69,11 +69,11 @@
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand =
-                new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelDetailPage);//.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelEditCommand =
-                new DelegateCommand<object>(NavigateToParcelEditPage).ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelEditPage);//.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelDeleteCommand =
-                new DelegateCommand<object>(NavigateToParcelDeletePage).ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelDeletePage);//.ObservesCanExecute(o => IsParcelListEnabled);
             BackToMainPageCommand = new DelegateCommand(BackToMainPage);
             GoBackCommand = new DelegateCommand(GoBack);
             RefreshParcelsCommand = new DelegateCommand(RefreshParcels);
@@ -238,7 +238,9 @@
 
                 _navigationService.NavigateAsync("DeleteParcelPage", navigationParameters);
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
             }
         }
@@ -258,7 +260,9 @@
                 };
                 _navigationService.NavigateAsync("ParcelMainPage", navigationParameters);
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
             }
         }
@@ -280,7 +284,9 @@
                 };
                 _navigationService.NavigateAsync("ParcelPage", navigationParameters);
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
             }
         }

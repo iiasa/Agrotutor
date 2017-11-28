@@ -37,10 +37,14 @@
         /// </summary>
         private bool _downloading;
 
+#pragma warning disable CS0169 // The field 'WeatherDataSelectionViewModel._isActive' is never used
+
         /// <summary>
         ///     Defines the isActive
         /// </summary>
         private bool _isActive;
+
+#pragma warning restore CS0169 // The field 'WeatherDataSelectionViewModel._isActive' is never used
 
         /// <summary>
         ///     Defines the _parcel
@@ -110,10 +114,14 @@
             _weatherDbOperations = weatherDbOperations;
         }
 
+#pragma warning disable CS0067 // The event 'WeatherDataSelectionViewModel.IsActiveChanged' is never used
+
         /// <summary>
         ///     Defines the IsActiveChanged
         /// </summary>
         public event EventHandler IsActiveChanged;
+
+#pragma warning restore CS0067 // The event 'WeatherDataSelectionViewModel.IsActiveChanged' is never used
 
         /// <summary>
         ///     Gets a value indicating whether ParcelLocationNotSet
@@ -420,6 +428,10 @@
                 { "VariableName", DatasetNames.ElementAt(SelectedDataset) }
             };
             _navigationService.NavigateAsync(page, parameters);
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

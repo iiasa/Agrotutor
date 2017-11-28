@@ -197,7 +197,9 @@
                 info.SetYears();
                 return info;
             }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
             catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
             {
                 return null;
             }
@@ -254,6 +256,10 @@
             DataIrrigated = dataIrrigated;
             DataRainfed = dataRainfed;
             Downloading = false;
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

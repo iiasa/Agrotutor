@@ -9,7 +9,9 @@
     [Table("Polygon")]
     public class PolygonDto
     {
+#pragma warning disable CS0169 // The field 'PolygonDto._listPoints' is never used
         private List<GeoPosition> _listPoints;
+#pragma warning restore CS0169 // The field 'PolygonDto._listPoints' is never used
 
         [PrimaryKey]
         [AutoIncrement]

@@ -295,5 +295,9 @@
                 _navigationService.NavigateAsync(page, parameters);
             }
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

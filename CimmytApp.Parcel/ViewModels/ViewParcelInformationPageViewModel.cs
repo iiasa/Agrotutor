@@ -20,9 +20,13 @@
             TestCommand = new DelegateCommand(Test);
         }
 
+#pragma warning disable CS0067 // The event 'ViewParcelInformationPageViewModel.IsActiveChanged' is never used
         public event EventHandler IsActiveChanged;
+#pragma warning restore CS0067 // The event 'ViewParcelInformationPageViewModel.IsActiveChanged' is never used
 
+#pragma warning disable CS0108 // 'ViewParcelInformationPageViewModel.PropertyChanged' hides inherited member 'BindableBase.PropertyChanged'. Use the new keyword if hiding was intended.
         public event PropertyChangedEventHandler PropertyChanged;
+#pragma warning restore CS0108 // 'ViewParcelInformationPageViewModel.PropertyChanged' hides inherited member 'BindableBase.PropertyChanged'. Use the new keyword if hiding was intended.
 
         public bool IsActive { get; set; }
 
@@ -53,7 +57,9 @@
         {
         }
 
+#pragma warning disable CS0114 // 'ViewParcelInformationPageViewModel.OnPropertyChanged(string)' hides inherited member 'BindableBase.OnPropertyChanged(string)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
         protected virtual void OnPropertyChanged(string aName)
+#pragma warning restore CS0114 // 'ViewParcelInformationPageViewModel.OnPropertyChanged(string)' hides inherited member 'BindableBase.OnPropertyChanged(string)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword.
         {
             PropertyChangedEventHandler iHandler = PropertyChanged;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));

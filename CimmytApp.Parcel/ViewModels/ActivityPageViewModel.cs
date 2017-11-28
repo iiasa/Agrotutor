@@ -18,17 +18,25 @@
 
         private string _caller = "ParcelPage";
 
+#pragma warning disable CS0169 // The field 'ActivityPageViewModel._isActive' is never used
+
         /// <summary>
         ///     Defines the _isActive
         /// </summary>
         private bool _isActive;
 
+#pragma warning restore CS0169 // The field 'ActivityPageViewModel._isActive' is never used
+
         private Parcel _parcel;
+
+#pragma warning disable CS0414 // The field 'ActivityPageViewModel.CallingDetailPage' is assigned but its value is never used
 
         /// <summary>
         ///     Defines the CallingDetailPage
         /// </summary>
         private bool CallingDetailPage;
+
+#pragma warning restore CS0414 // The field 'ActivityPageViewModel.CallingDetailPage' is assigned but its value is never used
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="ActivityPageViewModel" /> class.
@@ -122,6 +130,10 @@
                 { "EditEnabled", true }
             };
             _navigationService.NavigateAsync($"app:///{_caller}", parameters);
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

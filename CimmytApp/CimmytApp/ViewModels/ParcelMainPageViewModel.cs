@@ -178,5 +178,9 @@
 
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

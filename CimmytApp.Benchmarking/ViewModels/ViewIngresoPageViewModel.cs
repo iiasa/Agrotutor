@@ -59,5 +59,9 @@
         {
             LoadData();
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

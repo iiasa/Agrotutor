@@ -76,7 +76,9 @@
 
                     _parcel = _cimmytDbOperations.GetParcelById(id);
                 }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
                 catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
                 {
                     Back();
                 }
@@ -98,6 +100,10 @@
         {
             _cimmytDbOperations.DeleteParcel(_parcel);
             _navigationService.NavigateAsync("app:///MainPage");
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

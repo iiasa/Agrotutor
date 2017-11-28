@@ -146,5 +146,9 @@
             /// </summary>
             public double Value { get; set; }
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

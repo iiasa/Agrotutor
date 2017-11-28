@@ -64,7 +64,7 @@
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
 
-            ClickSave = new DelegateCommand(SaveParcel).ObservesCanExecute(o => IsSaveBtnEnabled);
+            ClickSave = new DelegateCommand(SaveParcel);//.ObservesCanExecute(o => IsSaveBtnEnabled);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
             ClickGetLocation = new DelegateCommand(GetLocation);
             ClickDelineate = new DelegateCommand(Delineate);

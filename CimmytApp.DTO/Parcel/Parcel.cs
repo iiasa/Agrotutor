@@ -59,15 +59,19 @@
         /// </summary>
         private string _estimatedParcelArea;
 
+#pragma warning disable CS0169 // The field 'Parcel._geoPosition' is never used
         /// <summary>
         ///     Defines the _geoPosition
         /// </summary>
         private GeoPosition _geoPosition;
+#pragma warning restore CS0169 // The field 'Parcel._geoPosition' is never used
 
+#pragma warning disable CS0169 // The field 'Parcel._id' is never used
         /// <summary>
         ///     Defines the _id
         /// </summary>
         private int _id;
+#pragma warning restore CS0169 // The field 'Parcel._id' is never used
 
         /// <summary>
         ///     Defines the _irrigation

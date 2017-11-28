@@ -1,23 +1,20 @@
-﻿using Prism.Commands;
-using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Helper.Realm.ViewModels
+﻿namespace Helper.Realm.ViewModels
 {
+    using Prism.Mvvm;
+
     public class ViewAViewModel : BindableBase
     {
         private string _title;
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
 
         public ViewAViewModel()
         {
             Title = "View A";
-        }        
+        }
+
+        public string Title
+        {
+            get => _title;
+            set => SetProperty(ref _title, value);
+        }
     }
 }

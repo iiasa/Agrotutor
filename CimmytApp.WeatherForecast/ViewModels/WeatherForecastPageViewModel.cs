@@ -27,7 +27,9 @@
             TestCommand = new Command(Test);
         }
 
+#pragma warning disable CS0067 // The event 'WeatherForecastPageViewModel.IsActiveChanged' is never used
         public event EventHandler IsActiveChanged;
+#pragma warning restore CS0067 // The event 'WeatherForecastPageViewModel.IsActiveChanged' is never used
 
         public DailyHighTemperature DailyHighTemperature
         {
@@ -43,7 +45,11 @@
             set
             {
                 SetProperty(ref _parcel, value);
+#pragma warning disable CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
+#pragma warning disable CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
                 if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
+#pragma warning restore CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
+#pragma warning restore CS0472 // The result of the expression is always 'true' since a value of type 'double' is never equal to 'null' of type 'double?'
                 {
                     if (_parcel.Latitude == 0 && _parcel.Longitude == 0)
                     {

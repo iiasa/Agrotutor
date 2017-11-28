@@ -370,5 +370,9 @@
             };
             _navigationService.GoBackAsync(parameters);
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

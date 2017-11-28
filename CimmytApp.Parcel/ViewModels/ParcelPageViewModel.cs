@@ -380,7 +380,9 @@
 
                     Parcel = _cimmytDbOperations.GetParcelById(id);
                 }
+#pragma warning disable CS0168 // The variable 'e' is declared but never used
                 catch (Exception e)
+#pragma warning restore CS0168 // The variable 'e' is declared but never used
                 {
                     GoBackCommand?.Execute();
                 }
@@ -586,6 +588,10 @@
                 { "ViewOnly", true }
             };
             _navigationService.NavigateAsync("SelectTechnologiesViewModel", parameters);
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

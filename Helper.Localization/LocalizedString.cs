@@ -18,7 +18,9 @@
             return LoadString(resourceName, resourceId);
         }
 
+#pragma warning disable CS0436 // The type 'ILocalizeConsumer' in 'C:\Users\karner\Documents\Projects\dotNET projects\CimmytApp\Helper.Localization\Localization\ILocalizeConsumer.cs' conflicts with the imported type 'ILocalizeConsumer' in 'Helper.BusinessContract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in 'C:\Users\karner\Documents\Projects\dotNET projects\CimmytApp\Helper.Localization\Localization\ILocalizeConsumer.cs'.
         public static string Get(string resourceName, ILocalizeConsumer context)
+#pragma warning restore CS0436 // The type 'ILocalizeConsumer' in 'C:\Users\karner\Documents\Projects\dotNET projects\CimmytApp\Helper.Localization\Localization\ILocalizeConsumer.cs' conflicts with the imported type 'ILocalizeConsumer' in 'Helper.BusinessContract, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null'. Using the type defined in 'C:\Users\karner\Documents\Projects\dotNET projects\CimmytApp\Helper.Localization\Localization\ILocalizeConsumer.cs'.
         {
             return LoadString(resourceName, context.GetResourceId());
         }
@@ -82,7 +84,15 @@
             }
 
             //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
+#pragma warning disable CS0618 // 'Device.OS' is obsolete: 'Use RuntimePlatform instead.'
+#pragma warning disable CS0618 // 'Device.OS' is obsolete: 'Use RuntimePlatform instead.'
+#pragma warning disable CS0612 // 'TargetPlatform' is obsolete
+#pragma warning disable CS0612 // 'TargetPlatform' is obsolete
             if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+#pragma warning restore CS0612 // 'TargetPlatform' is obsolete
+#pragma warning restore CS0612 // 'TargetPlatform' is obsolete
+#pragma warning restore CS0618 // 'Device.OS' is obsolete: 'Use RuntimePlatform instead.'
+#pragma warning restore CS0618 // 'Device.OS' is obsolete: 'Use RuntimePlatform instead.'
             {
                 LocalizedString._ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
             }
