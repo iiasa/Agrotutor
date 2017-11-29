@@ -7,7 +7,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Historia del tiempo" FontAttributes="Italic" />
+                <Label Text="Datos históricos" FontAttributes="Italic" />
                 <Image Source="history_small.png" HeightRequest="18" />
             </StackLayout>
 

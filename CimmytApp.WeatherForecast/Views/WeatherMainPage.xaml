@@ -78,7 +78,7 @@
                         CommandParameter="WeatherDataSelection" />
                 </StackLayout.GestureRecognizers>
                 <Image Source="history.png" WidthRequest="32" />
-                <Label Text="Historia del tiempo" VerticalOptions="Center" Margin="16" FontSize="16" />
+                <Label Text="Datos históricos" VerticalOptions="Center" Margin="16" FontSize="16" />
             </StackLayout>
         </StackLayout>
     </ScrollView>

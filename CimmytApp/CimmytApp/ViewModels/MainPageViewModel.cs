@@ -136,8 +136,8 @@
                         StrokeWidth = 2f,
                         Color = Color.Red
                     };
-                    List<Position> listPosition = item.Polygon.ListPoints
-                        .Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
+                    List<TK.CustomMap.Position> listPosition = item.Polygon.ListPoints
+                        .Select(positionitem => new TK.CustomMap.Position(positionitem.Latitude, positionitem.Longitude))
                         .ToList();
                     if (listPosition.Count <= 2)
                     {
@@ -152,7 +152,7 @@
                 {
                     parcelLocations.Add(new TKCustomMapPin
                     {
-                        Position = new Position(item.Latitude, item.Longitude)
+                        Position = new TK.CustomMap.Position(item.Latitude, item.Longitude)
                     });
                 }
             }

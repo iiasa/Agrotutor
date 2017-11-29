@@ -13,7 +13,6 @@
     using TK.CustomMap;
     using TK.CustomMap.Overlays;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
 
     /// <summary>
     ///     Defines the <see cref="ParcelMainPageViewModel" />

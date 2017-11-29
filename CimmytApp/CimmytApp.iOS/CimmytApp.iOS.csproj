@@ -208,11 +208,11 @@
     <Reference Include="Telerik.XamarinForms.SkiaSharp, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\xamarinios10\Telerik.XamarinForms.SkiaSharp.dll</HintPath>
     </Reference>
-    <Reference Include="TK.CustomMap, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\TK.CustomMap.1.6.1\lib\Xamarin.iOS10\TK.CustomMap.dll</HintPath>
+    <Reference Include="TK.CustomMap, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\TK.CustomMap.2.0.0-pre1\lib\Xamarin.iOS10\TK.CustomMap.dll</HintPath>
     </Reference>
-    <Reference Include="TK.CustomMap.iOSUnified, Version=1.6.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\TK.CustomMap.1.6.1\lib\Xamarin.iOS10\TK.CustomMap.iOSUnified.dll</HintPath>
+    <Reference Include="TK.CustomMap.iOSUnified, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\TK.CustomMap.2.0.0-pre1\lib\Xamarin.iOS10\TK.CustomMap.iOSUnified.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.5.0.121934\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
@@ -235,6 +235,9 @@
     <Reference Include="Xamarin.iOS" />
     <Reference Include="SqLite.Contract">
       <HintPath>..\..\BaseDLL\SqLite.Contract.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.iOS.ClusterKit, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.iOS.ClusterKit.0.3.1\lib\Xamarin.iOS10\Xamarin.iOS.ClusterKit.dll</HintPath>
     </Reference>
     <Reference Include="XLabs.Core, Version=2.0.5782.12218, Culture=neutral, PublicKeyToken=d65109b36e5040e4, processorArchitecture=MSIL">
       <HintPath>..\..\packages\XLabs.Core.2.0.5782\lib\Xamarin.iOS10\XLabs.Core.dll</HintPath>

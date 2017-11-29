@@ -4,7 +4,6 @@
     using Helper.Map.ViewModels;
     using TK.CustomMap;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
 
     /// <inheritdoc />
     /// <summary>
@@ -47,12 +46,10 @@
 
             _map = new TKCustomMap();
 
-            _map.SetBinding(TKCustomMap.CustomPinsProperty, "ViewPins");
+            _map.SetBinding(TKCustomMap.PinsProperty, "ViewPins");
             _map.SetBinding(TKCustomMap.PolygonsProperty, "ViewPolygons");
             _map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
-            _map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
             _map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
-            _map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
             // ReSharper disable once ArrangeStaticMemberQualifier
             // ReSharper disable once AccessToStaticMemberViaDerivedType
             _map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");

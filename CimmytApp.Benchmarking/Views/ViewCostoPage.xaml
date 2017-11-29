@@ -7,6 +7,12 @@
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.ViewCostoPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Costos" FontAttributes="Italic" />
+                <Image Source="icons_pricetag_96.png" HeightRequest="18" />
+            </StackLayout>
+
             <Label Text="Ordenamiento de datos en curso, por favor espere..." IsVisible="{Binding IsLoading}"
                 Margin="0,0,0,16" />
             <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">

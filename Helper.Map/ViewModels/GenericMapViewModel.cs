@@ -12,7 +12,6 @@
     using TK.CustomMap;
     using TK.CustomMap.Overlays;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
 
     /// <summary>
     ///     Defines the <see cref="GenericMapViewModel" />
@@ -308,9 +307,8 @@
                         IsGeolocationEnabled = true;
                         ViewPins.Clear();
                         Position position = new Position(value.Latitude, value.Longitude);
-                        ViewPins.Add(new TKCustomMapPin
+                        ViewPins.Add(new TKCustomMapPin()
                         {
-                            ID = "polygon_marker_user",
                             Position = position
                         });
                         if (_followUserLocation)

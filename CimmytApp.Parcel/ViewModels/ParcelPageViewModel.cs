@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
     using CimmytApp.BusinessContract;
@@ -13,8 +14,9 @@
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
+    using TK.CustomMap;
+    using TK.CustomMap.Overlays;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -337,6 +339,27 @@
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                     MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
             }
+
+            var delineation = Parcel.GetDelineation();
+
+            if (delineation != null && delineation.Count > 2)
+            {
+                ObservableCollection<TKPolygon> polygons = new ObservableCollection<TKPolygon>();
+                TKPolygon polygon = new TKPolygon
+                {
+                    StrokeColor = Color.Green,
+                    StrokeWidth = 2f,
+                    Color = Color.Red
+                };
+
+                List<Position> listPosition = delineation.Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
+                    .ToList();
+
+                polygon.Coordinates = listPosition;
+                polygons.Add(polygon);
+                parameters.Add(GenericMapViewModel.PolygonsParameterName, polygons);
+            }
+
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 

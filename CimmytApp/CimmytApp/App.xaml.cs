@@ -184,7 +184,6 @@
             {
                 Container.RegisterTypeForNavigation<MainPage>();
                 Container.RegisterTypeForNavigation<LoginPage>();
-                Container.RegisterTypeForNavigation<OfflineTilesDownloadPage>();
                 Container.RegisterTypeForNavigation<ParcelMainPage>();
                 Container.RegisterTypeForNavigation<ProfilePage>();
                 Container.RegisterType<IWeatherDbOperations, WeatherDataDbOperations>(
