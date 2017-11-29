@@ -128,7 +128,9 @@
 
             foreach (Parcel item in parcels)
             {
-                if (item.Polygon != null)
+                var delineation = item.GetDelineation();
+
+                if (delineation != null)
                 {
                     TKPolygon polygon = new TKPolygon
                     {
@@ -136,7 +138,7 @@
                         StrokeWidth = 2f,
                         Color = Color.Red
                     };
-                    List<Position> listPosition = item.Polygon.ListPoints
+                    List<Position> listPosition = delineation
                         .Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
                         .ToList();
                     if (listPosition.Count <= 2)

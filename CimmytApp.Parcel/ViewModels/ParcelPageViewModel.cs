@@ -100,6 +100,7 @@
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             ViewActivitiesCommand = new DelegateCommand(ViewActivities);
             ViewTechnologiesCommand = new DelegateCommand(ViewTechnologies);
+            EditTechnologiesCommand = new DelegateCommand(EditTechnologies);
             GoBackCommand = new DelegateCommand(GoBack);
         }
 
@@ -199,6 +200,8 @@
         ///     Gets or sets a value indicating whether EditsDone
         /// </summary>
         public bool EditsDone { get; set; }
+
+        public DelegateCommand EditTechnologiesCommand { get; set; }
 
         public DelegateCommand GoBackCommand { get; set; }
 
@@ -337,14 +340,17 @@
             };
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
-                var points = new ObservableCollection<TKCustomMapPin>();
-                var position = new Position(Parcel.Latitude, Parcel.Longitude);
-                points.Add(new TKCustomMapPin { Position = position });
+                ObservableCollection<TKCustomMapPin> points = new ObservableCollection<TKCustomMapPin>();
+                Position position = new Position(Parcel.Latitude, Parcel.Longitude);
+                points.Add(new TKCustomMapPin
+                {
+                    Position = position
+                });
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                     MapSpan.FromCenterAndRadius(position, new Distance(500)));
                 parameters.Add(GenericMapViewModel.PointsParameterName, points);
             }
-            var delineation = Parcel.GetDelineation();
+            List<GeoPosition> delineation = Parcel.GetDelineation();
 
             if (delineation != null && delineation.Count > 2)
             {
@@ -356,7 +362,8 @@
                     Color = Color.Red
                 };
 
-                List<Position> listPosition = delineation.Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
+                List<Position> listPosition = delineation
+                    .Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
                     .ToList();
 
                 polygon.Coordinates = listPosition;
@@ -471,6 +478,7 @@
                 if (Parcel != null)
                 {
                     Parcel.TechnologiesUsed = (List<string>)technologies;
+                    Parcel.TechnologiesUsedBlobbed = JsonConvert.SerializeObject(Parcel.TechnologiesUsed);
                 }
             }
         }
@@ -485,6 +493,15 @@
                 { "Parcel", Parcel }
             };
             _navigationService.NavigateAsync("DeleteParcelPage", parameters);
+        }
+
+        private void EditTechnologies()
+        {
+            List<string> technologies = Parcel.TechnologiesUsedBlobbed != null ? JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed) : null;
+
+            NavigationParameters parameters = new NavigationParameters();
+            if (technologies != null) parameters.Add(ParcelConstants.TechnologiesParameterName, technologies);
+            _navigationService.NavigateAsync("SelectTechnologiesPage", parameters);
         }
 
         /// <summary>
@@ -601,18 +618,11 @@
 
         private void ViewTechnologies()
         {
-            List<string> technologies = JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed);
-            if (technologies == null)
-            {
-                return;
-            }
+            List<string> technologies = Parcel.TechnologiesUsedBlobbed != null ? JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed) : null;
 
-            NavigationParameters parameters = new NavigationParameters
-            {
-                { ParcelConstants.TechnologiesParameterName, technologies },
-                { "ViewOnly", true }
-            };
-            _navigationService.NavigateAsync("SelectTechnologiesViewModel", parameters);
+            NavigationParameters parameters = new NavigationParameters();
+            if (technologies != null) parameters.Add(ParcelConstants.TechnologiesParameterName, technologies);
+            _navigationService.NavigateAsync("SelectTechnologiesPage", parameters);
         }
     }
 }

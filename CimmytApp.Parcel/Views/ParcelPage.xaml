@@ -66,8 +66,7 @@
             <Label Text="Agrega información de manejo de parcela" FontSize="18" IsVisible="{Binding EditModeActive}" />
             <StackLayout Orientation="Horizontal" Margin="24" IsVisible="{Binding EditModeActive}">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                        CommandParameter="SelectTechnologiesPage" />
+                    <TapGestureRecognizer Command="{Binding EditTechnologiesCommand}" />
                 </StackLayout.GestureRecognizers>
                 <Image Source="wand.png" WidthRequest="32" />
                 <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16" />

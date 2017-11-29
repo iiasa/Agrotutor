@@ -229,6 +229,12 @@
         /// </summary>
         public string PerformanceWithUnit => Performance + " tons/ha";
 
+        public string DelineationString
+        {
+            get => _delineation;
+            set => _delineation = value;
+        }
+
         /// <summary>
         ///     Gets the TechnologiesScreenList
         /// </summary>
@@ -531,9 +537,9 @@
         /// <returns>The <see cref="List{GeoPosition}" /></returns>
         public List<GeoPosition> GetDelineation()
         {
-            return string.IsNullOrEmpty(_delineation)
+            return string.IsNullOrEmpty(DelineationString)
                 ? null
-                : JsonConvert.DeserializeObject<List<GeoPosition>>(_delineation);
+                : JsonConvert.DeserializeObject<List<GeoPosition>>(DelineationString);
         }
 
         //ToDo:Move to another Class
@@ -553,7 +559,7 @@
         /// <param name="delineation">The <see cref="List{GeoPosition}" /></param>
         public void SetDelineation(List<GeoPosition> delineation)
         {
-            _delineation = JsonConvert.SerializeObject(delineation);
+            DelineationString = JsonConvert.SerializeObject(delineation);
         }
 
         //ToDo:Move to another Class
