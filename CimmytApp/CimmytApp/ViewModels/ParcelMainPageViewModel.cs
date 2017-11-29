@@ -59,7 +59,7 @@
 
         private void GoBack()
         {
-            _navigationService.NavigateAsync("app:///MainPage");
+            _navigationService.NavigateAsync("app:///ParcelsOverviewPage");
         }
 
         /// <summary>

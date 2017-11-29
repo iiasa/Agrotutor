@@ -555,14 +555,14 @@
         /// </summary>
         private void SaveParcel()
         {
-            EditModeActive = false;
+            if (ShowEditToggle) EditModeActive = false;
             EditsDone = false;
             _cimmytDbOperations.UpdateParcel(Parcel);
             NavigationParameters parameters = new NavigationParameters
             {
                 { "Id", Parcel.ParcelId }
             };
-            _navigationService.GoBackAsync(parameters);
+            _navigationService.NavigateAsync("ParcelMainPage", parameters);
         }
 
         /// <summary>
