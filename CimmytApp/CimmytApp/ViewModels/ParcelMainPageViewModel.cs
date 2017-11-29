@@ -1,7 +1,6 @@
 ﻿namespace CimmytApp.ViewModels
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using CimmytApp.BusinessContract;
     using CimmytApp.DTO.Parcel;
@@ -57,15 +56,12 @@
             }
         }
 
-        private void GoBack()
-        {
-            _navigationService.NavigateAsync("app:///MainPage");
-        }
-
         /// <summary>
         ///     Defines the IsActiveChanged
         /// </summary>
         public event EventHandler IsActiveChanged;
+
+        public DelegateCommand GoBackCommand { get; set; }
 
         /// <inheritdoc />
         /// <summary>
@@ -92,8 +88,6 @@
             set => SetProperty(ref _parcel, value);
         }
 
-        public DelegateCommand GoBackCommand { get; set; }
-
         /// <summary>
         ///     The OnNavigatedFrom
         /// </summary>
@@ -118,6 +112,15 @@
             {
                 // ignored
             }
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
+        private void GoBack()
+        {
+            _navigationService.NavigateAsync("app:///MainPage");
         }
 
         /// <summary>
@@ -177,10 +180,6 @@
             }
 
             _navigationService.NavigateAsync("GenericMap", parameters);
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
     }
 }

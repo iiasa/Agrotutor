@@ -5,7 +5,7 @@
 
     public partial class ParcelMainPage : ContentPage
     {
-        private ParcelMainPageViewModel _contextObj;
+        private readonly ParcelMainPageViewModel _contextObj;
 
         public ParcelMainPage()
         {
