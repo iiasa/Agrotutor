@@ -12,7 +12,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <application android:label="México Produce" android:theme="@style/MyTheme" android:icon="@drawable/app_icon">
+    <application android:label="Agrotutor" android:theme="@style/MyTheme" android:icon="@drawable/app_icon">
         <meta-data android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCFVDQBvLzdNzm5ZfweMKfTHEKmZyHA4ug" />
     </application>

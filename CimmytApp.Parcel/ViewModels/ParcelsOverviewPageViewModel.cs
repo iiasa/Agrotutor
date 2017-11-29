@@ -313,6 +313,7 @@
         private void UpdateObservaleParcel(ParcelViewModel parcel)
         {
             int index = ObservableParcel.IndexOf(parcel);
+            if (index == -1) return; // Prevents a crash, but there is a case where it's -1 and shouldn't be
             ObservableParcel.Remove(parcel);
             ObservableParcel.Insert(index, parcel);
         }
