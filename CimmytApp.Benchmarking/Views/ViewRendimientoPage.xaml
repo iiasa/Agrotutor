@@ -3,35 +3,33 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid"
-    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.ViewRendimientoPage">
+    xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.ViewRendimientoPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                 <Label Text="Rendimiento" FontAttributes="Italic" />
                 <Image Source="icons_datasheet_96.png" HeightRequest="18" />
             </StackLayout>
+            <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
+                <chart:RadCartesianChart.HorizontalAxis>
+                    <chart:CategoricalAxis LabelFitMode="Rotate" />
+                </chart:RadCartesianChart.HorizontalAxis>
+                <chart:RadCartesianChart.VerticalAxis>
+                    <chart:NumericalAxis />
+                </chart:RadCartesianChart.VerticalAxis>
 
-            <dg:DataGrid ItemsSource="{Binding Datasets}">
-                <dg:DataGrid.HeaderFontSize>
-                    <OnIdiom x:TypeArguments="x:Double">
-                        <OnIdiom.Tablet>15</OnIdiom.Tablet>
-                        <OnIdiom.Phone>13</OnIdiom.Phone>
-                    </OnIdiom>
-                </dg:DataGrid.HeaderFontSize>
-                <dg:DataGrid.Columns>
-                    <dg:DataGridColumn Title="Tipo produccion" PropertyName="ProductionType" />
-                    <dg:DataGridColumn Title="Nombre cultivo" PropertyName="CropName" />
-                    <dg:DataGridColumn Title="Nombre producto" PropertyName="ProductOfEconomicInterestName" />
-                    <dg:DataGridColumn Title="Unidad de rendimiento" PropertyName="UnitOfPerformance" />
-                    <dg:DataGridColumn Title="Rendimiento" PropertyName="Performance" />
-                </dg:DataGrid.Columns>
-                <dg:DataGrid.RowsBackgroundColorPalette>
-                    <dg:PaletteCollection>
-                        <Color>#F2F2F2</Color>
-                        <Color>#FFFFFF</Color>
-                    </dg:PaletteCollection>
-                </dg:DataGrid.RowsBackgroundColorPalette>
-            </dg:DataGrid>
+                <chart:RadCartesianChart.Series>
+                    <chart:BarSeries ItemsSource="{Binding Stats}">
+                        <chart:BarSeries.ValueBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="Value" />
+                        </chart:BarSeries.ValueBinding>
+                        <chart:BarSeries.CategoryBinding>
+                            <chart:PropertyNameDataPointBinding PropertyName="Category" />
+                        </chart:BarSeries.CategoryBinding>
+                    </chart:BarSeries>
+                </chart:RadCartesianChart.Series>
+            </chart:RadCartesianChart>
         </StackLayout>
     </ScrollView>
 </ContentPage>
