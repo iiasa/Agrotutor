@@ -130,8 +130,8 @@
             get => _tech1Checked;
             set
             {
-                _tech1Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech1Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -143,8 +143,8 @@
             get => _tech2Checked;
             set
             {
-                _tech2Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech2Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -156,8 +156,8 @@
             get => _tech3Checked;
             set
             {
-                _tech3Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech3Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -169,8 +169,8 @@
             get => _tech4Checked;
             set
             {
-                _tech4Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech4Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -182,8 +182,8 @@
             get => _tech5Checked;
             set
             {
-                _tech5Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech5Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -195,8 +195,8 @@
             get => _tech6Checked;
             set
             {
-                _tech6Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech6Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -208,8 +208,8 @@
             get => _tech7Checked;
             set
             {
-                _tech7Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech7Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
@@ -221,8 +221,8 @@
             get => _tech8Checked;
             set
             {
-                _tech8Checked = value;
-                UpdateTechChecked();
+                SetProperty(ref _tech8Checked, value);
+                if (!Initializing) UpdateTechChecked();
             }
         }
 
