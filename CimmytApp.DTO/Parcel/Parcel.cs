@@ -124,6 +124,8 @@
         /// </summary>
         private string _year;
 
+        private List<AgriculturalActivity> _agriculturalActivities;
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="Parcel" /> class.
         /// </summary>
@@ -272,7 +274,23 @@
         ///     Gets or sets the AgriculturalActivities
         /// </summary>
         [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<AgriculturalActivity> AgriculturalActivities { get; set; }
+        public List<AgriculturalActivity> AgriculturalActivities
+        {
+            get
+            {
+                if (_agriculturalActivities == null && !string.IsNullOrEmpty(ActivitiesBlobbed))
+                {
+                    _agriculturalActivities =
+                        JsonConvert.DeserializeObject<List<AgriculturalActivity>>(ActivitiesBlobbed);
+                }
+                return _agriculturalActivities;
+            }
+            set
+            {
+                _agriculturalActivities = value;
+                ActivitiesBlobbed = JsonConvert.SerializeObject(_agriculturalActivities);
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the AgriculturalCycle

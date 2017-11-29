@@ -248,6 +248,14 @@
         /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            if (parameters.ContainsKey("Parcel"))
+            {
+                parameters.TryGetValue("Parcel", out object parcel);
+                if (parcel != null)
+                {
+                    Parcel = (Parcel)parcel;
+                }
+            }
             if (parameters.ContainsKey("Activities"))
             {
                 parameters.TryGetValue("Activities", out object activities);
@@ -257,7 +265,11 @@
                 }
                 else
                 {
-                    Parcel.AgriculturalActivities.AddRange((List<AgriculturalActivity>)activities);
+                    if (activities != null)
+                    {
+                        ((List<AgriculturalActivity>)activities).AddRange(Parcel.AgriculturalActivities);
+                        Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                    }
                 }
             }
             if (parameters.ContainsKey("GeoPosition"))
@@ -364,7 +376,8 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { "Caller", "AddParcelPage" }
+                { "Caller", "AddParcelPage" },
+                { "Parcel", Parcel }
             };
             _navigationService.NavigateAsync(page, parameters);
         }

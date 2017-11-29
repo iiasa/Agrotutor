@@ -468,7 +468,11 @@
                 }
                 else
                 {
-                    Parcel.AgriculturalActivities.AddRange((List<AgriculturalActivity>)activities);
+                    if (activities != null)
+                    {
+                        ((List<AgriculturalActivity>)activities).AddRange(Parcel.AgriculturalActivities);
+                        Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                    }
                 }
             }
 
