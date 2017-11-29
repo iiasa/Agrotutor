@@ -18,7 +18,7 @@
         /// <summary>
         ///     Defines the _datasets
         /// </summary>
-        private ObservableCollection<Costo> _datasets;
+        private List<Costo> _datasets;
 
         /// <summary>
         ///     Defines the _isLoading
@@ -28,12 +28,12 @@
         /// <summary>
         ///     Defines the _stats
         /// </summary>
-        private ObservableCollection<Dataset> _stats;
+        private List<Dataset> _stats;
 
         /// <summary>
         ///     Gets or sets the Datasets
         /// </summary>
-        public ObservableCollection<Costo> Datasets
+        public List<Costo> Datasets
         {
             get => _datasets;
             set => SetProperty(ref _datasets, value);
@@ -51,7 +51,7 @@
         /// <summary>
         ///     Gets or sets the Stats
         /// </summary>
-        public ObservableCollection<Dataset> Stats
+        public List<Dataset> Stats
         {
             get => _stats;
             set => SetProperty(ref _stats, value);
@@ -63,32 +63,37 @@
         public void CalculateStats()
         {
             IsLoading = true;
-            Datasets = new ObservableCollection<Costo>(Datasets.OrderBy(x => int.Parse(x.ProductionCost)));
-            Stats = new ObservableCollection<Dataset>
+            Datasets = new List<Costo>(Datasets.OrderBy(x => double.Parse(x.ProductionCost)));
+            var min = double.Parse(Datasets.ElementAt(0)?.ProductionCost);
+            double max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.ProductionCost);
+            double q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.ProductionCost);
+            double q2 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 2.0))?.ProductionCost);
+            double q3 = double.Parse(Datasets.ElementAt((int)Math.Floor(3 * Datasets.Count / 4.0))?.ProductionCost);
+            Stats = new List<Dataset>
             {
                 new Dataset
                 {
-                    Value = int.Parse(Datasets.ElementAt(0)?.ProductionCost),
+                    Value = min,
                     Category = "Min"
                 },
                 new Dataset
                 {
-                    Value = int.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.ProductionCost),
+                    Value = q1,
                     Category = "25%"
                 },
                 new Dataset
                 {
-                    Value = int.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 2.0))?.ProductionCost),
+                    Value = q2,
                     Category = "50%"
                 },
                 new Dataset
                 {
-                    Value = int.Parse(Datasets.ElementAt((int)Math.Floor(3 * Datasets.Count / 4.0))?.ProductionCost),
+                    Value = q3,
                     Category = "75%"
                 },
                 new Dataset
                 {
-                    Value = int.Parse(Datasets.ElementAt(Datasets.Count - 1)?.ProductionCost),
+                    Value = max,
                     Category = "Max"
                 }
             };
@@ -100,16 +105,9 @@
         /// </summary>
         public async void LoadData()
         {
-            List<Costo> costo =
+            Datasets =
                 await RequestJson.Get<List<Costo>>(
                     "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");
-            ObservableCollection<Costo> ds = new ObservableCollection<Costo>();
-            foreach (Costo dataset in costo)
-            {
-                ds.Add(dataset);
-            }
-
-            Datasets = ds;
             CalculateStats();
         }
 

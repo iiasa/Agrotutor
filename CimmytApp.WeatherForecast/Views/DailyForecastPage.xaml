@@ -26,7 +26,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text=""></Label>
                                 <Image Source="{Binding WxIcon}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
-                                <Label Text="{Binding DayOfWeek}" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding LocalizedDayOfWeek}" Grid.Row="0" Grid.Column="1" />
                                 <Label Text="{Binding TemperatureString}" Grid.Row="1" Grid.Column="1" />
                             </Grid>
                         </ViewCell>
