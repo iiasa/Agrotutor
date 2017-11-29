@@ -14,6 +14,7 @@
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
+    using TK.CustomMap;
     using TK.CustomMap.Overlays;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
@@ -336,8 +337,12 @@
             };
             if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
             {
+                var points = new ObservableCollection<TKCustomMapPin>();
+                var position = new Position(Parcel.Latitude, Parcel.Longitude);
+                points.Add(new TKCustomMapPin { Position = position });
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+                    MapSpan.FromCenterAndRadius(position, new Distance(500)));
+                parameters.Add(GenericMapViewModel.PointsParameterName, points);
             }
             var delineation = Parcel.GetDelineation();
 
