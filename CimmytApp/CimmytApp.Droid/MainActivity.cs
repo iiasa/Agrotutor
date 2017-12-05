@@ -3,6 +3,7 @@ using Telerik.XamarinForms.InputRenderer.Android;
 using Xamarin.Forms;
 
 [assembly: ExportRenderer(typeof(RadCalendar), typeof(CalendarRenderer))]
+
 namespace CimmytApp.Droid
 {
     using System;
@@ -20,7 +21,7 @@ namespace CimmytApp.Droid
     using Xamarin.Forms.Platform.Android;
     using XamForms.Controls.Droid;
 
-    [Activity(Label = "Agrotutor", Icon = "@drawable/app_logo", MainLauncher = true,
+    [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon", MainLauncher = true,
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {

@@ -9,7 +9,9 @@ namespace CimmytApp.WeatherForecast
     using System;
     using System.Net;
     using System.Collections.Generic;
-
+    using System.Net.Http;
+    using System.Net.Http.Headers;
+    using System.Threading.Tasks;
     using Newtonsoft.Json;
     using J = Newtonsoft.Json.JsonPropertyAttribute;
 
@@ -41,7 +43,23 @@ namespace CimmytApp.WeatherForecast
 
     public partial class GrowingDegreeDays
     {
+        private static string auth = "ZGJmNmIwMWM6MjMwNjhlN2NjMGVmMTU1OTAyMmI2NDlmYzkxNDY0ODg =";
+
         public static GrowingDegreeDays FromJson(string json) => JsonConvert.DeserializeObject<GrowingDegreeDays>(json, GDDConverter.Settings);
+
+        public static async Task<GrowingDegreeDays> Download(double latitude, double longitude, DateTime start, DateTime end)
+        {
+            var startString = start.ToString("yyyy-MM-dd");
+            var endString = end.ToString("yyyy-MM-dd");
+            string serviceUrl =
+                $"https://insight.api.wdtinc.com/growing-degree-days/{latitude}/{longitude}?start={startString}&end={endString}";
+            using (HttpClient wc = new HttpClient())
+            {
+                wc.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic", auth);
+                string json = await wc.GetStringAsync(serviceUrl);
+                return FromJson(json);
+            }
+        }
     }
 
     public static class GDDSerialize

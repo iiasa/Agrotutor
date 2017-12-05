@@ -255,5 +255,9 @@
             DataRainfed = dataRainfed;
             Downloading = false;
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

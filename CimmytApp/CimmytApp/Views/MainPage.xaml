@@ -60,8 +60,7 @@
                 </Label>
                 <Label Text="Calendario" forms:Grid.Row="3" forms:Grid.Column="1" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="TelerikCalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateToCalendarCommand}" />
                     </Label.GestureRecognizers>
                 </Label>
                 <Label Text="Ver enlaces y herramientas" forms:Grid.Row="5" forms:Grid.Column="0"
@@ -96,8 +95,7 @@
                 </Image>
                 <Image Source="calendar.png" forms:Grid.Row="2" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="TelerikCalendarPage" />
+                        <TapGestureRecognizer Command="{Binding NavigateToCalendarCommand}" />
                     </Image.GestureRecognizers>
                 </Image>
                 <Image Source="link.png" forms:Grid.Row="4" forms:Grid.Column="0" WidthRequest="70" Margin="16">

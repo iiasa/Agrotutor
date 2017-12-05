@@ -65,7 +65,7 @@
                             CommandParameter="SelectTechnologiesPage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Label Text="Agregar technologias utilizadas" VerticalOptions="Center" Margin="16" FontSize="16">
+                <Label Text="Agregar tecnologías utilizadas" VerticalOptions="Center" Margin="16" FontSize="16">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
                             CommandParameter="SelectTechnologiesPage" />

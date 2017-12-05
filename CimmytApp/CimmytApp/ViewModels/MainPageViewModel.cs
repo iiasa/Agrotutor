@@ -59,6 +59,14 @@
 
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
+            NavigateToCalendarCommand = new DelegateCommand(NavigateToCalendar);
+        }
+
+        private void NavigateToCalendar()
+        {
+            var parameters = new NavigationParameters();
+            parameters.Add("Parcels", _cimmytDbOperations.GetAllParcels());
+            _navigationService.NavigateAsync("TelerikCalendarPage", parameters);
         }
 
         public MainPageViewModel()
@@ -116,6 +124,8 @@
         {
             _navigationService.NavigateAsync(page);
         }
+
+        public DelegateCommand NavigateToCalendarCommand { get; set; }
 
         /// <summary>
         ///     The NavigateToMap

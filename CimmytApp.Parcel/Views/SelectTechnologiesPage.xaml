@@ -9,7 +9,7 @@
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End" Margin="0,0,0,32">
-                <Label Text="Agregar technologias utilizadas" FontAttributes="Italic" />
+                <Label Text="Agregar tecnologías utilizadas" FontAttributes="Italic" />
                 <Image Source="wand_small.png" />
             </StackLayout>
             <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" IsEnabled="{Binding SelectEnabled}" />
