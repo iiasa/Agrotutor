@@ -34,5 +34,9 @@
             await Task.Delay(SplashScreenPageViewModel.SecondsActive * 1000);
             _navigationService.NavigateAsync(_nextPage);
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }
