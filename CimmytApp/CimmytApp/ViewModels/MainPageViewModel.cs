@@ -65,7 +65,12 @@
         private void NavigateToCalendar()
         {
             var parameters = new NavigationParameters();
-            parameters.Add("Parcels", _cimmytDbOperations.GetAllParcels());
+            var parcelDTO = _cimmytDbOperations.GetAllParcels();
+            var parcels = new List<Parcel>();
+            foreach (var parcel in parcelDTO){
+                parcels.Add(Parcel.FromDTO(parcel));
+            }
+            parameters.Add("Parcels", parcels);
             _navigationService.NavigateAsync("TelerikCalendarPage", parameters);
         }
 
@@ -134,7 +139,12 @@
         {
             ObservableCollection<TKPolygon> polygons = new ObservableCollection<TKPolygon>();
             ObservableCollection<TKCustomMapPin> parcelLocations = new ObservableCollection<TKCustomMapPin>();
-            List<Parcel> parcels = _cimmytDbOperations.GetAllParcels();
+            var parcelDTO = _cimmytDbOperations.GetAllParcels();
+            var parcels = new List<Parcel>();
+            foreach (var parcel in parcelDTO)
+            {
+                parcels.Add(Parcel.FromDTO(parcel));
+            }
 
             foreach (Parcel item in parcels)
             {
@@ -149,7 +159,7 @@
                         Color = Color.Red
                     };
                     List<Position> listPosition = delineation
-                        .Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
+                        .Select(positionitem => new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
                         .ToList();
                     if (listPosition.Count <= 2)
                     {
@@ -160,11 +170,11 @@
                     polygons.Add(polygon);
                 }
 
-                if (item.Latitude != 0 && item.Longitude != 0)
+                if (item.Position.IsSet())
                 {
                     parcelLocations.Add(new TKCustomMapPin
                     {
-                        Position = new Position(item.Latitude, item.Longitude)
+                        Position = new Position((double)item.Position.Latitude, (double)item.Position.Longitude)
                     });
                 }
             }

@@ -112,7 +112,7 @@
             {
                 int id = (int)parameters["Id"];
 
-                Parcel = _cimmytDbOperations.GetParcelById(id);
+                Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
             }
             catch
             {
@@ -155,7 +155,7 @@
                 };
                 foreach (GeoPosition geoPosition in delineation.ListPoints)
                 {
-                    polygon.Coordinates.Add(new Position(geoPosition.Latitude, geoPosition.Longitude));
+                    polygon.Coordinates.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
 
                 ObservableCollection<TKPolygon> viewPolygons = new ObservableCollection<TKPolygon>
@@ -165,13 +165,13 @@
                 parameters.Add(GenericMapViewModel.PolygonsParameterName, viewPolygons);
             }
 
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 parameters.Add(GenericMapViewModel.PointsParameterName, new ObservableCollection<TKCustomMapPin>
                 {
                     new TKCustomMapPin
                     {
-                        Position = new Position(Parcel.Latitude, Parcel.Longitude)
+                        Position = Parcel.Position.ToPosition()
                     }
                 });
             }

@@ -12,7 +12,7 @@
         private BemData _bemData;
         private object _cycle;
         private object _dataset;
-        private List<BemDataset> _datasets;
+        private List<IBemDataset> _datasets;
         private object _year;
 
         public LocalBenchmarkingPageViewModel(ICimmytDbOperations cimmytDbOperations)
@@ -20,7 +20,7 @@
             _cimmytDbOperations = cimmytDbOperations;
         }
 
-        public List<BemDataset> Datasets
+        public List<IBemDataset> Datasets
         {
             get => _datasets;
             set => SetProperty(ref _datasets, value);

@@ -321,10 +321,10 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+                               MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -338,10 +338,10 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 ObservableCollection<TKCustomMapPin> points = new ObservableCollection<TKCustomMapPin>();
-                Position position = new Position(Parcel.Latitude, Parcel.Longitude);
+                Position position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
                 points.Add(new TKCustomMapPin
                 {
                     Position = position
@@ -363,7 +363,7 @@
                 };
 
                 List<Position> listPosition = delineation
-                    .Select(positionitem => new Position(positionitem.Latitude, positionitem.Longitude))
+                    .Select(positionitem => new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
                     .ToList();
 
                 polygon.Coordinates = listPosition;
@@ -412,7 +412,7 @@
                 {
                     int id = (int)parameters["Id"];
 
-                    Parcel = _cimmytDbOperations.GetParcelById(id);
+                    Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
                 }
                 catch (Exception e)
                 {
@@ -435,13 +435,12 @@
                 {
                     ListPoints = (List<GeoPosition>)delineation
                 };
-                if (polygonObj.ListPoints.Count > 0 && Parcel.Latitude == 0 && Parcel.Longitude == 0)
+                if (polygonObj.ListPoints.Count > 0 && Parcel.Position.Latitude == 0 && Parcel.Position.Longitude == 0)
                 {
-                    Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
-                    Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
+                    Parcel.Position.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
+                    Parcel.Position.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
                 }
                 Parcel.SetDelineation(polygonObj.ListPoints);
-                _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
 
                 OnPropertyChanged("Parcel");
             }
@@ -454,9 +453,9 @@
                 }
 
                 GeoPosition position = (GeoPosition)geoPosition;
-                Parcel.Latitude = position.Latitude;
-                Parcel.Longitude = position.Longitude;
-                _cimmytDbOperations.UpdateParcel(Parcel);
+                Parcel.Position.Latitude = position.Latitude;
+                Parcel.Position.Longitude = position.Longitude;
+                _cimmytDbOperations.UpdateParcel(Parcel.GetDTO());
             }
 
             if (parameters.ContainsKey("Activities"))
@@ -517,10 +516,10 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+                               MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -561,7 +560,7 @@
         {
             if (ShowEditToggle) EditModeActive = false;
             EditsDone = false;
-            _cimmytDbOperations.UpdateParcel(Parcel);
+            _cimmytDbOperations.UpdateParcel(Parcel.GetDTO());
             NavigationParameters parameters = new NavigationParameters
             {
                 { "Id", Parcel.ParcelId }

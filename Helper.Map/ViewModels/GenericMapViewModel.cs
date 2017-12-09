@@ -307,7 +307,7 @@
                     case MapTask.GetLocation:
                         IsGeolocationEnabled = true;
                         ViewPins.Clear();
-                        Position position = new Position(value.Latitude, value.Longitude);
+                        Position position = new Position((double)value.Latitude, (double)value.Longitude);
                         ViewPins.Add(new TKCustomMapPin
                         {
                             ID = "polygon_marker_user",
@@ -515,7 +515,7 @@
 
                     ReturnGeolocationButtonEnabled = true;
 
-                    Position position = new Position(positionRes.Latitude, positionRes.Longitude);
+                    Position position = new Position((double)positionRes.Latitude, (double)positionRes.Longitude);
                     MapRegion = MapSpan.FromCenterAndRadius(position, Distance.FromKilometers(50));
 
                     ViewPins = new ObservableCollection<TKCustomMapPin>(new[]
@@ -526,7 +526,7 @@
                             Position = position
                         }
                     });
-                    Point = new GeoPosition(position.Latitude, position.Longitude);
+                    Point = new GeoPosition { Latitude = position.Latitude, Longitude = position.Longitude};
                 }
 
                 _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);

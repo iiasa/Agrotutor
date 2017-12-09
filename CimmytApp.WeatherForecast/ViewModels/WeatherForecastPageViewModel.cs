@@ -43,17 +43,17 @@
             set
             {
                 SetProperty(ref _parcel, value);
-                if (_parcel.Latitude != null && _parcel.Longitude != null) // TODO - check if undefined - ==0.0?
+                if (_parcel.Position.Latitude != null && _parcel.Position.Longitude != null) // TODO - check if undefined - ==0.0?
                 {
-                    if (_parcel.Latitude == 0 && _parcel.Longitude == 0)
+                    if (_parcel.Position.Latitude == 0 && _parcel.Position.Longitude == 0)
                     {
                         return;
                     }
 
                     position = new GeoPosition
                     {
-                        Latitude = Parcel.Latitude,
-                        Longitude = Parcel.Longitude
+                        Latitude = Parcel.Position.Latitude,
+                        Longitude = Parcel.Position.Longitude
                     };
                     LoadWeatherDataAsync();
                 }

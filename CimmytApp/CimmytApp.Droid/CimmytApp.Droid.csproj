@@ -44,9 +44,6 @@
     <Debugger>Xamarin</Debugger>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -327,6 +324,18 @@
     <Reference Include="Prism.Unity.Forms">
       <HintPath>..\..\packages\Prism.Unity.Forms.6.2.0\lib\MonoAndroid1.0\Prism.Unity.Forms.dll</HintPath>
     </Reference>
+    <Reference Include="Realm.DataBinding">
+      <HintPath>..\..\packages\Realm.DataBinding.1.2.0\lib\MonoAndroid44\Realm.DataBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="Remotion.Linq">
+      <HintPath>..\..\packages\Remotion.Linq.2.1.2\lib\portable-net45+win+wpa81+wp80\Remotion.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\..\packages\System.Runtime.CompilerServices.Unsafe.4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Realm">
+      <HintPath>..\..\packages\Realm.Database.2.1.0\lib\netstandard1.4\Realm.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AzurePushBroadcastReceiver.cs" />
@@ -346,6 +355,7 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon.png" />
@@ -1285,4 +1295,7 @@
   <Import Project="..\..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" />
   <Import Project="..\..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets')" />
   <Import Project="..\..\packages\Xamarin.GooglePlayServices.Places.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Places.targets" Condition="Exists('..\..\packages\Xamarin.GooglePlayServices.Places.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Places.targets')" />
+  <Import Project="..\..\packages\Fody.2.2.0\build\netstandard1.2\Fody.targets" Condition="Exists('..\..\packages\Fody.2.2.0\build\netstandard1.2\Fody.targets')" />
+  <Import Project="..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.0\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Import Project="..\..\packages\Realm.Database.2.1.0\build\Realm.Database.targets" Condition="Exists('..\..\packages\Realm.Database.2.1.0\build\Realm.Database.targets')" />
 </Project>

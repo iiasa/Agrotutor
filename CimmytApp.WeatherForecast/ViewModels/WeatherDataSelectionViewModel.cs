@@ -127,7 +127,7 @@
                     return true;
                 }
 
-                return Parcel.Latitude == 0 && Parcel.Longitude == 0;
+                return Parcel.Position.Latitude == 0 && Parcel.Position.Longitude == 0;
             }
         }
 
@@ -288,12 +288,12 @@
         /// </summary>
         private void RefreshWeatherData()
         {
-            if (_parcel.Latitude != 0 || _parcel.Longitude != 0)
+            if (_parcel.Position.IsSet())
             {
                 _position = new GeoPosition
                 {
-                    Latitude = Parcel.Latitude,
-                    Longitude = Parcel.Longitude
+                    Latitude = Parcel.Position.Latitude,
+                    Longitude = Parcel.Position.Longitude
                 };
             }
             else

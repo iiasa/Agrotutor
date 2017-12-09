@@ -56,6 +56,10 @@
       <Project>{647D5F44-FD24-48AF-AFB4-26AC21180367}</Project>
       <Name>Helper.DTO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Helper.Realm\Helper.Realm.csproj">
+      <Project>{6C506277-4D7B-4AC5-87B3-E8D73629B96B}</Project>
+      <Name>Helper.Realm</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">

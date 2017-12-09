@@ -108,7 +108,12 @@
             {
                 Accuracy = position.Accuracy,
                 Latitude = position.Latitude,
-                Longitude = position.Longitude
+                Longitude = position.Longitude,
+                Altitude = position.Altitude,
+                AltitudeAccuracy = position.AltitudeAccuracy,
+                Heading = position.Heading,
+                Speed = position.Speed,
+                Timestamp = position.Timestamp
             };
             return pos;
         }

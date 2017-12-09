@@ -1,10 +1,9 @@
 ﻿namespace CimmytApp.DTO.BEM
 {
     using Newtonsoft.Json;
-    using SQLite.Net.Attributes;
+    using Realms;
 
-    [Table("BEM-Rendimiento")]
-    public class Rendimiento : BemDataset
+    public class Rendimiento : RealmObject, IBemDataset
     {
         [JsonProperty("ciclo_agronomico")]
         public string AgriculturalCycle { get; set; }
@@ -54,22 +53,22 @@
         [JsonProperty("anio")]
         public string Year { get; set; }
 
-        public override string GetCycle()
+        public string GetCycle()
         {
             return AgriculturalCycle;
         }
 
-        public override string GetDataType()
+        public string GetType()
         {
             return "Rendimiento";
         }
 
-        public override string GetValue()
+        public string GetValue()
         {
             return Performance;
         }
 
-        public override string GetYear()
+        public string GetYear()
         {
             return Year;
         }

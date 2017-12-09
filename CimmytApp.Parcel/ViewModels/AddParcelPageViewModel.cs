@@ -280,9 +280,7 @@
                     return;
                 }
 
-                GeoPosition position = (GeoPosition)geoPosition;
-                Parcel.Latitude = position.Latitude;
-                Parcel.Longitude = position.Longitude;
+                Parcel.Position = (GeoPosition)geoPosition;
             }
 
             if (parameters.ContainsKey("Delineation"))
@@ -292,13 +290,8 @@
                 {
                     ListPoints = (List<GeoPosition>)delineation
                 };
-                if (polygonObj.ListPoints.Count > 0)
-                {
-                    Parcel.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
-                    Parcel.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
-                }
                 Parcel.SetDelineation(polygonObj.ListPoints);
-                _cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj);
+                //_cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj); TODO ensure saving
 
                 OnPropertyChanged("Parcel");
             }
@@ -330,10 +323,10 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+                    MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -347,10 +340,10 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+                    MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -364,10 +357,10 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
-            if (Parcel.Latitude != 0 && Parcel.Longitude != 0)
+            if (Parcel.Position.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position(Parcel.Latitude, Parcel.Longitude), new Distance(500)));
+                    MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -388,7 +381,7 @@
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
-            _cimmytDbOperations.AddParcel(Parcel);
+            _cimmytDbOperations.AddParcel(Parcel.GetDTO());
 
             NavigationParameters navigationParameters = new NavigationParameters
             {

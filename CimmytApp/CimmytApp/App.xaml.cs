@@ -191,7 +191,6 @@
                     new ContainerControlledLifetimeManager());
                 Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
                     new ContainerControlledLifetimeManager());
-
                 Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
             }
             catch (Exception e)

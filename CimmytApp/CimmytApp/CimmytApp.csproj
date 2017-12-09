@@ -240,6 +240,10 @@
       <Project>{F7513236-DC22-4A65-803E-1892E7FA180A}</Project>
       <Name>CimmytApp.Parcel</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Helper.Realm\Helper.Realm.csproj">
+      <Project>{6C506277-4D7B-4AC5-87B3-E8D73629B96B}</Project>
+      <Name>Helper.Realm</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\LoginPage.xaml">

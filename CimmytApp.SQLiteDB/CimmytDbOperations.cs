@@ -3,9 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Linq;
     using CimmytApp.BusinessContract;
     using CimmytApp.DTO.BEM;
     using CimmytApp.DTO.Parcel;
+    using Helper.Realm;
+    using Helper.Realm.DTO;
+    using Realms;
     using SqLite.Contract;
     using SQLite.Net;
     using SQLiteNetExtensions.Extensions;
@@ -14,6 +18,7 @@
     public class CimmytDbOperations : ICimmytDbOperations
     {
         private readonly SQLiteConnection _databaseConn;
+        private readonly Realm _realm;
 
         public CimmytDbOperations()
         {
@@ -23,12 +28,9 @@
 
                 _databaseConn.CreateTable<AgriculturalActivity>();
                 _databaseConn.CreateTable<PolygonDto>();
-                _databaseConn.CreateTable<PesticideApplication>();
-                _databaseConn.CreateTable<Costo>();
-                _databaseConn.CreateTable<Ingreso>();
-                _databaseConn.CreateTable<Rendimiento>();
-                _databaseConn.CreateTable<Utilidad>();
-                _databaseConn.CreateTable<Parcel>();
+
+
+                _realm = DbContext.GetConnection();
             }
             catch (Exception e)
             {
@@ -36,95 +38,77 @@
             }
         }
 
-        public void AddParcel(Parcel parcel)
+        public void AddParcel(ParcelDTO parcel)
         {
-            _databaseConn.InsertWithChildren(parcel, true);
+            _realm.Write(() => _realm.Add(parcel));
         }
 
-        public int DeleteAllData()
+        public void DeleteParcel(ParcelDTO parcel)
         {
-            return _databaseConn.DeleteAll<Parcel>();
+
+            _realm.Remove(parcel);
         }
 
-        public void DeleteParcel(Parcel parcel)
+        public List<ParcelDTO> GetAllParcels()
         {
-            _databaseConn.Delete<Parcel>(parcel.ParcelId);
-        }
+            return _realm.All<ParcelDTO>().ToList();
 
-        public List<Parcel> GetAllParcels()
-        {
-            return _databaseConn.GetAllWithChildren<Parcel>();
         }
 
         public BemData GetBemData()
         {
             return new BemData
             {
-                Costo = _databaseConn.GetAllWithChildren<Costo>(),
-                Ingreso = _databaseConn.GetAllWithChildren<Ingreso>(),
-                Rendimiento = _databaseConn.GetAllWithChildren<Rendimiento>(),
-                Utilidad = _databaseConn.GetAllWithChildren<Utilidad>()
+                Costo = _realm.All<Costo>().ToList(),
+                Ingreso = _realm.All<Ingreso>().ToList(),
+                Rendimiento = _realm.All<Rendimiento>().ToList(),
+                Utilidad = _realm.All<Utilidad>().ToList()
             };
         }
 
-        public Parcel GetParcelById(int parcelId)
+        public ParcelDTO GetParcelById(int parcelId)
         {
-            return _databaseConn.GetWithChildren<Parcel>(parcelId);
+            return _realm.All<ParcelDTO>().Where(p => p.ParcelId == parcelId).FirstOrDefault(); // TODO check if null works...
         }
 
         public void SaveCostos(List<Costo> listCostos)
         {
-            _databaseConn.DeleteAll<Costo>();
-            _databaseConn.InsertAll(listCostos);
+            _realm.Write(() =>_realm.RemoveAll<Costo>());
+            foreach (var costo in listCostos){
+                _realm.Write(() =>_realm.Add(costo));
+            }
         }
 
         public void SaveIngresos(List<Ingreso> listIngresos)
         {
-            _databaseConn.DeleteAll<Ingreso>();
-            _databaseConn.InsertAll(listIngresos);
-        }
-
-        public void SaveParcelPolygon(int parcelId, PolygonDto polygonObj)
-        {
-            if (polygonObj == null)
+            _realm.Write(() => _realm.RemoveAll<Ingreso>());
+            foreach (var ingreso in listIngresos)
             {
-                throw new ArgumentNullException();
-            }
-
-            Parcel parcelObj = _databaseConn.GetWithChildren<Parcel>(parcelId);
-
-            if (parcelObj != null)
-            {
-                if (parcelObj.Polygon == null)
-                {
-                    parcelObj.Polygon = polygonObj;
-                    _databaseConn.InsertOrReplaceWithChildren(parcelObj);
-                }
-                else
-                {
-                    parcelObj.Polygon.ListPoints = polygonObj.ListPoints;
-                    _databaseConn.UpdateWithChildren(parcelObj);
-                }
-
-                // _databaseConn.Delete<Parcel>(parcelObj.ParcelId);
+                _realm.Write(() => _realm.Add(ingreso));
             }
         }
 
         public void SaveRendimientos(List<Rendimiento> listRendimientos)
         {
-            _databaseConn.DeleteAll<Rendimiento>();
-            _databaseConn.InsertAll(listRendimientos);
+            _realm.Write(() => _realm.RemoveAll<Rendimiento>());
+            foreach (var rendimiento in listRendimientos)
+            {
+                _realm.Write(() => _realm.Add(rendimiento));
+            }
         }
 
         public void SaveUtilidades(List<Utilidad> listUtilidades)
         {
-            _databaseConn.DeleteAll<Utilidad>();
-            _databaseConn.InsertAll(listUtilidades);
+            _realm.Write(() => _realm.RemoveAll<Utilidad>());
+            foreach (var utilidad in listUtilidades)
+            {
+                _realm.Write(() => _realm.Add(utilidad));
+            }
         }
 
-        public void UpdateParcel(Parcel parcel)
+        public void UpdateParcel(ParcelDTO parcel)
         {
-            _databaseConn.UpdateWithChildren(parcel);
+            _realm.Write(() => _realm.Add(parcel, update: true));
         }
     }
 }

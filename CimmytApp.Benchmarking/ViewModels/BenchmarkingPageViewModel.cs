@@ -210,7 +210,7 @@
         {
             DownloadButtonActive = false;
             Downloading = true;
-            MyData = await DownloadData(Parcel.Latitude, Parcel.Longitude);
+            MyData = await DownloadData((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
         }
 
         /// <summary>

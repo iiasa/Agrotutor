@@ -8,6 +8,7 @@
     using Helper.BusinessContract;
     using Helper.GeoWiki.API.GenericDatasetStorage;
     using Helper.Map;
+    using Helper.Realm.DTO;
     using Newtonsoft.Json;
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
@@ -17,7 +18,7 @@
     ///     Defines the <see cref="Parcel" />
     /// </summary>
     [Table("Parcel")]
-    public class Parcel : GeoPosition, IDataset, INotifyPropertyChanged
+    public class Parcel : IDataset, INotifyPropertyChanged
     {
         /// <summary>
         ///     Defines the geoWikiDatasetGroupId
@@ -90,11 +91,6 @@
         private string _performance;
 
         /// <summary>
-        ///     Defines the _pesticidesApplied
-        /// </summary>
-        private List<PesticideApplication> _pesticidesApplied;
-
-        /// <summary>
         ///     Defines the _plantingDate
         /// </summary>
         private DateTime _plantingDate;
@@ -127,14 +123,6 @@
         private List<AgriculturalActivity> _agriculturalActivities;
 
         /// <summary>
-        ///     Initializes a new instance of the <see cref="Parcel" /> class.
-        /// </summary>
-        public Parcel()
-        {
-            PlantingDate = DateTime.Today;
-        }
-
-        /// <summary>
         ///     Defines the PropertyChanged
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
@@ -143,11 +131,6 @@
         ///     Gets the CompletedPercentage
         /// </summary>
         public int CompletedPercentage => 10;
-
-        /// <summary>
-        ///     Gets the EstimatedParcelAreaWithUnit
-        /// </summary>
-        public string EstimatedParcelAreaWithUnit => EstimatedParcelArea + " ha";
 
         /// <summary>
         ///     Gets the IconSource
@@ -226,11 +209,6 @@
         /// </summary>
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
-        /// <summary>
-        ///     Gets the PerformanceWithUnit
-        /// </summary>
-        public string PerformanceWithUnit => Performance + " tons/ha";
-
         public string DelineationString
         {
             get => _delineation;
@@ -253,16 +231,6 @@
 
                 return null;
             }
-        }
-
-        /// <summary>
-        ///     Gets or sets the Activities
-        /// </summary>
-        [TextBlob("ActivitiesBlobbed")]
-        public List<string> Activities
-        {
-            get => _activities;
-            set => _activities = value;
         }
 
         /// <summary>
@@ -289,19 +257,6 @@
             {
                 _agriculturalActivities = value;
                 ActivitiesBlobbed = JsonConvert.SerializeObject(_agriculturalActivities);
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the AgriculturalCycle
-        /// </summary>
-        public string AgriculturalCycle
-        {
-            get => _agriculturalCycle;
-            set
-            {
-                _agriculturalCycle = value;
-                OnPropertyChanged("AgriculturalCycle");
             }
         }
 
@@ -333,66 +288,9 @@
         }
 
         /// <summary>
-        ///     Gets or sets the Cultivar
-        /// </summary>
-        public string Cultivar
-        {
-            get => _cultivar;
-            set
-            {
-                _cultivar = value;
-                OnPropertyChanged("Cultivar");
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the EstimatedParcelArea
-        /// </summary>
-        public string EstimatedParcelArea
-        {
-            get => _estimatedParcelArea;
-            set
-            {
-                _estimatedParcelArea = value;
-                OnPropertyChanged("EstimatedParcelArea");
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the HarvestingType
-        /// </summary>
-        public string HarvestingType { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Irrigation
-        /// </summary>
-        public string Irrigation
-        {
-            get => _irrigation;
-            set
-            {
-                _irrigation = value;
-                OnPropertyChanged("Irrigation");
-            }
-        }
-
-        /// <summary>
         ///     Gets or sets the MaturityClass
         /// </summary>
         public string MaturityClass { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the OtherTechnologies
-        /// </summary>
-        public string OtherTechnologies
-        {
-            get => _otherTechnologies;
-            set
-            {
-                _otherTechnologies = value;
-                OnPropertyChanged("OtherTechnologies");
-            }
-        }
 
         /// <summary>
         ///     Gets or sets the ParcelId
@@ -415,46 +313,6 @@
         }
 
         /// <summary>
-        ///     Gets or sets the Performance
-        /// </summary>
-        public string Performance
-        {
-            get => _performance;
-            set
-            {
-                _performance = value;
-                OnPropertyChanged("Performance");
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the PesticidesApplied
-        /// </summary>
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
-        public List<PesticideApplication> PesticidesApplied
-        {
-            get => _pesticidesApplied;
-            set
-            {
-                _pesticidesApplied = value;
-                OnPropertyChanged("PesticidesApplied");
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the PlantingDate
-        /// </summary>
-        public DateTime PlantingDate
-        {
-            get => _plantingDate;
-            set
-            {
-                _plantingDate = value.ToLocalTime();
-                OnPropertyChanged("PlantingDate");
-            }
-        }
-
-        /// <summary>
         ///     Gets or sets the Polygon
         /// </summary>
         [OneToOne(CascadeOperations = CascadeOperation.All)]
@@ -469,12 +327,6 @@
         }
 
         /// <summary>
-        ///     Gets or sets the PolygonID
-        /// </summary>
-        [ForeignKey(typeof(PolygonDto))]
-        public int PolygonID { get; set; }
-
-        /// <summary>
         ///     Gets or sets the ProducerName
         /// </summary>
         public string ProducerName
@@ -483,19 +335,9 @@
             set
             {
                 _producerName = value;
-                OnPropertyChanged("ProducerName");
+                OnPropertyChanged("ProducerName"); // TODO change to app producer name
             }
         }
-
-        /// <summary>
-        ///     Gets or sets the SowingType
-        /// </summary>
-        public string SowingType { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the StorageType
-        /// </summary>
-        public string StorageType { get; set; }
 
         /// <summary>
         ///     Gets or sets the TechnologiesUsed
@@ -515,28 +357,8 @@
         ///     Gets or sets the TechnologiesUsedBlobbed
         /// </summary>
         public string TechnologiesUsedBlobbed { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Uploaded
-        /// </summary>
-        public int Uploaded
-        {
-            get => _uploaded;
-            set => _uploaded = value;
-        }
-
-        /// <summary>
-        ///     Gets or sets the Year
-        /// </summary>
-        public string Year
-        {
-            get => _year;
-            set
-            {
-                _year = value;
-                OnPropertyChanged("Year");
-            }
-        }
+        public GeoPosition Position { get; set; }
+        public List<GeoPosition> Delineation { get; set; }
 
         //ToDo:Move to another Class
         /// <summary>
@@ -621,6 +443,74 @@
             PropertyChangedEventHandler iHandler = PropertyChanged;
             _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+        }
+
+        public ParcelDTO GetDTO()
+        {
+            List<AgriculturalActivityDTO> activities = new List<AgriculturalActivityDTO>();
+            foreach (var activity in this.AgriculturalActivities)
+            {
+                activities.Add(activity.GetDTO());
+            }
+            List<GeoPositionDTO> delineation = new List<GeoPositionDTO>();
+            foreach (var position in GetDelineation())
+            {
+                delineation.Add(position.GetDTO());
+            }
+            List<TechnologyDTO> technologies = new List<TechnologyDTO>();
+            foreach (var technology in TechnologiesUsed)
+            {
+                technologies.Add(new TechnologyDTO { Name = technology });
+            }
+            var dto = new ParcelDTO
+            {
+                AgriculturalActivities = activities.ToArray(),
+                ClimateType = ClimateType,
+                Crop = Crop,
+                Delineation = delineation.ToArray(),
+                MaturityClass = MaturityClass,
+                ParcelId = ParcelId,
+                ParcelName = ParcelName,
+                Position = Position.GetDTO(),
+                TechnologiesUsed = technologies.ToArray()
+            };
+
+            return dto;
+        }
+
+
+        public static Parcel FromDTO(ParcelDTO parcelDTO)
+        {
+            var activities = new List<AgriculturalActivity>();
+            foreach (var activity in parcelDTO.AgriculturalActivities)
+            {
+                activities.Add(AgriculturalActivity.FromDTO(activity));
+            }
+            var delineation = new List<GeoPosition>();
+            foreach (var position in parcelDTO.Delineation)
+            {
+                delineation.Add(GeoPosition.FromDTO(position));
+            }
+            var technologies = new List<string>();
+            foreach (var technology in parcelDTO.TechnologiesUsed)
+            {
+                technologies.Add(technology.Name);
+            }
+            var parcel = new Parcel
+            {
+                AgriculturalActivities = activities,
+                ClimateType = parcelDTO.ClimateType,
+                Crop = parcelDTO.Crop,
+                Delineation = delineation,//TODO use only this one!
+                MaturityClass = parcelDTO.MaturityClass,
+                ParcelId = parcelDTO.ParcelId,
+                ParcelName = parcelDTO.ParcelName,
+                Position = GeoPosition.FromDTO(parcelDTO.Position),
+                TechnologiesUsed = technologies
+
+            };
+
+            return parcel;
         }
     }
 }

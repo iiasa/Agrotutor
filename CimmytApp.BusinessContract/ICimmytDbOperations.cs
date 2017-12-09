@@ -2,32 +2,28 @@
 {
     using System.Collections.Generic;
     using CimmytApp.DTO.BEM;
-    using CimmytApp.DTO.Parcel;
+    using Helper.Realm.DTO;
 
     public interface ICimmytDbOperations
     {
-        void AddParcel(Parcel parcel);
+        void AddParcel(ParcelDTO parcel);
 
-        int DeleteAllData();
+        void DeleteParcel(ParcelDTO parcel);
 
-        void DeleteParcel(Parcel parcel);
-
-        List<Parcel> GetAllParcels();
+        List<ParcelDTO> GetAllParcels();
 
         BemData GetBemData();
 
-        Parcel GetParcelById(int parcelId);
+        ParcelDTO GetParcelById(int parcelId);
 
         void SaveCostos(List<Costo> listCostos);
 
         void SaveIngresos(List<Ingreso> listIngresos);
 
-        void SaveParcelPolygon(int parcelId, PolygonDto polygonObj);
-
         void SaveRendimientos(List<Rendimiento> listRendimientos);
 
         void SaveUtilidades(List<Utilidad> listUtilidades);
 
-        void UpdateParcel(Parcel parcel);
+        void UpdateParcel(ParcelDTO parcel);
     }
 }

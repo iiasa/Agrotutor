@@ -74,7 +74,7 @@
                 {
                     int id = (int)parameters["Id"];
 
-                    _parcel = _cimmytDbOperations.GetParcelById(id);
+                    _parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
                 }
                 catch (Exception e)
                 {
@@ -96,7 +96,7 @@
         /// </summary>
         private void DeleteParcel()
         {
-            _cimmytDbOperations.DeleteParcel(_parcel);
+            _cimmytDbOperations.DeleteParcel(_parcel.GetDTO());
             _navigationService.NavigateAsync("app:///MainPage");
         }
     }

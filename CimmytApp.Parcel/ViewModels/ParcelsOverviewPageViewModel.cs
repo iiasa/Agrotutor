@@ -287,7 +287,13 @@
 
         private void RefreshParcels()
         {
-            Parcels = _cimmytDbOperations.GetAllParcels();
+            var parcels = new List<Parcel>();
+            var parcelDTO = _cimmytDbOperations.GetAllParcels();
+            foreach (var parcel in parcelDTO){
+                parcels.Add(Parcel.FromDTO(parcel));
+            }
+
+            Parcels = parcels;
         }
 
         /// <summary>

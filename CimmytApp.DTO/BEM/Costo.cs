@@ -1,10 +1,9 @@
 ﻿namespace CimmytApp.DTO.BEM
 {
     using Newtonsoft.Json;
-    using SQLite.Net.Attributes;
+    using Realms;
 
-    [Table("BEM-Costo")]
-    public class Costo : BemDataset
+    public class Costo : RealmObject, IBemDataset
     {
         [JsonProperty("ciclo")]
         public string AgriculturalCycle { get; set; }
@@ -108,22 +107,22 @@
         [JsonProperty("anio")]
         public string Year { get; set; }
 
-        public override string GetCycle()
+        public string GetCycle()
         {
             return AgriculturalCycle;
         }
 
-        public override string GetDataType()
+        public string GetType()
         {
             return "Costo";
         }
 
-        public override string GetValue()
+        public string GetValue()
         {
             return ProductionCost;
         }
 
-        public override string GetYear()
+        public string GetYear()
         {
             return Year;
         }

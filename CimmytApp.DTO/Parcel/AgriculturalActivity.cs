@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.DTO.Parcel
 {
     using System;
+    using Helper.Realm.DTO;
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
 
@@ -127,5 +128,29 @@
         ///     Gets or sets the Yield
         /// </summary>
         public string Yield { get; set; }
+
+        public AgriculturalActivityDTO GetDTO()
+        {
+            return new AgriculturalActivityDTO
+            {
+                ActivityType = (int)ActivityType,
+                AmountApplied = AmountApplied,
+                AppliedProduct = AppliedProduct,
+                Cost = Cost,
+                Date = Date,
+                Dose = Dose,
+                Name = Name,
+                NumberOfSeeds = NumberOfSeeds,
+                ProductObtained = ProductObtained,
+                Sown = Sown,
+                WeightOfSeeds = WeightOfSeeds,
+                Yield = Yield
+            };
+        }
+
+        internal static AgriculturalActivity FromDTO(AgriculturalActivityDTO activity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

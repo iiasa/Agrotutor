@@ -267,7 +267,7 @@
         /// </summary>
         private async void LoadData()
         {
-            WeatherForecast = await WeatherForecast.Download(Parcel.Latitude, Parcel.Longitude);
+            WeatherForecast = await WeatherForecast.Download((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
         }
 
         /// <summary>
