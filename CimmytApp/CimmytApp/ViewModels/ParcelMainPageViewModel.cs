@@ -11,8 +11,6 @@
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using TK.CustomMap;
-    using TK.CustomMap.Overlays;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
@@ -147,7 +145,7 @@
             PolygonDto delineation = Parcel.Polygon;
             if (delineation != null && delineation.ListPoints.Count > 2)
             {
-                TKPolygon polygon = new TKPolygon
+                var polygon = new TKPolygon
                 {
                     StrokeColor = Color.Green,
                     StrokeWidth = 2f,
