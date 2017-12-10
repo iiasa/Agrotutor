@@ -300,10 +300,6 @@
       <Project>{b7dec39b-eda0-4bca-8556-a56d8897a347}</Project>
       <Name>CimmytApp</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Helper.SQLiteContract\Helper.SQLiteContract.csproj">
-      <Project>{82ADCADB-BD01-4569-9BD1-E5A8DB1C5CEA}</Project>
-      <Name>Helper.SQLiteContract</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\corn.png" />

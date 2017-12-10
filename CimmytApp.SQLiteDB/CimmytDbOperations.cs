@@ -6,28 +6,18 @@
     using System.Linq;
     using CimmytApp.BusinessContract;
     using CimmytApp.DTO.BEM;
-    using CimmytApp.DTO.Parcel;
     using Helper.Realm;
     using Helper.Realm.DTO;
     using Realms;
-    using SqLite.Contract;
-    using SQLite.Net;
-    using SQLiteNetExtensions.Extensions;
-    using Xamarin.Forms;
 
     public class CimmytDbOperations : ICimmytDbOperations
     {
-        private readonly SQLiteConnection _databaseConn;
         private readonly Realm _realm;
 
         public CimmytDbOperations()
         {
             try
             {
-                //_databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
-
-                //_databaseConn.CreateTable<AgriculturalActivity>();
-                //_databaseConn.CreateTable<PolygonDto>();
 
 
                 _realm = DbContext.GetConnection();

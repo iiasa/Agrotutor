@@ -10,8 +10,7 @@
     using SQLite.Net.Attributes;
     using SQLiteNetExtensions.Attributes;
 
-    [Table("WeatherData")]
-    public class WeatherData
+    public class WeatherData 
     {
         [JsonProperty("cdd")]
         [OneToOne(CascadeOperations = CascadeOperation.CascadeInsert)]

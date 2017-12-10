@@ -36,6 +36,7 @@ namespace Helper.Map.Views
             InitializeComponent();
             _bindingContext = (MapViewModel)BindingContext;
             _bindingContext.SetViewReference(this);
+
         }
 
         internal void MoveCamera(CameraUpdate mapCenter)
@@ -49,9 +50,14 @@ namespace Helper.Map.Views
             _bindingContext.OnAppearing(); 
         }
 
-        private void GenericMap_OnDisappearing(object sender, EventArgs e)
+        private void Map_OnDisappearing(object sender, EventArgs e)
         {
             _bindingContext?.OnDisappearing();
+        }
+
+        private void OnMapClicked(object sender, EventArgs e)
+        {
+            _bindingContext.MapClickedCommand.Execute(((MapClickedEventArgs)e).Point);
         }
     }
 }

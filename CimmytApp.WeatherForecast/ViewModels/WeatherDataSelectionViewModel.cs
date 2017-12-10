@@ -23,11 +23,6 @@
         private readonly INavigationService _navigationService;
 
         /// <summary>
-        ///     Defines the _weatherDbOperations
-        /// </summary>
-        private readonly IWeatherDbOperations _weatherDbOperations;
-
-        /// <summary>
         ///     Defines the _datasetNames
         /// </summary>
         private List<string> _datasetNames;
@@ -78,8 +73,7 @@
         /// <param name="eventAggregator">The <see cref="IEventAggregator" /></param>
         /// <param name="navigationService">The <see cref="INavigationService" /></param>
         /// <param name="weatherDbOperations">The <see cref="IWeatherDbOperations" /></param>
-        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService,
-            IWeatherDbOperations weatherDbOperations)
+        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService)
         {
             Downloading = false;
             DatasetNames = new List<string>
@@ -107,7 +101,6 @@
             RefreshWeatherDataCommand = new DelegateCommand(RefreshWeatherData);
 
             _navigationService = navigationService;
-            _weatherDbOperations = weatherDbOperations;
         }
 
         /// <summary>
@@ -186,7 +179,7 @@
                 SetProperty(ref _weatherData, data);
                 if (_refreshedFromServer)
                 {
-                    _weatherDbOperations.UpdateWeatherData(data);
+                    //_weatherDbOperations.UpdateWeatherData(data);
                     _refreshedFromServer = false;
                     Downloading = false;
                 }
@@ -280,7 +273,7 @@
         /// <param name="parcelId">The <see cref="int" /></param>
         private void LoadWeatherFromDb(int parcelId)
         {
-            MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
+            //MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
         }
 
         /// <summary>
