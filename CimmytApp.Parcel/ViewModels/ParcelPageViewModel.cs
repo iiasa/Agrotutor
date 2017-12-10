@@ -324,7 +324,7 @@
             if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                               MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
+                               TK.CustomMap.MapSpan.FromCenterAndRadius(new TK.CustomMap.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new TK.CustomMap.Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -341,13 +341,13 @@
             if ((bool)Parcel.Position?.IsSet())
             {
                 ObservableCollection<TKCustomMapPin> points = new ObservableCollection<TKCustomMapPin>();
-                Position position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
+                var position = new TK.CustomMap.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
                 points.Add(new TKCustomMapPin
                 {
                     Position = position
                 });
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(position, new Distance(500)));
+                    TK.CustomMap.MapSpan.FromCenterAndRadius(position, new TK.CustomMap.Distance(500)));
                 parameters.Add(GenericMapViewModel.PointsParameterName, points);
             }
             List<GeoPosition> delineation = Parcel.GetDelineation();
@@ -362,8 +362,8 @@
                     Color = Color.Red
                 };
 
-                List<Position> listPosition = delineation
-                    .Select(positionitem => new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
+                List<TK.CustomMap.Position> listPosition = delineation
+                    .Select(positionitem => new TK.CustomMap.Position((double)positionitem.Latitude, (double)positionitem.Longitude))
                     .ToList();
 
                 polygon.Coordinates = listPosition;
@@ -523,7 +523,7 @@
             if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                               MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
+                               TK.CustomMap.MapSpan.FromCenterAndRadius(new TK.CustomMap.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new TK.CustomMap.Distance(500)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
