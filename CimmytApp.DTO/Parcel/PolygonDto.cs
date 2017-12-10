@@ -3,19 +3,12 @@
     using System.Collections.Generic;
     using Helper.Map;
     using Newtonsoft.Json;
-    using SQLite.Net.Attributes;
-    using SQLiteNetExtensions.Attributes;
 
-    [Table("Polygon")]
     public class PolygonDto
     {
         private List<GeoPosition> _listPoints;
 
-        [PrimaryKey]
-        [AutoIncrement]
         public int Id { get; set; }
-
-        [TextBlob("ListPointsBlobbed")]
         public List<GeoPosition> ListPoints
         {
             get

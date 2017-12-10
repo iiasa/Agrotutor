@@ -10,14 +10,11 @@
     using Helper.Map;
     using Helper.Realm.DTO;
     using Newtonsoft.Json;
-    using SQLite.Net.Attributes;
-    using SQLiteNetExtensions.Attributes;
     using Xamarin.Forms;
 
     /// <summary>
     ///     Defines the <see cref="Parcel" />
     /// </summary>
-    [Table("Parcel")]
     public class Parcel : IDataset, INotifyPropertyChanged
     {
         /// <summary>
@@ -241,7 +238,6 @@
         /// <summary>
         ///     Gets or sets the AgriculturalActivities
         /// </summary>
-        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<AgriculturalActivity> AgriculturalActivities
         {
             get
@@ -295,8 +291,6 @@
         /// <summary>
         ///     Gets or sets the ParcelId
         /// </summary>
-        [PrimaryKey]
-        [AutoIncrement]
         public int ParcelId { get; set; }
 
         /// <summary>
@@ -315,7 +309,6 @@
         /// <summary>
         ///     Gets or sets the Polygon
         /// </summary>
-        [OneToOne(CascadeOperations = CascadeOperation.All)]
         public PolygonDto Polygon
         {
             get => _polygon;
@@ -342,7 +335,6 @@
         /// <summary>
         ///     Gets or sets the TechnologiesUsed
         /// </summary>
-        [TextBlob("TechnologiesUsedBlobbed")]
         public List<string> TechnologiesUsed
         {
             get => _technologiesUsed;

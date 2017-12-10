@@ -47,7 +47,7 @@
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
+    <DebugType></DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
@@ -56,7 +56,8 @@
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
     <Debugger>.Net (Xamarin)</Debugger>
     <DebugSymbols>False</DebugSymbols>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>Full</AndroidLinkMode>
+    <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ExifLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
@@ -131,9 +132,6 @@
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
-    <Reference Include="SqLite.Contract">
-      <HintPath>..\..\BaseDLL\SqLite.Contract.dll</HintPath>
-    </Reference>
     <Reference Include="Telerik.Xamarin.Android.Chart, Version=2017.2.818.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\MonoAndroid10\Telerik.Xamarin.Android.Chart.dll</HintPath>
     </Reference>
@@ -172,14 +170,6 @@
     </Reference>
     <Reference Include="Telerik.XamarinForms.SkiaSharp, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\MonoAndroid10\Telerik.XamarinForms.SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="TK.CustomMap, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\TK.CustomMap\TK.CustomMap.dll</HintPath>
-    </Reference>
-    <Reference Include="TK.CustomMap.Android, Version=1.5.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Reference\TK.CustomMap\TK.CustomMap.Android.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Arch.Core.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Android.Arch.Core.Common.1.0.0\lib\MonoAndroid80\Xamarin.Android.Arch.Core.Common.dll</HintPath>
@@ -332,7 +322,6 @@
   <ItemGroup>
     <Compile Include="AzurePushBroadcastReceiver.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="FileHelper.cs" />
     <Compile Include="Localize.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />

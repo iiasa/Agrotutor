@@ -2,13 +2,10 @@
 {
     using System;
     using Helper.Realm.DTO;
-    using SQLite.Net.Attributes;
-    using SQLiteNetExtensions.Attributes;
 
     /// <summary>
     ///     Defines the <see cref="AgriculturalActivity" />
     /// </summary>
-    [Table("Activity")]
     public class AgriculturalActivity
     {
         public string Logo
@@ -89,8 +86,6 @@
         /// <summary>
         ///     Gets or sets the Id
         /// </summary>
-        [PrimaryKey]
-        [AutoIncrement]
         public int Id { get; set; }
 
         /// <summary>
@@ -106,7 +101,6 @@
         /// <summary>
         ///     Gets or sets the ParcelId
         /// </summary>
-        [ForeignKey(typeof(Parcel))]
         public int ParcelId { get; set; }
 
         /// <summary>
