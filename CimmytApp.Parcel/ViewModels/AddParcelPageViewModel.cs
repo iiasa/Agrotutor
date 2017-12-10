@@ -9,7 +9,7 @@
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.GoogleMaps;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -321,13 +321,13 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
             if ((bool)Parcel.Position?.IsSet())
             {
-                parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
-            }
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                               CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -338,13 +338,14 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
+                { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
             if ((bool)Parcel.Position?.IsSet())
             {
-                parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
-            }
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                               CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+
+                }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
 
@@ -355,12 +356,13 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.MapTaskParameterName, MapTask.GetLocation }
+                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
             if ((bool)Parcel.Position?.IsSet())
             {
-                parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                               CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }

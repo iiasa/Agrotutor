@@ -14,10 +14,8 @@
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using TK.CustomMap;
-    using TK.CustomMap.Overlays;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.GoogleMaps;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -319,12 +317,12 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
             if ((bool)Parcel.Position?.IsSet())
             {
-                parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                               TK.CustomMap.MapSpan.FromCenterAndRadius(new TK.CustomMap.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new TK.CustomMap.Distance(500)));
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                               CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }
@@ -336,39 +334,40 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
+                { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
             if ((bool)Parcel.Position?.IsSet())
             {
-                ObservableCollection<TKCustomMapPin> points = new ObservableCollection<TKCustomMapPin>();
-                var position = new TK.CustomMap.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
-                points.Add(new TKCustomMapPin
+                ObservableCollection<Pin> points = new ObservableCollection<Pin>();
+                var position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
+                points.Add(new Pin
                 {
                     Position = position
                 });
-                parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                    TK.CustomMap.MapSpan.FromCenterAndRadius(position, new TK.CustomMap.Distance(500)));
-                parameters.Add(GenericMapViewModel.PointsParameterName, points);
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                               CameraUpdateFactory.NewCameraPosition(new CameraPosition(position, 15)));
+                parameters.Add(MapViewModel.PointsParameterName, points);
             }
             List<GeoPosition> delineation = Parcel.GetDelineation();
 
             if (delineation != null && delineation.Count > 2)
             {
-                ObservableCollection<TKPolygon> polygons = new ObservableCollection<TKPolygon>();
-                TKPolygon polygon = new TKPolygon
+                List<Polygon> polygons = new List<Polygon>();
+                Polygon polygon = new Polygon
                 {
                     StrokeColor = Color.Green,
-                    StrokeWidth = 2f,
-                    Color = Color.Red
+                    StrokeWidth = 2f
                 };
 
-                List<TK.CustomMap.Position> listPosition = delineation
-                    .Select(positionitem => new TK.CustomMap.Position((double)positionitem.Latitude, (double)positionitem.Longitude))
+                List<Position> listPosition = delineation
+                    .Select(positionitem => new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
                     .ToList();
 
-                polygon.Coordinates = listPosition;
+                foreach (var position in listPosition){
+                    polygon.Positions.Add(position);
+                }
                 polygons.Add(polygon);
-                parameters.Add(GenericMapViewModel.PolygonsParameterName, polygons);
+                parameters.Add(MapViewModel.PolygonsParameterName, polygons);
             }
 
             _navigationService.NavigateAsync("GenericMap", parameters);
@@ -518,12 +517,12 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
             if ((bool)Parcel.Position?.IsSet())
             {
-                parameters.Add(GenericMapViewModel.MapRegionParameterName,
-                               TK.CustomMap.MapSpan.FromCenterAndRadius(new TK.CustomMap.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new TK.CustomMap.Distance(500)));
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                               CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("GenericMap", parameters);
         }

@@ -42,5 +42,16 @@ namespace Helper.Map.Views
         {
             map.MoveCamera(mapCenter);
         }
+
+
+        private void Map_OnAppearing(object sender, EventArgs e)
+        {
+            _bindingContext.OnAppearing(); 
+        }
+
+        private void GenericMap_OnDisappearing(object sender, EventArgs e)
+        {
+            _bindingContext?.OnDisappearing();
+        }
     }
 }

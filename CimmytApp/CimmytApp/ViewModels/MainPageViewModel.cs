@@ -11,10 +11,8 @@
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using TK.CustomMap;
-    using TK.CustomMap.Overlays;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.GoogleMaps;
 
     /// <inheritdoc cref="BindableBase" />
     /// <summary>
@@ -137,8 +135,8 @@
         /// </summary>
         private void NavigateToMap()
         {
-            ObservableCollection<TKPolygon> polygons = new ObservableCollection<TKPolygon>();
-            ObservableCollection<TKCustomMapPin> parcelLocations = new ObservableCollection<TKCustomMapPin>();
+            ObservableCollection<Polygon> polygons = new ObservableCollection<Polygon>();
+            ObservableCollection<Pin> parcelLocations = new ObservableCollection<Pin>();
             var parcelDTO = _cimmytDbOperations.GetAllParcels();
             var parcels = new List<Parcel>();
             foreach (var parcel in parcelDTO)
@@ -147,16 +145,15 @@
             }
 
             foreach (Parcel item in parcels)
-            {/*
+            {
                 var delineation = item.GetDelineation();
 
                 if (delineation != null)
                 {
-                    TKPolygon polygon = new TKPolygon
+                    var polygon = new Polygon
                     {
                         StrokeColor = Color.Green,
-                        StrokeWidth = 2f,
-                        Color = Color.Red
+                        StrokeWidth = 2f
                     };
                     List<Position> listPosition = delineation
                         .Select(positionitem => new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
@@ -166,23 +163,26 @@
                         continue;
                     }
 
-                    polygon.Coordinates = listPosition;
+                    foreach (var position in listPosition){
+                        polygon.Positions.Add(position);
+                    }
+
                     polygons.Add(polygon);
                 }
 
                 if (item.Position != null && item.Position.IsSet())
                 {
-                    parcelLocations.Add(new TKCustomMapPin
+                    parcelLocations.Add(new Pin
                     {
                         Position = new Position((double)item.Position.Latitude, (double)item.Position.Longitude)
                     });
-                }*/
+                }
             }
 
             NavigationParameters parameters = new NavigationParameters
             {
-                { GenericMapViewModel.PolygonsParameterName, polygons },
-                { GenericMapViewModel.PointsParameterName, parcelLocations }
+                { MapViewModel.PolygonsParameterName, polygons },
+                { MapViewModel.PointsParameterName, parcelLocations }
             };
 
             _navigationService.NavigateAsync("GenericMap", parameters);
