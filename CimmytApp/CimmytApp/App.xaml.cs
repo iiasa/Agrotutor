@@ -145,7 +145,8 @@
         protected override void OnInitialized()
         {
             InitializeComponent();
-
+            NavigationService.NavigateAsync("app:///Map");
+            /*
             if (Current.Properties.ContainsKey("not_first_launch"))
             {
                 NavigationService.NavigateAsync("app:///MainPage");
@@ -158,7 +159,7 @@
                     { "ShowGuide", true }
                 };
                 NavigationService.NavigateAsync("SplashScreenPage", parameters);
-            }
+            }*/
         }
 
         protected override void OnSleep()

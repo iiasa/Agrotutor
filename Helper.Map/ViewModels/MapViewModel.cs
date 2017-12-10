@@ -1,4 +1,5 @@
 ﻿using System;
+using Helper.Map.Views;
 using Prism.Mvvm;
 using Prism.Navigation;
 
@@ -6,6 +7,8 @@ namespace Helper.Map.ViewModels
 {
     public class MapViewModel : BindableBase, INavigationAware
     {
+        private Views.Map _view;
+
         public MapViewModel()
         {
         }
@@ -18,8 +21,15 @@ namespace Helper.Map.ViewModels
         {
         }
 
+        public void SetViewReference(Views.Map map)
+        {
+            _view = map;
+
+        }
+
         public void OnNavigatingTo(NavigationParameters parameters)
         {
+            
         }
     }
 }

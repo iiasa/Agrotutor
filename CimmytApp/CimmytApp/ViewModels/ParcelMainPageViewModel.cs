@@ -145,6 +145,7 @@
             PolygonDto delineation = Parcel.Polygon;
             if (delineation != null && delineation.ListPoints.Count > 2)
             {
+                /*
                 var polygon = new TKPolygon
                 {
                     StrokeColor = Color.Green,
@@ -155,23 +156,22 @@
                 {
                     polygon.Coordinates.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
-
                 ObservableCollection<TKPolygon> viewPolygons = new ObservableCollection<TKPolygon>
                 {
                     polygon
                 };
-                parameters.Add(GenericMapViewModel.PolygonsParameterName, viewPolygons);
+                parameters.Add(GenericMapViewModel.PolygonsParameterName, viewPolygons);*/
             }
 
             if ((bool)Parcel.Position?.IsSet())
             {
-                parameters.Add(GenericMapViewModel.PointsParameterName, new ObservableCollection<TKCustomMapPin>
+                /*parameters.Add(GenericMapViewModel.PointsParameterName, new ObservableCollection<TKCustomMapPin>
                 {
                     new TKCustomMapPin
                     {
                         Position = Parcel.Position.ToPosition()
                     }
-                });
+                });*/
             }
 
             _navigationService.NavigateAsync("GenericMap", parameters);

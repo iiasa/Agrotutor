@@ -43,14 +43,14 @@
                 return;
             }
 
-            _contextObj.OnAppearing();
+            //_contextObj.OnAppearing();
 
             _map = new TKCustomMap();
 
-            _map.SetBinding(TKCustomMap.CustomPinsProperty, "ViewPins");
+            //_map.SetBinding(TKCustomMap.CustomPinsProperty, "ViewPins");
             _map.SetBinding(TKCustomMap.PolygonsProperty, "ViewPolygons");
             _map.SetBinding(TKCustomMap.MapRegionProperty, "MapRegion");
-            _map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
+            //_map.SetBinding(TKCustomMap.MapCenterProperty, "MapsPosition");
             _map.SetBinding(TKCustomMap.MapClickedCommandProperty, "MapClickedCommand");
             _map.SetBinding(TKCustomMap.MapLongPressCommandProperty, "MapLongPressCommand");
             // ReSharper disable once ArrangeStaticMemberQualifier
@@ -58,9 +58,9 @@
             _map.SetBinding(TKCustomMap.MapTypeProperty, "MapType");
 
             _map.HasZoomEnabled = true;
-            _map.MapType = MapType.Hybrid;
+            //_map.MapType = MapType.Hybrid;
             _map.IsShowingUser = false;
-            _map.MapRegion = GenericMapViewModel.InitialMapRegion;
+            //_map.MapRegion = GenericMapViewModel.InitialMapRegion;
 
             Map.Children.Add(_map);
         }
@@ -73,7 +73,7 @@
         private void GenericMap_OnDisappearing(object sender, EventArgs e)
         {
             Map?.Children?.Clear();
-            _contextObj?.OnDisappearing();
+            //_contextObj?.OnDisappearing();
         }
     }
 }

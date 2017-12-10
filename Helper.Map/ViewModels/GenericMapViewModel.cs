@@ -9,15 +9,13 @@
     using Prism.Events;
     using Prism.Mvvm;
     using Prism.Navigation;
-    using TK.CustomMap;
-    using TK.CustomMap.Overlays;
     using Xamarin.Forms;
     using Xamarin.Forms.Maps;
 
     /// <summary>
     ///     Defines the <see cref="GenericMapViewModel" />
     /// </summary>
-    public class GenericMapViewModel : BindableBase, INavigationAware
+    public class GenericMapViewModel : BindableBase//, INavigationAware
     {
         /// <summary>
         ///     Defines the FollowUserLocationParameterName
@@ -50,7 +48,7 @@
         ///     Defines the PolygonsParameterName
         /// </summary>
         public const string PolygonsParameterName = "Polygons";
-
+        /*
         /// <summary>
         ///     Defines the InitialMapRegion
         /// </summary>
@@ -146,12 +144,12 @@
         /// <summary>
         ///     Defines the _viewPins
         /// </summary>
-        private ObservableCollection<TKCustomMapPin> _viewPins;
+        private ObservableCollection<Pin> _viewPins;
 
         /// <summary>
         ///     Defines the _viewPolygons
         /// </summary>
-        private ObservableCollection<TKPolygon> _viewPolygons;
+        private ObservableCollection<P> _viewPolygons;
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="GenericMapViewModel" /> class.
@@ -724,6 +722,6 @@
                 { "GeoPosition", Point }
             };
             _navigationService.GoBackAsync(parameters);
-        }
+        }*/
     }
 }

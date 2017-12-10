@@ -17,6 +17,7 @@
         public void Initialize()
         {
             _unityContainer.RegisterTypeForNavigation<GenericMap>();
+            _unityContainer.RegisterTypeForNavigation<Map>();
         }
     }
 }

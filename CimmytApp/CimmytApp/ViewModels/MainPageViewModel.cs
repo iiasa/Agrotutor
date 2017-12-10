@@ -147,7 +147,7 @@
             }
 
             foreach (Parcel item in parcels)
-            {
+            {/*
                 var delineation = item.GetDelineation();
 
                 if (delineation != null)
@@ -176,7 +176,7 @@
                     {
                         Position = new Position((double)item.Position.Latitude, (double)item.Position.Longitude)
                     });
-                }
+                }*/
             }
 
             NavigationParameters parameters = new NavigationParameters

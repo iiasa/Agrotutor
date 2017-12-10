@@ -1,5 +1,35 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Helper.Map.Views.Map">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="Helper.Map.Views.Map">
 	<ContentPage.Content>
+
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+       <maps:Map Grid.Row="0" Grid.RowSpan="2" x:Name="map"
+                      InitialCameraUpdate="-23.68, -46.87, 13, 30, 60"
+                      VerticalOptions="FillAndExpand" />
+        <Label Grid.Row="0" IsVisible="{Binding ShowEnableLocationHint}" Text="Por favor active el GPS" Margin="16" TextColor="Azure" FontSize="18" />
+        <StackLayout Orientation="Horizontal" Grid.Row="1">
+            <Button Text="{localization:Translate use_this_location}" Command="{Binding UseLocationCommand}"
+                VerticalOptions="Center" HorizontalOptions="Center"
+                IsVisible="{Binding ReturnGeolocationButtonVisible}" />
+            <StackLayout IsVisible="{Binding DelineationButtonsVisible}" Orientation="Horizontal"
+                VerticalOptions="Center">
+                <Button Text="Guardar" Command="{Binding AcceptDelineationCommand}"
+                    IsEnabled="{Binding ButtonAcceptDelineationEnabled}" />
+                <Button Text="{localization:Translate cancel}" Command="{Binding CancelDelineationCommand}"
+                    IsEnabled="{Binding ButtonCancelDelineationEnabled}" />
+                <!--<Button Text="Override current delineation" IsVisible="{Binding ShowOverrideButton}" Command="{Binding OverrideDelineationCommand}" />-->
+            </StackLayout>
+        </StackLayout>
+    </Grid>
+        
 	</ContentPage.Content>
 </ContentPage>

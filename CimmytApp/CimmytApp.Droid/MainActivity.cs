@@ -54,17 +54,9 @@ namespace CimmytApp.Droid
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
-                FormsMaps.Init(this, bundle);
+                //FormsMaps.Init(this, bundle);
+                FormsGoogleMaps.Init(this, bundle);
                 Calendar.Init();
-
-                //base.OnCreate (bundle);
-
-                //// Set your view from the "main" layout resource
-                //SetContentView (Resource.Layout.Main);
-
-                //// Get your button from the layout resource,
-                //// and attach an event to it
-                //Button button = FindViewById<Button> (Resource.Id.myButton);
 
                 RegisterWithGCM(); // TODO Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));
