@@ -288,7 +288,7 @@
         /// </summary>
         private void RefreshWeatherData()
         {
-            if (_parcel.Position.IsSet())
+            if ((bool)_parcel.Position?.IsSet())
             {
                 _position = new GeoPosition
                 {
@@ -420,6 +420,10 @@
                 { "VariableName", DatasetNames.ElementAt(SelectedDataset) }
             };
             _navigationService.NavigateAsync(page, parameters);
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

@@ -98,6 +98,10 @@
             IsLoading = false;
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         public List<Dataset> Stats
         {
             get => _stats;

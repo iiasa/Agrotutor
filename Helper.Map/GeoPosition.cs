@@ -46,7 +46,17 @@
 
         public static GeoPosition FromDTO(GeoPositionDTO position)
         {
-            throw new NotImplementedException();
+            if ((object)position == null) return null; // Cast is for not having to reference Realm lib
+            return new GeoPosition { 
+                Accuracy = position.Accuracy,
+                Altitude = position.Altitude,
+                AltitudeAccuracy = position.AltitudeAccuracy,
+                Heading = position.Heading,
+                Latitude = position.Latitude,
+                Longitude = position.Longitude,
+                Speed = position.Speed,
+                Timestamp = position.Timestamp
+            };
         }
 
         public bool IsSet(){

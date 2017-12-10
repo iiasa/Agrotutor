@@ -321,7 +321,7 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                                MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
@@ -338,7 +338,7 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 ObservableCollection<TKCustomMapPin> points = new ObservableCollection<TKCustomMapPin>();
                 Position position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
@@ -486,6 +486,10 @@
             }
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         /// <summary>
         ///     The DeleteParcel
         /// </summary>
@@ -516,7 +520,7 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                                MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));

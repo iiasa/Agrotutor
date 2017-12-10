@@ -39,5 +39,9 @@
             parameters.TryGetValue("VariableName", out object variableName);
             VariableName = (string)variableName;
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

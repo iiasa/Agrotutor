@@ -30,7 +30,7 @@
 
         public void AddWeatherData(WeatherData weatherData)
         {
-            _databaseConn.InsertWithChildren(weatherData, true);
+            _databaseConn.Insert(weatherData);
         }
 
         public int DeleteAllWeatherData()
@@ -43,14 +43,9 @@
             return _databaseConn.Delete<WeatherData>(id);
         }
 
-        public List<WeatherData> GetAllWeatherData()
-        {
-            return _databaseConn.GetAllWithChildren<WeatherData>();
-        }
-
         public WeatherData GetWeatherData(int weatherDataId)
         {
-            return _databaseConn.GetWithChildren<WeatherData>(weatherDataId);
+            return _databaseConn.Get<WeatherData>(weatherDataId);
         }
 
         public int UpdateWeatherData(WeatherData weatherData)

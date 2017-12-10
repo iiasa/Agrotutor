@@ -165,7 +165,7 @@
                 parameters.Add(GenericMapViewModel.PolygonsParameterName, viewPolygons);
             }
 
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.PointsParameterName, new ObservableCollection<TKCustomMapPin>
                 {
@@ -177,6 +177,10 @@
             }
 
             _navigationService.NavigateAsync("GenericMap", parameters);
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
     }
 }

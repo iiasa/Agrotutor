@@ -333,6 +333,10 @@
             }
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         /// <summary>
         ///     The SaveCommandExecution
         /// </summary>

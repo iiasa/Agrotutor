@@ -24,10 +24,10 @@
         {
             try
             {
-                _databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
+                //_databaseConn = DependencyService.Get<IFileHelper>().GetConnection();
 
-                _databaseConn.CreateTable<AgriculturalActivity>();
-                _databaseConn.CreateTable<PolygonDto>();
+                //_databaseConn.CreateTable<AgriculturalActivity>();
+                //_databaseConn.CreateTable<PolygonDto>();
 
 
                 _realm = DbContext.GetConnection();

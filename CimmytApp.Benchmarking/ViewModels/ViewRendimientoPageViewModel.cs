@@ -110,6 +110,10 @@
         {
             LoadData();
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 
     public class Dataset

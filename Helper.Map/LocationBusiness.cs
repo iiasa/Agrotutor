@@ -20,7 +20,7 @@
             locator.DesiredAccuracy = 50;
 
             locator.PositionChanged += Locator_PositionChanged;
-            locator.StartListeningAsync(5, 1);
+            locator.StartListeningAsync(new TimeSpan(5 * TimeSpan.TicksPerSecond), 1);
         }
 
         public bool IsBusy { get; set; }
@@ -57,11 +57,11 @@
             {
                 if (!locator.IsListening)
                 {
-                    await locator.StartListeningAsync(5, 1);
+                    await locator.StartListeningAsync(new TimeSpan(5 * TimeSpan.TicksPerSecond), 1);
                 }
                 cancelSource = new CancellationTokenSource();
 
-                await locator.GetPositionAsync(1000, cancelSource.Token, false)
+                await locator.GetPositionAsync(new TimeSpan( TimeSpan.TicksPerSecond), cancelSource.Token, false)
                     .ContinueWith(t =>
                     {
                         IsBusy = false;

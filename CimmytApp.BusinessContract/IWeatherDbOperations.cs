@@ -11,8 +11,6 @@
 
         int DeleteWeatherData(int id);
 
-        List<WeatherData> GetAllWeatherData();
-
         WeatherData GetWeatherData(int weatherDataId);
 
         int UpdateWeatherData(WeatherData weatherData);

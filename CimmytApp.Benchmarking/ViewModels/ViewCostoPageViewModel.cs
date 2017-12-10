@@ -129,6 +129,10 @@
             LoadData();
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         /// <summary>
         ///     Defines the <see cref="Dataset" />
         /// </summary>

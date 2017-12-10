@@ -447,33 +447,45 @@
 
         public ParcelDTO GetDTO()
         {
-            List<AgriculturalActivityDTO> activities = new List<AgriculturalActivityDTO>();
-            foreach (var activity in this.AgriculturalActivities)
-            {
-                activities.Add(activity.GetDTO());
-            }
-            List<GeoPositionDTO> delineation = new List<GeoPositionDTO>();
-            foreach (var position in GetDelineation())
-            {
-                delineation.Add(position.GetDTO());
-            }
-            List<TechnologyDTO> technologies = new List<TechnologyDTO>();
-            foreach (var technology in TechnologiesUsed)
-            {
-                technologies.Add(new TechnologyDTO { Name = technology });
-            }
             var dto = new ParcelDTO
             {
-                AgriculturalActivities = activities.ToArray(),
                 ClimateType = ClimateType,
                 Crop = Crop,
-                Delineation = delineation.ToArray(),
                 MaturityClass = MaturityClass,
                 ParcelId = ParcelId,
                 ParcelName = ParcelName,
-                Position = Position.GetDTO(),
-                TechnologiesUsed = technologies.ToArray()
+                Position = Position?.GetDTO()
             };
+
+
+            if (AgriculturalActivities != null)
+            {
+                List<AgriculturalActivityDTO> activities = new List<AgriculturalActivityDTO>();
+                foreach (var activity in this.AgriculturalActivities)
+                {
+                    activities.Add(activity.GetDTO());
+                }
+                dto.SetAgriculturalActivities(activities);
+            }
+
+            if (GetDelineation() != null)
+            {
+                List<GeoPositionDTO> delineation = new List<GeoPositionDTO>();
+                foreach (var position in GetDelineation())
+                {
+                    delineation.Add(position.GetDTO());
+                }
+                dto.SetDelineation(delineation);
+            }
+            List<TechnologyDTO> technologies = new List<TechnologyDTO>();
+            if (TechnologiesUsed != null)
+            {
+                foreach (var technology in TechnologiesUsed)
+                {
+                    technologies.Add(new TechnologyDTO { Name = technology });
+                }
+                dto.SetTechnologies(technologies);
+            }
 
             return dto;
         }
@@ -481,20 +493,32 @@
 
         public static Parcel FromDTO(ParcelDTO parcelDTO)
         {
+            if (parcelDTO == null) return null;
+
             var activities = new List<AgriculturalActivity>();
-            foreach (var activity in parcelDTO.AgriculturalActivities)
-            {
-                activities.Add(AgriculturalActivity.FromDTO(activity));
-            }
             var delineation = new List<GeoPosition>();
-            foreach (var position in parcelDTO.Delineation)
-            {
-                delineation.Add(GeoPosition.FromDTO(position));
-            }
             var technologies = new List<string>();
-            foreach (var technology in parcelDTO.TechnologiesUsed)
+
+            if (parcelDTO.AgriculturalActivities != null)
             {
-                technologies.Add(technology.Name);
+                foreach (var activity in parcelDTO.AgriculturalActivities)
+                {
+                    activities.Add(AgriculturalActivity.FromDTO(activity));
+                }
+            }
+            if (parcelDTO.Delineation != null)
+            {
+                foreach (var position in parcelDTO.Delineation)
+                {
+                    delineation.Add(GeoPosition.FromDTO(position));
+                }
+            }
+            if (parcelDTO.TechnologiesUsed != null)
+            {
+                foreach (var technology in parcelDTO.TechnologiesUsed)
+                {
+                    technologies.Add(technology.Name);
+                }
             }
             var parcel = new Parcel
             {

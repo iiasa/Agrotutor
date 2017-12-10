@@ -64,7 +64,7 @@
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
 
-            ClickSave = new DelegateCommand(SaveParcel).ObservesCanExecute(o => IsSaveBtnEnabled);
+            ClickSave = new DelegateCommand(SaveParcel);//.ObservesCanExecute(o => IsSaveBtnEnabled);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
             ClickGetLocation = new DelegateCommand(GetLocation);
             ClickDelineate = new DelegateCommand(Delineate);
@@ -323,7 +323,7 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                     MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
@@ -340,7 +340,7 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                     MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));
@@ -357,7 +357,7 @@
             {
                 { GenericMapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
-            if (Parcel.Position.IsSet())
+            if ((bool)Parcel.Position?.IsSet())
             {
                 parameters.Add(GenericMapViewModel.MapRegionParameterName,
                     MapSpan.FromCenterAndRadius(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), new Distance(500)));

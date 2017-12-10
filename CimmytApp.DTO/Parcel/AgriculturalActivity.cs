@@ -148,9 +148,24 @@
             };
         }
 
-        internal static AgriculturalActivity FromDTO(AgriculturalActivityDTO activity)
+        public static AgriculturalActivity FromDTO(AgriculturalActivityDTO activity)
         {
-            throw new NotImplementedException();
+            if (activity == null) return null;
+            return new AgriculturalActivity
+            {
+                ActivityType = (ActivityType)activity.ActivityType,
+                AmountApplied = activity.AmountApplied,
+                AppliedProduct = activity.AppliedProduct,
+                Cost = activity.Cost,
+                Date = activity.Date.UtcDateTime,
+                Dose = activity.Dose,
+                Name = activity.Name,
+                NumberOfSeeds = activity.NumberOfSeeds,
+                ProductObtained = activity.ProductObtained,
+                Sown = activity.Sown,
+                WeightOfSeeds = activity.WeightOfSeeds,
+                Yield = activity.Yield
+            };
         }
     }
 }

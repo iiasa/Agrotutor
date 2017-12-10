@@ -262,6 +262,10 @@
             }
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         /// <summary>
         ///     The LoadData
         /// </summary>

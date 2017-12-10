@@ -34,5 +34,9 @@
         {
             //GetData(parameters);
         }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
     }
 }

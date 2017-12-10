@@ -167,7 +167,7 @@
             _geoLocator = geoLocator;
 
             UseLocationCommand =
-                new DelegateCommand(UseLocation).ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
+                new DelegateCommand(UseLocation);//.ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
             CurrentDelineationState = DelineationState.Inactive;
             MapClickedCommand = new DelegateCommand<object>(MapClicked);
             AcceptDelineationCommand = new DelegateCommand(AcceptDelineation);
@@ -449,6 +449,10 @@
                     ViewPins = (ObservableCollection<TKCustomMapPin>)points;
                 }
             }
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
 
         /// <summary>

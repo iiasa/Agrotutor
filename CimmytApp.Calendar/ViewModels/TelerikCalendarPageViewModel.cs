@@ -21,19 +21,19 @@
         {
             if (parameters.ContainsKey("Parcel"))
             {
-                parameters.TryGetValue("Parcel", out var parcel);
+                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
                 if (parcel != null)
                 {
                     Parcels = new List<Parcel>();
-                    Parcels.Add((Parcel)parcel);
+                    Parcels.Add(parcel);
                 }
             }
             if (parameters.ContainsKey("Parcels"))
             {
-                parameters.TryGetValue("Parcels", out var parcels);
+                parameters.TryGetValue<List<Parcel>>("Parcels", out var parcels);
                 if (parcels != null)
                 {
-                    Parcels = (List<Parcel>)parcels;
+                    Parcels = parcels;
                 }
             }
         }
@@ -70,6 +70,10 @@
             }
 
             Events = events;
+        }
+
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
         }
 
         public List<Appointment> Events

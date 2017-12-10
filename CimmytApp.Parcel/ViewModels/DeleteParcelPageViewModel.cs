@@ -83,6 +83,10 @@
             }
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         /// <summary>
         ///     The Back
         /// </summary>

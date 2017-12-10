@@ -170,7 +170,7 @@
                     polygons.Add(polygon);
                 }
 
-                if (item.Position.IsSet())
+                if (item.Position != null && item.Position.IsSet())
                 {
                     parcelLocations.Add(new TKCustomMapPin
                     {

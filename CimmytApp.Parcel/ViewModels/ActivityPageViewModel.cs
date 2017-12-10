@@ -100,6 +100,10 @@
             }
         }
 
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
         /// <summary>
         ///     The ExecuteMethod
         /// </summary>

@@ -42,6 +42,7 @@
   <ItemGroup>
     <None Include="FodyWeavers.xml" />
     <None Include="packages.config" />
+    <None Include="DTO\FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Realm.DataBinding">

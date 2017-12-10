@@ -69,11 +69,11 @@
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand =
-                new DelegateCommand<object>(NavigateToParcelDetailPage).ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelDetailPage);//.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelEditCommand =
-                new DelegateCommand<object>(NavigateToParcelEditPage).ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelEditPage);//.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelDeleteCommand =
-                new DelegateCommand<object>(NavigateToParcelDeletePage).ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelDeletePage);//.ObservesCanExecute(o => IsParcelListEnabled);
             BackToMainPageCommand = new DelegateCommand(BackToMainPage);
             GoBackCommand = new DelegateCommand(GoBack);
             RefreshParcelsCommand = new DelegateCommand(RefreshParcels);
