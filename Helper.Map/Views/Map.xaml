@@ -6,7 +6,16 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="Helper.Map.Views.Map">
 	<ContentPage.Content>
-
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <maps:Map x:Name="map" Grid.Row="0" Grid.RowSpan="2"
+                      InitialCameraUpdate="-23.68, -46.87, 13, 30, 60"
+                      VerticalOptions="FillAndExpand" />
+            </Grid>
+                      <!--
         <Grid>
         <Grid.RowDefinitions>
             <RowDefinition />
@@ -26,10 +35,10 @@
                     IsEnabled="{Binding ButtonAcceptDelineationEnabled}" />
                 <Button Text="{localization:Translate cancel}" Command="{Binding CancelDelineationCommand}"
                     IsEnabled="{Binding ButtonCancelDelineationEnabled}" />
-                <!--<Button Text="Override current delineation" IsVisible="{Binding ShowOverrideButton}" Command="{Binding OverrideDelineationCommand}" />-->
+                
             </StackLayout>
         </StackLayout>
     </Grid>
-        
+        -->
 	</ContentPage.Content>
 </ContentPage>
