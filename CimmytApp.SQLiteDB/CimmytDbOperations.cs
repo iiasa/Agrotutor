@@ -30,6 +30,13 @@
 
         public void AddParcel(ParcelDTO parcel)
         {
+            var parcels = GetAllParcels();
+            var max = 0;
+            foreach (var p in parcels){
+                if (p.ParcelId > max) max = p.ParcelId;
+            }
+            max += 1;
+            parcel.ParcelId = max;
             _realm.Write(() => _realm.Add(parcel));
         }
 

@@ -443,6 +443,7 @@
             {
                 ClimateType = ClimateType,
                 Crop = Crop,
+                CropType = (int)CropType,
                 MaturityClass = MaturityClass,
                 ParcelId = ParcelId,
                 ParcelName = ParcelName,
@@ -517,6 +518,7 @@
                 AgriculturalActivities = activities,
                 ClimateType = parcelDTO.ClimateType,
                 Crop = parcelDTO.Crop,
+                CropType = (CropType)parcelDTO.CropType,
                 Delineation = delineation,//TODO use only this one!
                 MaturityClass = parcelDTO.MaturityClass,
                 ParcelId = parcelDTO.ParcelId,

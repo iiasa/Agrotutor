@@ -12,7 +12,7 @@
     using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
-    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.GoogleMaps;
 
     /// <summary>
     ///     Defines the <see cref="ParcelMainPageViewModel" />
@@ -145,33 +145,28 @@
             PolygonDto delineation = Parcel.Polygon;
             if (delineation != null && delineation.ListPoints.Count > 2)
             {
-                /*
-                var polygon = new TKPolygon
+                
+                var polygon = new Polygon
                 {
                     StrokeColor = Color.Green,
-                    StrokeWidth = 2f,
-                    Color = Color.Red
+                    StrokeWidth = 2f
                 };
                 foreach (GeoPosition geoPosition in delineation.ListPoints)
                 {
-                    polygon.Coordinates.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
+                    polygon.Positions.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
-                ObservableCollection<TKPolygon> viewPolygons = new ObservableCollection<TKPolygon>
+                ObservableCollection<Polygon> viewPolygons = new ObservableCollection<Polygon>
                 {
                     polygon
                 };
-                parameters.Add(GenericMapViewModel.PolygonsParameterName, viewPolygons);*/
+                parameters.Add(MapViewModel.PolygonsParameterName, viewPolygons);
             }
 
             if ((bool)Parcel.Position?.IsSet())
             {
-                /*parameters.Add(GenericMapViewModel.PointsParameterName, new ObservableCollection<TKCustomMapPin>
-                {
-                    new TKCustomMapPin
-                    {
-                        Position = Parcel.Position.ToPosition()
-                    }
-                });*/
+                parameters.Add(MapViewModel.PointsParameterName, new ObservableCollection<Pin>{
+                    new Pin { Position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude) }
+                });
             }
 
             _navigationService.NavigateAsync("GenericMap", parameters);

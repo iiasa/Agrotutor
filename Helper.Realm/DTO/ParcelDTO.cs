@@ -2,7 +2,6 @@
 
 namespace Helper.Realm.DTO
 {
-    using System;
     using System.Collections.Generic;
     using Realms;
 
@@ -36,6 +35,7 @@ namespace Helper.Realm.DTO
 
         public string ClimateType { get; set; }
         public string MaturityClass { get; set; }
+        public int CropType { get; set; }
 
         private List<TechnologyDTO> _technologiesUsed;
 

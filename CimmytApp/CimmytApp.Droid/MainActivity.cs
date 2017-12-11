@@ -54,7 +54,6 @@ namespace CimmytApp.Droid
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
-                //FormsMaps.Init(this, bundle);
                 FormsGoogleMaps.Init(this, bundle);
                 Calendar.Init();
 
