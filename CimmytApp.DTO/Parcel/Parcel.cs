@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.Linq;
     using System.Runtime.Serialization;
     using System.Threading.Tasks;
     using Helper.BusinessContract;
@@ -93,11 +94,6 @@
         private DateTime _plantingDate;
 
         /// <summary>
-        ///     Defines the _polygon
-        /// </summary>
-        private PolygonDto _polygon;
-
-        /// <summary>
         ///     Defines the _producerName
         /// </summary>
         private string _producerName;
@@ -105,7 +101,7 @@
         /// <summary>
         ///     Defines the _technologiesUsed
         /// </summary>
-        private List<string> _technologiesUsed;
+        private List<Technology> _technologiesUsed;
 
         /// <summary>
         ///     Defines the _uploaded
@@ -222,7 +218,7 @@
             {
                 if (TechnologiesUsed != null && TechnologiesUsed.Count > 0)
                 {
-                    string technologiesScreenList = string.Join("\r\n", TechnologiesUsed.ToArray());
+                    string technologiesScreenList = string.Join("\r\n", TechnologiesUsed.ToList());
                     return technologiesScreenList;
                 }
 
@@ -291,7 +287,7 @@
         /// <summary>
         ///     Gets or sets the ParcelId
         /// </summary>
-        public int ParcelId { get; set; }
+        public int? ParcelId { get; set; }
 
         /// <summary>
         ///     Gets or sets the ParcelName
@@ -303,19 +299,6 @@
             {
                 _parcelName = value;
                 OnPropertyChanged("ParcelNames");
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the Polygon
-        /// </summary>
-        public PolygonDto Polygon
-        {
-            get => _polygon;
-            set
-            {
-                _polygon = value;
-                OnPropertyChanged("Polygon");
             }
         }
 
@@ -335,7 +318,7 @@
         /// <summary>
         ///     Gets or sets the TechnologiesUsed
         /// </summary>
-        public List<string> TechnologiesUsed
+        public List<Technology> TechnologiesUsed
         {
             get => _technologiesUsed;
             set
@@ -345,10 +328,6 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the TechnologiesUsedBlobbed
-        /// </summary>
-        public string TechnologiesUsedBlobbed { get; set; }
         public GeoPosition Position { get; set; }
         public List<GeoPosition> Delineation { get; set; }
 
@@ -372,16 +351,6 @@
             return string.IsNullOrEmpty(DelineationString)
                 ? null
                 : JsonConvert.DeserializeObject<List<GeoPosition>>(DelineationString);
-        }
-
-        //ToDo:Move to another Class
-        /// <summary>
-        ///     The GetOverviewDataTemplate
-        /// </summary>
-        /// <returns>The <see cref="DataTemplate" /></returns>
-        public DataTemplate GetOverviewDataTemplate()
-        {
-            return null;
         }
 
         //ToDo:Move to another Class
@@ -416,10 +385,7 @@
         /// <returns>The <see cref="Task{Parcel}" /></returns>
         public async Task<Parcel> SubmitAsync()
         {
-            if (_uploaded == (int)DatasetUploadStatus.Synchronized)
-            {
-                return null;
-            }
+            if (_uploaded == (int)DatasetUploadStatus.Synchronized) return null;
 
             await Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
             _uploaded = (int)DatasetUploadStatus.Synchronized;
@@ -450,39 +416,30 @@
                 Position = Position?.GetDTO()
             };
 
-
             if (AgriculturalActivities != null)
             {
-                List<AgriculturalActivityDTO> activities = new List<AgriculturalActivityDTO>();
-                foreach (var activity in this.AgriculturalActivities)
-                {
-                    activities.Add(activity.GetDTO());
-                }
+                List<AgriculturalActivityDTO> activities = AgriculturalActivities.Select(activity => activity.GetDTO()).ToList();
                 dto.SetAgriculturalActivities(activities);
             }
 
             if (GetDelineation() != null)
             {
-                List<GeoPositionDTO> delineation = new List<GeoPositionDTO>();
-                foreach (var position in GetDelineation())
-                {
-                    delineation.Add(position.GetDTO());
-                }
+                List<GeoPositionDTO> delineation = GetDelineation().Select(position => position.GetDTO()).ToList();
                 dto.SetDelineation(delineation);
             }
             List<TechnologyDTO> technologies = new List<TechnologyDTO>();
             if (TechnologiesUsed != null)
             {
-                foreach (var technology in TechnologiesUsed)
+                technologies.AddRange(TechnologiesUsed.Select(technology => new TechnologyDTO
                 {
-                    technologies.Add(new TechnologyDTO { Name = technology });
-                }
+                    Name = technology.Name,
+                    Id = technology.Id
+                }));
                 dto.SetTechnologies(technologies);
             }
 
             return dto;
         }
-
 
         public static Parcel FromDTO(ParcelDTO parcelDTO)
         {
@@ -490,29 +447,23 @@
 
             var activities = new List<AgriculturalActivity>();
             var delineation = new List<GeoPosition>();
-            var technologies = new List<string>();
+            var technologies = new List<Technology>();
 
             if (parcelDTO.AgriculturalActivities != null)
-            {
-                foreach (var activity in parcelDTO.AgriculturalActivities)
-                {
-                    activities.Add(AgriculturalActivity.FromDTO(activity));
-                }
-            }
+                activities.AddRange(parcelDTO.AgriculturalActivities.Select(AgriculturalActivity.FromDTO));
+
             if (parcelDTO.Delineation != null)
-            {
-                foreach (var position in parcelDTO.Delineation)
-                {
-                    delineation.Add(GeoPosition.FromDTO(position));
-                }
-            }
+                delineation.AddRange(parcelDTO.Delineation.Select(GeoPosition.FromDTO));
+
             if (parcelDTO.TechnologiesUsed != null)
             {
-                foreach (var technology in parcelDTO.TechnologiesUsed)
+                technologies.AddRange(parcelDTO.TechnologiesUsed.Select(technology => new Technology
                 {
-                    technologies.Add(technology.Name);
-                }
+                    Name = technology.Name,
+                    Id = technology.Id
+                }));
             }
+
             var parcel = new Parcel
             {
                 AgriculturalActivities = activities,
@@ -525,10 +476,14 @@
                 ParcelName = parcelDTO.ParcelName,
                 Position = GeoPosition.FromDTO(parcelDTO.Position),
                 TechnologiesUsed = technologies
-
             };
 
             return parcel;
+        }
+
+        public DataTemplate GetOverviewDataTemplate()
+        {
+            return null;
         }
     }
 }

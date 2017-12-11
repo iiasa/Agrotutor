@@ -65,7 +65,8 @@
             var parameters = new NavigationParameters();
             var parcelDTO = _cimmytDbOperations.GetAllParcels();
             var parcels = new List<Parcel>();
-            foreach (var parcel in parcelDTO){
+            foreach (var parcel in parcelDTO)
+            {
                 parcels.Add(Parcel.FromDTO(parcel));
             }
             parameters.Add("Parcels", parcels);
@@ -163,7 +164,8 @@
                         continue;
                     }
 
-                    foreach (var position in listPosition){
+                    foreach (var position in listPosition)
+                    {
                         polygon.Positions.Add(position);
                     }
 
@@ -185,7 +187,7 @@
                 { MapViewModel.PointsParameterName, parcelLocations }
             };
 
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         /// <summary>

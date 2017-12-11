@@ -6,7 +6,8 @@ namespace Helper.Realm.DTO
     public class AgriculturalActivityDTO : RealmObject
     {
         [PrimaryKey]
-        public int Id { get; set; }
+        public int? Id { get; set; }
+
         public int ActivityType { get; set; }
         public string AmountApplied { get; set; }
         public string AppliedProduct { get; set; }

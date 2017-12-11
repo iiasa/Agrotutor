@@ -1,7 +1,6 @@
 ﻿namespace CimmytApp.ViewModels
 {
     using System;
-    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using CimmytApp.BusinessContract;
     using CimmytApp.DTO.Parcel;
@@ -109,7 +108,6 @@
             try
             {
                 int id = (int)parameters["Id"];
-
                 Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
             }
             catch
@@ -142,16 +140,15 @@
         private void NavigateToMap()
         {
             NavigationParameters parameters = new NavigationParameters();
-            PolygonDto delineation = Parcel.Polygon;
-            if (delineation != null && delineation.ListPoints.Count > 2)
+            var delineation = Parcel.GetDelineation();
+            if (delineation != null && delineation.Count > 2)
             {
-                
                 var polygon = new Polygon
                 {
                     StrokeColor = Color.Green,
                     StrokeWidth = 2f
                 };
-                foreach (GeoPosition geoPosition in delineation.ListPoints)
+                foreach (GeoPosition geoPosition in delineation)
                 {
                     polygon.Positions.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
@@ -162,14 +159,14 @@
                 parameters.Add(MapViewModel.PolygonsParameterName, viewPolygons);
             }
 
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && (bool)Parcel.Position.IsSet())
             {
                 parameters.Add(MapViewModel.PointsParameterName, new ObservableCollection<Pin>{
                     new Pin { Position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude) }
                 });
             }
 
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

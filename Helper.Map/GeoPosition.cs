@@ -30,13 +30,17 @@
         public double? Heading { get; set; }
         public double? Speed { get; set; }
 
+        public int? Id { get; set; }
+
         public GeoPositionDTO GetDTO()
         {
-            return new GeoPositionDTO { 
+            return new GeoPositionDTO
+            {
                 Accuracy = Accuracy,
                 Altitude = Altitude,
                 AltitudeAccuracy = AltitudeAccuracy,
                 Heading = Heading,
+                Id = Id,
                 Latitude = Latitude,
                 Longitude = Longitude,
                 Speed = Speed,
@@ -47,11 +51,13 @@
         public static GeoPosition FromDTO(GeoPositionDTO position)
         {
             if ((object)position == null) return null; // Cast is for not having to reference Realm lib
-            return new GeoPosition { 
+            return new GeoPosition
+            {
                 Accuracy = position.Accuracy,
                 Altitude = position.Altitude,
                 AltitudeAccuracy = position.AltitudeAccuracy,
                 Heading = position.Heading,
+                Id = position.Id,
                 Latitude = position.Latitude,
                 Longitude = position.Longitude,
                 Speed = position.Speed,
@@ -59,11 +65,13 @@
             };
         }
 
-        public bool IsSet(){
+        public bool IsSet()
+        {
             return Latitude != null && Longitude != null;
         }
 
-        public Position ToPosition(){
+        public Position ToPosition()
+        {
             return new Position((double)Latitude, (double)Longitude);
         }
     }

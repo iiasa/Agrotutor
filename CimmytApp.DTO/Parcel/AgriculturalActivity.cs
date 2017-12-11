@@ -86,7 +86,7 @@
         /// <summary>
         ///     Gets or sets the Id
         /// </summary>
-        public int Id { get; set; }
+        public int? Id { get; set; }
 
         /// <summary>
         ///     Gets or sets the Name
@@ -133,6 +133,7 @@
                 Cost = Cost,
                 Date = Date,
                 Dose = Dose,
+                Id = Id,
                 Name = Name,
                 NumberOfSeeds = NumberOfSeeds,
                 ProductObtained = ProductObtained,
@@ -153,6 +154,7 @@
                 Cost = activity.Cost,
                 Date = activity.Date.UtcDateTime,
                 Dose = activity.Dose,
+                Id = activity.Id,
                 Name = activity.Name,
                 NumberOfSeeds = activity.NumberOfSeeds,
                 ProductObtained = activity.ProductObtained,

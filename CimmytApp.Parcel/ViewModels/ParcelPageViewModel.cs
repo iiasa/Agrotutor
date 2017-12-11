@@ -319,12 +319,12 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && Parcel.Position.IsSet())
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                                CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         /// <summary>
@@ -336,7 +336,7 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && Parcel.Position.IsSet())
             {
                 ObservableCollection<Pin> points = new ObservableCollection<Pin>();
                 var position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
@@ -363,14 +363,15 @@
                     .Select(positionitem => new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
                     .ToList();
 
-                foreach (var position in listPosition){
+                foreach (var position in listPosition)
+                {
                     polygon.Positions.Add(position);
                 }
                 polygons.Add(polygon);
                 parameters.Add(MapViewModel.PolygonsParameterName, polygons);
             }
 
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         /// <inheritdoc />
@@ -422,16 +423,11 @@
             if (parameters.ContainsKey("Delineation"))
             {
                 parameters.TryGetValue<List<GeoPosition>>("Delineation", out var delineation);
-                PolygonDto polygonObj = new PolygonDto
+                if (delineation.Count > 0 && Parcel.Position == null)
                 {
-                    ListPoints = delineation
-                };
-                if (polygonObj.ListPoints.Count > 0 && Parcel.Position.Latitude == 0 && Parcel.Position.Longitude == 0)
-                {
-                    Parcel.Position.Latitude = polygonObj.ListPoints.ElementAt(0).Latitude;
-                    Parcel.Position.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
+                    Parcel.Position = new GeoPosition { Latitude = delineation.ElementAt(0).Latitude, Longitude = delineation.ElementAt(0).Longitude };
                 }
-                Parcel.SetDelineation(polygonObj.ListPoints);
+                Parcel.SetDelineation(delineation);
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
@@ -458,11 +454,10 @@
 
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                parameters.TryGetValue<List<string>>(ParcelConstants.TechnologiesParameterName, out var technologies);
+                parameters.TryGetValue<List<Technology>>(ParcelConstants.TechnologiesParameterName, out var technologies);
                 if (Parcel != null)
                 {
                     Parcel.TechnologiesUsed = technologies;
-                    Parcel.TechnologiesUsedBlobbed = JsonConvert.SerializeObject(Parcel.TechnologiesUsed);
                 }
             }
         }
@@ -485,7 +480,7 @@
 
         private void EditTechnologies()
         {
-            List<string> technologies = Parcel.TechnologiesUsedBlobbed != null ? JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed) : null;
+            List<Technology> technologies = Parcel.TechnologiesUsed;
 
             NavigationParameters parameters = new NavigationParameters();
             if (technologies != null) parameters.Add(ParcelConstants.TechnologiesParameterName, technologies);
@@ -499,14 +494,14 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && (bool)Parcel.Position.IsSet())
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                                CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         private void GoBack()
@@ -606,8 +601,7 @@
 
         private void ViewTechnologies()
         {
-            List<string> technologies = Parcel.TechnologiesUsedBlobbed != null ? JsonConvert.DeserializeObject<List<string>>(Parcel.TechnologiesUsedBlobbed) : null;
-
+            List<Technology> technologies = Parcel.TechnologiesUsed;
             NavigationParameters parameters = new NavigationParameters();
             if (technologies != null) parameters.Add(ParcelConstants.TechnologiesParameterName, technologies);
             _navigationService.NavigateAsync("SelectTechnologiesPage", parameters);

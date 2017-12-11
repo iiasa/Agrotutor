@@ -48,7 +48,7 @@
     <Compile Include="Parcel\CropType.cs" />
     <Compile Include="Parcel\DatasetUploadStatus.cs" />
     <Compile Include="Parcel\Parcel.cs" />
-    <Compile Include="Parcel\PolygonDto.cs" />
+    <Compile Include="Parcel\Technology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfile.cs" />
   </ItemGroup>

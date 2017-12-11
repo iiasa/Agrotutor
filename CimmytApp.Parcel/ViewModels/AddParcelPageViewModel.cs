@@ -275,8 +275,7 @@
             if (parameters.ContainsKey("Delineation"))
             {
                 parameters.TryGetValue<List<GeoPosition>>("Delineation", out var delineation);
-                PolygonDto polygonObj = new PolygonDto { ListPoints = delineation };
-                Parcel.SetDelineation(polygonObj.ListPoints);
+                Parcel.SetDelineation(delineation);
                 //_cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj); TODO ensure saving
 
                 OnPropertyChanged("Parcel");
@@ -284,7 +283,7 @@
 
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                parameters.TryGetValue<List<string>>(ParcelConstants.TechnologiesParameterName, out var technologies);
+                parameters.TryGetValue<List<Technology>>(ParcelConstants.TechnologiesParameterName, out var technologies);
                 if (Parcel != null) Parcel.TechnologiesUsed = technologies;
             }
         }
@@ -306,12 +305,12 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && (bool)Parcel.Position.IsSet())
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                                CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
-                }
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            }
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         /// <summary>
@@ -323,13 +322,12 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
             };
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && (bool)Parcel.Position.IsSet())
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                                CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
-
-                }
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            }
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         /// <summary>
@@ -341,13 +339,12 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
-            if ((bool)Parcel.Position?.IsSet())
+            if (Parcel.Position != null && (bool)Parcel.Position.IsSet())
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                                CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
-                
             }
-            _navigationService.NavigateAsync("GenericMap", parameters);
+            _navigationService.NavigateAsync("Map", parameters);
         }
 
         private void NavigateAsync(string page)

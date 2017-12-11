@@ -175,7 +175,7 @@
                 }
 
                 WeatherDataAvailable = true;
-                data.ParcelId = Parcel.ParcelId;
+                data.ParcelId = (int)Parcel.ParcelId;
                 SetProperty(ref _weatherData, data);
                 if (_refreshedFromServer)
                 {
@@ -268,7 +268,7 @@
         ///     The LoadWeatherFromDb
         /// </summary>
         /// <param name="parcelId">The <see cref="int" /></param>
-        private void LoadWeatherFromDb(int parcelId)
+        private void LoadWeatherFromDb(int? parcelId)
         {
             //MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
         }

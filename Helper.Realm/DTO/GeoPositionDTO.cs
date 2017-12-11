@@ -6,7 +6,8 @@
     public class GeoPositionDTO : RealmObject
     {
         [PrimaryKey]
-        public int Id { get; set; }
+        public int? Id { get; set; }
+
         public double? Accuracy { get; set; }
         public double? Altitude { get; set; }
         public double? AltitudeAccuracy { get; set; }

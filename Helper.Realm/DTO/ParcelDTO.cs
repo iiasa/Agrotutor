@@ -1,6 +1,4 @@
-﻿
-
-namespace Helper.Realm.DTO
+﻿namespace Helper.Realm.DTO
 {
     using System.Collections.Generic;
     using Realms;
@@ -8,7 +6,8 @@ namespace Helper.Realm.DTO
     public class ParcelDTO : RealmObject
     {
         [PrimaryKey]
-        public int ParcelId { get; set; }
+        public int? ParcelId { get; set; }
+
         public string ParcelName { get; set; }
         public string Crop { get; set; }
         public GeoPositionDTO Position { get; set; }

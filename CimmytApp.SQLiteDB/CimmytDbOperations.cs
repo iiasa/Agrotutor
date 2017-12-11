@@ -13,6 +13,7 @@
     public class CimmytDbOperations : ICimmytDbOperations
     {
         private Realm _realm;
+
         private Realm Realm
         {
             get
@@ -34,26 +35,64 @@
 
         public void AddParcel(ParcelDTO parcel)
         {
-            var parcels = GetAllParcels();
-            var max = 0;
-            foreach (var p in parcels){
-                if (p.ParcelId > max) max = p.ParcelId;
+            if (parcel.ParcelId == null)
+            {
+                var parcels = GetAllParcels();
+                if (parcels.Count > 0)
+                    parcel.ParcelId = parcels.Max(p => p.ParcelId).Value + 1;
+                else
+                    parcel.ParcelId = 0;
             }
-            max += 1;
-            parcel.ParcelId = max;
+            foreach (var agriculturalActivity in parcel.AgriculturalActivities)
+                SaveActivity(agriculturalActivity);
+            foreach (var technology in parcel.TechnologiesUsed)
+                SaveTechnology(technology);
+            foreach (var geoPosition in parcel.Delineation)
+                SaveGeoPosition(geoPosition);
+            if (parcel.Position != null)
+                SaveGeoPosition(parcel.Position);
             Realm.Write(() => Realm.Add(parcel));
+        }
+
+        private void SaveGeoPosition(GeoPositionDTO geoPosition)
+        {
+            if (geoPosition.Id == null)
+            {
+                var positions = Realm.All<GeoPositionDTO>().ToList();
+                if (positions.Count > 0)
+                    geoPosition.Id = positions.Max(p => p.Id).Value + 1;
+                else
+                    geoPosition.Id = 0;
+            }
+            Realm.Write(() => Realm.Add(geoPosition));
+        }
+
+        private void SaveTechnology(TechnologyDTO technology)
+        {
+            if (technology.Id == null)
+            {
+                var technologies = Realm.All<TechnologyDTO>().ToList();
+                if (technologies.Count > 0)
+                    technology.Id = technologies.Max(p => p.Id).Value + 1;
+                else
+                    technology.Id = 0;
+            }
+            Realm.Write(() => Realm.Add(technology));
+        }
+
+        private void SaveActivity(AgriculturalActivityDTO agriculturalActivity)
+        {
+            Realm.Write(() => Realm.Add(agriculturalActivity));
         }
 
         public void DeleteParcel(ParcelDTO parcel)
         {
-
             Realm.Remove(parcel);
         }
 
         public List<ParcelDTO> GetAllParcels()
         {
             return Realm.All<ParcelDTO>().ToList();
-
         }
 
         public BemData GetBemData()
@@ -74,9 +113,10 @@
 
         public void SaveCostos(List<Costo> listCostos)
         {
-            Realm.Write(() =>Realm.RemoveAll<Costo>());
-            foreach (var costo in listCostos){
-                Realm.Write(() =>Realm.Add(costo));
+            Realm.Write(() => Realm.RemoveAll<Costo>());
+            foreach (var costo in listCostos)
+            {
+                Realm.Write(() => Realm.Add(costo));
             }
         }
 

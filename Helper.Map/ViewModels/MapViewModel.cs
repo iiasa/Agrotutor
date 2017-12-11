@@ -44,14 +44,12 @@ namespace Helper.Map.ViewModels
         public DelegateCommand AcceptDelineationCommand { get; private set; }
         public DelegateCommand CancelDelineationCommand { get; private set; }
         public bool ReturnGeolocationButtonEnabled { get; private set; }
+
         public bool ShowEnableLocationHint
         {
             get => _showEnableLocationHint;
             set => SetProperty(ref _showEnableLocationHint, value);
         }
-
-
-
 
         /// <summary>
         ///     Gets or sets a value indicating whether ButtonAcceptDelineationEnabled
@@ -123,14 +121,14 @@ namespace Helper.Map.ViewModels
         {
             ButtonCancelDelineationEnabled = false;
             ButtonAcceptDelineationEnabled = false;
-            _view.MapPolygons = new List<Polygon>();
+            _view.ClearMapPins();
+            _view.ClearMapPolygons();
             CurrentDelineationState = DelineationState.Inactive;
-            _view.MapPins = new List<Pin>();
         }
 
         private void AcceptDelineation()
         {
-            IList<Position> positions = _view.MapPolygons.ElementAt(0).Positions;
+            IList<Position> positions = _view.GetMapPolygons().ElementAt(0).Positions;
             if (positions.Count == 0)
             {
                 _navigationService.GoBackAsync();
@@ -167,14 +165,17 @@ namespace Helper.Map.ViewModels
         {
             _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
         }
+
         private void InitializeSelectPolygon()
         {
             DelineationButtonsVisible = true;
         }
+
         private void InitializeSelectLocation()
         {
             ReturnGeolocationButtonVisible = true;
         }
+
         private void InitializeGetLocation()
         {
             ReturnGeolocationButtonVisible = true;
@@ -196,7 +197,7 @@ namespace Helper.Map.ViewModels
             }
             else
             {
-                _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(-100,20), 15)));
+                _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(-100, 20), 15)));
             }
 
             if (parameters.ContainsKey(MapViewModel.ListenForUserLocationParameterName))
@@ -223,15 +224,14 @@ namespace Helper.Map.ViewModels
             if (parameters.ContainsKey(MapViewModel.PolygonsParameterName))
             {
                 parameters.TryGetValue<List<Polygon>>(MapViewModel.PolygonsParameterName, out var polygons);
-                if (polygons != null) _view.MapPolygons = polygons;
+                if (polygons != null) _view.SetMapPolygons(polygons);
             }
+
             if (parameters.ContainsKey(MapViewModel.PointsParameterName))
             {
                 parameters.TryGetValue<List<Pin>>(MapViewModel.PointsParameterName, out var points);
-                if (points != null) _view.MapPins = points;
+                if (points != null) _view.SetMapPins(points);
             }
-            _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(48,16),15)));
-            ShowEnableLocationHint = true;
         }
 
         private void SetMapTask(MapTask mapTask)
@@ -259,7 +259,6 @@ namespace Helper.Map.ViewModels
         public void SetViewReference(Views.Map map)
         {
             _view = map;
-
         }
 
         /// <summary>
@@ -297,11 +296,12 @@ namespace Helper.Map.ViewModels
                 {
                     case MapTask.GetLocation:
                         IsGeolocationEnabled = true;
-                        _view.MapPins.Clear();
+                        _view.ClearMapPins();
                         Position position = new Position((double)value.Latitude, (double)value.Longitude);
-                        _view.MapPins.Add(new Pin
+                        _view.AddMapPin(new Pin
                         {
-                            Position = position
+                            Position = position,
+                            Label = "Parcela"
                         });
                         if (_followUserLocation)
                         {
@@ -322,9 +322,7 @@ namespace Helper.Map.ViewModels
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-            
         }
-
 
         private async Task GetPosition()
         {
@@ -346,15 +344,16 @@ namespace Helper.Map.ViewModels
                     ReturnGeolocationButtonEnabled = true;
 
                     Position position = new Position((double)positionRes.Latitude, (double)positionRes.Longitude);
-                    _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(position,15)));
+                    _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(position, 15)));
 
-                    _view.MapPins = new List<Pin>(new[]
+                    _view.SetMapPins(new List<Pin>(new[]
                     {
                         new Pin
                         {
-                            Position = position
+                            Position = position,
+                            Label = "Parcela"
                         }
-                    });
+                    }));
                     Point = new GeoPosition { Latitude = position.Latitude, Longitude = position.Longitude };
                 }
 
@@ -375,7 +374,6 @@ namespace Helper.Map.ViewModels
 
             UserLocation = position;
         }
-
 
         private void MapClicked(object obj)
         {
@@ -398,20 +396,12 @@ namespace Helper.Map.ViewModels
 
         private void OnMapClickedSelectLocation(Position position)
         {
-            if (_view.MapPins == null)
-            {
-                _view.MapPins = new List<Pin>();
-            }
-            _view.MapPins.Clear();
             Point = new GeoPosition
             {
                 Latitude = position.Latitude,
                 Longitude = position.Longitude
             };
-            _view.MapPins.Add(new Pin
-            {
-                Position = position
-            });
+            _view.SetMapPins(new List<Pin> { new Pin { Position = position, Label = "Parcela" } });
             ReturnGeolocationButtonEnabled = true;
         }
 
@@ -420,56 +410,46 @@ namespace Helper.Map.ViewModels
             switch (CurrentDelineationState)
             {
                 case DelineationState.Inactive:
+                    if (_mapTask != MapTask.SelectPolygon) return;
 
-                    if (_mapTask != MapTask.SelectPolygon)
-                    {
-                        return;
-                    }
-
-                    _view.MapPolygons = new List<Polygon>();
                     var polygon = new Polygon
                     {
                         StrokeColor = Color.Green,
                         StrokeWidth = 2f
                     };
-
                     polygon.Positions.Add(position);
 
-                    _view.MapPolygons.Add(polygon);
-                    if (_view.MapPins == null)
-                    {
-                        _view.MapPins = new List<Pin>();
-                    }
-                    _view.MapPins.Add(new Pin
-                    {
-                        Position = position
-                    });
+                    _view.SetMapPolygons(new List<Polygon> { polygon });
+                    _view.SetMapPins(new List<Pin> { new Pin { Position = position, Label = "1" } });
+
                     ButtonCancelDelineationEnabled = true;
                     CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
                     break;
 
                 case DelineationState.ActiveNotEnoughPoints:
                 case DelineationState.ActiveEnoughPoints:
-                    int pointId = _view.MapPolygons[0].Positions.Count; //todo not use ViewPolygons[0]
+                    var positionList = _view.GetMapPins().Select(pin => pin.Position).ToList();
+                    positionList.Add(position);
+                    var pol = new Polygon
+                    {
+                        StrokeColor = Color.Green,
+                        StrokeWidth = 2f
+                    };
 
-                    _view.MapPolygons[0].Positions.Add(position);
+                    foreach (Position pos in positionList) pol.Positions.Add(pos);
 
-                    if (_view.MapPolygons[0].Positions.Count > 2)
+                    _view.SetMapPolygons(new List<Polygon> { pol });
+
+                    if (positionList.Count > 2)
                     {
                         CurrentDelineationState = DelineationState.ActiveEnoughPoints;
                         ButtonAcceptDelineationEnabled = true;
                     }
-                    else
-                    {
-                        CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
-                    }
+                    else CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
 
                     ButtonAcceptDelineationEnabled = CurrentDelineationState == DelineationState.ActiveEnoughPoints;
 
-                    _view.MapPins.Add(new Pin
-                    {
-                        Position = position
-                    });
+                    _view.AddMapPin(new Pin { Position = position, Label = positionList.Count.ToString() });
                     break;
             }
         }

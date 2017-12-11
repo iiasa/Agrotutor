@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System.Collections.Generic;
+    using CimmytApp.DTO.Parcel;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -101,7 +102,7 @@
         /// <summary>
         ///     Defines the _technologies
         /// </summary>
-        private List<string> _technologies;
+        private List<Technology> _technologies;
 
         private bool _selectEnabled;
 
@@ -229,7 +230,7 @@
         /// <summary>
         ///     Gets or sets the Technologies
         /// </summary>
-        public List<string> Technologies
+        public List<Technology> Technologies
         {
             get => _technologies;
             set
@@ -259,7 +260,7 @@
         {
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                Technologies = (List<string>)parameters[ParcelConstants.TechnologiesParameterName];
+                Technologies = (List<Technology>)parameters[ParcelConstants.TechnologiesParameterName];
             }
             if (parameters.ContainsKey("ViewOnly"))
             {
@@ -296,39 +297,15 @@
         /// </summary>
         private void UpdateTechChecked()
         {
-            List<string> technologies = new List<string>();
-            if (_tech1Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology1);
-            }
-            if (_tech2Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology2);
-            }
-            if (_tech3Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology3);
-            }
-            if (_tech4Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology4);
-            }
-            if (_tech5Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology5);
-            }
-            if (_tech6Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology6);
-            }
-            if (_tech7Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology7);
-            }
-            if (_tech8Checked)
-            {
-                technologies.Add(SelectTechnologiesPageViewModel.Technology8);
-            }
+            var technologies = new List<Technology>();
+            if (_tech1Checked) technologies.Add(new Technology { Name = Technology1 });
+            if (_tech2Checked) technologies.Add(new Technology { Name = Technology2 });
+            if (_tech3Checked) technologies.Add(new Technology { Name = Technology3 });
+            if (_tech4Checked) technologies.Add(new Technology { Name = Technology4 });
+            if (_tech5Checked) technologies.Add(new Technology { Name = Technology5 });
+            if (_tech6Checked) technologies.Add(new Technology { Name = Technology6 });
+            if (_tech7Checked) technologies.Add(new Technology { Name = Technology7 });
+            if (_tech8Checked) technologies.Add(new Technology { Name = Technology8 });
             Technologies = technologies;
         }
 
@@ -337,44 +314,41 @@
         /// </summary>
         private void UpdateTechCheckedUI()
         {
-            if (Technologies == null)
-            {
-                return;
-            }
+            if (Technologies == null) return;
 
-            foreach (string technology in Technologies)
+            foreach (var technology in Technologies)
             {
-                switch (technology)
+                switch (technology.Name)
                 {
-                    case SelectTechnologiesPageViewModel.Technology1:
+                    case Technology1:
                         Tech1Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology2:
+                    case Technology2:
                         Tech2Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology3:
+                    case Technology3:
                         Tech3Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology4:
+                    case Technology4:
                         Tech4Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology5:
+                    case Technology5:
                         Tech5Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology6:
+                    case Technology6:
                         Tech6Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology7:
+                    case Technology7:
                         Tech7Checked = true;
                         break;
 
-                    case SelectTechnologiesPageViewModel.Technology8:
+                    case Technology8:
                         Tech8Checked = true;
                         break;
                 }
