@@ -35,11 +35,11 @@
                 return;
             }
 
-            parameters.TryGetValue(SeriesParameterName, out object series);
-            Series = (HourlySeries)series;
+            parameters.TryGetValue<HourlySeries>(SeriesParameterName, out var series);
+            Series = series;
 
-            parameters.TryGetValue("VariableName", out object variableName);
-            VariableName = (string)variableName;
+            parameters.TryGetValue<string>("VariableName", out var variableName);
+            VariableName = variableName;
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)

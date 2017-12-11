@@ -391,26 +391,19 @@
         {
             if (parameters.ContainsKey("Caller"))
             {
-                parameters.TryGetValue("Caller", out object caller);
-                if (caller != null)
-                {
-                    _caller = (string)caller;
-                }
+                parameters.TryGetValue<string>("Caller", out var caller);
+                _caller = (string)caller;
             }
             if (parameters.ContainsKey("Parcel"))
             {
-                parameters.TryGetValue("Parcel", out object parcel);
-                if (parcel != null)
-                {
-                    Parcel = (Parcel)parcel;
-                }
+                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
+                if (parcel != null) Parcel = (Parcel)parcel;
             }
             if (parameters.ContainsKey("Id"))
             {
                 try
                 {
                     int id = (int)parameters["Id"];
-
                     Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
                 }
                 catch (Exception e)
@@ -418,21 +411,20 @@
                     GoBackCommand?.Execute();
                 }
             }
+
             if (parameters.ContainsKey("EditEnabled"))
             {
                 ShowEditToggle = false;
-                parameters.TryGetValue("EditEnabled", out object editEnabled);
-                if (editEnabled != null)
-                {
-                    EditModeActive = (bool)editEnabled;
-                }
+                parameters.TryGetValue<bool>("EditEnabled", out var editEnabled);
+                EditModeActive = editEnabled;
             }
+
             if (parameters.ContainsKey("Delineation"))
             {
-                parameters.TryGetValue("Delineation", out object delineation);
+                parameters.TryGetValue<List<GeoPosition>>("Delineation", out var delineation);
                 PolygonDto polygonObj = new PolygonDto
                 {
-                    ListPoints = (List<GeoPosition>)delineation
+                    ListPoints = delineation
                 };
                 if (polygonObj.ListPoints.Count > 0 && Parcel.Position.Latitude == 0 && Parcel.Position.Longitude == 0)
                 {
@@ -440,18 +432,11 @@
                     Parcel.Position.Longitude = polygonObj.ListPoints.ElementAt(0).Longitude;
                 }
                 Parcel.SetDelineation(polygonObj.ListPoints);
-
-                OnPropertyChanged("Parcel");
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue("GeoPosition", out object geoPosition);
-                if (geoPosition == null)
-                {
-                    return;
-                }
-
-                GeoPosition position = (GeoPosition)geoPosition;
+                parameters.TryGetValue<GeoPosition>("GeoPosition", out var position);
+                if (position == null) return;
                 Parcel.Position.Latitude = position.Latitude;
                 Parcel.Position.Longitude = position.Longitude;
                 _cimmytDbOperations.UpdateParcel(Parcel.GetDTO());
@@ -459,27 +444,24 @@
 
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue("Activities", out object activities);
-                if (Parcel.AgriculturalActivities == null)
-                {
-                    Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
-                }
+                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activities);
+                if (Parcel.AgriculturalActivities == null) Parcel.AgriculturalActivities = activities;
                 else
                 {
                     if (activities != null)
                     {
-                        ((List<AgriculturalActivity>)activities).AddRange(Parcel.AgriculturalActivities);
-                        Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                        activities.AddRange(Parcel.AgriculturalActivities);
+                        Parcel.AgriculturalActivities = activities;
                     }
                 }
             }
 
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                parameters.TryGetValue(ParcelConstants.TechnologiesParameterName, out object technologies);
+                parameters.TryGetValue<List<string>>(ParcelConstants.TechnologiesParameterName, out var technologies);
                 if (Parcel != null)
                 {
-                    Parcel.TechnologiesUsed = (List<string>)technologies;
+                    Parcel.TechnologiesUsed = technologies;
                     Parcel.TechnologiesUsedBlobbed = JsonConvert.SerializeObject(Parcel.TechnologiesUsed);
                 }
             }

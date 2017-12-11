@@ -263,9 +263,8 @@
             }
             if (parameters.ContainsKey("ViewOnly"))
             {
-                parameters.TryGetValue("ViewOnly", out object viewOnly);
-                if (viewOnly != null)
-                    SelectEnabled = !(bool)viewOnly;
+                parameters.TryGetValue<bool>("ViewOnly", out var viewOnly);
+                SelectEnabled = !viewOnly;
             }
             else
             {

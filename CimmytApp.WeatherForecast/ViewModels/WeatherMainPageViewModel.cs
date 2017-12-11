@@ -253,10 +253,10 @@
         {
             if (parameters.ContainsKey("Parcel"))
             {
-                parameters.TryGetValue("Parcel", out object parcel);
+                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
                 if (parcel != null)
                 {
-                    Parcel = (Parcel)parcel;
+                    Parcel = parcel;
                     LoadData();
                 }
             }

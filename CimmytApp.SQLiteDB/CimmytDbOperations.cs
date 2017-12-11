@@ -12,19 +12,23 @@
 
     public class CimmytDbOperations : ICimmytDbOperations
     {
-        private readonly Realm _realm;
-
-        public CimmytDbOperations()
+        private Realm _realm;
+        private Realm Realm
         {
-            try
+            get
             {
-
-
-                _realm = DbContext.GetConnection();
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e.Message, e);
+                if (_realm == null)
+                {
+                    try
+                    {
+                        _realm = DbContext.GetConnection();
+                    }
+                    catch (Exception e)
+                    {
+                        Debug.WriteLine(e.Message, e);
+                    }
+                }
+                return _realm;
             }
         }
 
@@ -37,18 +41,18 @@
             }
             max += 1;
             parcel.ParcelId = max;
-            _realm.Write(() => _realm.Add(parcel));
+            Realm.Write(() => Realm.Add(parcel));
         }
 
         public void DeleteParcel(ParcelDTO parcel)
         {
 
-            _realm.Remove(parcel);
+            Realm.Remove(parcel);
         }
 
         public List<ParcelDTO> GetAllParcels()
         {
-            return _realm.All<ParcelDTO>().ToList();
+            return Realm.All<ParcelDTO>().ToList();
 
         }
 
@@ -56,56 +60,56 @@
         {
             return new BemData
             {
-                Costo = _realm.All<Costo>().ToList(),
-                Ingreso = _realm.All<Ingreso>().ToList(),
-                Rendimiento = _realm.All<Rendimiento>().ToList(),
-                Utilidad = _realm.All<Utilidad>().ToList()
+                Costo = Realm.All<Costo>().ToList(),
+                Ingreso = Realm.All<Ingreso>().ToList(),
+                Rendimiento = Realm.All<Rendimiento>().ToList(),
+                Utilidad = Realm.All<Utilidad>().ToList()
             };
         }
 
         public ParcelDTO GetParcelById(int parcelId)
         {
-            return _realm.All<ParcelDTO>().Where(p => p.ParcelId == parcelId).FirstOrDefault(); // TODO check if null works...
+            return Realm.All<ParcelDTO>().Where(p => p.ParcelId == parcelId).FirstOrDefault(); // TODO check if null works...
         }
 
         public void SaveCostos(List<Costo> listCostos)
         {
-            _realm.Write(() =>_realm.RemoveAll<Costo>());
+            Realm.Write(() =>Realm.RemoveAll<Costo>());
             foreach (var costo in listCostos){
-                _realm.Write(() =>_realm.Add(costo));
+                Realm.Write(() =>Realm.Add(costo));
             }
         }
 
         public void SaveIngresos(List<Ingreso> listIngresos)
         {
-            _realm.Write(() => _realm.RemoveAll<Ingreso>());
+            Realm.Write(() => Realm.RemoveAll<Ingreso>());
             foreach (var ingreso in listIngresos)
             {
-                _realm.Write(() => _realm.Add(ingreso));
+                Realm.Write(() => Realm.Add(ingreso));
             }
         }
 
         public void SaveRendimientos(List<Rendimiento> listRendimientos)
         {
-            _realm.Write(() => _realm.RemoveAll<Rendimiento>());
+            Realm.Write(() => Realm.RemoveAll<Rendimiento>());
             foreach (var rendimiento in listRendimientos)
             {
-                _realm.Write(() => _realm.Add(rendimiento));
+                Realm.Write(() => Realm.Add(rendimiento));
             }
         }
 
         public void SaveUtilidades(List<Utilidad> listUtilidades)
         {
-            _realm.Write(() => _realm.RemoveAll<Utilidad>());
+            Realm.Write(() => Realm.RemoveAll<Utilidad>());
             foreach (var utilidad in listUtilidades)
             {
-                _realm.Write(() => _realm.Add(utilidad));
+                Realm.Write(() => Realm.Add(utilidad));
             }
         }
 
         public void UpdateParcel(ParcelDTO parcel)
         {
-            _realm.Write(() => _realm.Add(parcel, update: true));
+            Realm.Write(() => Realm.Add(parcel, update: true));
         }
     }
 }

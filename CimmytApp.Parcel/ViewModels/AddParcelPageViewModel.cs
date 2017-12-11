@@ -250,46 +250,32 @@
         {
             if (parameters.ContainsKey("Parcel"))
             {
-                parameters.TryGetValue("Parcel", out object parcel);
-                if (parcel != null)
-                {
-                    Parcel = (Parcel)parcel;
-                }
+                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
+                if (parcel != null) Parcel = parcel;
             }
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue("Activities", out object activities);
-                if (Parcel.AgriculturalActivities == null)
-                {
-                    Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
-                }
+                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activities);
+                if (Parcel.AgriculturalActivities == null) Parcel.AgriculturalActivities = activities;
                 else
                 {
                     if (activities != null)
                     {
-                        ((List<AgriculturalActivity>)activities).AddRange(Parcel.AgriculturalActivities);
-                        Parcel.AgriculturalActivities = (List<AgriculturalActivity>)activities;
+                        activities.AddRange(Parcel.AgriculturalActivities);
+                        Parcel.AgriculturalActivities = activities;
                     }
                 }
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue("GeoPosition", out object geoPosition);
-                if (geoPosition == null)
-                {
-                    return;
-                }
-
-                Parcel.Position = (GeoPosition)geoPosition;
+                parameters.TryGetValue<GeoPosition>("GeoPosition", out var geoPosition);
+                if (geoPosition != null) Parcel.Position = geoPosition;
             }
 
             if (parameters.ContainsKey("Delineation"))
             {
-                parameters.TryGetValue("Delineation", out object delineation);
-                PolygonDto polygonObj = new PolygonDto
-                {
-                    ListPoints = (List<GeoPosition>)delineation
-                };
+                parameters.TryGetValue<List<GeoPosition>>("Delineation", out var delineation);
+                PolygonDto polygonObj = new PolygonDto { ListPoints = delineation };
                 Parcel.SetDelineation(polygonObj.ListPoints);
                 //_cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj); TODO ensure saving
 
@@ -298,11 +284,8 @@
 
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
             {
-                parameters.TryGetValue(ParcelConstants.TechnologiesParameterName, out object technologies);
-                if (Parcel != null)
-                {
-                    Parcel.TechnologiesUsed = (List<string>)technologies;
-                }
+                parameters.TryGetValue<List<string>>(ParcelConstants.TechnologiesParameterName, out var technologies);
+                if (Parcel != null) Parcel.TechnologiesUsed = technologies;
             }
         }
 

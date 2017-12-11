@@ -55,11 +55,8 @@
         {
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue("Activities", out object activites);
-                if (activites != null)
-                {
-                    Activities = (List<AgriculturalActivity>)activites;
-                }
+                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activites);
+                if (activites != null) Activities = activites;
             }
             else
             {

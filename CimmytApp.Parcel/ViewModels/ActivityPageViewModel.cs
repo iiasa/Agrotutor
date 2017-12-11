@@ -76,27 +76,24 @@
             CallingDetailPage = false;
             if (parameters.ContainsKey("Activity"))
             {
-                parameters.TryGetValue("Activity", out object activity);
-                if (Activities == null)
-                {
-                    Activities = new List<AgriculturalActivity>();
-                }
-                Activities.Add((AgriculturalActivity)activity);
+                parameters.TryGetValue<AgriculturalActivity>("Activity", out var activity);
+                if (Activities == null) Activities = new List<AgriculturalActivity>();
+                Activities.Add(activity);
             }
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue("Activities", out object activities);
-                Activities = (List<AgriculturalActivity>)activities;
+                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activities);
+                Activities = activities;
             }
             if (parameters.ContainsKey("Parcel"))
             {
-                parameters.TryGetValue("Parcel", out object parcel);
-                Parcel = (Parcel)parcel;
+                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
+                Parcel = parcel;
             }
             if (parameters.ContainsKey("Caller"))
             {
-                parameters.TryGetValue("Caller", out object caller);
-                _caller = (string)caller;
+                parameters.TryGetValue<string>("Caller", out var caller);
+                _caller = caller;
             }
         }
 

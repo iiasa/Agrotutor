@@ -185,20 +185,14 @@ namespace Helper.Map.ViewModels
         {
             if (parameters.ContainsKey(MapViewModel.MapTaskParameterName))
             {
-                parameters.TryGetValue(MapViewModel.MapTaskParameterName, out object mapTask);
-                if (mapTask != null)
-                {
-                    SetMapTask((MapTask)mapTask);
-                }
+                parameters.TryGetValue<MapTask>(MapViewModel.MapTaskParameterName, out var mapTask);
+                SetMapTask(mapTask);
             }
 
             if (parameters.ContainsKey(MapViewModel.MapCenterParameterName))
             {
-                parameters.TryGetValue(MapViewModel.MapCenterParameterName, out object mapCenter);
-                if (mapCenter != null)
-                {
-                    _view.MoveCamera((CameraUpdate)mapCenter);
-                }
+                parameters.TryGetValue<CameraUpdate>(MapViewModel.MapCenterParameterName, out var mapCenter);
+                if (mapCenter != null) _view.MoveCamera((CameraUpdate)mapCenter);
             }
             else
             {
@@ -207,48 +201,34 @@ namespace Helper.Map.ViewModels
 
             if (parameters.ContainsKey(MapViewModel.ListenForUserLocationParameterName))
             {
-                parameters.TryGetValue(MapViewModel.ListenForUserLocationParameterName,
-                    out object listenForUserLocation);
-                if (listenForUserLocation != null)
-                {
-                    _listenForUserLocation = (bool)listenForUserLocation;
-                }
+                parameters.TryGetValue<bool>(MapViewModel.ListenForUserLocationParameterName,
+                    out var listenForUserLocation);
+                _listenForUserLocation = listenForUserLocation;
             }
 
             if (parameters.ContainsKey(MapViewModel.FollowUserLocationParameterName))
             {
-                parameters.TryGetValue(MapViewModel.FollowUserLocationParameterName,
-                    out object followUserLocation);
-                if (followUserLocation != null)
-                {
-                    _followUserLocation = (bool)followUserLocation;
-                }
+                parameters.TryGetValue<bool>(MapViewModel.FollowUserLocationParameterName,
+                    out var followUserLocation);
+                _followUserLocation = (bool)followUserLocation;
             }
 
             if (parameters.ContainsKey(MapViewModel.MaximumLocationAccuracyParameterName))
             {
-                parameters.TryGetValue(MapViewModel.MaximumLocationAccuracyParameterName,
-                    out object maximumLocationAccuracy);
-                if (maximumLocationAccuracy != null)
-                {
-                    _maximumLocationAccuracy = (int)maximumLocationAccuracy;
-                }
+                parameters.TryGetValue<int>(MapViewModel.MaximumLocationAccuracyParameterName,
+                    out var maximumLocationAccuracy);
+                _maximumLocationAccuracy = (int)maximumLocationAccuracy;
             }
+
             if (parameters.ContainsKey(MapViewModel.PolygonsParameterName))
             {
-                parameters.TryGetValue(MapViewModel.PolygonsParameterName, out object polygons);
-                if (polygons != null)
-                {
-                    _view.MapPolygons = (List<Polygon>)polygons;
-                }
+                parameters.TryGetValue<List<Polygon>>(MapViewModel.PolygonsParameterName, out var polygons);
+                if (polygons != null) _view.MapPolygons = polygons;
             }
             if (parameters.ContainsKey(MapViewModel.PointsParameterName))
             {
-                parameters.TryGetValue(MapViewModel.PointsParameterName, out object points);
-                if (points != null)
-                {
-                    _view.MapPins = (List<Pin>)points;
-                }
+                parameters.TryGetValue<List<Pin>>(MapViewModel.PointsParameterName, out var points);
+                if (points != null) _view.MapPins = points;
             }
             _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(48,16),15)));
             ShowEnableLocationHint = true;
