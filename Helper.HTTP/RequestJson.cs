@@ -12,7 +12,7 @@
         public static async Task<T> Get<T>(string url) where T : class
         {
             T res;
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 HttpResponseMessage response = null;
                 try
@@ -30,7 +30,7 @@
                     return null;
                 }
 
-                string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 res = JsonConvert.DeserializeObject<T>(responseContent);
             }
 
@@ -39,21 +39,21 @@
 
         public static async Task<T> Get<T>(string url, string param) where T : class
         {
-            string fullUrl = url.EndsWith("/") ? url + param : url + "/" + param;
+            var fullUrl = url.EndsWith("/") ? url + param : url + "/" + param;
             return await Get<T>(fullUrl);
         }
 
         public static async Task<T> Post<T>(string url, Dictionary<string, string> param) where T : class
         {
             T res;
-            using (HttpClient httpClient = new HttpClient())
+            using (var httpClient = new HttpClient())
             {
                 HttpResponseMessage response = null;
-                Dictionary<string, string> parameters = new Dictionary<string, string>
+                var parameters = new Dictionary<string, string>
                 {
                     { "parameter", JsonConvert.SerializeObject(param) }
                 };
-                FormUrlEncodedContent encodedContent = new FormUrlEncodedContent(parameters);
+                var encodedContent = new FormUrlEncodedContent(parameters);
                 try
                 {
                     response = await httpClient.PostAsync(url, encodedContent).ConfigureAwait(false);
@@ -69,7 +69,7 @@
                     return null;
                 }
 
-                string responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
                 if (string.IsNullOrEmpty(responseContent))
                 {
                     return null;

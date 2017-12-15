@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.Benchmarking.Views
 {
-    using Xamarin.Forms;
-
-    public partial class LocalBenchmarkingSelectionPage : ContentPage
+    public partial class LocalBenchmarkingSelectionPage
     {
         public LocalBenchmarkingSelectionPage()
         {

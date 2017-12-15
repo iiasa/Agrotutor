@@ -4,7 +4,6 @@
     using System.Globalization;
     using System.Reflection;
     using System.Resources;
-    using Helper.BusinessContract;
     using Helper.Localization.Localization;
     using Xamarin.Forms;
 
@@ -18,7 +17,7 @@
             return LoadString(resourceName, resourceId);
         }
 
-        public static string Get(string resourceName, ILocalizeConsumer context)
+        public static string Get(string resourceName, Localization.ILocalizeConsumer context)
         {
             return LoadString(resourceName, context.GetResourceId());
         }
@@ -39,16 +38,15 @@
                 return "";
             }
 
-            string resId = LocalizedString.ResourceId;
-            bool usingLibResource = false;
+            var resId = LocalizedString.ResourceId;
+            var usingLibResource = false;
             if (resourceId != null && !resId.Equals(resourceId))
             {
                 resId = resourceId;
                 usingLibResource = true;
             }
-            ResourceManager resourceManager =
-                new ResourceManager(resId, typeof(TranslateExtension).GetTypeInfo().Assembly);
-            string translation = resourceManager.GetString(resourceName, LocalizedString._ci);
+            var resourceManager = new ResourceManager(resId, typeof(TranslateExtension).GetTypeInfo().Assembly);
+            var translation = resourceManager.GetString(resourceName, LocalizedString._ci);
 
             if (translation == null)
             {

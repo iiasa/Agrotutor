@@ -1,6 +1,5 @@
 ﻿namespace Helper.DatasetSyncEvents.ViewModelBase
 {
-    using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.Event;
     using Prism.Events;
     using Prism.Mvvm;
@@ -30,13 +29,13 @@
         ///     Gets instance of IDataset
         /// </summary>
         /// <returns>Dataset</returns>
-        protected abstract IDataset GetDataset();
+        protected abstract object GetDataset();
 
         /// <summary>
         ///     Publishes an instance of IDataset on the EventAggregator
         /// </summary>
         /// <param name="dataset">Dataset instance to be published</param>
-        protected void PublishDataset(IDataset dataset)
+        protected void PublishDataset(object dataset)
         {
             if (dataset.GetHashCode() == _lastDatasetReceivedHash)
             {
@@ -50,7 +49,7 @@
         ///     Method called on receive dataset.
         /// </summary>
         /// <param name="dataset">Dataset received</param>
-        protected abstract void ReadDataset(IDataset dataset);
+        protected abstract void ReadDataset(object dataset);
 
         /// <summary>
         ///     Requests updated dataset from publisher
@@ -60,7 +59,7 @@
             _eventAggregator.GetEvent<DatasetSyncRequestEvent>().Publish();
         }
 
-        private void OnDatasetReceived(IDataset dataset)
+        private void OnDatasetReceived(object dataset)
         {
             _lastDatasetReceivedHash = dataset.GetHashCode();
             ReadDataset(dataset);

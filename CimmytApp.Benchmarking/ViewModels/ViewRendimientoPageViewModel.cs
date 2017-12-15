@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
     using CimmytApp.DTO.BEM;
     using Helper.HTTP;
@@ -31,15 +30,16 @@
             set => SetProperty(ref _datasets, value);
         }
 
-        /// <summary>
-        ///     The LoadData
-        /// </summary>
-        public async void LoadData()
+        public bool IsLoading
         {
-            Datasets =
-                await RequestJson.Get<List<Rendimiento>>(
-                    "http://104.239.158.49/api.php?type=rendimiento&tkn=E31C5F8478566357BA6875B32DC59");
-            CalculateStats();
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
+
+        public List<Dataset> Stats
+        {
+            get => _stats;
+            set => SetProperty(ref _stats, value);
         }
 
         public void CalculateStats()
@@ -47,10 +47,10 @@
             IsLoading = true;
             Datasets = new List<Rendimiento>(Datasets.OrderBy(x => double.Parse(x.Performance)));
             var min = double.Parse(Datasets.ElementAt(0)?.Performance);
-            double max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.Performance);
-            double q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.Performance);
-            double q2 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 2.0))?.Performance);
-            double q3 = double.Parse(Datasets.ElementAt((int)Math.Floor(3 * Datasets.Count / 4.0))?.Performance);
+            var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.Performance);
+            var q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.Performance);
+            var q2 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 2.0))?.Performance);
+            var q3 = double.Parse(Datasets.ElementAt((int)Math.Floor(3 * Datasets.Count / 4.0))?.Performance);
             Stats = new List<Dataset>
             {
                 new Dataset
@@ -82,16 +82,14 @@
             IsLoading = false;
         }
 
-        public List<Dataset> Stats
+        /// <summary>
+        ///     The LoadData
+        /// </summary>
+        public async void LoadData()
         {
-            get => _stats;
-            set => SetProperty(ref _stats, value);
-        }
-
-        public bool IsLoading
-        {
-            get => _isLoading;
-            set => SetProperty(ref _isLoading, value);
+            Datasets = await RequestJson.Get<List<Rendimiento>>(
+                "http://104.239.158.49/api.php?type=rendimiento&tkn=E31C5F8478566357BA6875B32DC59");
+            CalculateStats();
         }
 
         /// <summary>

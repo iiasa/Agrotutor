@@ -35,7 +35,7 @@
         public ProfilePageViewModel()
         {
             TakePictureCommand = new DelegateCommand(TakePicture);
-            string picture = (string)App.GetProperty("UserPicture");
+            var picture = (string)App.GetProperty("UserPicture");
             if (picture != null)
             {
                 ImageSource = picture;
@@ -50,7 +50,7 @@
 
             if (UserProfile?.State != "")
             {
-                for (int i = 0; i < States.Count; i++)
+                for (var i = 0; i < States.Count; i++)
                 {
                     if (States.ElementAt(i) != UserProfile.State)
                     {
@@ -164,7 +164,7 @@
                 return;
             }
 
-            MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
             {
                 Directory = "Cimmyt",
                 Name = "user.jpg"

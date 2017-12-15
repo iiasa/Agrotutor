@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.Parcel.Views
 {
-    using Xamarin.Forms;
-
-    public partial class DeleteParcelPage : ContentPage
+    public partial class DeleteParcelPage
     {
         public DeleteParcelPage()
         {

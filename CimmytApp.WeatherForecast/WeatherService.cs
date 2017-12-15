@@ -12,12 +12,12 @@
         {
             try
             {
-                RestfulClient<WeatherData> client = new RestfulClient<WeatherData>();
-                WeatherData data = await client.RefreshDataAsync(
+                var client = new RestfulClient<WeatherData>();
+                var data = await client.RefreshDataAsync(
                     $"https://wsgi.geo-wiki.org/skywise_weather?lat={location.Latitude}&lng={location.Longitude}");
                 return data;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return null;
             }

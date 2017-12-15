@@ -2,8 +2,6 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
-    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Parcel.Views.SelectTechnologiesPage"
     Padding="16">
     <ScrollView>
@@ -12,14 +10,39 @@
                 <Label Text="Agregar tecnologías utilizadas" FontAttributes="Italic" />
                 <Image Source="wand_small.png" />
             </StackLayout>
-            <controls:CheckBox Checked="{Binding Tech1Checked}" DefaultText="{localization:Translate technology_1}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech2Checked}" DefaultText="{localization:Translate technology_2}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech3Checked}" DefaultText="{localization:Translate technology_3}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech4Checked}" DefaultText="{localization:Translate technology_4}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech5Checked}" DefaultText="{localization:Translate technology_5}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech6Checked}" DefaultText="{localization:Translate technology_6}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech7Checked}" DefaultText="{localization:Translate technology_7}" IsEnabled="{Binding SelectEnabled}" />
-            <controls:CheckBox Checked="{Binding Tech8Checked}" DefaultText="{localization:Translate technology_8}" IsEnabled="{Binding SelectEnabled}" />
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech1Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label
+                    Text="Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech2Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Interpretación y uso del análisis de suelo" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech3Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Uso del sensor infrarrojo para fertilización óptima" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech4Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Uso de biofertilizantes" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech5Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Mejoradores de suelo para complementar fertilización" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech6Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Mínimo movimiento de suelo, retención de residuos y rotación de cultivos" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech7Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Switch IsToggled="{Binding Tech8Checked}" IsEnabled="{Binding SelectEnabled}" />
+                <Label Text="Tecnología para mejorar el almacenamiento del grano" />
+            </StackLayout>
             <Button Text="Guardar cambios" Command="{Binding SaveChangesCommand}" Margin="32" />
         </StackLayout>
     </ScrollView>

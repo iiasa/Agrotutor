@@ -5,33 +5,32 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ParcelsOverviewPage : ContentPage
+    public partial class ParcelsOverviewPage
     {
+        private readonly ParcelsOverviewPageViewModel _bindingContext;
+
         public ParcelsOverviewPage()
         {
             InitializeComponent();
-            contextObj = BindingContext as ParcelsOverviewPageViewModel;
-        }
-
-        private ParcelsOverviewPageViewModel contextObj { get; set; }
-
-        protected override bool OnBackButtonPressed()
-        {
-            contextObj.GoBackCommand.Execute();
-            return true;
-        }
-
-        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
-        {
-            ParcelViewModel selectedItem = e.Item as ParcelViewModel;
-
-            contextObj?.HideOrShowParcel(selectedItem);
+            _bindingContext = BindingContext as ParcelsOverviewPageViewModel;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            contextObj.RefreshParcelsCommand.Execute();
+            _bindingContext.RefreshParcelsCommand.Execute();
+        }
+
+        protected override bool OnBackButtonPressed()
+        {
+            _bindingContext.GoBackCommand.Execute();
+            return true;
+        }
+
+        private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedItem = e.Item as ParcelViewModel;
+            _bindingContext?.HideOrShowParcel(selectedItem);
         }
     }
 }

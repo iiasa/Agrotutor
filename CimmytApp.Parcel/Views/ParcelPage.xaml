@@ -17,9 +17,8 @@
             </StackLayout>
 
             <Label Text="{localization:Translate hint_crop}" FontSize="18" />
-            <Picker ItemsSource="{Binding CropTypes}"
-                SelectedIndex="{Binding PickerCropTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
-                Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}"
+                IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
             <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
@@ -30,9 +29,8 @@
                 Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate tipo_clima}" FontSize="18" />
-            <Picker ItemsSource="{Binding ClimateTypes}"
-                SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" IsEnabled="{Binding EditModeActive}"
-                Margin="0,0,0,16" />
+            <Picker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}"
+                IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_parcel_name}" FontSize="18" />
             <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}"

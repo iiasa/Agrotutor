@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.StaticContent.Views
 {
-    using Xamarin.Forms;
-
-    public partial class LinksPage : ContentPage
+    public partial class LinksPage
     {
         public LinksPage()
         {

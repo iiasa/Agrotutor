@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp
 {
-    using Xamarin.Forms;
-
-    public partial class Style : ResourceDictionary
+    public partial class Style
     {
         public Style()
         {

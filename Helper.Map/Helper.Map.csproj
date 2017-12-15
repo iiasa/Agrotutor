@@ -25,6 +25,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0008,IDE0009</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +34,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0008,IDE0009</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DelineationState.cs" />
@@ -50,12 +52,6 @@
     <Compile Include="ViewModels\MapViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Helper.Base.Contract">
-      <HintPath>..\BaseDLL\Helper.Base.Contract.dll</HintPath>
-    </Reference>
-    <Reference Include="Helper.Base.DTO">
-      <HintPath>..\BaseDLL\Helper.Base.DTO.dll</HintPath>
-    </Reference>
     <Reference Include="Helper.Base.PublishSubscriberEvents">
       <HintPath>..\BaseDLL\Helper.Base.PublishSubscriberEvents.dll</HintPath>
     </Reference>

@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-    prism:ViewModelLocator.AutowireViewModel="True"
-    x:Class="Helper.Map.Views.Map"
-    Disappearing="Map_OnDisappearing"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="Helper.Map.Views.Map" Disappearing="Map_OnDisappearing"
     Appearing="Map_OnAppearing">
     <ContentPage.Content>
 
@@ -16,18 +14,16 @@
                 <RowDefinition />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <maps:Map x:Name="map" Grid.Row="0" Grid.RowSpan="3"
-                      InitialCameraUpdate="-100, 20, 13, 30, 60"
-                      MapType="Hybrid"
-                      MapClicked="OnMapClicked"
-                      VerticalOptions="FillAndExpand" />
-            <Label Grid.Row="0" IsVisible="{Binding ShowEnableLocationHint}" Text="Por favor active el GPS" Margin="16,64,0,0" TextColor="Azure" FontSize="18" BackgroundColor="#00000055"  />
+            <maps:Map x:Name="map" Grid.Row="0" Grid.RowSpan="3" InitialCameraUpdate="-100, 20, 13, 30, 60"
+                MapType="Hybrid" MapClicked="OnMapClicked" VerticalOptions="FillAndExpand" />
+            <Label Grid.Row="0" IsVisible="{Binding ShowEnableLocationHint}" Text="Por favor active el GPS"
+                Margin="16,64,0,0" TextColor="Azure" FontSize="18" BackgroundColor="#00000055" />
             <StackLayout Orientation="Horizontal" Grid.Row="2">
                 <Button Text="{localization:Translate use_this_location}" Command="{Binding UseLocationCommand}"
                     VerticalOptions="Center" HorizontalOptions="Center"
                     IsVisible="{Binding ReturnGeolocationButtonVisible}" />
                 <StackLayout IsVisible="{Binding DelineationButtonsVisible}" Orientation="Horizontal"
-                    VerticalOptions="Center" BackgroundColor="#00000055" >
+                    VerticalOptions="Center" BackgroundColor="#00000055">
                     <Button Text="Guardar" Command="{Binding AcceptDelineationCommand}"
                         IsEnabled="{Binding ButtonAcceptDelineationEnabled}" />
                     <Button Text="{localization:Translate cancel}" Command="{Binding CancelDelineationCommand}"

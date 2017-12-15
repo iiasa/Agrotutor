@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.WeatherForecast.Views
 {
-    using Xamarin.Forms;
-
-    public partial class WeatherDataSelection : ContentPage
+    public partial class WeatherDataSelection
     {
         public WeatherDataSelection()
         {

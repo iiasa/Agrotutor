@@ -112,7 +112,7 @@
             return AgriculturalCycle;
         }
 
-        public string GetType()
+        public new string GetType()
         {
             return "Costo";
         }

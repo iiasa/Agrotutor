@@ -3,7 +3,7 @@
     using Newtonsoft.Json;
     using Realms;
 
-    public class Utilidad : RealmObject, IBemDataset
+    public class Ingreso : RealmObject, IBemDataset
     {
         [JsonProperty("ciclo")]
         public string AgriculturalCycle { get; set; }
@@ -19,6 +19,9 @@
 
         [JsonProperty("id_hub")]
         public string HubId { get; set; }
+
+        [JsonProperty("ingresos_ha")]
+        public string Income { get; set; }
 
         [JsonProperty("localidad")]
         public string Location { get; set; }
@@ -38,9 +41,6 @@
         [JsonProperty("tipo_produccion")]
         public string ProductionType { get; set; }
 
-        [JsonProperty("rentabilidad_ha")]
-        public string Rentability { get; set; }
-
         [JsonProperty("estado")]
         public string State { get; set; }
 
@@ -55,14 +55,14 @@
             return AgriculturalCycle;
         }
 
-        public string GetType()
+        public new string GetType()
         {
-            return "utilidad";
+            return "Ingreso";
         }
 
         public string GetValue()
         {
-            return Rentability;
+            return Income;
         }
 
         public string GetYear()

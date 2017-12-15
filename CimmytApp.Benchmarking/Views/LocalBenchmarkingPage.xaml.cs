@@ -1,9 +1,8 @@
 ﻿namespace CimmytApp.Benchmarking.Views
 {
-    using Xamarin.Forms;
     using Xamarin.Forms.DataGrid;
 
-    public partial class LocalBenchmarkingPage : ContentPage
+    public partial class LocalBenchmarkingPage
     {
         public LocalBenchmarkingPage()
         {

@@ -1,50 +1,35 @@
 ﻿namespace Helper.Realm.DTO
 {
+    using System;
     using System.Collections.Generic;
     using Realms;
 
     public class ParcelDTO : RealmObject
     {
-        [PrimaryKey]
-        public int? ParcelId { get; set; }
-
-        public string ParcelName { get; set; }
-        public string Crop { get; set; }
-        public GeoPositionDTO Position { get; set; }
+        private List<AgriculturalActivityDTO> _agriculturalActivities;
 
         private List<GeoPositionDTO> _delineation;
 
-        public IList<GeoPositionDTO> Delineation
-        {
-            get
-            {
-                return _delineation;
-            }
-        }
-
-        private List<AgriculturalActivityDTO> _agriculturalActivities;
-
-        public IList<AgriculturalActivityDTO> AgriculturalActivities
-        {
-            get
-            {
-                return _agriculturalActivities;
-            }
-        }
-
-        public string ClimateType { get; set; }
-        public string MaturityClass { get; set; }
-        public int CropType { get; set; }
-
         private List<TechnologyDTO> _technologiesUsed;
 
-        public IList<TechnologyDTO> TechnologiesUsed
-        {
-            get
-            {
-                return _technologiesUsed;
-            }
-        }
+        public IList<AgriculturalActivityDTO> AgriculturalActivities => _agriculturalActivities;
+        public IList<GeoPositionDTO> Delineation => _delineation;
+        public IList<TechnologyDTO> TechnologiesUsed => _technologiesUsed;
+
+        public string ClimateType { get; set; }
+
+        public string Crop { get; set; }
+
+        public int CropType { get; set; }
+
+        public string MaturityClass { get; set; }
+
+        [PrimaryKey]
+        public string ParcelId { get; set; } = Guid.NewGuid().ToString();
+
+        public string ParcelName { get; set; }
+
+        public GeoPositionDTO Position { get; set; }
 
         public void SetAgriculturalActivities(List<AgriculturalActivityDTO> activities)
         {

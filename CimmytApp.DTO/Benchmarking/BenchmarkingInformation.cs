@@ -1,6 +1,5 @@
 ﻿namespace CimmytApp.DTO.Benchmarking
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -34,7 +33,7 @@
 
         public void KeepNewest(int count)
         {
-            while (BenchmarkingDatasets.Count() > count)
+            while (BenchmarkingDatasets.Count > count)
             {
                 BenchmarkingDatasets.RemoveAt(0);
             }
@@ -42,7 +41,7 @@
 
         public void SetYears()
         {
-            foreach (BenchmarkingDataset benchmarkingDataset in BenchmarkingDatasets)
+            foreach (var benchmarkingDataset in BenchmarkingDatasets)
             {
                 benchmarkingDataset.SetYear();
             }
@@ -50,11 +49,11 @@
 
         public class BenchmarkingDataset
         {
-            public String filename { get; set; }
+            public string filename { get; set; }
 
             public float val { get; set; }
 
-            public String year { get; set; }
+            public string year { get; set; }
 
             public void SetYear()
             {

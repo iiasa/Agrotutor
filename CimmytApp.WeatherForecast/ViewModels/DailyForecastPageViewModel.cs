@@ -29,7 +29,10 @@
             if (parameters.ContainsKey("DailyForecast"))
             {
                 parameters.TryGetValue<List<DailySummary>>("DailyForecast", out var forecast);
-                if (forecast != null) DailySummaries = forecast;
+                if (forecast != null)
+                {
+                    DailySummaries = forecast;
+                }
             }
             else
             {

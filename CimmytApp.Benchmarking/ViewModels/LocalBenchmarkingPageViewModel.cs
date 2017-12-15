@@ -1,8 +1,8 @@
 ﻿namespace CimmytApp.Benchmarking.ViewModels
 {
     using System.Collections.Generic;
-    using CimmytApp.BusinessContract;
     using CimmytApp.DTO.BEM;
+    using Helper.Realm.BusinessContract;
     using Prism.Mvvm;
     using Prism.Navigation;
 

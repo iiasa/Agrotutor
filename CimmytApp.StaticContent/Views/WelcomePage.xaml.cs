@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.StaticContent.Views
 {
-    using Xamarin.Forms;
-
-    public partial class WelcomePage : CarouselPage
+    public partial class WelcomePage
     {
         public WelcomePage()
         {

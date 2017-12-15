@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.Parcel.Views
 {
-    using Xamarin.Forms;
-
-    public partial class ActivityDetail : ContentPage
+    public partial class ActivityDetail
     {
         public ActivityDetail()
         {

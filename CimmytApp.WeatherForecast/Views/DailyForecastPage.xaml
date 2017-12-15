@@ -2,8 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    x:Class="CimmytApp.WeatherForecast.Views.DailyForecastPage"
-             Padding="16">
+    x:Class="CimmytApp.WeatherForecast.Views.DailyForecastPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" HorizontalOptions="End">
@@ -24,7 +23,7 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Label Text=""></Label>
+                                <Label Text="" />
                                 <Image Source="{Binding WxIcon}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
                                 <Label Text="{Binding LocalizedDayOfWeek}" Grid.Row="0" Grid.Column="1" />
                                 <Label Text="{Binding TemperatureString}" Grid.Row="1" Grid.Column="1" />

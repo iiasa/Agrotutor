@@ -1,31 +1,21 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System;
-    using System.ComponentModel;
     using System.Windows.Input;
     using CimmytApp.DTO.Parcel;
-    using Helper.BusinessContract;
-    using Helper.DatasetSyncEvents.ViewModelBase;
     using Helper.DTO.SkywiseWeather.Historical;
     using Helper.DTO.SkywiseWeather.Historical.Temperature;
     using Helper.Map;
     using Prism;
-    using Prism.Events;
+    using Prism.Mvvm;
     using Prism.Navigation;
-    using Xamarin.Forms;
 
-    public class WeatherForecastPageViewModel : DatasetReceiverBindableBase, INavigationAware, IActiveAware,
-        INotifyPropertyChanged
+    public class WeatherForecastPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
         private DailyHighTemperature _dailyHighTemperature;
         private Parcel _parcel;
         private WeatherData _weatherData;
         private GeoPosition position;
-
-        public WeatherForecastPageViewModel(IEventAggregator eventAggregator) : base(eventAggregator)
-        {
-            TestCommand = new Command(Test);
-        }
 
         public event EventHandler IsActiveChanged;
 
@@ -43,7 +33,8 @@
             set
             {
                 SetProperty(ref _parcel, value);
-                if (_parcel.Position.Latitude != null && _parcel.Position.Longitude != null) // TODO - check if undefined - ==0.0?
+                if (_parcel.Position.Latitude != null && _parcel.Position.Longitude != null
+                ) // TODO - check if undefined - ==0.0?
                 {
                     if (_parcel.Position.Latitude == 0 && _parcel.Position.Longitude == 0)
                     {
@@ -79,17 +70,6 @@
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
-        }
-
-        public void Test()
-        {
-            int i = 0;
-            i++;
-        }
-
-        protected override void ReadDataset(IDataset dataset)
-        {
-            Parcel = (Parcel)dataset;
         }
 
         private async void LoadWeatherDataAsync()

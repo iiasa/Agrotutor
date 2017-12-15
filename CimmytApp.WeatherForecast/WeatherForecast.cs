@@ -12,12 +12,6 @@
     public partial class WeatherForecast
     {
         /// <summary>
-        ///     Gets or sets the Language
-        /// </summary>
-        //[JsonProperty("language")]
-        //public string Language { get; set; }
-
-        /// <summary>
         ///     Gets or sets the Location
         /// </summary>
         [JsonProperty("location")]
@@ -52,12 +46,6 @@
         /// </summary>
         [JsonProperty("hourly_summaries")]
         public HourlySummaries HourlySummaries { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the SfcOb
-        /// </summary>
-        //[JsonProperty("sfc_ob")]
-        //public SfcOb SfcOb { get; set; }
     }
 
     /// <summary>
@@ -119,23 +107,6 @@
         [JsonProperty("temp_C")]
         public string TempC { get; set; }
 
-        //[JsonProperty("wnd_dir")]
-        //public string WndDir { get; set; }
-
-        //[JsonProperty("wnd_dir_degs")]
-        //public string WndDirDegs { get; set; }
-
-        //[JsonProperty("wnd_spd_kph")]
-        //public string WndSpdKph { get; set; }
-
-        //[JsonProperty("wnd_dir")]
-        //public string WndDir { get; set; }
-
-        //[JsonProperty("wnd_dir_degs")]
-        //public string WndDirDegs { get; set; }
-
-        //[JsonProperty("wnd_spd_kph")]
-        //public string WndSpdKph { get; set; }
         /// <summary>
         ///     Gets or sets the Wx
         /// </summary>
@@ -195,34 +166,10 @@
         public string AppTempC { get; set; }
 
         /// <summary>
-        ///     Gets or sets the DayNight
-        /// </summary>
-        //[JsonProperty("day_night")]
-        //public string DayNight { get; set; }
-
-        /// <summary>
         ///     Gets or sets the DayOfWeekUtc
         /// </summary>
         [JsonProperty("day_of_week_utc")]
         public string DayOfWeekUtc { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the DewpC
-        /// </summary>
-        //[JsonProperty("dewp_C")]
-        //public string DewpC { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the PmslMb
-        /// </summary>
-        //[JsonProperty("pmsl_mb")]
-        //public string PmslMb { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Pop
-        /// </summary>
-        //[JsonProperty("pop")]
-        //public string Pop { get; set; }
 
         /// <summary>
         ///     Gets or sets the RhPct
@@ -307,18 +254,6 @@
         /// </summary>
         [JsonProperty("wx_code")]
         public string WxCode { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the WxIconUrl
-        /// </summary>
-        //[JsonProperty("wx_icon_url")]
-        //public string WxIconUrl { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the WxIconUrlPng
-        /// </summary>
-        //[JsonProperty("wx_icon_url_png")]
-        //public string WxIconUrlPng { get; set; }
     }
 
     /// <summary>
@@ -338,34 +273,6 @@
     /// </summary>
     public class DailySummary
     {
-        /// <summary>
-        ///     Gets the WxIcon
-        /// </summary>
-        public string WxIcon => Util.GetIconSrcForWx(WxCode);
-
-        /// <summary>
-        ///     Gets the WxText
-        /// </summary>
-        public string WxText => Util.GetTextForWx(WxCode);
-
-        /// <summary>
-        ///     Gets or sets the Cdd1
-        /// </summary>
-        //[JsonProperty("cdd1")]
-        //public string Cdd1 { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the Cdd2
-        ///// </summary>
-        //[JsonProperty("cdd2")]
-        //public string Cdd2 { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the DayOfWeek
-        /// </summary>
-        [JsonProperty("day_of_week")]
-        public string DayOfWeek { get; set; }
-
         public string LocalizedDayOfWeek
         {
             get
@@ -399,6 +306,24 @@
             }
         }
 
+        public string TemperatureString => $"{MaxTempC}°C ({MinTempC}°C)";
+
+        /// <summary>
+        ///     Gets the WxIcon
+        /// </summary>
+        public string WxIcon => Util.GetIconSrcForWx(WxCode);
+
+        /// <summary>
+        ///     Gets the WxText
+        /// </summary>
+        public string WxText => Util.GetTextForWx(WxCode);
+
+        /// <summary>
+        ///     Gets or sets the DayOfWeek
+        /// </summary>
+        [JsonProperty("day_of_week")]
+        public string DayOfWeek { get; set; }
+
         /// <summary>
         ///     Gets or sets the Gdd
         /// </summary>
@@ -406,36 +331,10 @@
         public string Gdd { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Gdu
-        /// </summary>
-        //[JsonProperty("gdu")]
-        //public string Gdu { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Hdd1
-        /// </summary>
-        //[JsonProperty("hdd1")]
-        //public string Hdd1 { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Hdd2
-        /// </summary>
-        //[JsonProperty("hdd2")]
-        //public string Hdd2 { get; set; }
-
-        /// <summary>
         ///     Gets or sets the MaxTempC
         /// </summary>
         [JsonProperty("max_temp_C")]
         public string MaxTempC { get; set; }
-
-        public string TemperatureString => $"{MaxTempC}°C ({MinTempC}°C)";
-
-        /// <summary>
-        ///     Gets or sets the MaxWndSpdKph
-        /// </summary>
-        //[JsonProperty("max_wnd_spd_kph")]
-        //public string MaxWndSpdKph { get; set; }
 
         /// <summary>
         ///     Gets or sets the MinTempC
@@ -444,70 +343,16 @@
         public string MinTempC { get; set; }
 
         /// <summary>
-        ///     Gets or sets the MinWndSpdKph
-        /// </summary>
-        //[JsonProperty("min_wnd_spd_kph")]
-        //public string MinWndSpdKph { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Pop
-        /// </summary>
-        //[JsonProperty("pop")]
-        //public string Pop { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Qpf24hrMm
-        /// </summary>
-        //[JsonProperty("qpf_24hr_mm")]
-        //public string Qpf24hrMm { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the SolunarMoonriseUtc
-        /// </summary>
-        //[JsonProperty("solunar_moonrise_utc")]
-        //public string SolunarMoonriseUtc { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the SolunarMoonsetUtc
-        ///// </summary>
-        //[JsonProperty("solunar_moonset_utc")]
-        //public string SolunarMoonsetUtc { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the SolunarSunriseUtc
-        ///// </summary>
-        //[JsonProperty("solunar_sunrise_utc")]
-        //public string SolunarSunriseUtc { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the SolunarSunsetUtc
-        ///// </summary>
-        //[JsonProperty("solunar_sunset_utc")]
-        //public string SolunarSunsetUtc { get; set; }
-
-        /// <summary>
         ///     Gets or sets the SummaryDate
         /// </summary>
         [JsonProperty("summary_date")]
         public string SummaryDate { get; set; }
 
         /// <summary>
-        ///     Gets or sets the TextDescription
-        /// </summary>
-        //[JsonProperty("text_description")]
-        //public string TextDescription { get; set; }
-
-        /// <summary>
         ///     Gets or sets the WndDir
         /// </summary>
         [JsonProperty("wnd_dir")]
         public string WndDir { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the WndGustKph
-        /// </summary>
-        //[JsonProperty("wnd_gust_kph")]
-        //public string WndGustKph { get; set; }
 
         /// <summary>
         ///     Gets or sets the WndSpdKph
@@ -532,18 +377,6 @@
         /// </summary>
         [JsonProperty("wx_icon_text")]
         public string WxIconText { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the WxIconUrl
-        /// </summary>
-        //[JsonProperty("wx_icon_url")]
-        //public string WxIconUrl { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the WxIconUrlPng
-        ///// </summary>
-        //[JsonProperty("wx_icon_url_png")]
-        //public string WxIconUrlPng { get; set; }
     }
 
     /// <summary>
@@ -562,48 +395,6 @@
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Lat
-        /// </summary>
-        //[JsonProperty("lat")]
-        //public string Lat { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the LocalOffsetHours
-        ///// </summary>
-        //[JsonProperty("local_offset_hours")]
-        //public string LocalOffsetHours { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the Lon
-        ///// </summary>
-        //[JsonProperty("lon")]
-        //public string Lon { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the Offset
-        ///// </summary>
-        //[JsonProperty("offset")]
-        //public string Offset { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the Region
-        /// </summary>
-        //[JsonProperty("region")]
-        //public string Region { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the Timezone
-        ///// </summary>
-        //[JsonProperty("timezone")]
-        //public string Timezone { get; set; }
-
-        ///// <summary>
-        /////     Gets or sets the Zipcode
-        ///// </summary>
-        //[JsonProperty("zipcode")]
-        //public string Zipcode { get; set; }
     }
 
     /// <summary>
@@ -635,13 +426,13 @@
         /// <returns>The <see cref="Task{WeatherForecast}" /></returns>
         public static async Task<WeatherForecast> Download(double latitude, double longitude)
         {
-            string serviceUrl =
+            var serviceUrl =
                 $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
-            using (HttpClient wc = new HttpClient())
+            using (var wc = new HttpClient())
             {
                 wc.DefaultRequestHeaders.Add("app_id", "dc9e4567");
                 wc.DefaultRequestHeaders.Add("app_key", "9547e002315e9cf9d6f7362675d63f1f");
-                string json = await wc.GetStringAsync(serviceUrl);
+                var json = await wc.GetStringAsync(serviceUrl);
                 return FromJson(json);
             }
         }
@@ -767,7 +558,7 @@
         /// <param name="serializer">The <see cref="JsonSerializer" /></param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            Type t = value.GetType();
+            var t = value.GetType();
             if (t == typeof(Qpf01hrMm))
             {
                 ((Qpf01hrMm)value).WriteJson(writer, serializer);

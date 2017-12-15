@@ -29,13 +29,13 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (!parameters.ContainsKey(SeriesParameterName))
+            if (!parameters.ContainsKey(HourlyWeatherDataPageViewModel.SeriesParameterName))
             {
                 VariableName = "Lo sentimos, no hay datos disponibles";
                 return;
             }
 
-            parameters.TryGetValue<HourlySeries>(SeriesParameterName, out var series);
+            parameters.TryGetValue<HourlySeries>(HourlyWeatherDataPageViewModel.SeriesParameterName, out var series);
             Series = series;
 
             parameters.TryGetValue<string>("VariableName", out var variableName);

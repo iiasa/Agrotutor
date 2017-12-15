@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.Benchmarking.Views
 {
-    using Xamarin.Forms;
-
-    public partial class BenchmarkingPage : ContentPage
+    public partial class BenchmarkingPage
     {
         public BenchmarkingPage()
         {

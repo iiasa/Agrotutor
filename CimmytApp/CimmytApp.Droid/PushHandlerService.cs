@@ -30,16 +30,16 @@ namespace CimmytApp.Droid
 
         protected override void OnMessage(Context context, Intent intent)
         {
-            StringBuilder msg = new StringBuilder();
+            var msg = new StringBuilder();
 
             if (intent?.Extras != null)
             {
-                foreach (string key in intent.Extras.KeySet())
+                foreach (var key in intent.Extras.KeySet())
                 {
                     msg.AppendLine(key + "=" + intent.Extras.Get(key));
                 }
 
-                string messageText = intent.Extras.GetString("message");
+                var messageText = intent.Extras.GetString("message");
                 if (!string.IsNullOrEmpty(messageText))
                 {
                     CreateNotification("New hub message!", messageText);
@@ -78,11 +78,11 @@ namespace CimmytApp.Droid
             }
 
             //var tags = new List<string>() { "falcons" }; // create tags if you want
-            List<string> tags = new List<string>();
+            var tags = new List<string>();
 
             try
             {
-                Registration hubRegistration = Hub.Register(registrationId, tags.ToArray());
+                var hubRegistration = Hub.Register(registrationId, tags.ToArray());
             }
             catch (Exception ex)
             {
@@ -100,14 +100,13 @@ namespace CimmytApp.Droid
         private void CreateNotification(string title, string desc)
         {
             //Create notification
-            NotificationManager notificationManager =
-                GetSystemService(Context.NotificationService) as NotificationManager;
+            var notificationManager = GetSystemService(Context.NotificationService) as NotificationManager;
 
             //Create an intent to show UI
-            Intent uiIntent = new Intent(this, typeof(MainActivity));
+            var uiIntent = new Intent(this, typeof(MainActivity));
 
             //Create the notification
-            Notification notification = new Notification(Android.Resource.Drawable.SymActionEmail, title)
+            var notification = new Notification(Android.Resource.Drawable.SymActionEmail, title)
             {
                 Flags = NotificationFlags.AutoCancel
             };

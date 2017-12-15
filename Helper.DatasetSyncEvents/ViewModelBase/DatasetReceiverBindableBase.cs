@@ -1,6 +1,5 @@
 ﻿namespace Helper.DatasetSyncEvents.ViewModelBase
 {
-    using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.Event;
     using Prism.Events;
     using Prism.Mvvm;
@@ -28,7 +27,7 @@
         ///     Method called on receive dataset.
         /// </summary>
         /// <param name="dataset">Dataset received</param>
-        protected abstract void ReadDataset(IDataset dataset);
+        protected abstract void ReadDataset(object dataset);
 
         /// <summary>
         ///     Requests updated dataset from publisher

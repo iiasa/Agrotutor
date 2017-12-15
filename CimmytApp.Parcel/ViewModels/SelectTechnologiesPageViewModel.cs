@@ -6,110 +6,49 @@
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    /// <summary>
-    ///     Defines the <see cref="SelectTechnologiesPageViewModel" />
-    /// </summary>
     public class SelectTechnologiesPageViewModel : BindableBase, INavigationAware
     {
-        /// <summary>
-        ///     Defines the Technology1
-        /// </summary>
         private const string Technology1 =
                 "Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento "
             ;
 
-        /// <summary>
-        ///     Defines the Technology2
-        /// </summary>
         private const string Technology2 = "Interpretación y uso del análisis de suelo";
 
-        /// <summary>
-        ///     Defines the Technology3
-        /// </summary>
         private const string Technology3 = "Uso del sensor infrarrojo para fertilización óptima";
 
-        /// <summary>
-        ///     Defines the Technology4
-        /// </summary>
         private const string Technology4 = "Uso de biofertilizantes";
 
-        /// <summary>
-        ///     Defines the Technology5
-        /// </summary>
         private const string Technology5 = "Mejoradores de suelo para complementar fertilización";
 
-        /// <summary>
-        ///     Defines the Technology6
-        /// </summary>
         private const string Technology6 = "Mínimo movimiento de suelo, retención de residuos y rotación de cultivos";
 
-        /// <summary>
-        ///     Defines the Technology7
-        /// </summary>
         private const string Technology7 =
             "Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)";
 
-        /// <summary>
-        ///     Defines the Technology8
-        /// </summary>
         private const string Technology8 = "Tecnología para mejorar el almacenamiento del grano";
 
-        /// <summary>
-        ///     Defines the _navigationService
-        /// </summary>
         private readonly INavigationService _navigationService;
-
-        /// <summary>
-        ///     Defines the _tech1Checked
-        /// </summary>
-        private bool _tech1Checked;
-
-        /// <summary>
-        ///     Defines the _tech2Checked
-        /// </summary>
-        private bool _tech2Checked;
-
-        /// <summary>
-        ///     Defines the _tech3Checked
-        /// </summary>
-        private bool _tech3Checked;
-
-        /// <summary>
-        ///     Defines the _tech4Checked
-        /// </summary>
-        private bool _tech4Checked;
-
-        /// <summary>
-        ///     Defines the _tech5Checked
-        /// </summary>
-        private bool _tech5Checked;
-
-        /// <summary>
-        ///     Defines the _tech6Checked
-        /// </summary>
-        private bool _tech6Checked;
-
-        /// <summary>
-        ///     Defines the _tech7Checked
-        /// </summary>
-        private bool _tech7Checked;
-
-        /// <summary>
-        ///     Defines the _tech8Checked
-        /// </summary>
-        private bool _tech8Checked;
-
-        /// <summary>
-        ///     Defines the _technologies
-        /// </summary>
-        private List<Technology> _technologies;
 
         private bool _selectEnabled;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="SelectTechnologiesPageViewModel" /> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService" /></param>
+        private bool _tech1Checked;
+
+        private bool _tech2Checked;
+
+        private bool _tech3Checked;
+
+        private bool _tech4Checked;
+
+        private bool _tech5Checked;
+
+        private bool _tech6Checked;
+
+        private bool _tech7Checked;
+
+        private bool _tech8Checked;
+
+        private List<Technology> _technologies;
+
         public SelectTechnologiesPageViewModel(INavigationService navigationService)
         {
             SaveChangesCommand = new DelegateCommand(Save);
@@ -118,118 +57,118 @@
 
         public bool Initializing { get; set; } = true;
 
-        /// <summary>
-        ///     Gets or sets the SaveChangesCommand
-        /// </summary>
         public DelegateCommand SaveChangesCommand { get; set; }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech1Checked
-        /// </summary>
+        public bool SelectEnabled
+        {
+            get => _selectEnabled;
+            set => SetProperty(ref _selectEnabled, value);
+        }
+
         public bool Tech1Checked
         {
             get => _tech1Checked;
             set
             {
                 SetProperty(ref _tech1Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech2Checked
-        /// </summary>
         public bool Tech2Checked
         {
             get => _tech2Checked;
             set
             {
                 SetProperty(ref _tech2Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech3Checked
-        /// </summary>
         public bool Tech3Checked
         {
             get => _tech3Checked;
             set
             {
                 SetProperty(ref _tech3Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech4Checked
-        /// </summary>
         public bool Tech4Checked
         {
             get => _tech4Checked;
             set
             {
                 SetProperty(ref _tech4Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech5Checked
-        /// </summary>
         public bool Tech5Checked
         {
             get => _tech5Checked;
             set
             {
                 SetProperty(ref _tech5Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech6Checked
-        /// </summary>
         public bool Tech6Checked
         {
             get => _tech6Checked;
             set
             {
                 SetProperty(ref _tech6Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech7Checked
-        /// </summary>
         public bool Tech7Checked
         {
             get => _tech7Checked;
             set
             {
                 SetProperty(ref _tech7Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether Tech8Checked
-        /// </summary>
         public bool Tech8Checked
         {
             get => _tech8Checked;
             set
             {
                 SetProperty(ref _tech8Checked, value);
-                if (!Initializing) UpdateTechChecked();
+                if (!Initializing)
+                {
+                    UpdateTechChecked();
+                }
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the Technologies
-        /// </summary>
         public List<Technology> Technologies
         {
             get => _technologies;
@@ -243,19 +182,10 @@
             }
         }
 
-        /// <summary>
-        ///     The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        /// <inheritdoc />
-        /// <summary>
-        ///     The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
@@ -274,89 +204,125 @@
             Initializing = false;
         }
 
-        public bool SelectEnabled
+        public void OnNavigatingTo(NavigationParameters parameters)
         {
-            get => _selectEnabled;
-            set => SetProperty(ref _selectEnabled, value);
         }
 
-        /// <summary>
-        ///     The Save
-        /// </summary>
         private void Save()
         {
-            NavigationParameters navigationParameters = new NavigationParameters
+            var navigationParameters = new NavigationParameters
             {
                 { ParcelConstants.TechnologiesParameterName, Technologies }
             };
             _navigationService.GoBackAsync(navigationParameters);
         }
 
-        /// <summary>
-        ///     The UpdateTechChecked
-        /// </summary>
         private void UpdateTechChecked()
         {
             var technologies = new List<Technology>();
-            if (_tech1Checked) technologies.Add(new Technology { Name = Technology1 });
-            if (_tech2Checked) technologies.Add(new Technology { Name = Technology2 });
-            if (_tech3Checked) technologies.Add(new Technology { Name = Technology3 });
-            if (_tech4Checked) technologies.Add(new Technology { Name = Technology4 });
-            if (_tech5Checked) technologies.Add(new Technology { Name = Technology5 });
-            if (_tech6Checked) technologies.Add(new Technology { Name = Technology6 });
-            if (_tech7Checked) technologies.Add(new Technology { Name = Technology7 });
-            if (_tech8Checked) technologies.Add(new Technology { Name = Technology8 });
+            if (_tech1Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology1
+                });
+            }
+            if (_tech2Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology2
+                });
+            }
+            if (_tech3Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology3
+                });
+            }
+            if (_tech4Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology4
+                });
+            }
+            if (_tech5Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology5
+                });
+            }
+            if (_tech6Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology6
+                });
+            }
+            if (_tech7Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology7
+                });
+            }
+            if (_tech8Checked)
+            {
+                technologies.Add(new Technology
+                {
+                    Name = SelectTechnologiesPageViewModel.Technology8
+                });
+            }
             Technologies = technologies;
         }
 
-        /// <summary>
-        ///     The UpdateTechCheckedUI
-        /// </summary>
         private void UpdateTechCheckedUI()
         {
-            if (Technologies == null) return;
+            if (Technologies == null)
+            {
+                return;
+            }
 
             foreach (var technology in Technologies)
             {
                 switch (technology.Name)
                 {
-                    case Technology1:
+                    case SelectTechnologiesPageViewModel.Technology1:
                         Tech1Checked = true;
                         break;
 
-                    case Technology2:
+                    case SelectTechnologiesPageViewModel.Technology2:
                         Tech2Checked = true;
                         break;
 
-                    case Technology3:
+                    case SelectTechnologiesPageViewModel.Technology3:
                         Tech3Checked = true;
                         break;
 
-                    case Technology4:
+                    case SelectTechnologiesPageViewModel.Technology4:
                         Tech4Checked = true;
                         break;
 
-                    case Technology5:
+                    case SelectTechnologiesPageViewModel.Technology5:
                         Tech5Checked = true;
                         break;
 
-                    case Technology6:
+                    case SelectTechnologiesPageViewModel.Technology6:
                         Tech6Checked = true;
                         break;
 
-                    case Technology7:
+                    case SelectTechnologiesPageViewModel.Technology7:
                         Tech7Checked = true;
                         break;
 
-                    case Technology8:
+                    case SelectTechnologiesPageViewModel.Technology8:
                         Tech8Checked = true;
                         break;
                 }
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
     }
 }

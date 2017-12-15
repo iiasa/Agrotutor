@@ -2,10 +2,10 @@
 {
     using System;
     using System.Collections.ObjectModel;
-    using CimmytApp.BusinessContract;
     using CimmytApp.DTO.Parcel;
-    using Helper.Map;
     using Helper.Map.ViewModels;
+    using Helper.Realm;
+    using Helper.Realm.BusinessContract;
     using Prism;
     using Prism.Commands;
     using Prism.Mvvm;
@@ -13,31 +13,12 @@
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
-    /// <summary>
-    ///     Defines the <see cref="ParcelMainPageViewModel" />
-    /// </summary>
     public class ParcelMainPageViewModel : BindableBase, INavigationAware, IActiveAware
     {
-        /// <summary>
-        ///     Defines the _cimmytDbOperations
-        /// </summary>
         private readonly ICimmytDbOperations _cimmytDbOperations;
-
-        /// <summary>
-        ///     Defines the _navigationService
-        /// </summary>
         private readonly INavigationService _navigationService;
-
-        /// <summary>
-        ///     Defines the _parcel
-        /// </summary>
         private Parcel _parcel;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ParcelMainPageViewModel" /> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService" /></param>
-        /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
         public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
         {
             _navigationService = navigationService;
@@ -49,65 +30,37 @@
             {
                 _cimmytDbOperations = cimmytDbOperations;
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                // ignored
             }
         }
 
-        private void GoBack()
-        {
-            _navigationService.NavigateAsync("app:///ParcelsOverviewPage");
-        }
-
-        /// <summary>
-        ///     Defines the IsActiveChanged
-        /// </summary>
         public event EventHandler IsActiveChanged;
 
-        /// <inheritdoc />
-        /// <summary>
-        ///     Gets or sets a value indicating whether IsActive
-        /// </summary>
+        public DelegateCommand GoBackCommand { get; set; }
+
         public bool IsActive { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the NavigateAsyncCommand
-        /// </summary>
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the NavigateToMapCommand
-        /// </summary>
         public DelegateCommand NavigateToMapCommand { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Parcel
-        /// </summary>
         public Parcel Parcel
         {
             get => _parcel;
             set => SetProperty(ref _parcel, value);
         }
 
-        public DelegateCommand GoBackCommand { get; set; }
-
-        /// <summary>
-        ///     The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        /// <summary>
-        ///     The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             try
             {
-                int id = (int)parameters["Id"];
+                var id = (string)parameters["Id"];
                 Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
             }
             catch
@@ -116,13 +69,18 @@
             }
         }
 
-        /// <summary>
-        ///     The NavigateAsync
-        /// </summary>
-        /// <param name="page">The <see cref="string" /></param>
+        public void OnNavigatingTo(NavigationParameters parameters)
+        {
+        }
+
+        private void GoBack()
+        {
+            _navigationService.NavigateAsync("app:///ParcelsOverviewPage");
+        }
+
         private void NavigateAsync(string page)
         {
-            NavigationParameters parameters = new NavigationParameters
+            var parameters = new NavigationParameters
             {
                 { "Parcel", Parcel }
             };
@@ -134,13 +92,10 @@
             _navigationService.NavigateAsync(page, parameters);
         }
 
-        /// <summary>
-        ///     The NavigateToMap
-        /// </summary>
         private void NavigateToMap()
         {
-            NavigationParameters parameters = new NavigationParameters();
-            var delineation = Parcel.GetDelineation();
+            var parameters = new NavigationParameters();
+            var delineation = Parcel.Delineation;
             if (delineation != null && delineation.Count > 2)
             {
                 var polygon = new Polygon
@@ -148,29 +103,30 @@
                     StrokeColor = Color.Green,
                     StrokeWidth = 2f
                 };
-                foreach (GeoPosition geoPosition in delineation)
+                foreach (var geoPosition in delineation)
                 {
                     polygon.Positions.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
-                ObservableCollection<Polygon> viewPolygons = new ObservableCollection<Polygon>
+
+                var viewPolygons = new ObservableCollection<Polygon>
                 {
                     polygon
                 };
                 parameters.Add(MapViewModel.PolygonsParameterName, viewPolygons);
             }
 
-            if (Parcel.Position != null && (bool)Parcel.Position.IsSet())
+            if (Parcel.Position != null && Parcel.Position.IsSet())
             {
-                parameters.Add(MapViewModel.PointsParameterName, new ObservableCollection<Pin>{
-                    new Pin { Position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude) }
+                parameters.Add(MapViewModel.PointsParameterName, new ObservableCollection<Pin>
+                {
+                    new Pin
+                    {
+                        Position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude)
+                    }
                 });
             }
 
             _navigationService.NavigateAsync("Map", parameters);
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
     }
 }

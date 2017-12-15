@@ -1,9 +1,8 @@
 ﻿namespace CimmytApp.WeatherForecast.Views
 {
-    using Xamarin.Forms;
     using Xamarin.Forms.DataGrid;
 
-    public partial class HourlyWeatherDataPage : ContentPage
+    public partial class HourlyWeatherDataPage
     {
         public HourlyWeatherDataPage()
         {

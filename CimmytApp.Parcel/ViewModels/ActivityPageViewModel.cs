@@ -6,34 +6,13 @@
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    /// <summary>
-    ///     Defines the <see cref="ActivityPageViewModel" />
-    /// </summary>
     public class ActivityPageViewModel : BindableBase, INavigationAware
     {
-        /// <summary>
-        ///     Defines the _navigationService
-        /// </summary>
         private readonly INavigationService _navigationService;
-
         private string _caller = "ParcelPage";
-
-        /// <summary>
-        ///     Defines the _isActive
-        /// </summary>
-        private bool _isActive;
-
         private Parcel _parcel;
-
-        /// <summary>
-        ///     Defines the CallingDetailPage
-        /// </summary>
         private bool CallingDetailPage;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ActivityPageViewModel" /> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService" /></param>
         public ActivityPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
@@ -41,14 +20,8 @@
             SaveCommand = new DelegateCommand(Save);
         }
 
-        /// <summary>
-        ///     Gets or sets the Activities
-        /// </summary>
+        public DelegateCommand SaveCommand { get; }
         public List<AgriculturalActivity> Activities { get; set; }
-
-        /// <summary>
-        ///     Gets or sets the ActivityClickedCommand
-        /// </summary>
         public DelegateCommand<string> ActivityClickedCommand { get; set; }
 
         public Parcel Parcel
@@ -57,27 +30,20 @@
             private set => SetProperty(ref _parcel, value);
         }
 
-        public DelegateCommand SaveCommand { get; private set; }
-
-        /// <summary>
-        ///     The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        /// <summary>
-        ///     The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             CallingDetailPage = false;
             if (parameters.ContainsKey("Activity"))
             {
                 parameters.TryGetValue<AgriculturalActivity>("Activity", out var activity);
-                if (Activities == null) Activities = new List<AgriculturalActivity>();
+                if (Activities == null)
+                {
+                    Activities = new List<AgriculturalActivity>();
+                }
                 Activities.Add(activity);
             }
             if (parameters.ContainsKey("Activities"))
@@ -101,10 +67,6 @@
         {
         }
 
-        /// <summary>
-        ///     The ExecuteMethod
-        /// </summary>
-        /// <param name="activityType">The <see cref="string" /></param>
         private void ExecuteMethod(string activityType)
         {
             CallingDetailPage = true;
@@ -116,7 +78,7 @@
 
         private void Save()
         {
-            NavigationParameters parameters = new NavigationParameters
+            var parameters = new NavigationParameters
             {
                 { "Activities", Activities },
                 { "Parcel", Parcel },

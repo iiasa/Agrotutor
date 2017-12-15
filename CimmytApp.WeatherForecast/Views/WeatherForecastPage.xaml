@@ -3,7 +3,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.WeatherForecast.Views.WeatherForecastPage"
-    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     xmlns:dg="clr-namespace:Xamarin.Forms.DataGrid;assembly=Xamarin.Forms.DataGrid">
     <!--Title="{localization:Translate page_title_weather}"-->
     <dg:DataGrid ItemsSource="{Binding DailyHighTemperature.Series}">

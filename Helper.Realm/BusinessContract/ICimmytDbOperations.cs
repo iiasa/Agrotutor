@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.BusinessContract
+﻿namespace Helper.Realm.BusinessContract
 {
     using System.Collections.Generic;
     using CimmytApp.DTO.BEM;
@@ -14,7 +14,7 @@
 
         BemData GetBemData();
 
-        ParcelDTO GetParcelById(int parcelId);
+        ParcelDTO GetParcelById(string parcelId);
 
         void SaveCostos(List<Costo> listCostos);
 

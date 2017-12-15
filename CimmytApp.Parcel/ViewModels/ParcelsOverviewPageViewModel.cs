@@ -3,8 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
-    using CimmytApp.BusinessContract;
+    using System.Linq;
     using CimmytApp.DTO.Parcel;
+    using Helper.Realm;
+    using Helper.Realm.BusinessContract;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -34,6 +36,8 @@
         /// </summary>
         private bool _isParcelListEnabled = true;
 
+        private ObservableCollection<ParcelViewModel> _observableParcel;
+
         /// <summary>
         ///     Defines the _oldParcel
         /// </summary>
@@ -54,8 +58,6 @@
         /// </summary>
         private bool _showUploadButton;
 
-        private ObservableCollection<ParcelViewModel> _observableParcel;
-
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParcelsOverviewPageViewModel" /> class.
         /// </summary>
@@ -69,11 +71,13 @@
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand =
-                new DelegateCommand<object>(NavigateToParcelDetailPage);//.ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(
+                    NavigateToParcelDetailPage); //.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelEditCommand =
-                new DelegateCommand<object>(NavigateToParcelEditPage);//.ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(NavigateToParcelEditPage); //.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelDeleteCommand =
-                new DelegateCommand<object>(NavigateToParcelDeletePage);//.ObservesCanExecute(o => IsParcelListEnabled);
+                new DelegateCommand<object>(
+                    NavigateToParcelDeletePage); //.ObservesCanExecute(o => IsParcelListEnabled);
             BackToMainPageCommand = new DelegateCommand(BackToMainPage);
             GoBackCommand = new DelegateCommand(GoBack);
             RefreshParcelsCommand = new DelegateCommand(RefreshParcels);
@@ -231,15 +235,16 @@
             try
             {
                 // IsParcelListEnabled = false;
-                NavigationParameters navigationParameters = new NavigationParameters
+                var navigationParameters = new NavigationParameters
                 {
                     { "Id", (int)id }
                 };
 
                 _navigationService.NavigateAsync("DeleteParcelPage", navigationParameters);
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                // ignored
             }
         }
 
@@ -252,14 +257,15 @@
             try
             {
                 // IsParcelListEnabled = false;
-                NavigationParameters navigationParameters = new NavigationParameters
+                var navigationParameters = new NavigationParameters
                 {
                     { "Id", (int)id }
                 };
                 _navigationService.NavigateAsync("ParcelMainPage", navigationParameters);
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                // ignored
             }
         }
 
@@ -272,7 +278,7 @@
             try
             {
                 // IsParcelListEnabled = false;
-                NavigationParameters navigationParameters = new NavigationParameters
+                var navigationParameters = new NavigationParameters
                 {
                     { "Id", (int)id },
                     { "EditEnabled", true },
@@ -280,18 +286,16 @@
                 };
                 _navigationService.NavigateAsync("ParcelPage", navigationParameters);
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                // ignored
             }
         }
 
         private void RefreshParcels()
         {
-            var parcels = new List<Parcel>();
             var parcelDTO = _cimmytDbOperations.GetAllParcels();
-            foreach (var parcel in parcelDTO){
-                parcels.Add(Parcel.FromDTO(parcel));
-            }
+            var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
 
             Parcels = parcels;
         }
@@ -302,7 +306,7 @@
         private void SetObservableParcel()
         {
             ObservableParcel = new ObservableCollection<ParcelViewModel>();
-            foreach (Parcel parcel in Parcels)
+            foreach (var parcel in Parcels)
             {
                 ObservableParcel.Add(new ParcelViewModel
                 {
@@ -318,8 +322,12 @@
         /// <param name="parcel">The <see cref="ParcelViewModel" /></param>
         private void UpdateObservaleParcel(ParcelViewModel parcel)
         {
-            int index = ObservableParcel.IndexOf(parcel);
-            if (index == -1) return; // Prevents a crash, but there is a case where it's -1 and shouldn't be
+            var index = ObservableParcel.IndexOf(parcel);
+            if (index == -1)
+            {
+                return; // Prevents a crash, but there is a case where it's -1 and shouldn't be
+            }
+
             ObservableParcel.Remove(parcel);
             ObservableParcel.Insert(index, parcel);
         }
@@ -329,7 +337,7 @@
         /// </summary>
         private void UploadParcels()
         {
-            foreach (Parcel parcel in Parcels)
+            foreach (var parcel in Parcels)
             {
                 parcel.Submit();
             }

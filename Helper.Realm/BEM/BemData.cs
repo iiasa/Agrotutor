@@ -10,7 +10,7 @@
         {
             get
             {
-                bool isEmpty = false;
+                var isEmpty = false;
                 if (Costo == null || Ingreso == null || Rendimiento == null || Utilidad == null)
                 {
                     isEmpty = true;
@@ -33,16 +33,15 @@
 
         public static async Task<BemData> LoadBEMData()
         {
-            List<Costo> costo =
-                await RequestJson.Get<List<Costo>>(
-                    "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");
-            List<Ingreso> ingreso =
+            var costo = await RequestJson.Get<List<Costo>>(
+                "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");
+            var ingreso =
                 await RequestJson.Get<List<Ingreso>>(
                     "http://104.239.158.49/api.php?type=rendimiento&tkn=E31C5F8478566357BA6875B32DC59");
-            List<Rendimiento> rendimiento =
+            var rendimiento =
                 await RequestJson.Get<List<Rendimiento>>(
                     "http://104.239.158.49/api.php?type=ingreso&tkn=E31C5F8478566357BA6875B32DC59");
-            List<Utilidad> utilidads =
+            var utilidads =
                 await RequestJson.Get<List<Utilidad>>(
                     "http://104.239.158.49/api.php?type=utilidad&tkn=E31C5F8478566357BA6875B32DC59");
 
@@ -51,7 +50,7 @@
                 return null;
             }
 
-            BemData bemData = new BemData
+            var bemData = new BemData
             {
                 Costo = costo,
                 Ingreso = ingreso,

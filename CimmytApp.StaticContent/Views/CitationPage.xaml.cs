@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.StaticContent.Views
 {
-    using Xamarin.Forms;
-
-    public partial class CitationPage : ContentPage
+    public partial class CitationPage
     {
         public CitationPage()
         {

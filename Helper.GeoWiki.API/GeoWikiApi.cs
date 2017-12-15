@@ -11,14 +11,14 @@
 
         public static async Task<T> Get<T>(string controller, string action, string param) where T : class
         {
-            string requestUrl = GeoWikiApi.Url + controller + "/" + action + "/";
+            var requestUrl = GeoWikiApi.Url + controller + "/" + action + "/";
             return await RequestJson.Get<T>(requestUrl, param);
         }
 
         public static async Task<T> Post<T>(string controller, string action, object param) where T : class
         {
-            string requestUrl = GeoWikiApi.Url + controller + "/" + action;
-            Dictionary<string, string> parameters = new Dictionary<string, string>
+            var requestUrl = GeoWikiApi.Url + controller + "/" + action;
+            var parameters = new Dictionary<string, string>
             {
                 { "parameter", JsonConvert.SerializeObject(param) }
             };

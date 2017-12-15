@@ -115,7 +115,7 @@
             set
             {
                 CurrentTemperature = $"{value.TempC}°C";
-                DateTime date = DateTime.Parse(value.TimeUtc);
+                var date = DateTime.Parse(value.TimeUtc);
                 ForecastDate = date.ToString("yyyy-MM-dd, HH:mm");
                 FeltTemperature = $"sensación: {value.AppTempC}°C";
                 WindSpeed = value.WndSpdKph + " kph";
@@ -272,7 +272,10 @@
         private async void LoadData()
         {
             if (Parcel.Position != null)
-                WeatherForecast = await WeatherForecast.Download((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
+            {
+                WeatherForecast = await WeatherForecast.Download((double)Parcel.Position.Latitude,
+                    (double)Parcel.Position.Longitude);
+            }
         }
 
         /// <summary>
@@ -284,8 +287,11 @@
             if (page == "DailyForecastPage")
             {
                 if (WeatherForecast == null)
+                {
                     return;
-                NavigationParameters parameters = new NavigationParameters
+                }
+
+                var parameters = new NavigationParameters
                 {
                     { "DailyForecast", WeatherForecast.Location.DailySummaries.DailySummary }
                 };
@@ -293,7 +299,7 @@
             }
             else
             {
-                NavigationParameters parameters = new NavigationParameters
+                var parameters = new NavigationParameters
                 {
                     { "Parcel", Parcel }
                 };

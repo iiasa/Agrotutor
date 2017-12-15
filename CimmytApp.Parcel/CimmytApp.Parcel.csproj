@@ -22,12 +22,14 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0008,IDE0009</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>IDE0008,IDE0009</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="ActivityManagement\ActivityBaseClass.cs" />
@@ -61,7 +63,6 @@
     <Compile Include="ViewModels\AddParcelPageViewModel.cs" />
     <Compile Include="ViewModels\DeleteParcelPageViewModel.cs" />
     <Compile Include="ViewModels\ParcelsOverviewPageViewModel.cs" />
-    <Compile Include="ViewModels\ViewParcelInformationPageViewModel.cs" />
     <Compile Include="Views\ActivityDetail.xaml.cs">
       <DependentUpon>ActivityDetail.xaml</DependentUpon>
     </Compile>
@@ -80,9 +81,6 @@
     <Compile Include="Views\ViewActivitiesPage.xaml.cs">
       <DependentUpon>ViewActivitiesPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ViewParcelInformationPage.xaml.cs">
-      <DependentUpon>ViewParcelInformationPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Events\DbConnectionRequestEvent.cs" />
     <Compile Include="Events\DbConnectionEvent.cs" />
     <Compile Include="Events\DbConnectionAvailableEvent.cs" />
@@ -97,10 +95,6 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ParcelsOverviewPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ViewParcelInformationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -131,10 +125,6 @@
       <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
       <Name>Helper.BusinessContract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CimmytApp.BusinessContract\CimmytApp.BusinessContract.csproj">
-      <Project>{8FA589B1-356E-4A97-B4C9-C1681A8906D7}</Project>
-      <Name>CimmytApp.BusinessContract</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
       <Project>{E26AC875-8F9C-4468-AD54-03D7A71F3A60}</Project>
       <Name>Helper.Map</Name>
@@ -145,6 +135,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="AsNum.XFControls, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\XFControls.1.0.0.6\lib\portable-net45+win8+wp8+wpa81+MonoAndroid10+Xamarin.iOS10+MonoTouch10\AsNum.XFControls.dll</HintPath>
+    </Reference>
     <Reference Include="ExifLib, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ExifLib.PCL.1.0.2-pre01\lib\netstandard1.0\ExifLib.dll</HintPath>
     </Reference>

@@ -86,7 +86,7 @@
         /// <summary>
         ///     Gets or sets the Id
         /// </summary>
-        public int? Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         ///     Gets or sets the Name
@@ -123,6 +123,31 @@
         /// </summary>
         public string Yield { get; set; }
 
+        public static AgriculturalActivity FromDTO(AgriculturalActivityDTO activity)
+        {
+            if (activity == null)
+            {
+                return null;
+            }
+
+            return new AgriculturalActivity
+            {
+                ActivityType = (ActivityType)activity.ActivityType,
+                AmountApplied = activity.AmountApplied,
+                AppliedProduct = activity.AppliedProduct,
+                Cost = activity.Cost,
+                Date = activity.Date.UtcDateTime,
+                Dose = activity.Dose,
+                Id = activity.Id,
+                Name = activity.Name,
+                NumberOfSeeds = activity.NumberOfSeeds,
+                ProductObtained = activity.ProductObtained,
+                Sown = activity.Sown,
+                WeightOfSeeds = activity.WeightOfSeeds,
+                Yield = activity.Yield
+            };
+        }
+
         public AgriculturalActivityDTO GetDTO()
         {
             return new AgriculturalActivityDTO
@@ -140,27 +165,6 @@
                 Sown = Sown,
                 WeightOfSeeds = WeightOfSeeds,
                 Yield = Yield
-            };
-        }
-
-        public static AgriculturalActivity FromDTO(AgriculturalActivityDTO activity)
-        {
-            if (activity == null) return null;
-            return new AgriculturalActivity
-            {
-                ActivityType = (ActivityType)activity.ActivityType,
-                AmountApplied = activity.AmountApplied,
-                AppliedProduct = activity.AppliedProduct,
-                Cost = activity.Cost,
-                Date = activity.Date.UtcDateTime,
-                Dose = activity.Dose,
-                Id = activity.Id,
-                Name = activity.Name,
-                NumberOfSeeds = activity.NumberOfSeeds,
-                ProductObtained = activity.ProductObtained,
-                Sown = activity.Sown,
-                WeightOfSeeds = activity.WeightOfSeeds,
-                Yield = activity.Yield
             };
         }
     }

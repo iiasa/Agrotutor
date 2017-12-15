@@ -273,7 +273,7 @@
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            string activityName = (string)parameters["activityType"];
+            var activityName = (string)parameters["activityType"];
             ActivityType = (ActivityType)Enum.Parse(typeof(ActivityType), activityName);
             ActivityBaseClass baseClass = null;
             switch (ActivityType)
@@ -352,7 +352,7 @@
             {
                 activityName = ActivityNameText;
             }
-            AgriculturalActivity activity = new AgriculturalActivity
+            var activity = new AgriculturalActivity
             {
                 AmountApplied = AmountApplied,
                 AppliedProduct = AppliedProduct,
@@ -368,7 +368,7 @@
                 Yield = ActivityYield
             };
 
-            NavigationParameters parameters = new NavigationParameters
+            var parameters = new NavigationParameters
             {
                 { "Activity", activity }
             };

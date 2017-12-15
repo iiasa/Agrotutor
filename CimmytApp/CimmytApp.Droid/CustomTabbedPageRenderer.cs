@@ -14,7 +14,7 @@
             //var layout = (TabLayout)ViewGroup.GetChildAt(1); //should be enough but just for robustness we use loop below
 
             TabLayout layout = null;
-            for (int i = 0; i < ChildCount; i++)
+            for (var i = 0; i < ChildCount; i++)
             {
                 layout = GetChildAt(i) as TabLayout;
 
@@ -26,7 +26,7 @@
 
             if (layout != null)
             {
-                for (int tabIndex = 0; tabIndex < layout.TabCount; tabIndex++)
+                for (var tabIndex = 0; tabIndex < layout.TabCount; tabIndex++)
                 {
                     SetTabIcon(layout, tabIndex);
                 }
@@ -35,7 +35,7 @@
 
         private void SetTabIcon(TabLayout layout, int tabIndex)
         {
-            TabLayout.Tab tab = layout.GetTabAt(tabIndex);
+            var tab = layout.GetTabAt(tabIndex);
             tab.SetIcon(tab.Icon);
 
             //from local resource

@@ -37,18 +37,18 @@ namespace CimmytApp.Droid
             {
                 AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
                 {
-                    RaiseThrowableEventArgs x = args;
+                    var x = args;
                 };
 
                 AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
                 {
-                    object x = args.ExceptionObject;
+                    var x = args.ExceptionObject;
                 };
 
                 // Wire up the unobserved task exception handler
                 TaskScheduler.UnobservedTaskException += (sender, args) =>
                 {
-                    UnobservedTaskExceptionEventArgs x = args;
+                    var x = args;
                 };
 
                 base.OnCreate(bundle);
@@ -60,8 +60,9 @@ namespace CimmytApp.Droid
                 RegisterWithGCM(); // TODO Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                // ignored
             }
         }
 

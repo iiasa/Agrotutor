@@ -1,265 +1,53 @@
 ﻿namespace CimmytApp.DTO.Parcel
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
-    using System.Runtime.Serialization;
     using System.Threading.Tasks;
-    using Helper.BusinessContract;
     using Helper.GeoWiki.API.GenericDatasetStorage;
     using Helper.Map;
     using Helper.Realm.DTO;
-    using Newtonsoft.Json;
     using Xamarin.Forms;
 
-    /// <summary>
-    ///     Defines the <see cref="Parcel" />
-    /// </summary>
-    public class Parcel : IDataset, INotifyPropertyChanged
+    public class Parcel : INotifyPropertyChanged
     {
-        /// <summary>
-        ///     Defines the geoWikiDatasetGroupId
-        /// </summary>
         private static readonly int geoWikiDatasetGroupId = 1;
 
-        /// <summary>
-        ///     Defines the _activities
-        /// </summary>
-        private List<string> _activities;
-
-        /// <summary>
-        ///     Defines the _agriculturalCycle
-        /// </summary>
-        private string _agriculturalCycle;
-
-        /// <summary>
-        ///     Defines the _crop
-        /// </summary>
         private string _crop;
 
-        /// <summary>
-        ///     Defines the _croptype
-        /// </summary>
-        private CropType _croptype;
-
-        /// <summary>
-        ///     Defines the _cultivar
-        /// </summary>
-        private string _cultivar;
-
-        /// <summary>
-        ///     Defines the _delineation
-        /// </summary>
-        private string _delineation;
-
-        /// <summary>
-        ///     Defines the _estimatedParcelArea
-        /// </summary>
-        private string _estimatedParcelArea;
-
-        /// <summary>
-        ///     Defines the _geoPosition
-        /// </summary>
         private GeoPosition _geoPosition;
 
-        /// <summary>
-        ///     Defines the _id
-        /// </summary>
         private int _id;
 
-        /// <summary>
-        ///     Defines the _irrigation
-        /// </summary>
-        private string _irrigation;
-
-        /// <summary>
-        ///     Defines the _otherTechnologies
-        /// </summary>
-        private string _otherTechnologies;
-
-        /// <summary>
-        ///     Defines the _parcelName
-        /// </summary>
         private string _parcelName;
 
-        /// <summary>
-        ///     Defines the _performance
-        /// </summary>
-        private string _performance;
-
-        /// <summary>
-        ///     Defines the _plantingDate
-        /// </summary>
-        private DateTime _plantingDate;
-
-        /// <summary>
-        ///     Defines the _producerName
-        /// </summary>
-        private string _producerName;
-
-        /// <summary>
-        ///     Defines the _technologiesUsed
-        /// </summary>
-        private List<Technology> _technologiesUsed;
-
-        /// <summary>
-        ///     Defines the _uploaded
-        /// </summary>
         private int _uploaded;
 
-        /// <summary>
-        ///     Defines the _year
-        /// </summary>
-        private string _year;
-
-        private List<AgriculturalActivity> _agriculturalActivities;
-
-        /// <summary>
-        ///     Defines the PropertyChanged
-        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
-        /// <summary>
-        ///     Gets the CompletedPercentage
-        /// </summary>
         public int CompletedPercentage => 10;
 
-        /// <summary>
-        ///     Gets the IconSource
-        /// </summary>
-        public string IconSource
-        {
-            get
-            {
-                switch (_croptype)
-                {
-                    case CropType.Corn:
-                        return "crop_corn.png";
+        public string IconSource => GetCropImage();
 
-                    case CropType.Barley:
-                        return "crop_barley.png";
-
-                    case CropType.Bean:
-                        return "crop_bean.png";
-
-                    case CropType.Wheat:
-                        return "crop_wheat.png";
-
-                    case CropType.Triticale:
-                        return "crop_triticale.png";
-
-                    case CropType.Sorghum:
-                        return "crop_sorghum.png";
-
-                    case CropType.Alfalfa:
-                        return "crop_alfalfa.png";
-
-                    case CropType.Oats:
-                        return "crop_oats.png";
-
-                    case CropType.Sesame:
-                        return "crop_sesame.png";
-
-                    case CropType.Amaranth:
-                        return "crop_amaranth.png";
-
-                    case CropType.Rice:
-                        return "crop_rice.png";
-
-                    case CropType.Canola:
-                        return "crop_canola.png";
-
-                    case CropType.Cartamo:
-                        return "crop_cartamo.png";
-
-                    case CropType.Zucchini:
-                        return "crop_zucchini.png";
-
-                    case CropType.Chickpea:
-                        return "crop_chickpea.png";
-
-                    case CropType.FavaBean:
-                        return "crop_bean.png";
-
-                    case CropType.Soy:
-                        return "crop_soy.png";
-
-                    case CropType.None:
-                        return "crop_none.png";
-
-                    case CropType.Other:
-                        return "crop_other.png";
-
-                    default:
-                        return "crop_other.png";
-                }
-            }
-        }
-
-        /// <summary>
-        ///     Gets the OverviewString
-        /// </summary>
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
-        public string DelineationString
-        {
-            get => _delineation;
-            set => _delineation = value;
-        }
-
-        /// <summary>
-        ///     Gets the TechnologiesScreenList
-        /// </summary>
-        [IgnoreDataMember]
         public string TechnologiesScreenList
         {
             get
             {
-                if (TechnologiesUsed != null && TechnologiesUsed.Count > 0)
+                if (TechnologiesUsed == null || TechnologiesUsed.Count <= 0)
                 {
-                    string technologiesScreenList = string.Join("\r\n", TechnologiesUsed.ToList());
-                    return technologiesScreenList;
+                    return null;
                 }
 
-                return null;
+                return string.Join("\r\n", TechnologiesUsed.ToList());
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the ActivitiesBlobbed
-        /// </summary>
-        public string ActivitiesBlobbed { get; set; }
+        public List<AgriculturalActivity> AgriculturalActivities { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the AgriculturalActivities
-        /// </summary>
-        public List<AgriculturalActivity> AgriculturalActivities
-        {
-            get
-            {
-                if (_agriculturalActivities == null && !string.IsNullOrEmpty(ActivitiesBlobbed))
-                {
-                    _agriculturalActivities =
-                        JsonConvert.DeserializeObject<List<AgriculturalActivity>>(ActivitiesBlobbed);
-                }
-                return _agriculturalActivities;
-            }
-            set
-            {
-                _agriculturalActivities = value;
-                ActivitiesBlobbed = JsonConvert.SerializeObject(_agriculturalActivities);
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the ClimateType
-        /// </summary>
         public string ClimateType { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Crop
-        /// </summary>
         public string Crop
         {
             get => _crop;
@@ -270,28 +58,65 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the CropType
-        /// </summary>
-        public CropType CropType
-        {
-            get => _croptype;
-            set => _croptype = value;
-        }
+        public CropType CropType { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the MaturityClass
-        /// </summary>
+        public List<GeoPosition> Delineation { get; set; }
+
         public string MaturityClass { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the ParcelId
-        /// </summary>
-        public int? ParcelId { get; set; }
+        public int? PHU
+        {
+            get
+            {
+                switch (MaturityClass)
+                {
+                    case "Temprana":
+                        return 1680;
 
-        /// <summary>
-        ///     Gets or sets the ParcelName
-        /// </summary>
+                    case "Semi-temprana":
+                        return 1890;
+
+                    case "Intermedia":
+                        return 2100;
+
+                    case "Semi-tardía":
+                        return 2310;
+
+                    case "Tardía":
+                        return 2520;
+
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        public int? BaseTemperature
+        {
+            get
+            {
+                switch (ClimateType)
+                {
+                    case "Frío":
+                        return 4;
+
+                    case "Templado/Subtropical":
+                        return 7;
+
+                    case "Tropical":
+                        return 9;
+
+                    case "Híbrido":
+                        return 10;
+
+                    default:
+                        return null;
+                }
+            }
+        }
+
+        public string ParcelId { get; set; }
+
         public string ParcelName
         {
             get => _parcelName;
@@ -302,105 +127,64 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the ProducerName
-        /// </summary>
-        public string ProducerName
-        {
-            get => _producerName;
-            set
-            {
-                _producerName = value;
-                OnPropertyChanged("ProducerName"); // TODO change to app producer name
-            }
-        }
-
-        /// <summary>
-        ///     Gets or sets the TechnologiesUsed
-        /// </summary>
-        public List<Technology> TechnologiesUsed
-        {
-            get => _technologiesUsed;
-            set
-            {
-                _technologiesUsed = value;
-                OnPropertyChanged("TechnologiesUsed");
-            }
-        }
-
         public GeoPosition Position { get; set; }
-        public List<GeoPosition> Delineation { get; set; }
+
+        public string ProducerName { get; set; }
+
+        public List<Technology> TechnologiesUsed { get; set; }
+
+        public static Parcel FromDTO(ParcelDTO parcelDTO)
+        {
+            if (parcelDTO == null)
+            {
+                return null;
+            }
+
+            var activities = new List<AgriculturalActivity>();
+            var delineation = new List<GeoPosition>();
+            var technologies = new List<Technology>();
+
+            if (parcelDTO.AgriculturalActivities != null)
+            {
+                activities.AddRange(parcelDTO.AgriculturalActivities.Select(AgriculturalActivity.FromDTO));
+            }
+
+            if (parcelDTO.Delineation != null)
+            {
+                delineation.AddRange(parcelDTO.Delineation.Select(GeoPosition.FromDTO));
+            }
+
+            if (parcelDTO.TechnologiesUsed != null)
+            {
+                technologies.AddRange(parcelDTO.TechnologiesUsed.Select(technology => new Technology
+                {
+                    Name = technology.Name,
+                    Id = technology.Id
+                }));
+            }
+
+            var parcel = new Parcel
+            {
+                AgriculturalActivities = activities,
+                ClimateType = parcelDTO.ClimateType,
+                Crop = parcelDTO.Crop,
+                CropType = (CropType)parcelDTO.CropType,
+                Delineation = delineation,
+                MaturityClass = parcelDTO.MaturityClass,
+                ParcelId = parcelDTO.ParcelId,
+                ParcelName = parcelDTO.ParcelName,
+                Position = GeoPosition.FromDTO(parcelDTO.Position),
+                TechnologiesUsed = technologies
+            };
+
+            return parcel;
+        }
 
         //ToDo:Move to another Class
-        /// <summary>
-        ///     The LoadParcelsFromServer
-        /// </summary>
-        /// <returns>The <see cref="Task{List{Parcel}}" /></returns>
+
         public static async Task<List<Parcel>> LoadParcelsFromServer()
         {
             return await Storage.GetDatasets<Parcel>(16, 1, Parcel.geoWikiDatasetGroupId);
-        }
-
-        //ToDo:Move to another Class
-        /// <summary>
-        ///     The GetDelineation
-        /// </summary>
-        /// <returns>The <see cref="List{GeoPosition}" /></returns>
-        public List<GeoPosition> GetDelineation()
-        {
-            return string.IsNullOrEmpty(DelineationString)
-                ? null
-                : JsonConvert.DeserializeObject<List<GeoPosition>>(DelineationString);
-        }
-
-        //ToDo:Move to another Class
-        /// <summary>
-        ///     The SetDelineation
-        /// </summary>
-        /// <param name="delineation">The <see cref="List{GeoPosition}" /></param>
-        public void SetDelineation(List<GeoPosition> delineation)
-        {
-            DelineationString = JsonConvert.SerializeObject(delineation);
-        }
-
-        //ToDo:Move to another Class
-        /// <summary>
-        ///     The Submit
-        /// </summary>
-        public void Submit()
-        {
-            if (_uploaded == (int)DatasetUploadStatus.Synchronized)
-            {
-                return;
-            }
-
-            _uploaded = (int)DatasetUploadStatus.Synchronized;
-            Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
-        }
-
-        //ToDo:Move to another Class
-        /// <summary>
-        ///     The SubmitAsync
-        /// </summary>
-        /// <returns>The <see cref="Task{Parcel}" /></returns>
-        public async Task<Parcel> SubmitAsync()
-        {
-            if (_uploaded == (int)DatasetUploadStatus.Synchronized) return null;
-
-            await Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
-            _uploaded = (int)DatasetUploadStatus.Synchronized;
-            return this;
-        }
-
-        /// <summary>
-        ///     The OnPropertyChanged
-        /// </summary>
-        /// <param name="aName">The <see cref="string" /></param>
-        protected virtual void OnPropertyChanged(string aName)
-        {
-            PropertyChangedEventHandler iHandler = PropertyChanged;
-            _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
-            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
 
         public ParcelDTO GetDTO()
@@ -418,16 +202,14 @@
 
             if (AgriculturalActivities != null)
             {
-                List<AgriculturalActivityDTO> activities = AgriculturalActivities.Select(activity => activity.GetDTO()).ToList();
-                dto.SetAgriculturalActivities(activities);
+                dto.SetAgriculturalActivities(AgriculturalActivities.Select(activity => activity.GetDTO()).ToList());
+            }
+            if (Delineation != null)
+            {
+                dto.SetDelineation(Delineation.Select(position => position.GetDTO()).ToList());
             }
 
-            if (GetDelineation() != null)
-            {
-                List<GeoPositionDTO> delineation = GetDelineation().Select(position => position.GetDTO()).ToList();
-                dto.SetDelineation(delineation);
-            }
-            List<TechnologyDTO> technologies = new List<TechnologyDTO>();
+            var technologies = new List<TechnologyDTO>();
             if (TechnologiesUsed != null)
             {
                 technologies.AddRange(TechnologiesUsed.Select(technology => new TechnologyDTO
@@ -441,49 +223,107 @@
             return dto;
         }
 
-        public static Parcel FromDTO(ParcelDTO parcelDTO)
-        {
-            if (parcelDTO == null) return null;
-
-            var activities = new List<AgriculturalActivity>();
-            var delineation = new List<GeoPosition>();
-            var technologies = new List<Technology>();
-
-            if (parcelDTO.AgriculturalActivities != null)
-                activities.AddRange(parcelDTO.AgriculturalActivities.Select(AgriculturalActivity.FromDTO));
-
-            if (parcelDTO.Delineation != null)
-                delineation.AddRange(parcelDTO.Delineation.Select(GeoPosition.FromDTO));
-
-            if (parcelDTO.TechnologiesUsed != null)
-            {
-                technologies.AddRange(parcelDTO.TechnologiesUsed.Select(technology => new Technology
-                {
-                    Name = technology.Name,
-                    Id = technology.Id
-                }));
-            }
-
-            var parcel = new Parcel
-            {
-                AgriculturalActivities = activities,
-                ClimateType = parcelDTO.ClimateType,
-                Crop = parcelDTO.Crop,
-                CropType = (CropType)parcelDTO.CropType,
-                Delineation = delineation,//TODO use only this one!
-                MaturityClass = parcelDTO.MaturityClass,
-                ParcelId = parcelDTO.ParcelId,
-                ParcelName = parcelDTO.ParcelName,
-                Position = GeoPosition.FromDTO(parcelDTO.Position),
-                TechnologiesUsed = technologies
-            };
-
-            return parcel;
-        }
-
         public DataTemplate GetOverviewDataTemplate()
         {
             return null;
+        }
+
+        public void Submit()
+        {
+            if (_uploaded == (int)DatasetUploadStatus.Synchronized)
+            {
+                return;
+            }
+
+            _uploaded = (int)DatasetUploadStatus.Synchronized;
+            Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
+        }
+
+        //ToDo:Move to another Class
+
+        public async Task<Parcel> SubmitAsync()
+        {
+            if (_uploaded == (int)DatasetUploadStatus.Synchronized)
+            {
+                return null;
+            }
+
+            await Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
+            _uploaded = (int)DatasetUploadStatus.Synchronized;
+            return this;
+        }
+
+        protected virtual void OnPropertyChanged(string aName)
+        {
+            var iHandler = PropertyChanged;
+            _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
+            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
+        }
+
+        private string GetCropImage()
+        {
+            switch (CropType)
+            {
+                case CropType.Corn:
+                    return "crop_corn.png";
+
+                case CropType.Barley:
+                    return "crop_barley.png";
+
+                case CropType.Bean:
+                    return "crop_bean.png";
+
+                case CropType.Wheat:
+                    return "crop_wheat.png";
+
+                case CropType.Triticale:
+                    return "crop_triticale.png";
+
+                case CropType.Sorghum:
+                    return "crop_sorghum.png";
+
+                case CropType.Alfalfa:
+                    return "crop_alfalfa.png";
+
+                case CropType.Oats:
+                    return "crop_oats.png";
+
+                case CropType.Sesame:
+                    return "crop_sesame.png";
+
+                case CropType.Amaranth:
+                    return "crop_amaranth.png";
+
+                case CropType.Rice:
+                    return "crop_rice.png";
+
+                case CropType.Canola:
+                    return "crop_canola.png";
+
+                case CropType.Cartamo:
+                    return "crop_cartamo.png";
+
+                case CropType.Zucchini:
+                    return "crop_zucchini.png";
+
+                case CropType.Chickpea:
+                    return "crop_chickpea.png";
+
+                case CropType.FavaBean:
+                    return "crop_bean.png";
+
+                case CropType.Soy:
+                    return "crop_soy.png";
+
+                case CropType.None:
+                    return "crop_none.png";
+
+                case CropType.Other:
+                    return "crop_other.png";
+
+                default:
+                    return "crop_other.png";
+            }
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿namespace CimmytApp.WeatherForecast.Views
 {
-    using Xamarin.Forms;
-
-    public partial class DailyForecastPage : ContentPage
+    public partial class DailyForecastPage
     {
         public DailyForecastPage()
         {

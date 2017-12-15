@@ -2,16 +2,16 @@
 {
     public class Integer
     {
-        private readonly int value;
+        private readonly int _value;
 
         public Integer(int value)
         {
-            this.value = value;
+            _value = value;
         }
 
         public static int operator +(Integer one, Integer two)
         {
-            return one.value + two.value;
+            return one._value + two._value;
         }
 
         public static Integer operator +(int one, Integer two)
@@ -26,12 +26,12 @@
 
         public static implicit operator int(Integer integer)
         {
-            return integer.value;
+            return integer._value;
         }
 
         public static int operator -(Integer one, Integer two)
         {
-            return one.value - two.value;
+            return one._value - two._value;
         }
 
         public static Integer operator -(int one, Integer two)
@@ -41,7 +41,7 @@
 
         public int getValue()
         {
-            return value;
+            return _value;
         }
     }
 }

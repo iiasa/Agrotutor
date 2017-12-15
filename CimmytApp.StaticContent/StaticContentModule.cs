@@ -11,7 +11,7 @@
 
         public StaticContentModule(IUnityContainer unityContainer)
         {
-            _unityContainer = unityContainer; 
+            _unityContainer = unityContainer;
         }
 
         public void Initialize()

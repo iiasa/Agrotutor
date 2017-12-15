@@ -35,8 +35,8 @@
         {
             if (locator != null)
             {
-                bool isGeolocationAvailable = locator.IsGeolocationAvailable;
-                bool isGeolocationEnabled = locator.IsGeolocationEnabled;
+                var isGeolocationAvailable = locator.IsGeolocationAvailable;
+                var isGeolocationEnabled = locator.IsGeolocationEnabled;
                 if (isGeolocationAvailable && isGeolocationEnabled)
                 {
                     return true;
@@ -61,7 +61,7 @@
                 }
                 cancelSource = new CancellationTokenSource();
 
-                await locator.GetPositionAsync(new TimeSpan( TimeSpan.TicksPerSecond), cancelSource.Token, false)
+                await locator.GetPositionAsync(new TimeSpan(TimeSpan.TicksPerSecond), cancelSource.Token, false)
                     .ContinueWith(t =>
                     {
                         IsBusy = false;
@@ -91,9 +91,9 @@
 
         private void Locator_PositionChanged(object sender, PositionEventArgs e)
         {
-            Position position = e.Position;
+            var position = e.Position;
 
-            GeoPosition pos = MapPosition(position);
+            var pos = MapPosition(position);
             _eventAggregator.GetEvent<LivePositionEvent>().Publish(pos);
         }
 
@@ -104,7 +104,7 @@
                 throw new ArgumentNullException();
             }
 
-            GeoPosition pos = new GeoPosition
+            var pos = new GeoPosition
             {
                 Accuracy = position.Accuracy,
                 Latitude = position.Latitude,

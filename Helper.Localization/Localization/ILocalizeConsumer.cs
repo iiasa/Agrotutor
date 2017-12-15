@@ -1,4 +1,4 @@
-﻿namespace Helper.BusinessContract
+﻿namespace Helper.Localization.Localization
 {
     public interface ILocalizeConsumer
     {

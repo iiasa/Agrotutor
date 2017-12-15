@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using CimmytApp.DTO.Parcel;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -10,32 +11,13 @@
 
     public class TelerikCalendarPageViewModel : BindableBase, INavigationAware
     {
-        private List<Parcel> _parcels;
         private List<Appointment> _events;
+        private List<Parcel> _parcels;
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public List<Appointment> Events
         {
-        }
-
-        public void OnNavigatedTo(NavigationParameters parameters)
-        {
-            if (parameters.ContainsKey("Parcel"))
-            {
-                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
-                if (parcel != null)
-                {
-                    Parcels = new List<Parcel>();
-                    Parcels.Add(parcel);
-                }
-            }
-            if (parameters.ContainsKey("Parcels"))
-            {
-                parameters.TryGetValue<List<Parcel>>("Parcels", out var parcels);
-                if (parcels != null)
-                {
-                    Parcels = parcels;
-                }
-            }
+            get => _events;
+            set => SetProperty(ref _events, value);
         }
 
         public List<Parcel> Parcels
@@ -48,53 +30,67 @@
             }
         }
 
-        private void PopulateEvents()
+        public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            var events = new List<Appointment>();
-            foreach (Parcel parcel in Parcels)
+        }
+
+        public void OnNavigatedTo(NavigationParameters parameters)
+        {
+            if (parameters.ContainsKey("Parcel"))
             {
-                if (parcel.AgriculturalActivities != null)
+                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
+                if (parcel != null)
                 {
-                    foreach (var activity in parcel.AgriculturalActivities)
+                    Parcels = new List<Parcel>
                     {
-                        events.Add(new Appointment
-                        {
-                            IsAllDay = true,
-                            StartDate = activity.Date,
-                            EndDate = activity.Date,
-                            Title = activity.Name,
-                            Color = Color.PaleGreen
-                        });
-                    }
+                        parcel
+                    };
                 }
             }
-
-            Events = events;
+            if (parameters.ContainsKey("Parcels"))
+            {
+                parameters.TryGetValue<List<Parcel>>("Parcels", out var parcels);
+                if (parcels != null)
+                {
+                    Parcels = parcels;
+                }
+            }
         }
 
         public void OnNavigatingTo(NavigationParameters parameters)
         {
         }
 
-        public List<Appointment> Events
+        private void PopulateEvents()
         {
-            get => _events;
-            set => SetProperty(ref _events, value);
+            var events = (from parcel in Parcels
+                          where parcel.AgriculturalActivities != null
+                          from activity in parcel.AgriculturalActivities
+                          select new Appointment
+                          {
+                              IsAllDay = true,
+                              StartDate = activity.Date,
+                              EndDate = activity.Date,
+                              Title = activity.Name,
+                              Color = Color.PaleGreen
+                          }).ToList();
+
+            Events = events;
         }
     }
 
     public class Appointment : IAppointment
     {
-        public DateTime StartDate { get; set; }
+        public Color Color { get; set; }
+
+        public string Detail { get; set; }
 
         public DateTime EndDate { get; set; }
 
-        public string Title { get; set; }
-
-        public Color Color { get; set; }
-
         public bool IsAllDay { get; set; }
 
-        public string Detail { get; set; }
+        public DateTime StartDate { get; set; }
+
+        public string Title { get; set; }
     }
 }

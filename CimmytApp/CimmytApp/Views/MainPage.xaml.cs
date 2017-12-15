@@ -6,7 +6,7 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage : ContentPage
+    public partial class MainPage
     {
         private bool _backButtonRecentlyPressed;
 

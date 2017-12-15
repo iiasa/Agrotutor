@@ -14,6 +14,14 @@
         /// </summary>
         public double? Accuracy { get; set; }
 
+        public double? Altitude { get; set; }
+
+        public double? AltitudeAccuracy { get; set; }
+
+        public double? Heading { get; set; }
+
+        public string Id { get; set; }
+
         /// <summary>
         ///     Gets or sets the Latitude
         /// </summary>
@@ -24,13 +32,30 @@
         /// </summary>
         public double? Longitude { get; set; }
 
-        public DateTimeOffset Timestamp { get; set; }
-        public double? Altitude { get; set; }
-        public double? AltitudeAccuracy { get; set; }
-        public double? Heading { get; set; }
         public double? Speed { get; set; }
 
-        public int? Id { get; set; }
+        public DateTimeOffset Timestamp { get; set; }
+
+        public static GeoPosition FromDTO(GeoPositionDTO position)
+        {
+            if (position == null)
+            {
+                return null; // Cast is for not having to reference Realm lib
+            }
+
+            return new GeoPosition
+            {
+                Accuracy = position.Accuracy,
+                Altitude = position.Altitude,
+                AltitudeAccuracy = position.AltitudeAccuracy,
+                Heading = position.Heading,
+                Id = position.Id,
+                Latitude = position.Latitude,
+                Longitude = position.Longitude,
+                Speed = position.Speed,
+                Timestamp = position.Timestamp
+            };
+        }
 
         public GeoPositionDTO GetDTO()
         {
@@ -45,23 +70,6 @@
                 Longitude = Longitude,
                 Speed = Speed,
                 Timestamp = Timestamp
-            };
-        }
-
-        public static GeoPosition FromDTO(GeoPositionDTO position)
-        {
-            if ((object)position == null) return null; // Cast is for not having to reference Realm lib
-            return new GeoPosition
-            {
-                Accuracy = position.Accuracy,
-                Altitude = position.Altitude,
-                AltitudeAccuracy = position.AltitudeAccuracy,
-                Heading = position.Heading,
-                Id = position.Id,
-                Latitude = position.Latitude,
-                Longitude = position.Longitude,
-                Speed = position.Speed,
-                Timestamp = position.Timestamp
             };
         }
 

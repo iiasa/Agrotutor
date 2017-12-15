@@ -1,8 +1,9 @@
 ﻿namespace CimmytApp.Parcel.ViewModels
 {
     using System;
-    using CimmytApp.BusinessContract;
     using CimmytApp.DTO.Parcel;
+    using Helper.Realm;
+    using Helper.Realm.BusinessContract;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -72,11 +73,11 @@
             {
                 try
                 {
-                    int id = (int)parameters["Id"];
+                    var id = (string)parameters["Id"];
 
                     _parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Back();
                 }

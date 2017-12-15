@@ -1,6 +1,6 @@
-﻿
-namespace Helper.Realm
+﻿namespace Helper.Realm
 {
+    using System.Diagnostics;
     using Realms;
 
     public class DbContext
@@ -10,7 +10,7 @@ namespace Helper.Realm
         public static Realm GetConnection()
         {
             var con = new RealmConfiguration("cimmyt.realm");
-            System.Diagnostics.Debug.WriteLine(con.DatabasePath);
+            Debug.WriteLine(con.DatabasePath);
             Realm = Realm.GetInstance(con);
             return Realm;
         }

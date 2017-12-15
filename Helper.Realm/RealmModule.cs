@@ -4,10 +4,6 @@
 
     public class RealmModule : IModule
     {
-        public RealmModule()
-        {
-        }
-
         public void Initialize()
         {
         }

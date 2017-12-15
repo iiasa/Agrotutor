@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.DTO.Parcel
+﻿namespace Helper.Map
 {
     using Prism.Events;
 

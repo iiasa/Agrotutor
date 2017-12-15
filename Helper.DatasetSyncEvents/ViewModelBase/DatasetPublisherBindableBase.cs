@@ -1,6 +1,5 @@
 ﻿namespace Helper.DatasetSyncEvents.ViewModelBase
 {
-    using Helper.BusinessContract;
     using Helper.DatasetSyncEvents.Event;
     using Prism.Events;
     using Prism.Mvvm;
@@ -27,13 +26,13 @@
         ///     Gets instance of IDataset
         /// </summary>
         /// <returns>Dataset</returns>
-        protected abstract IDataset GetDataset();
+        protected abstract object GetDataset();
 
         /// <summary>
         ///     Publishes an instance of IDataset on the EventAggregator
         /// </summary>
         /// <param name="dataset">Dataset instance to be published</param>
-        protected void PublishDataset(IDataset dataset)
+        protected void PublishDataset(object dataset)
         {
             _eventAggregator.GetEvent<DatasetSyncEvent>().Publish(dataset);
         }
