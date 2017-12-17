@@ -17,16 +17,15 @@
         {
             get
             {
-                if (_realm == null)
+                if (_realm != null) return _realm;
+
+                try
                 {
-                    try
-                    {
-                        _realm = DbContext.GetConnection();
-                    }
-                    catch (Exception e)
-                    {
-                        Debug.WriteLine(e.Message, e);
-                    }
+                    _realm = DbContext.GetConnection();
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e.Message, e);
                 }
                 return _realm;
             }
