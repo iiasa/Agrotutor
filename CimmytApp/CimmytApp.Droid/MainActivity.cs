@@ -51,6 +51,9 @@ namespace CimmytApp.Droid
                     var x = args;
                 };
 
+
+                if (Device.Idiom == TargetIdiom.Phone) RequestedOrientation = ScreenOrientation.Portrait;
+
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
