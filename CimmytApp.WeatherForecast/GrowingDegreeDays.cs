@@ -62,7 +62,8 @@
     {
         private static readonly string auth = "ZGJmNmIwMWM6MjMwNjhlN2NjMGVmMTU1OTAyMmI2NDlmYzkxNDY0ODg =";
 
-        public static async Task<GrowingDegreeDays> Download(double latitude, double longitude, DateTime start, DateTime end)
+        public static async Task<GrowingDegreeDays> Download(double latitude, double longitude, DateTime start,
+            DateTime end)
         {
             var startString = start.ToString("yyyy-MM-dd");
             var endString = end.ToString("yyyy-MM-dd");
