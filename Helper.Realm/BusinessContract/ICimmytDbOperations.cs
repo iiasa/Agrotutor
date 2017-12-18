@@ -8,7 +8,7 @@
     {
         void AddParcel(ParcelDTO parcel);
 
-        void DeleteParcel(ParcelDTO parcel);
+        void DeleteParcel(string parcelId);
 
         List<ParcelDTO> GetAllParcels();
 

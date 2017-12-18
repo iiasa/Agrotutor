@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.DTO.Parcel
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq;
@@ -17,8 +18,6 @@
 
         private GeoPosition _geoPosition;
 
-        private int _id;
-
         private string _parcelName;
 
         private int _uploaded;
@@ -30,6 +29,13 @@
         public string IconSource => GetCropImage();
 
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
+
+        public Parcel()
+        {
+            AgriculturalActivities = new List<AgriculturalActivity>();
+            Delineation = new List<GeoPosition>();
+            TechnologiesUsed = new List<Technology>();
+        }
 
         public string TechnologiesScreenList
         {
@@ -115,7 +121,7 @@
             }
         }
 
-        public string ParcelId { get; set; }
+        public string ParcelId { get; set; } = Guid.NewGuid().ToString();
 
         public string ParcelName
         {
@@ -200,26 +206,17 @@
                 Position = Position?.GetDTO()
             };
 
-            if (AgriculturalActivities != null)
-            {
-                dto.SetAgriculturalActivities(AgriculturalActivities.Select(activity => activity.GetDTO()).ToList());
-            }
-            if (Delineation != null)
-            {
-                dto.SetDelineation(Delineation.Select(position => position.GetDTO()).ToList());
-            }
+            dto.SetAgriculturalActivities(AgriculturalActivities.Select(activity => activity.GetDTO()).ToList());
+
+            dto.SetDelineation(Delineation.Select(position => position.GetDTO()).ToList());
 
             var technologies = new List<TechnologyDTO>();
-            if (TechnologiesUsed != null)
+            technologies.AddRange(TechnologiesUsed.Select(technology => new TechnologyDTO
             {
-                technologies.AddRange(TechnologiesUsed.Select(technology => new TechnologyDTO
-                {
-                    Name = technology.Name,
-                    Id = technology.Id
-                }));
-                dto.SetTechnologies(technologies);
-            }
-
+                Name = technology.Name,
+                Id = technology.Id
+            }));
+            dto.SetTechnologies(technologies);
             return dto;
         }
 

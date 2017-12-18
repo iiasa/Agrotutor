@@ -237,7 +237,7 @@
                 // IsParcelListEnabled = false;
                 var navigationParameters = new NavigationParameters
                 {
-                    { "Id", (int)id }
+                    { "Id", (string)id }
                 };
 
                 _navigationService.NavigateAsync("DeleteParcelPage", navigationParameters);
@@ -259,7 +259,7 @@
                 // IsParcelListEnabled = false;
                 var navigationParameters = new NavigationParameters
                 {
-                    { "Id", (int)id }
+                    { "Id", (string)id }
                 };
                 _navigationService.NavigateAsync("ParcelMainPage", navigationParameters);
             }
@@ -280,7 +280,7 @@
                 // IsParcelListEnabled = false;
                 var navigationParameters = new NavigationParameters
                 {
-                    { "Id", (int)id },
+                    { "Id", (string)id },
                     { "EditEnabled", true },
                     { "Caller", "ParcelsOverviewPage" }
                 };

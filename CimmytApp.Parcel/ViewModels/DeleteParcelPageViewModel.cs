@@ -101,7 +101,7 @@
         /// </summary>
         private void DeleteParcel()
         {
-            _cimmytDbOperations.DeleteParcel(_parcel.GetDTO());
+            _cimmytDbOperations.DeleteParcel(_parcel.ParcelId);
             _navigationService.NavigateAsync("app:///MainPage");
         }
     }

@@ -53,9 +53,9 @@
             Realm.Write(() => Realm.Add(parcel));
         }
 
-        public void DeleteParcel(ParcelDTO parcel)
+        public void DeleteParcel(string parcelId)
         {
-            Realm.Remove(parcel);
+            Realm.Write(() => Realm.Remove(Realm.Find<ParcelDTO>(parcelId)));
         }
 
         public List<ParcelDTO> GetAllParcels()

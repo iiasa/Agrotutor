@@ -20,7 +20,7 @@
 
         public double? Heading { get; set; }
 
-        public string Id { get; set; }
+        public string Id { get; set; } = Guid.NewGuid().ToString();
 
         /// <summary>
         ///     Gets or sets the Latitude
