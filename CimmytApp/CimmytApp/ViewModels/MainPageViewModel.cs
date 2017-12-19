@@ -54,7 +54,7 @@
 
         private void NavigateAsync(string page)
         {
-            _navigationService.NavigateAsync(page);
+            _navigationService.NavigateAsync(page, useModalNavigation: false);
         }
 
         private void NavigateToCalendar()

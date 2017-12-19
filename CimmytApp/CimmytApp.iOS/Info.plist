@@ -21,7 +21,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>CimmytApp</string>
+	<string>Agrotutor</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.IIASA.CimmytApp</string>
 	<key>CFBundleVersion</key>
@@ -48,5 +48,9 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleName</key>
 	<string>CimmytApp</string>
+	<key>XSAppIconAssets</key>
+	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1</string>
 </dict>
 </plist>

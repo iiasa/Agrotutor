@@ -37,7 +37,8 @@
                 Debug.WriteLine("====================================");
 
                 //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
-                if (Device.OS == TargetPlatform.iOS || Device.OS == TargetPlatform.Android)
+
+                if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
                 {
                     //var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
                     //Helper.Localization.Resx.AppResources.Culture = ci;
