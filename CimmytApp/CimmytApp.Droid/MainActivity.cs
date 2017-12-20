@@ -21,7 +21,7 @@ namespace CimmytApp.Droid
     using Xamarin.Forms.Platform.Android;
     using XamForms.Controls.Droid;
 
-    [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon", MainLauncher = true,
+    [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
@@ -50,7 +50,6 @@ namespace CimmytApp.Droid
                 {
                     var x = args;
                 };
-
 
                 if (Device.Idiom == TargetIdiom.Phone) RequestedOrientation = ScreenOrientation.Portrait;
 

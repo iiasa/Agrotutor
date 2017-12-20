@@ -15184,6 +15184,9 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f0d01b0
 			public const int MyTheme_Base = 2131558832;
 			
+			// aapt resource value: 0x7f0d01b1
+			public const int MyTheme_Splash = 2131558833;
+			
 			// aapt resource value: 0x7f0d002d
 			public const int Platform_AppCompat = 2131558445;
 			
