@@ -4,7 +4,7 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.StaticContent.Views.SplashScreenPage">
     <StackLayout Orientation="Vertical" VerticalOptions="Center">
-        <Label Text="México produce" FontSize="36" FontFamily="Rounded" HorizontalOptions="CenterAndExpand" Margin="32" />
+        <Label Text="Agrotutor" FontSize="36" FontFamily="Rounded" HorizontalOptions="CenterAndExpand" Margin="32" />
         <Image Source="logo_big.png" Margin="32" />
         <Label Text="Aplicación móvil para manejo de parcelas" FontAttributes="Bold" HorizontalOptions="End"
             Margin="16" FontSize="18" />
