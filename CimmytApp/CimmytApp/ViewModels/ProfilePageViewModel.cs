@@ -48,7 +48,7 @@
                 State = (string)App.GetProperty("UserState")
             };
 
-            if (UserProfile?.State != "")
+            if (UserProfile?.State != null && UserProfile.State != "")
             {
                 for (var i = 0; i < States.Count; i++)
                 {

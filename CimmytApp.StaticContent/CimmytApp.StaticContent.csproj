@@ -46,7 +46,6 @@
     <Compile Include="StaticContentModule.cs" />
     <Compile Include="ViewModels\CitationPageViewModel.cs" />
     <Compile Include="ViewModels\LinksPageViewModel.cs" />
-    <Compile Include="ViewModels\SplashScreenPageViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\CitationPage.xaml.cs">
       <DependentUpon>CitationPage.xaml</DependentUpon>
