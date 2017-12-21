@@ -7,7 +7,7 @@
     using Android.Support.V7.App;
     using Android.Util;
 
-    [Activity(Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : AppCompatActivity
     {
         private static readonly string TAG = "X:" + typeof(SplashActivity).Name;

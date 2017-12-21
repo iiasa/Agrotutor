@@ -150,17 +150,11 @@
             InitializeComponent();
 
             if (Current.Properties.ContainsKey("not_first_launch"))
-            {
                 NavigationService.NavigateAsync("app:///MainPage");
-            }
             else
             {
                 Current.Properties.Add("not_first_launch", true);
-                var parameters = new NavigationParameters
-                {
-                    { "ShowGuide", true }
-                };
-                NavigationService.NavigateAsync("SplashScreenPage", parameters);
+                NavigationService.NavigateAsync("app:///WelcomePage");
             }
         }
 

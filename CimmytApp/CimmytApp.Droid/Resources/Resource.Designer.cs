@@ -11611,26 +11611,26 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f020058
 			public const int avd_hide_password = 2130837592;
 			
-			// aapt resource value: 0x7f0201e9
-			public const int avd_hide_password_1 = 2130837993;
-			
-			// aapt resource value: 0x7f0201ea
-			public const int avd_hide_password_2 = 2130837994;
-			
 			// aapt resource value: 0x7f0201eb
-			public const int avd_hide_password_3 = 2130837995;
+			public const int avd_hide_password_1 = 2130837995;
+			
+			// aapt resource value: 0x7f0201ec
+			public const int avd_hide_password_2 = 2130837996;
+			
+			// aapt resource value: 0x7f0201ed
+			public const int avd_hide_password_3 = 2130837997;
 			
 			// aapt resource value: 0x7f020059
 			public const int avd_show_password = 2130837593;
 			
-			// aapt resource value: 0x7f0201ec
-			public const int avd_show_password_1 = 2130837996;
-			
-			// aapt resource value: 0x7f0201ed
-			public const int avd_show_password_2 = 2130837997;
-			
 			// aapt resource value: 0x7f0201ee
-			public const int avd_show_password_3 = 2130837998;
+			public const int avd_show_password_1 = 2130837998;
+			
+			// aapt resource value: 0x7f0201ef
+			public const int avd_show_password_2 = 2130837999;
+			
+			// aapt resource value: 0x7f0201f0
+			public const int avd_show_password_3 = 2130838000;
 			
 			// aapt resource value: 0x7f02005a
 			public const int blowing_dust = 2130837594;
@@ -12706,11 +12706,11 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f0201bf
 			public const int notification_icon_background = 2130837951;
 			
-			// aapt resource value: 0x7f0201e7
-			public const int notification_template_icon_bg = 2130837991;
+			// aapt resource value: 0x7f0201e9
+			public const int notification_template_icon_bg = 2130837993;
 			
-			// aapt resource value: 0x7f0201e8
-			public const int notification_template_icon_low_bg = 2130837992;
+			// aapt resource value: 0x7f0201ea
+			public const int notification_template_icon_low_bg = 2130837994;
 			
 			// aapt resource value: 0x7f0201c0
 			public const int notification_tile_bg = 2130837952;
@@ -12785,49 +12785,55 @@ namespace CimmytApp.Droid
 			public const int sowing_small = 2130837975;
 			
 			// aapt resource value: 0x7f0201d8
-			public const int storage = 2130837976;
+			public const int splash_background = 2130837976;
 			
 			// aapt resource value: 0x7f0201d9
-			public const int storage_small = 2130837977;
+			public const int splashscreen = 2130837977;
 			
 			// aapt resource value: 0x7f0201da
-			public const int tab_view_popup_background = 2130837978;
+			public const int storage = 2130837978;
 			
 			// aapt resource value: 0x7f0201db
-			public const int thunderstorms = 2130837979;
+			public const int storage_small = 2130837979;
 			
 			// aapt resource value: 0x7f0201dc
-			public const int tooltip_frame_dark = 2130837980;
+			public const int tab_view_popup_background = 2130837980;
 			
 			// aapt resource value: 0x7f0201dd
-			public const int tooltip_frame_light = 2130837981;
+			public const int thunderstorms = 2130837981;
 			
 			// aapt resource value: 0x7f0201de
-			public const int wand = 2130837982;
+			public const int tooltip_frame_dark = 2130837982;
 			
 			// aapt resource value: 0x7f0201df
-			public const int wand_small = 2130837983;
+			public const int tooltip_frame_light = 2130837983;
 			
 			// aapt resource value: 0x7f0201e0
-			public const int weather = 2130837984;
+			public const int wand = 2130837984;
 			
 			// aapt resource value: 0x7f0201e1
-			public const int weeds = 2130837985;
+			public const int wand_small = 2130837985;
 			
 			// aapt resource value: 0x7f0201e2
-			public const int weeds_small = 2130837986;
+			public const int weather = 2130837986;
 			
 			// aapt resource value: 0x7f0201e3
-			public const int welcome_1 = 2130837987;
+			public const int weeds = 2130837987;
 			
 			// aapt resource value: 0x7f0201e4
-			public const int welcome_2 = 2130837988;
+			public const int weeds_small = 2130837988;
 			
 			// aapt resource value: 0x7f0201e5
-			public const int welcome_3 = 2130837989;
+			public const int welcome_1 = 2130837989;
 			
 			// aapt resource value: 0x7f0201e6
-			public const int welcome_4 = 2130837990;
+			public const int welcome_2 = 2130837990;
+			
+			// aapt resource value: 0x7f0201e7
+			public const int welcome_3 = 2130837991;
+			
+			// aapt resource value: 0x7f0201e8
+			public const int welcome_4 = 2130837992;
 			
 			static Drawable()
 			{
