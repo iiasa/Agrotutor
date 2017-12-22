@@ -203,20 +203,20 @@
                 MaturityClass = MaturityClass,
                 ParcelId = ParcelId,
                 ParcelName = ParcelName,
-                Position = Position?.GetDTO()
+                Position = Position?.GetDTO(ParcelId),
+                AgriculturalActivitiesList =
+                    AgriculturalActivities.Select(activity => activity.GetDTO(ParcelId)).ToList(),
+                DelineationList = Delineation.Select(position => position.GetDTO(ParcelId)).ToList()
             };
-
-            dto.SetAgriculturalActivities(AgriculturalActivities.Select(activity => activity.GetDTO()).ToList());
-
-            dto.SetDelineation(Delineation.Select(position => position.GetDTO()).ToList());
 
             var technologies = new List<TechnologyDTO>();
             technologies.AddRange(TechnologiesUsed.Select(technology => new TechnologyDTO
             {
                 Name = technology.Name,
-                Id = technology.Id
+                Id = technology.Id,
+                ParcelId = ParcelId
             }));
-            dto.SetTechnologies(technologies);
+            dto.TechnologiesUsedList = technologies;
             return dto;
         }
 

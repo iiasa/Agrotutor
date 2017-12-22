@@ -427,7 +427,7 @@
                 EditModeActive = false;
             }
             EditsDone = false;
-            _cimmytDbOperations.UpdateParcel(Parcel.GetDTO());
+            _cimmytDbOperations.SaveParcel(Parcel.GetDTO(), true);
             var parameters = new NavigationParameters
             {
                 { "Id", Parcel.ParcelId }

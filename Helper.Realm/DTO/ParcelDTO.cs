@@ -6,15 +6,20 @@
 
     public class ParcelDTO : RealmObject
     {
-        private List<AgriculturalActivityDTO> _agriculturalActivities;
+        public IList<AgriculturalActivityDTO> AgriculturalActivities { get; } = new List<AgriculturalActivityDTO>();
 
-        private List<GeoPositionDTO> _delineation;
+        public IList<GeoPositionDTO> Delineation { get; } = new List<GeoPositionDTO>();
 
-        private List<TechnologyDTO> _technologiesUsed;
+        public IList<TechnologyDTO> TechnologiesUsed { get; } = new List<TechnologyDTO>();
 
-        public IList<AgriculturalActivityDTO> AgriculturalActivities => _agriculturalActivities;
-        public IList<GeoPositionDTO> Delineation => _delineation;
-        public IList<TechnologyDTO> TechnologiesUsed => _technologiesUsed;
+        [Ignored]
+        public List<AgriculturalActivityDTO> AgriculturalActivitiesList { get; set; }
+
+        [Ignored]
+        public List<GeoPositionDTO> DelineationList { get; set; }
+
+        [Ignored]
+        public List<TechnologyDTO> TechnologiesUsedList { get; set; }
 
         public string ClimateType { get; set; }
 
@@ -30,20 +35,5 @@
         public string ParcelName { get; set; }
 
         public GeoPositionDTO Position { get; set; }
-
-        public void SetAgriculturalActivities(List<AgriculturalActivityDTO> activities)
-        {
-            _agriculturalActivities = activities;
-        }
-
-        public void SetDelineation(List<GeoPositionDTO> delineation)
-        {
-            _delineation = delineation;
-        }
-
-        public void SetTechnologies(List<TechnologyDTO> technologies)
-        {
-            _technologiesUsed = technologies;
-        }
     }
 }

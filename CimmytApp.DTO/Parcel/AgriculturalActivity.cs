@@ -101,7 +101,7 @@
         /// <summary>
         ///     Gets or sets the ParcelId
         /// </summary>
-        public int ParcelId { get; set; }
+        public string ParcelId { get; set; }
 
         /// <summary>
         ///     Gets or sets the ProductObtained
@@ -141,6 +141,7 @@
                 Id = activity.Id,
                 Name = activity.Name,
                 NumberOfSeeds = activity.NumberOfSeeds,
+                ParcelId = activity.ParcelId,
                 ProductObtained = activity.ProductObtained,
                 Sown = activity.Sown,
                 WeightOfSeeds = activity.WeightOfSeeds,
@@ -148,7 +149,7 @@
             };
         }
 
-        public AgriculturalActivityDTO GetDTO()
+        public AgriculturalActivityDTO GetDTO(string parcelId)
         {
             return new AgriculturalActivityDTO
             {
@@ -161,6 +162,7 @@
                 Id = Id,
                 Name = Name,
                 NumberOfSeeds = NumberOfSeeds,
+                ParcelId = parcelId,
                 ProductObtained = ProductObtained,
                 Sown = Sown,
                 WeightOfSeeds = WeightOfSeeds,

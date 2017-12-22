@@ -36,6 +36,10 @@
 
         public DateTimeOffset Timestamp { get; set; }
 
+        public string ParcelId { get; set; }
+
+        public bool IsPartOfdelineation { get; set; }
+
         public static GeoPosition FromDTO(GeoPositionDTO position)
         {
             if (position == null)
@@ -50,14 +54,16 @@
                 AltitudeAccuracy = position.AltitudeAccuracy,
                 Heading = position.Heading,
                 Id = position.Id,
+                IsPartOfdelineation = position.IsPartOfdelineation,
                 Latitude = position.Latitude,
                 Longitude = position.Longitude,
+                ParcelId = position.ParcelId,
                 Speed = position.Speed,
                 Timestamp = position.Timestamp
             };
         }
 
-        public GeoPositionDTO GetDTO()
+        public GeoPositionDTO GetDTO(string parcelId)
         {
             return new GeoPositionDTO
             {
@@ -66,8 +72,10 @@
                 AltitudeAccuracy = AltitudeAccuracy,
                 Heading = Heading,
                 Id = Id,
+                IsPartOfdelineation = IsPartOfdelineation,
                 Latitude = Latitude,
                 Longitude = Longitude,
+                ParcelId = parcelId,
                 Speed = Speed,
                 Timestamp = Timestamp
             };

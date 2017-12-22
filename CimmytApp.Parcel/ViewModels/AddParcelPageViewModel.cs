@@ -379,7 +379,7 @@
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
-            _cimmytDbOperations.AddParcel(Parcel.GetDTO());
+            _cimmytDbOperations.SaveParcel(Parcel.GetDTO());
 
             var navigationParameters = new NavigationParameters
             {

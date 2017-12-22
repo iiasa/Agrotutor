@@ -31,28 +31,6 @@
             }
         }
 
-        public void AddParcel(ParcelDTO parcel)
-        {
-            foreach (var agriculturalActivity in parcel.AgriculturalActivities)
-            {
-                SaveActivity(agriculturalActivity);
-            }
-            foreach (var technology in parcel.TechnologiesUsed)
-            {
-                SaveTechnology(technology);
-            }
-            foreach (var geoPosition in parcel.Delineation)
-            {
-                SaveGeoPosition(geoPosition);
-            }
-
-            if (parcel.Position != null)
-            {
-                SaveGeoPosition(parcel.Position);
-            }
-            Realm.Write(() => Realm.Add(parcel));
-        }
-
         public void DeleteParcel(string parcelId)
         {
             Realm.Write(() => Realm.Remove(Realm.Find<ParcelDTO>(parcelId)));
@@ -76,8 +54,33 @@
 
         public ParcelDTO GetParcelById(string parcelId)
         {
-            return Realm.Find<ParcelDTO>(parcelId);
+            var parcelDTO = Realm.Find<ParcelDTO>(parcelId);
+            return parcelDTO;
+        }/*
+
+        public List<AgriculturalActivityDTO> GetAgriculturalActivitiesForParcel(string parcelId)
+        {
+            var activities = Realm.All<AgriculturalActivityDTO>().Where(p => p.ParcelId == parcelId);
+            return activities.ToList();
         }
+
+        public GeoPositionDTO GetParcelPosition(string parcelId)
+        {
+            var position = Realm.All<GeoPositionDTO>().Where(p => p.ParcelId == parcelId).First(p => p.IsPartOfdelineation == false);
+            return position;
+        }
+
+        public List<GeoPositionDTO> GetParcelDelineation(string parcelId)
+        {
+            var delineation = Realm.All<GeoPositionDTO>().Where(p => p.ParcelId == parcelId).Where(p => p.IsPartOfdelineation);
+            return delineation.ToList();
+        }
+
+        public List<TechnologyDTO> GetParcelTechnology(string parcelId)
+        {
+            var tech = Realm.All<TechnologyDTO>().Where(p => p.ParcelId == parcelId);
+            return tech.ToList();
+        }*/
 
         public void SaveCostos(List<Costo> listCostos)
         {
@@ -115,24 +118,41 @@
             }
         }
 
-        public void UpdateParcel(ParcelDTO parcel)
-        {
-            Realm.Write(() => Realm.Add(parcel, true));
+        public void SaveParcel(ParcelDTO parcel, bool update = false)
+        { // TODO delete removed technology
+            foreach (var agriculturalActivity in parcel.AgriculturalActivitiesList)
+            {
+                Realm.Write(() => parcel.AgriculturalActivities.Add(agriculturalActivity));
+            }
+            foreach (var technology in parcel.TechnologiesUsedList)
+            {
+                Realm.Write(() => parcel.TechnologiesUsed.Add(technology));
+            }
+            foreach (var geoPosition in parcel.DelineationList)
+            {
+                Realm.Write(() => parcel.Delineation.Add(geoPosition));
+            }
+
+            if (parcel.Position != null)
+            {
+                SaveGeoPosition(parcel.Position, update);
+            }
+            Realm.Write(() => Realm.Add(parcel, update));
         }
 
-        private void SaveActivity(AgriculturalActivityDTO agriculturalActivity)
+        private void SaveActivity(AgriculturalActivityDTO agriculturalActivity, bool update = false)
         {
-            Realm.Write(() => Realm.Add(agriculturalActivity));
+            Realm.Write(() => Realm.Add(agriculturalActivity, update));
         }
 
-        private void SaveGeoPosition(GeoPositionDTO geoPosition)
+        private void SaveGeoPosition(GeoPositionDTO geoPosition, bool update = false)
         {
-            Realm.Write(() => Realm.Add(geoPosition));
+            Realm.Write(() => Realm.Add(geoPosition, update));
         }
 
-        private void SaveTechnology(TechnologyDTO technology)
+        private void SaveTechnology(TechnologyDTO technology, bool update = false)
         {
-            Realm.Write(() => Realm.Add(technology));
+            Realm.Write(() => Realm.Add(technology, update));
         }
     }
 }

@@ -6,7 +6,7 @@
 
     public interface ICimmytDbOperations
     {
-        void AddParcel(ParcelDTO parcel);
+        void SaveParcel(ParcelDTO parcel, bool update = false);
 
         void DeleteParcel(string parcelId);
 
@@ -22,8 +22,14 @@
 
         void SaveRendimientos(List<Rendimiento> listRendimientos);
 
-        void SaveUtilidades(List<Utilidad> listUtilidades);
+        void SaveUtilidades(List<Utilidad> listUtilidades);/*
 
-        void UpdateParcel(ParcelDTO parcel);
+        List<AgriculturalActivityDTO> GetAgriculturalActivitiesForParcel(string parcelId);
+
+        GeoPositionDTO GetParcelPosition(string parcelId);
+
+        List<GeoPositionDTO> GetParcelDelineation(string parcelId);
+
+        List<TechnologyDTO> GetParcelTechnology(string parcelId);*/
     }
 }

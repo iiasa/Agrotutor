@@ -266,8 +266,8 @@
                 var geoPositions = positions.Select(position => new GeoPosition
                 {
                     Latitude = position.Latitude,
-                    Longitude = position.Longitude
-
+                    Longitude = position.Longitude,
+                    IsPartOfdelineation = true
                     //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
                 })
                     .ToList();
@@ -322,7 +322,8 @@
                     Point = new GeoPosition
                     {
                         Latitude = position.Latitude,
-                        Longitude = position.Longitude
+                        Longitude = position.Longitude,
+                        IsPartOfdelineation = false
                     };
                 }
 
@@ -384,7 +385,8 @@
             Point = new GeoPosition
             {
                 Latitude = position.Latitude,
-                Longitude = position.Longitude
+                Longitude = position.Longitude,
+                IsPartOfdelineation = false
             };
             _view.SetMapPins(new List<Pin>
             {
