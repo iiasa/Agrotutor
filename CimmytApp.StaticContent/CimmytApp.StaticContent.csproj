@@ -53,9 +53,6 @@
     <Compile Include="Views\LinksPage.xaml.cs">
       <DependentUpon>LinksPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SplashScreenPage.xaml.cs">
-      <DependentUpon>SplashScreenPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
     </Compile>
@@ -104,12 +101,6 @@
       <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
       <Name>Helper.Localization</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\SplashScreenPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Views\CitationPage.xaml">

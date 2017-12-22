@@ -5,7 +5,6 @@
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel.Events;
     using Helper.Map.ViewModels;
-    using Helper.Realm;
     using Helper.Realm.BusinessContract;
     using Prism.Commands;
     using Prism.Events;
@@ -54,7 +53,7 @@
 
         private void NavigateAsync(string page)
         {
-            _navigationService.NavigateAsync(page, useModalNavigation: false);
+            _navigationService.NavigateAsync(page);//, useModalNavigation: false);
         }
 
         private void NavigateToCalendar()
