@@ -76,7 +76,7 @@
         /// <summary>
         ///     Gets or sets the Date
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTimeOffset Date { get; set; }
 
         /// <summary>
         ///     Gets or sets the Dose
@@ -136,7 +136,7 @@
                 AmountApplied = activity.AmountApplied,
                 AppliedProduct = activity.AppliedProduct,
                 Cost = activity.Cost,
-                Date = activity.Date.UtcDateTime,
+                Date = activity.Date,
                 Dose = activity.Dose,
                 Id = activity.Id,
                 Name = activity.Name,

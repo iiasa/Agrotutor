@@ -30,6 +30,8 @@
 
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
+        public DateTimeOffset PlantingDate { get; set; } = DateTime.Today;
+
         public Parcel()
         {
             AgriculturalActivities = new List<AgriculturalActivity>();
@@ -179,6 +181,7 @@
                 MaturityClass = parcelDTO.MaturityClass,
                 ParcelId = parcelDTO.ParcelId,
                 ParcelName = parcelDTO.ParcelName,
+                PlantingDate = parcelDTO.PlantingDate,
                 Position = GeoPosition.FromDTO(parcelDTO.Position),
                 TechnologiesUsed = technologies
             };
@@ -203,6 +206,7 @@
                 MaturityClass = MaturityClass,
                 ParcelId = ParcelId,
                 ParcelName = ParcelName,
+                PlantingDate = PlantingDate,
                 Position = Position?.GetDTO(ParcelId),
                 AgriculturalActivitiesList =
                     AgriculturalActivities.Select(activity => activity.GetDTO(ParcelId)).ToList(),

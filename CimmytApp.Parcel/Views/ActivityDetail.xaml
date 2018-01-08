@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:datatypes="clr-namespace:Helper.Datatypes;assembly=Helper.Datatypes"
+    prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Parcel.Views.ActivityDetail">
     <ScrollView>
         <Grid Margin="16,16,16,0">
@@ -36,8 +38,7 @@
             <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}"
                 Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
                 <Label Text="Fecha de la actividad" HorizontalOptions="Start" FontSize="18" />
-                <DatePicker Date="{Binding ActivityDate}" Margin="16,16,0,0" WidthRequest="250"
-                    MinimumDate="{Binding MinimumCalenderDateTime}" />
+                <DatePicker Date="{Binding ActivityDate, Converter={datatypes:DateTimeToDateTimeOffsetConverter}, Mode=TwoWay}"  Margin="16,16,0,0" WidthRequest="250" />
             </StackLayout>
             <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityTotalCostVisibility}"
                 Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">

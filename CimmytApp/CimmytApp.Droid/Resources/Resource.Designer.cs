@@ -11611,26 +11611,26 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f020058
 			public const int avd_hide_password = 2130837592;
 			
-			// aapt resource value: 0x7f0201eb
-			public const int avd_hide_password_1 = 2130837995;
+			// aapt resource value: 0x7f0201ef
+			public const int avd_hide_password_1 = 2130837999;
 			
-			// aapt resource value: 0x7f0201ec
-			public const int avd_hide_password_2 = 2130837996;
+			// aapt resource value: 0x7f0201f0
+			public const int avd_hide_password_2 = 2130838000;
 			
-			// aapt resource value: 0x7f0201ed
-			public const int avd_hide_password_3 = 2130837997;
+			// aapt resource value: 0x7f0201f1
+			public const int avd_hide_password_3 = 2130838001;
 			
 			// aapt resource value: 0x7f020059
 			public const int avd_show_password = 2130837593;
 			
-			// aapt resource value: 0x7f0201ee
-			public const int avd_show_password_1 = 2130837998;
+			// aapt resource value: 0x7f0201f2
+			public const int avd_show_password_1 = 2130838002;
 			
-			// aapt resource value: 0x7f0201ef
-			public const int avd_show_password_2 = 2130837999;
+			// aapt resource value: 0x7f0201f3
+			public const int avd_show_password_2 = 2130838003;
 			
-			// aapt resource value: 0x7f0201f0
-			public const int avd_show_password_3 = 2130838000;
+			// aapt resource value: 0x7f0201f4
+			public const int avd_show_password_3 = 2130838004;
 			
 			// aapt resource value: 0x7f02005a
 			public const int blowing_dust = 2130837594;
@@ -12706,11 +12706,11 @@ namespace CimmytApp.Droid
 			// aapt resource value: 0x7f0201bf
 			public const int notification_icon_background = 2130837951;
 			
-			// aapt resource value: 0x7f0201e9
-			public const int notification_template_icon_bg = 2130837993;
+			// aapt resource value: 0x7f0201ed
+			public const int notification_template_icon_bg = 2130837997;
 			
-			// aapt resource value: 0x7f0201ea
-			public const int notification_template_icon_low_bg = 2130837994;
+			// aapt resource value: 0x7f0201ee
+			public const int notification_template_icon_low_bg = 2130837998;
 			
 			// aapt resource value: 0x7f0201c0
 			public const int notification_tile_bg = 2130837952;
@@ -12834,6 +12834,18 @@ namespace CimmytApp.Droid
 			
 			// aapt resource value: 0x7f0201e8
 			public const int welcome_4 = 2130837992;
+			
+			// aapt resource value: 0x7f0201e9
+			public const int welcome_5 = 2130837993;
+			
+			// aapt resource value: 0x7f0201ea
+			public const int welcome_6 = 2130837994;
+			
+			// aapt resource value: 0x7f0201eb
+			public const int welcome_7 = 2130837995;
+			
+			// aapt resource value: 0x7f0201ec
+			public const int welcome_8 = 2130837996;
 			
 			static Drawable()
 			{

@@ -27,7 +27,7 @@
         /// <summary>
         ///     Defines the _activityDate
         /// </summary>
-        private DateTime _activityDate;
+        private DateTimeOffset _activityDate;
 
         /// <summary>
         ///     Defines the _activityDose
@@ -70,11 +70,6 @@
         private List<string> _listSownVariety;
 
         /// <summary>
-        ///     Defines the _minimumCalenderDateTime
-        /// </summary>
-        private DateTime _minimumCalenderDateTime;
-
-        /// <summary>
         ///     Defines the _numberOfSeeds
         /// </summary>
         private double _numberOfSeeds;
@@ -106,7 +101,7 @@
                 "Criollo",
                 "Mejorado"
             };
-            MinimumCalenderDateTime = DateTime.Now.Subtract(new TimeSpan(672, 0, 0, 0));
+            ActivityDate = DateTimeOffset.Now;
             SaveCommand = new DelegateCommand(SaveCommandExecution);
         }
 
@@ -122,7 +117,7 @@
         /// <summary>
         ///     Gets or sets the ActivityDate
         /// </summary>
-        public DateTime ActivityDate
+        public DateTimeOffset ActivityDate
         {
             get => _activityDate;
             set => SetProperty(ref _activityDate, value);
@@ -203,15 +198,6 @@
         {
             get => _listSownVariety;
             set => SetProperty(ref _listSownVariety, value);
-        }
-
-        /// <summary>
-        ///     Gets or sets the MinimumCalenderDateTime
-        /// </summary>
-        public DateTime MinimumCalenderDateTime
-        {
-            get => _minimumCalenderDateTime;
-            set => SetProperty(ref _minimumCalenderDateTime, value);
         }
 
         /// <summary>

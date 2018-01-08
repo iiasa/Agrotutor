@@ -2,7 +2,9 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
-    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" mvvm:ViewModelLocator.AutowireViewModel="True"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:datatypes="clr-namespace:Helper.Datatypes;assembly=Helper.Datatypes"
+    mvvm:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Parcel.Views.ParcelPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
@@ -21,7 +23,7 @@
                 IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
-            <DatePicker Date="{Binding Parcel.PlantingDate}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
+            <DatePicker Date="{Binding ActivityDate, Converter={datatypes:DateTimeToDateTimeOffsetConverter}, Mode=TwoWay}" IsEnabled="{Binding EditModeActive}" Margin="0,0,0,16" />
 
             <Label Text="{localization:Translate madurez}" FontSize="18" />
             <Picker ItemsSource="{Binding MaturityClasses}"

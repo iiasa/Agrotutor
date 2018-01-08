@@ -56,7 +56,7 @@
                     </StackLayout.GestureRecognizers>
 
                     <Image Source="icon_scales_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="informacion comparativa" HorizontalTextAlignment="Center" />
+                    <Label Text="Informacion comparativa" HorizontalTextAlignment="Center" />
                 </StackLayout>
 
                 <StackLayout forms:Grid.Row="2" forms:Grid.Column="0" Orientation="Vertical">

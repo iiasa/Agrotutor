@@ -35,5 +35,7 @@
         public string ParcelName { get; set; }
 
         public GeoPositionDTO Position { get; set; }
+
+        public DateTimeOffset PlantingDate { get; set; }
     }
 }

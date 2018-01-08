@@ -69,8 +69,8 @@
                           select new Appointment
                           {
                               IsAllDay = true,
-                              StartDate = activity.Date,
-                              EndDate = activity.Date,
+                              StartDate = activity.Date.UtcDateTime,
+                              EndDate = activity.Date.UtcDateTime,
                               Title = activity.Name,
                               Color = Color.PaleGreen
                           }).ToList();
