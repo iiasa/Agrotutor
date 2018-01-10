@@ -44,7 +44,7 @@ namespace CimmytApp.Droid
                 {
                     CreateNotification("New hub message!", messageText);
 
-                    // TODO save data in DB for app to use
+                    // TODO- save data in DB for app to use
                 }
             }
         }
@@ -61,13 +61,13 @@ namespace CimmytApp.Droid
             Log.Verbose(AzurePushBroadcastReceiver.Tag, "GCM Registered: " + registrationId);
             RegistrationId = registrationId;
 
-            // TODO store registrationID
+            // TODO- store registrationID
             /*CreateNotification("PushHandlerService-GCM Registered...",
                                 "The device has been Registered!");*/
 
             Hub = new NotificationHub(Constants.NotificationHubName, Constants.ListenConnectionString, context);
 
-            //TODO : don't unregister - load registrationID here if available
+            //TODO- don't unregister - load registrationID here if available
             try
             {
                 Hub.UnregisterAll(registrationId);

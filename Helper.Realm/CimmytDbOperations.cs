@@ -119,7 +119,7 @@
         }
 
         public void SaveParcel(ParcelDTO parcel, bool update = false)
-        { // TODO delete removed technology
+        { // TODO! delete removed technology
             foreach (var agriculturalActivity in parcel.AgriculturalActivitiesList)
             {
                 Realm.Write(() => parcel.AgriculturalActivities.Add(agriculturalActivity));

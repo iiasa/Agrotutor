@@ -59,7 +59,7 @@ namespace CimmytApp.Droid
                 FormsGoogleMaps.Init(this, bundle);
                 Calendar.Init();
 
-                RegisterWithGCM(); // TODO Store token and only register when token = null
+                RegisterWithGCM(); // TODO- Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));
             }
             catch (Exception)

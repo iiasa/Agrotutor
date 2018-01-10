@@ -52,7 +52,7 @@
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
-                    //TODO: Load state from previously suspended application
+                    //TODO- Load state from previously suspended application
                 }
 
                 // Place the frame in the current Window
@@ -92,7 +92,7 @@
         {
             SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
 
-            //TODO: Save application state and stop any background activity
+            //TODO- Save application state and stop any background activity
             deferral.Complete();
         }
     }

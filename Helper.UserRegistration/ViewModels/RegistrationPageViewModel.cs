@@ -19,7 +19,7 @@
 
         private void RegisterClick()
         {
-            //TODO: implement registration
+            //TODO- implement registration
         }
     }
 }

@@ -22,7 +22,7 @@
 
         private void LoginClick()
         {
-            //TODO: implement login
+            //TODO- implement login
         }
 
         private void NavigateToRegistrationClick()
