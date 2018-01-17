@@ -1,0 +1,714 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="add_parcel" xml:space="preserve">
+    <value>Agregue parcela</value>
+  </data>
+  <data name="agronomical_cycle" xml:space="preserve">
+    <value>Ciclo agronómico</value>
+  </data>
+  <data name="agronomical_cycle_1" xml:space="preserve">
+    <value>Primavera-Verano</value>
+  </data>
+  <data name="agronomical_cycle_2" xml:space="preserve">
+    <value>Otoño-Invierno</value>
+  </data>
+  <data name="agronomic_cycle_type" xml:space="preserve">
+    <value>Tipo de ciclo agronómico</value>
+  </data>
+  <data name="app_name" xml:space="preserve">
+    <value>México Produce</value>
+  </data>
+  <data name="april" xml:space="preserve">
+    <value>Abril</value>
+  </data>
+  <data name="august" xml:space="preserve">
+    <value>Agosto</value>
+  </data>
+  <data name="btn_choose_location" xml:space="preserve">
+    <value>Escoja una ubicación en el mapa</value>
+  </data>
+  <data name="btn_save_and_new" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
+  <data name="btn_save_and_new1" xml:space="preserve">
+    <value>Guardar y añadir otra(o)</value>
+  </data>
+  <data name="cdd" xml:space="preserve">
+    <value>Grados-día de enfriamiento</value>
+  </data>
+  <data name="coordinator" xml:space="preserve">
+    <value>Coordinador</value>
+  </data>
+  <data name="crop_types_1" xml:space="preserve">
+    <value>Maíz</value>
+  </data>
+  <data name="crop_types_10" xml:space="preserve">
+    <value>Amaranto</value>
+  </data>
+  <data name="crop_types_11" xml:space="preserve">
+    <value>Arroz</value>
+  </data>
+  <data name="crop_types_12" xml:space="preserve">
+    <value>Canola</value>
+  </data>
+  <data name="crop_types_13" xml:space="preserve">
+    <value>Cartamo</value>
+  </data>
+  <data name="crop_types_14" xml:space="preserve">
+    <value>Calabacín</value>
+  </data>
+  <data name="crop_types_15" xml:space="preserve">
+    <value>Garbanzo</value>
+  </data>
+  <data name="crop_types_16" xml:space="preserve">
+    <value>Haba</value>
+  </data>
+  <data name="crop_types_17" xml:space="preserve">
+    <value>Soya</value>
+  </data>
+  <data name="crop_types_18" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="crop_types_19" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="crop_types_2" xml:space="preserve">
+    <value>Cebada</value>
+  </data>
+  <data name="crop_types_3" xml:space="preserve">
+    <value>Frijol</value>
+  </data>
+  <data name="crop_types_4" xml:space="preserve">
+    <value>Trigo</value>
+  </data>
+  <data name="crop_types_5" xml:space="preserve">
+    <value>Triticale</value>
+  </data>
+  <data name="crop_types_6" xml:space="preserve">
+    <value>Sorgo</value>
+  </data>
+  <data name="crop_types_7" xml:space="preserve">
+    <value>Alfalfa</value>
+  </data>
+  <data name="crop_types_8" xml:space="preserve">
+    <value>Avena</value>
+  </data>
+  <data name="crop_types_9" xml:space="preserve">
+    <value>Ajonjolí</value>
+  </data>
+  <data name="cycle" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="date" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="december" xml:space="preserve">
+    <value>Diciembre</value>
+  </data>
+  <data name="degrees_celsius" xml:space="preserve">
+    <value>Grados celsius</value>
+  </data>
+  <data name="desc" xml:space="preserve">
+    <value>Evapotranspiración diaria cultivo bajo</value>
+  </data>
+  <data name="details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="detc" xml:space="preserve">
+    <value>Evapotranspiración diaria cultivo alto</value>
+  </data>
+  <data name="dht" xml:space="preserve">
+    <value>Temperatura alta diaria</value>
+  </data>
+  <data name="direction_unit" xml:space="preserve">
+    <value>Grados en sentido horario desde el norte</value>
+  </data>
+  <data name="direction_unit_short" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="dlt" xml:space="preserve">
+    <value>Temperatura baja diaria</value>
+  </data>
+  <data name="dp" xml:space="preserve">
+    <value>Precipitación diaria</value>
+  </data>
+  <data name="dsr" xml:space="preserve">
+    <value>Radiación solar diaria</value>
+  </data>
+  <data name="end" xml:space="preserve">
+    <value>Fin</value>
+  </data>
+  <data name="evapotranspiration_unit" xml:space="preserve">
+    <value>Milímetros por día</value>
+  </data>
+  <data name="evapotranspiration_unit_hour" xml:space="preserve">
+    <value>Milímetros por hora</value>
+  </data>
+  <data name="evapotranspiration_unit_hour_short" xml:space="preserve">
+    <value>mm/h</value>
+  </data>
+  <data name="evapotranspiration_unit_short" xml:space="preserve">
+    <value>mm/día</value>
+  </data>
+  <data name="february" xml:space="preserve">
+    <value>Febrero</value>
+  </data>
+  <data name="filter" xml:space="preserve">
+    <value>Filtro</value>
+  </data>
+  <data name="gdd" xml:space="preserve">
+    <value>Grados-día de crecimiento</value>
+  </data>
+  <data name="hd" xml:space="preserve">
+    <value>Punto de rocío por hora</value>
+  </data>
+  <data name="hdd" xml:space="preserve">
+    <value>Grados-día de calentamiento</value>
+  </data>
+  <data name="hesc" xml:space="preserve">
+    <value>Evapotranspiración por hora cultivo pequeño</value>
+  </data>
+  <data name="hetc" xml:space="preserve">
+    <value>Evapotranspiración por hora cultivo alto</value>
+  </data>
+  <data name="hint_additional_information" xml:space="preserve">
+    <value>Por favor ingrese la siguiente información opcional</value>
+  </data>
+  <data name="hint_agronomical_cycle" xml:space="preserve">
+    <value>Seleccione el ciclo agronómico</value>
+  </data>
+  <data name="hint_year" xml:space="preserve">
+    <value>Seleccione el año</value>
+  </data>
+  <data name="hint_crop" xml:space="preserve">
+    <value>Tipo de cultivo</value>
+  </data>
+  <data name="hint_cultivar" xml:space="preserve">
+    <value>Cultivar</value>
+  </data>
+  <data name="hint_cultivar_placeholder" xml:space="preserve">
+    <value>Cultivar sembrado</value>
+  </data>
+  <data name="hint_firstname_lastname" xml:space="preserve">
+    <value>Nombre Apellido</value>
+  </data>
+  <data name="hint_irrigation" xml:space="preserve">
+    <value>Riego</value>
+  </data>
+  <data name="hint_notifications" xml:space="preserve">
+    <value>Mostrar los mensajes en una lista</value>
+  </data>
+  <data name="hint_notification_received" xml:space="preserve">
+    <value>Tienes mensajes no leídos</value>
+  </data>
+  <data name="hint_other_technology_used" xml:space="preserve">
+    <value>Tecnologías usadas</value>
+  </data>
+  <data name="hint_parcel_name" xml:space="preserve">
+    <value>Nombre de parcela</value>
+  </data>
+  <data name="hint_parcel_name_1" xml:space="preserve">
+    <value>(para identificación, ej: Maíz Camino 1)</value>
+  </data>
+  <data name="hint_performance" xml:space="preserve">
+    <value>Desempeño</value>
+  </data>
+  <data name="hint_pesticide_date" xml:space="preserve">
+    <value>Fecha de aplicaicón de pesticida</value>
+  </data>
+  <data name="hint_pesticide_product" xml:space="preserve">
+    <value>Nombre del pesticida aplicado</value>
+  </data>
+  <data name="hint_pesticide_product_placeholder" xml:space="preserve">
+    <value>Producto</value>
+  </data>
+  <data name="hint_planting_date" xml:space="preserve">
+    <value>Fecha de siembra</value>
+  </data>
+  <data name="hint_producer_name" xml:space="preserve">
+    <value>Nombre del productor</value>
+  </data>
+  <data name="hint_technologies_used" xml:space="preserve">
+    <value>Por favor seleccione que tecnologías se emplearon:</value>
+  </data>
+  <data name="hint_technology_other" xml:space="preserve">
+    <value>Otras tecnologías</value>
+  </data>
+  <data name="hint_user_at_parcel" xml:space="preserve">
+    <value>Se encuentra en su parcela?</value>
+  </data>
+  <data name="hint_area" xml:space="preserve">
+    <value>Area estimada de parcela</value>
+  </data>
+  <data name="hourly_radiation_unit" xml:space="preserve">
+    <value>Vatios por metro cuadrado</value>
+  </data>
+  <data name="hourly_radiation_unit_short" xml:space="preserve">
+    <value>W/m²</value>
+  </data>
+  <data name="hp" xml:space="preserve">
+    <value>Precipitación por hora</value>
+  </data>
+  <data name="hsr" xml:space="preserve">
+    <value>Radiación solar por hora</value>
+  </data>
+  <data name="ht" xml:space="preserve">
+    <value>Temperatura por hora</value>
+  </data>
+  <data name="hub" xml:space="preserve">
+    <value>Centro</value>
+  </data>
+  <data name="hwd" xml:space="preserve">
+    <value>Dirección del viento por hora</value>
+  </data>
+  <data name="hws" xml:space="preserve">
+    <value>Velocidad del viento por hora</value>
+  </data>
+  <data name="institution" xml:space="preserve">
+    <value>Institución</value>
+  </data>
+  <data name="irrigation_type_1" xml:space="preserve">
+    <value>Riego</value>
+  </data>
+  <data name="irrigation_type_2" xml:space="preserve">
+    <value>Riego de punteo</value>
+  </data>
+  <data name="irrigation_type_3" xml:space="preserve">
+    <value>Temporal</value>
+  </data>
+  <data name="january" xml:space="preserve">
+    <value>Enero</value>
+  </data>
+  <data name="july" xml:space="preserve">
+    <value>Julio</value>
+  </data>
+  <data name="june" xml:space="preserve">
+    <value>Junio</value>
+  </data>
+  <data name="last_modification" xml:space="preserve">
+    <value>Última Modificación</value>
+  </data>
+  <data name="lat" xml:space="preserve">
+    <value>Latitud</value>
+  </data>
+  <data name="lng" xml:space="preserve">
+    <value>Lng</value>
+  </data>
+  <data name="location" xml:space="preserve">
+    <value>Ubicación</value>
+  </data>
+  <data name="location1" xml:space="preserve">
+    <value>Ubicación</value>
+  </data>
+  <data name="march" xml:space="preserve">
+    <value>Marzo</value>
+  </data>
+  <data name="may" xml:space="preserve">
+    <value>Mayo</value>
+  </data>
+  <data name="millimeters" xml:space="preserve">
+    <value>Milímetros</value>
+  </data>
+  <data name="millimeters_unit" xml:space="preserve">
+    <value>mm</value>
+  </data>
+  <data name="november" xml:space="preserve">
+    <value>Noviembre</value>
+  </data>
+  <data name="october" xml:space="preserve">
+    <value>Octubre</value>
+  </data>
+  <data name="optional_information" xml:space="preserve">
+    <value>Información opcional</value>
+  </data>
+  <data name="page_title_add_parcel" xml:space="preserve">
+    <value>Nueva parcela</value>
+  </data>
+  <data name="page_title_benchmarking" xml:space="preserve">
+    <value>Información comparativa local</value>
+  </data>
+  <data name="page_title_links" xml:space="preserve">
+    <value>Enlaces</value>
+  </data>
+  <data name="page_title_login" xml:space="preserve">
+    <value>Ingreso</value>
+  </data>
+  <data name="page_title_main" xml:space="preserve">
+    <value>México Produce!</value>
+  </data>
+  <data name="page_title_map" xml:space="preserve">
+    <value>Mapa</value>
+  </data>
+  <data name="page_title_notifications" xml:space="preserve">
+    <value>Mensajes</value>
+  </data>
+  <data name="page_title_parcels_overview" xml:space="preserve">
+    <value>Parcelas</value>
+  </data>
+  <data name="page_title_parcel_add_information" xml:space="preserve">
+    <value>Ingrese información</value>
+  </data>
+  <data name="page_title_parcel_benchmarking" xml:space="preserve">
+    <value>Información comparativa local</value>
+  </data>
+  <data name="page_title_parcel_details" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="page_title_parcel_page" xml:space="preserve">
+    <value>Información de parcela</value>
+  </data>
+  <data name="page_title_parcel_weather" xml:space="preserve">
+    <value>Clima</value>
+  </data>
+  <data name="page_title_parcel_windows_of_opportunity" xml:space="preserve">
+    <value>Ventanas de oportunidad</value>
+  </data>
+  <data name="page_title_register" xml:space="preserve">
+    <value>Regístrese</value>
+  </data>
+  <data name="page_title_weather" xml:space="preserve">
+    <value>Clima</value>
+  </data>
+  <data name="page_title_welcome" xml:space="preserve">
+    <value>Bienvenido(a)</value>
+  </data>
+  <data name="plot" xml:space="preserve">
+    <value>Terreno</value>
+  </data>
+  <data name="precipitation" xml:space="preserve">
+    <value>Precipitación</value>
+  </data>
+  <data name="production_type" xml:space="preserve">
+    <value>Tipo de produccion</value>
+  </data>
+  <data name="radiation_unit" xml:space="preserve">
+    <value>Megajoules </value>
+  </data>
+  <data name="radiation_unit_short" xml:space="preserve">
+    <value>MJ/m</value>
+  </data>
+  <data name="register_email" xml:space="preserve">
+    <value>Correo electrónico</value>
+  </data>
+  <data name="register_email_empty" xml:space="preserve">
+    <value>Por favor ingrese una dirección de correo electrónico</value>
+  </data>
+  <data name="register_email_invalid" xml:space="preserve">
+    <value>Por favor asegúrese de usar una dirección de correo electrónico válida</value>
+  </data>
+  <data name="register_password" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="register_password_empty" xml:space="preserve">
+    <value>Por favor ingrese una contraseña</value>
+  </data>
+  <data name="register_password_verification" xml:space="preserve">
+    <value>Verifique su contraseña</value>
+  </data>
+  <data name="register_password_verification_empty" xml:space="preserve">
+    <value>Por favor verifique su contraseña</value>
+  </data>
+  <data name="register_password_verification_fail" xml:space="preserve">
+    <value>Por favor asegúrese de ingresar la misma contraseña dos veces</value>
+  </data>
+  <data name="register_username" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="register_username_empty" xml:space="preserve">
+    <value>Por favor ingrese un nombre de usuario</value>
+  </data>
+  <data name="rh" xml:space="preserve">
+    <value>Humedad relativa</value>
+  </data>
+  <data name="s" xml:space="preserve">
+    <value>({porcentaje}% completo)</value>
+  </data>
+  <data name="september" xml:space="preserve">
+    <value>Septiembre</value>
+  </data>
+  <data name="solar_radiation" xml:space="preserve">
+    <value>Radiación solar</value>
+  </data>
+  <data name="speed_unit" xml:space="preserve">
+    <value>Metros por segundo</value>
+  </data>
+  <data name="speed_unit_short" xml:space="preserve">
+    <value>m/s</value>
+  </data>
+  <data name="start" xml:space="preserve">
+    <value>Inicio</value>
+  </data>
+  <data name="surface" xml:space="preserve">
+    <value>Superficie</value>
+  </data>
+  <data name="technician" xml:space="preserve">
+    <value>Técnico</value>
+  </data>
+  <data name="technologies_used" xml:space="preserve">
+    <value>Tecnologías que fueron usadas:</value>
+  </data>
+  <data name="technology_1" xml:space="preserve">
+    <value>Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento </value>
+  </data>
+  <data name="technology_2" xml:space="preserve">
+    <value>Interpretación y uso del análisis de suelo</value>
+  </data>
+  <data name="technology_3" xml:space="preserve">
+    <value>Uso del sensor infrarrojo para fertilización óptima</value>
+  </data>
+  <data name="technology_4" xml:space="preserve">
+    <value>Uso de biofertilizantes</value>
+  </data>
+  <data name="technology_5" xml:space="preserve">
+    <value>Mejoradores de suelo para complementar fertilización</value>
+  </data>
+  <data name="technology_6" xml:space="preserve">
+    <value>Mínimo movimiento de suelo, retención de residuos y rotación de cultivos</value>
+  </data>
+  <data name="technology_7" xml:space="preserve">
+    <value>Introducción de nuevos cultivos en la rotación (ejemplo: cultivos de forraje)</value>
+  </data>
+  <data name="technology_8" xml:space="preserve">
+    <value>Tecnología para mejorar el almacenamiento del grano</value>
+  </data>
+  <data name="temperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="trainer" xml:space="preserve">
+    <value>Formador</value>
+  </data>
+  <data name="unit" xml:space="preserve">
+    <value>Unidad</value>
+  </data>
+  <data name="unit_celsius" xml:space="preserve">
+    <value>°C</value>
+  </data>
+  <data name="unit_hectares" xml:space="preserve">
+    <value>[ha]</value>
+  </data>
+  <data name="unit_performance" xml:space="preserve">
+    <value>[tons/ha]</value>
+  </data>
+  <data name="year" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="benchmarking" xml:space="preserve">
+    <value>Información comparativa</value>
+  </data>
+  <data name="calendar" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="cancel" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="deliniate_parcel" xml:space="preserve">
+    <value>Delinear parcela</value>
+  </data>
+  <data name="filter_cycle" xml:space="preserve">
+    <value>Filtrar por ciclo</value>
+  </data>
+  <data name="filter_years" xml:space="preserve">
+    <value>Filtrar por años</value>
+  </data>
+  <data name="ok" xml:space="preserve">
+    <value>Vale</value>
+  </data>
+  <data name="parcels" xml:space="preserve">
+    <value>Parcelas</value>
+  </data>
+  <data name="refresh_benchmarking_data" xml:space="preserve">
+    <value>Actualizar los datos comparativos</value>
+  </data>
+  <data name="use_this_location" xml:space="preserve">
+    <value>Utilizar esta ubicación</value>
+  </data>
+  <data name="view" xml:space="preserve">
+    <value>ver</value>
+  </data>
+  <data name="weblink1" xml:space="preserve">
+    <value>CIMMYT Protocolos del suelo</value>
+  </data>
+  <data name="weblink2" xml:space="preserve">
+    <value>Como Crecer con Don Crecencio</value>
+  </data>
+  <data name="bem_data_type" xml:space="preserve">
+    <value>Seleccione el tipo de datos</value>
+  </data>
+  <data name="btn_photo" xml:space="preserve">
+    <value>Tomar una foto</value>
+  </data>
+  <data name="btn_get_location" xml:space="preserve">
+    <value>Obtener la ubicación de la parcela (GPS)</value>
+  </data>
+  <data name="irrigated" xml:space="preserve">
+    <value>Irrigado:</value>
+  </data>
+  <data name="load_data" xml:space="preserve">
+    <value>Cargar datos</value>
+  </data>
+  <data name="rainfed" xml:space="preserve">
+    <value>No irrigado:</value>
+  </data>
+  <data name="activity_1" xml:space="preserve">
+    <value>Preparación del terreno</value>
+  </data>
+  <data name="activity_2" xml:space="preserve">
+    <value>Aplicación de fertilizante foliar</value>
+  </data>
+  <data name="activity_3" xml:space="preserve">
+    <value>Aplicación de fertilizante orgánico</value>
+  </data>
+  <data name="activity_4" xml:space="preserve">
+    <value>Fertilización química al suelo</value>
+  </data>
+  <data name="activity_5" xml:space="preserve">
+    <value>Aplicación de herbicidas después de la siembra</value>
+  </data>
+  <data name="activity_6" xml:space="preserve">
+    <value>Aplicación de herbicidas presiembra</value>
+  </data>
+  <data name="activity_7" xml:space="preserve">
+    <value>Labores culturales y control físico de malezas</value>
+  </data>
+  <data name="activity_8" xml:space="preserve">
+    <value>Aplicación de fungicidas</value>
+  </data>
+  <data name="activity_9" xml:space="preserve">
+    <value>Aplicación de insecticidas</value>
+  </data>
+  <data name="cosecha" xml:space="preserve">
+    <value>Cosecha</value>
+  </data>
+  <data name="madurez" xml:space="preserve">
+    <value>Tipo de madurez del cultivar</value>
+  </data>
+  <data name="poscosecha" xml:space="preserve">
+    <value>Almacenamiento poscosecha</value>
+  </data>
+  <data name="resiembra" xml:space="preserve">
+    <value>Resiembra</value>
+  </data>
+  <data name="siembra" xml:space="preserve">
+    <value>Siembra</value>
+  </data>
+  <data name="tipo_clima" xml:space="preserve">
+    <value>Clima idóneo del cultivar</value>
+  </data>
+</root>

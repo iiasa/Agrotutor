@@ -203,7 +203,7 @@
             }
             else
             {
-                _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(-100, 20), 15)));
+                _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(new Position(20, -100), 5)));
             }
 
             if (parameters.ContainsKey(MapViewModel.ListenForUserLocationParameterName))

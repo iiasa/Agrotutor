@@ -4,7 +4,6 @@
     using System.Collections.ObjectModel;
     using CimmytApp.DTO.Parcel;
     using Helper.Map.ViewModels;
-    using Helper.Realm;
     using Helper.Realm.BusinessContract;
     using Prism;
     using Prism.Commands;
@@ -61,7 +60,10 @@
             try
             {
                 var id = (string)parameters["Id"];
-                Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
+                if (!string.IsNullOrEmpty(id))
+                {
+                    Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
+                }
             }
             catch
             {

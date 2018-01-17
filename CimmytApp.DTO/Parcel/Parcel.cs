@@ -5,6 +5,7 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Threading.Tasks;
+    using CimmytApp.DTO.Benchmarking;
     using Helper.GeoWiki.API.GenericDatasetStorage;
     using Helper.Map;
     using Helper.Realm.DTO;
@@ -76,6 +77,8 @@
         {
             get
             {
+                if (CropType != CropType.Corn)
+                    return null;
                 switch (MaturityClass)
                 {
                     case "Temprana":
@@ -103,6 +106,8 @@
         {
             get
             {
+                if (CropType != CropType.Corn)
+                    return null;
                 switch (ClimateType)
                 {
                     case "Frío":
@@ -194,6 +199,15 @@
         public static async Task<List<Parcel>> LoadParcelsFromServer()
         {
             return await Storage.GetDatasets<Parcel>(16, 1, Parcel.geoWikiDatasetGroupId);
+        }
+
+        public List<DateTime> GetWindowsForFertilization()
+        {
+            var baseTemperature = BaseTemperature;
+            var targetHeatUnits = PHU;
+            if (baseTemperature == null || targetHeatUnits == null || Position == null)
+                return null;
+            return PhuAccumulator.GetWindowsOfOpportunity((int)baseTemperature, (int)targetHeatUnits, Position, PlantingDate.UtcDateTime);
         }
 
         public ParcelDTO GetDTO()

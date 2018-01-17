@@ -39,11 +39,14 @@
   <ItemGroup>
     <Compile Include="Benchmarking\BenchmarkingInformation.cs" />
     <Compile Include="Benchmarking\BenchmarkingRequestParams.cs" />
+    <Compile Include="Benchmarking\WdtIncDataset.cs" />
+    <Compile Include="Benchmarking\WdtIncInsightData.cs" />
     <Compile Include="Parcel\ActivityType.cs" />
     <Compile Include="Parcel\AgriculturalActivity.cs" />
     <Compile Include="Parcel\CropType.cs" />
     <Compile Include="Parcel\DatasetUploadStatus.cs" />
     <Compile Include="Parcel\Parcel.cs" />
+    <Compile Include="Benchmarking\PhuAccumulator.cs" />
     <Compile Include="Parcel\Technology.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfile.cs" />
@@ -83,6 +86,10 @@
     <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
       <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
       <Name>Helper.BusinessContract</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Helper.Datatypes\Helper.Datatypes.csproj">
+      <Project>{32b74614-3203-40c3-adfa-b9d760d954a1}</Project>
+      <Name>Helper.Datatypes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Helper.GeoWiki.API\Helper.GeoWiki.API.csproj">
       <Project>{CC7252B9-F950-4859-82BE-0798FD05007B}</Project>

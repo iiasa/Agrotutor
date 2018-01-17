@@ -75,6 +75,17 @@
                               Color = Color.PaleGreen
                           }).ToList();
 
+            foreach (var windows in Parcels.Select(parcel => parcel.GetWindowsForFertilization()))
+            {
+                events.AddRange(windows.Select(window => new Appointment
+                {
+                    IsAllDay = true,
+                    StartDate = window.Date,
+                    EndDate = window.Date,
+                    Title = "Oportunidad para la fertilización",
+                    Color = Color.BurlyWood
+                }));
+            }
             Events = events;
         }
     }

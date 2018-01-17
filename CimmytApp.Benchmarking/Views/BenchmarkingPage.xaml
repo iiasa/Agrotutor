@@ -6,9 +6,14 @@
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
-        <StackLayout>
+        <StackLayout Margin="16,16,16,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Rendimiento potencial" VerticalOptions="Center" />
+                <Image Source="icon_performance_96.png" WidthRequest="32" HeightRequest="32" />
+            </StackLayout>
+
             <Button Text="{localization:Translate load_data}" Command="{Binding LoadDataCommand}"
-                IsEnabled="{Binding DownloadButtonActive}" Margin="0,0,0,16" />
+                IsVisible="{Binding DownloadButtonActive}" Margin="0,0,0,16" />
             <Label Text="Descargando datos, por favor espere..." IsVisible="{Binding Downloading}" />
             <Label Text="Lo sentimos, no hay datos disponibles para esta parcela." IsVisible="{Binding NoData}" />
 
