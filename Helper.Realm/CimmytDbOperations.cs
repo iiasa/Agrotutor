@@ -11,6 +11,7 @@
 
     public class CimmytDbOperations : ICimmytDbOperations
     {
+        private static int realmVersion = 1;
         private Realm _realm;
 
         private Realm Realm
