@@ -21,8 +21,6 @@
 
         private string _parcelName;
 
-        private int _uploaded;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public int CompletedPercentage => 10;
@@ -32,6 +30,8 @@
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
         public DateTimeOffset PlantingDate { get; set; } = DateTime.Today;
+
+        public int Uploaded { get; set; }
 
         public Parcel()
         {
@@ -245,12 +245,12 @@
 
         public void Submit()
         {
-            if (_uploaded == (int)DatasetUploadStatus.Synchronized)
+            if (Uploaded == (int)DatasetUploadStatus.Synchronized)
             {
                 return;
             }
 
-            _uploaded = (int)DatasetUploadStatus.Synchronized;
+            Uploaded = (int)DatasetUploadStatus.Synchronized;
             Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
         }
 
@@ -258,20 +258,20 @@
 
         public async Task<Parcel> SubmitAsync()
         {
-            if (_uploaded == (int)DatasetUploadStatus.Synchronized)
+            if (Uploaded == (int)DatasetUploadStatus.Synchronized)
             {
                 return null;
             }
 
             await Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
-            _uploaded = (int)DatasetUploadStatus.Synchronized;
+            Uploaded = (int)DatasetUploadStatus.Synchronized;
             return this;
         }
 
         protected virtual void OnPropertyChanged(string aName)
         {
             var iHandler = PropertyChanged;
-            _uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
+            Uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
         }
 

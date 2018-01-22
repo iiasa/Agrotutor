@@ -5,7 +5,6 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
-    using Helper.Realm;
     using Helper.Realm.BusinessContract;
     using Prism.Commands;
     using Prism.Mvvm;
@@ -298,6 +297,7 @@
             var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
 
             Parcels = parcels;
+            UploadCommand.Execute();
         }
 
         /// <summary>

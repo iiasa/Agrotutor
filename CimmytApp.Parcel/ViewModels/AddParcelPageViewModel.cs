@@ -378,6 +378,7 @@
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
+            Parcel.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             _cimmytDbOperations.SaveParcel(Parcel.GetDTO());
 
             var navigationParameters = new NavigationParameters

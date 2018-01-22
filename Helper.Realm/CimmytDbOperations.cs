@@ -119,7 +119,20 @@
         }
 
         public void SaveParcel(ParcelDTO parcel, bool update = false)
-        { // TODO! delete removed technology
+        {
+            var oldParcel = GetParcelById(parcel.ParcelId);
+            var oldTechnologies = oldParcel?.TechnologiesUsed;
+            if (oldTechnologies != null)
+                foreach (var oldTechnology in oldTechnologies)
+                {
+                    var found = false;
+                    foreach (var newTechnology in parcel.TechnologiesUsed.Where(newTechnology => oldTechnology.Id == newTechnology.Id))
+                    {
+                        found = true;
+                    }
+                    if (!found) Realm.Write(() => Realm.Remove(oldTechnology));
+                }
+
             foreach (var agriculturalActivity in parcel.AgriculturalActivitiesList)
             {
                 Realm.Write(() => parcel.AgriculturalActivities.Add(agriculturalActivity));

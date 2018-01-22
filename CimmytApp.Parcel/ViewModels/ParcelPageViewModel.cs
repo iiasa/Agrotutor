@@ -427,6 +427,7 @@
                 EditModeActive = false;
             }
             EditsDone = false;
+            Parcel.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             _cimmytDbOperations.SaveParcel(Parcel.GetDTO(), true);
             var parameters = new NavigationParameters
             {
