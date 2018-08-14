@@ -13,6 +13,7 @@
 
             <Label Text="Ordenamiento de datos en curso, por favor espere..." IsVisible="{Binding IsLoading}"
                 Margin="0,0,0,16" />
+
             <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
                 <chart:RadCartesianChart.HorizontalAxis>
                     <chart:CategoricalAxis LabelFitMode="Rotate" />

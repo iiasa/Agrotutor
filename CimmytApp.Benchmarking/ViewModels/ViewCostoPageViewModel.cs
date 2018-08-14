@@ -36,7 +36,6 @@
 
         public void CalculateStats()
         {
-            IsLoading = true;
             Datasets = new List<Costo>(Datasets.OrderBy(x => double.Parse(x.ProductionCost)));
             var min = double.Parse(Datasets.ElementAt(0)?.ProductionCost);
             var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.ProductionCost);
@@ -71,14 +70,15 @@
                     Category = "Max"
                 }
             };
-            IsLoading = false;
         }
 
         public async void LoadData()
         {
+            IsLoading = true;
             Datasets = await RequestJson.Get<List<Costo>>(
                 "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");
             CalculateStats();
+            IsLoading = false;
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

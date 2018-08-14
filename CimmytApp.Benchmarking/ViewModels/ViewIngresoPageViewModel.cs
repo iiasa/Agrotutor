@@ -44,7 +44,6 @@
 
         public void CalculateStats()
         {
-            IsLoading = true;
             Datasets = new List<Ingreso>(Datasets.OrderBy(x => double.Parse(x.Income)));
             var min = double.Parse(Datasets.ElementAt(0)?.Income);
             var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.Income);
@@ -79,7 +78,6 @@
                     Category = "Max"
                 }
             };
-            IsLoading = false;
         }
 
         /// <summary>
@@ -87,10 +85,12 @@
         /// </summary>
         public async void LoadData()
         {
+            IsLoading = true;
             Datasets = await RequestJson.Get<List<Ingreso>>(
                 "http://104.239.158.49/api.php?type=ingreso&tkn=E31C5F8478566357BA6875B32DC59");
 
             CalculateStats();
+            IsLoading = false;
         }
 
         /// <summary>
