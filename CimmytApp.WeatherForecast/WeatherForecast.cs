@@ -430,8 +430,8 @@
                 $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
             using (var wc = new HttpClient())
             {
-                wc.DefaultRequestHeaders.Add("app_id", "dc9e4567");
-                wc.DefaultRequestHeaders.Add("app_key", "9547e002315e9cf9d6f7362675d63f1f");
+                wc.DefaultRequestHeaders.Add("app_id", "72bd6b2d");
+                wc.DefaultRequestHeaders.Add("app_key", "1bf9b8a0fba009655e4bca9f446877cf");
                 var json = await wc.GetStringAsync(serviceUrl);
                 return FromJson(json);
             }
