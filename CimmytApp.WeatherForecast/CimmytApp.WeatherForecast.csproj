@@ -54,6 +54,7 @@
     <Compile Include="Views\WeatherForecastPage.xaml.cs">
       <DependentUpon>WeatherForecastPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WeatherData.cs" />
     <Compile Include="WeatherForecast.cs" />
     <Compile Include="WeatherForecastModule.cs" />
     <Compile Include="WeatherService.cs" />

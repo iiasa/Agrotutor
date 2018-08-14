@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.ViewModels
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using CimmytApp.DTO.Parcel;
     using Helper.Map.ViewModels;
@@ -119,13 +120,15 @@
 
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {
-                parameters.Add(MapViewModel.PointsParameterName, new ObservableCollection<Pin>
+                parameters.Add(MapViewModel.PointsParameterName, new List<Pin>
                 {
                     new Pin
                     {
                         Position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude)
                     }
                 });
+                parameters.Add(MapViewModel.MapCenterParameterName, CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                    new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
 
             _navigationService.NavigateAsync("Map", parameters);

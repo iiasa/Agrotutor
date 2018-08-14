@@ -2,7 +2,6 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Helper.DTO.SkywiseWeather.Historical;
     using Helper.Map;
     using Helper.RestfulClient;
 

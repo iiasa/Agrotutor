@@ -74,7 +74,7 @@
 
         private async void LoadWeatherDataAsync()
         {
-            WeatherData = await WeatherService.GetWeatherData(position);
+            //WeatherData = await WeatherService.GetWeatherData(position);
             if (WeatherData != null)
             {
                 DailyHighTemperature = WeatherData.DailyHighTemperature;

@@ -179,7 +179,7 @@
         {
             _refreshedFromServer = true;
             Downloading = true;
-            MyWeatherData = await WeatherService.GetWeatherData(_position);
+            //MyWeatherData = await WeatherService.GetWeatherData(_position);
         }
 
         private void LoadWeatherFromDb(string parcelId)

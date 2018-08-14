@@ -44,11 +44,6 @@
         /// </summary>
         private string _forecastDate;
 
-        /// <summary>
-        ///     Defines the _forecastLocation
-        /// </summary>
-        private string _forecastLocation;
-
         private string _growingDegreeDays;
 
         /// <summary>
@@ -57,9 +52,9 @@
         private string _minMaxTemperature;
 
         /// <summary>
-        ///     Defines the _weatherForecast
+        ///     Defines the _weatherData
         /// </summary>
-        private WeatherForecast _weatherForecast;
+        private WeatherData _weatherData;
 
         /// <summary>
         ///     Defines the _weatherIcon
@@ -152,15 +147,6 @@
             set => SetProperty(ref _forecastDate, value);
         }
 
-        /// <summary>
-        ///     Gets or sets the ForecastLocation
-        /// </summary>
-        public string ForecastLocation
-        {
-            get => _forecastLocation;
-            set => SetProperty(ref _forecastLocation, value);
-        }
-
         public string GrowingDegreeDays
         {
             get => _growingDegreeDays;
@@ -189,21 +175,19 @@
         /// <summary>
         ///     Gets or sets the WeatherForecast
         /// </summary>
-        public WeatherForecast WeatherForecast
+        public WeatherData WeatherData
         {
-            get => _weatherForecast;
+            get => _weatherData;
             set
             {
-                SetProperty(ref _weatherForecast, value);
+                SetProperty(ref _weatherData, value);
                 if (value == null)
                 {
                     return;
                 }
 
-                CurrentHour = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
-                CurrentDay = value.Location.DailySummaries.DailySummary.ElementAt(0);
-                ForecastLocation =
-                    $"Pronóstico del tiempo para {value.Location.Attributes.City} ({value.Location.Attributes.Country})";
+                //CurrentHour = value..HourlySummaries.HourlySummary.ElementAt(0);
+                //CurrentDay = value.Location.DailySummaries.DailySummary.ElementAt(0);
             }
         }
 
@@ -273,7 +257,7 @@
         {
             if (Parcel.Position != null)
             {
-                WeatherForecast = await WeatherForecast.Download((double)Parcel.Position.Latitude,
+                WeatherData = await WeatherData.Download((double)Parcel.Position.Latitude,
                     (double)Parcel.Position.Longitude);
             }
         }
@@ -286,14 +270,14 @@
         {
             if (page == "DailyForecastPage")
             {
-                if (WeatherForecast == null)
+                if (WeatherData == null)
                 {
                     return;
                 }
 
                 var parameters = new NavigationParameters
                 {
-                    { "DailyForecast", WeatherForecast.Location.DailySummaries.DailySummary }
+                    //{ "DailyForecast", WeatherData.Location.DailySummaries.DailySummary }
                 };
                 _navigationService.NavigateAsync(page, parameters);
             }

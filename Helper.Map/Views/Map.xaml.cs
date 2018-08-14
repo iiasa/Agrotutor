@@ -9,7 +9,6 @@
     public partial class Map
     {
         private readonly MapViewModel _bindingContext;
-
         private CameraPosition _mapCenter;
 
         public Map()
@@ -75,7 +74,7 @@
         {
             MapPins = pins;
             map.Pins.Clear();
-            foreach (var pin in pins)
+            foreach (Pin pin in pins)
             {
                 map.Pins.Add(pin);
             }

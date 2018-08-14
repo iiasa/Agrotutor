@@ -1,5 +1,6 @@
 ﻿namespace Helper.HTTP
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Net;
@@ -53,14 +54,19 @@
                 {
                     { "parameter", JsonConvert.SerializeObject(param) }
                 };
-                var encodedContent = new FormUrlEncodedContent(parameters);
+                var encodedContent = new FormUrlEncodedContent(param);
                 try
                 {
-                    response = await httpClient.PostAsync(url, encodedContent).ConfigureAwait(false);
+                    response = await httpClient.PostAsync(url, encodedContent).ConfigureAwait(true);
                 }
                 catch (HttpRequestException e)
                 {
                     Debug.WriteLine("HTTP E: " + e.Message);
+                    return null;
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("E: " + e.Message);
                     return null;
                 }
 
@@ -69,7 +75,7 @@
                     return null;
                 }
 
-                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(true);
                 if (string.IsNullOrEmpty(responseContent))
                 {
                     return null;
