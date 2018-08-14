@@ -5,7 +5,7 @@
 
     public class DbContext
     {
-        private static ulong realmVersion = 1;
+        private static ulong realmVersion = 2;
         private static Realm Realm { get; set; }
 
         public static Realm GetConnection()

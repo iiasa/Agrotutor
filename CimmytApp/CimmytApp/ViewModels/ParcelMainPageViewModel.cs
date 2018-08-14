@@ -111,7 +111,7 @@
                     polygon.Positions.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
 
-                var viewPolygons = new ObservableCollection<Polygon>
+                var viewPolygons = new List<Polygon>
                 {
                     polygon
                 };

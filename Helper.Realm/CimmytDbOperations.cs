@@ -38,7 +38,17 @@
 
         public List<ParcelDTO> GetAllParcels()
         {
-            return Realm.All<ParcelDTO>().ToList();
+            var parcels = Realm.All<ParcelDTO>().ToList();
+            foreach (ParcelDTO parcelDTO in parcels)
+            {
+                if (parcelDTO != null)
+                {
+                    parcelDTO.DelineationList = GetParcelDelineation(parcelDTO.ParcelId);
+                    parcelDTO.TechnologiesUsedList = GetParcelTechnology(parcelDTO.ParcelId);
+                    parcelDTO.AgriculturalActivitiesList = GetAgriculturalActivitiesForParcel(parcelDTO.ParcelId);
+                }
+            }
+            return parcels;
         }
 
         public BemData GetBemData()
@@ -55,19 +65,20 @@
         public ParcelDTO GetParcelById(string parcelId)
         {
             var parcelDTO = Realm.Find<ParcelDTO>(parcelId);
+            if (parcelDTO != null)
+            {
+                parcelDTO.DelineationList = GetParcelDelineation(parcelId);
+                parcelDTO.TechnologiesUsedList = GetParcelTechnology(parcelId);
+                parcelDTO.AgriculturalActivitiesList = GetAgriculturalActivitiesForParcel(parcelId);
+            }
+
             return parcelDTO;
-        }/*
+        }
 
         public List<AgriculturalActivityDTO> GetAgriculturalActivitiesForParcel(string parcelId)
         {
             var activities = Realm.All<AgriculturalActivityDTO>().Where(p => p.ParcelId == parcelId);
             return activities.ToList();
-        }
-
-        public GeoPositionDTO GetParcelPosition(string parcelId)
-        {
-            var position = Realm.All<GeoPositionDTO>().Where(p => p.ParcelId == parcelId).First(p => p.IsPartOfdelineation == false);
-            return position;
         }
 
         public List<GeoPositionDTO> GetParcelDelineation(string parcelId)
@@ -80,7 +91,7 @@
         {
             var tech = Realm.All<TechnologyDTO>().Where(p => p.ParcelId == parcelId);
             return tech.ToList();
-        }*/
+        }
 
         public void SaveCostos(List<Costo> listCostos)
         {

@@ -162,9 +162,19 @@
                 activities.AddRange(parcelDTO.AgriculturalActivities.Select(AgriculturalActivity.FromDTO));
             }
 
+            if (parcelDTO.AgriculturalActivitiesList != null)
+            {
+                activities.AddRange(parcelDTO.AgriculturalActivitiesList.Select(AgriculturalActivity.FromDTO));
+            }
+
             if (parcelDTO.Delineation != null)
             {
                 delineation.AddRange(parcelDTO.Delineation.Select(GeoPosition.FromDTO));
+            }
+
+            if (parcelDTO.DelineationList != null)
+            {
+                delineation.AddRange(parcelDTO.DelineationList.Select(GeoPosition.FromDTO));
             }
 
             if (parcelDTO.TechnologiesUsed != null)
@@ -175,6 +185,16 @@
                     Id = technology.Id
                 }));
             }
+
+            if (parcelDTO.TechnologiesUsedList != null)
+            {
+                technologies.AddRange(parcelDTO.TechnologiesUsedList.Select(technology => new Technology
+                {
+                    Name = technology.Name,
+                    Id = technology.Id
+                }));
+            }
+
 
             var parcel = new Parcel
             {

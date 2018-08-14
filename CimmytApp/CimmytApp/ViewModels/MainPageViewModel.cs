@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.ViewModels
 {
+    using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
@@ -67,8 +68,8 @@
 
         private void NavigateToMap()
         {
-            var polygons = new ObservableCollection<Polygon>();
-            var parcelLocations = new ObservableCollection<Pin>();
+            var polygons = new List<Polygon>();
+            var parcelLocations = new List<Pin>();
             var parcelDTO = _cimmytDbOperations.GetAllParcels();
             var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
 

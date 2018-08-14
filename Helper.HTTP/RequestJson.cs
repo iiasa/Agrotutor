@@ -50,10 +50,6 @@
             using (var httpClient = new HttpClient())
             {
                 HttpResponseMessage response = null;
-                var parameters = new Dictionary<string, string>
-                {
-                    { "parameter", JsonConvert.SerializeObject(param) }
-                };
                 var encodedContent = new FormUrlEncodedContent(param);
                 try
                 {
