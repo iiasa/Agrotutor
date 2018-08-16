@@ -16,13 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CimmytApp.Benchmarking\CimmytApp.Benchmarking.csproj" />
-    <ProjectReference Include="..\..\CimmytApp.Calendar\CimmytApp.Calendar.csproj" />
-    <ProjectReference Include="..\..\CimmytApp.DTO\CimmytApp.DTO.csproj" />
-    <ProjectReference Include="..\..\CimmytApp.Parcel\CimmytApp.Parcel.csproj" />
-    <ProjectReference Include="..\..\CimmytApp.StaticContent\CimmytApp.StaticContent.csproj" />
-    <ProjectReference Include="..\..\CimmytApp.WeatherForecast\CimmytApp.WeatherForecast.csproj" />
-    <ProjectReference Include="..\..\Helper.Map\Helper.Map.csproj" />
-    <ProjectReference Include="..\..\Helper.UserRegistration\Helper.UserRegistration.csproj" />
+    <ProjectReference Include="..\..\CimmytApp.Core\CimmytApp.Core.csproj" />
+    <ProjectReference Include="..\..\Helper\Helper.csproj" />
   </ItemGroup>
 </Project>

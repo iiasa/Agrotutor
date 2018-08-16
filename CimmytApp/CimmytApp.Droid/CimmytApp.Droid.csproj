@@ -364,28 +364,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CimmytApp.Parcel\CimmytApp.Parcel.csproj">
-      <Project>{f7513236-dc22-4a65-803e-1892e7fa180a}</Project>
-      <Name>CimmytApp.Parcel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Helper.Localization\Helper.Localization.csproj">
-      <Project>{ab0c334e-bfb1-476f-9edf-6c24bb10dd1e}</Project>
-      <Name>Helper.Localization</Name>
+    <ProjectReference Include="..\..\Helper\Helper.csproj">
+      <Project>{ce3aa788-b837-4693-afec-9bca677dfa41}</Project>
+      <Name>Helper</Name>
     </ProjectReference>
     <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">
       <Name>CimmytApp</Name>
       <Project>{B7DEC39B-EDA0-4BCA-8556-A56D8897A347}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="azure-messaging">
-      <Visible>False</Visible>
-      <Version>1.2.5.2</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="GCMClient">
-      <Visible>False</Visible>
-      <Version>1.0</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_info_black_24dp.xml" />
