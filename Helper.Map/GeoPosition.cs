@@ -2,7 +2,7 @@
 {
     using System;
     using Helper.Realm.DTO;
-    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.GoogleMaps;
 
     /// <summary>
     ///     Defines the <see cref="GeoPosition" />

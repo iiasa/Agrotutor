@@ -1,8 +1,4 @@
-﻿using Telerik.XamarinForms.Input;
-using Telerik.XamarinForms.InputRenderer.Android;
-using Xamarin.Forms;
-
-[assembly: ExportRenderer(typeof(RadCalendar), typeof(CalendarRenderer))]
+﻿using Xamarin.Forms;
 
 namespace CimmytApp.Droid
 {
@@ -14,9 +10,11 @@ namespace CimmytApp.Droid
     using Android.Runtime;
     using Android.Util;
     using Gcm.Client;
-    using Microsoft.Practices.Unity;
     using Plugin.Permissions;
+    using Prism;
+    using Prism.Ioc;
     using Prism.Unity;
+    using Unity;
     using Xamarin;
     using Xamarin.Forms.Platform.Android;
     using XamForms.Controls.Droid;
@@ -90,7 +88,7 @@ namespace CimmytApp.Droid
 
     public class AndroidInitializer : IPlatformInitializer
     {
-        public void RegisterTypes(IUnityContainer container)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
         }
     }

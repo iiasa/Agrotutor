@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp", "CimmytApp\CimmytApp\CimmytApp.csproj", "{B7DEC39B-EDA0-4BCA-8556-A56D8897A347}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp", "CimmytApp\CimmytApp\CimmytApp.csproj", "{B7DEC39B-EDA0-4BCA-8556-A56D8897A347}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.Droid", "CimmytApp\CimmytApp.Droid\CimmytApp.Droid.csproj", "{2E2A8A44-2C66-49C6-AC9D-00B6B3E1D5FF}"
 EndProject
@@ -11,37 +11,39 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.iOS", "CimmytApp\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.UWP", "CimmytApp\CimmytApp.UWP\CimmytApp.UWP.csproj", "{E6DE95C2-C0C9-47AC-A746-42F4E1085C94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.DTO", "CimmytApp.DTO\CimmytApp.DTO.csproj", "{73076BC1-B08E-4E09-8173-B626F6BEA6F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp.DTO", "CimmytApp.DTO\CimmytApp.DTO.csproj", "{73076BC1-B08E-4E09-8173-B626F6BEA6F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.Map", "Helper.Map\Helper.Map.csproj", "{E26AC875-8F9C-4468-AD54-03D7A71F3A60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.Map", "Helper.Map\Helper.Map.csproj", "{E26AC875-8F9C-4468-AD54-03D7A71F3A60}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.Calendar", "CimmytApp.Calendar\CimmytApp.Calendar.csproj", "{D673EEC7-DDEF-48E1-82D3-6C1A64517DE7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp.Calendar", "CimmytApp.Calendar\CimmytApp.Calendar.csproj", "{D673EEC7-DDEF-48E1-82D3-6C1A64517DE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.WeatherForecast", "CimmytApp.WeatherForecast\CimmytApp.WeatherForecast.csproj", "{49028EEC-96AD-4FC4-B93E-A4FD630985A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp.WeatherForecast", "CimmytApp.WeatherForecast\CimmytApp.WeatherForecast.csproj", "{49028EEC-96AD-4FC4-B93E-A4FD630985A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.DatasetSyncEvents", "Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj", "{FE0BAF91-231E-4D28-81C3-02DD54BEC9FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.DatasetSyncEvents", "Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj", "{FE0BAF91-231E-4D28-81C3-02DD54BEC9FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.StaticContent", "CimmytApp.StaticContent\CimmytApp.StaticContent.csproj", "{4C10FF35-BECD-482C-A2AB-75572D65F53C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp.StaticContent", "CimmytApp.StaticContent\CimmytApp.StaticContent.csproj", "{4C10FF35-BECD-482C-A2AB-75572D65F53C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.UserRegistration", "Helper.UserRegistration\Helper.UserRegistration.csproj", "{5D7A2A33-882D-4967-ABC6-960E45B26B8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.UserRegistration", "Helper.UserRegistration\Helper.UserRegistration.csproj", "{5D7A2A33-882D-4967-ABC6-960E45B26B8E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.Benchmarking", "CimmytApp.Benchmarking\CimmytApp.Benchmarking.csproj", "{64F6473F-181E-4F13-AC1A-AEBADC74EAD4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp.Benchmarking", "CimmytApp.Benchmarking\CimmytApp.Benchmarking.csproj", "{64F6473F-181E-4F13-AC1A-AEBADC74EAD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.BusinessContract", "Helper.BusinessContract\Helper.BusinessContract.csproj", "{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.BusinessContract", "Helper.BusinessContract\Helper.BusinessContract.csproj", "{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.Localization", "Helper.Localization\Helper.Localization.csproj", "{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.Localization", "Helper.Localization\Helper.Localization.csproj", "{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.GeoWiki.API", "Helper.GeoWiki.API\Helper.GeoWiki.API.csproj", "{CC7252B9-F950-4859-82BE-0798FD05007B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.GeoWiki.API", "Helper.GeoWiki.API\Helper.GeoWiki.API.csproj", "{CC7252B9-F950-4859-82BE-0798FD05007B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.Datatypes", "Helper.Datatypes\Helper.Datatypes.csproj", "{32B74614-3203-40C3-ADFA-B9D760D954A1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.Datatypes", "Helper.Datatypes\Helper.Datatypes.csproj", "{32B74614-3203-40C3-ADFA-B9D760D954A1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.Parcel", "CimmytApp.Parcel\CimmytApp.Parcel.csproj", "{F7513236-DC22-4A65-803E-1892E7FA180A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp.Parcel", "CimmytApp.Parcel\CimmytApp.Parcel.csproj", "{F7513236-DC22-4A65-803E-1892E7FA180A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.DTO", "Helper.DTO\Helper.DTO.csproj", "{647D5F44-FD24-48AF-AFB4-26AC21180367}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.DTO", "Helper.DTO\Helper.DTO.csproj", "{647D5F44-FD24-48AF-AFB4-26AC21180367}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.HTTP", "Helper.HTTP\Helper.HTTP.csproj", "{01ED90D5-7B33-4771-856B-4D15D72FA66F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.HTTP", "Helper.HTTP\Helper.HTTP.csproj", "{01ED90D5-7B33-4771-856B-4D15D72FA66F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Helper.Realm", "Helper.Realm\Helper.Realm.csproj", "{6C506277-4D7B-4AC5-87B3-E8D73629B96B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helper.Realm", "Helper.Realm\Helper.Realm.csproj", "{6C506277-4D7B-4AC5-87B3-E8D73629B96B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.Com", "CimmytApp.Com\CimmytApp.Com.csproj", "{273C01F9-6731-4417-BE24-A236FA369504}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1051,6 +1053,54 @@ Global
 		{6C506277-4D7B-4AC5-87B3-E8D73629B96B}.Release|x64.Build.0 = Release|Any CPU
 		{6C506277-4D7B-4AC5-87B3-E8D73629B96B}.Release|x86.ActiveCfg = Release|Any CPU
 		{6C506277-4D7B-4AC5-87B3-E8D73629B96B}.Release|x86.Build.0 = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|Any CPU.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|Any CPU.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|ARM.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|ARM.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|x64.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|x64.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|x86.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Ad-Hoc|x86.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|Any CPU.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|ARM.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|ARM.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|x64.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|x64.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|x86.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.AppStore|x86.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|ARM.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|x64.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Debug|x86.Build.0 = Debug|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|Any CPU.Build.0 = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|ARM.ActiveCfg = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|ARM.Build.0 = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|iPhone.Build.0 = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|x64.ActiveCfg = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|x64.Build.0 = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|x86.ActiveCfg = Release|Any CPU
+		{273C01F9-6731-4417-BE24-A236FA369504}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

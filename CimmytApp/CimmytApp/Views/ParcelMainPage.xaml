@@ -42,7 +42,7 @@
                 <StackLayout forms:Grid.Row="1" forms:Grid.Column="0" Orientation="Vertical">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="WeatherMainPage" />
+                            CommandParameter="WeatherDataSelection" />
                     </StackLayout.GestureRecognizers>
 
                     <Image Source="icon_weather_96.png" WidthRequest="70" Margin="16" />
@@ -72,7 +72,7 @@
                 <StackLayout forms:Grid.Row="2" forms:Grid.Column="1">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="TelerikCalendarPage" />
+                            CommandParameter="CalendarPage" />
                     </StackLayout.GestureRecognizers>
 
                     <Image Source="icon_planner_96.png" WidthRequest="70" Margin="16" />

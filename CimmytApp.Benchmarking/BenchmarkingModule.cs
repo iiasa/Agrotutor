@@ -1,27 +1,23 @@
 ﻿namespace CimmytApp.Benchmarking
 {
     using CimmytApp.Benchmarking.Views;
-    using Microsoft.Practices.Unity;
     using Prism.Modularity;
-    using Prism.Unity;
+    using Prism.Ioc;
 
     public class BenchmarkingModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public BenchmarkingModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<BenchmarkingPage>();
+            containerRegistry.RegisterForNavigation<LocalBenchmarkingSelectionPage>();
+            containerRegistry.RegisterForNavigation<ViewCostoPage>();
+            containerRegistry.RegisterForNavigation<ViewIngresoPage>();
+            containerRegistry.RegisterForNavigation<ViewRendimientoPage>();
+            containerRegistry.RegisterForNavigation<ViewUtilidadPage>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<BenchmarkingPage>();
-            _unityContainer.RegisterTypeForNavigation<LocalBenchmarkingSelectionPage>();
-            _unityContainer.RegisterTypeForNavigation<ViewCostoPage>();
-            _unityContainer.RegisterTypeForNavigation<ViewIngresoPage>();
-            _unityContainer.RegisterTypeForNavigation<ViewRendimientoPage>();
-            _unityContainer.RegisterTypeForNavigation<ViewUtilidadPage>();
         }
     }
 }

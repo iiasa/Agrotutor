@@ -1,22 +1,18 @@
 ﻿namespace Helper.UserRegistration
 {
     using Helper.UserRegistration.Views;
-    using Microsoft.Practices.Unity;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Unity;
 
     public class UserRegistrationModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public UserRegistrationModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<RegistrationPage>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<RegistrationPage>();
         }
     }
 }

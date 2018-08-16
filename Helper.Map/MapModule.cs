@@ -1,22 +1,18 @@
 ﻿namespace Helper.Map
 {
     using Helper.Map.Views;
-    using Microsoft.Practices.Unity;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Unity;
 
     public class MapModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public MapModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<Map>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<Map>();
         }
     }
 }

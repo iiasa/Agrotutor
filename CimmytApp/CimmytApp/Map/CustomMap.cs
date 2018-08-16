@@ -1,6 +1,6 @@
 ﻿namespace CimmytApp.Map
 {
-    using Xamarin.Forms.Maps;
+    using Xamarin.Forms.GoogleMaps;
 
     public class CustomMap : Map
     {

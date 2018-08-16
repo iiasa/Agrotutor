@@ -1,24 +1,20 @@
 ﻿namespace CimmytApp.StaticContent
 {
     using CimmytApp.StaticContent.Views;
-    using Microsoft.Practices.Unity;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Unity;
 
     public class StaticContentModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public StaticContentModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<LinksPage>();
+            containerRegistry.RegisterForNavigation<CitationPage>();
+            containerRegistry.RegisterForNavigation<WelcomePage>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<LinksPage>();
-            _unityContainer.RegisterTypeForNavigation<CitationPage>();
-            _unityContainer.RegisterTypeForNavigation<WelcomePage>();
         }
     }
 }

@@ -1,29 +1,24 @@
 ﻿namespace CimmytApp.Parcel
 {
     using CimmytApp.Parcel.Views;
-    using Microsoft.Practices.Unity;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Unity;
 
     public class ParcelModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public ParcelModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<ActivityPage>();
+            containerRegistry.RegisterForNavigation<ViewActivitiesPage>();
+            containerRegistry.RegisterForNavigation<AddParcelPage>();
+            containerRegistry.RegisterForNavigation<DeleteParcelPage>();
+            containerRegistry.RegisterForNavigation<ParcelsOverviewPage>();
+            containerRegistry.RegisterForNavigation<ParcelPage>();
+            containerRegistry.RegisterForNavigation<SelectTechnologiesPage>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<ActivityPage>();
-            _unityContainer.RegisterTypeForNavigation<ViewActivitiesPage>();
-            _unityContainer.RegisterTypeForNavigation<ActivityDetail>();
-            _unityContainer.RegisterTypeForNavigation<AddParcelPage>();
-            _unityContainer.RegisterTypeForNavigation<DeleteParcelPage>();
-            _unityContainer.RegisterTypeForNavigation<ParcelsOverviewPage>();
-            _unityContainer.RegisterTypeForNavigation<ParcelPage>();
-            _unityContainer.RegisterTypeForNavigation<SelectTechnologiesPage>();
         }
     }
 }

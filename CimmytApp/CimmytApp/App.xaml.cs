@@ -10,15 +10,15 @@
     using CimmytApp.StaticContent;
     using CimmytApp.Views;
     using CimmytApp.WeatherForecast;
+    using CommonServiceLocator;
     using Helper.Map;
     using Helper.Realm;
     using Helper.Realm.BusinessContract;
     using Helper.UserRegistration;
-    using Microsoft.Practices.ServiceLocation;
-    using Microsoft.Practices.Unity;
+    using Prism;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Navigation;
-    using Prism.Unity;
+    using Unity.Lifetime;
     using Xamarin.Forms;
 
     public partial class App
@@ -79,12 +79,12 @@
             }
         }
 
-        protected override void ConfigureModuleCatalog()
+        protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
             try
             {
                 var benchmarkingModule = typeof(BenchmarkingModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(benchmarkingModule)
                 {
                     ModuleName = benchmarkingModule.Name,
                     ModuleType = benchmarkingModule,
@@ -92,7 +92,7 @@
                 });
 
                 var calendarModule = typeof(CalenderModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(calendarModule)
                 {
                     ModuleName = calendarModule.Name,
                     ModuleType = calendarModule,
@@ -100,7 +100,7 @@
                 });
 
                 var mapModule = typeof(MapModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(mapModule)
                 {
                     ModuleName = mapModule.Name,
                     ModuleType = mapModule,
@@ -108,7 +108,7 @@
                 });
 
                 var parcelModule = typeof(ParcelModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(parcelModule)
                 {
                     ModuleName = parcelModule.Name,
                     ModuleType = parcelModule,
@@ -116,7 +116,7 @@
                 });
 
                 var staticContentModule = typeof(StaticContentModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(staticContentModule)
                 {
                     ModuleName = staticContentModule.Name,
                     ModuleType = staticContentModule,
@@ -124,7 +124,7 @@
                 });
 
                 var userRegistrationModule = typeof(UserRegistrationModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(userRegistrationModule)
                 {
                     ModuleName = userRegistrationModule.Name,
                     ModuleType = userRegistrationModule,
@@ -132,7 +132,7 @@
                 });
 
                 var weatherForecastModule = typeof(WeatherForecastModule);
-                ModuleCatalog.AddModule(new ModuleInfo
+                moduleCatalog.AddModule(new ModuleInfo(weatherForecastModule)
                 {
                     ModuleName = weatherForecastModule.Name,
                     ModuleType = weatherForecastModule,
@@ -176,17 +176,16 @@
             }
         }
 
-        protected override void RegisterTypes()
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             try
             {
-                Container.RegisterTypeForNavigation<MainPage>();
-                Container.RegisterTypeForNavigation<LoginPage>();
-                Container.RegisterTypeForNavigation<ParcelMainPage>();
-                Container.RegisterTypeForNavigation<ProfilePage>();
-                Container.RegisterType<ICimmytDbOperations, CimmytDbOperations>(
-                    new ContainerControlledLifetimeManager());
-                Container.RegisterType<IPosition, LocationBusiness>(new ContainerControlledLifetimeManager());
+                containerRegistry.RegisterForNavigation<MainPage>();
+                containerRegistry.RegisterForNavigation<LoginPage>();
+                containerRegistry.RegisterForNavigation<ParcelMainPage>();
+                containerRegistry.RegisterForNavigation<ProfilePage>();
+                containerRegistry.Register<ICimmytDbOperations, CimmytDbOperations>();
+                containerRegistry.Register<IPosition, LocationBusiness>();
             }
             catch (Exception)
             {

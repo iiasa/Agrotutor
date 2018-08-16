@@ -2,7 +2,6 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
     xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
     x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
@@ -21,7 +20,7 @@
             <Label Text="{Binding DataIrrigated.GetMin}" />
             <Label Text="{Binding DataIrrigated.GetAvg}" />
             <Label Text="{Binding DataIrrigated.GetMax}" Margin="0,0,0,16" />
-
+            <!--
             <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
                 <chart:RadCartesianChart.HorizontalAxis>
                     <chart:CategoricalAxis LabelFitMode="Rotate" />
@@ -40,13 +39,13 @@
                         </chart:BarSeries.CategoryBinding>
                     </chart:BarSeries>
                 </chart:RadCartesianChart.Series>
-            </chart:RadCartesianChart>
+            </chart:RadCartesianChart>-->
 
             <Label Text="{localization:Translate rainfed}" />
             <Label Text="{Binding DataRainfed.GetMin}" />
             <Label Text="{Binding DataRainfed.GetAvg}" />
             <Label Text="{Binding DataRainfed.GetMax}" Margin="0,0,0,16" />
-            <chart:RadCartesianChart HeightRequest="400">
+            <!--<chart:RadCartesianChart HeightRequest="400">
                 <chart:RadCartesianChart.HorizontalAxis>
                     <chart:CategoricalAxis LabelFitMode="Rotate" />
                 </chart:RadCartesianChart.HorizontalAxis>
@@ -64,7 +63,7 @@
                         </chart:BarSeries.CategoryBinding>
                     </chart:BarSeries>
                 </chart:RadCartesianChart.Series>
-            </chart:RadCartesianChart>
+            </chart:RadCartesianChart>-->
         </StackLayout>
     </ScrollView>
 </ContentPage>

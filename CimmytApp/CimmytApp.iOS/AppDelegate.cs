@@ -1,8 +1,8 @@
 ﻿namespace CimmytApp.iOS
 {
     using Foundation;
-    using Microsoft.Practices.Unity;
-    using Prism.Unity;
+    using Prism;
+    using Prism.Ioc;
     using UIKit;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.iOS;
@@ -33,7 +33,7 @@
 
     public class iOSInitializer : IPlatformInitializer
     {
-        public void RegisterTypes(IUnityContainer container)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
         }
     }

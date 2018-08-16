@@ -1,23 +1,18 @@
 ﻿namespace CimmytApp.Calendar
 {
     using CimmytApp.Calendar.Views;
-    using Microsoft.Practices.Unity;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Unity;
 
     public class CalenderModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public CalenderModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<CalendarPage>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<CalendarPage>();
-            _unityContainer.RegisterTypeForNavigation<TelerikCalendarPage>();
         }
     }
 }

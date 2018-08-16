@@ -1,26 +1,22 @@
 ﻿namespace CimmytApp.WeatherForecast
 {
     using CimmytApp.WeatherForecast.Views;
-    using Microsoft.Practices.Unity;
+    using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Unity;
 
     public class WeatherForecastModule : IModule
     {
-        private readonly IUnityContainer _unityContainer;
-
-        public WeatherForecastModule(IUnityContainer unityContainer)
+        public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            _unityContainer = unityContainer;
+            containerRegistry.RegisterForNavigation<WeatherDataSelection>();
+            containerRegistry.RegisterForNavigation<DailyWeatherDataPage>();
+            containerRegistry.RegisterForNavigation<HourlyWeatherDataPage>();
+            containerRegistry.RegisterForNavigation<WeatherMainPage>();
+            containerRegistry.RegisterForNavigation<DailyForecastPage>();
         }
 
-        public void Initialize()
+        public void OnInitialized(IContainerProvider containerProvider)
         {
-            _unityContainer.RegisterTypeForNavigation<WeatherDataSelection>();
-            _unityContainer.RegisterTypeForNavigation<DailyWeatherDataPage>();
-            _unityContainer.RegisterTypeForNavigation<HourlyWeatherDataPage>();
-            _unityContainer.RegisterTypeForNavigation<WeatherMainPage>();
-            _unityContainer.RegisterTypeForNavigation<DailyForecastPage>();
         }
     }
 }

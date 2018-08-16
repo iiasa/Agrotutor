@@ -1,216 +1,30 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{49028EEC-96AD-4FC4-B93E-A4FD630985A8}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CimmytApp.WeatherForecast</RootNamespace>
-    <AssemblyName>CimmytApp.WeatherForecast</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
-    <FileAlignment>512</FileAlignment>
-    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>IDE0008,IDE0009</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <NoWarn>IDE0008,IDE0009</NoWarn>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\DailyForecastPageViewModel.cs" />
-    <Compile Include="ViewModels\DailyWeatherDataPageViewModel.cs" />
-    <Compile Include="ViewModels\HourlyWeatherDataPageViewModel.cs" />
-    <Compile Include="ViewModels\WeatherForecastPageViewModel.cs" />
-    <Compile Include="Views\DailyForecastPage.xaml.cs">
-      <DependentUpon>DailyForecastPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\DailyWeatherDataPage.xaml.cs">
-      <DependentUpon>DailyWeatherDataPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\HourlyWeatherDataPage.xaml.cs">
-      <DependentUpon>HourlyWeatherDataPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WeatherForecastPage.xaml.cs">
-      <DependentUpon>WeatherForecastPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="WeatherData.cs" />
-    <Compile Include="WeatherForecast.cs" />
-    <Compile Include="WeatherForecastModule.cs" />
-    <Compile Include="WeatherService.cs" />
-    <Compile Include="Views\WeatherDataSelection.xaml.cs">
-      <DependentUpon>WeatherDataSelection.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\WeatherDataSelectionViewModel.cs" />
-    <Compile Include="Views\WeatherMainPage.xaml.cs">
-      <DependentUpon>WeatherMainPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewModels\WeatherMainPageViewModel.cs" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
+    <PackageReference Include="Xamarin.Forms.DataGrid" Version="3.1.0" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj" />
+    <ProjectReference Include="..\Helper.DTO\Helper.DTO.csproj" />
+    <ProjectReference Include="..\Helper.Map\Helper.Map.csproj" />
+  </ItemGroup>
+
   <ItemGroup>
     <Reference Include="Helper.RestfulClient">
       <HintPath>..\BaseDLL\Helper.RestfulClient.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\CommonServiceLocator.1.3\lib\portable-net4+sl5+netcore45+wpa81+wp8\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Practices.Unity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.4.0.1\lib\portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10\Microsoft.Practices.Unity.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\portable-net45+win8+wp8+wpa81\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism, Version=6.3.0.0, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Core.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Forms.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Prism.Unity.Forms, Version=6.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Prism.Unity.Forms.6.3.0\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Prism.Unity.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp, Version=1.59.0.0, Culture=neutral, PublicKeyToken=0738eb9f132ed756, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.1.59.3\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="SkiaSharp.Views.Forms, Version=1.59.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\SkiaSharp.Views.Forms.1.59.3\lib\portable-net45+win8+wpa81+wp8\SkiaSharp.Views.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Documents.SpreadsheetStreaming, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.Documents.SpreadsheetStreaming.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Chart, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.Chart.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Common, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.DataControls, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.DataControls.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.DataVisualization, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Input, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.Input.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.Primitives, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.XamarinForms.SkiaSharp, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.XamarinForms.SkiaSharp.dll</HintPath>
-    </Reference>
-    <Reference Include="Telerik.Zip, Version=2017.2.818.234, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\portable-net45+win8+wpa81+wp8\Telerik.Zip.dll</HintPath>
-    </Reference>
-    <Reference Include="ExifLib">
-      <HintPath>..\packages\ExifLib.PCL.1.0.2-pre01\lib\netstandard1.0\ExifLib.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.121934\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.DataGrid, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.DataGrid.1.9.9\lib\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.DataGrid.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.121934\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Forms.2.5.0.121934\lib\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CimmytApp.DTO\CimmytApp.DTO.csproj">
-      <Project>{73076bc1-b08e-4e09-8173-b626f6bea6f9}</Project>
-      <Name>CimmytApp.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.DatasetSyncEvents\Helper.DatasetSyncEvents.csproj">
-      <Project>{FE0BAF91-231E-4D28-81C3-02DD54BEC9FA}</Project>
-      <Name>Helper.DatasetSyncEvents</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.BusinessContract\Helper.BusinessContract.csproj">
-      <Project>{EC0EA894-07E3-4905-81AA-65FEBE9E4D68}</Project>
-      <Name>Helper.BusinessContract</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.DTO\Helper.DTO.csproj">
-      <Project>{647D5F44-FD24-48AF-AFB4-26AC21180367}</Project>
-      <Name>Helper.DTO</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.Localization\Helper.Localization.csproj">
-      <Project>{AB0C334E-BFB1-476F-9EDF-6C24BB10DD1E}</Project>
-      <Name>Helper.Localization</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Helper.Map\Helper.Map.csproj">
-      <Project>{E26AC875-8F9C-4468-AD54-03D7A71F3A60}</Project>
-      <Name>Helper.Map</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\WeatherForecastPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\WeatherDataSelection.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\WeatherMainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\HourlyWeatherDataPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\DailyWeatherDataPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Views\DailyForecastPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
-  <Import Project="..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets'))" />
-  </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

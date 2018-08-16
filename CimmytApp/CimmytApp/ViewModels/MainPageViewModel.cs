@@ -54,7 +54,7 @@
 
         private void NavigateAsync(string page)
         {
-            _navigationService.NavigateAsync(page);//, useModalNavigation: false);
+            _navigationService.NavigateAsync(page);
         }
 
         private void NavigateToCalendar()
@@ -63,7 +63,7 @@
             var parcelDTO = _cimmytDbOperations.GetAllParcels();
             var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
             parameters.Add("Parcels", parcels);
-            _navigationService.NavigateAsync("TelerikCalendarPage", parameters);
+            _navigationService.NavigateAsync("CalendarPage", parameters);
         }
 
         private void NavigateToMap()
