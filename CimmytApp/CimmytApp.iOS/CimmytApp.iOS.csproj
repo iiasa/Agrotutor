@@ -428,11 +428,7 @@
     <Reference Include="Xamarin.iOS.ClusterKit, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.iOS.ClusterKit.0.3.1\lib\Xamarin.iOS10\Xamarin.iOS.ClusterKit.dll</HintPath>
     </Reference>
-    <Reference Include="XamForms.Controls.Calendar">
-      <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.1\lib\Xamarin.iOS10\XamForms.Controls.Calendar.dll</HintPath>
     </Reference>
-    <Reference Include="XamForms.Controls.Calendar.iOS">
-      <HintPath>..\..\packages\XamForms.Controls.Calendar.1.1.1\lib\Xamarin.iOS10\XamForms.Controls.Calendar.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

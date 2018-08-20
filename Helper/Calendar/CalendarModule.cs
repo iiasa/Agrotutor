@@ -1,10 +1,9 @@
-﻿namespace CimmytApp.Calendar
+﻿namespace Helper.Calendar
 {
-    using CimmytApp.Calendar.Views;
     using Prism.Ioc;
     using Prism.Modularity;
 
-    public class CalenderModule : IModule
+    public class CalendarModule : IModule
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {

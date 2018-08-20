@@ -6,7 +6,6 @@
     using UIKit;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.iOS;
-    using XamForms.Controls.iOS;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the
     // User Interface of the application, as well as listening (and optionally responding) to
@@ -24,7 +23,6 @@
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.Init();
-            Calendar.Init();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

@@ -17,7 +17,6 @@ namespace CimmytApp.Droid
     using Unity;
     using Xamarin;
     using Xamarin.Forms.Platform.Android;
-    using XamForms.Controls.Droid;
 
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon",
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -55,7 +54,6 @@ namespace CimmytApp.Droid
 
                 Forms.Init(this, bundle);
                 FormsGoogleMaps.Init(this, bundle);
-                Calendar.Init();
 
                 RegisterWithGCM(); // TODO- Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));

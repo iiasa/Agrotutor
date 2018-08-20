@@ -5,12 +5,12 @@
     using System.Diagnostics;
     using System.Reflection;
     using CimmytApp.Benchmarking;
-    using CimmytApp.Calendar;
     using CimmytApp.Parcel;
     using CimmytApp.StaticContent;
     using CimmytApp.Views;
     using CimmytApp.WeatherForecast;
     using CommonServiceLocator;
+    using Helper.Calendar;
     using Helper.Map;
     using Helper.Realm;
     using Helper.Realm.BusinessContract;
@@ -18,18 +18,22 @@
     using Prism;
     using Prism.Ioc;
     using Prism.Modularity;
-    using Unity.Lifetime;
     using Xamarin.Forms;
 
     public partial class App
     {
+        public App()
+        {
+            InitializeComponent();
+        }
+
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
             try
             {
                 Debug.WriteLine("====== resource debug info =========");
-                var assembly = typeof(App).GetTypeInfo().Assembly;
-                foreach (var res in assembly.GetManifestResourceNames())
+                Assembly assembly = typeof(App).GetTypeInfo().Assembly;
+                foreach (string res in assembly.GetManifestResourceNames())
                 {
                     Debug.WriteLine("found resource: " + res);
                 }
@@ -83,7 +87,7 @@
         {
             try
             {
-                var benchmarkingModule = typeof(BenchmarkingModule);
+                Type benchmarkingModule = typeof(BenchmarkingModule);
                 moduleCatalog.AddModule(new ModuleInfo(benchmarkingModule)
                 {
                     ModuleName = benchmarkingModule.Name,
@@ -91,15 +95,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                var calendarModule = typeof(CalenderModule);
-                moduleCatalog.AddModule(new ModuleInfo(calendarModule)
-                {
-                    ModuleName = calendarModule.Name,
-                    ModuleType = calendarModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
-
-                var mapModule = typeof(MapModule);
+                Type mapModule = typeof(MapModule);
                 moduleCatalog.AddModule(new ModuleInfo(mapModule)
                 {
                     ModuleName = mapModule.Name,
@@ -107,7 +103,15 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                var parcelModule = typeof(ParcelModule);
+                //                Type calendarModule = typeof(CalendarModule);
+                //                moduleCatalog.AddModule(new ModuleInfo(calendarModule)
+                //                {
+                //                    ModuleName = mapModule.Name,
+                //                    ModuleType = mapModule,
+                //                    InitializationMode = InitializationMode.WhenAvailable
+                //                });
+
+                Type parcelModule = typeof(ParcelModule);
                 moduleCatalog.AddModule(new ModuleInfo(parcelModule)
                 {
                     ModuleName = parcelModule.Name,
@@ -115,7 +119,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                var staticContentModule = typeof(StaticContentModule);
+                Type staticContentModule = typeof(StaticContentModule);
                 moduleCatalog.AddModule(new ModuleInfo(staticContentModule)
                 {
                     ModuleName = staticContentModule.Name,
@@ -123,7 +127,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                var userRegistrationModule = typeof(UserRegistrationModule);
+                Type userRegistrationModule = typeof(UserRegistrationModule);
                 moduleCatalog.AddModule(new ModuleInfo(userRegistrationModule)
                 {
                     ModuleName = userRegistrationModule.Name,
@@ -131,7 +135,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                var weatherForecastModule = typeof(WeatherForecastModule);
+                Type weatherForecastModule = typeof(WeatherForecastModule);
                 moduleCatalog.AddModule(new ModuleInfo(weatherForecastModule)
                 {
                     ModuleName = weatherForecastModule.Name,
@@ -151,6 +155,7 @@
 
             if (Current.Properties.ContainsKey("not_first_launch"))
                 NavigationService.NavigateAsync("app:///MainPage");
+            //NavigationService.NavigateAsync("app:///CalendarPage");
             else
             {
                 Current.Properties.Add("not_first_launch", true);
@@ -166,7 +171,7 @@
             {
                 try
                 {
-                    var geolocator = ServiceLocator.Current.GetInstance<IPosition>();
+                    IPosition geolocator = ServiceLocator.Current.GetInstance<IPosition>();
                     geolocator?.StopListening();
                 }
                 catch (Exception)
