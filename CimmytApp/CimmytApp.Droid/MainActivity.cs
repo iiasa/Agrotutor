@@ -1,6 +1,4 @@
-﻿using Xamarin.Forms;
-
-namespace CimmytApp.Droid
+﻿namespace CimmytApp.Droid
 {
     using System;
     using System.Threading.Tasks;
@@ -16,6 +14,7 @@ namespace CimmytApp.Droid
     using Prism.Unity;
     using Unity;
     using Xamarin;
+    using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
 
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon",

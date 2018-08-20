@@ -19,16 +19,15 @@
     using Prism.Ioc;
     using Prism.Modularity;
     using Xamarin.Forms;
+    using Xamarin.Live.Reload;
 
     public partial class App
     {
-        public App()
-        {
-            InitializeComponent();
-        }
-
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
+#if DEBUG
+            LiveReload.Init();
+#endif
             try
             {
                 Debug.WriteLine("====== resource debug info =========");
