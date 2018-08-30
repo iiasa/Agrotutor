@@ -4,5 +4,9 @@
 
     public partial class EventView : ContentView
     {
+        public EventView()
+        {
+            InitializeComponent();
+        }
     }
 }

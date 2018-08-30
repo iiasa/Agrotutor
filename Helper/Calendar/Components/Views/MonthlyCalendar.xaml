@@ -5,6 +5,5 @@
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="Helper.Calendar.Components.Views.MonthlyCalendar">
     <ContentView.Content>
-        <Label>Hi MonthlyCalendar!</Label>
     </ContentView.Content>
 </ContentView>

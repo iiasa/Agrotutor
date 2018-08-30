@@ -15,6 +15,9 @@
     using Helper.Realm;
     using Helper.Realm.BusinessContract;
     using Helper.UserRegistration;
+    using Microsoft.AppCenter;
+    using Microsoft.AppCenter.Analytics;
+    using Microsoft.AppCenter.Crashes;
     using Prism;
     using Prism.Ioc;
     using Prism.Modularity;
@@ -102,14 +105,6 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                //                Type calendarModule = typeof(CalendarModule);
-                //                moduleCatalog.AddModule(new ModuleInfo(calendarModule)
-                //                {
-                //                    ModuleName = mapModule.Name,
-                //                    ModuleType = mapModule,
-                //                    InitializationMode = InitializationMode.WhenAvailable
-                //                });
-
                 Type parcelModule = typeof(ParcelModule);
                 moduleCatalog.AddModule(new ModuleInfo(parcelModule)
                 {
@@ -139,6 +134,14 @@
                 {
                     ModuleName = weatherForecastModule.Name,
                     ModuleType = weatherForecastModule,
+                    InitializationMode = InitializationMode.WhenAvailable
+                });
+
+                Type calendarModule = typeof(CalendarModule);
+                moduleCatalog.AddModule(new ModuleInfo(calendarModule)
+                {
+                    ModuleName = calendarModule.Name,
+                    ModuleType = calendarModule,
                     InitializationMode = InitializationMode.WhenAvailable
                 });
             }

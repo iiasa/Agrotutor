@@ -4,5 +4,8 @@
 
     public partial class WeeklyCalendar : ContentView
     {
+        public WeeklyCalendar() {
+            InitializeComponent();
+        }
     }
 }
