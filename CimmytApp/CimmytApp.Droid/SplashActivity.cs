@@ -4,11 +4,11 @@
     using Android.App;
     using Android.Content;
     using Android.OS;
-    using Android.Support.V7.App;
     using Android.Util;
+    using Xamarin.Forms.Platform.Android;
 
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
-    public class SplashActivity : AppCompatActivity
+    public class SplashActivity : FormsAppCompatActivity
     {
         private static readonly string TAG = "X:" + typeof(SplashActivity).Name;
 
@@ -30,7 +30,7 @@
         private async void SimulateStartup()
         {
             Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
-            await Task.Delay(2000); // Simulate a bit of startup work.
+            await Task.Delay(200); // Simulate a bit of startup work.
             Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }

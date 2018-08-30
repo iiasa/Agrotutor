@@ -21,11 +21,18 @@
     using Prism;
     using Prism.Ioc;
     using Prism.Modularity;
-    using Xamarin.Forms;
     using Xamarin.Live.Reload;
 
     public partial class App
     {
+        public App()
+        {
+#if DEBUG
+            LiveReload.Init();
+#endif
+            InitializeComponent();
+        }
+
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
 #if DEBUG
@@ -44,7 +51,7 @@
 
                 //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
 
-                if (Device.RuntimePlatform == Device.Android || Device.RuntimePlatform == Device.iOS)
+                if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android || Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
                 {
                     //var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
                     //Helper.Localization.Resx.AppResources.Culture = ci;
@@ -145,24 +152,35 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 // ignored
             }
         }
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            AppCenter.Start("android=ccbee3dd-42cc-41c9-92cc-664870cd7c0e;ios=58f35007-f37b-45c5-beb6-885f2eca60b7", typeof(Analytics),
+                typeof(Crashes));
+        }
+
+
 
         protected override void OnInitialized()
         {
             InitializeComponent();
-
-            if (Current.Properties.ContainsKey("not_first_launch"))
-                NavigationService.NavigateAsync("app:///MainPage");
-            //NavigationService.NavigateAsync("app:///CalendarPage");
-            else
-            {
-                Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("app:///WelcomePage");
-            }
+            NavigationService.NavigateAsync("app:///MainPage");
+            /*
+        if (Current.Properties.ContainsKey("not_first_launch"))
+            //NavigationService.NavigateAsync("app:///MainPage");
+            NavigationService.NavigateAsync("app:///CalendarPage");
+        else
+        {
+            Current.Properties.Add("not_first_launch", true);
+            NavigationService.NavigateAsync("app:///CalendarPage");
+            //NavigationService.NavigateAsync("app:///WelcomePage");
+        }*/
         }
 
         protected override void OnSleep()

@@ -27,6 +27,7 @@ namespace CimmytApp.Droid
 		public static void UpdateIdValues()
 		{
 			global::Gcm.Client.Resource.String.library_name = global::CimmytApp.Droid.Resource.String.library_name;
+			global::Microcharts.Droid.Resource.String.library_name = global::CimmytApp.Droid.Resource.String.library_name;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::CimmytApp.Droid.Resource.Attribute.actionBarSize;
 		}
 		
