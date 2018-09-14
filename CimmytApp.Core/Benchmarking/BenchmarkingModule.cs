@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.Benchmarking
 {
     using CimmytApp.Benchmarking.Views;
+    using CimmytApp.Core.Benchmarking.Views;
     using Prism.Modularity;
     using Prism.Ioc;
 
@@ -14,6 +15,8 @@
             containerRegistry.RegisterForNavigation<ViewIngresoPage>();
             containerRegistry.RegisterForNavigation<ViewRendimientoPage>();
             containerRegistry.RegisterForNavigation<ViewUtilidadPage>();
+            containerRegistry.RegisterForNavigation<CiatSelectionPage>();
+            containerRegistry.RegisterForNavigation<CiatContentPage>();
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

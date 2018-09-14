@@ -35,6 +35,8 @@
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -75,6 +77,12 @@
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
                     </Label.GestureRecognizers>
                 </Label>
+                <Label Text="CiatData" forms:Grid.Row="7" forms:Grid.Column="0"
+                    HorizontalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CiatSelectionPage" />
+                    </Label.GestureRecognizers>
+                </Label>
 
                 <Image Source="add.png" forms:Grid.Row="0" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
@@ -106,6 +114,11 @@
                 <Image Source="profile.png" forms:Grid.Row="4" forms:Grid.Column="1" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="profile.png" forms:Grid.Row="6" forms:Grid.Column="0" WidthRequest="70" Margin="16">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CiatSelectionPage" />
                     </Image.GestureRecognizers>
                 </Image>
             </Grid>

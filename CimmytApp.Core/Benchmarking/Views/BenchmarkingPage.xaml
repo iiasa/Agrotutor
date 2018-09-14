@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper"
     x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">

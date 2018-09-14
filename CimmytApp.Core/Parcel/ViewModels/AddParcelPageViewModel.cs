@@ -138,14 +138,14 @@
         public DelegateCommand ClickChooseLocation { get; set; }
 
         /// <summary>
-        ///     Gets or sets the ClickDelineate
-        /// </summary>
-        public DelegateCommand ClickDelineate { get; set; }
-
-        /// <summary>
         ///     Gets or sets the ClickGetLocation
         /// </summary>
         public DelegateCommand ClickGetLocation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the ClickDelineate
+        /// </summary>
+        public DelegateCommand ClickDelineate { get; set; }
 
         /// <summary>
         ///     Gets or sets the ClickSave
@@ -309,6 +309,24 @@
         }
 
         /// <summary>
+        ///     The GetLocation
+        /// </summary>
+        private void GetLocation()
+        {
+            var parameters = new NavigationParameters
+            {
+                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
+            };
+            if (Parcel.Position != null && Parcel.Position.IsSet())
+            {
+                parameters.Add(MapViewModel.MapCenterParameterName,
+                    CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+            }
+            _navigationService.NavigateAsync("Map", parameters);
+        }
+
+        /// <summary>
         ///     The SelectLocation
         /// </summary>
         private void ChooseLocation()
@@ -334,24 +352,6 @@
             var parameters = new NavigationParameters
             {
                 { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
-            };
-            if (Parcel.Position != null && Parcel.Position.IsSet())
-            {
-                parameters.Add(MapViewModel.MapCenterParameterName,
-                    CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
-            }
-            _navigationService.NavigateAsync("Map", parameters);
-        }
-
-        /// <summary>
-        ///     The GetLocation
-        /// </summary>
-        private void GetLocation()
-        {
-            var parameters = new NavigationParameters
-            {
-                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {

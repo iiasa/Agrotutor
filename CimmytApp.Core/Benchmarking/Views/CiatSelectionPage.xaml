@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper"
+             x:Class="CimmytApp.Core.Benchmarking.Views.CiatSelectionPage"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+    <ContentPage.Content>
+        <ScrollView>
+            <Grid Margin="16,16,16,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2.5*"/>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" Grid.Row="0">
+                    <StackLayout.GestureRecognizers>
+                        <ClickGestureRecognizer Command="{Binding AboutPlannerCommand}"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image Source="question.png" WidthRequest="32" HeightRequest="32" />
+                    <Label Text="Sobre el planificador" HorizontalOptions="Center" />
+                </StackLayout>
+                <StackLayout Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
+                    <Label Text="Planificador (CIAT)" VerticalOptions="Center" />
+                    <Image Source="icon_performance_96.png" WidthRequest="32" HeightRequest="32" />
+                </StackLayout>
+                <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+
+                    <Label Text="Por favor selecciona tu cultivo" FontSize="18" />
+                    <Picker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}"
+                        Title="seleccionar" Margin="0,0,0,16" />
+
+                    <Label Text="Selecciona tu ubicación" FontSize="18" />
+                    <StackLayout Orientation="Horizontal" Margin="24">
+                        <Image Source="get_location.png" WidthRequest="32"/>
+                        <Label Text="Usando GPS" VerticalOptions="Center" Margin="16" FontSize="16"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" Margin="24">
+                        <Image Source="choose_location.png" WidthRequest="32"/>
+                        <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+
+                    <Label>Si ha producido este cultivo antes en esta ubicación, ingrese el rendimiento obtenido:</Label>
+                    <Entry Text="{Binding OldYield}" Keyboard="Numeric"/>
+                    <Label Text="[kilogramos] (opcional)" FontSize="18" />
+
+                    <Button Text="Start" Command="{Binding StartCommand}"/>
+
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

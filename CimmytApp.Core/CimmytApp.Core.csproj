@@ -95,6 +95,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Benchmarking\Views\CiatContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Benchmarking\Views\CiatSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Benchmarking\Views\BenchmarkingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
