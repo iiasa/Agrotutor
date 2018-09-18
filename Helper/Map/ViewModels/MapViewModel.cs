@@ -11,7 +11,7 @@
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
-    public class MapViewModel : BindableBase, INavigationAware
+    public class MapViewModel : BindableBase, INavigatedAware
     {
         public static string FollowUserLocationParameterName = "FollowUserLocation";
         public static string ListenForUserLocationParameterName = "ListenForUserLocation";
@@ -243,10 +243,6 @@
                     _view.SetMapPins(points);
                 }
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         public void SetViewReference(Views.Map map)

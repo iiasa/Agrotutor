@@ -10,10 +10,11 @@
 
     public static class RequestJson
     {
-        public static async Task<T> Get<T>(string url) where T : class
+        public static async Task<T> Get<T>(string url, NetworkCredential credentials = null ) where T : class
         {
             T res;
-            using (var httpClient = new HttpClient())
+            using (HttpClientHandler handler = new HttpClientHandler {Credentials = credentials})
+            using (HttpClient httpClient = new HttpClient(handler))
             {
                 HttpResponseMessage response = null;
                 try
@@ -32,7 +33,15 @@
                 }
 
                 var responseContent = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                res = JsonConvert.DeserializeObject<T>(responseContent);
+                try
+                {
+                    res = JsonConvert.DeserializeObject<T>(responseContent);
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine("HTTP E: " + e.Message);
+                    return null;
+                }
             }
 
             return res;

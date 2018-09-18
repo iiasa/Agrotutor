@@ -30,13 +30,13 @@
         public GeoPosition Position { get; set; }
 
         public string SelectedCrop { get; set; }
-        public DelegateCommand ClickChooseLocation { get; set; }
-        public DelegateCommand ClickGetLocation { get; set; }
-        public DelegateCommand StartCommand { get; set; }
 
-        /// <summary>
-        ///     Gets the CropTypes
-        /// </summary>
+        public DelegateCommand ClickChooseLocation { get; set; }
+
+        public DelegateCommand ClickGetLocation { get; set; }
+
+        public DelegateCommand StartCommand { get; set; }
+        
         public List<string> CropTypes { get; } = new List<string>
         {
             "Maíz",
@@ -60,9 +60,6 @@
             "Otro"
         };
 
-        /// <summary>
-        ///     Gets or sets the PickerCropTypesSelectedIndex
-        /// </summary>
         public int PickerCropTypesSelectedIndex
         {
             get => _pickerCropTypesSelectedIndex;
@@ -86,17 +83,14 @@
         {
             NavigationParameters parameters = new NavigationParameters
             {
-                { "Position", Position },
-                { "Crop", SelectedCrop },
-                { "CropType", SelectedCropType },
-                { "OldYield", OldYield }
+                { CiatContentPageViewModel.PARAMETER_NAME_POSITION, Position },
+                { CiatContentPageViewModel.PARAMETER_NAME_CROP, SelectedCrop },
+                { CiatContentPageViewModel.PARAMETER_NAME_CROP_TYPE, SelectedCropType },
+                { CiatContentPageViewModel.PARAMETER_NAME_OLD_YIELD, OldYield }
             };
-            this._navigationService.NavigateAsync("CiatContentPage");
+            this._navigationService.NavigateAsync(CiatContentPageViewModel.DEFAULT_NAVIGATION_TITLE, parameters);
         }
 
-        /// <summary>
-        ///     The GetLocation
-        /// </summary>
         private void GetLocation()
         {
             var parameters = new NavigationParameters
@@ -106,9 +100,6 @@
             _navigationService.NavigateAsync("Map", parameters);
         }
 
-        /// <summary>
-        ///     The SelectLocation
-        /// </summary>
         private void ChooseLocation()
         {
             var parameters = new NavigationParameters
