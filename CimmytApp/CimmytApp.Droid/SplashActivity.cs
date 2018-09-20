@@ -5,6 +5,9 @@
     using Android.Content;
     using Android.OS;
     using Android.Util;
+    using Flurl.Http;
+    using Flurl.Http.Configuration;
+    using IIASA.FloodCitiSense.ApiClient;
     using Xamarin.Forms.Platform.Android;
 
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
@@ -15,6 +18,7 @@
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {
             base.OnCreate(savedInstanceState, persistentState);
+            ConfigureFlurlHttp();
             Log.Debug(TAG, "SplashActivity.OnCreate");
         }
 
@@ -33,6 +37,14 @@
             await Task.Delay(200); // Simulate a bit of startup work.
             Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
+        }
+
+        private static void ConfigureFlurlHttp()
+        {
+            FlurlHttp.Configure(c =>
+            {
+                c.HttpClientFactory = new ModernHttpClientFactory();
+            });
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿namespace CimmytApp.iOS
 {
+    using Flurl.Http;
+    using Flurl.Http.Configuration;
     using Foundation;
+    using IIASA.FloodCitiSense.ApiClient;
     using Prism;
     using Prism.Ioc;
     using UIKit;
@@ -23,9 +26,18 @@
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.Init();
+            ConfigureFlurlHttp();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
+        }
+
+        private static void ConfigureFlurlHttp()
+        {
+            FlurlHttp.Configure(c =>
+            {
+                c.HttpClientFactory = new ModernHttpClientFactory();
+            });
         }
     }
 

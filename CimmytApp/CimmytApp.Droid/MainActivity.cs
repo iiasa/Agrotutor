@@ -11,8 +11,6 @@
     using Plugin.Permissions;
     using Prism;
     using Prism.Ioc;
-    using Prism.Unity;
-    using Unity;
     using Xamarin;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;

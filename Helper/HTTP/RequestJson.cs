@@ -13,15 +13,15 @@
         public static async Task<T> Get<T>(string url, NetworkCredential credentials = null ) where T : class
         {
             T res;
-            using (HttpClientHandler handler = new HttpClientHandler {Credentials = credentials})
+            HttpClientHandler handler = new HttpClientHandler { Credentials = credentials };
             using (HttpClient httpClient = new HttpClient(handler))
             {
                 HttpResponseMessage response = null;
                 try
                 {
-                    response = await httpClient.GetAsync(url).ConfigureAwait(false);
+                    response = await httpClient.GetAsync(url);
                 }
-                catch (HttpRequestException e)
+                catch (Exception e)
                 {
                     Debug.WriteLine("HTTP E: " + e.Message);
                     return null;

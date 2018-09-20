@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Helper.HTTP;
-
-namespace CimmytApp.Core.Benchmarking.ViewModels
+﻿namespace CimmytApp.Core.Benchmarking.ViewModels
 {
+    using System.Collections.Generic;
     using System.Net;
     using CimmytApp.Core.DTO.Benchmarking;
     using CimmytApp.DTO.Parcel;
-    using Helper.Datatypes;
+    using Flurl;
+    using Flurl.Http;
     using Helper.Map;
     using Prism.Mvvm;
     using Prism.Navigation;
+
+
 
     public class CiatContentPageViewModel : BindableBase, INavigatedAware
     {
@@ -22,9 +21,9 @@ namespace CimmytApp.Core.Benchmarking.ViewModels
         public static string PARAMETER_NAME_CROP_TYPE = "CropType";
         public static string PARAMETER_NAME_OLD_YIELD = "OldYield";
 
-        public Boolean IsLoading { get; set; }
+        public bool IsLoading { get; set; }
 
-        public object Data { get; set; }
+        public CiatData Data { get; set; }
 
         public GeoPosition GeoPosition { get; set; }
 
@@ -32,13 +31,23 @@ namespace CimmytApp.Core.Benchmarking.ViewModels
 
         public CropType CropType { get; set; }
 
-        public String OldYield { get; set; }
+        public string OldYield { get; set; }
 
         public async void LoadData()
         {
             IsLoading = true;
-            String url = $"http://104.239.158.49/matrizv2.php?lat={GeoPosition.Latitude}&lon={GeoPosition.Longitude}&type=matriz&tkn=E31C5F8478566357BA6875B32DC59&cultivo={Crop}";
-            Data = await RequestJson.Get<List<CiatData>>(url, new NetworkCredential("cimmy2018", "tBTAibgFtHxaNE8ld7hpKKsx3n1ORIO"));
+            var responseData = await "http://104.239.158.49".AppendPathSegment("matrizv2.php")
+                .SetQueryParams(new
+                {
+                    lat = GeoPosition.Latitude,
+                    lon = GeoPosition.Longitude,
+                    type = "matriz",
+                    tkn = "E31C5F8478566357BA6875B32DC59",
+                    cultivo = Crop
+                }).WithBasicAuth("cimmy2018", "tBTAibgFtHxaNE8ld7hpKKsx3n1ORIO")
+                .GetJsonAsync<List<CiatResponseData>>();
+
+            Data = CiatData.FromResponse(responseData);
             IsLoading = false;
         }
 
@@ -48,20 +57,16 @@ namespace CimmytApp.Core.Benchmarking.ViewModels
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            GeoPosition position;
-            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_POSITION, out position);
+            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_POSITION, out GeoPosition position);
             this.GeoPosition = position;
 
-            string crop;
-            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_CROP, out crop);
+            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_CROP, out string crop);
             this.Crop = crop;
 
-            CropType cropType;
-            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_CROP_TYPE, out cropType);
+            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_CROP_TYPE, out CropType cropType);
             this.CropType = cropType;
 
-            String oldYield;
-            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_OLD_YIELD, out oldYield);
+            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_OLD_YIELD, out string oldYield);
             this.OldYield = oldYield;
 
             LoadData();

@@ -61,8 +61,7 @@
         {
             var parameters = new NavigationParameters();
             var parcelDTO = _cimmytDbOperations.GetAllParcels();
-            var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
-            parameters.Add("Parcels", parcels);
+            parameters.Add("Parcels", parcelDTO.Select(Parcel.FromDTO).ToList());
             _navigationService.NavigateAsync("CalendarPage", parameters);
         }
 
