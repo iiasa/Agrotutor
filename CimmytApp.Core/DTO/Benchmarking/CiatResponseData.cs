@@ -32,7 +32,7 @@ namespace CimmytApp.Core.DTO.Benchmarking
         public string Type { get; set; }
 
         [JsonProperty("unidad")]
-        public string Unity { get; set; }
+        public string Unit { get; set; }
 
         [JsonProperty("rango_opt_min")]
         public string RangeOptMin { get; set; }

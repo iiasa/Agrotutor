@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using CimmytApp.DTO.Parcel;
     using Helper.Map.ViewModels;
     using Helper.Realm.BusinessContract;

@@ -9,27 +9,51 @@
             <StackLayout Margin="16,16,16,0">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                     <Label Text="CIAT Selection" VerticalOptions="Center" />
-                    <Image Source="icon_performance_96.png" WidthRequest="32" HeightRequest="32" />
+                    <Image Source="planner.png" WidthRequest="32" HeightRequest="32" />
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="Non-Irrigated" Command="{Binding NonIrrigatedClickedCommand}" x:Name="BtnNonIrrigated" />
+                    <Button Text="Irrigated" Command="{Binding IrrigatedClickedCommand}" x:Name="BtnIrrigated" />
                 </StackLayout>
                 <Label>
                     For your selected crop with irrigation type in location:
                 </Label>
+                <Label IsVisible="{Binding IsLoading}">Loading...</Label>
+                <Label IsVisible="{Binding NoData}">Sorry - there is no information available for this location.</Label>
                 <Grid Margin="0,32,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition Width="30" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <AbsoluteLayout Grid.Column="0" Grid.Row="0">
-                        <Label AbsoluteLayout.LayoutBounds="96,30,80,15" HorizontalTextAlignment="End">Hi there! &gt;</Label>
-                        <Label AbsoluteLayout.LayoutBounds="96,350,80,15" HorizontalTextAlignment="End">Hi there! &gt;</Label>
+                    <Grid.ColumnSpacing>
+                        0
+                    </Grid.ColumnSpacing>
+                    <AbsoluteLayout x:Name="OldYieldLayout"  Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label x:Name="MarkYieldOld" AbsoluteLayout.LayoutBounds="0,0.1,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="EndAndExpand">Your yield  &gt;</Label>
 
                     </AbsoluteLayout>
                     <Image Source="colorramp_faded.png"  Grid.Column="1" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" HeightRequest="400"/>
-                    <AbsoluteLayout Grid.Column="2" Grid.Row="0">
-                        <Label AbsoluteLayout.LayoutBounds="-7,80,80,15">&lt;   Hi there!</Label>
+                    <AbsoluteLayout x:Name="CiatYieldLayout" Grid.Column="2" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label x:Name="MarkYieldMax" AbsoluteLayout.LayoutBounds="0,0,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="StartAndExpand">&lt;  Max</Label>
+                        <Label x:Name="MarkYieldMin" AbsoluteLayout.LayoutBounds="0,1,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="StartAndExpand">&lt;  Min</Label>
                     </AbsoluteLayout>
                 </Grid>
+                <Label>Recommendations:</Label>
+                <Image Source="nitrogen.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblNitrogen">Apply x amount of nitrogen</Label>
+                <Image Source="crop_orange.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblAvoidCultivars">Avoid cultivars:</Label>
+                <Image Source="crop_green.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblUseCultivars">Use cultivars:</Label>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command=""/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label>How to interpret the results</Label>
+                    <Image Source="question.png"/>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

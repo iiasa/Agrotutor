@@ -560,6 +560,24 @@
   <ItemGroup>
     <BundleResource Include="Resources\colorramp_faded.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\crop_green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\crop_orange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nitrogen.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\nitrogen_small.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\planner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\planner_small.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

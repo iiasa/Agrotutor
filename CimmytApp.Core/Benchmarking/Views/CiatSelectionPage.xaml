@@ -2,12 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper"
              x:Class="CimmytApp.Core.Benchmarking.Views.CiatSelectionPage"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <ScrollView>
-            <Grid Margin="16,16,16,0">
+            <Grid Margin="16,16,16,0" IsVisible="{Binding DataIsAvailable}">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition/>
@@ -26,7 +25,7 @@
                 </StackLayout>
                 <StackLayout Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
                     <Label Text="Planificador (CIAT)" VerticalOptions="Center" />
-                    <Image Source="icon_performance_96.png" WidthRequest="32" HeightRequest="32" />
+                    <Image Source="planner.png" WidthRequest="32" HeightRequest="32" />
                 </StackLayout>
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
 

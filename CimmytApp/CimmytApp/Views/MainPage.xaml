@@ -116,7 +116,7 @@
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
                     </Image.GestureRecognizers>
                 </Image>
-                <Image Source="profile.png" forms:Grid.Row="6" forms:Grid.Column="0" WidthRequest="70" Margin="16">
+                <Image Source="planner.png" forms:Grid.Row="6" forms:Grid.Column="0" WidthRequest="70" Margin="16">
                     <Image.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CiatSelectionPage" />
                     </Image.GestureRecognizers>

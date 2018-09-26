@@ -86,7 +86,7 @@
                 { CiatContentPageViewModel.PARAMETER_NAME_POSITION, Position },
                 { CiatContentPageViewModel.PARAMETER_NAME_CROP, SelectedCrop },
                 { CiatContentPageViewModel.PARAMETER_NAME_CROP_TYPE, SelectedCropType },
-                { CiatContentPageViewModel.PARAMETER_NAME_OLD_YIELD, OldYield }
+                { CiatContentPageViewModel.PARAMETER_NAME_OLD_YIELD, double.Parse(OldYield) }
             };
             this._navigationService.NavigateAsync(CiatContentPageViewModel.DEFAULT_NAVIGATION_TITLE, parameters);
         }

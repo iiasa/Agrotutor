@@ -21,4 +21,11 @@
     <Color x:Key="SecondaryGreenBrown">#908C14</Color>
     <Color x:Key="SecondaryLightYellow">#EEE49A</Color>
     <Color x:Key="SecondaryLightGreen">#D4EB8D</Color>
+
+    <Style TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource SecondaryLightYellow}" />
+    </Style>
+    <Style x:Key="ButtonGreen" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreen}" />
+    </Style>
 </ResourceDictionary>
