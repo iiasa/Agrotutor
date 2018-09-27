@@ -72,6 +72,7 @@
             string nitrogenText = "No recommendation on nitrogen.";
             string cultivarToAvoidText = "Avoid cultivars: -";
             string cultivarToUseText = "Use cultivars: -";
+            string seedDensityText = "Seed density: -";
 
             if (currentData != null)
             {
@@ -89,11 +90,17 @@
                 {
                     cultivarToUseText = $"Use cultivars: {String.Join(", ", currentData.OptimalCultivars)}";
                 }
+
+                if (currentData.SeedDensity != null && currentData.SeedDensityUnit != null)
+                {
+                    seedDensityText = $"Use a min density of {currentData.SeedDensity} {currentData.SeedDensityUnit}";
+                }
             }
 
             this.lblNitrogen.Text = nitrogenText;
             this.lblAvoidCultivars.Text = cultivarToAvoidText;
             this.lblUseCultivars.Text = cultivarToUseText;
+            this.lblSeedDensity.Text = seedDensityText;
 
         }
     }

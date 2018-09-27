@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -39,20 +39,22 @@
                         <Label x:Name="MarkYieldMin" AbsoluteLayout.LayoutBounds="0,1,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="StartAndExpand">&lt;  Min</Label>
                     </AbsoluteLayout>
                 </Grid>
-                <Label>Recommendations:</Label>
+                <Label Margin="0,16,0,16">Recommendations:</Label>
                 <Image Source="nitrogen.png"  WidthRequest="32" HeightRequest="64" />
-                <Label x:Name="lblNitrogen">Apply x amount of nitrogen</Label>
+                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblNitrogen">Apply x amount of nitrogen</Label>
                 <Image Source="crop_orange.png"  WidthRequest="32" HeightRequest="64" />
-                <Label x:Name="lblAvoidCultivars">Avoid cultivars:</Label>
+                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblAvoidCultivars">Avoid cultivars:</Label>
                 <Image Source="crop_green.png"  WidthRequest="32" HeightRequest="64" />
-                <Label x:Name="lblUseCultivars">Use cultivars:</Label>
-                <StackLayout Orientation="Horizontal">
+                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblUseCultivars">Use cultivars:</Label>
+                <Image Source="fertilizer.png"  WidthRequest="32" HeightRequest="64" />
+                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblSeedDensity">Seed density:</Label>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command=""/>
                     </StackLayout.GestureRecognizers>
 
-                    <Label>How to interpret the results</Label>
-                    <Image Source="question.png"/>
+                    <Label VerticalOptions="End">How to interpret the results</Label>
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
             </StackLayout>
         </ScrollView>

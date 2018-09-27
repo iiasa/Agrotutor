@@ -84,6 +84,7 @@
             {
                 List<CiatResponseData> responseData = await request.GetJsonAsync<List<CiatResponseData>>();
                 Data = CiatData.FromResponse(responseData, request.Url);
+                IrrigatedClickedCommand.Execute();
             }
             catch
             {
