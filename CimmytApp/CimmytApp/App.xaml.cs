@@ -3,8 +3,10 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Globalization;
     using System.Reflection;
     using CimmytApp.Benchmarking;
+    using CimmytApp.Core.Localization;
     using CimmytApp.Parcel;
     using CimmytApp.StaticContent;
     using CimmytApp.Views;
@@ -19,18 +21,15 @@
     using Microsoft.AppCenter.Analytics;
     using Microsoft.AppCenter.Crashes;
     using Prism;
+    using Prism.DryIoc;
     using Prism.Ioc;
     using Prism.Modularity;
     using Xamarin.Live.Reload;
 
-    public partial class App
+    public partial class App: PrismApplication
     {
-        public App()
+        public App():this(null)
         {
-#if DEBUG
-            LiveReload.Init();
-#endif
-            InitializeComponent();
         }
 
         public App(IPlatformInitializer initializer = null) : base(initializer)
@@ -38,42 +37,34 @@
 #if DEBUG
             LiveReload.Init();
 #endif
-            try
+        }
+
+        protected override void OnInitialized()
+        {
+            InitializeComponent();
+
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS ||
+                Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
             {
-                Debug.WriteLine("====== resource debug info =========");
-                Assembly assembly = typeof(App).GetTypeInfo().Assembly;
-                foreach (string res in assembly.GetManifestResourceNames())
-                {
-                    Debug.WriteLine("found resource: " + res);
-                }
-
-                Debug.WriteLine("====================================");
-
-                //Device.OS marked as obsolete, but proposed Device.RuntimePlatform didn't work last time I checked...
-
-                if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android || Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS)
-                {
-                    //var ci = DependencyService.Get<ILocalize>().GetCurrentCultureInfo();
-                    //Helper.Localization.Resx.AppResources.Culture = ci;
-                    //DependencyService.Get<ILocalize>().SetLocale(ci);
-                }
-
-                //  CimmytDbOperations.GetAllParcels();
+                ILocalizer localizer = Container.Resolve<ILocalizer>();
+                CultureInfo cultureInfo = localizer.GetCurrentCultureInfo();
+                localizer.SetLocale(cultureInfo);
             }
-            catch (Exception)
-            {
-                // ignored
-            }
+
+            NavigationService.NavigateAsync(getInitialPage());
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+
+            AppCenter.Start("android=ccbee3dd-42cc-41c9-92cc-664870cd7c0e;ios=58f35007-f37b-45c5-beb6-885f2eca60b7", typeof(Analytics),
+                typeof(Crashes));
         }
 
         public static DTO.Parcel.Parcel CurrentParcel { get; set; }
 
         public static List<DTO.Parcel.Parcel> Parcels { get; set; }
-
-        public static IDictionary<string, object> GetProperties()
-        {
-            return Current.Properties;
-        }
 
         public static object GetProperty(string propertyName)
         {
@@ -157,31 +148,8 @@
                 // ignored
             }
         }
-        protected override void OnStart()
-        {
-            base.OnStart();
-
-            AppCenter.Start("android=ccbee3dd-42cc-41c9-92cc-664870cd7c0e;ios=58f35007-f37b-45c5-beb6-885f2eca60b7", typeof(Analytics),
-                typeof(Crashes));
-        }
 
 
-
-        protected override void OnInitialized()
-        {
-            InitializeComponent();
-            NavigationService.NavigateAsync("app:///MainPage");
-            /*
-        if (Current.Properties.ContainsKey("not_first_launch"))
-            //NavigationService.NavigateAsync("app:///MainPage");
-            NavigationService.NavigateAsync("app:///CalendarPage");
-        else
-        {
-            Current.Properties.Add("not_first_launch", true);
-            NavigationService.NavigateAsync("app:///CalendarPage");
-            //NavigationService.NavigateAsync("app:///WelcomePage");
-        }*/
-        }
 
         protected override void OnSleep()
         {
@@ -215,6 +183,18 @@
             catch (Exception)
             {
                 // ignored
+            }
+        }
+
+        private string getInitialPage()
+        {
+            return "app:///MainPage";
+            if (Current.Properties.ContainsKey("not_first_launch"))
+                NavigationService.NavigateAsync("app:///MainPage");
+            else
+            {
+                Current.Properties.Add("not_first_launch", true);
+                NavigationService.NavigateAsync("app:///IntroductionPage");
             }
         }
     }
