@@ -7,6 +7,7 @@
     using Android.OS;
     using Android.Runtime;
     using Android.Util;
+    using CimmytApp.Core.Localization;
     using Gcm.Client;
     using Plugin.Permissions;
     using Prism;
@@ -31,18 +32,18 @@
             {
                 AndroidEnvironment.UnhandledExceptionRaiser += (sender, args) =>
                 {
-                    var x = args;
+                    RaiseThrowableEventArgs x = args;
                 };
 
                 AppDomain.CurrentDomain.UnhandledException += (sender, args) =>
                 {
-                    var x = args.ExceptionObject;
+                    object x = args.ExceptionObject;
                 };
 
                 // Wire up the unobserved task exception handler
                 TaskScheduler.UnobservedTaskException += (sender, args) =>
                 {
-                    var x = args;
+                    UnobservedTaskExceptionEventArgs x = args;
                 };
 
                 if (Device.Idiom == TargetIdiom.Phone) RequestedOrientation = ScreenOrientation.Portrait;
@@ -85,6 +86,7 @@
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<ILocalizer, Localizer>();
         }
     }
 }

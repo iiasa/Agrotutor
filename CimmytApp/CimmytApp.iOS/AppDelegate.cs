@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.iOS
 {
+    using CimmytApp.Core.Localization;
     using Flurl.Http;
     using Flurl.Http.Configuration;
     using Foundation;
@@ -45,6 +46,7 @@
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterSingleton<ILocalizer, Localizer>();
         }
     }
 }

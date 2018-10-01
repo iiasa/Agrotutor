@@ -52,7 +52,7 @@
 
             if (rootObjectProvider != null)
             {
-                return (rootObjectProvider.RootObject as Element).GetType().GetTypeInfo();
+                return (rootObjectProvider.RootObject as Element)?.GetType().GetTypeInfo();
             }
 
             PropertyInfo propertyInfo = valueTargetProvider.GetType()
@@ -65,14 +65,14 @@
             }
 
             IEnumerable<object> parentObjects = propertyInfo.GetValue(valueTargetProvider) as IEnumerable<object>;
-            object parentObject = parentObjects.LastOrDefault(x => x.GetType().GetTypeInfo().IsSubclassOf(typeof(Element)));
+            object parentObject = parentObjects?.LastOrDefault(x => x.GetType().GetTypeInfo().IsSubclassOf(typeof(Element)));
 
             if (parentObject == null)
             {
                 throw new ArgumentNullException("parentObject");
             }
 
-            return (parentObject as Element).GetType().GetTypeInfo();
+            return (parentObject as Element)?.GetType().GetTypeInfo();
         }
     }
 }

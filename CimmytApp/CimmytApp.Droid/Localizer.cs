@@ -1,9 +1,9 @@
-﻿namespace CimmytApp.iOS
+﻿namespace CimmytApp.Droid
 {
     using System.Globalization;
     using System.Threading;
     using CimmytApp.Core.Localization;
-    using Foundation;
+    using Java.Util;
 
     // See https://docs.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/localization
     public class Localizer : ILocalizer
@@ -17,17 +17,8 @@
 
         public CultureInfo GetCurrentCultureInfo()
         {
-            string netLanguage;
-
-            if (NSLocale.PreferredLanguages.Length > 0)
-            {
-                string preferredLanguage = NSLocale.PreferredLanguages[0];
-                netLanguage = iOSToDotnetLanguage(preferredLanguage);
-            }
-            else
-            {
-                return DefaultCultureInfo;
-            }
+            Locale androidLocale = Locale.Default;
+            string netLanguage = AndroidToDotNetLanguage(androidLocale.ToString().Replace("_", "-"));
 
             // This gets called a lot - try/catch can be expensive so consider caching or something
             CultureInfo cultureInfo = null;
@@ -61,18 +52,21 @@
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
         }
 
-#pragma warning disable SA1300 // Element should begin with upper-case letter
-        protected string iOSToDotnetLanguage(string iOSLanguage)
-#pragma warning restore SA1300 // Element should begin with upper-case letter
+        protected string AndroidToDotNetLanguage(string androidLanguage)
         {
-            string netLanguage = iOSLanguage;
+            string netLanguage = androidLanguage;
 
             // Certain languages need to be converted to CultureInfo equivalent
-            switch (iOSLanguage)
+            switch (androidLanguage)
             {
+                case "ms-BN": // "Malaysian (Brunei)" not supported .NET culture
                 case "ms-MY": // "Malaysian (Malaysia)" not supported .NET culture
                 case "ms-SG": // "Malaysian (Singapore)" not supported .NET culture
                     netLanguage = "ms"; // Closest supported
+                    break;
+
+                case "in-ID": // "Indonesian (Indonesia)" has different code in  .NET
+                    netLanguage = "id-ID"; // Correct code for .NET
                     break;
 
                 case "gsw-CH": // "Schwiizertüütsch (Swiss German)" not supported .NET culture
@@ -93,10 +87,6 @@
 
             switch (platformCulture.LanguageCode)
             {
-                case "pt":
-                    netLanguage = "pt-PT"; // Fallback to Portuguese (Portugal)
-                    break;
-
                 case "gsw":
                     netLanguage = "de-CH"; // Equivalent to German (Switzerland) for this app
                     break;

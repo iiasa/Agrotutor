@@ -1,7 +1,6 @@
 ﻿namespace CimmytApp.ViewModels
 {
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel.Events;
@@ -16,20 +15,20 @@
 
     public class MainPageViewModel : BindableBase
     {
-        private readonly ICimmytDbOperations _cimmytDbOperations;
-        private readonly IEventAggregator _eventAggregator;
-        private readonly INavigationService _navigationService;
+        private readonly ICimmytDbOperations cimmytDbOperations;
+        private readonly IEventAggregator eventAggregator;
+        private readonly INavigationService navigationService;
 
-        private string _title;
+        private string title;
 
         public MainPageViewModel(IEventAggregator eventAggregator, INavigationService navigationService,
             ICimmytDbOperations cimmytDbOperations)
         {
-            _navigationService = navigationService;
-            _cimmytDbOperations = cimmytDbOperations;
-            _eventAggregator = eventAggregator;
-            _eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
-            _eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
+            this.navigationService = navigationService;
+            this.cimmytDbOperations = cimmytDbOperations;
+            this.eventAggregator = eventAggregator;
+            this.eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
+            this.eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
 
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
@@ -48,28 +47,28 @@
 
         public string Title
         {
-            get => _title;
-            set => SetProperty(ref _title, value);
+            get => this.title;
+            set => SetProperty(ref this.title, value);
         }
 
         private void NavigateAsync(string page)
         {
-            _navigationService.NavigateAsync(page);
+            this.navigationService.NavigateAsync("NavigationPage/" + page);
         }
 
         private void NavigateToCalendar()
         {
             var parameters = new NavigationParameters();
-            var parcelDTO = _cimmytDbOperations.GetAllParcels();
+            var parcelDTO = this.cimmytDbOperations.GetAllParcels();
             parameters.Add("Parcels", parcelDTO.Select(Parcel.FromDTO).ToList());
-            _navigationService.NavigateAsync("CalendarPage", parameters);
+            this.navigationService.NavigateAsync("CalendarPage", parameters);
         }
 
         private void NavigateToMap()
         {
             var polygons = new List<Polygon>();
             var parcelLocations = new List<Pin>();
-            var parcelDTO = _cimmytDbOperations.GetAllParcels();
+            var parcelDTO = this.cimmytDbOperations.GetAllParcels();
             var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
 
             foreach (var item in parcels)
@@ -114,12 +113,12 @@
                 { MapViewModel.PointsParameterName, parcelLocations }
             };
 
-            _navigationService.NavigateAsync("Map", parameters);
+            this.navigationService.NavigateAsync("Map", parameters);
         }
 
         private void OnDbConnectionRequest()
         {
-            _eventAggregator.GetEvent<DbConnectionEvent>().Publish(_cimmytDbOperations);
+            this.eventAggregator.GetEvent<DbConnectionEvent>().Publish(this.cimmytDbOperations);
         }
     }
 }

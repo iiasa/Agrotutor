@@ -58,14 +58,15 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <NoWarn>IDE0008,IDE0009</NoWarn>
-    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <Debugger>.Net (Xamarin)</Debugger>
-    <DebugSymbols>False</DebugSymbols>
+    <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
+    <Debugger>Xamarin</Debugger>
+    <DebugSymbols>true</DebugSymbols>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidSupportedAbis>armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
+    <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GCM.Client">
@@ -85,7 +86,7 @@
   <ItemGroup>
     <Compile Include="AzurePushBroadcastReceiver.cs" />
     <Compile Include="Constants.cs" />
-    <Compile Include="Localize.cs" />
+    <Compile Include="Localizer.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MessageAndroid.cs" />

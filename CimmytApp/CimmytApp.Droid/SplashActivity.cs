@@ -6,7 +6,6 @@
     using Android.OS;
     using Android.Util;
     using Flurl.Http;
-    using Flurl.Http.Configuration;
     using IIASA.FloodCitiSense.ApiClient;
     using Xamarin.Forms.Platform.Android;
 
@@ -26,16 +25,16 @@
         protected override void OnResume()
         {
             base.OnResume();
-            Task startupWork = new Task(() => { SimulateStartup(); });
+            Task startupWork = new Task(SimulateStartup);
             startupWork.Start();
         }
 
         // Simulates background work that happens behind the splash screen
         private async void SimulateStartup()
         {
-            Log.Debug(TAG, "Performing some startup work that takes a bit of time.");
+            Log.Debug(SplashActivity.TAG, "Performing some startup work that takes a bit of time.");
             await Task.Delay(200); // Simulate a bit of startup work.
-            Log.Debug(TAG, "Startup work is finished - starting MainActivity.");
+            Log.Debug(SplashActivity.TAG, "Startup work is finished - starting MainActivity.");
             StartActivity(new Intent(Application.Context, typeof(MainActivity)));
         }
 

@@ -24,6 +24,7 @@
     using Prism.DryIoc;
     using Prism.Ioc;
     using Prism.Modularity;
+    using Xamarin.Forms;
     using Xamarin.Live.Reload;
 
     public partial class App: PrismApplication
@@ -173,6 +174,7 @@
         {
             try
             {
+                containerRegistry.RegisterForNavigation<NavigationPage>();
                 containerRegistry.RegisterForNavigation<MainPage>();
                 containerRegistry.RegisterForNavigation<LoginPage>();
                 containerRegistry.RegisterForNavigation<ParcelMainPage>();
