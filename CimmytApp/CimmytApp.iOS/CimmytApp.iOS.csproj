@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\..\packages\Xamarin.LiveReload.0.3.27\build\Xamarin.LiveReload.props" Condition="Exists('..\..\packages\Xamarin.LiveReload.0.3.27\build\Xamarin.LiveReload.props')" />
   <Import Project="..\..\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\..\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.props')" />
   <Import Project="..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props" Condition="Exists('..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
@@ -107,6 +108,7 @@
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork@2x" />
     <None Include="packages.config" />
+    <None Include="FodyWeavers.xml" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\Icon-60%403x.png" />
@@ -465,11 +467,75 @@
     <Reference Include="Xamarin.iOS.ClusterKit, Version=0.3.1.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.iOS.ClusterKit.0.3.1.1\lib\Xamarin.iOS10\Xamarin.iOS.ClusterKit.dll</HintPath>
     </Reference>
+        <Reference Include="Plugin.Media">
+      <HintPath>..\..\packages\Xam.Plugin.Media.4.0.1.5\lib\xamarinios10\Plugin.Media.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Tracer">
+      <HintPath>..\..\packages\System.Diagnostics.Tracer.2.0.8\lib\netstandard1.3\System.Diagnostics.Tracer.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive.Interfaces">
+      <HintPath>..\..\packages\System.Reactive.Interfaces.4.0.0-preview.2.build.379\lib\netstandard1.3\System.Reactive.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reactive">
+      <HintPath>..\..\packages\System.Reactive.4.0.0-preview.2.build.379\lib\netstandard2.0\System.Reactive.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Mqtt">
+      <HintPath>..\..\packages\System.Net.Mqtt.0.5.13-beta\lib\netstandard2.0\System.Net.Mqtt.dll</HintPath>
+    </Reference>
+    <Reference Include="Merq">
+      <HintPath>..\..\packages\Merq.1.0.0\lib\netstandard1.1\Merq.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.DeviceInfo.Abstractions">
+      <HintPath>..\..\packages\Xam.Plugin.DeviceInfo.3.1.0\lib\Xamarin.iOS10\Plugin.DeviceInfo.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.DeviceInfo">
+      <HintPath>..\..\packages\Xam.Plugin.DeviceInfo.3.1.0\lib\Xamarin.iOS10\Plugin.DeviceInfo.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Loader">
+      <HintPath>..\..\packages\Xamarin.LiveReload.0.3.27\lib\netstandard2.0\Xamarin.Forms.Loader.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Live">
+      <HintPath>..\..\packages\Xamarin.LiveReload.0.3.27\lib\netstandard2.0\Xamarin.Live.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Live.Reload">
+      <HintPath>..\..\packages\Xamarin.LiveReload.0.3.27\lib\netstandard2.0\Xamarin.Live.Reload.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter">
+      <HintPath>..\..\packages\Microsoft.AppCenter.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.iOS.Bindings">
+      <HintPath>..\..\packages\Microsoft.AppCenter.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Analytics">
+      <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Analytics.iOS.Bindings">
+      <HintPath>..\..\packages\Microsoft.AppCenter.Analytics.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Analytics.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Crashes">
+      <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
+      <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.Forms">
+      <HintPath>..\..\packages\Microcharts.Forms.0.7.1\lib\netstandard1.4\Microcharts.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts">
+      <HintPath>..\..\packages\Microcharts.0.7.1\lib\Xamarin.iOS10\Microcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.iOS">
+      <HintPath>..\..\packages\Microcharts.0.7.1\lib\Xamarin.iOS10\Microcharts.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">
       <Project>{b7dec39b-eda0-4bca-8556-a56d8897a347}</Project>
       <Name>CimmytApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Helper\Helper.csproj">
+      <Project>{CE3AA788-B837-4693-AFEC-9BCA677DFA41}</Project>
+      <Name>Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -583,9 +649,6 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\colorramp.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\colorramp_faded.png" />
   </ItemGroup>
   <ItemGroup>
@@ -626,6 +689,7 @@
   <Import Project="..\..\packages\Realm.Database.3.1.0\build\Realm.Database.targets" Condition="Exists('..\..\packages\Realm.Database.3.1.0\build\Realm.Database.targets')" />
   <Import Project="..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
   <Import Project="..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('..\..\packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
+  <Import Project="..\..\packages\Xamarin.LiveReload.0.3.27\build\Xamarin.LiveReload.targets" Condition="Exists('..\..\packages\Xamarin.LiveReload.0.3.27\build\Xamarin.LiveReload.targets')" />
   <Import Project="..\..\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.targets')" />
   <Import Project="..\..\packages\Xamarin.Google.iOS.Maps.2.5.0.1\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('..\..\packages\Xamarin.Google.iOS.Maps.2.5.0.1\build\Xamarin.Google.iOS.Maps.targets')" />
 </Project>

@@ -15,6 +15,9 @@ namespace CimmytApp.Core.Benchmarking.Views
         public CiatSelectionPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, true);
+            NavigationPage.SetBackButtonTitle(this, "Back");
+            NavigationPage.SetHasNavigationBar(this, true);
         }
     }
 }

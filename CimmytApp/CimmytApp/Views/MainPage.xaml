@@ -39,8 +39,8 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <Label Text="Agregar parcela" forms:Grid.Row="1" forms:Grid.Column="0" HorizontalTextAlignment="Center">
                     <Label.GestureRecognizers>

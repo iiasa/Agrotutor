@@ -190,13 +190,13 @@
 
         private string getInitialPage()
         {
-            return "app:///MainPage";
+            return "app:///NavigationPage/MainPage";
             if (Current.Properties.ContainsKey("not_first_launch"))
-                NavigationService.NavigateAsync("app:///MainPage");
+                NavigationService.NavigateAsync("app:///NavigationPage/MainPage");
             else
             {
                 Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("app:///IntroductionPage");
+                NavigationService.NavigateAsync("app:///NavigationPage/IntroductionPage");
             }
         }
     }
