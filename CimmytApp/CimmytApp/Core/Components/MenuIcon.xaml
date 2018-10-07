@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CimmytApp.Core.Components.MenuIcon">
+  <ContentView.Content>
+      <StackLayout>
+          <StackLayout.GestureRecognizers>
+              <ClickGestureRecognizer x:Name="ClickGestureRecognizer" />
+          </StackLayout.GestureRecognizers>
+          
+          <Label x:Name="Label" Text="" HorizontalTextAlignment="Center" />
+          <Image x:Name="Icon" Source="" WidthRequest="70" Margin="16" />
+      </StackLayout>
+  </ContentView.Content>
+</ContentView>

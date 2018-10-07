@@ -3,12 +3,10 @@
     using System.Threading.Tasks;
     using CimmytApp.Messaging;
     using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
 
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainPage
+    public partial class MainPage : ContentPage
     {
-        private bool _backButtonRecentlyPressed;
+        private bool backButtonRecentlyPressed;
 
         public MainPage()
         {
@@ -17,12 +15,12 @@
 
         protected override bool OnBackButtonPressed()
         {
-            if (_backButtonRecentlyPressed)
+            if (this.backButtonRecentlyPressed)
             {
                 return base.OnBackButtonPressed();
             }
 
-            _backButtonRecentlyPressed = true;
+            this.backButtonRecentlyPressed = true;
             StartBackButtonTimer();
             DependencyService.Get<IMessage>().ShortAlert("Presione una vez más para salir de la aplicación");
 
@@ -32,7 +30,7 @@
         private async void StartBackButtonTimer()
         {
             await Task.Delay(2000);
-            _backButtonRecentlyPressed = false;
+            this.backButtonRecentlyPressed = false;
         }
     }
 }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Collection" Version="4.0.0" />
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.9.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.9.0" />
@@ -20,12 +21,22 @@
 
   <ItemGroup>
     <Folder Include="Properties\" />
+    <Folder Include="Resources\ViewModels\" />
     <Folder Include="Resx\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\CimmytApp.Core\CimmytApp.Core.csproj" />
     <ProjectReference Include="..\..\Helper\Helper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Views\MainPage.resx">
+      <Generator></Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\MenuIcon.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

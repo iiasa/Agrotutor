@@ -5,7 +5,8 @@
     using System.Linq;
     using System.Reflection;
     using Microsoft.Extensions.Localization;
-    using Prism.Unity;
+    using Prism.DryIoc;
+    using Prism.Ioc;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     using Xamarin.Forms.Xaml.Internals;
@@ -24,15 +25,21 @@
             }
 
             TypeInfo rootObjectType = GetRootObjectType(serviceProvider);
-            return GetStringLocalizer(rootObjectType.AsType())[Text];
+            IStringLocalizer localizer = GetStringLocalizer(rootObjectType.AsType());
+            object localizedText = localizer[Text];
+            return localizedText;
         }
 
         protected static IStringLocalizer GetStringLocalizer(Type type)
         {
             Type stringLocalizerType = typeof(StringLocalizer<>);
             Type stringLocalizerTypeOfT = stringLocalizerType.MakeGenericType(type);
+            Application application = Application.Current;
+            PrismApplication app = (PrismApplication)application;
+            IContainerProvider containerProvider = app.Container;
+            IStringLocalizer localizer = containerProvider.Resolve(stringLocalizerTypeOfT) as IStringLocalizer;
 
-            return ((PrismApplication)Application.Current).Container.Resolve(stringLocalizerTypeOfT) as IStringLocalizer;
+            return localizer;
         }
 
         protected TypeInfo GetRootObjectType(IServiceProvider serviceProvider)

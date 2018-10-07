@@ -12,7 +12,7 @@
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
-    public class ParcelMainPageViewModel : BindableBase, INavigationAware, IActiveAware
+    public class ParcelMainPageViewModel : BindableBase, INavigationAware
     {
         private readonly ICimmytDbOperations _cimmytDbOperations;
         private readonly INavigationService _navigationService;
@@ -35,11 +35,7 @@
             }
         }
 
-        public event EventHandler IsActiveChanged;
-
         public DelegateCommand GoBackCommand { get; set; }
-
-        public bool IsActive { get; set; }
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 

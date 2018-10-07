@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.ProfilePage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
@@ -12,8 +12,8 @@
                 <Image Source="profile_small.png" />
             </StackLayout>
 
-            <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
-            <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}"
+            <Label Text="{i18n:Translate hint_producer_name}" FontSize="10" />
+            <Entry Placeholder="{i18n:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}"
                 Margin="0,0,0,16" />
 
             <Label Text="Estado" FontSize="10" />

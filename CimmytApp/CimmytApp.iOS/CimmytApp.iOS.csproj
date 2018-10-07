@@ -310,6 +310,15 @@
     <Reference Include="Google.Maps, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Google.iOS.Maps.2.5.0.1\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Microcharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\Xamarin.iOS10\Microcharts.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.Forms, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microcharts.Forms.0.8.3-pre\lib\netstandard1.3\Microcharts.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microcharts.iOS, Version=1.0.6505.39336, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\Xamarin.iOS10\Microcharts.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
@@ -467,7 +476,7 @@
     <Reference Include="Xamarin.iOS.ClusterKit, Version=0.3.1.1, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.iOS.ClusterKit.0.3.1.1\lib\Xamarin.iOS10\Xamarin.iOS.ClusterKit.dll</HintPath>
     </Reference>
-        <Reference Include="Plugin.Media">
+    <Reference Include="Plugin.Media">
       <HintPath>..\..\packages\Xam.Plugin.Media.4.0.1.5\lib\xamarinios10\Plugin.Media.dll</HintPath>
     </Reference>
     <Reference Include="System.Diagnostics.Tracer">
@@ -517,15 +526,6 @@
     </Reference>
     <Reference Include="Microsoft.AppCenter.Crashes.iOS.Bindings">
       <HintPath>..\..\packages\Microsoft.AppCenter.Crashes.1.9.0\lib\Xamarin.iOS10\Microsoft.AppCenter.Crashes.iOS.Bindings.dll</HintPath>
-    </Reference>
-    <Reference Include="Microcharts.Forms">
-      <HintPath>..\..\packages\Microcharts.Forms.0.7.1\lib\netstandard1.4\Microcharts.Forms.dll</HintPath>
-    </Reference>
-    <Reference Include="Microcharts">
-      <HintPath>..\..\packages\Microcharts.0.7.1\lib\Xamarin.iOS10\Microcharts.dll</HintPath>
-    </Reference>
-    <Reference Include="Microcharts.iOS">
-      <HintPath>..\..\packages\Microcharts.0.7.1\lib\Xamarin.iOS10\Microcharts.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

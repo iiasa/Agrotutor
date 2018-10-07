@@ -6,6 +6,7 @@
     using CimmytApp.Parcel.Events;
     using Helper.Map.ViewModels;
     using Helper.Realm.BusinessContract;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
@@ -13,7 +14,7 @@
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
-    public class MainPageViewModel : BindableBase
+    public class MainPageViewModel : ViewModelBase
     {
         private readonly ICimmytDbOperations cimmytDbOperations;
         private readonly IEventAggregator eventAggregator;
@@ -22,7 +23,7 @@
         private string title;
 
         public MainPageViewModel(IEventAggregator eventAggregator, INavigationService navigationService,
-            ICimmytDbOperations cimmytDbOperations)
+            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<MainPageViewModel> localizer) : base(localizer)
         {
             this.navigationService = navigationService;
             this.cimmytDbOperations = cimmytDbOperations;
@@ -35,7 +36,7 @@
             NavigateToCalendarCommand = new DelegateCommand(NavigateToCalendar);
         }
 
-        public MainPageViewModel()
+        public MainPageViewModel() : base(null)
         {
         }
 
@@ -61,7 +62,7 @@
             var parameters = new NavigationParameters();
             var parcelDTO = this.cimmytDbOperations.GetAllParcels();
             parameters.Add("Parcels", parcelDTO.Select(Parcel.FromDTO).ToList());
-            this.navigationService.NavigateAsync("CalendarPage", parameters);
+            this.navigationService.NavigateAsync("NavigationPage/CalendarPage", parameters);
         }
 
         private void NavigateToMap()
@@ -82,8 +83,8 @@
                         StrokeColor = Color.Green,
                         StrokeWidth = 2f
                     };
-                    var listPosition = delineation.Select(positionitem =>
-                            new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
+                    var listPosition = delineation.Select(positionItem =>
+                            new Position((double)positionItem.Latitude, (double)positionItem.Longitude))
                         .ToList();
                     if (listPosition.Count <= 2)
                     {
@@ -113,7 +114,7 @@
                 { MapViewModel.PointsParameterName, parcelLocations }
             };
 
-            this.navigationService.NavigateAsync("Map", parameters);
+            this.navigationService.NavigateAsync("NavigationPage/Map", parameters);
         }
 
         private void OnDbConnectionRequest()

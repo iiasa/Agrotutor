@@ -44,9 +44,9 @@
 
     public class iOSInitializer : IPlatformInitializer
     {
-        public void RegisterTypes(IContainerRegistry containerRegistry)
+        public void RegisterTypes(IContainerRegistry container)
         {
-            containerRegistry.RegisterSingleton<ILocalizer, Localizer>();
+            container.RegisterSingleton<ILocalizer, Localizer>();
         }
     }
 }

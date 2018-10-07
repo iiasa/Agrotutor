@@ -6,6 +6,7 @@
     using System.Globalization;
     using System.Reflection;
     using CimmytApp.Benchmarking;
+    using CimmytApp.Core;
     using CimmytApp.Core.Localization;
     using CimmytApp.Parcel;
     using CimmytApp.StaticContent;
@@ -176,11 +177,12 @@
             {
                 containerRegistry.RegisterForNavigation<NavigationPage>();
                 containerRegistry.RegisterForNavigation<MainPage>();
-                containerRegistry.RegisterForNavigation<LoginPage>();
                 containerRegistry.RegisterForNavigation<ParcelMainPage>();
                 containerRegistry.RegisterForNavigation<ProfilePage>();
                 containerRegistry.Register<ICimmytDbOperations, CimmytDbOperations>();
                 containerRegistry.Register<IPosition, LocationBusiness>();
+
+                containerRegistry.RegisterLocalization();
             }
             catch (Exception)
             {
@@ -196,7 +198,7 @@
             else
             {
                 Current.Properties.Add("not_first_launch", true);
-                NavigationService.NavigateAsync("app:///NavigationPage/IntroductionPage");
+                NavigationService.NavigateAsync("app:///IntroductionPage");
             }
         }
     }

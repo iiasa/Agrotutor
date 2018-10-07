@@ -84,9 +84,12 @@
 
     public class AndroidInitializer : IPlatformInitializer
     {
-        public void RegisterTypes(IContainerRegistry containerRegistry)
+        public void RegisterTypes(IContainerRegistry container)
         {
-            containerRegistry.RegisterSingleton<ILocalizer, Localizer>();
+            container.RegisterSingleton<ILocalizer, Localizer>();
+
+            // Remove after https://github.com/PrismLibrary/Prism/issues/1443 is fixed
+            container.RegisterInstance(Forms.Context);
         }
     }
 }
