@@ -2,13 +2,12 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Globalization;
-    using System.Reflection;
     using CimmytApp.Benchmarking;
     using CimmytApp.Core;
+    using CimmytApp.Core.Benchmarking;
     using CimmytApp.Core.Localization;
-    using CimmytApp.Parcel;
+    using CimmytApp.Core.Parcel;
     using CimmytApp.StaticContent;
     using CimmytApp.Views;
     using CimmytApp.WeatherForecast;

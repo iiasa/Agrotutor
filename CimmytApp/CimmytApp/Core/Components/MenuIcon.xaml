@@ -7,9 +7,9 @@
           <StackLayout.GestureRecognizers>
               <ClickGestureRecognizer x:Name="ClickGestureRecognizer" />
           </StackLayout.GestureRecognizers>
-          
-          <Label x:Name="Label" Text="" HorizontalTextAlignment="Center" />
-          <Image x:Name="Icon" Source="" WidthRequest="70" Margin="16" />
-      </StackLayout>
+
+          <Image x:Name="IconImage" Source="farmer.png" WidthRequest="70" Margin="16" />
+          <Label x:Name="IconTextLabel" HorizontalTextAlignment="Center" />
+        </StackLayout>
   </ContentView.Content>
 </ContentView>

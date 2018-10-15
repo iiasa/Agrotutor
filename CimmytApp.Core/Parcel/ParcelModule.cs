@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Parcel
+﻿namespace CimmytApp.Core.Parcel
 {
     using CimmytApp.Parcel.Views;
     using Prism.Ioc;

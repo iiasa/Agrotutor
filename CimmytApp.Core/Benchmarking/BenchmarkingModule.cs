@@ -1,9 +1,9 @@
-﻿namespace CimmytApp.Benchmarking
+﻿namespace CimmytApp.Core.Benchmarking
 {
     using CimmytApp.Benchmarking.Views;
     using CimmytApp.Core.Benchmarking.Views;
-    using Prism.Modularity;
     using Prism.Ioc;
+    using Prism.Modularity;
 
     public class BenchmarkingModule : IModule
     {
