@@ -13,6 +13,7 @@
     using CommonServiceLocator;
     using Helper.Calendar;
     using Helper.Map;
+    using Helper.Map.ViewModels;
     using Helper.Realm;
     using Helper.Realm.BusinessContract;
     using Helper.UserRegistration;
@@ -23,7 +24,9 @@
     using Prism.DryIoc;
     using Prism.Ioc;
     using Prism.Modularity;
+    using Prism.Navigation;
     using Xamarin.Forms;
+    using Xamarin.Forms.GoogleMaps;
     using Xamarin.Live.Reload;
 
     public partial class App: PrismApplication
@@ -51,7 +54,15 @@
                 localizer.SetLocale(cultureInfo);
             }
 
-            NavigationService.NavigateAsync(getInitialPage());
+            //NavigationService.NavigateAsync(getInitialPage());
+
+            var parameters = new NavigationParameters
+            {
+                { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon },
+                { MapViewModel.MapCenterParameterName, CameraUpdateFactory.NewCameraPosition(new CameraPosition(
+                    new Position(20.711225, -101.285340), 17)) }
+            };
+            NavigationService.NavigateAsync("Map", parameters);
         }
 
         protected override void OnStart()

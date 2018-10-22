@@ -24,7 +24,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Helper\" />
     <Folder Include="Properties\" />
+    <Folder Include="Resources\Core\Parcel\ViewModels\" />
+    <Folder Include="Resources\Core\Parcel\Views\" />
+    <Folder Include="Resources\Core\WeatherForecast\Views\" />
+    <Folder Include="Resources\Core\WeatherForecast\ViewModels\" />
     <Folder Include="Resources\ViewModels\" />
     <Folder Include="Resources\StaticContent\ViewModels\" />
   </ItemGroup>
@@ -96,6 +101,34 @@
     <Compile Update="Core\Parcel\Views\ViewActivitiesPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Core\WeatherForecast\Views\DailyForecastPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\WeatherForecast\Views\DailyWeatherDataPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\WeatherForecast\Views\HourlyWeatherDataPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\WeatherForecast\Views\WeatherDataSelection.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\WeatherForecast\Views\WeatherForecastPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\WeatherForecast\Views\WeatherMainPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\ViewModels\BenchmarkingPageView.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BenchmarkingPageView.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\CiatContentPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CiatContentPage.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\StaticContent\Views\CitationPage.Designer.cs">
       <DependentUpon>CitationPage.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -130,6 +163,14 @@
   <ItemGroup>
     <EmbeddedResource Update="Core\Components\Header.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\ViewModels\BenchmarkingPageView.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BenchmarkingPageView.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\MainPage.resx">
       <Generator></Generator>
