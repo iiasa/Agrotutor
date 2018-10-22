@@ -2,14 +2,13 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:forms="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.ParcelMainPage">
 
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="{Binding Parcel.OverviewString}" VerticalOptions="Center" />
-                <Image Source="{Binding Parcel.IconSource}" WidthRequest="32" HeightRequest="32" />
-            </StackLayout>
+            <components:Header Text="{Binding Parcel.OverviewString}" IconSource="{Binding Parcel.IconSource}" />
 
             <Grid HorizontalOptions="Center">
                 <Grid.RowDefinitions>
@@ -18,66 +17,50 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <StackLayout Grid.Row="0" Grid.Column="0" Orientation="Vertical">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ParcelPage" />
-                    </StackLayout.GestureRecognizers>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate general_information}" 
+                    IconSource="icon_info_squared_96.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="ParcelPage"
+                    Grid.Row ="0" Grid.Column="0" />
 
-                    <Image Source="icon_info_squared_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="Informacion general" HorizontalTextAlignment="Center" />
-                </StackLayout>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate location}" 
+                    IconSource="icon_map_96.png" 
+                    Command="{Binding NavigateToMapCommand}" 
+                    Grid.Row ="0" Grid.Column="1" />
 
-                <StackLayout forms:Grid.Row="0" forms:Grid.Column="1" Orientation="Vertical">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToMapCommand}" />
-                    </StackLayout.GestureRecognizers>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate weather}" 
+                    IconSource="icon_weather_96.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="WeatherDataSelection"
+                    Grid.Row ="1" Grid.Column="0" />
 
-                    <Image Source="icon_map_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="Ubicacion" HorizontalTextAlignment="Center" />
-                </StackLayout>
-                <StackLayout forms:Grid.Row="1" forms:Grid.Column="0" Orientation="Vertical">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="WeatherDataSelection" />
-                    </StackLayout.GestureRecognizers>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate comparative_information}" 
+                    IconSource="icon_scales_96.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="LocalBenchmarkingSelectionPage"
+                    Grid.Row ="1" Grid.Column="1" />
 
-                    <Image Source="icon_weather_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="Clima" HorizontalTextAlignment="Center" />
-                </StackLayout>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate potential_yield}" 
+                    IconSource="icon_performance_96.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="BenchmarkingPage"
+                    Grid.Row ="2" Grid.Column="0" />
 
-                <StackLayout forms:Grid.Row="1" forms:Grid.Column="1" Orientation="Vertical">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="LocalBenchmarkingSelectionPage" />
-                    </StackLayout.GestureRecognizers>
-
-                    <Image Source="icon_scales_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="Informacion comparativa" HorizontalTextAlignment="Center" />
-                </StackLayout>
-
-                <StackLayout forms:Grid.Row="2" forms:Grid.Column="0" Orientation="Vertical">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="BenchmarkingPage" />
-                    </StackLayout.GestureRecognizers>
-
-                    <Image Source="icon_performance_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="Rendimiento potencial" HorizontalTextAlignment="Center" />
-                </StackLayout>
-
-                <StackLayout forms:Grid.Row="2" forms:Grid.Column="1">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="CalendarPage" />
-                    </StackLayout.GestureRecognizers>
-
-                    <Image Source="icon_planner_96.png" WidthRequest="70" Margin="16" />
-                    <Label Text="Calendario de actividades" HorizontalTextAlignment="Center" />
-                </StackLayout>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate calendar}" 
+                    IconSource="icon_planner_96.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="CalendarPage"
+                    Grid.Row ="2" Grid.Column="1" />
             </Grid>
         </StackLayout>
     </ScrollView>

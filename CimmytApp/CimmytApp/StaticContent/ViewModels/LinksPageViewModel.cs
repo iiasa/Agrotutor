@@ -2,16 +2,19 @@
 {
     using System;
     using System.Windows.Input;
+    using CimmytApp.ViewModels;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
 
-    public class LinksPageViewModel : BindableBase
+    public class LinksPageViewModel : ViewModelBase
     {
         private readonly INavigationService _navigationService;
 
-        public LinksPageViewModel(INavigationService navigationService)
+        public LinksPageViewModel(INavigationService navigationService, IStringLocalizer<LinksPageViewModel> localizer)
+            :base(localizer)
         {
             TapLinkCommand = new Command(OpenLink);
             _navigationService = navigationService;

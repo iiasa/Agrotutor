@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Remove="Resources\StaticContent\Views\CitationPage.es.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper.Collection" Version="4.0.0" />
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.9.0" />
@@ -22,7 +26,14 @@
   <ItemGroup>
     <Folder Include="Properties\" />
     <Folder Include="Resources\ViewModels\" />
-    <Folder Include="Resx\" />
+    <Folder Include="Resources\StaticContent\ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\StaticContent\Views\CitationPage.es.resx">
+      <LastGenOutput>CitationPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -31,11 +42,116 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Core\Benchmarking\Views\BenchmarkingPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\CiatContentPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\CiatSelectionPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\LocalBenchmarkingPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\ViewCostoPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\ViewIngresoPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\ViewRendimientoPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Benchmarking\Views\ViewUtilidadPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\ActivityDetail.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\ActivityPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\AddParcelPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\DeleteActivityPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\DeleteParcelPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\ParcelPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\ParcelsOverviewPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\SelectTechnologiesPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Parcel\Views\ViewActivitiesPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\StaticContent\Views\CitationPage.Designer.cs">
+      <DependentUpon>CitationPage.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\StaticContent\Views\LinksPage.Designer.cs">
+      <DependentUpon>LinksPage.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Resources\Views\ParcelMainPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ParcelMainPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\ProfilePage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProfilePage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="StaticContent\Views\CitationPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="StaticContent\Views\LinksPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="StaticContent\Views\WelcomePage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Core\Components\Header.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\MainPage.resx">
       <Generator></Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Core\Components\MenuIcon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\StaticContent\Views\CitationPage.resx">
+      <LastGenOutput>CitationPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\StaticContent\Views\LinksPage.resx">
+      <LastGenOutput>LinksPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\ParcelMainPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ParcelMainPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Views\ProfilePage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ProfilePage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

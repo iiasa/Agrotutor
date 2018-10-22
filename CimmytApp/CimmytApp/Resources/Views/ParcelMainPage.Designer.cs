@@ -8,9 +8,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CimmytApp.StaticContent.Resx {
+namespace CimmytApp.Resources.Views {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -23,14 +22,14 @@ namespace CimmytApp.StaticContent.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class StaticContentResources {
+    internal class ParcelMainPage {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StaticContentResources() {
+        internal ParcelMainPage() {
         }
         
         /// <summary>
@@ -40,7 +39,7 @@ namespace CimmytApp.StaticContent.Resx {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.StaticContent.Resx.StaticContentResources", typeof(StaticContentResources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.Resources.Views.ParcelMainPage", typeof(ParcelMainPage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -62,11 +61,56 @@ namespace CimmytApp.StaticContent.Resx {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Test.
+        ///   Looks up a localized string similar to Calendar of activities.
         /// </summary>
-        internal static string test {
+        internal static string calendar {
             get {
-                return ResourceManager.GetString("test", resourceCulture);
+                return ResourceManager.GetString("calendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comparative Information.
+        /// </summary>
+        internal static string comparative_information {
+            get {
+                return ResourceManager.GetString("comparative_information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General Information.
+        /// </summary>
+        internal static string general_information {
+            get {
+                return ResourceManager.GetString("general_information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location.
+        /// </summary>
+        internal static string location {
+            get {
+                return ResourceManager.GetString("location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Potential yield.
+        /// </summary>
+        internal static string potential_yield {
+            get {
+                return ResourceManager.GetString("potential_yield", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weather.
+        /// </summary>
+        internal static string weather {
+            get {
+                return ResourceManager.GetString("weather", resourceCulture);
             }
         }
     }

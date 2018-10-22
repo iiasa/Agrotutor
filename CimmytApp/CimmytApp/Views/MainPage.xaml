@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.MainPage" Title="Title"
+    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.MainPage"
     xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
     xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
     Padding="16,16,16,0">
@@ -30,14 +30,9 @@
                 </StackLayout>
             </Grid>
 
-            <components:MenuIcon IconText="Määh" />   
 
             <Grid Margin="16">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -47,108 +42,54 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Label Text="Agregar parcela" Grid.Row="1" Grid.Column="0" HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="AddParcelPage" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Información de parcela" Grid.Row="1" Grid.Column="1"
-                    HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="ParcelsOverviewPage" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Mapa de parcelas" Grid.Row="3" Grid.Column="0"
-                    HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToMapCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Calendario" Grid.Row="3" Grid.Column="1" HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToCalendarCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Ver enlaces y herramientas" Grid.Row="5" Grid.Column="0"
-                    HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LinksPage" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="Perfil de productor" Grid.Row="5" Grid.Column="1"
-                    HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
-                    </Label.GestureRecognizers>
-                </Label>
-                <Label Text="CiatResponseData" Grid.Row="7" Grid.Column="0"
-                    HorizontalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CiatSelectionPage" />
-                    </Label.GestureRecognizers>
-                </Label>
 
-                <Image Source="add.png" Grid.Row="0" Grid.Column="0" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="AddParcelPage" />
-                    </Image.GestureRecognizers>
-                </Image>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate add_parcel}" 
+                    IconSource="add.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="AddParcelPage"
+                    Grid.Row ="0" Grid.Column="0" />
 
-                <Image Source="farm.png" Grid.Row="0" Grid.Column="1" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}"
-                            CommandParameter="ParcelsOverviewPage" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="globe.png" Grid.Row="2" Grid.Column="0" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToMapCommand}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="calendar.png" Grid.Row="2" Grid.Column="1" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateToCalendarCommand}" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="link.png" Grid.Row="4" Grid.Column="0" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="LinksPage" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="profile.png" Grid.Row="4" Grid.Column="1" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="ProfilePage" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Image Source="planner.png" Grid.Row="6" Grid.Column="0" WidthRequest="70" Margin="16">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding NavigateAsyncCommand}" CommandParameter="CiatSelectionPage" />
-                    </Image.GestureRecognizers>
-                </Image>
+                <components:MenuIcon 
+                    IconText="{i18n:Translate parcel_overview}" 
+                    IconSource="farm.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="ParcelsOverviewPage"
+                    Grid.Row ="0" Grid.Column="1" />
+
+                <components:MenuIcon 
+                    IconText="{i18n:Translate parcels_map}" 
+                    IconSource="globe.png" 
+                    Command="{Binding NavigateToMapCommand}" 
+                    Grid.Row ="1" Grid.Column="0" />
+
+                <components:MenuIcon 
+                    IconText="{i18n:Translate calendar}" 
+                    IconSource="calendar.png" 
+                    Command="{Binding NavigateToCalendarCommand}" 
+                    Grid.Row ="1" Grid.Column="1" />
+
+                <components:MenuIcon 
+                    IconText="{i18n:Translate links}" 
+                    IconSource="link.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="LinksPage"
+                    Grid.Row ="2" Grid.Column="0" />
+
+                <components:MenuIcon 
+                    IconText="{i18n:Translate profile}" 
+                    IconSource="profile.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="ProfilePage"
+                    Grid.Row ="2" Grid.Column="1" />
+
+                <components:MenuIcon 
+                    IconText="{i18n:Translate planner}" 
+                    IconSource="planner.png" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="CiatSelectionPage"
+                    Grid.Row ="3" Grid.Column="0" />
             </Grid>
-
-            <!-- <Grid Margin="16"> -->
-            <!--     <Grid.RowDefinitions> -->
-            <!--         <RowDefinition Height="Auto" /> -->
-            <!--         <RowDefinition Height="Auto" /> -->
-            <!--         <RowDefinition Height="Auto" /> -->
-            <!--         <RowDefinition Height="Auto" /> -->
-            <!--     </Grid.RowDefinitions> -->
-            <!--     <Grid.ColumnDefinitions> -->
-            <!--         <ColumnDefinition Width="*" /> -->
-            <!--         <ColumnDefinition Width="*" /> -->
-            <!-- </Grid.ColumnDefinitions> -->
-            <!-- -->
-            <!-- <components:MenuIcon -->
-            <!--     Text="{i18n:Translate add_parcel}" -->
-            <!--     IconSrc="add.png" -->
-            <!--     Grid.Row="0" Grid.Column="0" -->
-            <!--     Command="{Binding NavigateAsyncCommand}" -->
-            <!--     CommandParameter="AddParcelPage" /> -->
-            <!-- -->
-            <!-- -->
-            <!-- </Grid> -->
         </StackLayout>
     </ScrollView>
 </ContentPage>

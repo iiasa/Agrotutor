@@ -3,11 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CimmytApp.Core.Components.MenuIcon">
   <ContentView.Content>
-      <StackLayout>
-          <StackLayout.GestureRecognizers>
-              <ClickGestureRecognizer x:Name="ClickGestureRecognizer" />
-          </StackLayout.GestureRecognizers>
-
+        <StackLayout>
           <Image x:Name="IconImage" Source="farmer.png" WidthRequest="70" Margin="16" />
           <Label x:Name="IconTextLabel" HorizontalTextAlignment="Center" />
         </StackLayout>

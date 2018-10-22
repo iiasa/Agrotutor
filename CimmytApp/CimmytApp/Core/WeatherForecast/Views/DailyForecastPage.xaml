@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.WeatherForecast.Views.DailyForecastPage" Padding="16">
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Pronóstico del tiempo" FontAttributes="Italic" />
+                <Image Source="forecast_small.png" HeightRequest="18" />
+            </StackLayout>
+
+            <ListView ItemsSource="{Binding DailySummaries}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="" />
+                                <Image Source="{Binding WxIcon}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
+                                <Label Text="{Binding LocalizedDayOfWeek}" Grid.Row="0" Grid.Column="1" />
+                                <Label Text="{Binding TemperatureString}" Grid.Row="1" Grid.Column="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

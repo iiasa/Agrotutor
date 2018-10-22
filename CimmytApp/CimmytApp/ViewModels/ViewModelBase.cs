@@ -8,7 +8,6 @@
         protected ViewModelBase(IStringLocalizer stringLocalizer)
         {
             Localizer = stringLocalizer;
-
         }
 
         protected IStringLocalizer Localizer { get; set; }

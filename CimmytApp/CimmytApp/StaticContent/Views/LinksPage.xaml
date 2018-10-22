@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    x:Class="CimmytApp.StaticContent.Views.LinksPage"
-    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper.Localization" Padding="16">
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp.Core"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.StaticContent.Views.LinksPage" Padding="16">
 
     <StackLayout Orientation="Vertical">
         <StackLayout Orientation="Horizontal" HorizontalOptions="End">
@@ -18,7 +19,7 @@
                         CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{localization:Translate weblink1}" VerticalTextAlignment="Center">
+            <Label Text="{i18n:Translate weblink1}" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TapLinkCommand}"
                         CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
@@ -33,7 +34,7 @@
                         CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
                 </Image.GestureRecognizers>
             </Image>
-            <Label Text="{localization:Translate weblink2}" VerticalTextAlignment="Center">
+            <Label Text="{i18n:Translate weblink2}" VerticalTextAlignment="Center">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding TapLinkCommand}"
                         CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />

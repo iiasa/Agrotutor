@@ -11,6 +11,8 @@
         public MainPage()
         {
             InitializeComponent();
+
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override bool OnBackButtonPressed()

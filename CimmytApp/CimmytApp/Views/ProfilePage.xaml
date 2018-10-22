@@ -3,14 +3,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.ProfilePage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Perfil de productor" FontAttributes="Italic" />
-                <Image Source="profile_small.png" />
-            </StackLayout>
+            <components:Header Text="{i18n:Translate title}" IconSource="profile_small.png" />
 
             <Label Text="{i18n:Translate hint_producer_name}" FontSize="10" />
             <Entry Placeholder="{i18n:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}"

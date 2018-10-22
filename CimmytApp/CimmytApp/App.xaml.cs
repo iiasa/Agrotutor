@@ -3,7 +3,6 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
-    using CimmytApp.Benchmarking;
     using CimmytApp.Core;
     using CimmytApp.Core.Benchmarking;
     using CimmytApp.Core.Localization;
