@@ -54,15 +54,7 @@
                 localizer.SetLocale(cultureInfo);
             }
 
-            //NavigationService.NavigateAsync(getInitialPage());
-
-            var parameters = new NavigationParameters
-            {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon },
-                { MapViewModel.MapCenterParameterName, CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                    new Position(20.711225, -101.285340), 17)) }
-            };
-            NavigationService.NavigateAsync("Map", parameters);
+            NavigationService.NavigateAsync(getInitialPage());
         }
 
         protected override void OnStart()

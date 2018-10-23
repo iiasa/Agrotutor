@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    x:Class="CimmytApp.Parcel.Views.ParcelsOverviewPage"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    prism:ViewModelLocator.AutowireViewModel="True"
+    x:Class="CimmytApp.Core.Parcel.Views.ParcelsOverviewPage"
     x:Name="ParcelOverviewRoot" Padding="16,16,16,0">
-    <!--Title="{localization:Translate page_title_parcels_overview}"-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -12,43 +15,52 @@
             <RowDefinition Height="auto" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0">
-            <Label Text="Información de parcela" FontAttributes="Italic" />
-            <Image Source="farmer_small.png" HeightRequest="18" />
-        </StackLayout>
+
+        <components:Header 
+            Text="{i18n:Translate title}" 
+            IconSource="farmer_small.png" />
+
         <ScrollView Grid.Row="1" IsVisible="{Binding ParcelsListIsVisible}">
-            <ListView ItemsSource="{Binding ObservableParcel}" HasUnevenRows="True" ItemTapped="ListView_ItemTapped">
+            <ListView 
+                ItemsSource="{Binding ObservableParcel}" 
+                HasUnevenRows="True" 
+                ItemTapped="ListView_ItemTapped">
                 <!-- TODO RowHeight auto -->
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical" VerticalOptions="Start"
+                                <StackLayout Orientation="Vertical" 
+                                    VerticalOptions="Start"
                                     HorizontalOptions="FillAndExpand">
-                                    <Image Source="{Binding Parcel.IconSource}" WidthRequest="75" HeightRequest="75"
+                                    <Image Source="{Binding Parcel.IconSource}" 
+                                        WidthRequest="75" HeightRequest="75"
                                         VerticalOptions="Center" HorizontalOptions="Center" />
                                     <Label Text="{Binding Parcel.OverviewString}" HorizontalOptions="Center"
                                         VerticalOptions="Center" HorizontalTextAlignment="Center" />
                                     <StackLayout Orientation="Horizontal" IsVisible="{Binding IsOptionsVisible}"
                                         HorizontalOptions="Center">
-                                        <Label Text="Editar" IsVisible="{Binding IsOptionsVisible}"
-                                            HorizontalOptions="Start" Margin="16" FontAttributes="Bold" FontSize="18">
+                                        <Label Text="{i18n:Translate edit}" IsVisible="{Binding IsOptionsVisible}"
+                                            HorizontalOptions="Start" Margin="16" 
+                                            FontAttributes="Bold" FontSize="18">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     Command="{Binding Path=BindingContext.ParcelEditCommand, Source={x:Reference Name=ParcelOverviewRoot}}"
                                                     CommandParameter="{Binding Parcel.ParcelId}" />
                                             </Label.GestureRecognizers>
                                         </Label>
-                                        <Label Text="Borrar" IsVisible="{Binding IsOptionsVisible}"
-                                            HorizontalOptions="Center" Margin="16" FontAttributes="Bold" FontSize="18">
+                                        <Label Text="{i18n:Translate delete}" IsVisible="{Binding IsOptionsVisible}"
+                                            HorizontalOptions="Center" Margin="16" 
+                                            FontAttributes="Bold" FontSize="18">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     Command="{Binding Path=BindingContext.ParcelDeleteCommand, Source={x:Reference Name=ParcelOverviewRoot}}"
                                                     CommandParameter="{Binding Parcel.ParcelId}" />
                                             </Label.GestureRecognizers>
                                         </Label>
-                                        <Label Text="Detalle" IsVisible="{Binding IsOptionsVisible}"
-                                            HorizontalOptions="End" Margin="16" FontAttributes="Bold" FontSize="18">
+                                        <Label Text="{i18n:Translate detail}" IsVisible="{Binding IsOptionsVisible}"
+                                            HorizontalOptions="End" Margin="16"
+                                            FontAttributes="Bold" FontSize="18">
                                             <Label.GestureRecognizers>
                                                 <TapGestureRecognizer
                                                     Command="{Binding Path=BindingContext.ParcelDetailCommand, Source={x:Reference Name=ParcelOverviewRoot}}"
@@ -64,7 +76,7 @@
             </ListView>
         </ScrollView>
         <Label Grid.Row="1" Margin="32"
-            Text="Aún no has creado una parcela.&#x0a;Presione 'nueva parcela' para agregar una parcela.&#x0a;&#x0a;Regresar a la página principal"
+            Text="{i18n:Translate no_parcels_hint}"
             IsVisible="{Binding AddParcelHintIsVisible}">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding BackToMainPageCommand}" />

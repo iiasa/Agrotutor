@@ -27,7 +27,6 @@
     <Folder Include="Helper\" />
     <Folder Include="Properties\" />
     <Folder Include="Resources\Core\Parcel\ViewModels\" />
-    <Folder Include="Resources\Core\Parcel\Views\" />
     <Folder Include="Resources\Core\WeatherForecast\Views\" />
     <Folder Include="Resources\Core\WeatherForecast\ViewModels\" />
     <Folder Include="Resources\ViewModels\" />
@@ -129,6 +128,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CiatContentPage.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Core\Parcel\Views\ParcelsOverviewPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ParcelsOverviewPage.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\StaticContent\Views\CitationPage.Designer.cs">
       <DependentUpon>CitationPage.resx</DependentUpon>
       <DesignTime>True</DesignTime>
@@ -171,6 +175,10 @@
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Parcel\Views\ParcelsOverviewPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ParcelsOverviewPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\MainPage.resx">
       <Generator></Generator>

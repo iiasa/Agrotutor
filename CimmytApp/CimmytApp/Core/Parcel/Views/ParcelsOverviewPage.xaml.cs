@@ -1,5 +1,6 @@
-﻿namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Core.Parcel.Views
 {
+    using CimmytApp.Core.Parcel.ViewModels;
     using CimmytApp.Parcel.ViewModels;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -12,25 +13,26 @@
         public ParcelsOverviewPage()
         {
             InitializeComponent();
-            _bindingContext = BindingContext as ParcelsOverviewPageViewModel;
+            this._bindingContext = BindingContext as ParcelsOverviewPageViewModel;
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            _bindingContext.RefreshParcelsCommand.Execute();
+            this._bindingContext.RefreshParcelsCommand.Execute();
         }
 
         protected override bool OnBackButtonPressed()
         {
-            _bindingContext.GoBackCommand.Execute();
+            this._bindingContext.GoBackCommand.Execute();
             return true;
         }
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var selectedItem = e.Item as ParcelViewModel;
-            _bindingContext?.HideOrShowParcel(selectedItem);
+            this._bindingContext?.HideOrShowParcel(selectedItem);
         }
     }
 }
