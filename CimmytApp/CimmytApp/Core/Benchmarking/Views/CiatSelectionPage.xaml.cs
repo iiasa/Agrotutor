@@ -1,23 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace CimmytApp.Core.Benchmarking.Views
+﻿namespace CimmytApp.Core.Benchmarking.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    using Xamarin.Forms;
+
     public partial class CiatSelectionPage : ContentPage
     {
         public CiatSelectionPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasBackButton(this, true);
-            NavigationPage.SetBackButtonTitle(this, "Back");
-            NavigationPage.SetHasNavigationBar(this, true);
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

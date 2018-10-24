@@ -1,27 +1,28 @@
 ﻿namespace CimmytApp.Core.Benchmarking.ViewModels
 {
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.ViewModels;
     using Helper.Map;
     using Helper.Map.ViewModels;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
-    class CiatSelectionPageViewModel : BindableBase, INavigatedAware
+    class CiatSelectionPageViewModel : ViewModelBase, INavigatedAware
     {
-        public CiatSelectionPageViewModel(INavigationService navigationService)
+        public CiatSelectionPageViewModel(INavigationService navigationService, 
+            IStringLocalizer<CiatSelectionPageViewModel> localizer) : base(localizer)
         {
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
             ClickGetLocation = new DelegateCommand(GetLocation);
             StartCommand = new DelegateCommand(Start);
         }
 
-        private readonly INavigationService _navigationService;
-        private int _pickerCropTypesSelectedIndex;
+        private readonly INavigationService navigationService;
+        private int pickerCropTypesSelectedIndex;
 
         public CropType SelectedCropType { get; set; }
 
@@ -36,7 +37,7 @@
         public DelegateCommand ClickGetLocation { get; set; }
 
         public DelegateCommand StartCommand { get; set; }
-        
+
         public List<string> CropTypes { get; } = new List<string>
         {
             "Maíz",
@@ -62,10 +63,10 @@
 
         public int PickerCropTypesSelectedIndex
         {
-            get => _pickerCropTypesSelectedIndex;
+            get => this.pickerCropTypesSelectedIndex;
             set
             {
-                SetProperty(ref _pickerCropTypesSelectedIndex, value);
+                SetProperty(ref this.pickerCropTypesSelectedIndex, value);
                 if (value == -1)
                 {
                     SelectedCrop = "Ninguno";
@@ -88,7 +89,7 @@
                 { CiatContentPageViewModel.PARAMETER_NAME_CROP_TYPE, SelectedCropType },
                 { CiatContentPageViewModel.PARAMETER_NAME_OLD_YIELD, double.Parse(OldYield) }
             };
-            this._navigationService.NavigateAsync(CiatContentPageViewModel.DEFAULT_NAVIGATION_TITLE, parameters);
+            this.navigationService.NavigateAsync(CiatContentPageViewModel.DEFAULT_NAVIGATION_TITLE, parameters);
         }
 
         private void GetLocation()
@@ -97,7 +98,7 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
             };
-            _navigationService.NavigateAsync("Map", parameters);
+            this.navigationService.NavigateAsync("Map", parameters);
         }
 
         private void ChooseLocation()
@@ -106,7 +107,7 @@
             {
                 { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
             };
-            _navigationService.NavigateAsync("Map", parameters);
+            this.navigationService.NavigateAsync("Map", parameters);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)

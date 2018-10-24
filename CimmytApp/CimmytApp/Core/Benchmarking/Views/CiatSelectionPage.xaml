@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
              x:Class="CimmytApp.Core.Benchmarking.Views.CiatSelectionPage"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
@@ -16,47 +17,52 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="3*"/>
                 </Grid.ColumnDefinitions>
+
                 <StackLayout Grid.Column="0" Grid.Row="0">
                     <StackLayout.GestureRecognizers>
                         <ClickGestureRecognizer Command="{Binding AboutPlannerCommand}"/>
                     </StackLayout.GestureRecognizers>
                     <Image Source="question.png" WidthRequest="32" HeightRequest="32" />
-                    <Label Text="Sobre el planificador" HorizontalOptions="Center" />
+                    <Label Text="{i18n:Translate about}" HorizontalOptions="Center" />
                 </StackLayout>
+
                 <StackLayout Grid.Column="2" Grid.Row="0" Orientation="Horizontal">
-                    <Label Text="Planificador (CIAT)" VerticalOptions="Center" />
+                    <Label Text="{i18n:Translate title}" VerticalOptions="Center" />
                     <Image Source="planner.png" WidthRequest="32" HeightRequest="32" />
                 </StackLayout>
+
                 <StackLayout Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3">
+                    <Label Text="{i18n:Translate select_crop}" FontSize="18" />
+                    <Picker ItemsSource="{Binding CropTypes}" 
+                        SelectedIndex="{Binding PickerCropTypesSelectedIndex}"
+                        Title="{i18n:Translate select}" Margin="0,0,0,16" />
 
-                    <Label Text="Por favor selecciona tu cultivo" FontSize="18" />
-                    <Picker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}"
-                        Title="seleccionar" Margin="0,0,0,16" />
+                    <Label Text="{i18n:Translate select_location}" FontSize="18" />
 
-                    <Label Text="Selecciona tu ubicación" FontSize="18" />
                     <StackLayout Orientation="Horizontal" Margin="24">
                         <Image Source="get_location.png" WidthRequest="32"/>
-                        <Label Text="Usando GPS" VerticalOptions="Center" Margin="16" FontSize="16"/>
+                        <Label Text="{i18n:Translate use_gps}" VerticalOptions="Center" 
+                            Margin="16" FontSize="16"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ClickGetLocation}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
+
                     <StackLayout Orientation="Horizontal" Margin="24">
                         <Image Source="choose_location.png" WidthRequest="32"/>
-                        <Label Text="Sobre el mapa" VerticalOptions="Center" Margin="16" FontSize="16"/>
+                        <Label Text="{i18n:Translate use_map}" VerticalOptions="Center" 
+                            Margin="16" FontSize="16"/>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ClickChooseLocation}" />
                         </StackLayout.GestureRecognizers>
                     </StackLayout>
 
-                    <Label>Si ha producido este cultivo antes en esta ubicación, ingrese el rendimiento obtenido:</Label>
+                    <Label Text="{i18n:Translate hint_own_yield}"/>
                     <Entry Text="{Binding OldYield}" Keyboard="Numeric"/>
-                    <Label Text="[kilogramos] (opcional)" FontSize="18" />
+                    <Label Text="{i18n:Translate unit_own_yield}" FontSize="18" />
 
-                    <Button Text="Start" Command="{Binding StartCommand}"/>
-
+                    <Button Text="{i18n:Translate start}" Command="{Binding StartCommand}"/>
                 </StackLayout>
-
             </Grid>
         </ScrollView>
     </ContentPage.Content>

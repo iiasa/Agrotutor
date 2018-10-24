@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="add_parcel" xml:space="preserve">
-    <value>Add plot</value>
+  <data name="about" xml:space="preserve">
+    <value>About the planner</value>
   </data>
-  <data name="calendar" xml:space="preserve">
-    <value>Calendar</value>
+  <data name="hint_own_yield" xml:space="preserve">
+    <value>If you have produced this crop before in this location, enter the yield obtained:</value>
   </data>
-  <data name="guide" xml:space="preserve">
-    <value>Quick guide</value>
+  <data name="select" xml:space="preserve">
+    <value>select</value>
   </data>
-  <data name="hint_start" xml:space="preserve">
-    <value>Select an activity to start:</value>
+  <data name="select_crop" xml:space="preserve">
+    <value>Please select a crop</value>
   </data>
-  <data name="links" xml:space="preserve">
-    <value>View links and tools</value>
+  <data name="select_location" xml:space="preserve">
+    <value>Select a location</value>
   </data>
-  <data name="parcels_map" xml:space="preserve">
-    <value>Map of plots</value>
+  <data name="start" xml:space="preserve">
+    <value>Start</value>
   </data>
-  <data name="parcel_overview" xml:space="preserve">
-    <value>Plot information</value>
+  <data name="title" xml:space="preserve">
+    <value>Planner (CIAT)</value>
   </data>
-  <data name="planner" xml:space="preserve">
-    <value>Planner</value>
+  <data name="unit_own_yield" xml:space="preserve">
+    <value>[kilograms] (optional)</value>
   </data>
-  <data name="profile" xml:space="preserve">
-    <value>Producer profile</value>
+  <data name="use_gps" xml:space="preserve">
+    <value>Use GPS</value>
   </data>
-  <data name="welcome" xml:space="preserve">
-    <value>Welcome!</value>
+  <data name="use_map" xml:space="preserve">
+    <value>Choose on map</value>
   </data>
 </root>

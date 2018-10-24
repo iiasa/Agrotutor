@@ -26,6 +26,7 @@
   <ItemGroup>
     <Folder Include="Helper\" />
     <Folder Include="Properties\" />
+    <Folder Include="Resources\Core\Benchmarking\ViewModels\" />
     <Folder Include="Resources\Core\Parcel\ViewModels\" />
     <Folder Include="Resources\Core\WeatherForecast\Views\" />
     <Folder Include="Resources\Core\WeatherForecast\ViewModels\" />
@@ -41,7 +42,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\CimmytApp.Core\CimmytApp.Core.csproj" />
     <ProjectReference Include="..\..\Helper\Helper.csproj" />
   </ItemGroup>
 
@@ -118,16 +118,6 @@
     <Compile Update="Core\WeatherForecast\Views\WeatherMainPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Core\Benchmarking\ViewModels\BenchmarkingPageView.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>BenchmarkingPageView.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Core\Benchmarking\Views\CiatContentPage.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CiatContentPage.resx</DependentUpon>
-    </Compile>
     <Compile Update="Resources\Core\Parcel\Views\ActivityDetail.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -171,13 +161,21 @@
     <EmbeddedResource Update="Core\Components\IconWithText.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources\Core\Benchmarking\ViewModels\BenchmarkingPageView.resx">
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx">
+      <LastGenOutput>BenchmarkingPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>BenchmarkingPageView.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>BenchmarkingPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.es.resx">
+      <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
+      <LastGenOutput>CiatContentPage - Copy.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
       <LastGenOutput>ActivityDetail.es.Designer.cs</LastGenOutput>

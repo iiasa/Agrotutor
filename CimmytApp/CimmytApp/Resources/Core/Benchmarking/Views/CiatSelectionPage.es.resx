@@ -117,34 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="add_parcel" xml:space="preserve">
-    <value>Add plot</value>
+  <data name="about" xml:space="preserve">
+    <value>Sobre el planificador</value>
   </data>
-  <data name="calendar" xml:space="preserve">
-    <value>Calendar</value>
+  <data name="hint_own_yield" xml:space="preserve">
+    <value>Si ha producido este cultivo antes en esta ubicación, ingrese el rendimiento obtenido:</value>
   </data>
-  <data name="guide" xml:space="preserve">
-    <value>Quick guide</value>
+  <data name="select" xml:space="preserve">
+    <value>seleccionar</value>
   </data>
-  <data name="hint_start" xml:space="preserve">
-    <value>Select an activity to start:</value>
+  <data name="select_crop" xml:space="preserve">
+    <value>Por favor selecciona tu cultivo</value>
   </data>
-  <data name="links" xml:space="preserve">
-    <value>View links and tools</value>
+  <data name="select_location" xml:space="preserve">
+    <value>Selecciona tu ubicación</value>
   </data>
-  <data name="parcels_map" xml:space="preserve">
-    <value>Map of plots</value>
+  <data name="start" xml:space="preserve">
+    <value>Comienzo</value>
   </data>
-  <data name="parcel_overview" xml:space="preserve">
-    <value>Plot information</value>
+  <data name="title" xml:space="preserve">
+    <value>Planificador (CIAT)</value>
   </data>
-  <data name="planner" xml:space="preserve">
-    <value>Planner</value>
+  <data name="unit_own_yield" xml:space="preserve">
+    <value>[kilogramos] (opcional)</value>
   </data>
-  <data name="profile" xml:space="preserve">
-    <value>Producer profile</value>
+  <data name="use_gps" xml:space="preserve">
+    <value>Usando GPS</value>
   </data>
-  <data name="welcome" xml:space="preserve">
-    <value>Welcome!</value>
+  <data name="use_map" xml:space="preserve">
+    <value>Sobre el mapa</value>
   </data>
 </root>

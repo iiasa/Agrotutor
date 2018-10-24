@@ -2,14 +2,12 @@
 {
     using Microcharts;
     using SkiaSharp;
-    using Xamarin.Forms.DataGrid;
 
     public partial class ViewCostoPage
     {
         public ViewCostoPage()
         {
             InitializeComponent();
-            DataGridComponent.Init();
 
             var entries = new[]
             {

@@ -54,7 +54,7 @@
                                 CommandParameter="ViewUtilidadPage" />
                         </StackLayout.GestureRecognizers>
                         <Image Source="icons_settings_96.png" WidthRequest="70" Margin="16" />
-                        <Label Text="Cost of utilities" HorizontalTextAlignment="Center" />
+                        <Label Text="Profit" HorizontalTextAlignment="Center" />
                     </StackLayout>
                 </Grid>
 
