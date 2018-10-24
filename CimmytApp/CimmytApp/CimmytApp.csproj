@@ -36,7 +36,6 @@
 
   <ItemGroup>
     <None Include="Resources\StaticContent\Views\CitationPage.es.resx">
-      <LastGenOutput>CitationPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </None>
   </ItemGroup>
@@ -115,6 +114,81 @@
     <Compile Update="Core\WeatherForecast\Views\WeatherMainPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>BenchmarkingPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\CiatContentPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CiatContentPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CiatSelectionPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LocalBenchmarkingSelectionPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\ViewCostoPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewCostoPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\ViewIngresoPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewIngresoPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\ViewRendimientoPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewRendimientoPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\ViewUtilidadPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ViewUtilidadPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Parcel\Views\ActivityDetail.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ActivityDetail.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Parcel\Views\AddParcelPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AddParcelPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Core\Parcel\Views\ParcelsOverviewPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ParcelsOverviewPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\StaticContent\Views\CitationPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CitationPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\StaticContent\Views\LinksPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>LinksPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\ParcelMainPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ParcelMainPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Views\ProfilePage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ProfilePage.resx</DependentUpon>
+    </Compile>
     <Compile Update="StaticContent\Views\CitationPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -134,7 +208,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx">
-      <LastGenOutput>BenchmarkingPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.resx">
@@ -142,15 +215,13 @@
       <LastGenOutput>BenchmarkingPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.es.resx">
-      <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>CiatContentPage - Copy.Designer.cs</LastGenOutput>
+      <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx">
-      <LastGenOutput>CiatSelectionPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.resx">
@@ -166,31 +237,27 @@
       <LastGenOutput>LocalBenchmarkingSelectionPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx">
-      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx">
-      <LastGenOutput>ViewUtilidadPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewUtilidadPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx">
-      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx">
-      <LastGenOutput>ViewRendimientoPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewRendimientoPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx">
-      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewIngresoPage.resx">
-      <LastGenOutput>ViewIngresoPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewIngresoPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx">
-      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewCostoPage.resx">
@@ -198,7 +265,6 @@
       <LastGenOutput>ViewCostoPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
-      <LastGenOutput>ActivityDetail.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.resx">
@@ -206,7 +272,6 @@
       <LastGenOutput>ActivityDetail.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\AddParcelPage.es.resx">
-      <LastGenOutput>AddParcelPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\AddParcelPage.resx">
@@ -224,12 +289,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\StaticContent\Views\CitationPage.resx">
-      <LastGenOutput>CitationPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CitationPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\StaticContent\Views\LinksPage.resx">
-      <LastGenOutput>LinksPage.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LinksPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\ParcelMainPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
