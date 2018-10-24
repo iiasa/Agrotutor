@@ -5,7 +5,6 @@
     using CimmytApp.ViewModels;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
 

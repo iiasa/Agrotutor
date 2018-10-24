@@ -1,16 +1,18 @@
-﻿namespace CimmytApp.Benchmarking.ViewModels
+﻿namespace CimmytApp.Core.Benchmarking.ViewModels
 {
+    using CimmytApp.ViewModels;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class LocalBenchmarkingSelectionPageViewModel : BindableBase
+    public class LocalBenchmarkingSelectionPageViewModel : ViewModelBase
     {
-        private readonly INavigationService _navigationService;
+        private readonly INavigationService navigationService;
 
-        public LocalBenchmarkingSelectionPageViewModel(INavigationService navigationService)
+        public LocalBenchmarkingSelectionPageViewModel(INavigationService navigationService,
+            IStringLocalizer<LocalBenchmarkingSelectionPageViewModel> localizer) : base(localizer)
         {
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
         }
 
@@ -18,7 +20,7 @@
 
         private void NavigateAsync(string page)
         {
-            _navigationService.NavigateAsync(page);
+            this.navigationService.NavigateAsync(page);
         }
     }
 }

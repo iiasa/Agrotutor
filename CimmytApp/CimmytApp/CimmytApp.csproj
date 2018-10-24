@@ -55,9 +55,6 @@
     <Compile Update="Core\Benchmarking\Views\CiatSelectionPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Core\Benchmarking\Views\LocalBenchmarkingPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
     <Compile Update="Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -118,6 +115,11 @@
     <Compile Update="Core\WeatherForecast\Views\WeatherMainPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CiatSelectionPage.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Core\Parcel\Views\ActivityDetail.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -176,6 +178,14 @@
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CiatContentPage - Copy.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx">
+      <LastGenOutput>CiatSelectionPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>CiatSelectionPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
       <LastGenOutput>ActivityDetail.es.Designer.cs</LastGenOutput>
