@@ -1,19 +1,22 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.ViewModels;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class ActivityPageViewModel : BindableBase, INavigationAware
+    public class ActivityPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly INavigationService _navigationService;
         private string _caller = "ParcelPage";
         private Parcel _parcel;
         private bool CallingDetailPage;
 
-        public ActivityPageViewModel(INavigationService navigationService)
+        public ActivityPageViewModel(INavigationService navigationService,
+            IStringLocalizer<ActivityPageViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
             ActivityClickedCommand = new DelegateCommand<string>(ExecuteMethod);
@@ -61,10 +64,6 @@
                 parameters.TryGetValue<string>("Caller", out var caller);
                 _caller = caller;
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         private void ExecuteMethod(string activityType)

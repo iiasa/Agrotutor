@@ -1,6 +1,6 @@
-﻿namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Core.Parcel.Views
 {
-    using CimmytApp.Parcel.ViewModels;
+    using CimmytApp.Core.Parcel.ViewModels;
 
     public partial class ActivityPage
     {

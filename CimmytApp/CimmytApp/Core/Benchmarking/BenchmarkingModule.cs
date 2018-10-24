@@ -1,6 +1,5 @@
 ﻿namespace CimmytApp.Core.Benchmarking
 {
-    using CimmytApp.Benchmarking.Views;
     using CimmytApp.Core.Benchmarking.Views;
     using Prism.Ioc;
     using Prism.Modularity;

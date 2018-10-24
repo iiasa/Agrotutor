@@ -1,12 +1,15 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.Parcel;
+    using CimmytApp.ViewModels;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class SelectTechnologiesPageViewModel : BindableBase, INavigationAware
+    public class SelectTechnologiesPageViewModel : ViewModelBase, INavigatedAware
     {
         private const string Technology1 =
                 "Cambio a variedades mejoradas, nuevas y adaptadas a las zonas con potencial para incrementar el rendimiento "
@@ -49,7 +52,8 @@
 
         private List<Technology> _technologies;
 
-        public SelectTechnologiesPageViewModel(INavigationService navigationService)
+        public SelectTechnologiesPageViewModel(INavigationService navigationService,
+            IStringLocalizer<SelectTechnologiesPageViewModel> localizer) : base(localizer)
         {
             SaveChangesCommand = new DelegateCommand(Save);
             _navigationService = navigationService;
@@ -202,10 +206,6 @@
                 SelectEnabled = true;
             }
             Initializing = false;
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         private void Save()

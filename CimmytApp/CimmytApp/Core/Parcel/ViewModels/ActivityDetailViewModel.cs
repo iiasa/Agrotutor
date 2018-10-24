@@ -7,10 +7,9 @@
     using CimmytApp.ViewModels;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class ActivityDetailViewModel : ViewModelBase, INavigationAware
+    public class ActivityDetailViewModel : ViewModelBase, INavigatedAware
     {
         private readonly INavigationService _navigationService;
 
@@ -267,10 +266,6 @@
                     ActivityName = ActivityDynamicUIVisibility.ActivityName;
                 }
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         /// <summary>

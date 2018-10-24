@@ -5,7 +5,6 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
-    using CimmytApp.Parcel.ViewModels;
     using CimmytApp.ViewModels;
     using Helper.Realm.BusinessContract;
     using Microsoft.Extensions.Localization;

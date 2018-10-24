@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using CimmytApp.DTO.Parcel;
 

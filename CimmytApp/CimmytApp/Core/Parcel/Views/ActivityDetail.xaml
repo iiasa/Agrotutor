@@ -22,8 +22,7 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <StackLayout Orientation="Horizontal" HorizontalOptions="End" Grid.Row="0">
-                <!--<Label Text="{Binding ActivityDynamicUIVisibility.ActivityTitle}" FontAttributes="Italic" />-->
-                <Label Text="Application of organic fertilizer" FontAttributes="Italic" />
+                <Label Text="{Binding ActivityDynamicUIVisibility.ActivityTitle}" FontAttributes="Italic" />
                 <Image Source="{Binding ActivityDynamicUIVisibility.ActivityIcon}" HeightRequest="18" />
             </StackLayout>
             <StackLayout Orientation="Vertical" HorizontalOptions="Start" Grid.Row="1">

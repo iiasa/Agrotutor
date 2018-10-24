@@ -115,36 +115,6 @@
     <Compile Update="Core\WeatherForecast\Views\WeatherMainPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>CiatSelectionPage.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Core\Parcel\Views\ActivityDetail.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ActivityDetail.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\StaticContent\Views\CitationPage.Designer.cs">
-      <DependentUpon>CitationPage.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Resources\StaticContent\Views\LinksPage.Designer.cs">
-      <DependentUpon>LinksPage.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-    </Compile>
-    <Compile Update="Resources\Views\ParcelMainPage.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ParcelMainPage.resx</DependentUpon>
-    </Compile>
-    <Compile Update="Resources\Views\ProfilePage.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ProfilePage.resx</DependentUpon>
-    </Compile>
     <Compile Update="StaticContent\Views\CitationPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -186,6 +156,46 @@
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatSelectionPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CiatSelectionPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx">
+      <LastGenOutput>LocalBenchmarkingSelectionPage.es.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalBenchmarkingSelectionPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx">
+      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx">
+      <LastGenOutput>ViewUtilidadPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx">
+      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx">
+      <LastGenOutput>ViewRendimientoPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx">
+      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewIngresoPage.resx">
+      <LastGenOutput>ViewIngresoPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx">
+      <LastGenOutput>ViewCostoPage.es.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Benchmarking\Views\ViewCostoPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ViewCostoPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
       <LastGenOutput>ActivityDetail.es.Designer.cs</LastGenOutput>

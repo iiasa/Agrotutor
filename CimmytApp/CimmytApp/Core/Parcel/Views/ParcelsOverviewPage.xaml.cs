@@ -1,11 +1,8 @@
 ﻿namespace CimmytApp.Core.Parcel.Views
 {
     using CimmytApp.Core.Parcel.ViewModels;
-    using CimmytApp.Parcel.ViewModels;
     using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
 
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ParcelsOverviewPage
     {
         private readonly ParcelsOverviewPageViewModel _bindingContext;

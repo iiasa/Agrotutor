@@ -13,7 +13,6 @@
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Events;
-    using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
