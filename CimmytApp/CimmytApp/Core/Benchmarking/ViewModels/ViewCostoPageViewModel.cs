@@ -4,34 +4,40 @@
     using System.Collections.Generic;
     using System.Linq;
     using CimmytApp.DTO.BEM;
+    using CimmytApp.ViewModels;
     using Helper.HTTP;
-    using Prism.Mvvm;
+    using Microsoft.Extensions.Localization;
     using Prism.Navigation;
 
-    public class ViewCostoPageViewModel : BindableBase, INavigationAware
+    public class ViewCostoPageViewModel : ViewModelBase, INavigatedAware
     {
-        private List<Costo> _datasets;
+        public ViewCostoPageViewModel(IStringLocalizer<ViewCostoPageViewModel> localizer)
+            : base(localizer)
+        {
+        }
 
-        private bool _isLoading;
+        private List<Costo> datasets;
 
-        private List<Dataset> _stats;
+        private bool isLoading;
+
+        private List<Dataset> stats;
 
         public List<Costo> Datasets
         {
-            get => _datasets;
-            set => SetProperty(ref _datasets, value);
+            get => this.datasets;
+            set => SetProperty(ref this.datasets, value);
         }
 
         public bool IsLoading
         {
-            get => _isLoading;
-            set => SetProperty(ref _isLoading, value);
+            get => this.isLoading;
+            set => SetProperty(ref this.isLoading, value);
         }
 
         public List<Dataset> Stats
         {
-            get => _stats;
-            set => SetProperty(ref _stats, value);
+            get => this.stats;
+            set => SetProperty(ref this.stats, value);
         }
 
         public void CalculateStats()
@@ -88,10 +94,6 @@
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             LoadData();
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         public class Dataset

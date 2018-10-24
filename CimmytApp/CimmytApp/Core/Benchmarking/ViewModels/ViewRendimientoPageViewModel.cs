@@ -1,18 +1,24 @@
-﻿namespace CimmytApp.Benchmarking.ViewModels
+﻿namespace CimmytApp.Core.Benchmarking.ViewModels
 {
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using CimmytApp.DTO.BEM;
+    using CimmytApp.ViewModels;
     using Helper.HTTP;
-    using Prism.Mvvm;
+    using Microsoft.Extensions.Localization;
     using Prism.Navigation;
 
     /// <summary>
     ///     Defines the <see cref="ViewRendimientoPageViewModel" />
     /// </summary>
-    public class ViewRendimientoPageViewModel : BindableBase, INavigationAware
+    public class ViewRendimientoPageViewModel : ViewModelBase, INavigatedAware
     {
+        public ViewRendimientoPageViewModel(IStringLocalizer<ViewRendimientoPageViewModel> localizer)
+            : base(localizer)
+        {
+        }
+
         /// <summary>
         ///     Defines the _datasets
         /// </summary>
@@ -107,10 +113,6 @@
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             LoadData();
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
     }
 

@@ -2,38 +2,17 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
-    prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.ViewUtilidadPage"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True" 
+    x:Class="CimmytApp.Core.Benchmarking.Views.ViewUtilidadPage"
     Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Utilidad" FontAttributes="Italic" />
-                <Image Source="icons_settings_96.png" HeightRequest="18" />
-            </StackLayout>
-
-            <Label Text="Ordenamiento de datos en curso, por favor espere..." IsVisible="{Binding IsLoading}"
-                Margin="0,0,0,16" />
-
-            <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
-                <chart:RadCartesianChart.HorizontalAxis>
-                    <chart:CategoricalAxis LabelFitMode="Rotate" />
-                </chart:RadCartesianChart.HorizontalAxis>
-                <chart:RadCartesianChart.VerticalAxis>
-                    <chart:NumericalAxis />
-                </chart:RadCartesianChart.VerticalAxis>
-
-                <chart:RadCartesianChart.Series>
-                    <chart:BarSeries ItemsSource="{Binding Stats}">
-                        <chart:BarSeries.ValueBinding>
-                            <chart:PropertyNameDataPointBinding PropertyName="Value" />
-                        </chart:BarSeries.ValueBinding>
-                        <chart:BarSeries.CategoryBinding>
-                            <chart:PropertyNameDataPointBinding PropertyName="Category" />
-                        </chart:BarSeries.CategoryBinding>
-                    </chart:BarSeries>
-                </chart:RadCartesianChart.Series>
-            </chart:RadCartesianChart>
+            <components:Header Text="{i18n:Translate title}" IconSource="icon_settings_96.png" />
+            <Label Text="{i18n:Translate loading_message}" IsVisible="{Binding IsLoading}" Margin="0,0,0,16" />
+            <microcharts:ChartView x:Name="chartView" HeightRequest="500"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>

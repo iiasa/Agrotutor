@@ -4,15 +4,21 @@
     using System.Collections.Generic;
     using System.Linq;
     using CimmytApp.DTO.BEM;
+    using CimmytApp.ViewModels;
     using Helper.HTTP;
-    using Prism.Mvvm;
+    using Microsoft.Extensions.Localization;
     using Prism.Navigation;
 
     /// <summary>
     ///     Defines the <see cref="ViewUtilidadPageViewModel" />
     /// </summary>
-    public class ViewUtilidadPageViewModel : BindableBase, INavigationAware
+    public class ViewUtilidadPageViewModel : ViewModelBase, INavigatedAware
     {
+        public ViewUtilidadPageViewModel(IStringLocalizer<ViewUtilidadPageViewModel> localizer)
+            : base(localizer)
+        {
+        }
+
         /// <summary>
         ///     Defines the _datasets
         /// </summary>
@@ -107,10 +113,6 @@
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             LoadData();
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         public class Dataset

@@ -2,18 +2,15 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Benchmarking.Views.ViewCostoPage" Padding="16">
+            xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+            xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+            xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+            prism:ViewModelLocator.AutowireViewModel="True" 
+            x:Class="CimmytApp.Core.Benchmarking.Views.ViewCostoPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Costos" FontAttributes="Italic" />
-                <Image Source="icons_pricetag_96.png" HeightRequest="18" />
-            </StackLayout>
-
-            <Label Text="Ordenamiento de datos en curso, por favor espere..." IsVisible="{Binding IsLoading}"
-                Margin="0,0,0,16" />
-
+            <components:Header Text="{i18n:Translate title}" IconSource="icons_pricetag_96.png" />
+            <Label Text="{i18n:Translate loading_message}" IsVisible="{Binding IsLoading}" Margin="0,0,0,16" />
             <microcharts:ChartView x:Name="chartView" HeightRequest="500"/>
         </StackLayout>
     </ScrollView>
