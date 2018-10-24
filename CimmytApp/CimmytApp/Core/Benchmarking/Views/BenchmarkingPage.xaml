@@ -2,68 +2,27 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    xmlns:localization="clr-namespace:Helper.Localization.Localization;assembly=Helper"
-    x:Class="CimmytApp.Benchmarking.Views.BenchmarkingPage">
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    x:Class="CimmytApp.Core.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Rendimiento potencial" VerticalOptions="Center" />
-                <Image Source="icon_performance_96.png" WidthRequest="32" HeightRequest="32" />
-            </StackLayout>
+            <components:Header Text="{i18n:Translate title}" IconSource="icon_performance_96.png" />
 
-            <Button Text="{localization:Translate load_data}" Command="{Binding LoadDataCommand}"
+            <Button Text="{i18n:Translate load_data}" Command="{Binding LoadDataCommand}"
                 IsVisible="{Binding DownloadButtonActive}" Margin="0,0,0,16" />
-            <Label Text="Descargando datos, por favor espere..." IsVisible="{Binding Downloading}" />
-            <Label Text="Lo sentimos, no hay datos disponibles para esta parcela." IsVisible="{Binding NoData}" />
+            <Label Text="{i18n:Translate loading}" IsVisible="{Binding Downloading}" />
+            <Label Text="{i18n:Translate no_data}" IsVisible="{Binding NoData}" />
 
-            <Label Text="{localization:Translate irrigated}" />
+            <Label Text="{i18n:Translate irrigated}" />
             <Label Text="{Binding DataIrrigated.GetMin}" />
             <Label Text="{Binding DataIrrigated.GetAvg}" />
             <Label Text="{Binding DataIrrigated.GetMax}" Margin="0,0,0,16" />
-            <!--
-            <chart:RadCartesianChart HeightRequest="400" Margin="0,0,0,16">
-                <chart:RadCartesianChart.HorizontalAxis>
-                    <chart:CategoricalAxis LabelFitMode="Rotate" />
-                </chart:RadCartesianChart.HorizontalAxis>
-                <chart:RadCartesianChart.VerticalAxis>
-                    <chart:NumericalAxis />
-                </chart:RadCartesianChart.VerticalAxis>
 
-                <chart:RadCartesianChart.Series>
-                    <chart:BarSeries ItemsSource="{Binding DataIrrigated.BenchmarkingDatasets}">
-                        <chart:BarSeries.ValueBinding>
-                            <chart:PropertyNameDataPointBinding PropertyName="val" />
-                        </chart:BarSeries.ValueBinding>
-                        <chart:BarSeries.CategoryBinding>
-                            <chart:PropertyNameDataPointBinding PropertyName="year" />
-                        </chart:BarSeries.CategoryBinding>
-                    </chart:BarSeries>
-                </chart:RadCartesianChart.Series>
-            </chart:RadCartesianChart>-->
-
-            <Label Text="{localization:Translate rainfed}" />
+            <Label Text="{i18n:Translate rainfed}" />
             <Label Text="{Binding DataRainfed.GetMin}" />
             <Label Text="{Binding DataRainfed.GetAvg}" />
             <Label Text="{Binding DataRainfed.GetMax}" Margin="0,0,0,16" />
-            <!--<chart:RadCartesianChart HeightRequest="400">
-                <chart:RadCartesianChart.HorizontalAxis>
-                    <chart:CategoricalAxis LabelFitMode="Rotate" />
-                </chart:RadCartesianChart.HorizontalAxis>
-                <chart:RadCartesianChart.VerticalAxis>
-                    <chart:NumericalAxis />
-                </chart:RadCartesianChart.VerticalAxis>
-
-                <chart:RadCartesianChart.Series>
-                    <chart:BarSeries ItemsSource="{Binding DataRainfed.BenchmarkingDatasets}">
-                        <chart:BarSeries.ValueBinding>
-                            <chart:PropertyNameDataPointBinding PropertyName="val" />
-                        </chart:BarSeries.ValueBinding>
-                        <chart:BarSeries.CategoryBinding>
-                            <chart:PropertyNameDataPointBinding PropertyName="year" />
-                        </chart:BarSeries.CategoryBinding>
-                    </chart:BarSeries>
-                </chart:RadCartesianChart.Series>
-            </chart:RadCartesianChart>-->
         </StackLayout>
     </ScrollView>
 </ContentPage>

@@ -1,19 +1,20 @@
 ﻿namespace CimmytApp.Core.Benchmarking.ViewModels
 {
-    using System;
     using System.Collections.Generic;
     using CimmytApp.Core.DTO.Benchmarking;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.ViewModels;
     using Flurl;
     using Flurl.Http;
     using Helper.Map;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class CiatContentPageViewModel : BindableBase, INavigatedAware
+    public class CiatContentPageViewModel : ViewModelBase, INavigatedAware
     {
-        public CiatContentPageViewModel()
+        public CiatContentPageViewModel(IStringLocalizer<CiatContentPageViewModel> localizer) 
+            :base(localizer)
         {
             IrrigatedClickedCommand = new DelegateCommand(IrrigatedClicked);
             NonIrrigatedClickedCommand = new DelegateCommand(NonIrrigatedClicked);

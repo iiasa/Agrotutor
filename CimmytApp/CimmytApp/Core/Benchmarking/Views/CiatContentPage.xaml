@@ -2,24 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+             xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
              x:Class="CimmytApp.Core.Benchmarking.Views.CiatContentPage"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,0">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                    <Label Text="CIAT Selection" VerticalOptions="Center" />
-                    <Image Source="planner.png" WidthRequest="32" HeightRequest="32" />
-                </StackLayout>
+                <components:Header Text="{i18n:Translate title}" IconSource="planner.png" />
+
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button Text="Non-Irrigated" Command="{Binding NonIrrigatedClickedCommand}" x:Name="BtnNonIrrigated" />
-                    <Button Text="Irrigated" Command="{Binding IrrigatedClickedCommand}" x:Name="BtnIrrigated" />
+                    <Button Text="{i18n:Translate non_irrigated}" 
+                        Command="{Binding NonIrrigatedClickedCommand}" 
+                        x:Name="BtnNonIrrigated" />
+                    <Button Text="{i18n:Translate irrigated}" 
+                        Command="{Binding IrrigatedClickedCommand}" 
+                        x:Name="BtnIrrigated" />
                 </StackLayout>
-                <Label>
-                    For your selected crop with irrigation type in location:
-                </Label>
-                <Label IsVisible="{Binding IsLoading}">Loading...</Label>
-                <Label IsVisible="{Binding NoData}">Sorry - there is no information available for this location.</Label>
+
+                <Label Text="{i18n:Translate description}"/>
+                <Label IsVisible="{Binding IsLoading}" Text="{i18n:Translate loading}"/>
+                <Label IsVisible="{Binding NoData}" Text="{i18n:Translate no_data}" />
                 <Grid Margin="0,32,0,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition />
@@ -29,31 +32,69 @@
                     <Grid.ColumnSpacing>
                         0
                     </Grid.ColumnSpacing>
-                    <AbsoluteLayout x:Name="OldYieldLayout"  Grid.Column="0" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Label x:Name="MarkYieldOld" AbsoluteLayout.LayoutBounds="0,0.1,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="EndAndExpand">Your yield  &gt;</Label>
-
+                    <AbsoluteLayout x:Name="OldYieldLayout" 
+                        Grid.Column="0" Grid.Row="0" 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
+                        <Label x:Name="MarkYieldOld" 
+                            AbsoluteLayout.LayoutBounds="0,0.1,1,0.05" 
+                            AbsoluteLayout.LayoutFlags="All" 
+                            HorizontalOptions="EndAndExpand"
+                            Text="{i18n:Translate marker_your_yield}"/>
                     </AbsoluteLayout>
-                    <Image Source="colorramp_faded.png"  Grid.Column="1" Aspect="Fill" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" HeightRequest="400"/>
-                    <AbsoluteLayout x:Name="CiatYieldLayout" Grid.Column="2" Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                        <Label x:Name="MarkYieldMax" AbsoluteLayout.LayoutBounds="0,0,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="StartAndExpand">&lt;  Max</Label>
-                        <Label x:Name="MarkYieldMin" AbsoluteLayout.LayoutBounds="0,1,1,0.05" AbsoluteLayout.LayoutFlags="All" HorizontalOptions="StartAndExpand">&lt;  Min</Label>
+
+                    <Image Source="colorramp_faded.png"  
+                        Grid.Row="0" Grid.Column="1" 
+                        Aspect="Fill" HeightRequest="400"
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand"/>
+                    
+                    <AbsoluteLayout x:Name="CiatYieldLayout" 
+                        Grid.Column="2" Grid.Row="0" 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
+
+                        <Label x:Name="MarkYieldMax" 
+                            AbsoluteLayout.LayoutBounds="0,0,1,0.05" 
+                            AbsoluteLayout.LayoutFlags="All" 
+                            HorizontalOptions="StartAndExpand"
+                            Text="{i18n:Translate marker_max}" />
+                        <Label x:Name="MarkYieldMin"
+                            AbsoluteLayout.LayoutBounds="0,1,1,0.05"
+                            AbsoluteLayout.LayoutFlags="All"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{i18n:Translate marker_min}" />
                     </AbsoluteLayout>
                 </Grid>
-                <Label Margin="0,16,0,16">Recommendations:</Label>
+
+                <Label Margin="0,16,0,16" Text="{i18n:Translate recommendations}" />
+
                 <Image Source="nitrogen.png"  WidthRequest="32" HeightRequest="64" />
-                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblNitrogen">Apply x amount of nitrogen</Label>
+                <Label x:Name="lblNitrogen"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" 
+                    Text="{i18n:Translate placeholder_nitrogen}"/>
+                
                 <Image Source="crop_orange.png"  WidthRequest="32" HeightRequest="64" />
-                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblAvoidCultivars">Avoid cultivars:</Label>
+                <Label x:Name="lblAvoidCultivars"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                    Text="{i18n:Translate placeholder_avoid}" />
+
                 <Image Source="crop_green.png"  WidthRequest="32" HeightRequest="64" />
-                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblUseCultivars">Use cultivars:</Label>
+                <Label x:Name="lblUseCultivars"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                    Text="{i18n:Translate placeholder_use}" />
+
                 <Image Source="fertilizer.png"  WidthRequest="32" HeightRequest="64" />
-                <Label Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" x:Name="lblSeedDensity">Seed density:</Label>
+                <Label x:Name="lblSeedDensity"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                    Text="{i18n:Translate placeholder_seed_density}" />
+                
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                     <StackLayout.GestureRecognizers>
                         <TapGestureRecognizer Command=""/>
                     </StackLayout.GestureRecognizers>
 
-                    <Label VerticalOptions="End">How to interpret the results</Label>
+                    <Label VerticalOptions="End" Text="{i18n:Translate interpretation}" />
                     <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
             </StackLayout>

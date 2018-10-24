@@ -176,7 +176,7 @@ namespace CimmytApp.WeatherForecast
         public static async Task<WeatherData> Download(double latitude, double longitude)
         {
             var serviceUrl =
-                $"https://wsgi.geo-wiki.org/skywise_weather?lat={latitude}&lon={longitude}";
+                $"https://wsgi.geo-wiki.org/skywise_weather?lat={latitude}&lng={longitude}";
             using (var wc = new HttpClient())
             {
                 var json = await wc.GetStringAsync(serviceUrl);

@@ -1,99 +1,49 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System;
     using System.Collections.Generic;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel.ActivityManagement;
+    using CimmytApp.ViewModels;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    /// <inheritdoc cref="BindableBase" />
-    /// <summary>
-    ///     Defines the <see cref="T:CimmytApp.Parcel.ViewModels.ActivityDetailViewModel" />
-    /// </summary>
-    public class ActivityDetailViewModel : BindableBase, INavigationAware
+    public class ActivityDetailViewModel : ViewModelBase, INavigationAware
     {
-        /// <summary>
-        ///     Defines the _navigationService
-        /// </summary>
         private readonly INavigationService _navigationService;
 
-        /// <summary>
-        ///     Defines the _activityCost
-        /// </summary>
         private double _activityCost;
 
-        /// <summary>
-        ///     Defines the _activityDate
-        /// </summary>
         private DateTimeOffset _activityDate;
 
-        /// <summary>
-        ///     Defines the _activityDose
-        /// </summary>
         private double _activityDose;
 
-        /// <summary>
-        ///     Defines the _activityDynamicUIVisibility
-        /// </summary>
         private ActivityDynamicUIVisibility _activityDynamicUIVisibility;
 
-        /// <summary>
-        ///     Defines the _activityName
-        /// </summary>
         private string _activityName;
 
-        /// <summary>
-        ///     Defines the _activityNameText
-        /// </summary>
         private string _activityNameText;
 
-        /// <summary>
-        ///     Defines the _activityYield
-        /// </summary>
         private string _activityYield;
 
-        /// <summary>
-        ///     Defines the _amountApplied
-        /// </summary>
         private string _amountApplied;
 
-        /// <summary>
-        ///     Defines the _appliedProduct
-        /// </summary>
         private string _appliedProduct;
 
-        /// <summary>
-        ///     Defines the _listSownVariety
-        /// </summary>
         private List<string> _listSownVariety;
 
-        /// <summary>
-        ///     Defines the _numberOfSeeds
-        /// </summary>
         private double _numberOfSeeds;
 
-        /// <summary>
-        ///     Defines the _productObtained
-        /// </summary>
         private string _productObtained;
 
-        /// <summary>
-        ///     Defines the _selectedSown
-        /// </summary>
         private string _selectedSown;
 
-        /// <summary>
-        ///     Defines the _weightOfSeeds
-        /// </summary>
         private double _weightOfSeeds;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="ActivityDetailViewModel" /> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService" /></param>
-        public ActivityDetailViewModel(INavigationService navigationService)
+        public ActivityDetailViewModel(INavigationService navigationService,
+            IStringLocalizer<ActivityDetailViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
             ListSownVariety = new List<string>

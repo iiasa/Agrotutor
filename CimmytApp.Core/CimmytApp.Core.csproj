@@ -23,46 +23,4 @@
     <ProjectReference Include="..\Helper\Helper.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Update="WeatherForecast\Views\DailyForecastPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="WeatherForecast\Views\DailyWeatherDataPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="WeatherForecast\Views\HourlyWeatherDataPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="WeatherForecast\Views\WeatherDataSelection.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="WeatherForecast\Views\WeatherForecastPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <Compile Update="WeatherForecast\Views\WeatherMainPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="WeatherForecast\Views\DailyForecastPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="WeatherForecast\Views\DailyWeatherDataPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="WeatherForecast\Views\HourlyWeatherDataPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="WeatherForecast\Views\WeatherDataSelection.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="WeatherForecast\Views\WeatherForecastPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="WeatherForecast\Views\WeatherMainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-  </ItemGroup>
-
 </Project>

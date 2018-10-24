@@ -128,10 +128,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CiatContentPage.resx</DependentUpon>
     </Compile>
-    <Compile Update="Resources\Core\Parcel\Views\ParcelsOverviewPage.Designer.cs">
+    <Compile Update="Resources\Core\Parcel\Views\ActivityDetail.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ParcelsOverviewPage.resx</DependentUpon>
+      <DependentUpon>ActivityDetail.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\StaticContent\Views\CitationPage.Designer.cs">
       <DependentUpon>CitationPage.resx</DependentUpon>
@@ -168,6 +168,9 @@
     <EmbeddedResource Update="Core\Components\Header.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\IconWithText.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\ViewModels\BenchmarkingPageView.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>BenchmarkingPageView.Designer.cs</LastGenOutput>
@@ -175,6 +178,22 @@
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\CiatContentPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>CiatContentPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
+      <LastGenOutput>ActivityDetail.es.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ActivityDetail.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Parcel\Views\AddParcelPage.es.resx">
+      <LastGenOutput>AddParcelPage.Designer.cs</LastGenOutput>
+      <Generator>ResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Parcel\Views\AddParcelPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>AddParcelPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ParcelsOverviewPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>

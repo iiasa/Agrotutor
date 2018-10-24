@@ -1,65 +1,23 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.Parcel;
+    using CimmytApp.ViewModels;
     using Helper.Map;
     using Helper.Map.ViewModels;
     using Helper.Realm.BusinessContract;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms.GoogleMaps;
 
-    /// <inheritdoc cref="BindableBase" />
-    /// <summary>
-    ///     Defines the <see cref="T:CimmytApp.Parcel.ViewModels.AddParcelPageViewModel" />
-    /// </summary>
-    public class AddParcelPageViewModel : BindableBase, INavigationAware
+    public class AddParcelPageViewModel : ViewModelBase, INavigatedAware
     {
-        /// <summary>
-        ///     Defines the _cimmytDbOperations
-        /// </summary>
-        private readonly ICimmytDbOperations _cimmytDbOperations;
 
-        /// <summary>
-        ///     Defines the _navigationService
-        /// </summary>
-        private readonly INavigationService _navigationService;
-
-        /// <summary>
-        ///     Defines the _isSaveBtnEnabled
-        /// </summary>
-        private bool _isSaveBtnEnabled = true;
-
-        private Parcel _parcel;
-
-        /// <summary>
-        ///     Defines the _pickerClimateTypesSelectedIndex
-        /// </summary>
-        private int _pickerClimateTypesSelectedIndex;
-
-        /// <summary>
-        ///     Defines the _pickerCropTypesSelectedIndex
-        /// </summary>
-        private int _pickerCropTypesSelectedIndex;
-
-        /// <summary>
-        ///     Defines the _pickerMaturityClassesSelectedIndex
-        /// </summary>
-        private int _pickerMaturityClassesSelectedIndex;
-
-        /// <summary>
-        ///     Defines the _userIsAtParcel
-        /// </summary>
-        private bool _userIsAtParcel;
-
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="AddParcelPageViewModel" /> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService" /></param>
-        /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
-        public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+        public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations,
+            IStringLocalizer<AddParcelPageViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
@@ -78,9 +36,22 @@
             PickerMaturityClassesSelectedIndex = -1;
         }
 
-        /// <summary>
-        ///     Gets the ClimateTypes
-        /// </summary>
+        private readonly ICimmytDbOperations _cimmytDbOperations;
+
+        private readonly INavigationService _navigationService;
+
+        private bool _isSaveBtnEnabled = true;
+
+        private Parcel _parcel;
+
+        private int _pickerClimateTypesSelectedIndex;
+
+        private int _pickerCropTypesSelectedIndex;
+
+        private int _pickerMaturityClassesSelectedIndex;
+
+        private bool _userIsAtParcel;
+
         public List<string> ClimateTypes { get; } = new List<string>
         {
             "Frío",
@@ -89,9 +60,6 @@
             "Híbrido"
         };
 
-        /// <summary>
-        ///     Gets the CropTypes
-        /// </summary>
         public List<string> CropTypes { get; } = new List<string>
         {
             "Maíz",
@@ -115,14 +83,8 @@
             "Otro"
         };
 
-        /// <summary>
-        ///     Gets a value indicating whether InformationMissing
-        /// </summary>
         public bool InformationMissing => !IsSaveBtnEnabled;
 
-        /// <summary>
-        ///     Gets the MaturityClasses
-        /// </summary>
         public List<string> MaturityClasses { get; } = new List<string>
         {
             "Temprana",
@@ -132,29 +94,14 @@
             "Tardía"
         };
 
-        /// <summary>
-        ///     Gets or sets the ClickChooseLocation
-        /// </summary>
         public DelegateCommand ClickChooseLocation { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the ClickGetLocation
-        /// </summary>
         public DelegateCommand ClickGetLocation { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the ClickDelineate
-        /// </summary>
         public DelegateCommand ClickDelineate { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the ClickSave
-        /// </summary>
         public DelegateCommand ClickSave { get; set; }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether IsSaveBtnEnabled
-        /// </summary>
         public bool IsSaveBtnEnabled
         {
             get => _isSaveBtnEnabled;
@@ -163,9 +110,6 @@
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the Parcel
-        /// </summary>
         public Parcel Parcel
         {
             get => _parcel;
@@ -176,9 +120,6 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the PickerClimateTypesSelectedIndex
-        /// </summary>
         public int PickerClimateTypesSelectedIndex
         {
             get => _pickerClimateTypesSelectedIndex;
@@ -189,9 +130,6 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the PickerCropTypesSelectedIndex
-        /// </summary>
         public int PickerCropTypesSelectedIndex
         {
             get => _pickerCropTypesSelectedIndex;
@@ -211,9 +149,6 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the PickerMaturityClassesSelectedIndex
-        /// </summary>
         public int PickerMaturityClassesSelectedIndex
         {
             get => _pickerMaturityClassesSelectedIndex;
@@ -224,28 +159,16 @@
             }
         }
 
-        /// <summary>
-        ///     Gets or sets a value indicating whether UserIsAtParcel
-        /// </summary>
         public bool UserIsAtParcel
         {
             get => _userIsAtParcel;
             set => SetProperty(ref _userIsAtParcel, value);
         }
 
-        /// <summary>
-        ///     The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        /// <inheritdoc />
-        /// <summary>
-        ///     The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="T:Prism.Navigation.NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("Parcel"))
@@ -300,17 +223,6 @@
             }
         }
 
-        /// <summary>
-        ///     The OnNavigatingTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
-        }
-
-        /// <summary>
-        ///     The GetLocation
-        /// </summary>
         private void GetLocation()
         {
             var parameters = new NavigationParameters
@@ -326,9 +238,6 @@
             _navigationService.NavigateAsync("Map", parameters);
         }
 
-        /// <summary>
-        ///     The SelectLocation
-        /// </summary>
         private void ChooseLocation()
         {
             var parameters = new NavigationParameters
@@ -344,9 +253,6 @@
             _navigationService.NavigateAsync("Map", parameters);
         }
 
-        /// <summary>
-        ///     The Delineate
-        /// </summary>
         private void Delineate()
         {
             var parameters = new NavigationParameters
@@ -372,9 +278,6 @@
             _navigationService.NavigateAsync(page, parameters);
         }
 
-        /// <summary>
-        ///     The SaveParcel
-        /// </summary>
         private void SaveParcel()
         {
             IsSaveBtnEnabled = false;
@@ -390,7 +293,7 @@
 
         private void UpdateSelections()
         {
-            for (var i = 0; i < CropTypes.Count; i++)
+            for (int i = 0; i < CropTypes.Count; i++)
             {
                 if (CropTypes[i] != Parcel.Crop)
                 {
@@ -401,7 +304,7 @@
                 break;
             }
 
-            for (var i = 0; i < MaturityClasses.Count; i++)
+            for (int i = 0; i < MaturityClasses.Count; i++)
             {
                 if (MaturityClasses[i] != Parcel.MaturityClass)
                 {
@@ -412,7 +315,7 @@
                 break;
             }
 
-            for (var i = 0; i < ClimateTypes.Count; i++)
+            for (int i = 0; i < ClimateTypes.Count; i++)
             {
                 if (ClimateTypes[i] != Parcel.ClimateType)
                 {

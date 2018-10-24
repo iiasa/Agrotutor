@@ -4,7 +4,7 @@
              x:Class="CimmytApp.Core.Components.MenuIcon">
   <ContentView.Content>
         <StackLayout>
-          <Image x:Name="IconImage" Source="farmer.png" WidthRequest="70" Margin="16" />
+          <Image x:Name="IconImage" WidthRequest="70" Margin="16" />
           <Label x:Name="IconTextLabel" HorizontalTextAlignment="Center" />
         </StackLayout>
   </ContentView.Content>

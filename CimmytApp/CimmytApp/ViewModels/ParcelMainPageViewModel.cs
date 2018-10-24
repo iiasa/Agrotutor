@@ -5,20 +5,20 @@
     using CimmytApp.DTO.Parcel;
     using Helper.Map.ViewModels;
     using Helper.Realm.BusinessContract;
-    using Prism;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
-    public class ParcelMainPageViewModel : BindableBase, INavigationAware
+    public class ParcelMainPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly ICimmytDbOperations _cimmytDbOperations;
         private readonly INavigationService _navigationService;
         private Parcel _parcel;
 
-        public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations)
+        public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations,
+            IStringLocalizer<ParcelMainPageViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);

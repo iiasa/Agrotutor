@@ -55,6 +55,28 @@
                 "Evapotranspiración horaria de cultivos cortos",
                 "Evapotranspiración horaria de cultivos altos"
             };
+            DatasetNames = new List<string>
+            {
+                "Growing degree days",
+                "Cooling degree days",
+                "Heating degree days",
+                "Daily precipitation",
+                "Hourly precipitation",
+                "Hourly relative humidity",
+                "Daily solar radiation",
+                "Hourly solar radiation",
+                "Hourly temperature",
+                "Daily high temperature",
+                "Daily low temperature",
+                "Hourly dewpoint",
+                "Hourly wind speed",
+                "Hourly wind direction",
+                "Daily evapotranspiration short crop",
+                "Daily evapotranspiration tall crop",
+                "Hourly evapotranspiration short crop",
+                "Hourly evapotranspiration tall crop"
+            };
+
             ShowWeatherDataCommand = new DelegateCommand(ShowWeatherData);
             RefreshWeatherDataCommand = new DelegateCommand(RefreshWeatherData);
 

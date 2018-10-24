@@ -117,49 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="description" xml:space="preserve">
-    <value>For your selected crop with irrigation type in location:</value>
+  <data name="btn_save_and_new" xml:space="preserve">
+    <value>Guardar</value>
   </data>
-  <data name="interpretation" xml:space="preserve">
-    <value>How to interpret the results</value>
+  <data name="hint_activities" xml:space="preserve">
+    <value>Agregar actividades de parcela</value>
   </data>
-  <data name="irrigated" xml:space="preserve">
-    <value>Irrigated</value>
+  <data name="hint_choose_location" xml:space="preserve">
+    <value>Sobre el mapa</value>
   </data>
-  <data name="loading" xml:space="preserve">
-    <value>Loading...</value>
+  <data name="hint_crop" xml:space="preserve">
+    <value>Tipo de cultivo</value>
   </data>
-  <data name="marker_max" xml:space="preserve">
-    <value>&amp;lt;  Max</value>
+  <data name="hint_gps_location" xml:space="preserve">
+    <value>Usando GPS</value>
   </data>
-  <data name="marker_min" xml:space="preserve">
-    <value>&amp;lt;  Min</value>
+  <data name="hint_location" xml:space="preserve">
+    <value>Selecciona la ubicación de tu parcela</value>
   </data>
-  <data name="marker_your_yield" xml:space="preserve">
-    <value>Your yield  &amp;gt;</value>
+  <data name="hint_management_info" xml:space="preserve">
+    <value>Agrega información de manejo de parcela</value>
   </data>
-  <data name="non_irrigated" xml:space="preserve">
-    <value>Non-Irrigated</value>
+  <data name="hint_parcel_name" xml:space="preserve">
+    <value>Nombre de parcela</value>
   </data>
-  <data name="no_data" xml:space="preserve">
-    <value>Sorry - there is no information available for this location.</value>
+  <data name="hint_parcel_name_1" xml:space="preserve">
+    <value>(para identificación, ej: Maíz Camino 1)</value>
   </data>
-  <data name="placeholder_avoid" xml:space="preserve">
-    <value>Avoid cultivars:</value>
+  <data name="hint_planting_date" xml:space="preserve">
+    <value>Fecha de siembra</value>
   </data>
-  <data name="placeholder_nitrogen" xml:space="preserve">
-    <value>Apply x amount of nitrogen</value>
+  <data name="hint_technologies" xml:space="preserve">
+    <value>Agregar tecnologías utilizadas</value>
   </data>
-  <data name="placeholder_seed_density" xml:space="preserve">
-    <value>Seed density:</value>
+  <data name="madurez" xml:space="preserve">
+    <value>Tipo de madurez del cultivar</value>
   </data>
-  <data name="placeholder_use" xml:space="preserve">
-    <value>Use cultivars:</value>
+  <data name="select" xml:space="preserve">
+    <value>seleccionar</value>
   </data>
-  <data name="recommendations" xml:space="preserve">
-    <value>Recommendations:</value>
+  <data name="tipo_clima" xml:space="preserve">
+    <value>Clima idóneo del cultivar</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>CIAT Selection</value>
+    <value>Agregar parcela</value>
   </data>
 </root>

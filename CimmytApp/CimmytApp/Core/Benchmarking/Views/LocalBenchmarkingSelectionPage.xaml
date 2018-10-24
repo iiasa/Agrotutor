@@ -7,7 +7,7 @@
         <ScrollView>
             <StackLayout>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                    <Label Text="informacion comparativa" FontAttributes="Italic" />
+                    <Label Text="Benchmarking information" FontAttributes="Italic" />
                     <Image Source="icon_scales_96.png" HeightRequest="18" />
                 </StackLayout>
 
@@ -27,7 +27,7 @@
                                 CommandParameter="ViewCostoPage" />
                         </StackLayout.GestureRecognizers>
                         <Image Source="icons_pricetag_96.png" WidthRequest="70" Margin="16" />
-                        <Label Text="Costos" HorizontalTextAlignment="Center" />
+                        <Label Text="Costs" HorizontalTextAlignment="Center" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="0" Grid.Column="1" Orientation="Vertical">
@@ -36,7 +36,7 @@
                                 CommandParameter="ViewIngresoPage" />
                         </StackLayout.GestureRecognizers>
                         <Image Source="icon_profit_96.png" WidthRequest="70" Margin="16" />
-                        <Label Text="Ingresos" HorizontalTextAlignment="Center" />
+                        <Label Text="Income" HorizontalTextAlignment="Center" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Vertical">
@@ -45,7 +45,7 @@
                                 CommandParameter="ViewRendimientoPage" />
                         </StackLayout.GestureRecognizers>
                         <Image Source="icons_datasheet_96.png" WidthRequest="70" Margin="16" />
-                        <Label Text="Rendimiento" HorizontalTextAlignment="Center" />
+                        <Label Text="Yield" HorizontalTextAlignment="Center" />
                     </StackLayout>
 
                     <StackLayout Grid.Row="1" Grid.Column="1" Orientation="Vertical">
@@ -54,12 +54,12 @@
                                 CommandParameter="ViewUtilidadPage" />
                         </StackLayout.GestureRecognizers>
                         <Image Source="icons_settings_96.png" WidthRequest="70" Margin="16" />
-                        <Label Text="Utilidad" HorizontalTextAlignment="Center" />
+                        <Label Text="Cost of utilities" HorizontalTextAlignment="Center" />
                     </StackLayout>
                 </Grid>
 
                 <Label
-                    Text="Estas páginas requieren mayores cantidades de datos. Abrir una página enviará solicitudes de datos de alrededor de 10 megabytes cada uno. Por favor sea paciente." />
+                    Text="These pages require larger amounts of data. Opening a page will send data requests of around 10 megabytes each. Please, be patient." />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

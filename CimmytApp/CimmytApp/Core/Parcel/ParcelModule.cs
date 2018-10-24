@@ -10,6 +10,7 @@
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<ActivityPage>();
+            containerRegistry.RegisterForNavigation<ActivityDetail>();
             containerRegistry.RegisterForNavigation<ViewActivitiesPage>();
             containerRegistry.RegisterForNavigation<AddParcelPage>();
             containerRegistry.RegisterForNavigation<DeleteParcelPage>();

@@ -8,7 +8,10 @@
 
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
+            <!--
             <components:Header Text="{Binding Parcel.OverviewString}" IconSource="{Binding Parcel.IconSource}" />
+-->
+            <components:Header Text="Beans 1" IconSource="crop_bean.png" />
 
             <Grid HorizontalOptions="Center">
                 <Grid.RowDefinitions>
@@ -38,7 +41,7 @@
                     IconText="{i18n:Translate weather}" 
                     IconSource="icon_weather_96.png" 
                     Command="{Binding NavigateAsyncCommand}" 
-                    CommandParameter="WeatherDataSelection"
+                    CommandParameter="WeatherMainPage"
                     Grid.Row ="1" Grid.Column="0" />
 
                 <components:MenuIcon 

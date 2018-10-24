@@ -1,14 +1,16 @@
-﻿namespace CimmytApp.Parcel.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.Parcel;
+    using CimmytApp.ViewModels;
     using Helper.Map;
     using Helper.Map.ViewModels;
-    using Helper.Realm;
     using Helper.Realm.BusinessContract;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
@@ -16,7 +18,7 @@
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
-    public class ParcelPageViewModel : BindableBase, INavigationAware
+    public class ParcelPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly ICimmytDbOperations _cimmytDbOperations;
 
@@ -41,7 +43,7 @@
         private bool _viewModeActive;
 
         public ParcelPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator,
-            ICimmytDbOperations cimmytDbOperations)
+            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<ParcelPageViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
@@ -102,8 +104,6 @@
 
         public DelegateCommand ClickGetLocation { get; set; }
 
-        public DelegateCommand ClickPhoto { get; set; }
-
         public DelegateCommand ClickSave { get; set; }
 
         public DelegateCommand DeleteParcelCommand { get; set; }
@@ -125,12 +125,6 @@
         public DelegateCommand EditTechnologiesCommand { get; set; }
 
         public DelegateCommand GoBackCommand { get; set; }
-
-        public ImageSource ImageSource
-        {
-            get => _imageSource;
-            set => SetProperty(ref _imageSource, value);
-        }
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
@@ -353,10 +347,6 @@
                     Parcel.TechnologiesUsed = technologies;
                 }
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         private void DeleteParcel()

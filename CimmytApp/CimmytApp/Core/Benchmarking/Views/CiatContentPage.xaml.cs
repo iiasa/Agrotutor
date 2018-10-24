@@ -1,13 +1,10 @@
 ﻿namespace CimmytApp.Core.Benchmarking.Views
 {
     using System;
-    using System.Linq;
     using CimmytApp.Core.Benchmarking.ViewModels;
     using CimmytApp.Core.DTO.Benchmarking;
     using Xamarin.Forms;
-    using Xamarin.Forms.Xaml;
 
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CiatContentPage : ContentPage
     {
         private readonly CiatContentPageViewModel viewModel;
@@ -15,6 +12,7 @@
         public CiatContentPage()
         {
             InitializeComponent();
+            NavigationPage.SetHasNavigationBar(this, false);
             this.viewModel = (CiatContentPageViewModel)BindingContext;
             this.viewModel.PropertyChanged += (sender, args) =>
             {

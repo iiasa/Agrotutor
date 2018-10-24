@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Benchmarking.ViewModels
+﻿namespace CimmytApp.Core.Benchmarking.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -6,74 +6,76 @@
     using System.Windows.Input;
     using CimmytApp.DTO.Benchmarking;
     using CimmytApp.DTO.Parcel;
+    using CimmytApp.ViewModels;
     using Helper.GeoWiki.API;
+    using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class BenchmarkingPageViewModel : BindableBase, INavigationAware
+    public class BenchmarkingPageViewModel : ViewModelBase, INavigatedAware
     {
-        private readonly INavigationService _navigationService;
-        private BenchmarkingInformation _dataIrrigated;
-        private BenchmarkingInformation _dataRainfed;
-        private bool _downloadButtonActive;
-        private bool _downloading;
-        private BenchmarkingInformation _myData;
-        private bool _noData;
-        private Parcel _parcel;
-
-        public BenchmarkingPageViewModel(INavigationService navigationService)
+        public BenchmarkingPageViewModel(INavigationService navigationService,
+            IStringLocalizer<BenchmarkingPageViewModel> localizer) : base(localizer)
         {
             LoadDataCommand = new DelegateCommand(LoadData);
-            _navigationService = navigationService;
+            this.navigationService = navigationService;
         }
+
+        private readonly INavigationService navigationService;
+        private BenchmarkingInformation dataIrrigated;
+        private BenchmarkingInformation dataRainfed;
+        private bool downloadButtonActive;
+        private bool downloading;
+        private BenchmarkingInformation benchmarkingInformation;
+        private bool noData;
+        private Parcel parcel;
 
         public BenchmarkingInformation DataIrrigated
         {
-            get => _dataIrrigated;
-            set => SetProperty(ref _dataIrrigated, value);
+            get => this.dataIrrigated;
+            set => SetProperty(ref this.dataIrrigated, value);
         }
 
         public BenchmarkingInformation DataRainfed
         {
-            get => _dataRainfed;
-            set => SetProperty(ref _dataRainfed, value);
+            get => this.dataRainfed;
+            set => SetProperty(ref this.dataRainfed, value);
         }
 
         public bool DownloadButtonActive
         {
-            get => _downloadButtonActive;
-            set => SetProperty(ref _downloadButtonActive, value);
+            get => this.downloadButtonActive;
+            set => SetProperty(ref this.downloadButtonActive, value);
         }
 
         public bool Downloading
         {
-            get => _downloading;
-            set => SetProperty(ref _downloading, value);
+            get => this.downloading;
+            set => SetProperty(ref this.downloading, value);
         }
 
         public ICommand LoadDataCommand { get; set; }
 
         public BenchmarkingInformation MyData
         {
-            get => _myData;
+            get => this.benchmarkingInformation;
             set
             {
-                _myData = value;
+                this.benchmarkingInformation = value;
                 UpdateData(value);
             }
         }
 
         public bool NoData
         {
-            get => _noData;
-            set => SetProperty(ref _noData, value);
+            get => this.noData;
+            set => SetProperty(ref this.noData, value);
         }
 
         public Parcel Parcel
         {
-            get => _parcel;
-            set => SetProperty(ref _parcel, value);
+            get => this.parcel;
+            set => SetProperty(ref this.parcel, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -92,13 +94,9 @@
                 }
                 else
                 {
-                    _navigationService.GoBackAsync();
+                    this.navigationService.GoBackAsync();
                 }
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)

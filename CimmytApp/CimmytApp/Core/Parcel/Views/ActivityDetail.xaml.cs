@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Core.Parcel.Views
 {
     public partial class ActivityDetail
     {

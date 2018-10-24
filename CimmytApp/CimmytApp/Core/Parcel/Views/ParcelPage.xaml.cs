@@ -1,20 +1,22 @@
-﻿namespace CimmytApp.Parcel.Views
+﻿namespace CimmytApp.Core.Parcel.Views
 {
-    using CimmytApp.Parcel.ViewModels;
+    using CimmytApp.Core.Parcel.ViewModels;
+    using Xamarin.Forms;
 
     public partial class ParcelPage
     {
-        private readonly ParcelPageViewModel _bindingContext;
+        private readonly ParcelPageViewModel bindingContext;
 
         public ParcelPage()
         {
             InitializeComponent();
-            _bindingContext = (ParcelPageViewModel)BindingContext;
+            bindingContext = (ParcelPageViewModel)BindingContext;
+            NavigationPage.SetHasNavigationBar(this, false);
         }
 
         protected override bool OnBackButtonPressed()
         {
-            _bindingContext.GoBackCommand.Execute();
+            bindingContext.GoBackCommand.Execute();
             return true;
         }
     }

@@ -117,49 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="description" xml:space="preserve">
-    <value>For your selected crop with irrigation type in location:</value>
-  </data>
-  <data name="interpretation" xml:space="preserve">
-    <value>How to interpret the results</value>
-  </data>
-  <data name="irrigated" xml:space="preserve">
-    <value>Irrigated</value>
-  </data>
   <data name="loading" xml:space="preserve">
-    <value>Loading...</value>
+    <value>Descargando datos, por favor espere...</value>
   </data>
-  <data name="marker_max" xml:space="preserve">
-    <value>&amp;lt;  Max</value>
-  </data>
-  <data name="marker_min" xml:space="preserve">
-    <value>&amp;lt;  Min</value>
-  </data>
-  <data name="marker_your_yield" xml:space="preserve">
-    <value>Your yield  &amp;gt;</value>
-  </data>
-  <data name="non_irrigated" xml:space="preserve">
-    <value>Non-Irrigated</value>
+  <data name="load_data" xml:space="preserve">
+    <value>Cargar datos</value>
   </data>
   <data name="no_data" xml:space="preserve">
-    <value>Sorry - there is no information available for this location.</value>
-  </data>
-  <data name="placeholder_avoid" xml:space="preserve">
-    <value>Avoid cultivars:</value>
-  </data>
-  <data name="placeholder_nitrogen" xml:space="preserve">
-    <value>Apply x amount of nitrogen</value>
-  </data>
-  <data name="placeholder_seed_density" xml:space="preserve">
-    <value>Seed density:</value>
-  </data>
-  <data name="placeholder_use" xml:space="preserve">
-    <value>Use cultivars:</value>
-  </data>
-  <data name="recommendations" xml:space="preserve">
-    <value>Recommendations:</value>
+    <value>Lo sentimos, no hay datos disponibles para esta parcela.</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>CIAT Selection</value>
+    <value>Rendimiento potencial</value>
   </data>
 </root>
