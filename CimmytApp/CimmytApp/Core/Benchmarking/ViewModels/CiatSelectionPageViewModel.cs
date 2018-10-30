@@ -28,7 +28,7 @@
 
         public string OldYield { get; set; }
 
-        public GeoPosition Position { get; set; }
+        public Map.GeoPosition Position { get; set; }
 
         public string SelectedCrop { get; set; }
 
@@ -96,7 +96,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
+                { MapViewModel.MapTaskParameterName, Map.MapTask.GetLocation }
             };
             this.navigationService.NavigateAsync("Map", parameters);
         }
@@ -105,7 +105,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, Map.MapTask.SelectLocation }
             };
             this.navigationService.NavigateAsync("Map", parameters);
         }
@@ -118,7 +118,7 @@
         {
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue<GeoPosition>("GeoPosition", out GeoPosition geoPosition);
+                parameters.TryGetValue<Map.GeoPosition>("GeoPosition", out Map.GeoPosition geoPosition);
                 if (geoPosition != null)
                 {
                     Position = geoPosition;

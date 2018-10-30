@@ -7,7 +7,7 @@
 
     public static class WeatherService
     {
-        public static async Task<WeatherData> GetWeatherData(GeoPosition location)
+        public static async Task<WeatherData> GetWeatherData(Core.Map.GeoPosition location)
         {
             try
             {

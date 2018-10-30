@@ -15,7 +15,7 @@
         private DailyHighTemperature _dailyHighTemperature;
         private Parcel _parcel;
         private WeatherData _weatherData;
-        private GeoPosition position;
+        private Core.Map.GeoPosition position;
 
         public event EventHandler IsActiveChanged;
 
@@ -41,7 +41,7 @@
                         return;
                     }
 
-                    position = new GeoPosition
+                    position = new Core.Map.GeoPosition
                     {
                         Latitude = Parcel.Position.Latitude,
                         Longitude = Parcel.Position.Longitude

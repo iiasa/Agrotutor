@@ -60,7 +60,7 @@
             set => SetProperty(ref this.currentData, value);
         }
 
-        public GeoPosition GeoPosition { get; set; }
+        public Map.GeoPosition GeoPosition { get; set; }
 
         public string Crop { get; set; }
 
@@ -102,7 +102,7 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_POSITION, out GeoPosition position);
+            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_POSITION, out Map.GeoPosition position);
             this.GeoPosition = position;
 
             parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_CROP, out string crop);

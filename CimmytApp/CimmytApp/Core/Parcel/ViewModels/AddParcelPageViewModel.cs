@@ -197,7 +197,7 @@
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue<GeoPosition>("GeoPosition", out var geoPosition);
+                parameters.TryGetValue<Core.Map.GeoPosition>("GeoPosition", out var geoPosition);
                 if (geoPosition != null)
                 {
                     Parcel.Position = geoPosition;
@@ -206,7 +206,7 @@
 
             if (parameters.ContainsKey("Delineation"))
             {
-                parameters.TryGetValue<List<GeoPosition>>("Delineation", out var delineation);
+                parameters.TryGetValue<List<Core.Map.GeoPosition>>("Delineation", out var delineation);
                 Parcel.Delineation = delineation;
 
                 //_cimmytDbOperations.SaveParcelPolygon(Parcel.ParcelId, polygonObj); TODO ensure saving
@@ -227,7 +227,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
+                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.GetLocation }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {
@@ -242,7 +242,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectLocation }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {
@@ -257,7 +257,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
+                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectPolygon }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {

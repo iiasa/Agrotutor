@@ -3,6 +3,8 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:datatypes="clr-namespace:CimmytApp.Core.Datatypes;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Core.Parcel.Views.ActivityDetail">
     <ScrollView>
@@ -25,6 +27,10 @@
                 <Label Text="{Binding ActivityDynamicUIVisibility.ActivityTitle}" FontAttributes="Italic" />
                 <Image Source="{Binding ActivityDynamicUIVisibility.ActivityIcon}" HeightRequest="18" />
             </StackLayout>
+
+            <components:Header Text="{Binding ActivityDynamicUIVisibility.ActivityTitle}"
+                IconSource="{Binding ActivityDynamicUIVisibility.ActivityIcon Converter={datatypes:StringToImageSourceConverter}}"/>
+
             <StackLayout Orientation="Vertical" HorizontalOptions="Start" Grid.Row="1">
                 <Label Text="{i18n:Translate name}" HorizontalOptions="Start" FontSize="18" />
                 <Label Text="{Binding ActivityName}" Margin="16,16,0,0" WidthRequest="250"

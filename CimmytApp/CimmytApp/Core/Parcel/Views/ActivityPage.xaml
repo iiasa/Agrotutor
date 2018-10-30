@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Core.Parcel.Views.ActivityPage" x:Name="ActivePage">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Add activity to plot" FontAttributes="Italic" />
-                <Image Source="farmer_small.png" HeightRequest="18" />
-            </StackLayout>
+            <components:Header Text="{i18n:Translate title}" IconSource="farmer_small.png" />
+
             <StackLayout Orientation="Vertical">
                 <Grid Margin="16">
                     <Grid.RowDefinitions>
@@ -23,169 +24,83 @@
                         <ColumnDefinition />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Grid Grid.Row="0" Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="flask.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="SoilImprovers" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Aplicación de mejoradores de suelo" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="shovel.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="GroundPreperation" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Preparación del terreno" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="sowing.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="Sowing" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Siembra" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="1">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="fertilizer.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="Fertilization" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Fertilización" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="irrigation.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="Irrigation" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Riego" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="2">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="weeds.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="WeedPreventionControl" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Control de prevención de malezas" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
 
-                    <Grid Grid.Column="0" Grid.Row="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="harvest.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="Harvest" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Cosecha" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="3">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="storage.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="PostHarvestStorage" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Almacenamiento poscosecha" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.Row="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="money_bigger.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="Commercialization" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Comercialización" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="1" Grid.Row="4">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="farmer_bigger.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="OtherActivities" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Otras actividades" HorizontalOptions="Center"
-                            HorizontalTextAlignment="Center" />
-                    </Grid>
-                    <Grid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="5">
-                        <Grid.RowDefinitions>
-                            <RowDefinition />
-                            <RowDefinition />
-                        </Grid.RowDefinitions>
-                        <Image Source="cockroach.png" HorizontalOptions="Center" WidthRequest="70">
-                            <Image.GestureRecognizers>
-                                <TapGestureRecognizer
-                                    Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
-                                    CommandParameter="PestAndDiseaseControlAndPrevention" />
-                            </Image.GestureRecognizers>
-                        </Image>
-                        <Label Grid.Row="1" Text="Control y prevención de plagas y enfermedades"
-                            HorizontalOptions="Center" HorizontalTextAlignment="Center" />
-                    </Grid>
+                    <components:MenuIcon 
+                        Grid.Row="0" Grid.Column="0"
+                        IconText="{i18n:Translate soil_improvers}"
+                        IconSource="flask.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="SoilImprovers"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="0" Grid.Column="1"
+                        IconText="{i18n:Translate ground_preparation}"
+                        IconSource="shovel.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="GroundPreperation"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="1" Grid.Column="0"
+                        IconText="{i18n:Translate sowing}"
+                        IconSource="sowing.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Sowing"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="1" Grid.Column="1"
+                        IconText="{i18n:Translate fertilizer}"
+                        IconSource="fertilizer.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Fertilization"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="2" Grid.Column="0"
+                        IconText="{i18n:Translate irrigation}"
+                        IconSource="irrigation.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Irrigation"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="2" Grid.Column="1"
+                        IconText="{i18n:Translate deweeding}"
+                        IconSource="weeds.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="WeedPreventionControl"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="3" Grid.Column="0"
+                        IconText="{i18n:Translate harvest}"
+                        IconSource="harvest.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Harvest"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="3" Grid.Column="1"
+                        IconText="{i18n:Translate post_harvest_storage}"
+                        IconSource="storage.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="PostHarvestStorage"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="4" Grid.Column="0"
+                        IconText="{i18n:Translate commercialization}"
+                        IconSource="money_bigger.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Commercialization"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="4" Grid.Column="1"
+                        IconText="{i18n:Translate other_activities}"
+                        IconSource="farmer_bigger.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="OtherActivities"/>
+
+                    <components:MenuIcon 
+                        Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        IconText="{i18n:Translate pest_control}"
+                        IconSource="cockroach.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="PestAndDiseaseControlAndPrevention"/>
                 </Grid>
             </StackLayout>
         </StackLayout>

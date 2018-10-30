@@ -8,7 +8,7 @@
     public static class PhuAccumulator
     {
         public static List<DateTime> GetWindowsOfOpportunity(int baseTemperature, int targetHeatUnits,
-            GeoPosition position, DateTime plantingDate)
+            Core.Map.GeoPosition position, DateTime plantingDate)
         {
             var endDate = DateTime.Today.AddDays(10);
             var duration = endDate.Subtract(plantingDate);

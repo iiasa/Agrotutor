@@ -21,7 +21,7 @@
 
         private Parcel _parcel;
 
-        private GeoPosition _position;
+        private Core.Map.GeoPosition _position;
 
         private bool _refreshedFromServer;
 
@@ -214,7 +214,7 @@
         {
             if ((bool)_parcel.Position?.IsSet())
             {
-                _position = new GeoPosition
+                _position = new Core.Map.GeoPosition
                 {
                     Latitude = Parcel.Position.Latitude,
                     Longitude = Parcel.Position.Longitude
@@ -222,7 +222,7 @@
             }
             else
             {
-                _position = new GeoPosition
+                _position = new Core.Map.GeoPosition
                 {
                     Latitude = 21.798344,
                     Longitude = -101.667537

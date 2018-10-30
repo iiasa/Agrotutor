@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using Prism.Mvvm;
+    using Xamarin.Forms;
 
     /// <inheritdoc />
     /// <summary>

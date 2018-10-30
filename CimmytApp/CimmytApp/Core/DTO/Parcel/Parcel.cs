@@ -11,13 +11,13 @@
     using Helper.Realm.DTO;
     using Xamarin.Forms;
 
-    public class Parcel : INotifyPropertyChanged
+    public class Parcel
     {
         private static readonly int geoWikiDatasetGroupId = 1;
 
         private string _crop;
 
-        private GeoPosition _geoPosition;
+        private Core.Map.GeoPosition _geoPosition;
 
         private string _parcelName;
 
@@ -36,7 +36,7 @@
         public Parcel()
         {
             AgriculturalActivities = new List<AgriculturalActivity>();
-            Delineation = new List<GeoPosition>();
+            Delineation = new List<Core.Map.GeoPosition>();
             TechnologiesUsed = new List<Technology>();
         }
 
@@ -69,7 +69,7 @@
 
         public CropType CropType { get; set; }
 
-        public List<GeoPosition> Delineation { get; set; }
+        public List<Core.Map.GeoPosition> Delineation { get; set; }
 
         public string MaturityClass { get; set; }
 
@@ -140,7 +140,7 @@
             }
         }
 
-        public GeoPosition Position { get; set; }
+        public Core.Map.GeoPosition Position { get; set; }
 
         public string ProducerName { get; set; }
 
@@ -154,7 +154,7 @@
             }
 
             var activities = new List<AgriculturalActivity>();
-            var delineation = new List<GeoPosition>();
+            var delineation = new List<Core.Map.GeoPosition>();
             var technologies = new List<Technology>();
 
             if (parcelDTO.AgriculturalActivities != null)
@@ -169,12 +169,12 @@
 
             if (parcelDTO.Delineation != null)
             {
-                delineation.AddRange(parcelDTO.Delineation.Select(GeoPosition.FromDTO));
+                delineation.AddRange(parcelDTO.Delineation.Select(Core.Map.GeoPosition.FromDTO));
             }
 
             if (parcelDTO.DelineationList != null)
             {
-                delineation.AddRange(parcelDTO.DelineationList.Select(GeoPosition.FromDTO));
+                delineation.AddRange(parcelDTO.DelineationList.Select(Core.Map.GeoPosition.FromDTO));
             }
 
             if (parcelDTO.TechnologiesUsed != null)
@@ -207,7 +207,7 @@
                 ParcelId = parcelDTO.ParcelId,
                 ParcelName = parcelDTO.ParcelName,
                 PlantingDate = parcelDTO.PlantingDate,
-                Position = GeoPosition.FromDTO(parcelDTO.Position),
+                Position = Core.Map.GeoPosition.FromDTO(parcelDTO.Position),
                 TechnologiesUsed = technologies
             };
 

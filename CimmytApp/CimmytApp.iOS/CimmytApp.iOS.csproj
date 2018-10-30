@@ -285,11 +285,17 @@
     <BundleResource Include="Resources\welcome_4.png" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Acr.UserDialogs, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Acr.UserDialogs.7.0.1\lib\xamarinios10\Acr.UserDialogs.dll</HintPath>
+    </Reference>
     <Reference Include="AsNum.XFControls, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\XFControls.1.0.0.6\lib\Xamarin.iOS10\AsNum.XFControls.dll</HintPath>
     </Reference>
     <Reference Include="AsNum.XFControls.iOS, Version=1.0.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\XFControls.1.0.0.6\lib\Xamarin.iOS10\AsNum.XFControls.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="BTProgressHUD, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\BTProgressHUD.1.2.0.6\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
     </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Unity.5.5.5\lib\netstandard2.0\CommonServiceLocator.dll</HintPath>
@@ -347,6 +353,7 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="OpenTK-1.0" />
     <Reference Include="Plugin.Geolocator, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Geolocator.4.5.0.6\lib\xamarinios10\Plugin.Geolocator.dll</HintPath>
     </Reference>
@@ -406,6 +413,7 @@
     </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="Telerik.Xamarin.iOS, Version=2017.2.817.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Telerik.UI.for.Xamarin.Trial.2017.2.818.1\lib\xamarinios10\Telerik.Xamarin.iOS.dll</HintPath>
     </Reference>
@@ -532,10 +540,6 @@
     <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">
       <Project>{b7dec39b-eda0-4bca-8556-a56d8897a347}</Project>
       <Name>CimmytApp</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Helper\Helper.csproj">
-      <Project>{CE3AA788-B837-4693-AFEC-9BCA677DFA41}</Project>
-      <Name>Helper</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using CimmytApp.Core.Realm.BEM;
     using CimmytApp.DTO.BEM;
     using CimmytApp.ViewModels;
     using Helper.HTTP;

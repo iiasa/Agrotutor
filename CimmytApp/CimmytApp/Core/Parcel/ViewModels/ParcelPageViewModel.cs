@@ -203,7 +203,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectLocation }
+                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectLocation }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {
@@ -218,7 +218,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.SelectPolygon }
+                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectPolygon }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {
@@ -300,10 +300,10 @@
 
             if (parameters.ContainsKey("Delineation"))
             {
-                parameters.TryGetValue<List<GeoPosition>>("Delineation", out var delineation);
+                parameters.TryGetValue<List<Core.Map.GeoPosition>>("Delineation", out var delineation);
                 if (Parcel.Position == null && delineation.Count > 0)
                 {
-                    Parcel.Position = new GeoPosition
+                    Parcel.Position = new Core.Map.GeoPosition
                     {
                         Latitude = delineation.ElementAt(0).Latitude,
                         Longitude = delineation.ElementAt(0).Longitude
@@ -313,7 +313,7 @@
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue<GeoPosition>("GeoPosition", out var position);
+                parameters.TryGetValue<Core.Map.GeoPosition>("GeoPosition", out var position);
                 if (position != null)
                 {
                     Parcel.Position = position;
@@ -373,7 +373,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { MapViewModel.MapTaskParameterName, MapTask.GetLocation }
+                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.GetLocation }
             };
             if (Parcel.Position != null && Parcel.Position.IsSet())
             {

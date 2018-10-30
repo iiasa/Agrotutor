@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using Acr.UserDialogs;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Helper.Realm.BusinessContract;
@@ -77,7 +78,7 @@
                 new DelegateCommand<object>(NavigateToParcelEditPage); //.ObservesCanExecute(o => IsParcelListEnabled);
             ParcelDeleteCommand =
                 new DelegateCommand<object>(
-                    NavigateToParcelDeletePage); //.ObservesCanExecute(o => IsParcelListEnabled);
+                    ShowParcelDeletePrompt); //.ObservesCanExecute(o => IsParcelListEnabled);
             BackToMainPageCommand = new DelegateCommand(BackToMainPage);
             GoBackCommand = new DelegateCommand(GoBack);
             RefreshParcelsCommand = new DelegateCommand(RefreshParcels);
@@ -230,21 +231,21 @@
         ///     The NavigateToParcelDeletePage
         /// </summary>
         /// <param name="obj">The <see cref="object" /></param>
-        private void NavigateToParcelDeletePage(object id)
+        private async void ShowParcelDeletePrompt(string id) //TODO: fix type
         {
-            try
-            {
-                // IsParcelListEnabled = false;
-                var navigationParameters = new NavigationParameters
-                {
-                    { "Id", (string)id }
-                };
 
-                this._navigationService.NavigateAsync("DeleteParcelPage", navigationParameters);
-            }
-            catch (Exception)
+            var deleteConfirmed = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
             {
-                // ignored
+                Message = "Do you really want to delete this plot?",
+                OkText = "Yes",
+                CancelText = "Cancel",
+                Title = "Delete plot?"
+            });
+
+            if (deleteConfirmed)
+            {
+                _cimmytDbOperations.DeleteParcel(id);
+                Parcels.Remove(Parcels.Where(x => x.ParcelId == id).SingleOrDefault(null));
             }
         }
 

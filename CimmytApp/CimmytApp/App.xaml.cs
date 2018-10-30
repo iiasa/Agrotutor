@@ -6,17 +6,14 @@
     using CimmytApp.Core;
     using CimmytApp.Core.Benchmarking;
     using CimmytApp.Core.Localization;
+    using CimmytApp.Core.Map;
     using CimmytApp.Core.Parcel;
     using CimmytApp.StaticContent;
     using CimmytApp.Views;
     using CimmytApp.WeatherForecast;
     using CommonServiceLocator;
-    using Helper.Calendar;
-    using Helper.Map;
-    using Helper.Map.ViewModels;
     using Helper.Realm;
     using Helper.Realm.BusinessContract;
-    using Helper.UserRegistration;
     using Microsoft.AppCenter;
     using Microsoft.AppCenter.Analytics;
     using Microsoft.AppCenter.Crashes;
@@ -24,9 +21,7 @@
     using Prism.DryIoc;
     using Prism.Ioc;
     using Prism.Modularity;
-    using Prism.Navigation;
     using Xamarin.Forms;
-    using Xamarin.Forms.GoogleMaps;
     using Xamarin.Live.Reload;
 
     public partial class App: PrismApplication
@@ -98,7 +93,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                Type mapModule = typeof(MapModule);
+                Type mapModule = typeof(Core.Map.MapModule);
                 moduleCatalog.AddModule(new ModuleInfo(mapModule)
                 {
                     ModuleName = mapModule.Name,
@@ -122,14 +117,6 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                Type userRegistrationModule = typeof(UserRegistrationModule);
-                moduleCatalog.AddModule(new ModuleInfo(userRegistrationModule)
-                {
-                    ModuleName = userRegistrationModule.Name,
-                    ModuleType = userRegistrationModule,
-                    InitializationMode = InitializationMode.WhenAvailable
-                });
-
                 Type weatherForecastModule = typeof(WeatherForecastModule);
                 moduleCatalog.AddModule(new ModuleInfo(weatherForecastModule)
                 {
@@ -138,7 +125,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                Type calendarModule = typeof(CalendarModule);
+                Type calendarModule = typeof(Core.Calendar.CalendarModule);
                 moduleCatalog.AddModule(new ModuleInfo(calendarModule)
                 {
                     ModuleName = calendarModule.Name,

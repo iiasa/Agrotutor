@@ -1,7 +1,6 @@
 ﻿namespace CimmytApp.Core.Parcel
 {
     using CimmytApp.Core.Parcel.Views;
-    using CimmytApp.Parcel.Views;
     using Prism.Ioc;
     using Prism.Modularity;
 

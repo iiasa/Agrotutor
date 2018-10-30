@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using Acr.UserDialogs;
     using Android.App;
     using Android.Content.PM;
     using Android.OS;
@@ -52,6 +53,7 @@
 
                 Forms.Init(this, bundle);
                 FormsGoogleMaps.Init(this, bundle);
+                UserDialogs.Init(this);
 
                 RegisterWithGCM(); // TODO- Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));
