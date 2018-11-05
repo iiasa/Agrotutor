@@ -10,10 +10,10 @@
     using Android.Util;
     using CimmytApp.Core.Localization;
     using Gcm.Client;
-    using Plugin.Permissions;
     using Prism;
     using Prism.Ioc;
     using Xamarin;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
 
@@ -21,10 +21,10 @@
         ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions,
-            Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
-            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         protected override void OnCreate(Bundle bundle)
@@ -47,13 +47,14 @@
                     UnobservedTaskExceptionEventArgs x = args;
                 };
 
-                if (Device.Idiom == TargetIdiom.Phone) RequestedOrientation = ScreenOrientation.Portrait;
+                if (Device.Idiom == TargetIdiom.Phone) RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
 
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
                 FormsGoogleMaps.Init(this, bundle);
                 UserDialogs.Init(this);
+                Xamarin.Essentials.Platform.Init(this, bundle);
 
                 RegisterWithGCM(); // TODO- Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));

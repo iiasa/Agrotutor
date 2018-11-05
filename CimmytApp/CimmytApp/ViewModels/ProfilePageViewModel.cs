@@ -7,6 +7,7 @@
     using Plugin.Media.Abstractions;
     using Prism.Commands;
     using Prism.Mvvm;
+    using Xamarin.Essentials;
 
     /// <inheritdoc />
     /// <summary>
@@ -35,7 +36,7 @@
         public ProfilePageViewModel()
         {
             TakePictureCommand = new DelegateCommand(TakePicture);
-            var picture = (string)App.GetProperty("UserPicture");
+            var picture = Preferences.Get("UserPicture", null);
             if (picture != null)
             {
                 ImageSource = picture;
@@ -44,8 +45,8 @@
 
             UserProfile = new UserProfile
             {
-                UserName = (string)App.GetProperty("UserName"),
-                State = (string)App.GetProperty("UserState")
+                UserName = (string)Preferences.Get("UserName", null),
+                State = (string)Preferences.Get("UserState", null)
             };
 
             if (UserProfile?.State != null && UserProfile.State != "")
@@ -148,8 +149,8 @@
         /// </summary>
         public void Save()
         {
-            App.InsertOrUpdateProperty("UserName", UserProfile.UserName);
-            App.InsertOrUpdateProperty("UserState", UserProfile.State);
+            Preferences.Set("UserName", UserProfile.UserName);
+            Preferences.Set("UserState", UserProfile.State);
         }
 
         /// <summary>
@@ -164,20 +165,18 @@
                 return;
             }
 
-            var file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
             {
                 Directory = "Cimmyt",
                 Name = "user.jpg"
             });
 
-            if (file == null)
+            if (file != null)
             {
-                return;
+                ImageSource = file.Path;
+                PictureVisible = true;
+                Preferences.Set("UserPicture", file.Path);
             }
-
-            ImageSource = file.Path;
-            PictureVisible = true;
-            App.InsertOrUpdateProperty("UserPicture", file.Path);
         }
     }
 }

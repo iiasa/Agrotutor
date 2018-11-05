@@ -29,7 +29,6 @@
 
             this.HeaderTextLabel.SetBinding(Label.TextProperty, new Binding(nameof(Text), source: this));
             this.HeaderIcon.SetBinding(Image.SourceProperty, new Binding(nameof(IconSource), source: this));
-            IconSource = new ImageSource("");
         }
 	}
 }

@@ -83,8 +83,6 @@
             _navigationService = navigationService;
         }
 
-        public event EventHandler IsActiveChanged;
-
         public bool ParcelLocationNotSet
         {
             get

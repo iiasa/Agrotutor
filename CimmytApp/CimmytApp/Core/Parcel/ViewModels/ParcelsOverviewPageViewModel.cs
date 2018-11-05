@@ -5,6 +5,7 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using Acr.UserDialogs;
+    using CimmytApp.Core.Persistence;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Helper.Realm.BusinessContract;
@@ -59,16 +60,19 @@
         /// </summary>
         private bool _showUploadButton;
 
+        public IAppDataService AppDataService { get; set; }
+
         /// <summary>
         ///     Initializes a new instance of the <see cref="ParcelsOverviewPageViewModel" /> class.
         /// </summary>
         /// <param name="navigationService">The <see cref="INavigationService" /></param>
         /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
         public ParcelsOverviewPageViewModel(INavigationService navigationService,
-            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<ParcelsOverviewPageViewModel> localizer): base(localizer)
+            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<ParcelsOverviewPageViewModel> localizer, IAppDataService appDataService): base(localizer)
         {
             this._navigationService = navigationService;
             this._cimmytDbOperations = cimmytDbOperations;
+            this.AppDataService = appDataService;
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
             UploadCommand = new DelegateCommand(UploadParcels);
             ParcelDetailCommand =
@@ -231,7 +235,7 @@
         ///     The NavigateToParcelDeletePage
         /// </summary>
         /// <param name="obj">The <see cref="object" /></param>
-        private async void ShowParcelDeletePrompt(string id) //TODO: fix type
+        private async void ShowParcelDeletePrompt(object id) //TODO: fix type
         {
 
             var deleteConfirmed = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
@@ -244,7 +248,7 @@
 
             if (deleteConfirmed)
             {
-                _cimmytDbOperations.DeleteParcel(id);
+                _cimmytDbOperations.DeleteParcel((string)id);
                 Parcels.Remove(Parcels.Where(x => x.ParcelId == id).SingleOrDefault(null));
             }
         }
@@ -293,8 +297,9 @@
             }
         }
 
-        private void RefreshParcels()
+        private async void RefreshParcels()
         {
+            var plots = await this.AppDataService.GetAllPlots();
             var parcelDTO = this._cimmytDbOperations.GetAllParcels();
             var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
 

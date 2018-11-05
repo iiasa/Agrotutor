@@ -2,6 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using CimmytApp.Core.DTO.Parcel;
+    using CimmytApp.Core.Persistence;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel;
     using CimmytApp.ViewModels;
@@ -17,10 +20,11 @@
     {
 
         public AddParcelPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations,
-            IStringLocalizer<AddParcelPageViewModel> localizer) : base(localizer)
+            IStringLocalizer<AddParcelPageViewModel> localizer, IAppDataService appDataService) : base(localizer)
         {
             _navigationService = navigationService;
             _cimmytDbOperations = cimmytDbOperations;
+            AppDataService = appDataService;
 
             ClickSave = new DelegateCommand(SaveParcel); //.ObservesCanExecute(o => IsSaveBtnEnabled);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
@@ -37,6 +41,8 @@
         }
 
         private readonly ICimmytDbOperations _cimmytDbOperations;
+
+        public IAppDataService AppDataService { get; }
 
         private readonly INavigationService _navigationService;
 
@@ -283,12 +289,21 @@
             IsSaveBtnEnabled = false;
             Parcel.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
             _cimmytDbOperations.SaveParcel(Parcel.GetDTO());
+            SavePlot();
 
             var navigationParameters = new NavigationParameters
             {
                 { "id", Parcel.ParcelId }
             };
             _navigationService.NavigateAsync("app:///MainPage", navigationParameters, true);
+        }
+
+        private async void SavePlot()
+        {
+            await AppDataService.AddPlot(new Plot
+            {
+                Name = "Test"
+            });
         }
 
         private void UpdateSelections()

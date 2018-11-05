@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using CimmytApp.Core.DTO.Parcel;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel.ActivityManagement;
     using CimmytApp.ViewModels;

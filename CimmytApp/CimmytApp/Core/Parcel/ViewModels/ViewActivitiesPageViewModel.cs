@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System.Collections.Generic;
+    using CimmytApp.Core.DTO.Parcel;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Microsoft.Extensions.Localization;

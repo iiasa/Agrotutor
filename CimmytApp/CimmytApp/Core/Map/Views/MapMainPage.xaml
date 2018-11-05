@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+             xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+             xmlns:app="clr-namespace:CimmytApp;assembly=CimmytApp"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="CimmytApp.Core.Map.Views.MapMainPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <googleMaps:Map 
+            x:Name="map" MapType="Hybrid"
+            VerticalOptions="FillAndExpand" InitialCameraUpdate="20,-100,5"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3">
+            <googleMaps:Map.Behaviors>
+                <bindings:MapClickedToCommandBehavior Command="{Binding MapClickedCommand}" />
+            </googleMaps:Map.Behaviors>
+        </googleMaps:Map>
+
+        <components:WeatherWidget 
+            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
+            HorizontalOptions="CenterAndExpand" />
+
+        <components:MiniMenuIcon Grid.Row="3" Grid.Column="0" 
+            IconText="Guide" IconSource="question.png" 
+            Command="{Binding NavigateToMain}"/>
+        <components:MiniMenuIcon Grid.Row="3" Grid.Column="1" 
+            IconText="Options" IconSource="icons_settings_96.png" 
+            Command="{Binding NavigateToMain}"/>
+        <components:MiniMenuIcon Grid.Row="3" Grid.Column="2" 
+            IconText="Calendar" IconSource="calendar.png" 
+            Command="{Binding NavigateToMain}"/>
+        <components:MiniMenuIcon Grid.Row="3" Grid.Column="3" 
+            IconText="Weather" IconSource="clear.png" 
+            Command="{Binding NavigateToMain}"/>
+        <components:MiniMenuIcon Grid.Row="3" Grid.Column="4" 
+            IconText="Add parcel" IconSource="add.png" 
+            Command="{Binding ShowSettings}"/>
+    </Grid>
+</ContentPage>

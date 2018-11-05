@@ -68,7 +68,6 @@
         {
             _cimmytDbOperations.DeleteParcel(_parcel.ParcelId);
             _navigationService.NavigateAsync("app:///MainPage");
-            parcel
         }
     }
 }

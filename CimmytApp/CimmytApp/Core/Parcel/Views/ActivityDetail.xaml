@@ -28,9 +28,6 @@
                 <Image Source="{Binding ActivityDynamicUIVisibility.ActivityIcon}" HeightRequest="18" />
             </StackLayout>
 
-            <components:Header Text="{Binding ActivityDynamicUIVisibility.ActivityTitle}"
-                IconSource="{Binding ActivityDynamicUIVisibility.ActivityIcon Converter={datatypes:StringToImageSourceConverter}}"/>
-
             <StackLayout Orientation="Vertical" HorizontalOptions="Start" Grid.Row="1">
                 <Label Text="{i18n:Translate name}" HorizontalOptions="Start" FontSize="18" />
                 <Label Text="{Binding ActivityName}" Margin="16,16,0,0" WidthRequest="250"

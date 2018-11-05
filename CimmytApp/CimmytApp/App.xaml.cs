@@ -1,13 +1,13 @@
 ﻿namespace CimmytApp
 {
     using System;
-    using System.Collections.Generic;
     using System.Globalization;
     using CimmytApp.Core;
     using CimmytApp.Core.Benchmarking;
     using CimmytApp.Core.Localization;
     using CimmytApp.Core.Map;
     using CimmytApp.Core.Parcel;
+    using CimmytApp.Core.Persistence;
     using CimmytApp.StaticContent;
     using CimmytApp.Views;
     using CimmytApp.WeatherForecast;
@@ -21,6 +21,7 @@
     using Prism.DryIoc;
     using Prism.Ioc;
     using Prism.Modularity;
+    using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Live.Reload;
 
@@ -49,35 +50,32 @@
                 localizer.SetLocale(cultureInfo);
             }
 
-            NavigationService.NavigateAsync(getInitialPage());
+            NavigationService.NavigateAsync(GetInitialPage());
         }
 
         protected override void OnStart()
         {
             base.OnStart();
 
-            AppCenter.Start("android=ccbee3dd-42cc-41c9-92cc-664870cd7c0e;ios=58f35007-f37b-45c5-beb6-885f2eca60b7", typeof(Analytics),
-                typeof(Crashes));
+            AppCenter.Start($"android={Constants.AppCenterKeyAndroid};ios={Constants.AppCenterKeyIOs}"
+                , typeof(Analytics)
+                , typeof(Crashes));
         }
-
-        public static DTO.Parcel.Parcel CurrentParcel { get; set; }
-
-        public static List<DTO.Parcel.Parcel> Parcels { get; set; }
-
-        public static object GetProperty(string propertyName)
+        protected override void OnSleep()
         {
-            return Current.Properties.ContainsKey(propertyName) ? Current.Properties[propertyName] : null;
-        }
+            base.OnSleep();
 
-        public static void InsertOrUpdateProperty(string propertyName, object value)
-        {
-            if (Current.Properties.ContainsKey(propertyName))
+            if (ServiceLocator.IsLocationProviderSet)
             {
-                Current.Properties[propertyName] = value;
-            }
-            else
-            {
-                Current.Properties.Add(propertyName, value);
+                try
+                {
+                    IPosition geolocator = ServiceLocator.Current.GetInstance<IPosition>();
+                    geolocator?.StopListening();
+                }
+                catch (Exception e)
+                {
+                    Crashes.TrackError(e);
+                }
             }
         }
 
@@ -93,7 +91,7 @@
                     InitializationMode = InitializationMode.WhenAvailable
                 });
 
-                Type mapModule = typeof(Core.Map.MapModule);
+                Type mapModule = typeof(MapModule);
                 moduleCatalog.AddModule(new ModuleInfo(mapModule)
                 {
                     ModuleName = mapModule.Name,
@@ -135,27 +133,7 @@
             }
             catch (Exception e)
             {
-                // ignored
-            }
-        }
-
-
-
-        protected override void OnSleep()
-        {
-            base.OnSleep();
-
-            if (ServiceLocator.IsLocationProviderSet)
-            {
-                try
-                {
-                    IPosition geolocator = ServiceLocator.Current.GetInstance<IPosition>();
-                    geolocator?.StopListening();
-                }
-                catch (Exception)
-                {
-                    // ignored
-                }
+                Crashes.TrackError(e);
             }
         }
 
@@ -171,21 +149,24 @@
                 containerRegistry.Register<IPosition, LocationBusiness>();
 
                 containerRegistry.RegisterLocalization();
+                containerRegistry.RegisterSharedContextClasses();
+                containerRegistry.RegisterAppDataContext();
+                containerRegistry.Register<IAppDataService, AppDataService>();
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                // ignored
+                Crashes.TrackError(e);
             }
         }
 
-        private string getInitialPage()
+        private string GetInitialPage()
         {
-            return "app:///NavigationPage/MainPage";
-            if (Current.Properties.ContainsKey("not_first_launch"))
+            return "app:///NavigationPage/MapMainPage";
+            if (Preferences.Get(Constants.AppNotFirstLaunch, false))
                 NavigationService.NavigateAsync("app:///NavigationPage/MainPage");
             else
             {
-                Current.Properties.Add("not_first_launch", true);
+                Preferences.Set(Constants.AppNotFirstLaunch, true);
                 NavigationService.NavigateAsync("app:///IntroductionPage");
             }
         }

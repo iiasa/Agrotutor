@@ -5,6 +5,7 @@
     using System.ComponentModel;
     using System.Linq;
     using System.Threading.Tasks;
+    using CimmytApp.Core.DTO.Parcel;
     using CimmytApp.DTO.Benchmarking;
     using Helper.GeoWiki.API.GenericDatasetStorage;
     using Helper.Map;
@@ -21,11 +22,7 @@
 
         private string _parcelName;
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public int CompletedPercentage => 10;
-
-        public string IconSource => GetCropImage();
+        public ImageSource IconSource => GetCropImage();
 
         public string OverviewString => $"{Crop}\r\n{ParcelName}";
 
@@ -60,11 +57,7 @@
         public string Crop
         {
             get => _crop;
-            set
-            {
-                _crop = value;
-                OnPropertyChanged("Crop");
-            }
+            set => _crop = value;
         }
 
         public CropType CropType { get; set; }
@@ -133,11 +126,7 @@
         public string ParcelName
         {
             get => _parcelName;
-            set
-            {
-                _parcelName = value;
-                OnPropertyChanged("ParcelNames");
-            }
+            set => _parcelName = value;
         }
 
         public Core.Map.GeoPosition Position { get; set; }
@@ -288,77 +277,14 @@
             return this;
         }
 
-        protected virtual void OnPropertyChanged(string aName)
+        private ImageSource GetCropImage()
         {
-            var iHandler = PropertyChanged;
-            Uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
-            iHandler?.Invoke(this, new PropertyChangedEventArgs(aName));
-        }
-
-        private string GetCropImage()
-        {
-            switch (CropType)
+            if (Constants.CropLogos.TryGetValue(CropType, out var ImageSource))
             {
-                case CropType.Corn:
-                    return "crop_corn.png";
-
-                case CropType.Barley:
-                    return "crop_barley.png";
-
-                case CropType.Bean:
-                    return "crop_bean.png";
-
-                case CropType.Wheat:
-                    return "crop_wheat.png";
-
-                case CropType.Triticale:
-                    return "crop_triticale.png";
-
-                case CropType.Sorghum:
-                    return "crop_sorghum.png";
-
-                case CropType.Alfalfa:
-                    return "crop_alfalfa.png";
-
-                case CropType.Oats:
-                    return "crop_oats.png";
-
-                case CropType.Sesame:
-                    return "crop_sesame.png";
-
-                case CropType.Amaranth:
-                    return "crop_amaranth.png";
-
-                case CropType.Rice:
-                    return "crop_rice.png";
-
-                case CropType.Canola:
-                    return "crop_canola.png";
-
-                case CropType.Cartamo:
-                    return "crop_cartamo.png";
-
-                case CropType.Zucchini:
-                    return "crop_zucchini.png";
-
-                case CropType.Chickpea:
-                    return "crop_chickpea.png";
-
-                case CropType.FavaBean:
-                    return "crop_bean.png";
-
-                case CropType.Soy:
-                    return "crop_soy.png";
-
-                case CropType.None:
-                    return "crop_none.png";
-
-                case CropType.Other:
-                    return "crop_other.png";
-
-                default:
-                    return "crop_other.png";
+                return ImageSource;
             }
+
+            return ImageSource.FromFile("crop_other.png");
         }
     }
 }

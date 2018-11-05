@@ -10,22 +10,18 @@
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class WeatherForecastPageViewModel : BindableBase, INavigationAware, IActiveAware
+    public class WeatherForecastPageViewModel : BindableBase, INavigationAware
     {
         private DailyHighTemperature _dailyHighTemperature;
         private Parcel _parcel;
         private WeatherData _weatherData;
         private Core.Map.GeoPosition position;
 
-        public event EventHandler IsActiveChanged;
-
         public DailyHighTemperature DailyHighTemperature
         {
             get => _dailyHighTemperature;
             private set => SetProperty(ref _dailyHighTemperature, value);
         }
-
-        public bool IsActive { get; set; }
 
         public Parcel Parcel
         {
@@ -50,8 +46,6 @@
                 }
             }
         }
-
-        public ICommand TestCommand { get; set; }
 
         public WeatherData WeatherData
         {

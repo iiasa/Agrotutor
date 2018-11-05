@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using CimmytApp.Core.DTO.Parcel;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel;
     using CimmytApp.ViewModels;
