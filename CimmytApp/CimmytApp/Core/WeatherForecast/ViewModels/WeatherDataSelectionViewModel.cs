@@ -1,11 +1,9 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using Helper.DTO.SkywiseWeather.Historical;
-    using Helper.Map;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
@@ -19,9 +17,9 @@
 
         private bool _downloading;
 
-        private Parcel _parcel;
+        private Plot _plot;
 
-        private Core.Map.GeoPosition _position;
+        private Position _position;
 
         private bool _refreshedFromServer;
 
@@ -83,19 +81,6 @@
             _navigationService = navigationService;
         }
 
-        public bool ParcelLocationNotSet
-        {
-            get
-            {
-                if (Parcel == null)
-                {
-                    return true;
-                }
-
-                return Parcel.Position.Latitude == 0 && Parcel.Position.Longitude == 0;
-            }
-        }
-
         public bool ShowRefreshText => !_weatherDataAvailable;
 
         public bool ViewInactive => !Downloading;
@@ -132,7 +117,7 @@
                 }
 
                 WeatherDataAvailable = true;
-                data.ParcelId = Parcel.ParcelId;
+                data.PlotId = Plot.ID;
                 SetProperty(ref _weatherData, data);
                 if (_refreshedFromServer)
                 {
@@ -143,15 +128,15 @@
             }
         }
 
-        public Parcel Parcel
+        public Plot Plot
         {
-            get => _parcel;
+            get => _plot;
             set
             {
-                SetProperty(ref _parcel, value);
+                SetProperty(ref _plot, value);
                 try
                 {
-                    LoadWeatherFromDb(value.ParcelId);
+                    LoadWeatherFromDb(value.ID);
                 }
                 catch
                 {
@@ -181,12 +166,12 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Parcel"))
+            if (parameters.ContainsKey("Plot"))
             {
-                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
-                if (parcel != null)
+                parameters.TryGetValue<Plot>("Plot", out var plot);
+                if (plot != null)
                 {
-                    Parcel = parcel;
+                    Plot = plot;
                 }
             }
         }
@@ -203,24 +188,24 @@
             //MyWeatherData =
         }
 
-        private void LoadWeatherFromDb(string parcelId)
+        private void LoadWeatherFromDb(int plotId)
         {
             //MyWeatherData = _weatherDbOperations.GetWeatherData(parcelId);
         }
 
         private void RefreshWeatherData()
         {
-            if ((bool)_parcel.Position?.IsSet())
+            if (_plot.Position!=null)
             {
-                _position = new Core.Map.GeoPosition
+                _position = new Position
                 {
-                    Latitude = Parcel.Position.Latitude,
-                    Longitude = Parcel.Position.Longitude
+                    Latitude = Plot.Position.Latitude,
+                    Longitude = Plot.Position.Longitude
                 };
             }
             else
             {
-                _position = new Core.Map.GeoPosition
+                _position = new Position
                 {
                     Latitude = 21.798344,
                     Longitude = -101.667537

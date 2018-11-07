@@ -22,11 +22,10 @@
         public static string PointsParameterName = "Points";
         public static string PolygonsParameterName = "Polygons";
         private readonly IEventAggregator _eventAggregator;
-        private readonly IPosition _geoLocator;
         private readonly INavigationService _navigationService;
         private bool _buttonAcceptDelineationEnabled;
         private bool _buttonCancelDelineationEnabled;
-        private GeoPosition _currentGeoPosition;
+        private CimmytApp.Core.Persistence.Entities.Position _currentGeoPosition;
         private bool _delineationButtonsVisible;
         private bool _followUserLocation;
         private bool _listenForUserLocation;
@@ -34,15 +33,14 @@
         private int _maximumLocationAccuracy;
         private bool _returnGeolocationButtonVisible;
         private bool _showEnableLocationHint;
-        private GeoPosition _userLocation;
+        private CimmytApp.Core.Persistence.Entities.Position _userLocation;
         private CimmytApp.Core.Map.Views.Map _view;
 
-        public MapViewModel(IEventAggregator eventAggregator, IPosition geoLocator,
+        public MapViewModel(IEventAggregator eventAggregator,
             INavigationService navigationService)
         {
             _navigationService = navigationService;
             _eventAggregator = eventAggregator;
-            _geoLocator = geoLocator;
 
             UseLocationCommand =
                 new DelegateCommand(UseLocation); //.ObservesCanExecute(o => ReturnGeolocationButtonEnabled);
@@ -104,7 +102,7 @@
             set => SetProperty(ref _mapType, value);
         }
 
-        public GeoPosition Point { get; private set; }
+        public CimmytApp.Core.Persistence.Entities.Position Point { get; private set; }
 
         public bool ReturnGeolocationButtonEnabled { get; private set; }
 
@@ -128,7 +126,7 @@
         /// <summary>
         ///     Gets or sets the UserLocation
         /// </summary>
-        public GeoPosition UserLocation
+        public CimmytApp.Core.Persistence.Entities.Position UserLocation
         {
             get => _userLocation;
             set
@@ -178,12 +176,12 @@
         /// </summary>
         public void OnDisappearing()
         {
-            _geoLocator.StopListening();
+            // _geoLocator.StopListening(); todo use essentials
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
-            _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent);
+           // _eventAggregator.GetEvent<LivePositionEvent>().Unsubscribe(HandlePositionEvent); TODO use essentials
         }
 
         public void OnNavigatedTo(NavigationParameters parameters)
@@ -260,11 +258,10 @@
             }
             else
             {
-                var geoPositions = positions.Select(position => new GeoPosition
+                var geoPositions = positions.Select(position => new CimmytApp.Core.Persistence.Entities.Position
                 {
                     Latitude = position.Latitude,
-                    Longitude = position.Longitude,
-                    IsPartOfdelineation = true
+                    Longitude = position.Longitude
                     //    AcquiredThrough = TypeOfAcquisition.SelectedOnMap
                 })
                     .ToList();
@@ -288,47 +285,47 @@
 
         private async Task GetPosition()
         {
-            ShowEnableLocationHint = !_geoLocator.CheckIfGPSIsEnabled();
-            if (_geoLocator != null)
-            {
-                var positionRes = await _geoLocator.GetCurrentPosition();
+            // TODO: use essentials!
+            // ShowEnableLocationHint = !_geoLocator.CheckIfGPSIsEnabled();
+            // if (_geoLocator != null)
+            // {
+            //     var positionRes = await _geoLocator.GetCurrentPosition();
+            //
+            //     _currentGeoPosition = positionRes;
+            //
+            //     if (positionRes == null)
+            //     {
+            //         IsGeolocationEnabled = false;
+            //     }
+            //     else
+            //     {
+            //         IsGeolocationEnabled = true;
+            //
+            //         ReturnGeolocationButtonEnabled = true;
+            //
+            //         var position = new Position((double)positionRes.Latitude, (double)positionRes.Longitude);
+            //         _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(position, 15)));
+            //
+            //         _view.SetMapPins(new List<Pin>(new[]
+            //         {
+            //             new Pin
+            //             {
+            //                 Position = position,
+            //                 Label = "Parcela"
+            //             }
+            //         }));
+                    // Point = new Position
+                    // {
+                    //     Latitude = position.Latitude,
+                    //     Longitude = position.Longitude
+                    // };
+               // }
 
-                _currentGeoPosition = positionRes;
-
-                if (positionRes == null)
-                {
-                    IsGeolocationEnabled = false;
-                }
-                else
-                {
-                    IsGeolocationEnabled = true;
-
-                    ReturnGeolocationButtonEnabled = true;
-
-                    var position = new Position((double)positionRes.Latitude, (double)positionRes.Longitude);
-                    _view.MoveCamera(CameraUpdateFactory.NewCameraPosition(new CameraPosition(position, 15)));
-
-                    _view.SetMapPins(new List<Pin>(new[]
-                    {
-                        new Pin
-                        {
-                            Position = position,
-                            Label = "Parcela"
-                        }
-                    }));
-                    Point = new GeoPosition
-                    {
-                        Latitude = position.Latitude,
-                        Longitude = position.Longitude,
-                        IsPartOfdelineation = false
-                    };
-                }
-
-                _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent);
-            }
+                // _eventAggregator.GetEvent<LivePositionEvent>().Subscribe(HandlePositionEvent); todo use essentials
+           // }
         }
 
-        private void HandlePositionEvent(GeoPosition position)
+        private void HandlePositionEvent(CimmytApp.Core.Persistence.Entities.Position position)
         {
             if (position == null)
             {
@@ -360,12 +357,12 @@
 
         private void MapClicked(object obj)
         {
-            var position = (Position)obj;
+            var position = (CimmytApp.Core.Persistence.Entities.Position)obj;
 
             switch (_mapTask)
             {
                 case MapTask.SelectLocation:
-                    OnMapClickedSelectLocation(position);
+                    //OnMapClickedSelectLocation(position);
                     break;
 
                 case MapTask.SelectPolygon:
@@ -379,12 +376,7 @@
 
         private void OnMapClickedSelectLocation(Position position)
         {
-            Point = new GeoPosition
-            {
-                Latitude = position.Latitude,
-                Longitude = position.Longitude,
-                IsPartOfdelineation = false
-            };
+            //Point = new Position(position.Latitude, position.Longitude);
             _view.SetMapPins(new List<Pin>
             {
                 new Pin
@@ -396,7 +388,7 @@
             ReturnGeolocationButtonEnabled = true;
         }
 
-        private void OnMapClickedSelectPolygon(Position position)
+        private void OnMapClickedSelectPolygon(CimmytApp.Core.Persistence.Entities.Position position)
         {
             switch (CurrentDelineationState)
             {
@@ -411,20 +403,20 @@
                         StrokeColor = Color.Green,
                         StrokeWidth = 2f
                     };
-                    polygon.Positions.Add(position);
+                    //polygon.Positions.Add(position);
 
                     _view.SetMapPolygons(new List<Polygon>
                     {
                         polygon
                     });
-                    _view.SetMapPins(new List<Pin>
-                    {
-                        new Pin
-                        {
-                            Position = position,
-                            Label = "1"
-                        }
-                    });
+                    // _view.SetMapPins(new List<Pin>
+                    // {
+                    //     new Pin
+                    //     {
+                    //         Position = position,
+                    //         Label = "1"
+                    //     }
+                    // });
 
                     ButtonCancelDelineationEnabled = true;
                     CurrentDelineationState = DelineationState.ActiveNotEnoughPoints;
@@ -433,7 +425,7 @@
                 case DelineationState.ActiveNotEnoughPoints:
                 case DelineationState.ActiveEnoughPoints:
                     var positionList = _view.GetMapPins().Select(pin => pin.Position).ToList();
-                    positionList.Add(position);
+                    //positionList.Add(position);
                     var pol = new Polygon
                     {
                         StrokeColor = Color.Green,
@@ -462,11 +454,11 @@
 
                     ButtonAcceptDelineationEnabled = CurrentDelineationState == DelineationState.ActiveEnoughPoints;
 
-                    _view.AddMapPin(new Pin
-                    {
-                        Position = position,
-                        Label = positionList.Count.ToString()
-                    });
+                    // _view.AddMapPin(new Pin
+                    // {
+                    //     Position = position,
+                    //     Label = positionList.Count.ToString()
+                    // });
                     break;
             }
         }

@@ -29,6 +29,23 @@
             await Context.SaveChangesAsync();
         }
 
+        public async Task UpdatePlot(Plot plot)
+        {
+            Context.Plots.Update(plot);
+            await Context.SaveChangesAsync();
+        }
+
+        public async Task RemovePlot(Plot plot)
+        {
+            Context.Plots.Remove(plot);
+            await Context.SaveChangesAsync();
+        }
+
+        public async Task<Plot> GetPlot(int id)
+        {
+            return await Context.Plots.FindAsync(id);
+        }
+
         public async Task<IEnumerable<Plot>> GetAllPlots()
         {
             return await Context.Plots.ToListAsync();

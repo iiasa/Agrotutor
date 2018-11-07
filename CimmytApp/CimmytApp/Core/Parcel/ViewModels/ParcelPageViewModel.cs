@@ -4,13 +4,10 @@
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
-    using CimmytApp.Core.DTO.Parcel;
-    using CimmytApp.DTO.Parcel;
-    using CimmytApp.Parcel;
+    using CimmytApp.Core.Persistence;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.ViewModels;
-    using Helper.Map;
     using Helper.Map.ViewModels;
-    using Helper.Realm.BusinessContract;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Events;
@@ -19,8 +16,7 @@
     using Xamarin.Forms.GoogleMaps;
 
     public class ParcelPageViewModel : ViewModelBase, INavigatedAware
-    {
-        private readonly ICimmytDbOperations _cimmytDbOperations;
+    { 
 
         private readonly INavigationService _navigationService;
 
@@ -30,7 +26,7 @@
 
         private ImageSource _imageSource;
 
-        private Parcel _parcel;
+        private Plot _plot;
 
         private int _pickerClimateTypesSelectedIndex;
 
@@ -42,11 +38,13 @@
 
         private bool _viewModeActive;
 
+
+
         public ParcelPageViewModel(INavigationService navigationService, IEventAggregator eventAggregator,
-            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<ParcelPageViewModel> localizer) : base(localizer)
+            AppDataService appDataService, IStringLocalizer<ParcelPageViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
-            _cimmytDbOperations = cimmytDbOperations;
+            AppDataService = appDataService;
             ClickSave = new DelegateCommand(SaveParcel);
             DelineateParcelCommand = new DelegateCommand(DelineateParcel);
             ClickChooseLocation = new DelegateCommand(ChooseLocation);
@@ -55,10 +53,10 @@
             EditModeActive = false;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             ViewActivitiesCommand = new DelegateCommand(ViewActivities);
-            ViewTechnologiesCommand = new DelegateCommand(ViewTechnologies);
-            EditTechnologiesCommand = new DelegateCommand(EditTechnologies);
             GoBackCommand = new DelegateCommand(GoBack);
         }
+
+        public IAppDataService AppDataService { get; set; }
 
         public List<string> ClimateTypes { get; } = new List<string>
         {
@@ -128,12 +126,12 @@
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
-        public Parcel Parcel
+        public Plot Plot
         {
-            get => _parcel;
+            get => this._plot;
             set
             {
-                SetProperty(ref _parcel, value);
+                SetProperty(ref this._plot, value);
                 UpdateSelections();
             }
         }
@@ -149,7 +147,7 @@
                     return;
                 }
 
-                Parcel.ClimateType = ClimateTypes.ElementAt(value);
+                // Plot.ClimateType = ClimateTypes.ElementAt(value); TODO: implement selector
             }
         }
 
@@ -164,8 +162,7 @@
                     return;
                 }
 
-                Parcel.Crop = CropTypes.ElementAt(value);
-                Parcel.CropType = (CropType)(value + 1);
+                // Plot.CropType = CropTypes.ElementAt(value); TODO: implement selector
             }
         }
 
@@ -180,7 +177,7 @@
                     return;
                 }
 
-                Parcel.MaturityClass = MaturityClasses.ElementAt(value);
+                // Plot.MaturityType = MaturityClasses.ElementAt(value); TODO: implement selector
             }
         }
 
@@ -198,19 +195,17 @@
             set => SetProperty(ref _viewModeActive, value);
         }
 
-        public DelegateCommand ViewTechnologiesCommand { get; set; }
-
         public void ChooseLocation()
         {
             var parameters = new NavigationParameters
             {
                 { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectLocation }
             };
-            if (Parcel.Position != null && Parcel.Position.IsSet())
+            if (Plot.Position != null)
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                     CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                        new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("Map", parameters);
         }
@@ -221,10 +216,10 @@
             {
                 { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectPolygon }
             };
-            if (Parcel.Position != null && Parcel.Position.IsSet())
+            if (Plot.Position != null)
             {
                 var points = new ObservableCollection<Pin>();
-                var position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
+                var position = new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude);
                 points.Add(new Pin
                 {
                     Position = position
@@ -233,7 +228,7 @@
                     CameraUpdateFactory.NewCameraPosition(new CameraPosition(position, 15)));
                 parameters.Add(MapViewModel.PointsParameterName, points);
             }
-            var delineation = Parcel.Delineation;
+            var delineation = Plot.Delineation;
 
             if (delineation != null && delineation.Count > 2)
             {
@@ -245,7 +240,7 @@
                 };
 
                 var listPosition = delineation.Select(positionitem =>
-                        new Position((double)positionitem.Latitude, (double)positionitem.Longitude))
+                        new Xamarin.Forms.GoogleMaps.Position((double)positionitem.Latitude, (double)positionitem.Longitude))
                     .ToList();
 
                 foreach (var position in listPosition)
@@ -264,6 +259,11 @@
         {
         }
 
+        private async void LoadPlot(int id)
+        {
+            Plot = await AppDataService.GetPlot(id);
+        }
+
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             if (parameters.ContainsKey("Caller"))
@@ -271,20 +271,19 @@
                 parameters.TryGetValue<string>("Caller", out var caller);
                 _caller = caller;
             }
-            if (parameters.ContainsKey("Parcel"))
+            if (parameters.ContainsKey("Plot"))
             {
-                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
-                if (parcel != null)
+                parameters.TryGetValue<Plot>("Plot", out var plot);
+                if (plot != null)
                 {
-                    Parcel = parcel;
+                    Plot = plot;
                 }
             }
             if (parameters.ContainsKey("Id"))
             {
                 try
                 {
-                    var id = (string)parameters["Id"];
-                    Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
+                    LoadPlot((int)parameters["Id"]);
                 }
                 catch (Exception)
                 {
@@ -301,50 +300,40 @@
 
             if (parameters.ContainsKey("Delineation"))
             {
-                parameters.TryGetValue<List<Core.Map.GeoPosition>>("Delineation", out var delineation);
-                if (Parcel.Position == null && delineation.Count > 0)
+                parameters.TryGetValue<List<Persistence.Entities.Position>>("Delineation", out var delineation);
+                if (Plot.Position == null && delineation.Count > 0)
                 {
-                    Parcel.Position = new Core.Map.GeoPosition
+                    Plot.Position = new Persistence.Entities.Position
                     {
                         Latitude = delineation.ElementAt(0).Latitude,
                         Longitude = delineation.ElementAt(0).Longitude
                     };
                 }
-                Parcel.Delineation = delineation;
+                Plot.Delineation = delineation;
             }
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue<Core.Map.GeoPosition>("GeoPosition", out var position);
+                parameters.TryGetValue<Persistence.Entities.Position>("GeoPosition", out var position);
                 if (position != null)
                 {
-                    Parcel.Position = position;
+                    Plot.Position = position;
                 }
             }
 
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activities);
-                if (Parcel.AgriculturalActivities == null)
+                parameters.TryGetValue<List<Activity>>("Activities", out var activities);
+                if (Plot.Activities == null)
                 {
-                    Parcel.AgriculturalActivities = activities;
+                    Plot.Activities = activities;
                 }
                 else
                 {
                     if (activities != null)
                     {
-                        activities.AddRange(Parcel.AgriculturalActivities);
-                        Parcel.AgriculturalActivities = activities;
+                        activities.AddRange(Plot.Activities);
+                        Plot.Activities = activities;
                     }
-                }
-            }
-
-            if (parameters.ContainsKey(ParcelConstants.TechnologiesParameterName))
-            {
-                parameters.TryGetValue<List<Technology>>(ParcelConstants.TechnologiesParameterName,
-                    out var technologies);
-                if (Parcel != null)
-                {
-                    Parcel.TechnologiesUsed = technologies;
                 }
             }
         }
@@ -353,21 +342,9 @@
         {
             var parameters = new NavigationParameters
             {
-                { "Parcel", Parcel }
+                { "Plot", Plot }
             };
             _navigationService.NavigateAsync("DeleteParcelPage", parameters);
-        }
-
-        private void EditTechnologies()
-        {
-            var technologies = Parcel.TechnologiesUsed;
-
-            var parameters = new NavigationParameters();
-            if (technologies != null)
-            {
-                parameters.Add(ParcelConstants.TechnologiesParameterName, technologies);
-            }
-            _navigationService.NavigateAsync("SelectTechnologiesPage", parameters);
         }
 
         private void GetLocation()
@@ -376,11 +353,11 @@
             {
                 { MapViewModel.MapTaskParameterName, Core.Map.MapTask.GetLocation }
             };
-            if (Parcel.Position != null && Parcel.Position.IsSet())
+            if (Plot.Position != null)
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                     CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                        new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("Map", parameters);
         }
@@ -395,7 +372,7 @@
             {
                 _navigationService.NavigateAsync($"app:///{_caller}", new NavigationParameters
                 {
-                    { "Id", Parcel.ParcelId }
+                    { "Id", Plot.ID }
                 });
             }
         }
@@ -405,7 +382,7 @@
             var parameters = new NavigationParameters
             {
                 { "Caller", "ParcelPage" },
-                { "Parcel", Parcel }
+                { "Plot", Plot }
             };
             _navigationService.NavigateAsync(page, parameters);
         }
@@ -417,11 +394,11 @@
                 EditModeActive = false;
             }
             EditsDone = false;
-            Parcel.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice;
-            _cimmytDbOperations.SaveParcel(Parcel.GetDTO(), true);
+            // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; TODO maybe add this
+            AppDataService.UpdatePlot(Plot);
             var parameters = new NavigationParameters
             {
-                { "Id", Parcel.ParcelId }
+                { "Id", Plot.ID }
             };
             _navigationService.NavigateAsync("ParcelMainPage", parameters);
         }
@@ -430,10 +407,10 @@
         {
             for (var i = 0; i < CropTypes.Count; i++)
             {
-                if (CropTypes[i] != Parcel.Crop)
-                {
-                    continue;
-                }
+                // if (CropTypes[i] != Plot.Crop) TODO
+                // {
+                //     continue;
+                // }
 
                 PickerCropTypesSelectedIndex = i;
                 break;
@@ -441,10 +418,10 @@
 
             for (var i = 0; i < MaturityClasses.Count; i++)
             {
-                if (MaturityClasses[i] != Parcel.MaturityClass)
-                {
-                    continue;
-                }
+                // if (MaturityClasses[i] != Plot.MaturityClass) TODO
+                // {
+                //     continue;
+                // }
 
                 PickerMaturityClassesSelectedIndex = i;
                 break;
@@ -452,10 +429,10 @@
 
             for (var i = 0; i < ClimateTypes.Count; i++)
             {
-                if (ClimateTypes[i] != Parcel.ClimateType)
-                {
-                    continue;
-                }
+                // if (ClimateTypes[i] != Plot.ClimateType) TODO
+                // {
+                //     continue;
+                // }
 
                 PickerClimateTypesSelectedIndex = i;
                 break;
@@ -466,20 +443,9 @@
         {
             var parameters = new NavigationParameters
             {
-                { "Activities", Parcel.AgriculturalActivities }
+                { "Activities", Plot.Activities }
             };
             _navigationService.NavigateAsync("ViewActivitiesPage", parameters);
-        }
-
-        private void ViewTechnologies()
-        {
-            var technologies = Parcel.TechnologiesUsed;
-            var parameters = new NavigationParameters();
-            if (technologies != null)
-            {
-                parameters.Add(ParcelConstants.TechnologiesParameterName, technologies);
-            }
-            _navigationService.NavigateAsync("SelectTechnologiesPage", parameters);
         }
     }
 }

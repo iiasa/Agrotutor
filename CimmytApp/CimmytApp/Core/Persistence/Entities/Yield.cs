@@ -1,10 +1,12 @@
-﻿namespace CimmytApp.DTO.BEM
+﻿namespace CimmytApp.Core.Persistence.Entities
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using Newtonsoft.Json;
-    using Realms;
 
-    public class Rendimiento : RealmObject, IBemDataset
+    public class Yield
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
         [JsonProperty("ciclo_agronomico")]
         public string AgriculturalCycle { get; set; }
 
@@ -52,25 +54,5 @@
 
         [JsonProperty("anio")]
         public string Year { get; set; }
-
-        public string GetCycle()
-        {
-            return AgriculturalCycle;
-        }
-
-        public new string GetType()
-        {
-            return "Rendimiento";
-        }
-
-        public string GetValue()
-        {
-            return Performance;
-        }
-
-        public string GetYear()
-        {
-            return Year;
-        }
     }
 }

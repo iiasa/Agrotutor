@@ -1,11 +1,12 @@
-﻿namespace CimmytApp.Core.Realm.BEM
+﻿namespace CimmytApp.Core.Persistence.Entities
 {
-    using CimmytApp.DTO.BEM;
+    using System.ComponentModel.DataAnnotations.Schema;
     using Newtonsoft.Json;
-    using Realms;
 
-    public class Costo : RealmObject, IBemDataset
+    public class Cost
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
         [JsonProperty("ciclo")]
         public string AgriculturalCycle { get; set; }
 
@@ -107,25 +108,5 @@
 
         [JsonProperty("anio")]
         public string Year { get; set; }
-
-        public string GetCycle()
-        {
-            return AgriculturalCycle;
-        }
-
-        public new string GetType()
-        {
-            return "Costo";
-        }
-
-        public string GetValue()
-        {
-            return ProductionCost;
-        }
-
-        public string GetYear()
-        {
-            return Year;
-        }
     }
 }

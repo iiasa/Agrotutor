@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.BEM;
     using CimmytApp.ViewModels;
     using Helper.HTTP;
@@ -22,7 +23,7 @@
         /// <summary>
         ///     Defines the _datasets
         /// </summary>
-        private List<Utilidad> _datasets;
+        private List<Profit> _datasets;
 
         private bool _isLoading;
         private List<Dataset> _stats;
@@ -30,7 +31,7 @@
         /// <summary>
         ///     Gets or sets the Datasets
         /// </summary>
-        public List<Utilidad> Datasets
+        public List<Profit> Datasets
         {
             get => _datasets;
             set => SetProperty(ref _datasets, value);
@@ -50,7 +51,7 @@
 
         public void CalculateStats()
         {
-            Datasets = new List<Utilidad>(Datasets.OrderBy(x => double.Parse(x.Rentability)));
+            Datasets = new List<Profit>(Datasets.OrderBy(x => double.Parse(x.Rentability)));
             var min = double.Parse(Datasets.ElementAt(0)?.Rentability);
             var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.Rentability);
             var q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.Rentability);
@@ -92,7 +93,7 @@
         public async void LoadData()
         {
             IsLoading = true;
-            Datasets = await RequestJson.Get<List<Utilidad>>(
+            Datasets = await RequestJson.Get<List<Profit>>(
                 "http://104.239.158.49/api.php?type=utilidad&tkn=E31C5F8478566357BA6875B32DC59");
             CalculateStats();
             IsLoading = false;

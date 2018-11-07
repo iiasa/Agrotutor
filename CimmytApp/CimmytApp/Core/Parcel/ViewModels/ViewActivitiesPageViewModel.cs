@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using CimmytApp.Core.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Microsoft.Extensions.Localization;
@@ -11,7 +12,7 @@
     {
         private readonly INavigationService _navigationService;
 
-        private List<AgriculturalActivity> _activities;
+        private List<Activity> _activities;
 
         public ViewActivitiesPageViewModel(INavigationService navigationService,
             IStringLocalizer<ViewActivitiesPageViewModel> localizer) : base(localizer)
@@ -19,7 +20,7 @@
             _navigationService = navigationService;
         }
 
-        public List<AgriculturalActivity> Activities
+        public List<Activity> Activities
         {
             get => _activities;
             set => SetProperty(ref _activities, value);
@@ -33,7 +34,7 @@
         {
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activities);
+                parameters.TryGetValue<List<Activity>>("Activities", out var activities);
                 if (activities != null)
                     Activities = activities;
             }

@@ -2,18 +2,17 @@
 {
     using System.Collections.Generic;
     using CimmytApp.Core.DTO.Parcel;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.ViewModels;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
     public class ActivityPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly INavigationService _navigationService;
         private string _caller = "ParcelPage";
-        private Parcel _parcel;
+        private Plot _plot;
         private bool CallingDetailPage;
 
         public ActivityPageViewModel(INavigationService navigationService,
@@ -25,13 +24,13 @@
         }
 
         public DelegateCommand SaveCommand { get; }
-        public List<AgriculturalActivity> Activities { get; set; }
+        public List<Activity> Activities { get; set; }
         public DelegateCommand<string> ActivityClickedCommand { get; set; }
 
-        public Parcel Parcel
+        public Plot Plot
         {
-            get => _parcel;
-            private set => SetProperty(ref _parcel, value);
+            get => this._plot;
+            private set => SetProperty(ref this._plot, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -43,22 +42,22 @@
             CallingDetailPage = false;
             if (parameters.ContainsKey("Activity"))
             {
-                parameters.TryGetValue<AgriculturalActivity>("Activity", out var activity);
+                parameters.TryGetValue<Activity>("Activity", out var activity);
                 if (Activities == null)
                 {
-                    Activities = new List<AgriculturalActivity>();
+                    Activities = new List<Activity>();
                 }
                 Activities.Add(activity);
             }
             if (parameters.ContainsKey("Activities"))
             {
-                parameters.TryGetValue<List<AgriculturalActivity>>("Activities", out var activities);
+                parameters.TryGetValue<List<Activity>>("Activities", out var activities);
                 Activities = activities;
             }
-            if (parameters.ContainsKey("Parcel"))
+            if (parameters.ContainsKey("Plot"))
             {
-                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
-                Parcel = parcel;
+                parameters.TryGetValue<Plot>("Plot", out var plot);
+                Plot = plot;
             }
             if (parameters.ContainsKey("Caller"))
             {
@@ -81,7 +80,7 @@
             var parameters = new NavigationParameters
             {
                 { "Activities", Activities },
-                { "Parcel", Parcel },
+                { "Plot", Plot },
                 { "EditEnabled", true }
             };
             _navigationService.NavigateAsync($"app:///{_caller}", parameters);

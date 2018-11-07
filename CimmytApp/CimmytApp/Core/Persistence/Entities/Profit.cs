@@ -1,10 +1,12 @@
-﻿namespace CimmytApp.DTO.BEM
+﻿namespace CimmytApp.Core.Persistence.Entities
 {
+    using System.ComponentModel.DataAnnotations.Schema;
     using Newtonsoft.Json;
-    using Realms;
 
-    public class Ingreso : RealmObject, IBemDataset
+    public class Profit
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
         [JsonProperty("ciclo")]
         public string AgriculturalCycle { get; set; }
 
@@ -19,9 +21,6 @@
 
         [JsonProperty("id_hub")]
         public string HubId { get; set; }
-
-        [JsonProperty("ingresos_ha")]
-        public string Income { get; set; }
 
         [JsonProperty("localidad")]
         public string Location { get; set; }
@@ -41,6 +40,9 @@
         [JsonProperty("tipo_produccion")]
         public string ProductionType { get; set; }
 
+        [JsonProperty("rentabilidad_ha")]
+        public string Rentability { get; set; }
+
         [JsonProperty("estado")]
         public string State { get; set; }
 
@@ -49,25 +51,5 @@
 
         [JsonProperty("anio")]
         public string Year { get; set; }
-
-        public string GetCycle()
-        {
-            return AgriculturalCycle;
-        }
-
-        public new string GetType()
-        {
-            return "Ingreso";
-        }
-
-        public string GetValue()
-        {
-            return Income;
-        }
-
-        public string GetYear()
-        {
-            return Year;
-        }
     }
 }

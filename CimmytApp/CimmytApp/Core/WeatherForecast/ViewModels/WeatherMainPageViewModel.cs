@@ -1,8 +1,7 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System;
-    using System.Linq;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
@@ -168,9 +167,9 @@
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
         /// <summary>
-        ///     Gets or sets the Parcel
+        ///     Gets or sets the Plot
         /// </summary>
-        public Parcel Parcel { get; private set; }
+        public Plot Plot { get; private set; }
 
         /// <summary>
         ///     Gets or sets the WeatherForecast
@@ -235,12 +234,12 @@
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Parcel"))
+            if (parameters.ContainsKey("Plot"))
             {
-                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
-                if (parcel != null)
+                parameters.TryGetValue<Plot>("Plot", out var plot);
+                if (plot != null)
                 {
-                    Parcel = parcel;
+                    Plot = plot;
                     LoadData();
                 }
             }
@@ -255,10 +254,10 @@
         /// </summary>
         private async void LoadData()
         {
-            if (Parcel.Position != null)
+            if (Plot.Position != null)
             {
-                WeatherData = await WeatherData.Download((double)Parcel.Position.Latitude,
-                    (double)Parcel.Position.Longitude);
+                WeatherData = await WeatherData.Download((double)Plot.Position.Latitude,
+                    (double)Plot.Position.Longitude);
             }
         }
 
@@ -285,7 +284,7 @@
             {
                 var parameters = new NavigationParameters
                 {
-                    { "Parcel", Parcel }
+                    { "Plot", Plot }
                 };
                 _navigationService.NavigateAsync(page, parameters);
             }

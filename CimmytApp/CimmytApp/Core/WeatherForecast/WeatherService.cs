@@ -2,12 +2,12 @@
 {
     using System;
     using System.Threading.Tasks;
-    using Helper.Map;
+    using CimmytApp.Core.Persistence.Entities;
     using Helper.RestfulClient;
 
     public static class WeatherService
     {
-        public static async Task<WeatherData> GetWeatherData(Core.Map.GeoPosition location)
+        public static async Task<WeatherData> GetWeatherData(Position location)
         {
             try
             {

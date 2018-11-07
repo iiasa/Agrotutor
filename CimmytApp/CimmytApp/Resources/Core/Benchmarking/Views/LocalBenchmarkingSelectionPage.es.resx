@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="costs" xml:space="preserve">
-    <value>Costo</value>
+    <value>Cost</value>
   </data>
   <data name="data_hint" xml:space="preserve">
     <value>Estas páginas requieren mayores cantidades de datos. Abrir una página enviará solicitudes de datos de alrededor de 10 megabytes cada uno. Por favor sea paciente.</value>
@@ -127,12 +127,12 @@
     <value>Ingreso</value>
   </data>
   <data name="profit" xml:space="preserve">
-    <value>Utilidad</value>
+    <value>Profit</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Informacion comparativa</value>
   </data>
   <data name="yield" xml:space="preserve">
-    <value>Rendimiento</value>
+    <value>Yield</value>
   </data>
 </root>

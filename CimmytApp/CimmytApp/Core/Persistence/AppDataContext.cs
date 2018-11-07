@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.Core.Persistence
 {
     using CimmytApp.Core.Persistence.Entities;
+    using CimmytApp.DTO.BEM;
     using Microsoft.EntityFrameworkCore;
 
     public class AppDataContext : DbContext, IAppDataContext
@@ -12,6 +13,13 @@
         public DbSet<Plot> Plots { get; set; }
         public DbSet<Position> Positions { get; set; }
         public DbSet<Activity> Activities { get; set; }
+
+        public DbSet<BemData> BemDatasets { get; set; }
+
+        public DbSet<Cost> CostDatasets { get; set; }
+        public DbSet<Income> IncomeDatasets { get; set; }
+        public DbSet<Profit> ProfitDatasets { get; set; }
+        public DbSet<Yield> YieldDatasets { get; set; }
 
         public void DisableDetectChanges()
         {

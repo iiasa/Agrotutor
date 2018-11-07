@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using CimmytApp.Core.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel.ActivityManagement;
     using CimmytApp.ViewModels;
@@ -16,7 +17,7 @@
 
         private double _activityCost;
 
-        private DateTimeOffset _activityDate;
+        private DateTime _activityDate;
 
         private double _activityDose;
 
@@ -51,7 +52,7 @@
                 "Criollo",
                 "Mejorado"
             };
-            ActivityDate = DateTimeOffset.Now;
+            ActivityDate = DateTime.Now;
             SaveCommand = new DelegateCommand(SaveCommandExecution);
         }
 
@@ -67,7 +68,7 @@
         /// <summary>
         ///     Gets or sets the ActivityDate
         /// </summary>
-        public DateTimeOffset ActivityDate
+        public DateTime ActivityDate
         {
             get => _activityDate;
             set => SetProperty(ref _activityDate, value);
@@ -284,7 +285,7 @@
             {
                 activityName = ActivityNameText;
             }
-            var activity = new AgriculturalActivity
+            var activity = new Activity
             {
                 AmountApplied = AmountApplied,
                 AppliedProduct = AppliedProduct,

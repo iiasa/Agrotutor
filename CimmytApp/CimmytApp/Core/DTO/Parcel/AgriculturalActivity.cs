@@ -2,10 +2,9 @@
 {
     using System;
     using CimmytApp.DTO.Parcel;
-    using Helper.Realm.DTO;
     using Xamarin.Forms;
 
-    public class AgriculturalActivity
+    public class AgriculturalActivitey
     {
         public ImageSource Logo
         {
@@ -46,52 +45,5 @@
         public double WeightOfSeeds { get; set; }
 
         public string Yield { get; set; }
-
-        public static AgriculturalActivity FromDTO(AgriculturalActivityDTO activity)
-        {
-            if (activity == null)
-            {
-                return null;
-            }
-
-            return new AgriculturalActivity
-            {
-                ActivityType = (ActivityType)activity.ActivityType,
-                AmountApplied = activity.AmountApplied,
-                AppliedProduct = activity.AppliedProduct,
-                Cost = activity.Cost,
-                Date = activity.Date,
-                Dose = activity.Dose,
-                Id = activity.Id,
-                Name = activity.Name,
-                NumberOfSeeds = activity.NumberOfSeeds,
-                ParcelId = activity.ParcelId,
-                ProductObtained = activity.ProductObtained,
-                Sown = activity.Sown,
-                WeightOfSeeds = activity.WeightOfSeeds,
-                Yield = activity.Yield
-            };
-        }
-
-        public AgriculturalActivityDTO GetDTO(string parcelId)
-        {
-            return new AgriculturalActivityDTO
-            {
-                ActivityType = (int)ActivityType,
-                AmountApplied = AmountApplied,
-                AppliedProduct = AppliedProduct,
-                Cost = Cost,
-                Date = Date,
-                Dose = Dose,
-                Id = Id,
-                Name = Name,
-                NumberOfSeeds = NumberOfSeeds,
-                ParcelId = parcelId,
-                ProductObtained = ProductObtained,
-                Sown = Sown,
-                WeightOfSeeds = WeightOfSeeds,
-                Yield = Yield
-            };
-        }
     }
 }

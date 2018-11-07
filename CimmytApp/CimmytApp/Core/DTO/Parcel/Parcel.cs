@@ -2,23 +2,20 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Linq;
     using System.Threading.Tasks;
     using CimmytApp.Core.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Benchmarking;
     using Helper.GeoWiki.API.GenericDatasetStorage;
-    using Helper.Map;
-    using Helper.Realm.DTO;
     using Xamarin.Forms;
 
-    public class Parcel
+    public class Parcella
     {
         private static readonly int geoWikiDatasetGroupId = 1;
 
         private string _crop;
 
-        private Core.Map.GeoPosition _geoPosition;
+        private Position _geoPosition;
 
         private string _parcelName;
 
@@ -30,27 +27,13 @@
 
         public int Uploaded { get; set; }
 
-        public Parcel()
+        public Parcella()
         {
-            AgriculturalActivities = new List<AgriculturalActivity>();
-            Delineation = new List<Core.Map.GeoPosition>();
-            TechnologiesUsed = new List<Technology>();
+            AgriculturalActivities = new List<Activity>();
+            Delineation = new List<Position>();
         }
 
-        public string TechnologiesScreenList
-        {
-            get
-            {
-                if (TechnologiesUsed == null || TechnologiesUsed.Count <= 0)
-                {
-                    return null;
-                }
-
-                return string.Join("\r\n", TechnologiesUsed.ToList());
-            }
-        }
-
-        public List<AgriculturalActivity> AgriculturalActivities { get; set; }
+        public List<Activity> AgriculturalActivities { get; set; }
 
         public string ClimateType { get; set; }
 
@@ -62,7 +45,7 @@
 
         public CropType CropType { get; set; }
 
-        public List<Core.Map.GeoPosition> Delineation { get; set; }
+        public List<Position> Delineation { get; set; }
 
         public string MaturityClass { get; set; }
 
@@ -129,85 +112,14 @@
             set => _parcelName = value;
         }
 
-        public Core.Map.GeoPosition Position { get; set; }
-
-        public string ProducerName { get; set; }
-
-        public List<Technology> TechnologiesUsed { get; set; }
-
-        public static Parcel FromDTO(ParcelDTO parcelDTO)
-        {
-            if (parcelDTO == null)
-            {
-                return null;
-            }
-
-            var activities = new List<AgriculturalActivity>();
-            var delineation = new List<Core.Map.GeoPosition>();
-            var technologies = new List<Technology>();
-
-            if (parcelDTO.AgriculturalActivities != null)
-            {
-                activities.AddRange(parcelDTO.AgriculturalActivities.Select(AgriculturalActivity.FromDTO));
-            }
-
-            if (parcelDTO.AgriculturalActivitiesList != null)
-            {
-                activities.AddRange(parcelDTO.AgriculturalActivitiesList.Select(AgriculturalActivity.FromDTO));
-            }
-
-            if (parcelDTO.Delineation != null)
-            {
-                delineation.AddRange(parcelDTO.Delineation.Select(Core.Map.GeoPosition.FromDTO));
-            }
-
-            if (parcelDTO.DelineationList != null)
-            {
-                delineation.AddRange(parcelDTO.DelineationList.Select(Core.Map.GeoPosition.FromDTO));
-            }
-
-            if (parcelDTO.TechnologiesUsed != null)
-            {
-                technologies.AddRange(parcelDTO.TechnologiesUsed.Select(technology => new Technology
-                {
-                    Name = technology.Name,
-                    Id = technology.Id
-                }));
-            }
-
-            if (parcelDTO.TechnologiesUsedList != null)
-            {
-                technologies.AddRange(parcelDTO.TechnologiesUsedList.Select(technology => new Technology
-                {
-                    Name = technology.Name,
-                    Id = technology.Id
-                }));
-            }
-
-
-            var parcel = new Parcel
-            {
-                AgriculturalActivities = activities,
-                ClimateType = parcelDTO.ClimateType,
-                Crop = parcelDTO.Crop,
-                CropType = (CropType)parcelDTO.CropType,
-                Delineation = delineation,
-                MaturityClass = parcelDTO.MaturityClass,
-                ParcelId = parcelDTO.ParcelId,
-                ParcelName = parcelDTO.ParcelName,
-                PlantingDate = parcelDTO.PlantingDate,
-                Position = Core.Map.GeoPosition.FromDTO(parcelDTO.Position),
-                TechnologiesUsed = technologies
-            };
-
-            return parcel;
-        }
+        public Position Position { get; set; }
+        
 
         //ToDo:Move to another Class
 
-        public static async Task<List<Parcel>> LoadParcelsFromServer()
+        public static async Task<List<Parcella>> LoadParcelsFromServer()
         {
-            return await Storage.GetDatasets<Parcel>(16, 1, Parcel.geoWikiDatasetGroupId);
+            return await Storage.GetDatasets<Parcella>(16, 1, Parcella.geoWikiDatasetGroupId);
         }
 
         public List<DateTime> GetWindowsForFertilization()
@@ -218,34 +130,7 @@
                 return null;
             return PhuAccumulator.GetWindowsOfOpportunity((int)baseTemperature, (int)targetHeatUnits, Position, PlantingDate.UtcDateTime);
         }
-
-        public ParcelDTO GetDTO()
-        {
-            var dto = new ParcelDTO
-            {
-                ClimateType = ClimateType,
-                Crop = Crop,
-                CropType = (int)CropType,
-                MaturityClass = MaturityClass,
-                ParcelId = ParcelId,
-                ParcelName = ParcelName,
-                PlantingDate = PlantingDate,
-                Position = Position?.GetDTO(ParcelId),
-                AgriculturalActivitiesList =
-                    AgriculturalActivities.Select(activity => activity.GetDTO(ParcelId)).ToList(),
-                DelineationList = Delineation.Select(position => position.GetDTO(ParcelId)).ToList()
-            };
-
-            var technologies = new List<TechnologyDTO>();
-            technologies.AddRange(TechnologiesUsed.Select(technology => new TechnologyDTO
-            {
-                Name = technology.Name,
-                Id = technology.Id,
-                ParcelId = ParcelId
-            }));
-            dto.TechnologiesUsedList = technologies;
-            return dto;
-        }
+        
 
         public DataTemplate GetOverviewDataTemplate()
         {
@@ -260,19 +145,19 @@
             }
 
             Uploaded = (int)DatasetUploadStatus.Synchronized;
-            Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
+            Storage.StoreDatasetAsync(this, -1, 16, 1, Parcella.geoWikiDatasetGroupId);
         }
 
         //ToDo:Move to another Class
 
-        public async Task<Parcel> SubmitAsync()
+        public async Task<Parcella> SubmitAsync()
         {
             if (Uploaded == (int)DatasetUploadStatus.Synchronized)
             {
                 return null;
             }
 
-            await Storage.StoreDatasetAsync(this, -1, 16, 1, Parcel.geoWikiDatasetGroupId);
+            await Storage.StoreDatasetAsync(this, -1, 16, 1, Parcella.geoWikiDatasetGroupId);
             Uploaded = (int)DatasetUploadStatus.Synchronized;
             return this;
         }

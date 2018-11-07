@@ -28,7 +28,7 @@
                     IconText="{i18n:Translate general_information}" 
                     IconSource="icon_info_squared_96.png" 
                     Command="{Binding NavigateAsyncCommand}" 
-                    CommandParameter="ParcelPage"
+                    CommandParameter="PlotPage"
                     Grid.Row ="0" Grid.Column="0" />
 
                 <components:MenuIcon 

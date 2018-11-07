@@ -3,8 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using CimmytApp.Core.Realm.BEM;
-    using CimmytApp.DTO.BEM;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.ViewModels;
     using Helper.HTTP;
     using Microsoft.Extensions.Localization;
@@ -17,13 +16,13 @@
         {
         }
 
-        private List<Costo> datasets;
+        private List<Cost> datasets;
 
         private bool isLoading;
 
         private List<Dataset> stats;
 
-        public List<Costo> Datasets
+        public List<Cost> Datasets
         {
             get => this.datasets;
             set => SetProperty(ref this.datasets, value);
@@ -43,7 +42,7 @@
 
         public void CalculateStats()
         {
-            Datasets = new List<Costo>(Datasets.OrderBy(x => double.Parse(x.ProductionCost)));
+            Datasets = new List<Cost>(Datasets.OrderBy(x => double.Parse(x.ProductionCost)));
             var min = double.Parse(Datasets.ElementAt(0)?.ProductionCost);
             var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.ProductionCost);
             var q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.ProductionCost);
@@ -82,7 +81,7 @@
         public async void LoadData()
         {
             IsLoading = true;
-            Datasets = await RequestJson.Get<List<Costo>>(
+            Datasets = await RequestJson.Get<List<Cost>>(
                 "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");
             CalculateStats();
             IsLoading = false;

@@ -139,7 +139,7 @@
     <value>Add parcel management information</value>
   </data>
   <data name="hint_parcel_name" xml:space="preserve">
-    <value>Parcel name</value>
+    <value>Plot name</value>
   </data>
   <data name="hint_parcel_name_1" xml:space="preserve">
     <value>(for identification, for example: Corn 1)</value>

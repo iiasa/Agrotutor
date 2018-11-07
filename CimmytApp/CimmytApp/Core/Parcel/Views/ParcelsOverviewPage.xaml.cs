@@ -28,7 +28,7 @@
 
         private void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var selectedItem = e.Item as ParcelViewModel;
+            var selectedItem = e.Item as PlotViewModel;
             this._bindingContext?.HideOrShowParcel(selectedItem);
         }
     }

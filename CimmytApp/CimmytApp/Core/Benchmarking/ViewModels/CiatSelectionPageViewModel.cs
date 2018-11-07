@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Helper.Map;
@@ -28,7 +29,7 @@
 
         public string OldYield { get; set; }
 
-        public Map.GeoPosition Position { get; set; }
+        public Position Position { get; set; }
 
         public string SelectedCrop { get; set; }
 
@@ -118,7 +119,7 @@
         {
             if (parameters.ContainsKey("GeoPosition"))
             {
-                parameters.TryGetValue<Map.GeoPosition>("GeoPosition", out Map.GeoPosition geoPosition);
+                parameters.TryGetValue<Position>("GeoPosition", out Position geoPosition);
                 if (geoPosition != null)
                 {
                     Position = geoPosition;

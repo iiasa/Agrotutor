@@ -6,7 +6,7 @@
 
     /// <inheritdoc />
     /// <summary>
-    ///     Defines the <see cref="T:CimmytApp.Parcel.ActivityManagement.ActivityDynamicUIVisibility" />
+    ///     Defines the <see cref="T:CimmytApp.Plot.ActivityManagement.ActivityDynamicUIVisibility" />
     /// </summary>
     public class ActivityDynamicUIVisibility : BindableBase
     {

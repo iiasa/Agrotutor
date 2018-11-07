@@ -47,6 +47,6 @@
 
         public int ID { get; set; }
 
-        public string ParcelId { get; set; }
+        public int PlotId { get; set; }
     }
 }

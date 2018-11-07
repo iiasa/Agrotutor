@@ -4,8 +4,8 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using System.Windows.Input;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Benchmarking;
-    using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Helper.GeoWiki.API;
     using Microsoft.Extensions.Localization;
@@ -28,7 +28,7 @@
         private bool downloading;
         private BenchmarkingInformation benchmarkingInformation;
         private bool noData;
-        private Parcel parcel;
+        private Plot plot;
 
         public BenchmarkingInformation DataIrrigated
         {
@@ -72,10 +72,10 @@
             set => SetProperty(ref this.noData, value);
         }
 
-        public Parcel Parcel
+        public Plot Plot
         {
-            get => this.parcel;
-            set => SetProperty(ref this.parcel, value);
+            get => this.plot;
+            set => SetProperty(ref this.plot, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -84,12 +84,12 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Parcel"))
+            if (parameters.ContainsKey("Plot"))
             {
-                parameters.TryGetValue<Parcel>("Parcel", out var parcel);
-                if (parcel != null)
+                parameters.TryGetValue<Plot>("Plot", out var plot);
+                if (plot != null)
                 {
-                    Parcel = parcel;
+                    Plot = plot;
                     DownloadButtonActive = true;
                 }
                 else
@@ -133,7 +133,7 @@
         {
             DownloadButtonActive = false;
             Downloading = true;
-            MyData = await DownloadData((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude);
+            MyData = await DownloadData((double)Plot.Position.Latitude, (double)Plot.Position.Longitude);
         }
 
         private void UpdateData(BenchmarkingInformation value)

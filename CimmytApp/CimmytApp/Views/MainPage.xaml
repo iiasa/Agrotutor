@@ -47,14 +47,14 @@
                     IconText="{i18n:Translate add_parcel}" 
                     IconSource="add.png" 
                     Command="{Binding NavigateAsyncCommand}" 
-                    CommandParameter="AddParcelPage"
+                    CommandParameter="AddPlotPage"
                     Grid.Row ="0" Grid.Column="0" />
 
                 <components:MenuIcon 
                     IconText="{i18n:Translate parcel_overview}" 
                     IconSource="farm.png" 
                     Command="{Binding NavigateAsyncCommand}" 
-                    CommandParameter="ParcelsOverviewPage"
+                    CommandParameter="PlotsOverviewPage"
                     Grid.Row ="0" Grid.Column="1" />
 
                 <components:MenuIcon 

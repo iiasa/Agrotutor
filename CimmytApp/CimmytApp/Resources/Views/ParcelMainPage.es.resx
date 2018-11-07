@@ -130,7 +130,7 @@
     <value>Ubicacion</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Rendimiento potencial</value>
+    <value>Yield potencial</value>
   </data>
   <data name="weather" xml:space="preserve">
     <value>Clima</value>

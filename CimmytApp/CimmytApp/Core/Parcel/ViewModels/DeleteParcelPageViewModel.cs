@@ -1,12 +1,11 @@
 ﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.ViewModels;
-    using Helper.Realm.BusinessContract;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
-    using Prism.Mvvm;
     using Prism.Navigation;
 
     /// <summary>
@@ -14,18 +13,19 @@
     /// </summary>
     public class DeleteParcelPageViewModel : ViewModelBase, INavigatedAware
     {
-        private readonly ICimmytDbOperations _cimmytDbOperations;
 
         private readonly INavigationService _navigationService;
 
-        private Parcel _parcel;
+        private Plot _plot;
+
+        public IAppDataService AppDataService { get; set; }
 
         public DeleteParcelPageViewModel(INavigationService navigationService, 
-            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<DeleteParcelPageViewModel> localizer)
+            IAppDataService appdataService, IStringLocalizer<DeleteParcelPageViewModel> localizer)
         : base(localizer)
         {
             _navigationService = navigationService;
-            _cimmytDbOperations = cimmytDbOperations;
+            AppDataService = appdataService;
             Delete = new DelegateCommand(DeleteParcel);
             GoBack = new DelegateCommand(Back);
         }
@@ -40,17 +40,15 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Parcel"))
+            if (parameters.ContainsKey("Plot"))
             {
-                _parcel = (Parcel)parameters["Parcel"];
+                this._plot = (Plot)parameters["Plot"];
             }
             else
             {
                 try
                 {
-                    var id = (string)parameters["Id"];
-
-                    _parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
+                    AppDataService.GetPlot((int)parameters["Id"]);
                 }
                 catch (Exception)
                 {
@@ -66,7 +64,7 @@
 
         private void DeleteParcel()
         {
-            _cimmytDbOperations.DeleteParcel(_parcel.ParcelId);
+            AppDataService.RemovePlot(_plot);
             _navigationService.NavigateAsync("app:///MainPage");
         }
     }

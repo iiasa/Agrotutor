@@ -3,12 +3,13 @@
     using System;
     using System.Collections.Generic;
     using System.Globalization;
+    using CimmytApp.Core.Persistence.Entities;
     using Helper.Map;
 
     public static class PhuAccumulator
     {
         public static List<DateTime> GetWindowsOfOpportunity(int baseTemperature, int targetHeatUnits,
-            Core.Map.GeoPosition position, DateTime plantingDate)
+            Position position, DateTime plantingDate)
         {
             var endDate = DateTime.Today.AddDays(10);
             var duration = endDate.Subtract(plantingDate);

@@ -1,10 +1,9 @@
 ﻿namespace CimmytApp.ViewModels
 {
-    using System;
     using System.Collections.Generic;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence;
+    using CimmytApp.Core.Persistence.Entities;
     using Helper.Map.ViewModels;
-    using Helper.Realm.BusinessContract;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Navigation;
@@ -13,26 +12,19 @@
 
     public class ParcelMainPageViewModel : ViewModelBase, INavigatedAware
     {
-        private readonly ICimmytDbOperations _cimmytDbOperations;
-        private readonly INavigationService _navigationService;
-        private Parcel _parcel;
+        public IAppDataService AppDataService { get; set; }
 
-        public ParcelMainPageViewModel(INavigationService navigationService, ICimmytDbOperations cimmytDbOperations,
+        private readonly INavigationService _navigationService;
+        private Plot plot;
+
+        public ParcelMainPageViewModel(INavigationService navigationService, IAppDataService appDataService,
             IStringLocalizer<ParcelMainPageViewModel> localizer) : base(localizer)
         {
             _navigationService = navigationService;
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
             GoBackCommand = new DelegateCommand(GoBack);
-
-            try
-            {
-                _cimmytDbOperations = cimmytDbOperations;
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
+            AppDataService = appDataService;
         }
 
         public DelegateCommand GoBackCommand { get; set; }
@@ -41,34 +33,32 @@
 
         public DelegateCommand NavigateToMapCommand { get; set; }
 
-        public Parcel Parcel
+        public Plot Plot
         {
-            get => _parcel;
-            set => SetProperty(ref _parcel, value);
+            get => this.plot;
+            set => SetProperty(ref this.plot, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
+        public async void LoadParcel(int id)
+        {
+            Plot = await AppDataService.GetPlot(id);
+        }
+
         public void OnNavigatedTo(NavigationParameters parameters)
         {
             try
             {
-                var id = (string)parameters["Id"];
-                if (!string.IsNullOrEmpty(id))
-                {
-                    Parcel = Parcel.FromDTO(_cimmytDbOperations.GetParcelById(id));
-                }
+                var id = (int)parameters["Id"]; // todo TryGet!
+                LoadParcel(id);
             }
             catch
             {
                 // ignored
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
 
         private void GoBack()
@@ -80,7 +70,7 @@
         {
             var parameters = new NavigationParameters
             {
-                { "Parcel", Parcel }
+                { "Plot", Plot }
             };
             if (page == "ParcelPage")
             {
@@ -93,7 +83,7 @@
         private void NavigateToMap()
         {
             var parameters = new NavigationParameters();
-            var delineation = Parcel.Delineation;
+            var delineation = Plot.Delineation;
             if (delineation != null && delineation.Count > 2)
             {
                 var polygon = new Polygon
@@ -103,7 +93,7 @@
                 };
                 foreach (var geoPosition in delineation)
                 {
-                    polygon.Positions.Add(new Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
+                    polygon.Positions.Add(new Xamarin.Forms.GoogleMaps.Position((double)geoPosition.Latitude, (double)geoPosition.Longitude));
                 }
 
                 var viewPolygons = new List<Polygon>
@@ -113,17 +103,17 @@
                 parameters.Add(MapViewModel.PolygonsParameterName, viewPolygons);
             }
 
-            if (Parcel.Position != null && Parcel.Position.IsSet())
+            if (Plot.Position != null)
             {
                 parameters.Add(MapViewModel.PointsParameterName, new List<Pin>
                 {
                     new Pin
                     {
-                        Position = new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude)
+                        Position = new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude)
                     }
                 });
                 parameters.Add(MapViewModel.MapCenterParameterName, CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                    new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                    new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude), 15)));
             }
 
             _navigationService.NavigateAsync("Map", parameters);

@@ -124,7 +124,7 @@
     <value>Productos aplicados</value>
   </data>
   <data name="cost" xml:space="preserve">
-    <value>Costo total de la actividad ($)</value>
+    <value>Cost total de la actividad ($)</value>
   </data>
   <data name="date" xml:space="preserve">
     <value>Fecha de la actividad</value>
@@ -151,6 +151,6 @@
     <value>Variedad sembrada</value>
   </data>
   <data name="yield" xml:space="preserve">
-    <value>Rendimiento</value>
+    <value>Yield</value>
   </data>
 </root>

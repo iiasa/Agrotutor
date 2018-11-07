@@ -130,6 +130,6 @@
     <value>You didn't create a parcel yet.&amp;#x0a;Press 'add parcel' to add a new parcel.&amp;#x0a;&amp;#x0a;Return to the home page</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Parcel information</value>
+    <value>Plot information</value>
   </data>
 </root>

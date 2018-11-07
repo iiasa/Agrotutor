@@ -6,9 +6,8 @@
     using System.Linq;
     using Acr.UserDialogs;
     using CimmytApp.Core.Persistence;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.ViewModels;
-    using Helper.Realm.BusinessContract;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Navigation;
@@ -18,10 +17,6 @@
     /// </summary>
     public class ParcelsOverviewPageViewModel : ViewModelBase
     {
-        /// <summary>
-        ///     Defines the _cimmytDbOperations
-        /// </summary>
-        private readonly ICimmytDbOperations _cimmytDbOperations;
 
         /// <summary>
         ///     Defines the _navigationService
@@ -38,17 +33,17 @@
         /// </summary>
         private bool _isParcelListEnabled = true;
 
-        private ObservableCollection<ParcelViewModel> _observableParcel;
+        private ObservableCollection<PlotViewModel> _observableParcel;
 
         /// <summary>
         ///     Defines the _oldParcel
         /// </summary>
-        private ParcelViewModel _oldParcel;
+        private PlotViewModel _oldParcel;
 
         /// <summary>
         ///     Defines the _parcels
         /// </summary>
-        private List<Parcel> _parcels;
+        private List<Plot> _plots;
 
         /// <summary>
         ///     Defines the _parcelsListIsVisible
@@ -68,13 +63,12 @@
         /// <param name="navigationService">The <see cref="INavigationService" /></param>
         /// <param name="cimmytDbOperations">The <see cref="ICimmytDbOperations" /></param>
         public ParcelsOverviewPageViewModel(INavigationService navigationService,
-            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<ParcelsOverviewPageViewModel> localizer, IAppDataService appDataService): base(localizer)
+            IStringLocalizer<ParcelsOverviewPageViewModel> localizer, IAppDataService appDataService): base(localizer)
         {
             this._navigationService = navigationService;
-            this._cimmytDbOperations = cimmytDbOperations;
             this.AppDataService = appDataService;
             AddParcelCommand = new DelegateCommand(NavigateToAddParcelPage);
-            UploadCommand = new DelegateCommand(UploadParcels);
+            UploadCommand = new DelegateCommand(UploadPlots);
             ParcelDetailCommand =
                 new DelegateCommand<object>(
                     NavigateToParcelDetailPage); //.ObservesCanExecute(o => IsParcelListEnabled);
@@ -87,7 +81,7 @@
             GoBackCommand = new DelegateCommand(GoBack);
             RefreshParcelsCommand = new DelegateCommand(RefreshParcels);
 
-            Parcels = new List<Parcel>();
+            Plots = new List<Plot>();
         }
 
         /// <summary>
@@ -123,7 +117,7 @@
         /// <summary>
         ///     Gets or sets the ObservableParcel
         /// </summary>
-        public ObservableCollection<ParcelViewModel> ObservableParcel
+        public ObservableCollection<PlotViewModel> ObservableParcel
         {
             get => this._observableParcel;
             set => SetProperty(ref this._observableParcel, value);
@@ -147,12 +141,12 @@
         /// <summary>
         ///     Gets or sets the Parcels
         /// </summary>
-        public List<Parcel> Parcels
+        public List<Plot> Plots
         {
-            get => this._parcels;
+            get => this._plots;
             set
             {
-                SetProperty(ref this._parcels, value);
+                SetProperty(ref this._plots, value);
                 ParcelsListIsVisible = value.Count > 0;
                 AddParcelHintIsVisible = !ParcelsListIsVisible;
                 ShowUploadButton = ParcelsListIsVisible;
@@ -190,12 +184,12 @@
         ///     The HideOrShowParcel
         /// </summary>
         /// <param name="parcel">The <see cref="ParcelViewModel" /></param>
-        public void HideOrShowParcel(ParcelViewModel parcel)
+        public void HideOrShowParcel(PlotViewModel plot)
         {
-            if (this._oldParcel == parcel)
+            if (this._oldParcel == plot)
             {
-                parcel.IsOptionsVisible = !parcel.IsOptionsVisible;
-                UpdateObservaleParcel(parcel);
+                plot.IsOptionsVisible = !plot.IsOptionsVisible;
+                UpdateObservaleParcel(plot);
             }
             else
             {
@@ -204,10 +198,10 @@
                     this._oldParcel.IsOptionsVisible = false;
                     UpdateObservaleParcel(this._oldParcel);
                 }
-                parcel.IsOptionsVisible = true;
-                UpdateObservaleParcel(parcel);
+                plot.IsOptionsVisible = true;
+                UpdateObservaleParcel(plot);
             }
-            this._oldParcel = parcel;
+            this._oldParcel = plot;
         }
 
         /// <summary>
@@ -248,8 +242,12 @@
 
             if (deleteConfirmed)
             {
-                _cimmytDbOperations.DeleteParcel((string)id);
-                Parcels.Remove(Parcels.Where(x => x.ParcelId == id).SingleOrDefault(null));
+                Plot plotToRemove = Plots.Where(x => x.ID == (int)id).SingleOrDefault(null);
+                if (plotToRemove != null)
+                {
+                    await AppDataService.RemovePlot(plotToRemove);
+                }
+                Plots.Remove(Plots.Where(x => x.ID == (int)id).SingleOrDefault(null));
             }
         }
 
@@ -300,10 +298,6 @@
         private async void RefreshParcels()
         {
             var plots = await this.AppDataService.GetAllPlots();
-            var parcelDTO = this._cimmytDbOperations.GetAllParcels();
-            var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
-
-            Parcels = parcels;
             UploadCommand.Execute();
         }
 
@@ -312,12 +306,12 @@
         /// </summary>
         private void SetObservableParcel()
         {
-            ObservableParcel = new ObservableCollection<ParcelViewModel>();
-            foreach (var parcel in Parcels)
+            ObservableParcel = new ObservableCollection<PlotViewModel>();
+            foreach (var plot in Plots)
             {
-                ObservableParcel.Add(new ParcelViewModel
+                ObservableParcel.Add(new PlotViewModel
                 {
-                    Parcel = parcel,
+                    Plot = plot,
                     IsOptionsVisible = false
                 });
             }
@@ -327,7 +321,7 @@
         ///     The UpdateObservaleParcel
         /// </summary>
         /// <param name="parcel">The <see cref="ParcelViewModel" /></param>
-        private void UpdateObservaleParcel(ParcelViewModel parcel)
+        private void UpdateObservaleParcel(PlotViewModel parcel)
         {
             var index = ObservableParcel.IndexOf(parcel);
             if (index == -1)
@@ -342,14 +336,14 @@
         /// <summary>
         ///     The UploadParcels
         /// </summary>
-        private void UploadParcels()
+        private void UploadPlots()
         {
-            foreach (var parcel in Parcels)
+            foreach (var plot in Plots)
             {
-                parcel.Submit();
+                plot.Submit();
             }
 
-            Parcels = Parcels; // Just for triggering setproperty
+            Plots = Plots; // Just for triggering setproperty
             ShowUploadButton = false;
         }
     }

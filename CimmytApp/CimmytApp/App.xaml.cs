@@ -12,8 +12,6 @@
     using CimmytApp.Views;
     using CimmytApp.WeatherForecast;
     using CommonServiceLocator;
-    using Helper.Realm;
-    using Helper.Realm.BusinessContract;
     using Microsoft.AppCenter;
     using Microsoft.AppCenter.Analytics;
     using Microsoft.AppCenter.Crashes;
@@ -69,8 +67,8 @@
             {
                 try
                 {
-                    IPosition geolocator = ServiceLocator.Current.GetInstance<IPosition>();
-                    geolocator?.StopListening();
+                    //IPosition geolocator = ServiceLocator.Current.GetInstance<IPosition>(); todo use essentials
+                    //geolocator?.StopListening();
                 }
                 catch (Exception e)
                 {
@@ -145,8 +143,6 @@
                 containerRegistry.RegisterForNavigation<MainPage>();
                 containerRegistry.RegisterForNavigation<ParcelMainPage>();
                 containerRegistry.RegisterForNavigation<ProfilePage>();
-                containerRegistry.Register<ICimmytDbOperations, CimmytDbOperations>();
-                containerRegistry.Register<IPosition, LocationBusiness>();
 
                 containerRegistry.RegisterLocalization();
                 containerRegistry.RegisterSharedContextClasses();

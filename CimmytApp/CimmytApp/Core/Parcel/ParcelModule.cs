@@ -15,7 +15,6 @@
             containerRegistry.RegisterForNavigation<DeleteParcelPage>();
             containerRegistry.RegisterForNavigation<ParcelsOverviewPage>();
             containerRegistry.RegisterForNavigation<ParcelPage>();
-            containerRegistry.RegisterForNavigation<SelectTechnologiesPage>();
         }
 
         public void OnInitialized(IContainerProvider containerProvider)

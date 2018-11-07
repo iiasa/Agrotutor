@@ -21,7 +21,7 @@
         /// <summary>
         ///     Defines the _datasets
         /// </summary>
-        private List<Ingreso> _datasets;
+        private List<Income> _datasets;
 
         private bool _isLoading;
         private List<Dataset> _stats;
@@ -29,7 +29,7 @@
         /// <summary>
         ///     Gets or sets the Datasets
         /// </summary>
-        public List<Ingreso> Datasets
+        public List<Income> Datasets
         {
             get => _datasets;
             set => SetProperty(ref _datasets, value);
@@ -49,12 +49,12 @@
 
         public void CalculateStats()
         {
-            Datasets = new List<Ingreso>(Datasets.OrderBy(x => double.Parse(x.Income)));
-            var min = double.Parse(Datasets.ElementAt(0)?.Income);
-            var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.Income);
-            var q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.Income);
-            var q2 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 2.0))?.Income);
-            var q3 = double.Parse(Datasets.ElementAt((int)Math.Floor(3 * Datasets.Count / 4.0))?.Income);
+            Datasets = new List<Income>(Datasets.OrderBy(x => double.Parse(x.IncomePerHa)));
+            var min = double.Parse(Datasets.ElementAt(0)?.IncomePerHa);
+            var max = double.Parse(Datasets.ElementAt(Datasets.Count - 1)?.IncomePerHa);
+            var q1 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 4.0))?.IncomePerHa);
+            var q2 = double.Parse(Datasets.ElementAt((int)Math.Floor(Datasets.Count / 2.0))?.IncomePerHa);
+            var q3 = double.Parse(Datasets.ElementAt((int)Math.Floor(3 * Datasets.Count / 4.0))?.IncomePerHa);
             Stats = new List<Dataset>
             {
                 new Dataset
@@ -91,7 +91,7 @@
         public async void LoadData()
         {
             IsLoading = true;
-            Datasets = await RequestJson.Get<List<Ingreso>>(
+            Datasets = await RequestJson.Get<List<Income>>(
                 "http://104.239.158.49/api.php?type=ingreso&tkn=E31C5F8478566357BA6875B32DC59");
 
             CalculateStats();

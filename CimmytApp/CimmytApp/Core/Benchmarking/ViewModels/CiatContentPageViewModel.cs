@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using CimmytApp.Core.DTO.Benchmarking;
+    using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
     using Flurl;
@@ -60,7 +61,7 @@
             set => SetProperty(ref this.currentData, value);
         }
 
-        public Map.GeoPosition GeoPosition { get; set; }
+        public Position GeoPosition { get; set; }
 
         public string Crop { get; set; }
 
@@ -102,7 +103,7 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_POSITION, out Map.GeoPosition position);
+            parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_POSITION, out Position position);
             this.GeoPosition = position;
 
             parameters.TryGetValue(CiatContentPageViewModel.PARAMETER_NAME_CROP, out string crop);

@@ -39,7 +39,7 @@ namespace CimmytApp.Resources.Core.Parcel.Views {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.Resources.Core.Parcel.Views.ActivityDetail", typeof(ActivityDetail).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.Resources.Core.Plot.Views.ActivityDetail", typeof(ActivityDetail).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

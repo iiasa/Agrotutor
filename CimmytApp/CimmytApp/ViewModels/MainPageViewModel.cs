@@ -2,35 +2,29 @@
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Acr.UserDialogs;
-    using CimmytApp.DTO.Parcel;
-    using CimmytApp.Parcel.Events;
+    using CimmytApp.Core.Persistence;
     using Helper.Map.ViewModels;
-    using Helper.Realm.BusinessContract;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Events;
-    using Prism.Mvvm;
     using Prism.Navigation;
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
     public class MainPageViewModel : ViewModelBase
     {
-        private readonly ICimmytDbOperations cimmytDbOperations;
+        private readonly IAppDataService appDataService;
         private readonly IEventAggregator eventAggregator;
         private readonly INavigationService navigationService;
 
         private string title;
 
         public MainPageViewModel(IEventAggregator eventAggregator, INavigationService navigationService,
-            ICimmytDbOperations cimmytDbOperations, IStringLocalizer<MainPageViewModel> localizer) : base(localizer)
+            IAppDataService appDataService, IStringLocalizer<MainPageViewModel> localizer) : base(localizer)
         {
             this.navigationService = navigationService;
-            this.cimmytDbOperations = cimmytDbOperations;
+            this.appDataService = appDataService;
             this.eventAggregator = eventAggregator;
-            this.eventAggregator.GetEvent<DbConnectionRequestEvent>().Subscribe(OnDbConnectionRequest);
-            this.eventAggregator.GetEvent<DbConnectionAvailableEvent>().Publish();
 
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
             NavigateToMapCommand = new DelegateCommand(NavigateToMap);
@@ -58,22 +52,21 @@
             this.navigationService.NavigateAsync("NavigationPage/" + page);
         }
 
-        private void NavigateToCalendar()
+        private async void NavigateToCalendar()
         {
             var parameters = new NavigationParameters();
-            var parcelDTO = this.cimmytDbOperations.GetAllParcels();
-            parameters.Add("Parcels", parcelDTO.Select(Parcel.FromDTO).ToList());
+            var plots = await this.appDataService.GetAllPlots();
+            parameters.Add("Plots", plots);
             this.navigationService.NavigateAsync("NavigationPage/CalendarPage", parameters);
         }
 
-        private void NavigateToMap()
+        private async void NavigateToMap()
         {
             var polygons = new List<Polygon>();
             var parcelLocations = new List<Pin>();
-            var parcelDTO = this.cimmytDbOperations.GetAllParcels();
-            var parcels = parcelDTO.Select(Parcel.FromDTO).ToList();
+            var plots = await this.appDataService.GetAllPlots();
 
-            foreach (var item in parcels)
+            foreach (var item in plots)
             {
                 var delineation = item.Delineation;
 
@@ -100,7 +93,7 @@
                     polygons.Add(polygon);
                 }
 
-                if (item.Position != null && item.Position.IsSet())
+                if (item.Position != null)
                 {
                     parcelLocations.Add(new Pin
                     {
@@ -116,11 +109,6 @@
             };
 
             this.navigationService.NavigateAsync("NavigationPage/Map", parameters);
-        }
-
-        private void OnDbConnectionRequest()
-        {
-            this.eventAggregator.GetEvent<DbConnectionEvent>().Publish(this.cimmytDbOperations);
         }
     }
 }

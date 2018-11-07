@@ -39,7 +39,7 @@ namespace CimmytApp.Resources.Core.Parcel.Views {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.Resources.Core.Parcel.Views.ParcelsOverviewPage", typeof(ParcelsOverviewPage).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CimmytApp.Resources.Core.Plot.Views.ParcelsOverviewPage", typeof(ParcelsOverviewPage).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -97,7 +97,7 @@ namespace CimmytApp.Resources.Core.Parcel.Views {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Parcel information.
+        ///   Looks up a localized string similar to Plot information.
         /// </summary>
         internal static string title {
             get {

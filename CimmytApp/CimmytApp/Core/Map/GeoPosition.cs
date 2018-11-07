@@ -1,13 +1,12 @@
 ﻿namespace CimmytApp.Core.Map
 {
     using System;
-    using Helper.Realm.DTO;
     using Xamarin.Forms.GoogleMaps;
 
     /// <summary>
     ///     Defines the <see cref="GeoPosition" />
     /// </summary>
-    public class GeoPosition
+    public class GeoPositione
     {
         /// <summary>
         ///     Gets or sets the Accuracy
@@ -39,47 +38,6 @@
         public string ParcelId { get; set; }
 
         public bool IsPartOfdelineation { get; set; }
-
-        public static GeoPosition FromDTO(GeoPositionDTO position)
-        {
-            if (position == null)
-            {
-                return null; // Cast is for not having to reference Realm lib
-            }
-
-            return new GeoPosition
-            {
-                Accuracy = position.Accuracy,
-                Altitude = position.Altitude,
-                AltitudeAccuracy = position.AltitudeAccuracy,
-                Heading = position.Heading,
-                Id = position.Id,
-                IsPartOfdelineation = position.IsPartOfdelineation,
-                Latitude = position.Latitude,
-                Longitude = position.Longitude,
-                ParcelId = position.ParcelId,
-                Speed = position.Speed,
-                Timestamp = position.Timestamp
-            };
-        }
-
-        public GeoPositionDTO GetDTO(string parcelId)
-        {
-            return new GeoPositionDTO
-            {
-                Accuracy = Accuracy,
-                Altitude = Altitude,
-                AltitudeAccuracy = AltitudeAccuracy,
-                Heading = Heading,
-                Id = Id,
-                IsPartOfdelineation = IsPartOfdelineation,
-                Latitude = Latitude,
-                Longitude = Longitude,
-                ParcelId = parcelId,
-                Speed = Speed,
-                Timestamp = Timestamp
-            };
-        }
 
         public bool IsSet()
         {

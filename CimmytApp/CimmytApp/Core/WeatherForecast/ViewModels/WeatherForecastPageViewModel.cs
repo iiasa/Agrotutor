@@ -1,21 +1,17 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
-    using System;
-    using System.Windows.Input;
-    using CimmytApp.DTO.Parcel;
+    using CimmytApp.Core.Persistence.Entities;
     using Helper.DTO.SkywiseWeather.Historical;
     using Helper.DTO.SkywiseWeather.Historical.Temperature;
-    using Helper.Map;
-    using Prism;
     using Prism.Mvvm;
     using Prism.Navigation;
 
     public class WeatherForecastPageViewModel : BindableBase, INavigationAware
     {
         private DailyHighTemperature _dailyHighTemperature;
-        private Parcel _parcel;
+        private Plot _plot;
         private WeatherData _weatherData;
-        private Core.Map.GeoPosition position;
+        private Position position;
 
         public DailyHighTemperature DailyHighTemperature
         {
@@ -23,24 +19,24 @@
             private set => SetProperty(ref _dailyHighTemperature, value);
         }
 
-        public Parcel Parcel
+        public Plot Plot
         {
-            get => _parcel;
+            get => _plot;
             set
             {
-                SetProperty(ref _parcel, value);
-                if (_parcel.Position.Latitude != null && _parcel.Position.Longitude != null
+                SetProperty(ref _plot, value);
+                if (_plot.Position.Latitude != null && _plot.Position.Longitude != null
                 ) // TODO - check if undefined - ==0.0?
                 {
-                    if (_parcel.Position.Latitude == 0 && _parcel.Position.Longitude == 0)
+                    if (_plot.Position.Latitude == 0 && _plot.Position.Longitude == 0)
                     {
                         return;
                     }
 
-                    position = new Core.Map.GeoPosition
+                    position = new Position
                     {
-                        Latitude = Parcel.Position.Latitude,
-                        Longitude = Parcel.Position.Longitude
+                        Latitude = Plot.Position.Latitude,
+                        Longitude = Plot.Position.Longitude
                     };
                     LoadWeatherDataAsync();
                 }

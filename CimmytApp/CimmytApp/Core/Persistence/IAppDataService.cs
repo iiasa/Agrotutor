@@ -12,6 +12,12 @@
 
         Task AddPlot(Plot plot);
 
+        Task UpdatePlot(Plot plot);
+
+        Task RemovePlot(Plot plot);
+
         Task<IEnumerable<Plot>> GetAllPlots();
+
+        Task<Plot> GetPlot(int id);
     }
 }

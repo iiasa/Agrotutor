@@ -448,7 +448,7 @@
     <value>Enlaces</value>
   </data>
   <data name="page_title_login" xml:space="preserve">
-    <value>Ingreso</value>
+    <value>Income</value>
   </data>
   <data name="page_title_main" xml:space="preserve">
     <value>México Produce!</value>
@@ -460,7 +460,7 @@
     <value>Mensajes</value>
   </data>
   <data name="page_title_parcels_overview" xml:space="preserve">
-    <value>Parcelas</value>
+    <value>Plotas</value>
   </data>
   <data name="page_title_parcel_add_information" xml:space="preserve">
     <value>Ingrese información</value>
@@ -631,7 +631,7 @@
     <value>Vale</value>
   </data>
   <data name="parcels" xml:space="preserve">
-    <value>Parcelas</value>
+    <value>Plotas</value>
   </data>
   <data name="refresh_benchmarking_data" xml:space="preserve">
     <value>Actualizar los datos comparativos</value>
