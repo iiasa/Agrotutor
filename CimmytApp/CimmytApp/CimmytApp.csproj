@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Core\Components\ViewModels\" />
     <Folder Include="Helper\" />
     <Folder Include="Properties\" />
     <Folder Include="Resources\Core\Benchmarking\ViewModels\" />
@@ -108,7 +109,7 @@
     <Compile Update="Core\Calendar\Views\CalendarPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Core\Components\MiniMenuIcon.xaml.cs">
+    <Compile Update="Core\Components\Views\MiniMenuIcon.xaml.cs">
       <DependentUpon>MiniMenuIcon.xaml</DependentUpon>
     </Compile>
     <Compile Update="Core\Map\Views\Map.xaml.cs">
@@ -266,13 +267,13 @@
     <EmbeddedResource Update="Core\Calendar\Components\Views\WeeklyCalendar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Core\Components\Header.xaml">
+    <EmbeddedResource Update="Core\Components\Views\Header.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Core\Components\IconWithText.xaml">
+    <EmbeddedResource Update="Core\Components\Views\IconWithText.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Core\Components\WeatherWidget.xaml">
+    <EmbeddedResource Update="Core\Components\Views\WeatherWidget.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Core\Map\Views\MapMainPage.xaml">
@@ -364,7 +365,7 @@
     <EmbeddedResource Update="Resources\Views\MainPage.resx">
       <Generator></Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Core\Components\MenuIcon.xaml">
+    <EmbeddedResource Update="Core\Components\Views\MenuIcon.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\StaticContent\Views\CitationPage.resx">

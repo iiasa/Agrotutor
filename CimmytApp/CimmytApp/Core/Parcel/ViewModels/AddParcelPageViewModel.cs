@@ -15,6 +15,7 @@
     using Prism.Commands;
     using Prism.Navigation;
     using Xamarin.Forms.GoogleMaps;
+    using Position = Persistence.Entities.Position;
 
     public class AddParcelPageViewModel : ViewModelBase, INavigatedAware
     {
@@ -239,7 +240,7 @@
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                     CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                        new Xamarin.Forms.GoogleMaps.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("Map", parameters);
         }
@@ -254,7 +255,7 @@
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                     CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                        new Xamarin.Forms.GoogleMaps.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("Map", parameters);
         }
@@ -269,7 +270,7 @@
             {
                 parameters.Add(MapViewModel.MapCenterParameterName,
                     CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
+                        new Xamarin.Forms.GoogleMaps.Position((double)Parcel.Position.Latitude, (double)Parcel.Position.Longitude), 15)));
             }
             _navigationService.NavigateAsync("Map", parameters);
         }
@@ -302,7 +303,13 @@
         {
             await AppDataService.AddPlot(new Plot
             {
-                Name = "Test"
+                Name = "Test",
+                Position = new Position
+                {
+                    Latitude = 66,
+                    Longitude = 6,
+                    Accuracy = 69
+                }
             });
         }
 

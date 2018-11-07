@@ -4,7 +4,7 @@
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
-    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Core.Benchmarking.Views.ViewIngresoPage" 
     Padding="16">
     <ScrollView>

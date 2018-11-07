@@ -3,7 +3,6 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using CimmytApp.Core.DTO.Parcel;
-    using CimmytApp.Core.Map;
     using CimmytApp.DTO.Parcel;
 
     public class Plot
@@ -19,11 +18,11 @@
 
         public MaturityType MaturityType { get; set; }
 
-        public List<AgriculturalActivity> AgriculturalActivities { get; set; }
+        public List<Activity> Activities { get; set; }
 
-        public GeoPosition GeoPosition { get; set; }
+        public Position Position { get; set; }
 
-        public List<GeoPosition> Delineation { get; set; }
+        public List<Position> Delineation { get; set; }
 
         //TODO: add pictures
         //Todo: add videos

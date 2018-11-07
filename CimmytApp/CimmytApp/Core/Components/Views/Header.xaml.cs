@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Core.Components
+﻿namespace CimmytApp.Core.Components.Views
 {
     using Xamarin.Forms;
 

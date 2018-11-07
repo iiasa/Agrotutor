@@ -1,52 +1,52 @@
-﻿namespace CimmytApp.Core.Components
+﻿namespace CimmytApp.Core.Components.Views
 {
     using System;
     using System.Windows.Input;
     using Xamarin.Forms;
 
-    public partial class IconWithText : ContentView
+    public partial class MiniMenuIcon : ContentView
     {
         public event EventHandler Clicked;
 
         public static readonly BindableProperty IconTextProperty =
-            BindableProperty.Create(nameof(IconText), typeof(string), typeof(MenuIcon), default(string));
+            BindableProperty.Create(nameof(IconText), typeof(string), typeof(MiniMenuIcon), default(string));
 
         public static readonly BindableProperty IconSourceProperty =
-            BindableProperty.Create(nameof(IconSource), typeof(ImageSource), typeof(MenuIcon));
+            BindableProperty.Create(nameof(IconSource), typeof(ImageSource), typeof(MiniMenuIcon));
 
         public static readonly BindableProperty CommandProperty =
-            BindableProperty.Create(nameof(MenuIcon.Command), typeof(ICommand), typeof(MenuIcon));
+             BindableProperty.Create(nameof(MiniMenuIcon.Command), typeof(ICommand), typeof(MiniMenuIcon));
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MenuIcon));
+             BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MiniMenuIcon));
 
         public string IconText
         {
-            get => (string)GetValue(IconWithText.IconTextProperty);
-            set => SetValue(IconWithText.IconTextProperty, value);
+            get => (string)GetValue(MiniMenuIcon.IconTextProperty);
+            set => SetValue(MiniMenuIcon.IconTextProperty, value);
         }
 
         public ImageSource IconSource
         {
-            get => (ImageSource)GetValue(IconWithText.IconSourceProperty);
-            set => SetValue(IconWithText.IconSourceProperty, value);
+            get => (ImageSource)GetValue(MiniMenuIcon.IconSourceProperty);
+            set => SetValue(MiniMenuIcon.IconSourceProperty, value);
         }
 
         public ICommand Command
         {
-            get => (ICommand)GetValue(IconWithText.CommandProperty);
-            set => SetValue(IconWithText.CommandProperty, value);
+            get => (ICommand)GetValue(MiniMenuIcon.CommandProperty);
+            set => SetValue(MiniMenuIcon.CommandProperty, value);
         }
 
         public object CommandParameter
         {
-            get => GetValue(IconWithText.CommandParameterProperty);
-            set => SetValue(IconWithText.CommandParameterProperty, value);
+            get => GetValue(MiniMenuIcon.CommandParameterProperty);
+            set => SetValue(MiniMenuIcon.CommandParameterProperty, value);
         }
 
-        public IconWithText ()
+        public MiniMenuIcon()
 		{
-			InitializeComponent ();
+			InitializeComponent();
 
             this.IconTextLabel.SetBinding(Label.TextProperty, new Binding(nameof(IconText), source: this));
             this.IconImage.SetBinding(Image.SourceProperty, new Binding(nameof(IconSource), source: this));
@@ -65,5 +65,5 @@
                 })
             });
         }
-	}
+    }
 }

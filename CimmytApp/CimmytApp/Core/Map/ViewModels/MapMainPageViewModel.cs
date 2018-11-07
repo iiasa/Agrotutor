@@ -1,12 +1,9 @@
 ﻿namespace CimmytApp.Core.Map.ViewModels
 {
-    using System;
     using Acr.UserDialogs;
     using CimmytApp.Core.Map.Views;
     using CimmytApp.ViewModels;
-    using Microsoft.AppCenter.Crashes;
     using Microsoft.Extensions.Localization;
-    using Plugin.Permissions;
     using Plugin.Permissions.Abstractions;
     using Prism.Commands;
     using Prism.Navigation;
@@ -27,13 +24,33 @@
         public DelegateCommand NavigateToMain => new DelegateCommand(() => NavigationService.NavigateAsync("MainPage"));
         public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.OpenSettings);
 
+
+        public DelegateCommand AddParcelClicked => new DelegateCommand(() =>
+            {
+                CurrentMapTask = MapTask.CreatePlotBySelection;
+            });
+
         public bool LocationPermissionAvailable { get; set; }
 
-        public DelegateCommand<MapClickedEventArgs> MapClickedCommand => new DelegateCommand<MapClickedEventArgs>(
+        public MapTask CurrentMapTask { get; set; }
+
+        public string CurrentMapTaskHint { get; set; }
+        public bool ShowCurrentMapTaskHint { get; set; }
+
+
+        public DelegateCommand<MapClickedEventArgs> MapClicked => new DelegateCommand<MapClickedEventArgs>(
             (args) =>
             {
-
+                switch (CurrentMapTask)
+                {
+                    case MapTask.CreatePlotBySelection:
+                        createPlotAtPosition(args.Point);
+                        break;
+                }
             });
+
+        public DelegateCommand<MapLongClickedEventArgs> MapLongClicked => new DelegateCommand<MapLongClickedEventArgs>(
+            (args) => { createPlotAtPosition(args.Point); });
 
         public void SetView(MapMainPage mapMainPage)
         {
@@ -46,41 +63,36 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            EnsureLocationPermissionAvailable();
+            GeolocationRequest req = new GeolocationRequest();
+            Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium));
+            EnableUserLocation();
         }
 
-        private async void EnsureLocationPermissionAvailable()
+        private async void EnableUserLocation()
         {
-            try
+            bool permissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
+            if (permissionGiven)
             {
-                var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-
-                if (permissionStatus != PermissionStatus.Granted)
-                {
-                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
-                    {
-                        await UserDialogs.Instance.AlertAsync("Please allow AgroTutor to use your device's location.", "Request to use location", "OK");
-                    }
-
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
-
-                    if (results.ContainsKey(Permission.Location))
-                        permissionStatus = results[Permission.Location];
-                }
-
-                if (permissionStatus == PermissionStatus.Granted)
-                {
-                    LocationPermissionAvailable = true;
-                    MapMainPage.EnableMyLocation();
-                }
-                else if (permissionStatus != PermissionStatus.Unknown)
-                {
-                    await UserDialogs.Instance.AlertAsync("It seems you denied us to use the GPS location. Please rethink your decision as this app relies on knowing the location of you and your plots.", "Permission denied", "OK");
-                }
+                this.MapMainPage.EnableMyLocation();
             }
-            catch (Exception e)
+        }
+
+        private async void createPlotAtPosition(Position position)
+        {
+            var confirmPlotCreation = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
             {
-                Crashes.TrackError(e);
+                Message = "Do you want to create a new plot at this location?",
+                OkText = "Yes",
+                CancelText = "Cancel",
+                Title = "Add plot"
+            });
+
+
+            if (confirmPlotCreation)
+            {
+                var navigaytionParams = new NavigationParameters();
+                navigaytionParams.Add("position", position);
+                NavigationService.NavigateAsync("AddParcelPage");
             }
         }
     }

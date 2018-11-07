@@ -2,7 +2,7 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Core.Parcel.Views.ViewActivitiesPage" Padding="16">
     <ScrollView>

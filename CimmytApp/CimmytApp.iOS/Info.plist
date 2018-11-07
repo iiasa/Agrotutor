@@ -52,5 +52,7 @@
 	<string>Resources/Assets.xcassets/AppIcon.appiconset</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+    <string>This app needs access location when open.</string>
 </dict>
 </plist>

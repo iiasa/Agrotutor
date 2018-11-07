@@ -15,7 +15,7 @@ namespace CimmytApp.Core.Map.Views
             ViewModel = (MapMainPageViewModel)BindingContext;
             ViewModel.SetView(this);
             this.map.UiSettings.CompassEnabled = true;
-            this.map.UiSettings.MyLocationButtonEnabled = true;
+            this.map.UiSettings.MyLocationButtonEnabled = false;
             this.map.UiSettings.RotateGesturesEnabled = true;
             this.map.UiSettings.ZoomControlsEnabled = true;
             this.map.UiSettings.TiltGesturesEnabled = true;
@@ -26,6 +26,7 @@ namespace CimmytApp.Core.Map.Views
         public void EnableMyLocation()
         {
             this.map.MyLocationEnabled = true;
+            this.map.UiSettings.MyLocationButtonEnabled = true;
         }
     }
 }

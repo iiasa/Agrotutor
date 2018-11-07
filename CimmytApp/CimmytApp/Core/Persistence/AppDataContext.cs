@@ -10,6 +10,8 @@
         }
 
         public DbSet<Plot> Plots { get; set; }
+        public DbSet<Position> Positions { get; set; }
+        public DbSet<Activity> Activities { get; set; }
 
         public void DisableDetectChanges()
         {

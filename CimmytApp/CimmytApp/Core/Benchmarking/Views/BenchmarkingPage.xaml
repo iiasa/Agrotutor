@@ -2,8 +2,8 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" prism:ViewModelLocator.AutowireViewModel="True"
-    xmlns:components="clr-namespace:CimmytApp.Core.Components;assembly=CimmytApp"
     xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     x:Class="CimmytApp.Core.Benchmarking.Views.BenchmarkingPage">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
