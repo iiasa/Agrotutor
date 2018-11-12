@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using CimmytApp.Core.DTO.Parcel;
     using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.Parcel.ActivityManagement;

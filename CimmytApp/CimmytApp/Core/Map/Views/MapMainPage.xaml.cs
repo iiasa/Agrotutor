@@ -21,6 +21,8 @@ namespace CimmytApp.Core.Map.Views
             this.map.UiSettings.TiltGesturesEnabled = true;
             this.map.UiSettings.ZoomGesturesEnabled = true;
             this.map.UiSettings.MapToolbarEnabled = true;
+            // remove below
+            this.map.UiSettings.MyLocationButtonEnabled = true;
         }
 
         public void EnableMyLocation()

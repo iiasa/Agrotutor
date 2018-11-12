@@ -4,8 +4,9 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
-             xmlns:app="clr-namespace:CimmytApp;assembly=CimmytApp"
+             xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
              xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
+             xmlns:controls="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Core.Map.Views.MapMainPage">
     <Grid>
@@ -18,15 +19,16 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
         <googleMaps:Map 
             x:Name="map" MapType="Hybrid"
             VerticalOptions="FillAndExpand" InitialCameraUpdate="20,-100,5"
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="3"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="3"
             >
             <googleMaps:Map.Behaviors>
                 <bindings:MapClickedToCommandBehavior Command="{Binding MapClicked}" />
@@ -35,23 +37,130 @@
         </googleMaps:Map>
 
         <components:WeatherWidget 
-            Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" 
-            HorizontalOptions="CenterAndExpand" />
+            Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" 
+            HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38" />
 
-        <components:MiniMenuIcon Grid.Row="3" Grid.Column="0" 
-            IconText="Guide" IconSource="question.png" 
-            Command="{Binding NavigateToMain}"/>
-        <components:MiniMenuIcon Grid.Row="3" Grid.Column="1" 
-            IconText="Options" IconSource="icons_settings_96.png" 
-            Command="{Binding NavigateToMain}"/>
-        <components:MiniMenuIcon Grid.Row="3" Grid.Column="2" 
-            IconText="Calendar" IconSource="calendar.png" 
-            Command="{Binding NavigateToMain}"/>
-        <components:MiniMenuIcon Grid.Row="3" Grid.Column="3" 
-            IconText="Weather" IconSource="clear.png" 
-            Command="{Binding ShowSettings}"/>
-        <components:MiniMenuIcon Grid.Row="3" Grid.Column="4" 
-            IconText="Add parcel" IconSource="add.png" 
-            Command="{Binding AddParcelClicked}"/>
+        <StackLayout Orientation="Horizontal" 
+            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6">
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Guide" IconSource="question.png" 
+                Command="{Binding NavigateToMain}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Options" IconSource="icons_settings_96.png" 
+                Command="{Binding NavigateToMain}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Calendar" IconSource="calendar.png" 
+                Command="{Binding NavigateToMain}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Weather" IconSource="clear.png" 
+                Command="{Binding ShowSettings}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Add parcel" IconSource="add.png" 
+                Command="{Binding AddParcelClicked}"/>
+
+        </StackLayout>
+        
+        <BoxView BackgroundColor="Black"
+            Opacity="0.5" Grid.Row="0" Grid.Column="0" 
+            Grid.ColumnSpan="6" Grid.RowSpan="4"/>
+
+        <ContentView 
+            x:Name="AddParcelView"
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.ColumnSpan="4"
+            HorizontalOptions="Center"
+            IsVisible="True"
+            HeightRequest="25"
+            >
+            <Frame BackgroundColor="Azure" Opacity="0.95">
+
+                <ScrollView>
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal" >
+                            <Image Source="add.png" HeightRequest="20" />
+                            <Label
+                                HorizontalOptions="StartAndExpand"
+                                Text="Add Parcel"
+                                FontSize="20" />
+
+                        </StackLayout>
+                        <components:Divider />
+                        <components:IconWithText
+                            IconText="Using current location"
+                            IconSource="get_location.png"
+                            Command="{Binding ClickGetLocation}"/>
+
+                        <components:IconWithText
+                            IconText="Selecting on the map"
+                            IconSource="choose_location.png"
+                            Command="{Binding ClickChooseLocation}" />
+
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </ContentView>
+
+        <ContentView
+                x:Name="FilterView"
+                Grid.Row="1"
+                Grid.Column="1"
+                Grid.ColumnSpan="4"
+                HorizontalOptions="Center"
+                IsVisible="False"
+                VerticalOptions="Center">
+            <Frame BackgroundColor="Azure" Opacity="0.95">
+                <ScrollView>
+                    <StackLayout>
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="FilterData"
+                            FontSize="20" />
+                        <components:Divider />
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Lorem"
+                                    VerticalOptions="Center" />
+                            <controls:RadioButton x:Name="IsShowAll" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Heyhey"
+                                    VerticalOptions="Center" />
+                            <controls:RadioButton x:Name="IsLastDay" HorizontalOptions="End"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Woohooo!"
+                                    VerticalOptions="Center" />
+                            <controls:RadioButton x:Name="IsLast3Days" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                    HorizontalOptions="StartAndExpand" 
+                                    Text="Blurgl"
+                                    VerticalOptions="Center" />
+                            <iconize:IconButton Command="{Binding FromCommand}" Text="fas-calendar" HeightRequest="50" />
+                            <Label
+                                    HorizontalOptions="StartAndExpand" TextColor="White"
+                                    Text="Blurrrgh"
+                                    VerticalOptions="Center" />
+                            <iconize:IconButton Command="{Binding ToCommand}" Text="fas-calendar" WidthRequest="50"
+                                                    HeightRequest="50" />
+                            <controls:RadioButton x:Name="IsDateFilter"  TextColor="White"/>
+                        </StackLayout>
+                        <controls:RadioButtonGroupView>
+                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsShowAll}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsShowAll"/>
+                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLastDay}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                        </controls:RadioButtonGroupView>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </ContentView>
     </Grid>
 </ContentPage>

@@ -13,7 +13,6 @@
     using Prism;
     using Prism.Ioc;
     using Xamarin;
-    using Xamarin.Essentials;
     using Xamarin.Forms;
     using Xamarin.Forms.Platform.Android;
 
@@ -52,6 +51,9 @@
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
+                InstallFontPlugins();
+                Plugin.Iconize.Iconize.Init(Resource.Id.toolbar, Resource.Id.tabMode);
+                // Forms.SetFlags("FastRenderers_Experimental");
                 FormsGoogleMaps.Init(this, bundle);
                 UserDialogs.Init(this);
                 Xamarin.Essentials.Platform.Init(this, bundle);
@@ -63,6 +65,13 @@
             {
                 // ignored
             }
+        }
+
+        private void InstallFontPlugins()
+        {
+            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
+                .With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule())
+                .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule());
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

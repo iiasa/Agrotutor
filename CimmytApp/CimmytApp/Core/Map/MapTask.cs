@@ -2,7 +2,9 @@
 {
     public enum MapTask
     {
+        Default,
         CreatePlotBySelection,
+        CreatePlotByGPS,
         GetLocation,
         SelectLocation,
         SelectPolygon

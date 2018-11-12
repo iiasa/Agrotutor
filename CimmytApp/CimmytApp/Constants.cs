@@ -1,5 +1,7 @@
 ﻿namespace CimmytApp
 {
+    using System.Runtime.InteropServices.ComTypes;
+    using Xamarin.Essentials;
     using Xamarin.Forms.GoogleMaps;
 
     public class Constants
@@ -13,5 +15,7 @@
         public const string MainMapWeatherLocation = "MainMap_WeatherLocation";
         public const int MainMapWeatherRefreshDistance = 1000; // Meters
         public const int MainMapWeatherRefreshDuration = 60; // Minutes
+        public const int MainMapLocationRefreshPeriod = 15; // Seconds
+        public const GeolocationAccuracy MainMapLocationAccuracy = GeolocationAccuracy.Medium;
     }
 }

@@ -61,7 +61,8 @@
         }
         protected override void OnSleep()
         {
-            base.OnSleep();
+            if (this != null)
+                base.OnSleep();
 
             if (ServiceLocator.IsLocationProviderSet)
             {

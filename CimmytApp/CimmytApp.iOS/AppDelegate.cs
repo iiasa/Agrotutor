@@ -2,7 +2,6 @@
 {
     using CimmytApp.Core.Localization;
     using Flurl.Http;
-    using Flurl.Http.Configuration;
     using Foundation;
     using IIASA.FloodCitiSense.ApiClient;
     using Prism;
@@ -28,6 +27,9 @@
         {
             Forms.Init();
             ConfigureFlurlHttp();
+
+            InstallFontPlugins();
+            // FormsPlugin.Iconize.iOS.IconControls.Init(); TODO might be necessary
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
@@ -39,6 +41,15 @@
             {
                 c.HttpClientFactory = new ModernHttpClientFactory();
             });
+        }
+
+        private static void InstallFontPlugins()
+        {
+            Plugin.Iconize
+                .Iconize
+                .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
+                .With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule())
+                .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule());
         }
     }
 

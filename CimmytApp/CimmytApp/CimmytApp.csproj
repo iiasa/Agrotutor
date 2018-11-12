@@ -20,12 +20,14 @@
     <PackageReference Include="Microsoft.Extensions.Localization.Abstractions" Version="2.1.1" />
     <PackageReference Include="modernhttpclient" Version="2.4.2" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.0.0.396" />
+    <PackageReference Include="Xam.Plugin.Iconize.FontAwesome" Version="3.3.0.93" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamarin.Essentials" Version="0.11.0-preview" />
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.839982" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.967583" />
     <PackageReference Include="Prism.Unity.Forms" Version="7.0.0.396" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
+    <PackageReference Include="Xamarin.Forms.InputKit" Version="2.3.4" />
     <PackageReference Include="Xamarin.LiveReload" Version="0.3.27" />
   </ItemGroup>
 
@@ -50,9 +52,6 @@
   <ItemGroup>
     <Reference Include="Plugin.Geolocator">
       <HintPath>..\..\..\..\..\..\.nuget\packages\xam.plugin.geolocator\4.5.0.6\lib\monoandroid71\Plugin.Geolocator.dll</HintPath>
-    </Reference>
-    <Reference Include="Realm">
-      <HintPath>..\..\packages\Realm.Database.3.1.0\lib\netstandard1.4\Realm.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Forms.GoogleMaps">
       <HintPath>..\..\packages\Xamarin.Forms.GoogleMaps.3.0.4\lib\Xamarin.iOS10\Xamarin.Forms.GoogleMaps.dll</HintPath>
@@ -263,6 +262,9 @@
     <EmbeddedResource Update="Core\Calendar\Components\Views\WeeklyCalendar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\Divider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Core\Components\Views\Header.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -432,6 +434,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Calendar\Views\CalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\Divider.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Components\Views\Header.xaml">

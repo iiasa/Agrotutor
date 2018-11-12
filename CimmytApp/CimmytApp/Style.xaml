@@ -28,4 +28,13 @@
     <Style x:Key="ButtonGreen" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreen}" />
     </Style>
+
+    <Color x:Key="DividerColor">#2A4634</Color>
+    <OnPlatform
+        x:Key="DividerHeight"
+        x:TypeArguments="x:Double"
+        Android="1"
+        WinPhone="1"
+        iOS="0.5" />
+
 </ResourceDictionary>
