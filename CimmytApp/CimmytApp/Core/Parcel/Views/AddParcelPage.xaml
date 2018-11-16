@@ -8,7 +8,11 @@
     x:Class="CimmytApp.Core.Parcel.Views.AddParcelPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <components:Header Text="{i18n:Translate hint_crop}" IconSource="add_small.png" />
+            <components:Header Text="{i18n:Translate add_plot}" IconSource="add_small.png" />
+
+            <Label Text="{i18n:Translate hint_parcel_name}" FontSize="18" />
+            <Entry Placeholder="{i18n:Translate hint_parcel_name_1}" Text="{Binding Plot.Name}"
+                Margin="0,0,0,16" />
 
             <Label Text="{i18n:Translate hint_crop}" FontSize="18" />
             <Picker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}"
@@ -26,35 +30,6 @@
             <Picker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}"
                 Title="{i18n:Translate select}" Margin="0,0,0,16" />
 
-            <Label Text="{i18n:Translate hint_parcel_name}" FontSize="18" />
-            <Entry Placeholder="{i18n:Translate hint_parcel_name_1}" Text="{Binding Parcel.ParcelName}"
-                Margin="0,0,0,16" />
-
-            <Label Text="{i18n:Translate hint_location}" FontSize="18" />
-
-            <components:IconWithText
-                IconText="{i18n:Translate hint_gps_location}"
-                IconSource="get_location.png"
-                Command="{Binding ClickGetLocation}" />
-
-            <components:IconWithText
-                IconText="{i18n:Translate hint_choose_location}"
-                IconSource="choose_location.png"
-                Command="{Binding ClickChooseLocation}" />
-
-            <Label Text="{i18n:Translate hint_management_info}" FontSize="18" />
-
-            <components:IconWithText
-                IconText="{i18n:Translate hint_technologies}"
-                IconSource="wand.png"
-                Command="{Binding NavigateAsyncCommand}"
-                CommandParameter="SelectTechnologiesPage"/>
-
-            <components:IconWithText
-                IconText="{i18n:Translate hint_activities}"
-                IconSource="farmer.png"
-                Command="{Binding NavigateAsyncCommand}"
-                CommandParameter="ActivityPage"/>
 
             <Button Text="{i18n:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
         </StackLayout>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
+    x:Class="CimmytApp.Template">
+
+    <ControlTemplate x:Key="MainMapSelectLocation">
+        <StackLayout Style="{StaticResource MainMapTaskUI}">
+            <iconize:IconButton 
+                Style="{StaticResource ButtonOK}"
+                Command="{Binding AddPlot}"
+                Text="fas-check"/>
+            <iconize:IconButton 
+                Style="{StaticResource ButtonCancel}"
+                Command="{Binding HideOverlays}"
+                Text="fas-times"/>
+        </StackLayout>
+    </ControlTemplate>
+
+
+    <ControlTemplate x:Key="MainMapGPSLocation">
+        <StackLayout Style="{StaticResource MainMapTaskUI}">
+            <iconize:IconButton 
+                Style="{StaticResource ButtonOK}"
+                Command="{Binding AddPlot}"
+                Text="fas-check"/>
+            <iconize:IconButton 
+                Style="{StaticResource ButtonCancel}"
+                Command="{Binding HideOverlays}"
+                Text="fas-times"/>
+        </StackLayout>
+    </ControlTemplate>
+
+</ResourceDictionary>

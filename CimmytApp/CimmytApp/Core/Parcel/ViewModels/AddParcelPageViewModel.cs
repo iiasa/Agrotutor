@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Core.Plot.ViewModels
+﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
     using System.Collections.Generic;
     using CimmytApp.Core.Persistence;
@@ -10,21 +10,19 @@
     using Prism.Commands;
     using Prism.Navigation;
     using Xamarin.Forms.GoogleMaps;
-    using Position = Persistence.Entities.Position;
+    using Position = CimmytApp.Core.Persistence.Entities.Position;
 
     public class AddParcelPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string PositionParameterName = "Plot";
 
         public AddParcelPageViewModel(INavigationService navigationService,
             IStringLocalizer<AddParcelPageViewModel> localizer, IAppDataService appDataService) : base(localizer)
         {
-            _navigationService = navigationService;
+            this._navigationService = navigationService;
             AppDataService = appDataService;
 
             ClickSave = new DelegateCommand(SavePlot); //.ObservesCanExecute(o => IsSaveBtnEnabled);
-            ClickChooseLocation = new DelegateCommand(ChooseLocation);
-            ClickGetLocation = new DelegateCommand(GetLocation);
-            ClickDelineate = new DelegateCommand(Delineate);
 
             NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
 
@@ -103,38 +101,38 @@
 
         public bool IsSaveBtnEnabled
         {
-            get => _isSaveBtnEnabled;
-            set => SetProperty(ref _isSaveBtnEnabled, value);
+            get => this._isSaveBtnEnabled;
+            set => SetProperty(ref this._isSaveBtnEnabled, value);
         }
 
         public DelegateCommand<string> NavigateAsyncCommand { get; set; }
 
         public Plot Plot
         {
-            get => _plot;
+            get => this._plot;
             set
             {
-                SetProperty(ref _plot, value);
+                SetProperty(ref this._plot, value);
                 UpdateSelections();
             }
         }
 
         public int PickerClimateTypesSelectedIndex
         {
-            get => _pickerClimateTypesSelectedIndex;
+            get => this._pickerClimateTypesSelectedIndex;
             set
             {
-                SetProperty(ref _pickerClimateTypesSelectedIndex, value);
+                SetProperty(ref this._pickerClimateTypesSelectedIndex, value);
                 // Plot.ClimateType = value == -1 ? null : ClimateTypes.ElementAt(value); TODO fix
             }
         }
 
         public int PickerCropTypesSelectedIndex
         {
-            get => _pickerCropTypesSelectedIndex;
+            get => this._pickerCropTypesSelectedIndex;
             set
             {
-                SetProperty(ref _pickerCropTypesSelectedIndex, value);
+                SetProperty(ref this._pickerCropTypesSelectedIndex, value);
                 if (value == -1)
                 {
                     Plot.CropType = CropType.None;
@@ -148,19 +146,20 @@
 
         public int PickerMaturityClassesSelectedIndex
         {
-            get => _pickerMaturityClassesSelectedIndex;
+            get => this._pickerMaturityClassesSelectedIndex;
             set
             {
-                SetProperty(ref _pickerMaturityClassesSelectedIndex, value);
+                SetProperty(ref this._pickerMaturityClassesSelectedIndex, value);
                 // Plot.MaturityClass = value == -1 ? null : MaturityClasses.ElementAt(value); todo: fix
             }
         }
 
         public bool UserIsAtPlot
         {
-            get => _userIsAtPlot;
-            set => SetProperty(ref _userIsAtPlot, value);
+            get => this._userIsAtPlot;
+            set => SetProperty(ref this._userIsAtPlot, value);
         }
+        public Position Position { get; private set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -168,91 +167,14 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Plot"))
+            if (parameters.ContainsKey(AddParcelPageViewModel.PositionParameterName))
             {
-                parameters.TryGetValue<Plot>("Plot", out var plot);
-                if (plot != null)
+                parameters.TryGetValue<Position>(AddParcelPageViewModel.PositionParameterName, out var position);
+                if (position != null)
                 {
-                    Plot = plot;
+                    Position = position;
                 }
             }
-            if (parameters.ContainsKey("Activities"))
-            {
-                parameters.TryGetValue<List<Activity>>("Activities", out var activities);
-                if (Plot.Activities == null)
-                {
-                    Plot.Activities = activities;
-                }
-                else
-                {
-                    if (activities != null)
-                    {
-                        activities.AddRange(Plot.Activities);
-                        Plot.Activities = activities;
-                    }
-                }
-            }
-            if (parameters.ContainsKey("GeoPosition"))
-            {
-                parameters.TryGetValue<Position>("GeoPosition", out var geoPosition);
-                if (geoPosition != null)
-                {
-                    Plot.Position = geoPosition;
-                }
-            }
-
-            if (parameters.ContainsKey("Delineation"))
-            {
-                parameters.TryGetValue<List<Position>>("Delineation", out var delineation);
-                Plot.Delineation = delineation;
-
-                //_cimmytDbOperations.SavePlotPolygon(Plot.PlotId, polygonObj); TODO ensure saving
-            }
-        }
-
-        private void GetLocation()
-        {
-            var parameters = new NavigationParameters
-            {
-                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.GetLocation }
-            };
-            if (Plot.Position != null)
-            {
-                parameters.Add(MapViewModel.MapCenterParameterName,
-                    CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude), 15)));
-            }
-            _navigationService.NavigateAsync("Map", parameters);
-        }
-
-        private void ChooseLocation()
-        {
-            var parameters = new NavigationParameters
-            {
-                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectLocation }
-            };
-            if (Plot.Position != null)
-            {
-                parameters.Add(MapViewModel.MapCenterParameterName,
-                    CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude), 15)));
-            }
-            _navigationService.NavigateAsync("Map", parameters);
-        }
-
-        private void Delineate()
-        {
-            var parameters = new NavigationParameters
-            {
-                { MapViewModel.MapTaskParameterName, Core.Map.MapTask.SelectPolygon }
-            };
-            if (Plot.Position != null)
-            {
-                parameters.Add(MapViewModel.MapCenterParameterName,
-                    CameraUpdateFactory.NewCameraPosition(new CameraPosition(
-                        new Xamarin.Forms.GoogleMaps.Position((double)Plot.Position.Latitude, (double)Plot.Position.Longitude), 15)));
-            }
-            _navigationService.NavigateAsync("Map", parameters);
         }
 
         private void NavigateAsync(string page)
@@ -262,7 +184,7 @@
                 { "Caller", "AddPlotPage" },
                 { "Plot", Plot }
             };
-            _navigationService.NavigateAsync(page, parameters);
+            this._navigationService.NavigateAsync(page, parameters);
         }
 
         private void SavePlot()
@@ -275,7 +197,7 @@
             {
                 { "id", Plot.ID }
             };
-            _navigationService.NavigateAsync("app:///MainPage", navigationParameters, true);
+            this._navigationService.NavigateAsync("app:///MainPage", navigationParameters, true);
         }
 
         private void UpdateSelections() // TODO fix

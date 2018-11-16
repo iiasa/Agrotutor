@@ -29,6 +29,14 @@
         <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreen}" />
     </Style>
 
+    <Style x:Key="ButtonOK" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreen}" />
+    </Style>
+
+    <Style x:Key="ButtonCancel" TargetType="Button">
+        <Setter Property="BackgroundColor" Value="{StaticResource SecondaryOrange}" />
+    </Style>
+
     <Color x:Key="DividerColor">#2A4634</Color>
     <OnPlatform
         x:Key="DividerHeight"
@@ -36,5 +44,36 @@
         Android="1"
         WinPhone="1"
         iOS="0.5" />
+
+    <Style x:Key="MainMapPopup" TargetType="ContentView">
+        <Setter Property="Grid.Column" Value="1"/>
+        <Setter Property="Grid.ColumnSpan" Value="5"/>
+        <Setter Property="Grid.Row" Value="1"/>
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+    </Style>
+
+    <Style x:Key="MainMapPopupBackground" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Azure"/>
+        <Setter Property="Opacity" Value="0.95"/>
+    </Style>
+
+    <Style x:Key="MainMapIconsGroup" TargetType="StackLayout">
+        <Setter Property="Orientation" Value="Horizontal"/>
+        <Setter Property="Grid.Column" Value="0"/>
+        <Setter Property="Grid.ColumnSpan" Value="7"/>
+        <Setter Property="Grid.Row" Value="4"/>
+    </Style>
+
+    <Style x:Key="MainMapTaskUI" TargetType="StackLayout">
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+
+    <Style x:Key="MainMapTaskUIContainer" TargetType="StackLayout">
+        <Setter Property="Grid.Column" Value="2"/>
+        <Setter Property="Grid.ColumnSpan" Value="3"/>
+        <Setter Property="Grid.Row" Value="3"/>
+    </Style>
 
 </ResourceDictionary>

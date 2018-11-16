@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CimmytApp.Core.Components.Views.MiniMenuIcon"
-    HeightRequest="80">
+    HeightRequest="66">
   <ContentView.Content>
         <StackLayout>
           <Image x:Name="IconImage" WidthRequest="36" />

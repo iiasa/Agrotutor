@@ -241,6 +241,9 @@
     <Compile Update="StaticContent\Views\WelcomePage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
+    <Compile Update="Template.xaml.cs">
+      <DependentUpon>Template.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -275,6 +278,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Core\Map\Views\MapMainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Map\Views\MonthlyCalendarDayView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Map\Views\MonthlyCalendarEventEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Map\Views\MonthlyCalendarMultipleEventEntries.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx">
@@ -381,6 +393,9 @@
     <EmbeddedResource Update="Resources\Views\ProfilePage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ProfilePage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Template.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

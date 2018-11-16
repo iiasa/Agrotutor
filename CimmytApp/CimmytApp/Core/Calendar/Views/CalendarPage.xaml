@@ -2,30 +2,38 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="CimmytApp.Core.Calendar.Views.CalendarPage">
+             x:Class="CimmytApp.Core.Calendar.Views.CalendarPage"
+            Padding="16,16,16,0">
     <ContentPage.Content>
         <StackLayout>
             <!--<views:MonthlyCalendar />-->
-            <Grid HeightRequest="20">
+
+            <Grid Margin="16,0,16,16">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
-                    
-                <Label Grid.Row="0" Grid.Column="0">&lt;</Label>
-                <Label Grid.Row="0" Grid.Column="1">August 2018</Label>
-                <Label Grid.Row="0" Grid.Column="2">&gt;</Label>
+
+                <iconize:IconButton Grid.Row="0" Grid.Column="0" WidthRequest="50" Text="fas-chevron-left" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowPreviousMonth}" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateRangeText}" FontSize="Large" TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                <iconize:IconButton Grid.Row="0" Grid.Column="2" WidthRequest="50" Text="fas-chevron-right" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowNextMonth}" />
+                
             </Grid>
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="16"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
+                <Grid.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Command="{Binding ShowNextMonth}"/>
+                    <SwipeGestureRecognizer Direction="Right" Command="{Binding ShowPreviousMonth}"/>
+                </Grid.GestureRecognizers>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition />
                     <ColumnDefinition />
@@ -36,23 +44,24 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" VerticalTextAlignment="Center">M</Label>
-                <Label Grid.Column="1" Grid.Row="0" VerticalTextAlignment="Center">T</Label>
-                <Label Grid.Column="2" Grid.Row="0" VerticalTextAlignment="Center">W</Label>
-                <Label Grid.Column="3" Grid.Row="0" VerticalTextAlignment="Center">T</Label>
-                <Label Grid.Column="4" Grid.Row="0" VerticalTextAlignment="Center">F</Label>
-                <Label Grid.Column="5" Grid.Row="0" VerticalTextAlignment="Center">S</Label>
-                <Label Grid.Column="6" Grid.Row="0" VerticalTextAlignment="Center">S</Label>
+                <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="M" FontSize="Small" />
+                <Label Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="T" />
+                <Label Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="W" />
+                <Label Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="T" />
+                <Label Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="F" />
+                <Label Grid.Column="5" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="S" />
+                <Label Grid.Column="6" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="S" />
                 
                 <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="7">
                     <StackLayout>
-                        <Grid HeightRequest="450">
+                        <Grid HeightRequest="450" x:Name="MonthlyCalendarGrid">
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="85"/>
-                                <RowDefinition Height="85"/>
-                                <RowDefinition Height="85"/>
-                                <RowDefinition Height="85"/>
-                                <RowDefinition Height="85"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition />
@@ -63,47 +72,6 @@
                                 <ColumnDefinition />
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
-
-                            <StackLayout Grid.Column="2" Grid.Row="0">
-                                <Label>1</Label>
-                                <Label LineBreakMode="NoWrap" FontSize="Micro" BackgroundColor="LightBlue" >EOCitSci Jour-Fixe</Label>
-                                <Label LineBreakMode="NoWrap" FontSize="Micro" BackgroundColor="LightCyan">CIMMYT</Label>
-                                <Label LineBreakMode="NoWrap" FontSize="Micro" BackgroundColor="Black" TextColor="AntiqueWhite">...</Label>
-                            </StackLayout>
-                            <Label Grid.Column="3" Grid.Row="0">2</Label>
-                            <Label Grid.Column="4" Grid.Row="0">3</Label>
-                            <Label Grid.Column="5" Grid.Row="0">4</Label>
-                            <Label Grid.Column="6" Grid.Row="0">5</Label>
-
-                            <Label Grid.Column="0" Grid.Row="1">6</Label>
-                            <Label Grid.Column="1" Grid.Row="1">7</Label>
-                            <Label Grid.Column="2" Grid.Row="1">8</Label>
-                            <Label Grid.Column="3" Grid.Row="1">9</Label>
-                            <Label Grid.Column="4" Grid.Row="1">10</Label>
-                            <Label Grid.Column="5" Grid.Row="1">11</Label>
-                            <Label Grid.Column="6" Grid.Row="1">12</Label>
-
-                            <Label Grid.Column="0" Grid.Row="2">13</Label>
-                            <Label Grid.Column="1" Grid.Row="2">14</Label>
-                            <Label Grid.Column="2" Grid.Row="2">15</Label>
-                            <Label Grid.Column="3" Grid.Row="2">16</Label>
-                            <Label Grid.Column="4" Grid.Row="2">17</Label>
-                            <Label Grid.Column="5" Grid.Row="2">18</Label>
-                            <Label Grid.Column="6" Grid.Row="2">19</Label>
-
-                            <Label Grid.Column="0" Grid.Row="3">20</Label>
-                            <Label Grid.Column="1" Grid.Row="3">21</Label>
-                            <Label Grid.Column="2" Grid.Row="3">22</Label>
-                            <Label Grid.Column="3" Grid.Row="3">23</Label>
-                            <Label Grid.Column="4" Grid.Row="3">24</Label>
-                            <Label Grid.Column="5" Grid.Row="3">25</Label>
-                            <Label Grid.Column="6" Grid.Row="3">26</Label>
-
-                            <Label Grid.Column="0" Grid.Row="4">27</Label>
-                            <Label Grid.Column="1" Grid.Row="4">28</Label>
-                            <Label Grid.Column="2" Grid.Row="4">29</Label>
-                            <Label Grid.Column="3" Grid.Row="4">30</Label>
-                            <Label Grid.Column="4" Grid.Row="4">31</Label>
                         </Grid>
                     </StackLayout>
                 </ScrollView>

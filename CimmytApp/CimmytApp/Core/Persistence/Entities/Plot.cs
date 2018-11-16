@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
+    using CimmytApp.Core.Calendar.Types;
     using CimmytApp.Core.DTO.Parcel;
     using CimmytApp.DTO.Parcel;
     using Helper.GeoWiki.API.GenericDatasetStorage;
@@ -33,7 +34,34 @@
         {
             Storage.StoreDatasetAsync(this, -1, 16, 1, 1);
         }
+
+        public IEnumerable<CalendarEvent> GetCalendarEvents()
+        {
+            var events = new List<CalendarEvent>();
+            foreach (Activity activity in Activities)
+            {
+                events.Add(new CalendarEvent
+                {
+                    Data = activity,
+                    AllDayEvent = true,
+                    StartTime = activity.Date,
+                    EndTime = activity.Date,
+                    Title = activity.Name
+                });
+            }
+
+            return events;
+        }
+
+        public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
+        {
+            var events = new List<CalendarEvent>();
+            foreach (Plot plot in plots)
+            {
+                events.AddRange(plot.GetCalendarEvents());
+            }
+
+            return events;
+        }
     }
-
-
 }

@@ -15,6 +15,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -22,17 +23,20 @@
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
             <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <googleMaps:Map 
             x:Name="map" MapType="Hybrid"
             VerticalOptions="FillAndExpand" InitialCameraUpdate="20,-100,5"
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="6" Grid.RowSpan="3"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="4"
             >
             <googleMaps:Map.Behaviors>
                 <bindings:MapClickedToCommandBehavior Command="{Binding MapClicked}" />
                 <bindings:MapLongClickedToCommandBehavior Command="{Binding MapLongClicked}" />
+                <bindings:PinClickedToCommandBehavior Command="{Binding PinClicked}" />
+                
             </googleMaps:Map.Behaviors>
         </googleMaps:Map>
 
@@ -40,8 +44,16 @@
             Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" 
             HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38" />
 
-        <StackLayout Orientation="Horizontal" 
-            Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="6">
+        <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
+            Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" 
+            HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38"
+            IsVisible="{Binding ShowCurrentMapTaskHint}">
+            <StackLayout>
+                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8" Text="{Binding CurrentMapTaskHint}"/>
+            </StackLayout>
+        </Frame>
+
+        <StackLayout Style="{StaticResource MainMapIconsGroup}">
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="Guide" IconSource="question.png" 
                 Command="{Binding NavigateToMain}"/>
@@ -50,7 +62,7 @@
                 Command="{Binding NavigateToMain}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="Calendar" IconSource="calendar.png" 
-                Command="{Binding NavigateToMain}"/>
+                Command="{Binding ShowCalendar}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="Weather" IconSource="clear.png" 
                 Command="{Binding ShowSettings}"/>
@@ -59,25 +71,31 @@
                 Command="{Binding AddParcelClicked}"/>
 
         </StackLayout>
-        
+
+        <ContentView ControlTemplate="{StaticResource MainMapSelectLocation}"
+            Style="{StaticResource MainMapTaskUIContainer}"
+            IsVisible="{Binding ShowSelectLocationUI}" />
+        <ContentView ControlTemplate="{StaticResource MainMapGPSLocation}"
+            Style="{StaticResource MainMapTaskUIContainer}"
+            IsVisible="{Binding ShowGPSLocationUI}" />
+
         <BoxView BackgroundColor="Black"
             Opacity="0.5" Grid.Row="0" Grid.Column="0" 
-            Grid.ColumnSpan="6" Grid.RowSpan="4"/>
+            Grid.ColumnSpan="7" Grid.RowSpan="5"
+            IsVisible="{Binding DimBackground}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding HideOverlays}" NumberOfTapsRequired="1"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
 
         <ContentView 
             x:Name="AddParcelView"
-            Grid.Row="1"
-            Grid.Column="1"
-            Grid.ColumnSpan="4"
-            HorizontalOptions="Center"
-            IsVisible="True"
-            HeightRequest="25"
-            >
-            <Frame BackgroundColor="Azure" Opacity="0.95">
-
+            Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding ShowAddParcel}">
+            <Frame Style="{StaticResource MainMapPopupBackground}">
                 <ScrollView>
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal" >
+                        <StackLayout Orientation="Horizontal">
                             <Image Source="add.png" HeightRequest="20" />
                             <Label
                                 HorizontalOptions="StartAndExpand"
@@ -89,7 +107,7 @@
                         <components:IconWithText
                             IconText="Using current location"
                             IconSource="get_location.png"
-                            Command="{Binding ClickGetLocation}"/>
+                            Command="{Binding ClickGetLocation}" />
 
                         <components:IconWithText
                             IconText="Selecting on the map"
@@ -102,14 +120,10 @@
         </ContentView>
 
         <ContentView
-                x:Name="FilterView"
-                Grid.Row="1"
-                Grid.Column="1"
-                Grid.ColumnSpan="4"
-                HorizontalOptions="Center"
-                IsVisible="False"
-                VerticalOptions="Center">
-            <Frame BackgroundColor="Azure" Opacity="0.95">
+            x:Name="FilterView"
+            Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding ShowOptions}">
+            <Frame Style="{StaticResource MainMapPopupBackground}">
                 <ScrollView>
                     <StackLayout>
                         <Label
@@ -146,7 +160,7 @@
                             <iconize:IconButton Command="{Binding FromCommand}" Text="fas-calendar" HeightRequest="50" />
                             <Label
                                     HorizontalOptions="StartAndExpand" TextColor="White"
-                                    Text="Blurrrgh"
+                                    Text="Blurrgh"
                                     VerticalOptions="Center" />
                             <iconize:IconButton Command="{Binding ToCommand}" Text="fas-calendar" WidthRequest="50"
                                                     HeightRequest="50" />
