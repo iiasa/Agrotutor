@@ -712,6 +712,33 @@
   <ItemGroup>
     <BundleResource Include="Resources\planner_small.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\peso4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\peso1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\peso2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\peso3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\corn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\corn2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\corn3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\corn4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar2.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -115,7 +115,8 @@
             {
                 var navigationParameters = new NavigationParameters
                 {
-                    { CalendarPageViewModel.EventsParameterName, Plot.GetCalendarEvents(Plots) }
+                    { CalendarPageViewModel.EventsParameterName, Plot.GetCalendarEvents(Plots) },
+                    { "Dev", true}
                 };
                 NavigationService.NavigateAsync("CalendarPage", navigationParameters);
             });

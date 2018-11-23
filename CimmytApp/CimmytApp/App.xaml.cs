@@ -144,6 +144,7 @@
                 containerRegistry.RegisterForNavigation<MainPage>();
                 containerRegistry.RegisterForNavigation<ParcelMainPage>();
                 containerRegistry.RegisterForNavigation<ProfilePage>();
+                containerRegistry.RegisterForNavigation<DevPage>();
 
                 containerRegistry.RegisterLocalization();
                 containerRegistry.RegisterSharedContextClasses();
@@ -158,7 +159,8 @@
 
         private string GetInitialPage()
         {
-            return "app:///NavigationPage/CalendarPage";
+            return "app:///NavigationPage/DevPage";
+            return "app:///NavigationPage/MapMainPage";
             if (Preferences.Get(Constants.AppNotFirstLaunch, false))
                 NavigationService.NavigateAsync("app:///NavigationPage/MainPage");
             else

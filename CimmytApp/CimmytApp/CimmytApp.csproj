@@ -32,7 +32,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Components\ViewModels\" />
     <Folder Include="Helper\" />
     <Folder Include="Properties\" />
     <Folder Include="Resources\Core\Benchmarking\ViewModels\" />
@@ -109,6 +108,9 @@
     </Compile>
     <Compile Update="Core\Components\Views\MiniMenuIcon.xaml.cs">
       <DependentUpon>MiniMenuIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Components\Views\SimpleStats.xaml.cs">
+      <DependentUpon>SimpleStats.xaml</DependentUpon>
     </Compile>
     <Compile Update="Core\Map\Views\Map.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
@@ -274,6 +276,12 @@
     <EmbeddedResource Update="Core\Components\Views\IconWithText.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\PriceForecastMonth.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\SimpleStats.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Core\Components\Views\WeatherWidget.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -346,6 +354,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ViewCostoPage.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Components\Views\SimpleStats.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SimpleStats.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
@@ -396,6 +408,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Template.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DevPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 

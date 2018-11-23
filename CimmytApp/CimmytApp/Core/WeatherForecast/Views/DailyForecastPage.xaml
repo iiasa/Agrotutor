@@ -9,7 +9,7 @@
                 <Label Text="Pronóstico del tiempo" FontAttributes="Italic" />
                 <Image Source="forecast_small.png" HeightRequest="18" />
             </StackLayout>
-
+            
             <ListView ItemsSource="{Binding DailySummaries}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

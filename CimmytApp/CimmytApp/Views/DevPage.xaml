@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
+    prism:ViewModelLocator.AutowireViewModel="True" Padding="16"
+             x:Class="CimmytApp.Views.DevPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <components:SimpleStats 
+                AverageImageSource="peso3.png"
+                MinImageSource="peso2.png"
+                MaxImageSource="peso4.png"
+                Unit="pesos"
+                AverageText="average"
+                MinText="minimum"
+                MaxText="maximum"
+                AverageValueIrrigated="3"
+                MinValueIrrigated="2"
+                MaxValueIrrigated="5"
+                AverageValueRainfed="2"
+                MinValueRainfed="1.5"
+                MaxValueRainfed="4"
+                />
+            <components:PriceForecastMonth HorizontalOptions="Start"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
