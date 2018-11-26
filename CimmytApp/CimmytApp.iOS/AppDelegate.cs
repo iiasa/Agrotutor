@@ -28,11 +28,8 @@
             Forms.Init();
             ConfigureFlurlHttp();
 
-
-            InstallFontPlugins();
-
             Xamarin.FormsGoogleMaps.Init("AIzaSyCm-_Fc-5-vvbhTPQg38LlCreorYtsC2Us");
-
+            XF.Material.iOS.Material.Init();
             LoadApplication(new App(new iOSInitializer()));
             return base.FinishedLaunching(app, options);
         }
@@ -43,15 +40,6 @@
             {
                 c.HttpClientFactory = new ModernHttpClientFactory();
             });
-        }
-
-        private static void InstallFontPlugins()
-        {
-            Plugin.Iconize
-                .Iconize
-                .With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
-                .With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule())
-                .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule());
         }
     }
 

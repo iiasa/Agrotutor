@@ -4,9 +4,8 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
-             xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
              xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
-             xmlns:controls="clr-namespace:Plugin.InputKit.Shared.Controls;assembly=Plugin.InputKit"
+             xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Core.Map.Views.MapMainPage">
     <Grid>
@@ -146,42 +145,43 @@
                                     HorizontalOptions="StartAndExpand"
                                     Text="Lorem"
                                     VerticalOptions="Center" />
-                            <controls:RadioButton x:Name="IsShowAll" />
+                            <material:MaterialCheckbox x:Name="IsShowAll" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label
                                     HorizontalOptions="StartAndExpand"
                                     Text="Heyhey"
                                     VerticalOptions="Center" />
-                            <controls:RadioButton x:Name="IsLastDay" HorizontalOptions="End"/>
+                            <material:MaterialCheckbox x:Name="IsLastDay" HorizontalOptions="End"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label
                                     HorizontalOptions="StartAndExpand"
                                     Text="Woohooo!"
                                     VerticalOptions="Center" />
-                            <controls:RadioButton x:Name="IsLast3Days" />
+                            <material:MaterialRadioButton x:Name="IsLast3Days" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label
                                     HorizontalOptions="StartAndExpand" 
                                     Text="Blurgl"
                                     VerticalOptions="Center" />
-                            <iconize:IconButton Command="{Binding FromCommand}" Text="fas-calendar" HeightRequest="50" />
+                            <Button Command="{Binding FromCommand}" Text="fas-calendar" HeightRequest="50" />
                             <Label
                                     HorizontalOptions="StartAndExpand" TextColor="White"
                                     Text="Blurrgh"
                                     VerticalOptions="Center" />
-                            <iconize:IconButton Command="{Binding ToCommand}" Text="fas-calendar" WidthRequest="50"
+                            <Button Command="{Binding ToCommand}" Text="fas-calendar" WidthRequest="50"
                                                     HeightRequest="50" />
-                            <controls:RadioButton x:Name="IsDateFilter"  TextColor="White"/>
+                            <material:MaterialRadioButton x:Name="IsDateFilter"  TextColor="White"/>
                         </StackLayout>
-                        <controls:RadioButtonGroupView>
-                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsShowAll}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsShowAll"/>
-                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLastDay}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
-                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
-                            <controls:RadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
-                        </controls:RadioButtonGroupView>
+                        <material:MaterialRadioButtonGroup>
+                            <material:MaterialRadioButton Text="Moooo mooo"/>
+                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsShowAll}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsShowAll"/>
+                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLastDay}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                        </material:MaterialRadioButtonGroup>
                     </StackLayout>
                 </ScrollView>
             </Frame>

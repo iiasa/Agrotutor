@@ -1,8 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:iconize="clr-namespace:Plugin.Iconize;assembly=Plugin.Iconize"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Core.Calendar.Views.CalendarPage"
             Padding="16,16,16,0">
@@ -20,9 +19,9 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <iconize:IconButton Grid.Row="0" Grid.Column="0" WidthRequest="50" Text="fas-chevron-left" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowPreviousMonth}" />
+                <Button Grid.Row="0" Grid.Column="0" WidthRequest="50" Text="fas-chevron-left" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowPreviousMonth}" />
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateRangeText}" FontSize="Large" TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                <iconize:IconButton Grid.Row="0" Grid.Column="2" WidthRequest="50" Text="fas-chevron-right" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowNextMonth}" />
+                <Button Grid.Row="0" Grid.Column="2" WidthRequest="50" Text="fas-chevron-right" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowNextMonth}" />
                 
             </Grid>
             <Grid>

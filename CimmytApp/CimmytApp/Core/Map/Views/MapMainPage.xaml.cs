@@ -13,6 +13,7 @@
         public MapMainPage()
         {
             InitializeComponent();
+            XF.Material.Forms.Material.PlatformConfiguration.ChangeStatusBarColor(new Color(1, 1, 1, 0.5));
             NavigationPage.SetHasNavigationBar(this, false);
             ViewModel = (MapMainPageViewModel)BindingContext;
             ViewModel.SetView(this);

@@ -571,6 +571,24 @@
     <Reference Include="Plugin.Iconize.FontAwesome">
       <HintPath>..\..\packages\Xam.Plugin.Iconize.FontAwesome.1.0.10\lib\xamarinios10\Plugin.Iconize.FontAwesome.dll</HintPath>
     </Reference>
+    <Reference Include="Lottie.iOS">
+      <HintPath>..\..\packages\Com.Airbnb.iOS.Lottie.2.5.4\lib\xamarinios10\Lottie.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.Forms">
+      <HintPath>..\..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.5.4\lib\xamarinios10\Lottie.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.1.4.168\lib\Xamarin.IOS\Rg.Plugins.Popup.dll</HintPath>
+    </Reference>
+    <Reference Include="Rg.Plugins.Popup.IOS">
+      <HintPath>..\..\packages\Rg.Plugins.Popup.1.1.4.168\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
+    </Reference>
+    <Reference Include="XF.Material.Forms">
+      <HintPath>..\..\packages\XF.Material.1.2.4\lib\Xamarin.iOS10\XF.Material.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="XF.Material.iOS">
+      <HintPath>..\..\packages\XF.Material.1.2.4\lib\Xamarin.iOS10\XF.Material.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">

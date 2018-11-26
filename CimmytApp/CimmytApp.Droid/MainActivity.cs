@@ -51,11 +51,11 @@
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
-                InstallFontPlugins();
-                Plugin.Iconize.Iconize.Init(Resource.Id.toolbar, Resource.Id.tabMode);
+
                 // Forms.SetFlags("FastRenderers_Experimental");
                 FormsGoogleMaps.Init(this, bundle);
                 UserDialogs.Init(this);
+                XF.Material.Droid.Material.Init(this, bundle);
                 Xamarin.Essentials.Platform.Init(this, bundle);
 
                 RegisterWithGCM(); // TODO- Store token and only register when token = null
@@ -65,13 +65,6 @@
             {
                 // ignored
             }
-        }
-
-        private void InstallFontPlugins()
-        {
-            Plugin.Iconize.Iconize.With(new Plugin.Iconize.Fonts.FontAwesomeSolidModule())
-                .With(new Plugin.Iconize.Fonts.FontAwesomeRegularModule())
-                .With(new Plugin.Iconize.Fonts.FontAwesomeBrandsModule());
         }
 
         private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)

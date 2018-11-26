@@ -39,6 +39,7 @@
         protected override void OnInitialized()
         {
             InitializeComponent();
+            XF.Material.Forms.Material.Init(this);
 
             if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS ||
                 Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
