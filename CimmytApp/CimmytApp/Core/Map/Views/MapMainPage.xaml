@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-             xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
              xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
@@ -176,11 +175,12 @@
                             <material:MaterialRadioButton x:Name="IsDateFilter"  TextColor="White"/>
                         </StackLayout>
                         <material:MaterialRadioButtonGroup>
-                            <material:MaterialRadioButton Text="Moooo mooo"/>
-                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsShowAll}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsShowAll"/>
-                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLastDay}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
-                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
-                            <material:MaterialRadioButton Text="Moooo" TextColor="White" IsChecked="{Binding IsLast3Days}" ClickCommand="{Binding FilterSelected}" CommandParameter="IsLastDay"/>
+                            <StackLayout>
+                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsShowAll}" SelectedChangeCommand="{Binding FilterSelected}" />
+                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsLastDay}" SelectedChangeCommand="{Binding FilterSelected}" />
+                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsLast3Days}" SelectedChangeCommand="{Binding FilterSelected}" />
+                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsLast3Days}" SelectedChangeCommand="{Binding FilterSelected}" />
+                            </StackLayout>
                         </material:MaterialRadioButtonGroup>
                     </StackLayout>
                 </ScrollView>

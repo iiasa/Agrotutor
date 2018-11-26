@@ -60,7 +60,8 @@
                 <components:MenuIcon 
                     IconText="{i18n:Translate parcels_map}" 
                     IconSource="globe.png" 
-                    Command="{Binding NavigateToMapCommand}" 
+                    Command="{Binding NavigateAsyncCommand}" 
+                    CommandParameter="MapMainPage"
                     Grid.Row ="1" Grid.Column="0" />
 
                 <components:MenuIcon 
