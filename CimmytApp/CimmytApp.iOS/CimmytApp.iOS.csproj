@@ -568,11 +568,8 @@
     <Reference Include="Xamarin.Forms.Xaml">
       <HintPath>..\..\packages\Xamarin.Forms.3.4.0.1008975\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
-    <Reference Include="Plugin.Iconize">
-      <HintPath>..\..\packages\Xam.Plugin.Iconize.3.4.0.100\lib\xamarinios10\Plugin.Iconize.dll</HintPath>
-    </Reference>
     <Reference Include="Plugin.Iconize.FontAwesome">
-      <HintPath>..\..\packages\Xam.Plugin.Iconize.FontAwesome.3.4.0.100\lib\xamarinios10\Plugin.Iconize.FontAwesome.dll</HintPath>
+      <HintPath>..\..\packages\Xam.Plugin.Iconize.FontAwesome.1.0.10\lib\xamarinios10\Plugin.Iconize.FontAwesome.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
