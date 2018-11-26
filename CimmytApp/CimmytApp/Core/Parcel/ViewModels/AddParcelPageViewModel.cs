@@ -193,11 +193,7 @@
             // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
             AppDataService.AddPlot(Plot);
 
-            var navigationParameters = new NavigationParameters
-            {
-                { "id", Plot.ID }
-            };
-            this._navigationService.NavigateAsync("app:///MainPage", navigationParameters, true);
+            this._navigationService.GoBackAsync();
         }
 
         private void UpdateSelections() // TODO fix

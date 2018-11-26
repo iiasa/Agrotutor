@@ -28,10 +28,12 @@
             Forms.Init();
             ConfigureFlurlHttp();
 
-            InstallFontPlugins();
-            // FormsPlugin.Iconize.iOS.IconControls.Init(); TODO might be necessary
-            LoadApplication(new App(new iOSInitializer()));
 
+            InstallFontPlugins();
+
+            Xamarin.FormsGoogleMaps.Init("AIzaSyCm-_Fc-5-vvbhTPQg38LlCreorYtsC2Us");
+
+            LoadApplication(new App(new iOSInitializer()));
             return base.FinishedLaunching(app, options);
         }
 

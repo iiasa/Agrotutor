@@ -7,6 +7,9 @@
         CreatePlotByGPS,
         GetLocation,
         SelectLocation,
-        SelectPolygon
+        SelectPolygon,
+        DelineationAlreadyAvailable,
+        DelineationNotEnoughPoints,
+        DelineationEnoughPoints
     }
 }

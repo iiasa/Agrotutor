@@ -159,8 +159,8 @@
 
         private string GetInitialPage()
         {
-            return "app:///NavigationPage/DevPage";
             return "app:///NavigationPage/MapMainPage";
+            return "app:///NavigationPage/DevPage";
             if (Preferences.Get(Constants.AppNotFirstLaunch, false))
                 NavigationService.NavigateAsync("app:///NavigationPage/MainPage");
             else

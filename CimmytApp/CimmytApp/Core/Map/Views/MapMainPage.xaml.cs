@@ -49,5 +49,14 @@
                 });
             }
         }
+
+        void Handle_MapClicked(object sender, MapClickedEventArgs e) =>
+            ViewModel.MapClicked.Execute(e);
+
+        void Handle_MapLongClicked(object sender, MapLongClickedEventArgs e) =>
+            ViewModel.MapLongClicked.Execute(e);
+
+        void Handle_PinClicked(object sender, PinClickedEventArgs e) =>
+            ViewModel.PinClicked.Execute(e);
     }
 }

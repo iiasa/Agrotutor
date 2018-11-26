@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -11,11 +11,27 @@
              x:Class="CimmytApp.Core.Map.Views.MapMainPage">
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition>
+                <RowDefinition.Height>
+                    <OnPlatform x:TypeArguments="GridLength">
+                        <OnPlatform.Android>0</OnPlatform.Android>
+                        <OnPlatform.iOS>32</OnPlatform.iOS>
+                    </OnPlatform>
+                </RowDefinition.Height>
+            </RowDefinition>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition>
+                <RowDefinition.Height>
+                    <OnPlatform x:TypeArguments="GridLength">
+                        <OnPlatform.Android>0</OnPlatform.Android>
+                        <OnPlatform.iOS>16</OnPlatform.iOS>
+                    </OnPlatform>
+                </RowDefinition.Height>
+            </RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -30,22 +46,16 @@
         <googleMaps:Map 
             x:Name="map" MapType="Hybrid"
             VerticalOptions="FillAndExpand" InitialCameraUpdate="20,-100,5"
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="4"
-            >
-            <googleMaps:Map.Behaviors>
-                <bindings:MapClickedToCommandBehavior Command="{Binding MapClicked}" />
-                <bindings:MapLongClickedToCommandBehavior Command="{Binding MapLongClicked}" />
-                <bindings:PinClickedToCommandBehavior Command="{Binding PinClicked}" />
-                
-            </googleMaps:Map.Behaviors>
-        </googleMaps:Map>
-
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="5"
+            MapClicked="Handle_MapClicked" MapLongClicked="Handle_MapLongClicked"
+            PinClicked="Handle_PinClicked" />
+            
         <components:WeatherWidget 
-            Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" 
+            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" 
             HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38" />
 
         <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
-            Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="3" 
+            Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
             HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38"
             IsVisible="{Binding ShowCurrentMapTaskHint}">
             <StackLayout>
@@ -81,7 +91,7 @@
 
         <BoxView BackgroundColor="Black"
             Opacity="0.5" Grid.Row="0" Grid.Column="0" 
-            Grid.ColumnSpan="7" Grid.RowSpan="5"
+            Grid.ColumnSpan="7" Grid.RowSpan="7"
             IsVisible="{Binding DimBackground}">
             <BoxView.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding HideOverlays}" NumberOfTapsRequired="1"/>

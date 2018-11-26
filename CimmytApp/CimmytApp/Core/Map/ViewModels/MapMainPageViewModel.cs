@@ -97,7 +97,7 @@
                 CreatePlot();
             });
 
-        public DelegateCommand NavigateToMain => new DelegateCommand(() => NavigationService.NavigateAsync("MainPage"));
+        public DelegateCommand NavigateToMain => new DelegateCommand(() => NavigationService.NavigateAsync("NavigationPage/MainPage"));
 
         public DelegateCommand<PinClickedEventArgs> PinClicked =>
             new DelegateCommand<PinClickedEventArgs>(args =>
@@ -118,7 +118,7 @@
                     { CalendarPageViewModel.EventsParameterName, Plot.GetCalendarEvents(Plots) },
                     { "Dev", true}
                 };
-                NavigationService.NavigateAsync("CalendarPage", navigationParameters);
+                NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
             });
 
         public Persistence.Entities.Position AddPlotPosition
@@ -262,7 +262,7 @@
                 {
                     { AddParcelPageViewModel.PositionParameterName, AddPlotPosition }
                 };
-                NavigationService.NavigateAsync("AddParcelPage", navigationParams);
+                NavigationService.NavigateAsync("NavigationPage/AddParcelPage", navigationParams);
             }
         }
 
