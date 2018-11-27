@@ -24,9 +24,11 @@
         private string currentMapTaskHint;
         private Persistence.Entities.Position currentPosition;
         private bool dimBackground;
+        private Plot selectedPlot;
 
         private bool listenForLocation = true;
         private bool showAddParcel;
+        private bool showPlotDetail;
         private bool showCurrentMapTaskHint;
         private bool showGpsLocationUI;
         private bool showOptions;
@@ -167,6 +169,7 @@
                 {
                     ShowAddParcel = false;
                     ShowOptions = false;
+                    ShowPlotDetail = false;
                 }
             }
         }
@@ -181,7 +184,11 @@
 
         public IEnumerable<Plot> Plots { get; set; }
 
-        public Plot SelectedPlot { get; set; }
+        public Plot SelectedPlot 
+        {
+            get => this.selectedPlot;
+            set => SetProperty(ref this.selectedPlot, value);
+        }
 
         public bool ShowAddParcel
         {
@@ -192,10 +199,27 @@
                 if (this.showAddParcel)
                 {
                     ShowOptions = false;
+                    ShowPlotDetail = false;
                     DimBackground = true;
                 }
             }
         }
+
+        public bool ShowPlotDetail
+        {
+            get => this.showPlotDetail;
+            set
+            {
+                SetProperty(ref this.showPlotDetail, value);
+                if (this.showPlotDetail)
+                {
+                    this.ShowOptions = false;
+                    this.ShowAddParcel = false;
+                    this.DimBackground = true;
+                }
+            }
+        }
+
 
         public bool ShowCurrentMapTaskHint
         {
@@ -218,6 +242,7 @@
                 if (this.showOptions)
                 {
                     ShowAddParcel = false;
+                    ShowPlotDetail = false;
                     DimBackground = true;
                 }
             }
@@ -344,6 +369,7 @@
         private void ShowPlotInformation(Plot data)
         {
             SelectedPlot = data;
+            this.ShowPlotDetail = true;
         }
     }
 }

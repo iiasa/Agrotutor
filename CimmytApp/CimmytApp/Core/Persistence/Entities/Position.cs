@@ -16,5 +16,9 @@
             };
             return position;
         }
+
+        public Xamarin.Forms.GoogleMaps.Position ForMap(){
+            return new Xamarin.Forms.GoogleMaps.Position(this.Latitude, this.Longitude);
+        }
     }
 }

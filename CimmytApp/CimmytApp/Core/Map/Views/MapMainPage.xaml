@@ -95,6 +95,83 @@
                 <TapGestureRecognizer Command="{Binding HideOverlays}" NumberOfTapsRequired="1"/>
             </BoxView.GestureRecognizers>
         </BoxView>
+        
+        <ContentView
+            x:Name="PlotDetailView"
+            Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding ShowPlotDetail}">
+            <Frame Style="{StaticResource MainMapPopupBackground}">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="add.png" HeightRequest="20" />
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="{Binding SelectedPlot.Name}"
+                            FontSize="20" />
+
+                    </StackLayout>
+                    <components:Divider />
+                    <ScrollView >
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label>Planted on:</Label>
+                                <Label>Oct. 3, 2018</Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label>Irrigation:</Label>
+                                <Label>Irrigated</Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label>Maturity type:</Label>
+                                <Label>Late</Label>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label>Ideal climate:</Label>
+                                <Label>Hybrid</Label>
+                            </StackLayout>
+                            <components:Divider />
+                            <components:IconWithText
+                                IconText="Add activity"
+                                IconSource="add.png"
+                                Command="{Binding AddActivityToSelectedPlot}" />
+
+                            <components:IconWithText
+                                IconText="Delineate plot"
+                                IconSource="add.png"
+                                Command="{Binding DelineateSelectedPlot}" />
+
+                            <components:IconWithText
+                                IconText="Add a picture"
+                                IconSource="add.png"
+                                Command="{Binding AddPictureToSelectedPlot}" />
+
+                            <components:IconWithText
+                                IconText="Add a video"
+                                IconSource="add.png"
+                                Command="{Binding AddVideoToSelectedPlot}" />
+
+                            <components:IconWithText
+                                IconText="Crop calendar"
+                                IconSource="add.png"
+                                Command="{Binding ShowCalendarForSelectedPlot}" />
+                            <components:Divider />
+                            <Label FontSize="15" Text="Historical information"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Label Text="Costs ($/ha):" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="300" Grid.Row="0" Grid.Column="1"/>
+                                <Image Source="add.png" WidthRequest="16" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                            </Grid>
+                            <components:ValueLine />
+                         </StackLayout>
+                     </ScrollView>
+                </StackLayout>
+            </Frame>
+        </ContentView>
 
         <ContentView 
             x:Name="AddParcelView"

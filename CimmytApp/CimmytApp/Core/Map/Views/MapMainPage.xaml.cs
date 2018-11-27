@@ -40,11 +40,7 @@
             {
                 this.map.Pins.Add(new Pin
                 {
-                    Anchor = new Point
-                    {
-                        X=plot.Position.Longitude,
-                        Y=plot.Position.Latitude
-                    },
+                    Position = plot.Position.ForMap(),
                     Label = plot.Name,
                     Tag = plot
                 });
