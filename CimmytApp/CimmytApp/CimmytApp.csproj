@@ -39,9 +39,7 @@
     <Folder Include="Resources\Core\WeatherForecast\ViewModels\" />
     <Folder Include="Resources\ViewModels\" />
     <Folder Include="Resources\StaticContent\ViewModels\" />
-    <Folder Include="Resources\Core\Map\" />
     <Folder Include="Resources\Core\Map\ViewModels\" />
-    <Folder Include="Resources\Core\Map\Views\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -196,6 +194,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ViewUtilidadPage.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Core\Map\Views\MapMainPage.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MapMainPage.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Core\Parcel\Views\ActivityDetail.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -225,6 +228,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>LinksPage.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Template.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Template.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\Views\ParcelMainPage.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -342,6 +350,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SimpleStats.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Map\Views\MapMainPage.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MapMainPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityDetail.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
@@ -367,6 +379,10 @@
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ParcelsOverviewPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ParcelsOverviewPage.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Template.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Template.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Views\MainPage.resx">
       <Generator></Generator>

@@ -2,33 +2,43 @@
 
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
+    xmlns:localization="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
     x:Class="CimmytApp.Template">
 
     <ControlTemplate x:Key="MainMapSelectLocation">
         <StackLayout Style="{StaticResource MainMapTaskUI}">
             <Button 
                 Style="{StaticResource ButtonOK}"
-                Command="{Binding AddPlot}"
+                Command="{TemplateBinding Parent.BindingContext.AddPlot}"
                 Text="fas-check"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
-                Command="{Binding HideOverlays}"
+                Command="{TemplateBinding Parent.BindingContext.HideOverlays}"
                 Text="fas-times"/>
         </StackLayout>
     </ControlTemplate>
-
 
     <ControlTemplate x:Key="MainMapGPSLocation">
         <StackLayout Style="{StaticResource MainMapTaskUI}">
             <Button 
                 Style="{StaticResource ButtonOK}"
-                Command="{Binding AddPlot}"
+                Command="{TemplateBinding Parent.BindingContext.AddPlot}"
                 Text="fas-check"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
-                Command="{Binding HideOverlays}"
+                Command="{TemplateBinding Parent.BindingContext.HideOverlays}"
                 Text="fas-times"/>
         </StackLayout>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="BackgroundDimmer">
+        <BoxView BackgroundColor="Black"
+            Opacity="0.5" IsVisible="{TemplateBinding Parent.BindingContext.DimBackground}">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{TemplateBinding Parent.BindingContext.HideOverlays}" NumberOfTapsRequired="1"/>
+            </BoxView.GestureRecognizers>
+        </BoxView>
     </ControlTemplate>
 
 </ResourceDictionary>

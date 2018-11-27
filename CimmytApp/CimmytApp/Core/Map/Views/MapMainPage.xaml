@@ -77,25 +77,24 @@
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="Add parcel" IconSource="add.png" 
                 Command="{Binding AddParcelClicked}"/>
-
         </StackLayout>
 
-        <ContentView ControlTemplate="{StaticResource MainMapSelectLocation}"
+        <ContentView 
+            ControlTemplate="{StaticResource MainMapSelectLocation}"
             Style="{StaticResource MainMapTaskUIContainer}"
             IsVisible="{Binding ShowSelectLocationUI}" />
-        <ContentView ControlTemplate="{StaticResource MainMapGPSLocation}"
+
+        <ContentView 
+            ControlTemplate="{StaticResource MainMapGPSLocation}"
             Style="{StaticResource MainMapTaskUIContainer}"
             IsVisible="{Binding ShowGPSLocationUI}" />
 
-        <BoxView BackgroundColor="Black"
-            Opacity="0.5" Grid.Row="0" Grid.Column="0" 
+        <ContentView 
+            ControlTemplate="{StaticResource BackgroundDimmer}"
+            Grid.Row="0" Grid.Column="0" 
             Grid.ColumnSpan="7" Grid.RowSpan="7"
-            IsVisible="{Binding DimBackground}">
-            <BoxView.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding HideOverlays}" NumberOfTapsRequired="1"/>
-            </BoxView.GestureRecognizers>
-        </BoxView>
-        
+            IsVisible="{Binding DimBackground}" />
+
         <ContentView
             x:Name="PlotDetailView"
             Style="{StaticResource MainMapPopup}"
@@ -166,7 +165,10 @@
                                 <Label Text="300" Grid.Row="0" Grid.Column="1"/>
                                 <Image Source="add.png" WidthRequest="16" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
                             </Grid>
-                            <components:ValueLine />
+                            <components:ValueLine
+                                Text="Hi:"
+                                Value="Ho"
+                                ImageSource="add.png"/>
                          </StackLayout>
                      </ScrollView>
                 </StackLayout>

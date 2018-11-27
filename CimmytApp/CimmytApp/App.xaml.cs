@@ -32,7 +32,10 @@
         public App(IPlatformInitializer initializer = null) : base(initializer)
         {
 #if DEBUG
-            LiveReload.Init();
+            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            {
+                LiveReload.Init();
+            }
 #endif
         }
 

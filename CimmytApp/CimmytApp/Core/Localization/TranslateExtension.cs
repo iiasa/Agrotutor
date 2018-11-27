@@ -57,8 +57,14 @@
                     $"{nameof(serviceProvider)} does not provide an {nameof(IRootObjectProvider)} or {nameof(SimpleValueTargetProvider)}");
             }
 
+
             if (rootObjectProvider != null)
             {
+                if (rootObjectProvider.RootObject is ResourceDictionary dictionary)
+                {
+                    return dictionary?.GetType().GetTypeInfo();
+                }
+
                 return (rootObjectProvider.RootObject as Element)?.GetType().GetTypeInfo();
             }
 
