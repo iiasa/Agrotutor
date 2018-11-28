@@ -5,6 +5,7 @@
              xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
              xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
              xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="CimmytApp.Core.Map.Views.MapMainPage">
     <Grid>
@@ -61,6 +62,15 @@
             </StackLayout>
         </Frame>
 
+        <lottie:AnimationView 
+            x:Name="animationView" 
+            Grid.Row="1"
+            Animation="anim_loading.json" 
+            Loop="True" 
+            AutoPlay="True"
+            VerticalOptions="FillAndExpand" 
+            HorizontalOptions="FillAndExpand" />
+
         <StackLayout Style="{StaticResource MainMapIconsGroup}">
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="Guide" IconSource="question.png" 
@@ -92,8 +102,7 @@
         <ContentView 
             ControlTemplate="{StaticResource BackgroundDimmer}"
             Grid.Row="0" Grid.Column="0" 
-            Grid.ColumnSpan="7" Grid.RowSpan="7"
-            IsVisible="{Binding DimBackground}" />
+            Grid.ColumnSpan="7" Grid.RowSpan="7" />
 
         <ContentView
             x:Name="PlotDetailView"

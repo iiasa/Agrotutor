@@ -315,6 +315,12 @@
     <Reference Include="Google.Maps, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Google.iOS.Maps.2.5.0.1\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Lottie.Forms, Version=2.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.7.0\lib\xamarinios10\Lottie.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Lottie.iOS, Version=2.5.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Com.Airbnb.iOS.Lottie.2.5.6\lib\xamarinios10\Lottie.iOS.dll</HintPath>
+    </Reference>
     <Reference Include="Microcharts, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microcharts.0.8.3-pre\lib\Xamarin.iOS10\Microcharts.dll</HintPath>
     </Reference>
@@ -570,12 +576,6 @@
     </Reference>
     <Reference Include="Plugin.Iconize.FontAwesome">
       <HintPath>..\..\packages\Xam.Plugin.Iconize.FontAwesome.1.0.10\lib\xamarinios10\Plugin.Iconize.FontAwesome.dll</HintPath>
-    </Reference>
-    <Reference Include="Lottie.iOS">
-      <HintPath>..\..\packages\Com.Airbnb.iOS.Lottie.2.5.4\lib\xamarinios10\Lottie.iOS.dll</HintPath>
-    </Reference>
-    <Reference Include="Lottie.Forms">
-      <HintPath>..\..\packages\Com.Airbnb.Xamarin.Forms.Lottie.2.5.4\lib\xamarinios10\Lottie.Forms.dll</HintPath>
     </Reference>
     <Reference Include="Rg.Plugins.Popup">
       <HintPath>..\..\packages\Rg.Plugins.Popup.1.1.4.168\lib\Xamarin.IOS\Rg.Plugins.Popup.dll</HintPath>
