@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
     <PackageReference Include="AutoMapper.Collection" Version="4.0.0" />
-    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.7.0" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.5.4" />
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <PackageReference Include="Microcharts.Forms" Version="0.8.3-pre" />
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.10.0" />
@@ -440,7 +440,25 @@
     <None Update="Core\Benchmarking\Views\ViewUtilidadPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="Core\Calendar\Components\Views\Calendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Calendar\Components\Views\DailyCalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Calendar\Components\Views\EventCalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Calendar\Components\Views\EventView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Calendar\Components\Views\MonthlyCalendar.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="Core\Calendar\Components\Views\MonthlyCalendarCell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Calendar\Components\Views\WeeklyCalendar.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Calendar\Views\CalendarPage.xaml">
@@ -461,6 +479,15 @@
     <None Update="Core\Components\Views\MiniMenuIcon.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="Core\Components\Views\PriceForecastMonth.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\SimpleStats.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\ValueLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="Core\Components\Views\WeatherWidget.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -468,6 +495,15 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Map\Views\MapMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Map\Views\MonthlyCalendarDayView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Map\Views\MonthlyCalendarEventEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Map\Views\MonthlyCalendarMultipleEventEntries.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Parcel\Views\ActivityDetail.xaml">
@@ -519,6 +555,12 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Template.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\DevPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Views\LoginPage.xaml">

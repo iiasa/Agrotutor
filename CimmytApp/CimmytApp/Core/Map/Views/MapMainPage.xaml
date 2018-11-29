@@ -13,8 +13,8 @@
             <RowDefinition>
                 <RowDefinition.Height>
                     <OnPlatform x:TypeArguments="GridLength">
-                        <OnPlatform.Android>0</OnPlatform.Android>
-                        <OnPlatform.iOS>32</OnPlatform.iOS>
+                        <On Platform="Android" Value="0" />
+                        <On Platform="iOS" Value="32" />
                     </OnPlatform>
                 </RowDefinition.Height>
             </RowDefinition>
@@ -26,8 +26,8 @@
             <RowDefinition>
                 <RowDefinition.Height>
                     <OnPlatform x:TypeArguments="GridLength">
-                        <OnPlatform.Android>0</OnPlatform.Android>
-                        <OnPlatform.iOS>16</OnPlatform.iOS>
+                        <On Platform="Android" Value="0" />
+                        <On Platform="iOS" Value="16" />
                     </OnPlatform>
                 </RowDefinition.Height>
             </RowDefinition>
@@ -48,7 +48,7 @@
             Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="5"
             MapClicked="Handle_MapClicked" MapLongClicked="Handle_MapLongClicked"
             PinClicked="Handle_PinClicked" />
-            
+         
         <components:WeatherWidget 
             Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" 
             HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38" />
@@ -61,7 +61,7 @@
                 <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8" Text="{Binding CurrentMapTaskHint}"/>
             </StackLayout>
         </Frame>
-
+ 
         <lottie:AnimationView 
             x:Name="animationView" 
             Grid.Row="1"

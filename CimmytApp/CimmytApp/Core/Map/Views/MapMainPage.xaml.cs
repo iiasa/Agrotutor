@@ -17,33 +17,34 @@
             NavigationPage.SetHasNavigationBar(this, false);
             ViewModel = (MapMainPageViewModel)BindingContext;
             ViewModel.SetView(this);
-            this.map.UiSettings.CompassEnabled = true;
-            this.map.UiSettings.MyLocationButtonEnabled = false;
-            this.map.UiSettings.RotateGesturesEnabled = true;
-            this.map.UiSettings.ZoomControlsEnabled = true;
-            this.map.UiSettings.TiltGesturesEnabled = true;
-            this.map.UiSettings.ZoomGesturesEnabled = true;
-            this.map.UiSettings.MapToolbarEnabled = true;
+            // this.map.UiSettings.CompassEnabled = true;
+            // this.map.UiSettings.MyLocationButtonEnabled = false;
+            // this.map.UiSettings.RotateGesturesEnabled = true;
+            // this.map.UiSettings.ZoomControlsEnabled = true;
+            // this.map.UiSettings.TiltGesturesEnabled = true;
+            // this.map.UiSettings.ZoomGesturesEnabled = true;
+            // this.map.UiSettings.MapToolbarEnabled = true;
+           
             // remove below
-            this.map.UiSettings.MyLocationButtonEnabled = true;
+            //this.map.UiSettings.MyLocationButtonEnabled = true;
         }
 
         public void EnableMyLocation()
         {
-            this.map.MyLocationEnabled = true;
-            this.map.UiSettings.MyLocationButtonEnabled = true;
+            //this.map.MyLocationEnabled = true;
+            //this.map.UiSettings.MyLocationButtonEnabled = true;
         }
 
         internal void AddPlots(IEnumerable<Plot> plots)
         {
             foreach (Plot plot in plots)
             {
-                this.map.Pins.Add(new Pin
-                {
-                    Position = plot.Position.ForMap(),
-                    Label = plot.Name,
-                    Tag = plot
-                });
+                // this.map.Pins.Add(new Pin
+                // {
+                //     Position = plot.Position.ForMap(),
+                //     Label = plot.Name,
+                //     Tag = plot
+                // });
             }
         }
 
