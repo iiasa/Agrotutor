@@ -8,7 +8,6 @@
         GetLocation,
         SelectLocation,
         SelectPolygon,
-        DelineationAlreadyAvailable,
         DelineationNotEnoughPoints,
         DelineationEnoughPoints
     }

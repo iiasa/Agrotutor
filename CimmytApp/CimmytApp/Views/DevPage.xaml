@@ -6,7 +6,9 @@
     prism:ViewModelLocator.AutowireViewModel="True" Padding="16"
              x:Class="CimmytApp.Views.DevPage">
     <ContentPage.Content>
+        
         <StackLayout>
+            <Label></Label>
             <components:SimpleStats 
                 AverageImageSource="peso3.png"
                 MinImageSource="peso2.png"

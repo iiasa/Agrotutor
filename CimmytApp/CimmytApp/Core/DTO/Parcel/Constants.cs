@@ -43,5 +43,7 @@
             { ActivityType.Sowing, ImageSource.FromFile("sowing.png") },
             { ActivityType.WeedPreventionControl, ImageSource.FromFile("weeds.png") }
         };
+
+        public const string StorageDirectoryName = "AgroTutor";
     }
 }

@@ -51,43 +51,25 @@
             
         <components:WeatherWidget 
             Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" 
-            HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38" />
+            HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38" />
 
         <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
             Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
-            HorizontalOptions="CenterAndExpand" Margin="13"  HeightRequest="38"
+            HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
             IsVisible="{Binding ShowCurrentMapTaskHint}">
             <StackLayout>
                 <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8" Text="{Binding CurrentMapTaskHint}"/>
             </StackLayout>
         </Frame>
-
-        <lottie:AnimationView 
-            x:Name="animationView" 
-            Grid.Row="1"
-            Animation="anim_loading.json" 
-            Loop="True" 
-            AutoPlay="True"
-            VerticalOptions="FillAndExpand" 
-            HorizontalOptions="FillAndExpand" />
-
-        <StackLayout Style="{StaticResource MainMapIconsGroup}">
-            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Guide" IconSource="question.png" 
-                Command="{Binding NavigateToMain}"/>
-            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Options" IconSource="icons_settings_96.png" 
-                Command="{Binding NavigateToMain}"/>
-            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Calendar" IconSource="calendar.png" 
-                Command="{Binding ShowCalendar}"/>
-            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Weather" IconSource="clear.png" 
-                Command="{Binding ShowSettings}"/>
-            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Add parcel" IconSource="add.png" 
-                Command="{Binding AddParcelClicked}"/>
-        </StackLayout>
+        
+        <ContentView
+            ControlTemplate="{StaticResource LoadingSpinner}"
+            IsVisible="{Binding ShowLoadingSpinner}"
+            Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
+        
+        <ContentView 
+            ControlTemplate="{StaticResource MainMapMenuItems}"
+            Style="{StaticResource MainMapIconsGroup}" /> 
 
         <ContentView 
             ControlTemplate="{StaticResource MainMapSelectLocation}"
@@ -100,12 +82,12 @@
             IsVisible="{Binding ShowGPSLocationUI}" />
 
         <ContentView 
-            ControlTemplate="{StaticResource BackgroundDimmer}"
+            ControlTemplate="{StaticResource BackgroundDimmer}" 
+            IsVisible="{Binding DimBackground}"
             Grid.Row="0" Grid.Column="0" 
             Grid.ColumnSpan="7" Grid.RowSpan="7" />
 
         <ContentView
-            x:Name="PlotDetailView"
             Style="{StaticResource MainMapPopup}"
             IsVisible="{Binding ShowPlotDetail}">
             <Frame Style="{StaticResource MainMapPopupBackground}">
@@ -147,7 +129,12 @@
                                 IconText="Delineate plot"
                                 IconSource="add.png"
                                 Command="{Binding DelineateSelectedPlot}" />
-
+                            <!-- -->
+                            <!-- <components:CameraPicture  -->
+                            <!--     IconText="Add a picture" -->
+                            <!--     IconSource="add.png" -->
+                            <!--     OnPictureTaken="{Binding OnParcelPictureTaken}"/> -->
+                            
                             <components:IconWithText
                                 IconText="Add a picture"
                                 IconSource="add.png"

@@ -2,8 +2,10 @@
 
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     xmlns:views="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     xmlns:localization="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="CimmytApp.Template">
 
     <ControlTemplate x:Key="MainMapSelectLocation">
@@ -11,11 +13,11 @@
             <Button 
                 Style="{StaticResource ButtonOK}"
                 Command="{TemplateBinding Parent.BindingContext.AddPlot}"
-                Text="fas-check"/>
+                Text="ok"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.HideOverlays}"
-                Text="fas-times"/>
+                Text="cancel"/>
         </StackLayout>
     </ControlTemplate>
 
@@ -24,21 +26,74 @@
             <Button 
                 Style="{StaticResource ButtonOK}"
                 Command="{TemplateBinding Parent.BindingContext.AddPlot}"
-                Text="fas-check"/>
+                Text="ok"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.HideOverlays}"
-                Text="fas-times"/>
+                Text="cancel"/>
+        </StackLayout>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MainMapDelineation">
+        <StackLayout Style="{StaticResource MainMapTaskUI}">
+            <Button 
+                Style="{StaticResource ButtonOK}"
+                Command="{TemplateBinding Parent.BindingContext.DelineationAccept}"
+                Text="ok"/>
+            <Button 
+                Style="{StaticResource ButtonCancel}"
+                Command="{TemplateBinding Parent.BindingContext.DelineationCancel}"
+                Text="cancel"/>
+            <Button 
+                Style="{StaticResource ButtonCancel}"
+                Command="{TemplateBinding Parent.BindingContext.DelineationUndo}"
+                Text="undo"/>
         </StackLayout>
     </ControlTemplate>
 
     <ControlTemplate x:Key="BackgroundDimmer">
         <BoxView BackgroundColor="Black"
-            Opacity="0.5" IsVisible="{TemplateBinding Parent.BindingContext.DimBackground}">
+            Opacity="0.5">
             <BoxView.GestureRecognizers>
                 <TapGestureRecognizer Command="{TemplateBinding Parent.BindingContext.HideOverlays}" NumberOfTapsRequired="1"/>
             </BoxView.GestureRecognizers>
         </BoxView>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="LoadingSpinner">
+        <Frame BackgroundColor="Azure" 
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Margin="8,0,0,0"
+               Opacity="0.75" HeightRequest="38" WidthRequest="38" Padding="0" >
+            <lottie:AnimationView 
+                x:Name="animationView" 
+                Animation="anim_loading.json" 
+                HeightRequest="38"
+                WidthRequest="38" 
+                Loop="True" 
+                AutoPlay="True"/>
+        </Frame>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="MainMapMenuItems">
+            <StackLayout Orientation="Horizontal">
+                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                    IconText="Guide" IconSource="question.png" 
+                    Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
+                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                    IconText="Options" IconSource="icons_settings_96.png" 
+                    Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
+                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                    IconText="Calendar" IconSource="calendar.png" 
+                    Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"/>
+                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                    IconText="Weather" IconSource="clear.png" 
+                    Command="{TemplateBinding Parent.BindingContext.ShowSettings}"/>
+                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                    IconText="Add parcel" IconSource="add.png" 
+                    Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"/>
+            </StackLayout>
     </ControlTemplate>
 
 </ResourceDictionary>

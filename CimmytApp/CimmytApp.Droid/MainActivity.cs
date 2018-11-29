@@ -10,6 +10,7 @@
     using Android.Util;
     using CimmytApp.Core.Localization;
     using Gcm.Client;
+    using Java.Lang;
     using Prism;
     using Prism.Ioc;
     using Xamarin;
@@ -46,13 +47,15 @@
                     UnobservedTaskExceptionEventArgs x = args;
                 };
 
-                if (Device.Idiom == TargetIdiom.Phone) RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
+                if (Device.Idiom == TargetIdiom.Phone)
+                    RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
 
                 base.OnCreate(bundle);
 
                 Forms.Init(this, bundle);
 
                 // Forms.SetFlags("FastRenderers_Experimental");
+
                 FormsGoogleMaps.Init(this, bundle);
                 UserDialogs.Init(this);
                 XF.Material.Droid.Material.Init(this, bundle);
@@ -61,9 +64,9 @@
                 RegisterWithGCM(); // TODO- Store token and only register when token = null
                 LoadApplication(new App(new AndroidInitializer()));
             }
-            catch (Exception)
+            catch (System.Exception e)
             {
-                // ignored
+                Log.Error("App Initialization", e as Throwable, "Crash during app initialization");
             }
         }
 

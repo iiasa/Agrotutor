@@ -11,6 +11,7 @@
     using CimmytApp.StaticContent;
     using CimmytApp.ViewModels;
     using Microsoft.Extensions.Localization;
+    using Plugin.Media.Abstractions;
     using Plugin.Permissions.Abstractions;
     using Prism.Commands;
     using Prism.Navigation;
@@ -25,11 +26,13 @@
         private Persistence.Entities.Position currentPosition;
         private bool dimBackground;
         private Plot selectedPlot;
+        private List<Persistence.Entities.Position> currentDelineation;
 
         private bool listenForLocation = true;
         private bool showAddParcel;
         private bool showPlotDetail;
         private bool showCurrentMapTaskHint;
+        private bool showLoadingSpinner;
         private bool showGpsLocationUI;
         private bool showOptions;
         private bool showSelectLocationUI;
@@ -41,9 +44,21 @@
             LocationPermissionAvailable = false;
             NavigationService = navigationService;
             CurrentMapTask = MapTask.Default;
-
             ShowAddParcel = false;
             ShowOptions = false;
+            ShowLoadingSpinner = true;
+        }
+
+        public List<Persistence.Entities.Position> CurrentDelineation
+        {
+            get => this.currentDelineation;
+            set => this.currentDelineation = value;
+        }
+
+        public bool ShowLoadingSpinner
+        {
+            get => this.showLoadingSpinner;
+            set => SetProperty(ref showLoadingSpinner, value);
         }
 
         public DelegateCommand AddParcelClicked =>
@@ -72,6 +87,40 @@
                 CurrentMapTask = MapTask.CreatePlotByGPS;
             });
 
+        public DelegateCommand<MediaFile> OnParcelPictureTaken =>
+            new DelegateCommand<MediaFile>((mediaFile) =>
+            {
+                var i = 0;
+                i++;
+            });
+
+        public DelegateCommand DelineateSelectedPlot =>
+            new DelegateCommand(async() =>
+            {
+                if (this.selectedPlot.Delineation?.Count > 0)
+                {
+                    bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+                    {
+                        Message = "The plot already has a delineation. Do you really want to overwrite the old one?",
+                        OkText = "Yes",
+                        CancelText = "Cancel",
+                        Title = "Delineation already exists"
+                    });
+
+                    if (confirmDelineation)
+                    {
+                        MapMainPage.StartDelineation(this.selectedPlot);
+                        CurrentMapTask = MapTask.DelineationNotEnoughPoints;
+                    }
+                }
+                else
+                {
+                    MapMainPage.StartDelineation(this.selectedPlot);
+                    CurrentMapTask = MapTask.DelineationNotEnoughPoints;
+                }
+                DimBackground = false;
+            });
+
         public DelegateCommand HideOverlays =>
             new DelegateCommand(() =>
             {
@@ -89,6 +138,13 @@
                         AddPlotPosition = Persistence.Entities.Position.From(args.Point);
                         CreatePlot();
                         break;
+
+                    case MapTask.DelineationNotEnoughPoints:
+                    case MapTask.DelineationEnoughPoints:
+                        if (CurrentDelineation == null) CurrentDelineation = new List<Persistence.Entities.Position>();
+                        CurrentDelineation.Add(Persistence.Entities.Position.From(args.Point));
+                        MapMainPage.AddDelineationPoint(args.Point);
+                        break;
                 }
             });
 
@@ -105,9 +161,9 @@
             new DelegateCommand<PinClickedEventArgs>(args =>
             {
                 object data = args.Pin.Tag;
-                if (data is Plot)
+                if (data is Plot plot)
                 {
-                    ShowPlotInformation((Plot)data);
+                    ShowPlotInformation(plot);
                 }
             });
 
@@ -138,8 +194,9 @@
             get => this.currentMapTask;
             set
             {
+                var oldValue = this.currentMapTask;
                 this.currentMapTask = value;
-                SetUIForMapTask(value);
+                SetUIForMapTask(value, oldValue);
             }
         }
 
@@ -184,7 +241,7 @@
 
         public IEnumerable<Plot> Plots { get; set; }
 
-        public Plot SelectedPlot 
+        public Plot SelectedPlot
         {
             get => this.selectedPlot;
             set => SetProperty(ref this.selectedPlot, value);
@@ -261,9 +318,11 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            ShowLoadingSpinner = true;
             EnableUserLocation();
             LoadPlots();
             LoadMapData();
+            ShowLoadingSpinner = false;
         }
 
         public void SetView(MapMainPage mapMainPage)
@@ -307,7 +366,7 @@
             {
                 DesiredAccuracy = Constants.MainMapLocationAccuracy
             };
-            Location location = await Geolocation.GetLastKnownLocationAsync();
+            Xamarin.Essentials.Location location = await Geolocation.GetLastKnownLocationAsync();
 
             do
             {
@@ -341,7 +400,7 @@
             //TODO: implement
         }
 
-        private void SetUIForMapTask(MapTask value)
+        private void SetUIForMapTask(MapTask value, MapTask oldValue)
         {
             switch (value)
             {
@@ -362,6 +421,13 @@
                     ShowCurrentMapTaskHint = true;
                     ShowGPSLocationUI = true;
                     ShowSelectLocationUI = false;
+                    break;
+                case MapTask.DelineationNotEnoughPoints:
+                    if (oldValue != MapTask.DelineationEnoughPoints)
+                    {
+                        this.MapMainPage.ZoomToPosition(this.selectedPlot.Position.ForMap());
+                    }
+
                     break;
             }
         }

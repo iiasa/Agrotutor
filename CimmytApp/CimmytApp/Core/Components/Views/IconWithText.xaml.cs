@@ -9,16 +9,16 @@
         public event EventHandler Clicked;
 
         public static readonly BindableProperty IconTextProperty =
-            BindableProperty.Create(nameof(IconText), typeof(string), typeof(MenuIcon), default(string));
+            BindableProperty.Create(nameof(IconText), typeof(string), typeof(IconWithText), default(string));
 
         public static readonly BindableProperty IconSourceProperty =
-            BindableProperty.Create(nameof(IconSource), typeof(ImageSource), typeof(MenuIcon));
+            BindableProperty.Create(nameof(IconSource), typeof(ImageSource), typeof(IconWithText));
 
         public static readonly BindableProperty CommandProperty =
-            BindableProperty.Create(nameof(MenuIcon.Command), typeof(ICommand), typeof(MenuIcon));
+            BindableProperty.Create(nameof(MenuIcon.Command), typeof(ICommand), typeof(IconWithText));
 
         public static readonly BindableProperty CommandParameterProperty =
-            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(MenuIcon));
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(IconWithText));
 
         public string IconText
         {

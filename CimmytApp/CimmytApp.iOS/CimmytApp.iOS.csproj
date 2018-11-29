@@ -282,6 +282,7 @@
     <BundleResource Include="Resources\welcome_2.png" />
     <BundleResource Include="Resources\welcome_3.png" />
     <BundleResource Include="Resources\welcome_4.png" />
+    <BundleResource Include="Resources\anim_loading.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.UserDialogs, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
