@@ -35,8 +35,6 @@
             this.map.UiSettings.TiltGesturesEnabled = true;
             this.map.UiSettings.ZoomGesturesEnabled = true;
             this.map.UiSettings.MapToolbarEnabled = true;
-            // remove below
-            this.map.UiSettings.MyLocationButtonEnabled = true;
 
             PlotPins = new List<Pin>();
             PlotDelineations = new List<Polygon>();
