@@ -260,6 +260,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Core\Components\Views\CameraPicture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Core\Components\Views\Divider.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>

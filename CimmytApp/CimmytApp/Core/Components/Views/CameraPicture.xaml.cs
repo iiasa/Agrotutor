@@ -8,13 +8,15 @@ namespace CimmytApp.Core.Components.Views
 
     public partial class CameraPicture : ContentView
     {
+        private bool takePhotoActive;
+
         public static readonly BindableProperty IconTextProperty =
             BindableProperty.Create(nameof(IconText), typeof(string), typeof(CameraPicture), default(string));
 
         public static readonly BindableProperty IconSourceProperty =
             BindableProperty.Create(nameof(IconSource), typeof(ImageSource), typeof(CameraPicture));
 
-        public static readonly BindableProperty OnPictureTakenCommandProperty =
+        public static readonly BindableProperty OnPictureTakenProperty =
             BindableProperty.Create(nameof(OnPictureTaken), typeof(DelegateCommand<MediaFile>), typeof(CameraPicture));
 
         public static readonly BindableProperty FileNameProperty =
@@ -49,36 +51,44 @@ namespace CimmytApp.Core.Components.Views
 
         public DelegateCommand<MediaFile> OnPictureTaken
         {
-            get => (DelegateCommand<MediaFile>)GetValue(CameraPicture.OnPictureTakenCommandProperty); 
-            set => SetValue(CameraPicture.OnPictureTakenCommandProperty, value);
+            get => (DelegateCommand<MediaFile>)GetValue(CameraPicture.OnPictureTakenProperty);
+            set => SetValue(CameraPicture.OnPictureTakenProperty, value);
         }
 
         public CameraPicture()
         {
             InitializeComponent();
 
+            this.takePhotoActive = false;
+
             this.ui.SetBinding(IconWithText.IconTextProperty, new Binding(nameof(IconText), source: this));
             this.ui.SetBinding(IconWithText.IconSourceProperty, new Binding(nameof(IconSource), source: this));
 
-            this.ui.Command = new DelegateCommand(async() => {
-                await CrossMedia.Current.Initialize();
+            this.ui.Command = new DelegateCommand(async() =>
+            {
+                if (this.takePhotoActive) return;
 
+                takePhotoActive = true;
+                await CrossMedia.Current.Initialize();
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
+                    this.takePhotoActive = false;
                     return;
                 }
-
-                var fileName = $"{DateTime.Now:s}" + ".png";
-
                 MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
                 {
                     Directory = FilePath,
-                    Name = fileName
+                    Name = FileName + $"_{DateTime.Now:s}" + ".png"
                 });
+
+                this.takePhotoActive = false;
 
                 if (file != null)
                 {
-                    OnPictureTaken.Execute(file);
+                    if (OnPictureTaken != null)
+                    {
+                        OnPictureTaken.Execute(file);
+                    }
                 } });
         }
     }

@@ -129,11 +129,11 @@
                                 IconText="Delineate plot"
                                 IconSource="add.png"
                                 Command="{Binding DelineateSelectedPlot}" />
-                            <!-- -->
-                            <!-- <components:CameraPicture  -->
-                            <!--     IconText="Add a picture" -->
-                            <!--     IconSource="add.png" -->
-                            <!--     OnPictureTaken="{Binding OnParcelPictureTaken}"/> -->
+                            
+                            <components:CameraPicture 
+                                IconText="Add a picture"
+                                IconSource="add.png"
+                                OnPictureTaken="{Binding OnParcelPictureTaken}" />
                             
                             <components:IconWithText
                                 IconText="Add a picture"
