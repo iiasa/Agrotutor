@@ -585,5 +585,9 @@
       <SubType>Designer</SubType>
       <Generator></Generator>
     </Page>
+    <Page Include="Core\Components\Views\CameraVideo.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
   </ItemGroup>
 </Project>

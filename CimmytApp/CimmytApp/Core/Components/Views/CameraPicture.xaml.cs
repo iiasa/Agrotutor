@@ -84,10 +84,7 @@ namespace CimmytApp.Core.Components.Views
 
                 if (file != null)
                 {
-                    if (OnPictureTaken != null)
-                    {
-                        OnPictureTaken.Execute(file);
-                    }
+                    OnPictureTaken?.Execute(file);
                 } });
         }
     }
