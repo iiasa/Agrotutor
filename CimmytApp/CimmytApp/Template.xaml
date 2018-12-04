@@ -83,7 +83,7 @@
                     Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
                 <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                     IconText="Options" IconSource="icons_settings_96.png" 
-                    Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
+                    Command="{TemplateBinding Parent.BindingContext.ShowOptions}"/>
                 <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                     IconText="Calendar" IconSource="calendar.png" 
                     Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"/>
@@ -95,5 +95,4 @@
                     Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"/>
             </StackLayout>
     </ControlTemplate>
-
 </ResourceDictionary>

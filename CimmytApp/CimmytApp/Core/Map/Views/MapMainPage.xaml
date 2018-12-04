@@ -56,7 +56,7 @@
         <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
             Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
             HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
-            IsVisible="{Binding ShowCurrentMapTaskHint}">
+            IsVisible="{Binding CurrentMapTaskHintIsVisible}">
             <StackLayout>
                 <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8" Text="{Binding CurrentMapTaskHint}"/>
             </StackLayout>
@@ -64,7 +64,7 @@
         
         <ContentView
             ControlTemplate="{StaticResource LoadingSpinner}"
-            IsVisible="{Binding ShowLoadingSpinner}"
+            IsVisible="{Binding LoadingSpinnerIsVisible}"
             Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
         
         <ContentView 
@@ -74,12 +74,12 @@
         <ContentView 
             ControlTemplate="{StaticResource MainMapSelectLocation}"
             Style="{StaticResource MainMapTaskUIContainer}"
-            IsVisible="{Binding ShowSelectLocationUI}" />
+            IsVisible="{Binding SelectLocationUIIsVisible}" />
 
         <ContentView 
             ControlTemplate="{StaticResource MainMapGPSLocation}"
             Style="{StaticResource MainMapTaskUIContainer}"
-            IsVisible="{Binding ShowGPSLocationUI}" />
+            IsVisible="{Binding GPSLocationUIIsVisible}" />
 
         <ContentView 
             ControlTemplate="{StaticResource BackgroundDimmer}" 
@@ -89,7 +89,7 @@
 
         <ContentView
             Style="{StaticResource MainMapPopup}"
-            IsVisible="{Binding ShowPlotDetail}">
+            IsVisible="{Binding PlotDetailIsVisible}">
             <Frame Style="{StaticResource MainMapPopupBackground}">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
@@ -174,7 +174,7 @@
         <ContentView 
             x:Name="AddParcelView"
             Style="{StaticResource MainMapPopup}"
-            IsVisible="{Binding ShowAddParcel}">
+            IsVisible="{Binding AddParcelIsVisible}">
             <Frame Style="{StaticResource MainMapPopupBackground}">
                 <ScrollView>
                     <StackLayout>
@@ -203,62 +203,45 @@
         </ContentView>
 
         <ContentView
-            x:Name="FilterView"
+            x:Name="OptionsView"
             Style="{StaticResource MainMapPopup}"
-            IsVisible="{Binding ShowOptions}">
+            IsVisible="{Binding OptionsIsVisible}">
             <Frame Style="{StaticResource MainMapPopupBackground}">
-                <ScrollView>
-                    <StackLayout>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="add.png" HeightRequest="20" />
                         <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="FilterData"
+                            Text="Options"
                             FontSize="20" />
-                        <components:Divider />
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="Lorem"
-                                    VerticalOptions="Center" />
-                            <material:MaterialCheckbox x:Name="IsShowAll" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="Heyhey"
-                                    VerticalOptions="Center" />
-                            <material:MaterialCheckbox x:Name="IsLastDay" HorizontalOptions="End"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                    HorizontalOptions="StartAndExpand"
-                                    Text="Woohooo!"
-                                    VerticalOptions="Center" />
-                            <material:MaterialRadioButton x:Name="IsLast3Days" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label
-                                    HorizontalOptions="StartAndExpand" 
-                                    Text="Blurgl"
-                                    VerticalOptions="Center" />
-                            <Button Command="{Binding FromCommand}" Text="fas-calendar" HeightRequest="50" />
-                            <Label
-                                    HorizontalOptions="StartAndExpand" TextColor="White"
-                                    Text="Blurrgh"
-                                    VerticalOptions="Center" />
-                            <Button Command="{Binding ToCommand}" Text="fas-calendar" WidthRequest="50"
-                                                    HeightRequest="50" />
-                            <material:MaterialRadioButton x:Name="IsDateFilter"  TextColor="White"/>
-                        </StackLayout>
-                        <material:MaterialRadioButtonGroup>
-                            <StackLayout>
-                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsShowAll}" SelectedChangeCommand="{Binding FilterSelected}" />
-                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsLastDay}" SelectedChangeCommand="{Binding FilterSelected}" />
-                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsLast3Days}" SelectedChangeCommand="{Binding FilterSelected}" />
-                                <material:MaterialRadioButton Text="Moooo" TextColor="White" IsSelected="{Binding IsLast3Days}" SelectedChangeCommand="{Binding FilterSelected}" />
-                            </StackLayout>
-                        </material:MaterialRadioButtonGroup>
                     </StackLayout>
-                </ScrollView>
+                    <components:Divider />
+                    <ScrollView>
+                        <StackLayout>
+                            <components:IconWithText 
+                                IconText="Planner"
+                                IconSource="planner.png"
+                                Command="{Binding StartPlanner}"/>
+                            <components:IconWithText 
+                                IconText="Pest and Disease identification"
+                                IconSource="add.png"
+                                Command="{Binding NavigateToPest}"/>
+                            <components:Divider />
+                            <components:IconWithText 
+                                IconText="Your profile"
+                                IconSource="profile.png"
+                                Command="{Binding NavigateToProfile}"/>
+                            <components:IconWithText 
+                                IconText="Best agronomical practices"
+                                IconSource="link.png"
+                                Command="{Binding NavigateToPractices}"/>
+                            <components:IconWithText 
+                                IconText="About"
+                                IconSource="add.png"
+                                Command="{Binding NavigateToAbout}"/>
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
             </Frame>
         </ContentView>
     </Grid>

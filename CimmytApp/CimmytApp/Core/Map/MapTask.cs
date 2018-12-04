@@ -7,6 +7,7 @@
         CreatePlotByGPS,
         GetLocation,
         SelectLocation,
+        SelectLocationForPlanner,
         SelectPolygon,
         DelineationNotEnoughPoints,
         DelineationEnoughPoints

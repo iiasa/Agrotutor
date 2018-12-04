@@ -2,7 +2,9 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using Acr.UserDialogs;
+
     using CimmytApp.Core.Calendar.ViewModels;
     using CimmytApp.Core.Map.Views;
     using CimmytApp.Core.Parcel.ViewModels;
@@ -10,174 +12,223 @@
     using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.StaticContent;
     using CimmytApp.ViewModels;
+
     using Microsoft.Extensions.Localization;
+
     using Plugin.Media.Abstractions;
     using Plugin.Permissions.Abstractions;
+
     using Prism.Commands;
     using Prism.Navigation;
+
     using Xamarin.Essentials;
     using Xamarin.Forms.GoogleMaps;
 
     public class MapMainPageViewModel : ViewModelBase, INavigatedAware
     {
         private Persistence.Entities.Position addPlotPosition;
+
         private MapTask currentMapTask;
+
         private string currentMapTaskHint;
+
         private Persistence.Entities.Position currentPosition;
+
         private bool dimBackground;
-        private Plot selectedPlot;
-        private List<Persistence.Entities.Position> currentDelineation;
 
         private bool listenForLocation = true;
-        private bool showAddParcel;
-        private bool showPlotDetail;
-        private bool showCurrentMapTaskHint;
-        private bool showLoadingSpinner;
-        private bool showGpsLocationUI;
-        private bool showOptions;
-        private bool showSelectLocationUI;
 
-        public MapMainPageViewModel(INavigationService navigationService, IAppDataService appDataService,
-            IStringLocalizer<MapMainPageViewModel> localizer) : base(localizer)
+        private Plot selectedPlot;
+
+        private bool addParcelIsVisible;
+
+        private bool currentMapTaskHintIsVisible;
+
+        private bool gpsLocationUIIsVisible;
+
+        private bool loadingSpinnerIsVisible;
+
+        private bool optionsIsVisible;
+
+        private bool plotDetailIsVisible;
+
+        private bool selectLocationUIIsVisible;
+
+        public MapMainPageViewModel(
+            INavigationService navigationService,
+            IAppDataService appDataService,
+            IStringLocalizer<MapMainPageViewModel> localizer)
+            : base(localizer)
         {
             AppDataService = appDataService;
             LocationPermissionAvailable = false;
             NavigationService = navigationService;
             CurrentMapTask = MapTask.Default;
-            ShowAddParcel = false;
-            ShowOptions = false;
-            ShowLoadingSpinner = true;
-        }
-
-        public List<Persistence.Entities.Position> CurrentDelineation
-        {
-            get => this.currentDelineation;
-            set => this.currentDelineation = value;
-        }
-
-        public bool ShowLoadingSpinner
-        {
-            get => this.showLoadingSpinner;
-            set => SetProperty(ref showLoadingSpinner, value);
+            AddParcelIsVisible = false;
+            OptionsIsVisible = false;
+            LoadingSpinnerIsVisible = true;
         }
 
         public DelegateCommand AddParcelClicked =>
-            new DelegateCommand(() =>
-            {
-                CurrentMapTask = MapTask.CreatePlotBySelection;
-                ShowAddParcel = true;
-            });
+            new DelegateCommand(
+                () =>
+                {
+                    CurrentMapTask = MapTask.CreatePlotBySelection;
+                    AddParcelIsVisible = true;
+                });
 
         public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
 
         public IAppDataService AppDataService { get; }
 
         public DelegateCommand ClickChooseLocation =>
-            new DelegateCommand(() =>
-            {
-                DimBackground = false;
-                CurrentMapTask = MapTask.SelectLocation;
-            });
+            new DelegateCommand(
+                () =>
+                {
+                    DimBackground = false;
+                    CurrentMapTask = MapTask.SelectLocation;
+                });
 
         public DelegateCommand ClickGetLocation =>
-            new DelegateCommand(() =>
-            {
-                DimBackground = false;
-                AddPlotPosition = CurrentPosition;
-                CurrentMapTask = MapTask.CreatePlotByGPS;
-            });
-
-        public DelegateCommand<MediaFile> OnParcelPictureTaken =>
-            new DelegateCommand<MediaFile>((mediaFile) =>
-            {
-                var i = 0;
-                i++;
-            });
+            new DelegateCommand(
+                () =>
+                {
+                    DimBackground = false;
+                    AddPlotPosition = CurrentPosition;
+                    CurrentMapTask = MapTask.CreatePlotByGPS;
+                });
 
         public DelegateCommand DelineateSelectedPlot =>
-            new DelegateCommand(async() =>
-            {
-                if (this.selectedPlot.Delineation?.Count > 0)
+            new DelegateCommand(
+                async () =>
                 {
-                    bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
+                    if (this.selectedPlot.Delineation?.Count > 0)
                     {
-                        Message = "The plot already has a delineation. Do you really want to overwrite the old one?",
-                        OkText = "Yes",
-                        CancelText = "Cancel",
-                        Title = "Delineation already exists"
-                    });
+                        bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(
+                                                      new ConfirmConfig
+                                                      {
+                                                          Message =
+                                                              "The plot already has a delineation. Do you really want to overwrite the old one?",
+                                                          OkText = "Yes",
+                                                          CancelText = "Cancel",
+                                                          Title = "Delineation already exists"
+                                                      });
 
-                    if (confirmDelineation)
+                        if (confirmDelineation)
+                        {
+                            MapMainPage.StartDelineation(this.selectedPlot);
+                            CurrentMapTask = MapTask.DelineationNotEnoughPoints;
+                        }
+                    }
+                    else
                     {
                         MapMainPage.StartDelineation(this.selectedPlot);
                         CurrentMapTask = MapTask.DelineationNotEnoughPoints;
                     }
-                }
-                else
-                {
-                    MapMainPage.StartDelineation(this.selectedPlot);
-                    CurrentMapTask = MapTask.DelineationNotEnoughPoints;
-                }
-                DimBackground = false;
-            });
+
+                    DimBackground = false;
+                });
 
         public DelegateCommand HideOverlays =>
-            new DelegateCommand(() =>
-            {
-                CurrentMapTask = MapTask.Default;
-                CurrentMapTaskHint = string.Empty;
-                DimBackground = false;
-            });
+            new DelegateCommand(
+                () =>
+                {
+                    CurrentMapTask = MapTask.Default;
+                    CurrentMapTaskHint = string.Empty;
+                    DimBackground = false;
+                });
 
         public DelegateCommand<MapClickedEventArgs> MapClicked =>
-            new DelegateCommand<MapClickedEventArgs>(args =>
-            {
-                switch (CurrentMapTask)
+            new DelegateCommand<MapClickedEventArgs>(
+                args =>
                 {
-                    case MapTask.CreatePlotBySelection:
-                        AddPlotPosition = Persistence.Entities.Position.From(args.Point);
-                        CreatePlot();
-                        break;
+                    switch (CurrentMapTask)
+                    {
+                        case MapTask.CreatePlotBySelection:
+                            AddPlotPosition = Persistence.Entities.Position.From(args.Point);
+                            CreatePlot();
+                            break;
 
-                    case MapTask.DelineationNotEnoughPoints:
-                    case MapTask.DelineationEnoughPoints:
-                        if (CurrentDelineation == null) CurrentDelineation = new List<Persistence.Entities.Position>();
-                        CurrentDelineation.Add(Persistence.Entities.Position.From(args.Point));
-                        MapMainPage.AddDelineationPoint(args.Point);
-                        break;
-                }
-            });
+                        case MapTask.DelineationNotEnoughPoints:
+                        case MapTask.DelineationEnoughPoints:
+                            if (CurrentDelineation == null)
+                            {
+                                CurrentDelineation = new List<Persistence.Entities.Position>();
+                            }
+
+                            CurrentDelineation.Add(Persistence.Entities.Position.From(args.Point));
+                            MapMainPage.AddDelineationPoint(args.Point);
+                            break;
+                    }
+                });
 
         public DelegateCommand<MapLongClickedEventArgs> MapLongClicked =>
-            new DelegateCommand<MapLongClickedEventArgs>(args =>
-            {
-                AddPlotPosition = Persistence.Entities.Position.From(args.Point);
-                CreatePlot();
-            });
+            new DelegateCommand<MapLongClickedEventArgs>(
+                args =>
+                {
+                    AddPlotPosition = Persistence.Entities.Position.From(args.Point);
+                    CreatePlot();
+                });
 
-        public DelegateCommand NavigateToMain => new DelegateCommand(() => NavigationService.NavigateAsync("NavigationPage/MainPage"));
+        public DelegateCommand NavigateToMain =>
+            new DelegateCommand(() => NavigationService.NavigateAsync("NavigationPage/MainPage"));
+
+        public DelegateCommand<MediaFile> OnParcelPictureTaken =>
+            new DelegateCommand<MediaFile>(
+                mediaFile =>
+                {
+                    int i = 0;
+                    i++;
+                });
 
         public DelegateCommand<PinClickedEventArgs> PinClicked =>
-            new DelegateCommand<PinClickedEventArgs>(args =>
-            {
-                object data = args.Pin.Tag;
-                if (data is Plot plot)
+            new DelegateCommand<PinClickedEventArgs>(
+                args =>
                 {
-                    ShowPlotInformation(plot);
-                }
-            });
+                    object data = args.Pin.Tag;
+                    if (data is Plot plot)
+                    {
+                        ShowPlotInformation(plot);
+                    }
+                });
+
+        public DelegateCommand ShowCalendar =>
+            new DelegateCommand(
+                () =>
+                {
+                    NavigationParameters navigationParameters = new NavigationParameters
+                                                                {
+                                                                    {
+                                                                        CalendarPageViewModel.EventsParameterName,
+                                                                        Plot.GetCalendarEvents(Plots)
+                                                                    },
+                                                                    { "Dev", true }
+                                                                };
+                    NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
+                });
+
+        public DelegateCommand ShowCalendarForSelectedPlot =>
+            new DelegateCommand(
+                () =>
+                {
+                    NavigationParameters navigationParameters = new NavigationParameters
+                                                                {
+                                                                    {
+                                                                        CalendarPageViewModel.EventsParameterName,
+                                                                        SelectedPlot.GetCalendarEvents()
+                                                                    }
+                                                                };
+                    NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
+                });
+    
+        public DelegateCommand StartPlanner =>
+            new DelegateCommand(() => CurrentMapTask = MapTask.SelectLocationForPlanner);
+
+        public DelegateCommand ShowOptions =>
+            new DelegateCommand(
+                () => { OptionsIsVisible = true; });
 
         public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.OpenSettings);
-
-        public DelegateCommand ShowCalendar => new DelegateCommand(() =>
-            {
-                var navigationParameters = new NavigationParameters
-                {
-                    { CalendarPageViewModel.EventsParameterName, Plot.GetCalendarEvents(Plots) },
-                    { "Dev", true}
-                };
-                NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
-            });
 
         public Persistence.Entities.Position AddPlotPosition
         {
@@ -189,12 +240,14 @@
             }
         }
 
+        public List<Persistence.Entities.Position> CurrentDelineation { get; set; }
+
         public MapTask CurrentMapTask
         {
             get => this.currentMapTask;
             set
             {
-                var oldValue = this.currentMapTask;
+                MapTask oldValue = this.currentMapTask;
                 this.currentMapTask = value;
                 SetUIForMapTask(value, oldValue);
             }
@@ -224,9 +277,9 @@
                 SetProperty(ref this.dimBackground, value);
                 if (!this.dimBackground)
                 {
-                    ShowAddParcel = false;
-                    ShowOptions = false;
-                    ShowPlotDetail = false;
+                    AddParcelIsVisible = false;
+                    OptionsIsVisible = false;
+                    PlotDetailIsVisible = false;
                 }
             }
         }
@@ -247,68 +300,73 @@
             set => SetProperty(ref this.selectedPlot, value);
         }
 
-        public bool ShowAddParcel
+        public bool AddParcelIsVisible
         {
-            get => this.showAddParcel;
+            get => this.addParcelIsVisible;
             set
             {
-                SetProperty(ref this.showAddParcel, value);
-                if (this.showAddParcel)
+                SetProperty(ref this.addParcelIsVisible, value);
+                if (this.addParcelIsVisible)
                 {
-                    ShowOptions = false;
-                    ShowPlotDetail = false;
+                    OptionsIsVisible = false;
+                    PlotDetailIsVisible = false;
                     DimBackground = true;
                 }
             }
         }
 
-        public bool ShowPlotDetail
+        public bool CurrentMapTaskHintIsVisible
         {
-            get => this.showPlotDetail;
+            get => this.currentMapTaskHintIsVisible;
+            set => SetProperty(ref this.currentMapTaskHintIsVisible, value);
+        }
+
+        public bool GPSLocationUIIsVisible
+        {
+            get => this.gpsLocationUIIsVisible;
+            set => SetProperty(ref this.gpsLocationUIIsVisible, value);
+        }
+
+        public bool LoadingSpinnerIsVisible
+        {
+            get => this.loadingSpinnerIsVisible;
+            set => SetProperty(ref this.loadingSpinnerIsVisible, value);
+        }
+
+        public bool OptionsIsVisible
+        {
+            get => this.optionsIsVisible;
             set
             {
-                SetProperty(ref this.showPlotDetail, value);
-                if (this.showPlotDetail)
+                SetProperty(ref this.optionsIsVisible, value);
+                if (this.optionsIsVisible)
                 {
-                    this.ShowOptions = false;
-                    this.ShowAddParcel = false;
-                    this.DimBackground = true;
-                }
-            }
-        }
-
-
-        public bool ShowCurrentMapTaskHint
-        {
-            get => this.showCurrentMapTaskHint;
-            set => SetProperty(ref this.showCurrentMapTaskHint, value);
-        }
-
-        public bool ShowGPSLocationUI
-        {
-            get => this.showGpsLocationUI;
-            set => SetProperty(ref this.showGpsLocationUI, value);
-        }
-
-        public bool ShowOptions
-        {
-            get => this.showOptions;
-            set
-            {
-                SetProperty(ref this.showOptions, value);
-                if (this.showOptions)
-                {
-                    ShowAddParcel = false;
-                    ShowPlotDetail = false;
+                    AddParcelIsVisible = false;
+                    PlotDetailIsVisible = false;
                     DimBackground = true;
                 }
             }
         }
 
-        public bool ShowSelectLocationUI
+        public bool PlotDetailIsVisible
         {
-            get => this.showSelectLocationUI;
-            set => SetProperty(ref this.showSelectLocationUI, value);
+            get => this.plotDetailIsVisible;
+            set
+            {
+                SetProperty(ref this.plotDetailIsVisible, value);
+                if (this.plotDetailIsVisible)
+                {
+                    OptionsIsVisible = false;
+                    AddParcelIsVisible = false;
+                    DimBackground = true;
+                }
+            }
+        }
+
+        public bool SelectLocationUIIsVisible
+        {
+            get => this.selectLocationUIIsVisible;
+            set => SetProperty(ref this.selectLocationUIIsVisible, value);
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -318,11 +376,11 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            ShowLoadingSpinner = true;
+            LoadingSpinnerIsVisible = true;
             EnableUserLocation();
             LoadPlots();
             LoadMapData();
-            ShowLoadingSpinner = false;
+            LoadingSpinnerIsVisible = false;
         }
 
         public void SetView(MapMainPage mapMainPage)
@@ -332,20 +390,24 @@
 
         private async void CreatePlot()
         {
-            bool confirmPlotCreation = await UserDialogs.Instance.ConfirmAsync(new ConfirmConfig
-            {
-                Message = "Do you want to create a new plot at this location?",
-                OkText = "Yes",
-                CancelText = "Cancel",
-                Title = "Add plot"
-            });
+            bool confirmPlotCreation = await UserDialogs.Instance.ConfirmAsync(
+                                           new ConfirmConfig
+                                           {
+                                               Message = "Do you want to create a new plot at this location?",
+                                               OkText = "Yes",
+                                               CancelText = "Cancel",
+                                               Title = "Add plot"
+                                           });
 
             if (confirmPlotCreation)
             {
                 NavigationParameters navigationParams = new NavigationParameters
-                {
-                    { AddParcelPageViewModel.PositionParameterName, AddPlotPosition }
-                };
+                                                        {
+                                                            {
+                                                                AddParcelPageViewModel.PositionParameterName,
+                                                                AddPlotPosition
+                                                            }
+                                                        };
                 NavigationService.NavigateAsync("NavigationPage/AddParcelPage", navigationParams);
             }
         }
@@ -363,9 +425,9 @@
         private async void GetUserLocation()
         {
             GeolocationRequest geolocationRequest = new GeolocationRequest
-            {
-                DesiredAccuracy = Constants.MainMapLocationAccuracy
-            };
+                                                    {
+                                                        DesiredAccuracy = Constants.MainMapLocationAccuracy
+                                                    };
             Xamarin.Essentials.Location location = await Geolocation.GetLastKnownLocationAsync();
 
             do
@@ -389,7 +451,7 @@
 
         private async void LoadPlots()
         {
-            Plots = DevHelper.GetTestData(); //TODO dev data!
+            Plots = DevHelper.GetTestData(); // TODO dev data!
 
             // Plots = await AppDataService.GetAllPlots();
             MapMainPage.AddPlots(Plots);
@@ -397,7 +459,7 @@
 
         private async void RefreshWeatherData()
         {
-            //TODO: implement
+            // TODO: implement
         }
 
         private void SetUIForMapTask(MapTask value, MapTask oldValue)
@@ -406,26 +468,32 @@
             {
                 case MapTask.Default:
                     CurrentMapTaskHint = string.Empty;
-                    ShowCurrentMapTaskHint = false;
-                    ShowGPSLocationUI = false;
-                    ShowSelectLocationUI = false;
+                    CurrentMapTaskHintIsVisible = false;
+                    GPSLocationUIIsVisible = false;
+                    SelectLocationUIIsVisible = false;
                     break;
                 case MapTask.SelectLocation:
                     CurrentMapTaskHint = "Click on map to select location";
-                    ShowCurrentMapTaskHint = true;
-                    ShowSelectLocationUI = true;
-                    ShowGPSLocationUI = false;
+                    CurrentMapTaskHintIsVisible = true;
+                    SelectLocationUIIsVisible = true;
+                    GPSLocationUIIsVisible = false;
                     break;
                 case MapTask.CreatePlotByGPS:
                     CurrentMapTaskHint = "Accept location when accurate enough";
-                    ShowCurrentMapTaskHint = true;
-                    ShowGPSLocationUI = true;
-                    ShowSelectLocationUI = false;
+                    CurrentMapTaskHintIsVisible = true;
+                    GPSLocationUIIsVisible = true;
+                    SelectLocationUIIsVisible = false;
+                    break;
+                case MapTask.SelectLocationForPlanner:
+                    CurrentMapTaskHint = "Click on map to select location";
+                    CurrentMapTaskHintIsVisible = true;
+                    SelectLocationUIIsVisible = true;
+                    GPSLocationUIIsVisible = false;
                     break;
                 case MapTask.DelineationNotEnoughPoints:
                     if (oldValue != MapTask.DelineationEnoughPoints)
                     {
-                        this.MapMainPage.ZoomToPosition(this.selectedPlot.Position.ForMap());
+                        MapMainPage.ZoomToPosition(this.selectedPlot.Position.ForMap());
                     }
 
                     break;
@@ -435,7 +503,7 @@
         private void ShowPlotInformation(Plot data)
         {
             SelectedPlot = data;
-            this.ShowPlotDetail = true;
+            PlotDetailIsVisible = true;
         }
     }
 }
