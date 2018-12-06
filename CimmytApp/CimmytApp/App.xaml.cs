@@ -39,15 +39,7 @@
 
         public App(IPlatformInitializer initializer = null)
             : base(initializer)
-        {
-#if DEBUG
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
-            {
-                LiveReload.Init();
-            }
-
-#endif
-        }
+        {}
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {

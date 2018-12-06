@@ -1287,9 +1287,6 @@
     <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
       <Version>60.1142.1</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.LiveReload">
-      <Version>0.3.27</Version>
-    </PackageReference>
     <PackageReference Include="XamarinForms.Maps.Android.TemporaryPatch">
       <Version>1.0.0.2</Version>
     </PackageReference>
