@@ -6,6 +6,9 @@
     using Acr.UserDialogs;
 
     using CimmytApp.Core.Calendar.ViewModels;
+    using CimmytApp.Core.Datatypes.HubsContact;
+    using CimmytApp.Core.Datatypes.InvestigationPlatforms;
+    using CimmytApp.Core.Datatypes.MachineryPoints;
     using CimmytApp.Core.Map.Views;
     using CimmytApp.Core.Parcel.ViewModels;
     using CimmytApp.Core.Persistence;
@@ -26,31 +29,49 @@
 
     public class MapMainPageViewModel : ViewModelBase, INavigatedAware
     {
+        private bool addParcelIsVisible;
+
         private Persistence.Entities.Position addPlotPosition;
+
+        private Datatypes.HubsContact.Feature currentHubContact;
+
+        private Datatypes.InvestigationPlatforms.Feature currentInvestigationPlatform;
+
+        private Datatypes.MachineryPoints.Feature currentMachineryPoint;
 
         private MapTask currentMapTask;
 
         private string currentMapTaskHint;
 
+        private bool currentMapTaskHintIsVisible;
+
         private Persistence.Entities.Position currentPosition;
 
         private bool dimBackground;
 
-        private bool listenForLocation = true;
-
-        private Plot selectedPlot;
-
-        private bool addParcelIsVisible;
-
-        private bool currentMapTaskHintIsVisible;
-
         private bool gpsLocationUIIsVisible;
 
+        private HubsContact hubsContact;
+
+        private bool hubsContactUIIsVisible;
+
+        private InvestigationPlatforms investigationPlatforms;
+
+        private bool investigationPlatformUIIsVisible;
+
+        private bool listenForLocation = true;
+
         private bool loadingSpinnerIsVisible;
+
+        private MachineryPoints machineryPoints;
+
+        private bool machineryPointUIIsVisible;
 
         private bool optionsIsVisible;
 
         private bool plotDetailIsVisible;
+
+        private Plot selectedPlot;
 
         private bool selectLocationUIIsVisible;
 
@@ -129,6 +150,21 @@
                     DimBackground = false;
                 });
 
+        public DelegateCommand NavigateToCurrentMachineryPoint =>
+            new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
+
+        public DelegateCommand NavigateToCurrentHubContact =>
+            new DelegateCommand(() => NavigateToLocation(CurrentHubContact.Geometry.ToLocation()));
+
+        public DelegateCommand NavigateToCurrentInvestigationPlatform =>
+            new DelegateCommand(() => NavigateToLocation(CurrentInvestigationPlatform.Geometry.ToLocation()));
+
+        private void NavigateToLocation(Xamarin.Essentials.Location location)
+        {
+            var mapOptions = new MapsLaunchOptions { MapDirectionsMode = MapDirectionsMode.Driving };
+            Maps.OpenAsync(location, mapOptions);
+        }
+
         public DelegateCommand HideOverlays =>
             new DelegateCommand(
                 () =>
@@ -190,6 +226,18 @@
                     {
                         ShowPlotInformation(plot);
                     }
+                    else if (data is Datatypes.HubsContact.Feature hubContact)
+                    {
+                        ShowHubContactInformation(hubContact);
+                    }
+                    else if (data is Datatypes.InvestigationPlatforms.Feature investigationPlatform)
+                    {
+                        ShowInvestigationPlatformInformation(investigationPlatform);
+                    }
+                    else if (data is Datatypes.MachineryPoints.Feature machineryPoint)
+                    {
+                        ShowMachineryPointInformation(machineryPoint);
+                    }
                 });
 
         public DelegateCommand ShowCalendar =>
@@ -220,15 +268,46 @@
                                                                 };
                     NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
                 });
-    
+
+        public DelegateCommand ShowOptions => new DelegateCommand(() => { OptionsIsVisible = true; });
+
+        public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.OpenSettings);
+
         public DelegateCommand StartPlanner =>
             new DelegateCommand(() => CurrentMapTask = MapTask.SelectLocationForPlanner);
 
-        public DelegateCommand ShowOptions =>
-            new DelegateCommand(
-                () => { OptionsIsVisible = true; });
+        public DelegateCommand<string> PhoneCall =>
+            new DelegateCommand<string>((number) => PhoneDialer.Open(number));
 
-        public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.OpenSettings);
+        public DelegateCommand<string> WriteEmail =>
+            new DelegateCommand<string>(
+                async(emailAddress) =>
+                {
+                    var message = new EmailMessage
+                                  {
+                                      To = new List<string> { emailAddress },
+                                      Subject = "Agrotutor enquiry"
+                                  };
+                    await Email.ComposeAsync(message);
+                });
+
+        public bool AddParcelIsVisible
+        {
+            get => this.addParcelIsVisible;
+            set
+            {
+                SetProperty(ref this.addParcelIsVisible, value);
+                if (this.addParcelIsVisible)
+                {
+                    OptionsIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
+                    DimBackground = true;
+                }
+            }
+        }
 
         public Persistence.Entities.Position AddPlotPosition
         {
@@ -241,6 +320,24 @@
         }
 
         public List<Persistence.Entities.Position> CurrentDelineation { get; set; }
+
+        public Datatypes.HubsContact.Feature CurrentHubContact
+        {
+            get => this.currentHubContact;
+            set => SetProperty(ref this.currentHubContact, value);
+        }
+
+        public Datatypes.InvestigationPlatforms.Feature CurrentInvestigationPlatform
+        {
+            get => this.currentInvestigationPlatform;
+            set => SetProperty(ref this.currentInvestigationPlatform, value);
+        }
+
+        public Datatypes.MachineryPoints.Feature CurrentMachineryPoint
+        {
+            get => this.currentMachineryPoint;
+            set => SetProperty(ref this.currentMachineryPoint, value);
+        }
 
         public MapTask CurrentMapTask
         {
@@ -257,6 +354,12 @@
         {
             get => this.currentMapTaskHint;
             set => SetProperty(ref this.currentMapTaskHint, value);
+        }
+
+        public bool CurrentMapTaskHintIsVisible
+        {
+            get => this.currentMapTaskHintIsVisible;
+            set => SetProperty(ref this.currentMapTaskHintIsVisible, value);
         }
 
         public Persistence.Entities.Position CurrentPosition
@@ -280,45 +383,11 @@
                     AddParcelIsVisible = false;
                     OptionsIsVisible = false;
                     PlotDetailIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
                 }
             }
-        }
-
-        public bool ListenForLocation { get; set; }
-
-        public bool LocationPermissionAvailable { get; set; }
-
-        public MapMainPage MapMainPage { get; set; }
-
-        public INavigationService NavigationService { get; set; }
-
-        public IEnumerable<Plot> Plots { get; set; }
-
-        public Plot SelectedPlot
-        {
-            get => this.selectedPlot;
-            set => SetProperty(ref this.selectedPlot, value);
-        }
-
-        public bool AddParcelIsVisible
-        {
-            get => this.addParcelIsVisible;
-            set
-            {
-                SetProperty(ref this.addParcelIsVisible, value);
-                if (this.addParcelIsVisible)
-                {
-                    OptionsIsVisible = false;
-                    PlotDetailIsVisible = false;
-                    DimBackground = true;
-                }
-            }
-        }
-
-        public bool CurrentMapTaskHintIsVisible
-        {
-            get => this.currentMapTaskHintIsVisible;
-            set => SetProperty(ref this.currentMapTaskHintIsVisible, value);
         }
 
         public bool GPSLocationUIIsVisible
@@ -327,11 +396,103 @@
             set => SetProperty(ref this.gpsLocationUIIsVisible, value);
         }
 
+        public HubsContact HubsContact
+        {
+            get => this.hubsContact;
+            private set
+            {
+                this.hubsContact = value;
+                MapMainPage.SetHubsContact(value);
+            }
+        }
+
+        public bool HubsContactUIIsVisible
+        {
+            get => this.hubsContactUIIsVisible;
+            set
+            {
+                SetProperty(ref this.hubsContactUIIsVisible, value);
+                if (this.hubsContactUIIsVisible)
+                {
+                    AddParcelIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    OptionsIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
+                    DimBackground = true;
+                }
+            }
+        }
+
+        public InvestigationPlatforms InvestigationPlatforms
+        {
+            get => this.investigationPlatforms;
+            private set
+            {
+                this.investigationPlatforms = value;
+                MapMainPage.SetInvestigationPlatforms(value);
+            }
+        }
+
+        public bool InvestigationPlatformUIIsVisible
+        {
+            get => this.investigationPlatformUIIsVisible;
+            set
+            {
+                SetProperty(ref this.investigationPlatformUIIsVisible, value);
+                if (this.investigationPlatformUIIsVisible)
+                {
+                    AddParcelIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    OptionsIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
+                    DimBackground = true;
+                }
+            }
+        }
+
+        public bool ListenForLocation { get; set; }
+
         public bool LoadingSpinnerIsVisible
         {
             get => this.loadingSpinnerIsVisible;
             set => SetProperty(ref this.loadingSpinnerIsVisible, value);
         }
+
+        public bool LocationPermissionAvailable { get; set; }
+
+        public MachineryPoints MachineryPoints
+        {
+            get => this.machineryPoints;
+            private set
+            {
+                this.machineryPoints = value;
+                MapMainPage.SetMachineryPoints(value);
+            }
+        }
+
+        public bool MachineryPointUIIsVisible
+        {
+            get => this.machineryPointUIIsVisible;
+            set
+            {
+                SetProperty(ref this.machineryPointUIIsVisible, value);
+                if (this.machineryPointUIIsVisible)
+                {
+                    AddParcelIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    OptionsIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    DimBackground = true;
+                }
+            }
+        }
+
+        public MapMainPage MapMainPage { get; set; }
+
+        public INavigationService NavigationService { get; set; }
 
         public bool OptionsIsVisible
         {
@@ -343,6 +504,9 @@
                 {
                     AddParcelIsVisible = false;
                     PlotDetailIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
                     DimBackground = true;
                 }
             }
@@ -358,9 +522,20 @@
                 {
                     OptionsIsVisible = false;
                     AddParcelIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
                     DimBackground = true;
                 }
             }
+        }
+
+        public IEnumerable<Plot> Plots { get; set; }
+
+        public Plot SelectedPlot
+        {
+            get => this.selectedPlot;
+            set => SetProperty(ref this.selectedPlot, value);
         }
 
         public bool SelectLocationUIIsVisible
@@ -376,11 +551,9 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            LoadingSpinnerIsVisible = true;
-            EnableUserLocation();
-            LoadPlots();
-            LoadMapData();
-            LoadingSpinnerIsVisible = false;
+            Task.Run(() => EnableUserLocation());
+            Task.Run(() => LoadPlots());
+            Task.Run(() => LoadMapData());
         }
 
         public void SetView(MapMainPage mapMainPage)
@@ -446,7 +619,9 @@
 
         private async void LoadMapData()
         {
-            // TODO: implement
+            HubsContact = await HubsContact.FromEmbeddedResource();
+            InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
+            MachineryPoints = await MachineryPoints.FromEmbeddedResource();
         }
 
         private async void LoadPlots()
@@ -498,6 +673,25 @@
 
                     break;
             }
+        }
+
+        private void ShowHubContactInformation(Datatypes.HubsContact.Feature hubContact)
+        {
+            CurrentHubContact = hubContact;
+            HubsContactUIIsVisible = true;
+        }
+
+        private void ShowInvestigationPlatformInformation(
+            Datatypes.InvestigationPlatforms.Feature investigationPlatform)
+        {
+            CurrentInvestigationPlatform = investigationPlatform;
+            InvestigationPlatformUIIsVisible = true;
+        }
+
+        private void ShowMachineryPointInformation(Datatypes.MachineryPoints.Feature machineryPoint)
+        {
+            CurrentMachineryPoint = machineryPoint;
+            MachineryPointUIIsVisible = true;
         }
 
         private void ShowPlotInformation(Plot data)

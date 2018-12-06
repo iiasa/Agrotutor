@@ -77,7 +77,6 @@ namespace CimmytApp.Core.Components.Views
                 }
                 MediaFile file = await CrossMedia.Current.TakeVideoAsync(new StoreVideoOptions()
                 {
-                    Directory = FilePath,
                     Name = FileName + $"_{DateTime.Now:s}" + ".png"
                 });
 

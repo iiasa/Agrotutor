@@ -89,6 +89,239 @@
 
         <ContentView
             Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding InvestigationPlatformUIIsVisible}">
+            <Frame Style="{StaticResource MainMapPopupBackground}">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="add.png" HeightRequest="20" />
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Investigation platform"
+                            FontSize="20" />
+                    </StackLayout>
+                    <components:Divider />
+                    <ScrollView >
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Platform name"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.NomPlat}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Short"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Abrivicacion}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Hub"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Hub}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Year started"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.AnioInst}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="State"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Estado}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Municipality"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Municipio}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Location"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Localidad}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Address"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Direccion}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="ASNM"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Asnm}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Collaborating institute"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.InstColab}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Campus"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.Campus}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Inventory responsible"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.InvResp}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Technical responsible"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.TecResp}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Crop"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.CulPrinc}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Agricultural cycle"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.CicloAgri}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Irrigation Spring/Summer"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.RegHumPv}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Irrigation Autumn/Winter"/>
+                                <Label Text="{Binding CurrentInvestigationPlatform.Properties.RegHumOi}"/>
+                            </StackLayout>
+
+                            <components:Divider />
+
+                            <components:IconWithText 
+                                IconText="Navigate here"
+                                IconSource="map.png"
+                                Command="{Binding NavigateToCurrentInvestigationPlatform}" />
+
+                            <components:IconWithText 
+                                IconText="Email inventory responsible"
+                                IconSource="add.png"
+                                Command="{Binding WriteEmail}"
+                                CommandParameter="{Binding CurrentInvestigationPlatform.Properties.EmailIr}"/>
+
+                            <components:IconWithText 
+                                IconText="Email technical responsible"
+                                IconSource="add.png"
+                                Command="{Binding WriteEmail}"
+                                CommandParameter="{Binding CurrentInvestigationPlatform.Properties.EmailTr}"/>
+
+                            <components:IconWithText 
+                                IconText="Call inventory responsible"
+                                IconSource="add.png"
+                                Command="{Binding PhoneCall}" 
+                                CommandParameter="{Binding CurrentInvestigationPlatform.Properties.TelIr}"/>
+
+                            <components:IconWithText 
+                                IconText="Call technical responsible"
+                                IconSource="add.png"
+                                Command="{Binding PhoneCall}" 
+                                CommandParameter="{Binding CurrentInvestigationPlatform.Properties.TelTr}"/>
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </ContentView>
+
+        <ContentView
+            Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding HubsContactUIIsVisible}">
+            <Frame Style="{StaticResource MainMapPopupBackground}">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="add.png" HeightRequest="20" />
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Machinery point"
+                            FontSize="20" />
+                    </StackLayout>
+                    <components:Divider />
+                    <ScrollView >
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Hub"/>
+                                <Label Text="{Binding CurrentHubContact.Properties.Hub}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Manager"/>
+                                <Label Text="{Binding CurrentHubContact.Properties.Gerente}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Assistant"/>
+                                <Label Text="{Binding CurrentHubContact.Properties.Assistente}"/>
+                            </StackLayout>
+
+                            <components:Divider />
+
+                            <components:IconWithText 
+                                IconText="Navigate here"
+                                IconSource="map.png"
+                                Command="{Binding NavigateToCurrentHubContact}" />
+
+                            <components:IconWithText 
+                                IconText="Contact manager"
+                                IconSource="add.png"
+                                Command="{Binding WriteEmail}"
+                                CommandParameter="{Binding CurrentHubContact.Properties.EmailGte}"/>
+
+                            <components:IconWithText 
+                                IconText="Contact assistant"
+                                IconSource="add.png"
+                                Command="{Binding WriteEmail}" 
+                                CommandParameter="{Binding CurrentHubContact.Properties.EmailAsis}"/>
+
+                            <components:IconWithText 
+                                IconText="Call"
+                                IconSource="add.png"
+                                Command="{Binding PhoneCall}" 
+                                CommandParameter="{Binding CurrentHubContact.Properties.Telefono}"/>
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </ContentView>
+
+        <ContentView
+            Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding MachineryPointUIIsVisible}">
+            <Frame Style="{StaticResource MainMapPopupBackground}">
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="add.png" HeightRequest="20" />
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Machinery point"
+                            FontSize="20" />
+                    </StackLayout>
+                    <components:Divider />
+                    <ScrollView >
+                        <StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Year"/>
+                                <Label Text="{Binding CurrentMachineryPoint.Properties.Anio}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Hub"/>
+                                <Label Text="{Binding CurrentMachineryPoint.Properties.Hub}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Responsible person"/>
+                                <Label Text="{Binding CurrentMachineryPoint.Properties.Responsabl}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Institution"/>
+                                <Label Text="{Binding CurrentMachineryPoint.Properties.Entidad}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Precomodad"/>
+                                <Label Text="{Binding CurrentMachineryPoint.Properties.Precomodad}"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Registry"/>
+                                <Label Text="{Binding CurrentMachineryPoint.Properties.Registro}"/>
+                            </StackLayout>
+
+                            <components:Divider />
+
+                            <components:IconWithText 
+                                IconText="Navigate here"
+                                IconSource="map.png"
+                                Command="{Binding NavigateToCurrentMachineryPoint}" />
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+            </Frame>
+        </ContentView>
+
+        <ContentView
+            Style="{StaticResource MainMapPopup}"
             IsVisible="{Binding PlotDetailIsVisible}">
             <Frame Style="{StaticResource MainMapPopupBackground}">
                 <StackLayout>
