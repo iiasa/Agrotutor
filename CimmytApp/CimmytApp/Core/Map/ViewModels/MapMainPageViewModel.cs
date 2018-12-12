@@ -1,6 +1,5 @@
 ﻿namespace CimmytApp.Core.Map.ViewModels
 {
-    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -608,7 +607,6 @@
 
         private async void EnableUserLocation()
         {
-            return; //TODO: fix this!
             Device.BeginInvokeOnMainThread(
                 async() =>
                 {
@@ -624,7 +622,7 @@
                                                 Permission.Location,
                                                 "Location Permission",
                                                 "This app uses your location to show you weather information and help you with creating plots. Please allow us to use your device's location.",
-                                                "Allow",
+                                                "OK",
                                                 "Deny",
                                                 "You denied us the use of your location. The app cannot show location dependent information. Please enable the location in your phone's settings.");
 
@@ -680,7 +678,6 @@
         private async void LoadPlots()
         {
             Plots = DevHelper.GetTestData(); // TODO dev data!
-
             // Plots = await AppDataService.GetAllPlots();
             MapMainPage.AddPlots(Plots);
         }

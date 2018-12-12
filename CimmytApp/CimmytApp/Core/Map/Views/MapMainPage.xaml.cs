@@ -69,7 +69,8 @@
             }))
             {
                 PlotPins.Append(pin);
-                this.map.Pins.Add(pin);
+                Device.BeginInvokeOnMainThread(
+                    () => { this.map.Pins.Add(pin);});
             }
         }
 
@@ -150,6 +151,7 @@
             if (DelineationPolygon.Positions.Count > 2)
             {
                 this.map.Polygons.Add(DelineationPolygon);
+
             }
         }
 
@@ -167,7 +169,8 @@
                               Icon = BitmapDescriptorFactory.DefaultMarker(Color.Aqua)
                           };
                 this.HubContactPins.Add(pin);
-                this.map.Pins.Add(pin);
+                Device.BeginInvokeOnMainThread(
+                    () => { this.map.Pins.Add(pin); });
             }
         }
 
@@ -184,7 +187,8 @@
                                             Icon = BitmapDescriptorFactory.DefaultMarker(Color.YellowGreen)
                 };
                 this.InvestigationPlatformPins.Add(pin);
-                this.map.Pins.Add(pin);
+                Device.BeginInvokeOnMainThread(
+                    () => { this.map.Pins.Add(pin); });
             }
         }
 
@@ -201,7 +205,8 @@
                                             Icon = BitmapDescriptorFactory.DefaultMarker(Color.SandyBrown)
                 };
                 this.MachineryPointPins.Add(pin);
-                this.map.Pins.Add(pin);
+                Device.BeginInvokeOnMainThread(
+                    () => { this.map.Pins.Add(pin); });
             }
         }
     }
