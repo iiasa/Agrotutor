@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.Core.Map.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
@@ -15,6 +16,7 @@
     using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.StaticContent;
     using CimmytApp.ViewModels;
+    using CimmytApp.WeatherForecast;
 
     using Microsoft.Extensions.Localization;
 
@@ -25,6 +27,7 @@
     using Prism.Navigation;
 
     using Xamarin.Essentials;
+    using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
 
     public class MapMainPageViewModel : ViewModelBase, INavigatedAware
@@ -75,19 +78,25 @@
 
         private bool selectLocationUIIsVisible;
 
+        private Xamarin.Essentials.Location weatherLocation;
+
+        private WeatherForecast currentWeather;
+
+        private bool locationPermissionGiven;
+
         public MapMainPageViewModel(
             INavigationService navigationService,
             IAppDataService appDataService,
             IStringLocalizer<MapMainPageViewModel> localizer)
             : base(localizer)
         {
+            LocationPermissionGiven = false;
             AppDataService = appDataService;
-            LocationPermissionAvailable = false;
             NavigationService = navigationService;
             CurrentMapTask = MapTask.Default;
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
-            LoadingSpinnerIsVisible = true;
+            LoadingSpinnerIsVisible = false;
         }
 
         public DelegateCommand AddParcelClicked =>
@@ -97,6 +106,20 @@
                     CurrentMapTask = MapTask.CreatePlotBySelection;
                     AddParcelIsVisible = true;
                 });
+
+        public bool LocationPermissionGiven
+        {
+            get => this.locationPermissionGiven;
+            set
+            {
+                SetProperty(ref this.locationPermissionGiven, value);
+                if (value)
+                {
+                    MapMainPage.EnableMyLocation();
+                    GetUserLocation();
+                }
+            }
+        }
 
         public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
 
@@ -150,21 +173,6 @@
                     DimBackground = false;
                 });
 
-        public DelegateCommand NavigateToCurrentMachineryPoint =>
-            new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
-
-        public DelegateCommand NavigateToCurrentHubContact =>
-            new DelegateCommand(() => NavigateToLocation(CurrentHubContact.Geometry.ToLocation()));
-
-        public DelegateCommand NavigateToCurrentInvestigationPlatform =>
-            new DelegateCommand(() => NavigateToLocation(CurrentInvestigationPlatform.Geometry.ToLocation()));
-
-        private void NavigateToLocation(Xamarin.Essentials.Location location)
-        {
-            var mapOptions = new MapsLaunchOptions { MapDirectionsMode = MapDirectionsMode.Driving };
-            Maps.OpenAsync(location, mapOptions);
-        }
-
         public DelegateCommand HideOverlays =>
             new DelegateCommand(
                 () =>
@@ -206,6 +214,15 @@
                     CreatePlot();
                 });
 
+        public DelegateCommand NavigateToCurrentHubContact =>
+            new DelegateCommand(() => NavigateToLocation(CurrentHubContact.Geometry.ToLocation()));
+
+        public DelegateCommand NavigateToCurrentInvestigationPlatform =>
+            new DelegateCommand(() => NavigateToLocation(CurrentInvestigationPlatform.Geometry.ToLocation()));
+
+        public DelegateCommand NavigateToCurrentMachineryPoint =>
+            new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
+
         public DelegateCommand NavigateToMain =>
             new DelegateCommand(() => NavigationService.NavigateAsync("NavigationPage/MainPage"));
 
@@ -216,6 +233,8 @@
                     int i = 0;
                     i++;
                 });
+
+        public DelegateCommand<string> PhoneCall => new DelegateCommand<string>(number => PhoneDialer.Open(number));
 
         public DelegateCommand<PinClickedEventArgs> PinClicked =>
             new DelegateCommand<PinClickedEventArgs>(
@@ -276,18 +295,18 @@
         public DelegateCommand StartPlanner =>
             new DelegateCommand(() => CurrentMapTask = MapTask.SelectLocationForPlanner);
 
-        public DelegateCommand<string> PhoneCall =>
-            new DelegateCommand<string>((number) => PhoneDialer.Open(number));
-
         public DelegateCommand<string> WriteEmail =>
             new DelegateCommand<string>(
-                async(emailAddress) =>
+                async emailAddress =>
                 {
-                    var message = new EmailMessage
-                                  {
-                                      To = new List<string> { emailAddress },
-                                      Subject = "Agrotutor enquiry"
-                                  };
+                    EmailMessage message = new EmailMessage
+                                           {
+                                               To = new List<string>
+                                                    {
+                                                        emailAddress
+                                                    },
+                                               Subject = "Agrotutor enquiry"
+                                           };
                     await Email.ComposeAsync(message);
                 });
 
@@ -368,7 +387,11 @@
             set
             {
                 this.currentPosition = value;
-                RefreshWeatherData();
+                if (Core.WeatherForecast.Util.ShouldRefresh(this.weatherLocation, value))
+                {
+                    this.weatherLocation = value;
+                    Task.Run(() => this.RefreshWeatherData());
+                }
             }
         }
 
@@ -459,8 +482,6 @@
             get => this.loadingSpinnerIsVisible;
             set => SetProperty(ref this.loadingSpinnerIsVisible, value);
         }
-
-        public bool LocationPermissionAvailable { get; set; }
 
         public MachineryPoints MachineryPoints
         {
@@ -587,12 +608,33 @@
 
         private async void EnableUserLocation()
         {
-            bool permissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
-            if (permissionGiven)
-            {
-                MapMainPage.EnableMyLocation();
-                GetUserLocation();
-            }
+            return; //TODO: fix this!
+            Device.BeginInvokeOnMainThread(
+                async() =>
+                {
+                    LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
+                    if (LocationPermissionGiven)
+                    {
+                        MapMainPage.EnableMyLocation();
+                        GetUserLocation();
+                    }
+                    else
+                    {
+                        var LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
+                                                Permission.Location,
+                                                "Location Permission",
+                                                "This app uses your location to show you weather information and help you with creating plots. Please allow us to use your device's location.",
+                                                "Allow",
+                                                "Deny",
+                                                "You denied us the use of your location. The app cannot show location dependent information. Please enable the location in your phone's settings.");
+
+                        if (LocationPermissionGiven)
+                        {
+                            MapMainPage.EnableMyLocation();
+                            GetUserLocation();
+                        }
+                    }
+                });
         }
 
         private async void GetUserLocation()
@@ -602,6 +644,7 @@
                                                         DesiredAccuracy = Constants.MainMapLocationAccuracy
                                                     };
             Xamarin.Essentials.Location location = await Geolocation.GetLastKnownLocationAsync();
+            WeatherLocation = location;
 
             do
             {
@@ -615,6 +658,16 @@
                 location = await Geolocation.GetLocationAsync(geolocationRequest);
             }
             while (ListenForLocation);
+        }
+
+        public Xamarin.Essentials.Location WeatherLocation
+        {
+            get => this.weatherLocation;
+            set
+            {
+                this.weatherLocation = value;
+                Task.Run(() => RefreshWeatherData());
+            }
         }
 
         private async void LoadMapData()
@@ -632,9 +685,27 @@
             MapMainPage.AddPlots(Plots);
         }
 
+        private void NavigateToLocation(Xamarin.Essentials.Location location)
+        {
+            MapsLaunchOptions mapOptions = new MapsLaunchOptions
+                                           {
+                                               MapDirectionsMode = MapDirectionsMode.Driving
+                                           };
+            Maps.OpenAsync(location, mapOptions);
+        }
+
         private async void RefreshWeatherData()
         {
-            // TODO: implement
+            if (WeatherLocation == null) return;
+            CurrentWeather = await CimmytApp.WeatherForecast.WeatherForecast.Download(
+                                 WeatherLocation.Latitude,
+                                 WeatherLocation.Longitude).ConfigureAwait(true);
+        }
+
+        public WeatherForecast CurrentWeather
+        {
+            get => this.currentWeather;
+            set => SetProperty(ref this.currentWeather, value);
         }
 
         private void SetUIForMapTask(MapTask value, MapTask oldValue)

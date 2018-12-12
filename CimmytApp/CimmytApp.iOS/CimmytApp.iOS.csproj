@@ -753,6 +753,90 @@
   <ItemGroup>
     <BundleResource Include="Resources\calendar2.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\phone.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\photo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\video.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_blowing_dust.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_blowing_snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_cloudy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_drizzle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_freezing_drizzle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_freezing_rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_haze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_heavy_drizzle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_heavy_rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_heavy_snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_light_drizzle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_light_fog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_light_rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_light_snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_mostly_clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_mostly_cloudy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_partly_cloudy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_patchy_fog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_rain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_rain_showers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_sleet.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_snow.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tiny_thunderstorms.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

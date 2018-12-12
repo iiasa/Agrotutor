@@ -77,22 +77,288 @@
     </ControlTemplate>
     
     <ControlTemplate x:Key="MainMapMenuItems">
-            <StackLayout Orientation="Horizontal">
-                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                    IconText="Guide" IconSource="question.png" 
-                    Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
-                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                    IconText="Options" IconSource="icons_settings_96.png" 
-                    Command="{TemplateBinding Parent.BindingContext.ShowOptions}"/>
-                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                    IconText="Calendar" IconSource="calendar.png" 
-                    Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"/>
-                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                    IconText="Weather" IconSource="clear.png" 
-                    Command="{TemplateBinding Parent.BindingContext.ShowSettings}"/>
-                <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                    IconText="Add parcel" IconSource="add.png" 
-                    Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"/>
+        <StackLayout Orientation="Horizontal">
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Guide" IconSource="question.png" 
+                Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Options" IconSource="icons_settings_96.png" 
+                Command="{TemplateBinding Parent.BindingContext.ShowOptions}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Calendar" IconSource="calendar.png" 
+                Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Weather" IconSource="clear.png" 
+                Command="{TemplateBinding Parent.BindingContext.ShowSettings}"/>
+            <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
+                IconText="Add parcel" IconSource="add.png" 
+                Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"/>
+        </StackLayout>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="HubContactUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="add.png" HeightRequest="20" />
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Hub contact"
+                            FontSize="20" />
+                </StackLayout>
+                <components:Divider />
+                <ScrollView >
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Hub" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Hub}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Manager" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Gerente}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Assistant" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Assistente}"/>
+                        </StackLayout>
+
+                        <components:Divider />
+
+                        <Label Text="Actions:" FontAttributes="Bold" />
+
+                        <components:IconWithText 
+                                IconText="Navigate here"
+                                IconSource="map.png"
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentHubContact}" />
+
+                        <components:IconWithText 
+                                IconText="Contact manager"
+                                IconSource="mail.png"
+                                Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailGte}"/>
+
+                        <components:IconWithText 
+                                IconText="Contact assistant"
+                                IconSource="mail.png"
+                                Command="{TemplateBinding Parent.BindingContext.WriteEmail}" 
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailAsis}"/>
+
+                        <components:IconWithText 
+                                IconText="Call"
+                                IconSource="phone.png"
+                                Command="{TemplateBinding Parent.BindingContext.PhoneCall}" 
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Telefono}"/>
+
+                    </StackLayout>
+                </ScrollView>
             </StackLayout>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="InvestigationPlatformUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="add.png" HeightRequest="20" />
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Investigation platform"
+                            FontSize="20" />
+                </StackLayout>
+                <components:Divider />
+                <ScrollView >
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Platform name" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.NomPlat}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Short" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Abrivicacion}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Hub" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Hub}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Year started" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.AnioInst}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="State" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Estado}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Municipality" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Municipio}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Location" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Localidad}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Address" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Direccion}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="ASNM" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Asnm}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Collaborating institute" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InstColab}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Campus" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Campus}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Inventory responsible" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InvResp}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Technical responsible" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TecResp}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Crop" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CulPrinc}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Agricultural cycle" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CicloAgri}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Irrigation Spring/Summer" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumPv}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Irrigation Autumn/Winter" FontAttributes="Bold" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumOi}"/>
+                        </StackLayout>
+
+                        <components:Divider />
+
+                        <Label Text="Actions:" FontAttributes="Bold" />
+
+                        <components:IconWithText 
+                                IconText="Navigate here"
+                                IconSource="map.png"
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentInvestigationPlatform}" />
+
+                        <components:IconWithText 
+                                IconText="Email inventory responsible"
+                                IconSource="mail.png"
+                                Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.EmailIr}"/>
+
+                        <components:IconWithText 
+                                IconText="Email technical responsible"
+                                IconSource="mail.png"
+                                Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.EmailTr}"/>
+
+                        <components:IconWithText 
+                                IconText="Call inventory responsible"
+                                IconSource="phone.png"
+                                Command="{TemplateBinding Parent.BindingContext.PhoneCall}" 
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TelIr}"/>
+
+                        <components:IconWithText 
+                                IconText="Call technical responsible"
+                                IconSource="phone.png"
+                                Command="{TemplateBinding Parent.BindingContext.PhoneCall}" 
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TelTr}"/>
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MachineryPointUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="add.png" HeightRequest="20" />
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Machinery point"
+                            FontSize="20" />
+                </StackLayout>
+
+                <components:Divider />
+
+                <Label Text="Actions:" FontAttributes="Bold" />
+
+                <ScrollView >
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Year" FontAttributes="Bold" />
+                            <Label Text="{Binding CurrentMachineryPoint.Properties.Anio}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Hub" FontAttributes="Bold" />
+                            <Label Text="{Binding CurrentMachineryPoint.Properties.Hub}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Responsible person"/>
+                            <Label Text="{Binding CurrentMachineryPoint.Properties.Responsabl}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Institution" FontAttributes="Bold" />
+                            <Label Text="{Binding CurrentMachineryPoint.Properties.Entidad}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Precomodad" FontAttributes="Bold" />
+                            <Label Text="{Binding CurrentMachineryPoint.Properties.Precomodad}"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Registry" FontAttributes="Bold" />
+                            <Label Text="{Binding CurrentMachineryPoint.Properties.Registro}"/>
+                        </StackLayout>
+
+                        <components:Divider />
+
+                        <Label Text="Actions:" FontAttributes="Bold" />
+
+                        <components:IconWithText 
+                                IconText="Navigate here"
+                                IconSource="map.png"
+                                Command="{Binding NavigateToCurrentMachineryPoint}" />
+
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="AddParcelUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image Source="add.png" HeightRequest="20" />
+                        <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Add Parcel"
+                            FontSize="20" />
+
+                    </StackLayout>
+                    <components:Divider />
+                    <components:IconWithText
+                        IconText="Using current location"
+                        IconSource="get_location.png"
+                        Command="{TemplateBinding Parent.BindingContext.ClickGetLocation}" />
+
+                    <components:IconWithText
+                        IconText="Selecting on the map"
+                        IconSource="choose_location.png"
+                        Command="{TemplateBinding Parent.BindingContext.ClickChooseLocation}" />
+
+                </StackLayout>
+            </ScrollView>
+        </Frame>
+
     </ControlTemplate>
 </ResourceDictionary>

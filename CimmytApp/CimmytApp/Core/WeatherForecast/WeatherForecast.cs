@@ -4,6 +4,10 @@
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
+
+    using Microsoft.AppCenter;
+    using Microsoft.AppCenter.Crashes;
+
     using Newtonsoft.Json;
 
     /// <summary>
@@ -153,6 +157,7 @@
         ///     Gets the WxIcon
         /// </summary>
         public string WxIcon => Util.GetIconSrcForWx(WxCode);
+        public string TinyWxIcon => Util.GetTinyIconSrcForWx(WxCode);
 
         /// <summary>
         ///     Gets the WxText
@@ -430,11 +435,20 @@
                 $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
             using (var wc = new HttpClient())
             {
-                wc.DefaultRequestHeaders.Add("app_id", "72bd6b2d");
-                wc.DefaultRequestHeaders.Add("app_key", "1bf9b8a0fba009655e4bca9f446877cf");
-                var json = await wc.GetStringAsync(serviceUrl);
-                return FromJson(json);
+                wc.DefaultRequestHeaders.Add("app_id", "949a7457");
+                wc.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
+                try
+                {
+                    var json = await wc.GetStringAsync(serviceUrl);
+                    return FromJson(json);
+                }
+                catch (Exception e)
+                {
+                    var ex = new AppCenterException("Weather error", e);
+                }
             }
+
+            return null;
         }
 
         /// <summary>
@@ -569,16 +583,9 @@
         }
     }
 
-    /// <summary>
-    ///     Defines the <see cref="Util" />
-    /// </summary>
     internal static class Util
     {
-        /// <summary>
-        ///     The GetIconSrcForWx
-        /// </summary>
-        /// <param name="wxCode">The <see cref="string" /></param>
-        /// <returns>The <see cref="string" /></returns>
+
         public static string GetIconSrcForWx(string wxCode)
         {
             switch (wxCode)
@@ -715,6 +722,11 @@
                 default:
                     return "question.png";
             }
+        }
+
+        public static string GetTinyIconSrcForWx(string wxCode)
+        {
+            return "tiny_" + GetIconSrcForWx(wxCode);
         }
 
         /// <summary>

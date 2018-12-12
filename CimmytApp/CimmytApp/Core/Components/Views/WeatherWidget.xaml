@@ -4,8 +4,10 @@
     x:Class="CimmytApp.Core.Components.Views.WeatherWidget" >
   <ContentView.Content>
         <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0">
-            <StackLayout>
-                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8">Here will be weather...</Label>
+            <StackLayout Orientation="Horizontal">
+                <Image x:Name="Icon"/>
+                <Label x:Name="Text" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8">Loading...</Label>
+                
             </StackLayout>
         </Frame>
   </ContentView.Content>

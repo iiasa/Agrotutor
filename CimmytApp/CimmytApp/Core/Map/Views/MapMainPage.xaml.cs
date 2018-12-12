@@ -12,7 +12,6 @@
     using ImTools;
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
-    using Xamarin.Forms.Xaml;
 
     public partial class MapMainPage : ContentPage
     {
