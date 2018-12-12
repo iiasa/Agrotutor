@@ -102,92 +102,9 @@
             IsVisible="{Binding MachineryPointUIIsVisible}" />
 
         <ContentView
+            ControlTemplate="{StaticResource ParcelDetailUI}" 
             Style="{StaticResource MainMapPopup}"
-            IsVisible="{Binding PlotDetailIsVisible}">
-            <Frame Style="{StaticResource MainMapPopupBackground}">
-                <StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="add.png" HeightRequest="20" />
-                        <Label
-                            HorizontalOptions="StartAndExpand"
-                            Text="{Binding SelectedPlot.Name}"
-                            FontSize="20" />
-
-                    </StackLayout>
-                    <components:Divider />
-                    <ScrollView >
-                        <StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label>Planted on:</Label>
-                                <Label>Oct. 3, 2018</Label>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label>Irrigation:</Label>
-                                <Label>Irrigated</Label>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label>Maturity type:</Label>
-                                <Label>Late</Label>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal">
-                                <Label>Ideal climate:</Label>
-                                <Label>Hybrid</Label>
-                            </StackLayout>
-
-                            <components:Divider />
-
-                            <Label Text="Actions:" FontAttributes="Bold" />
-
-                            <components:IconWithText
-                                IconText="Add activity"
-                                IconSource="add.png"
-                                Command="{Binding AddActivityToSelectedPlot}" />
-
-                            <components:IconWithText
-                                IconText="Delineate plot"
-                                IconSource="add.png"
-                                Command="{Binding DelineateSelectedPlot}" />
-                            
-                            <components:CameraPicture 
-                                IconText="Add a picture"
-                                IconSource="add.png"
-                                OnPictureTaken="{Binding OnParcelPictureTaken}" />
-                            
-                            <components:IconWithText
-                                IconText="Add a picture"
-                                IconSource="add.png"
-                                Command="{Binding AddPictureToSelectedPlot}" />
-
-                            <components:IconWithText
-                                IconText="Add a video"
-                                IconSource="add.png"
-                                Command="{Binding AddVideoToSelectedPlot}" />
-
-                            <components:IconWithText
-                                IconText="Crop calendar"
-                                IconSource="add.png"
-                                Command="{Binding ShowCalendarForSelectedPlot}" />
-                            <components:Divider />
-                            <Label FontSize="15" Text="Historical information"/>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto" />
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <Label Text="Costs ($/ha):" Grid.Row="0" Grid.Column="0"/>
-                                <Label Text="300" Grid.Row="0" Grid.Column="1"/>
-                                <Image Source="add.png" WidthRequest="16" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
-                            </Grid>
-                            <components:ValueLine
-                                Text="Hi:"
-                                Value="Ho"
-                                ImageSource="add.png"/>
-                         </StackLayout>
-                     </ScrollView>
-                </StackLayout>
-            </Frame>
-        </ContentView>
+            IsVisible="{Binding PlotDetailIsVisible}" />
 
         <ContentView 
             x:Name="AddParcelView"
@@ -197,45 +114,9 @@
 
         <ContentView
             x:Name="OptionsView"
+            ControlTemplate="{StaticResource MenuUI}"
             Style="{StaticResource MainMapPopup}"
-            IsVisible="{Binding OptionsIsVisible}">
-            <Frame Style="{StaticResource MainMapPopupBackground}">
-                <StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Image Source="add.png" HeightRequest="20" />
-                        <Label
-                            HorizontalOptions="StartAndExpand"
-                            Text="Options"
-                            FontSize="20" />
-                    </StackLayout>
-                    <components:Divider />
-                    <ScrollView>
-                        <StackLayout>
-                            <components:IconWithText 
-                                IconText="Planner"
-                                IconSource="planner.png"
-                                Command="{Binding StartPlanner}"/>
-                            <components:IconWithText 
-                                IconText="Pest and Disease identification"
-                                IconSource="add.png"
-                                Command="{Binding NavigateToPest}"/>
-                            <components:Divider />
-                            <components:IconWithText 
-                                IconText="Your profile"
-                                IconSource="profile.png"
-                                Command="{Binding NavigateToProfile}"/>
-                            <components:IconWithText 
-                                IconText="Best agronomical practices"
-                                IconSource="link.png"
-                                Command="{Binding NavigateToPractices}"/>
-                            <components:IconWithText 
-                                IconText="About"
-                                IconSource="add.png"
-                                Command="{Binding NavigateToAbout}"/>
-                        </StackLayout>
-                    </ScrollView>
-                </StackLayout>
-            </Frame>
-        </ContentView>
+            IsVisible="{Binding OptionsIsVisible}" />
+
     </Grid>
 </ContentPage>

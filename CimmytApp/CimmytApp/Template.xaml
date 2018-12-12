@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     xmlns:views="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
-    xmlns:localization="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
     xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     x:Class="CimmytApp.Template">
 
@@ -13,11 +13,11 @@
             <Button 
                 Style="{StaticResource ButtonOK}"
                 Command="{TemplateBinding Parent.BindingContext.AddPlot}"
-                Text="ok"/>
+                Text="{i18n:Translate select_location_ok}"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.HideOverlays}"
-                Text="cancel"/>
+                Text="{i18n:Translate select_location_cancel}"/>
         </StackLayout>
     </ControlTemplate>
 
@@ -26,11 +26,11 @@
             <Button 
                 Style="{StaticResource ButtonOK}"
                 Command="{TemplateBinding Parent.BindingContext.AddPlot}"
-                Text="ok"/>
+                Text="{i18n:Translate gps_location_ok}"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.HideOverlays}"
-                Text="cancel"/>
+                Text="{i18n:Translate gps_location_cancel}"/>
         </StackLayout>
     </ControlTemplate>
 
@@ -39,15 +39,15 @@
             <Button 
                 Style="{StaticResource ButtonOK}"
                 Command="{TemplateBinding Parent.BindingContext.DelineationAccept}"
-                Text="ok"/>
+                Text="{i18n:Translate delineation_ok}"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.DelineationCancel}"
-                Text="cancel"/>
+                Text="{i18n:Translate delineation_cancel}"/>
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.DelineationUndo}"
-                Text="undo"/>
+                Text="{i18n:Translate delineation_undo"/>
         </StackLayout>
     </ControlTemplate>
 
@@ -79,19 +79,19 @@
     <ControlTemplate x:Key="MainMapMenuItems">
         <StackLayout Orientation="Horizontal">
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Guide" IconSource="question.png" 
+                IconText="{i18n:Translate main_menu_guide}" IconSource="question.png" 
                 Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Options" IconSource="icons_settings_96.png" 
+                IconText="{i18n:Translate main_menu_options}" IconSource="icons_settings_96.png" 
                 Command="{TemplateBinding Parent.BindingContext.ShowOptions}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Calendar" IconSource="calendar.png" 
+                IconText="{i18n:Translate main_menu_calendar}" IconSource="calendar.png" 
                 Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Weather" IconSource="clear.png" 
+                IconText="{i18n:Translate main_menu_weather}" IconSource="clear.png" 
                 Command="{TemplateBinding Parent.BindingContext.ShowSettings}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
-                IconText="Add parcel" IconSource="add.png" 
+                IconText="{i18n:Translate main_menu_add_parcel}" IconSource="add.png" 
                 Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"/>
         </StackLayout>
     </ControlTemplate>
@@ -103,48 +103,48 @@
                     <Image Source="add.png" HeightRequest="20" />
                     <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="Hub contact"
+                            Text="{i18n:Translate hub_contact_title}"
                             FontSize="20" />
                 </StackLayout>
                 <components:Divider />
                 <ScrollView >
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Hub" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate hub_contact_hub}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Hub}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Manager" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate hub_contact_manager}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Gerente}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Assistant" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate hub_contact_assistant}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Assistente}"/>
                         </StackLayout>
 
                         <components:Divider />
 
-                        <Label Text="Actions:" FontAttributes="Bold" />
+                        <Label Text="{i18n:Translate hub_contact_actions}" FontAttributes="Bold" />
 
                         <components:IconWithText 
-                                IconText="Navigate here"
+                                IconText="{i18n:Translate hub_contact_navigate}"
                                 IconSource="map.png"
                                 Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentHubContact}" />
 
                         <components:IconWithText 
-                                IconText="Contact manager"
+                                IconText="{i18n:Translate hub_contact_contact_manager}"
                                 IconSource="mail.png"
                                 Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailGte}"/>
 
                         <components:IconWithText 
-                                IconText="Contact assistant"
+                                IconText="{i18n:Translate hub_contact_contact_assistant}"
                                 IconSource="mail.png"
                                 Command="{TemplateBinding Parent.BindingContext.WriteEmail}" 
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailAsis}"/>
 
                         <components:IconWithText 
-                                IconText="Call"
+                                IconText="{i18n:Translate hub_contact_call}"
                                 IconSource="phone.png"
                                 Command="{TemplateBinding Parent.BindingContext.PhoneCall}" 
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Telefono}"/>
@@ -162,110 +162,110 @@
                     <Image Source="add.png" HeightRequest="20" />
                     <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="Investigation platform"
+                            Text="{i18n:Translate investigation_platform_title}"
                             FontSize="20" />
                 </StackLayout>
                 <components:Divider />
                 <ScrollView >
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Platform name" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_name}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.NomPlat}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Short" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_short}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Abrivicacion}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Hub" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_hub}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Hub}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Year started" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_year}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.AnioInst}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="State" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_state}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Estado}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Municipality" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_municipality}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Municipio}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Location" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_location}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Localidad}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Address" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_address}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Direccion}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="ASNM" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_asnm}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Asnm}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Collaborating institute" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_institute}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InstColab}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Campus" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_campus}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Campus}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Inventory responsible" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_inventory_responsible}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InvResp}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Technical responsible" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_technical_responsible}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TecResp}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Crop" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_crop}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CulPrinc}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Agricultural cycle" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_agricultural_cycle}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CicloAgri}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Irrigation Spring/Summer" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_irrigation_pv}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumPv}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Irrigation Autumn/Winter" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate investigation_platform_oi}" FontAttributes="Bold" />
                             <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumOi}"/>
                         </StackLayout>
 
                         <components:Divider />
 
-                        <Label Text="Actions:" FontAttributes="Bold" />
+                        <Label Text="{i18n:Translate investigation_platform_actions}" FontAttributes="Bold" />
 
                         <components:IconWithText 
-                                IconText="Navigate here"
+                                IconText="{i18n:Translate investigation_platform_navigate}"
                                 IconSource="map.png"
                                 Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentInvestigationPlatform}" />
 
                         <components:IconWithText 
-                                IconText="Email inventory responsible"
+                                IconText="{i18n:Translate investigation_platform_email_ir}"
                                 IconSource="mail.png"
                                 Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.EmailIr}"/>
 
                         <components:IconWithText 
-                                IconText="Email technical responsible"
+                                IconText="{i18n:Translate investigation_platform_email_tr}"
                                 IconSource="mail.png"
                                 Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.EmailTr}"/>
 
                         <components:IconWithText 
-                                IconText="Call inventory responsible"
+                                IconText="{i18n:Translate investigation_platform_call_ir}"
                                 IconSource="phone.png"
                                 Command="{TemplateBinding Parent.BindingContext.PhoneCall}" 
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TelIr}"/>
 
                         <components:IconWithText 
-                                IconText="Call technical responsible"
+                                IconText="{i18n:Translate investigation_platform_call_tr}"
                                 IconSource="phone.png"
                                 Command="{TemplateBinding Parent.BindingContext.PhoneCall}" 
                                 CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TelTr}"/>
@@ -283,47 +283,45 @@
                     <Image Source="add.png" HeightRequest="20" />
                     <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="Machinery point"
+                            Text="{i18n:Translate investigation_platform_call_tr}"
                             FontSize="20" />
                 </StackLayout>
 
                 <components:Divider />
 
-                <Label Text="Actions:" FontAttributes="Bold" />
-
                 <ScrollView >
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Year" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate machinery_point_year}" FontAttributes="Bold" />
                             <Label Text="{Binding CurrentMachineryPoint.Properties.Anio}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Hub" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate machinery_point_hub}" FontAttributes="Bold" />
                             <Label Text="{Binding CurrentMachineryPoint.Properties.Hub}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Responsible person"/>
+                            <Label Text="{i18n:Translate machinery_point_responsible}"/>
                             <Label Text="{Binding CurrentMachineryPoint.Properties.Responsabl}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Institution" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate machinery_point_institute}" FontAttributes="Bold" />
                             <Label Text="{Binding CurrentMachineryPoint.Properties.Entidad}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Precomodad" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate machinery_point_precomodad}" FontAttributes="Bold" />
                             <Label Text="{Binding CurrentMachineryPoint.Properties.Precomodad}"/>
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
-                            <Label Text="Registry" FontAttributes="Bold" />
+                            <Label Text="{i18n:Translate machinery_point_registry}" FontAttributes="Bold" />
                             <Label Text="{Binding CurrentMachineryPoint.Properties.Registro}"/>
                         </StackLayout>
 
                         <components:Divider />
 
-                        <Label Text="Actions:" FontAttributes="Bold" />
+                        <Label Text="{i18n:Translate machinery_point_actions}" FontAttributes="Bold" />
 
                         <components:IconWithText 
-                                IconText="Navigate here"
+                                IconText="{i18n:Translate machinery_point_navigate}"
                                 IconSource="map.png"
                                 Command="{Binding NavigateToCurrentMachineryPoint}" />
 
@@ -341,24 +339,149 @@
                         <Image Source="add.png" HeightRequest="20" />
                         <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="Add Parcel"
+                            Text="{i18n:Translate add_parcel_title}"
                             FontSize="20" />
 
                     </StackLayout>
                     <components:Divider />
                     <components:IconWithText
-                        IconText="Using current location"
+                        IconText="{i18n:Translate add_parcel_gps}"
                         IconSource="get_location.png"
                         Command="{TemplateBinding Parent.BindingContext.ClickGetLocation}" />
 
                     <components:IconWithText
-                        IconText="Selecting on the map"
+                        IconText="{i18n:Translate add_parcel_select_on_map}"
                         IconSource="choose_location.png"
                         Command="{TemplateBinding Parent.BindingContext.ClickChooseLocation}" />
 
                 </StackLayout>
             </ScrollView>
         </Frame>
+    </ControlTemplate>
 
+    <ControlTemplate x:Key="ParcelDetailUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="add.png" HeightRequest="20" />
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="{TemplateBinding Parent.BindingContext.SelectedPlot.Name}"
+                            FontSize="20" />
+
+                </StackLayout>
+                <components:Divider />
+                <ScrollView >
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{i18n:Translate plot_detail_planting_date}" />
+                            <Label>Oct. 3, 2018</Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{i18n:Translate plot_detail_irrigation}" />
+                            <Label>Irrigated</Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{i18n:Translate plot_detail_maturity}" />
+                            <Label>Late</Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{i18n:Translate plot_detail_climate}" />
+                            <Label>Hybrid</Label>
+                        </StackLayout>
+
+                        <components:Divider />
+
+                        <Label Text="{i18n:Translate plot_detail_actions}" FontAttributes="Bold" />
+
+                        <components:IconWithText
+                                IconText="{i18n:Translate plot_detail_add_activity}"
+                                IconSource="add.png"
+                                Command="{TemplateBinding Parent.BindingContext.AddActivityToSelectedPlot}" />
+
+                        <components:IconWithText
+                                IconText="{i18n:Translate plot_detail_delineate}"
+                                IconSource="add.png"
+                                Command="{TemplateBinding Parent.BindingContext.DelineateSelectedPlot}" />
+
+                        <components:CameraPicture 
+                                IconText="{i18n:Translate plot_detail_picture}"
+                                IconSource="add.png"
+                                OnPictureTaken="{TemplateBinding Parent.BindingContext.OnParcelPictureTaken}" />
+
+                        <components:IconWithText
+                                IconText="{i18n:Translate plot_detail_picture}"
+                                IconSource="add.png"
+                                Command="{TemplateBinding Parent.BindingContext.AddPictureToSelectedPlot}" />
+
+                        <components:IconWithText
+                                IconText="{i18n:Translate plot_detail_video}"
+                                IconSource="add.png"
+                                Command="{TemplateBinding Parent.BindingContext.AddVideoToSelectedPlot}" />
+
+                        <components:IconWithText
+                                IconText="{i18n:Translate plot_detail_calendar}"
+                                IconSource="add.png"
+                                Command="{TemplateBinding Parent.BindingContext.ShowCalendarForSelectedPlot}" />
+                        <components:Divider />
+                        <Label FontSize="15" Text="{i18n:Translate plot_detail_historical_title}"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Label Text="Costs ($/ha):" Grid.Row="0" Grid.Column="0"/>
+                            <Label Text="300" Grid.Row="0" Grid.Column="1"/>
+                            <Image Source="add.png" WidthRequest="16" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+                        </Grid>
+                        <components:ValueLine
+                                Text="Hi:"
+                                Value="Ho"
+                                ImageSource="add.png"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="MenuUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="add.png" HeightRequest="20" />
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="{i18n:Translate options_title}"
+                            FontSize="20" />
+                </StackLayout>
+                <components:Divider />
+                <ScrollView>
+                    <StackLayout>
+                        <components:IconWithText 
+                                IconText="{i18n:Translate options_planner}"
+                                IconSource="planner.png"
+                                Command="{Binding StartPlanner}"/>
+                        <components:IconWithText 
+                                IconText="{i18n:Translate options_pest}"
+                                IconSource="add.png"
+                                Command="{Binding NavigateToPest}"/>
+                        <components:Divider />
+                        <components:IconWithText 
+                                IconText="{i18n:Translate options_profile}"
+                                IconSource="profile.png"
+                                Command="{Binding NavigateToProfile}"/>
+                        <components:IconWithText 
+                                IconText="{i18n:Translate options_practices}"
+                                IconSource="link.png"
+                                Command="{Binding NavigateToPractices}"/>
+                        <components:IconWithText 
+                                IconText="{i18n:Translate options_about}"
+                                IconSource="add.png"
+                                Command="{Binding NavigateToAbout}"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
     </ControlTemplate>
 </ResourceDictionary>

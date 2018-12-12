@@ -206,6 +206,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ViewUtilidadPage.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Core\Components\Views\SimpleStats.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SimpleStats.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Core\Map\Views\MapMainPage.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -271,6 +276,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Core\Components\Views\CameraPicture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\CameraVideo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Core\Components\Views\Divider.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -374,7 +385,6 @@
       <LastGenOutput>ActivityDetail.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityPage.es.resx">
-      <LastGenOutput>ActivityPage.es.Designer.cs</LastGenOutput>
       <Generator>ResXFileCodeGenerator</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Parcel\Views\ActivityPage.resx">

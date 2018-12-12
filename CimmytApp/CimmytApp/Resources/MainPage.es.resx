@@ -117,7 +117,34 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="hey" xml:space="preserve">
-    <value>Hey!</value>
+  <data name="add_parcel" xml:space="preserve">
+    <value>Agregar parcela</value>
+  </data>
+  <data name="calendar" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="guide" xml:space="preserve">
+    <value>Guía rápida</value>
+  </data>
+  <data name="hint_start" xml:space="preserve">
+    <value>Selecciona una actividad para comenzar:</value>
+  </data>
+  <data name="links" xml:space="preserve">
+    <value>Ver enlaces y herramientas</value>
+  </data>
+  <data name="parcels_map" xml:space="preserve">
+    <value>Mapa de parcelas</value>
+  </data>
+  <data name="parcel_overview" xml:space="preserve">
+    <value>Información de parcela</value>
+  </data>
+  <data name="planner" xml:space="preserve">
+    <value>Planificador</value>
+  </data>
+  <data name="profile" xml:space="preserve">
+    <value>Perfil de productor</value>
+  </data>
+  <data name="welcome" xml:space="preserve">
+    <value>¡Bienvenido!</value>
   </data>
 </root>

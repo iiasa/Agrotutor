@@ -150,11 +150,10 @@
                         bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(
                                                       new ConfirmConfig
                                                       {
-                                                          Message =
-                                                              "The plot already has a delineation. Do you really want to overwrite the old one?",
-                                                          OkText = "Yes",
-                                                          CancelText = "Cancel",
-                                                          Title = "Delineation already exists"
+                                                          Message = Localizer.GetString("replace_delineation_prompt_message"),
+                                                          OkText = Localizer.GetString("replace_delineation_prompt_yes"),
+                                                          CancelText = Localizer.GetString("replace_delineation_prompt_cancel"),
+                                                          Title = Localizer.GetString("replace_delineation_prompt_title")
                                                       });
 
                         if (confirmDelineation)
@@ -304,7 +303,7 @@
                                                     {
                                                         emailAddress
                                                     },
-                                               Subject = "Agrotutor enquiry"
+                                               Subject = Localizer.GetString("email_subject")
                                            };
                     await Email.ComposeAsync(message);
                 });
@@ -586,10 +585,10 @@
             bool confirmPlotCreation = await UserDialogs.Instance.ConfirmAsync(
                                            new ConfirmConfig
                                            {
-                                               Message = "Do you want to create a new plot at this location?",
-                                               OkText = "Yes",
-                                               CancelText = "Cancel",
-                                               Title = "Add plot"
+                                               Message = Localizer.GetString("new_plot_prompt_message"),
+                                               OkText = Localizer.GetString("new_plot_prompt_yes"),
+                                               CancelText = Localizer.GetString("new_plot_prompt_no"),
+                                               Title = Localizer.GetString("new_plot_prompt_title")
                                            });
 
             if (confirmPlotCreation)
@@ -620,11 +619,11 @@
                     {
                         var LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
                                                 Permission.Location,
-                                                "Location Permission",
-                                                "This app uses your location to show you weather information and help you with creating plots. Please allow us to use your device's location.",
-                                                "OK",
-                                                "Deny",
-                                                "You denied us the use of your location. The app cannot show location dependent information. Please enable the location in your phone's settings.");
+                                                Localizer.GetString("location_permission_prompt_title"),
+                                                Localizer.GetString("location_permission_prompt_message"),
+                                                Localizer.GetString("location_permission_prompt_accept"),
+                                                Localizer.GetString("location_permission_prompt_deny"),
+                                                Localizer.GetString("location_permission_prompt_deny_message"));
 
                         if (LocationPermissionGiven)
                         {
@@ -716,19 +715,19 @@
                     SelectLocationUIIsVisible = false;
                     break;
                 case MapTask.SelectLocation:
-                    CurrentMapTaskHint = "Click on map to select location";
+                    CurrentMapTaskHint = Localizer.GetString("task_hint_select_location");
                     CurrentMapTaskHintIsVisible = true;
                     SelectLocationUIIsVisible = true;
                     GPSLocationUIIsVisible = false;
                     break;
                 case MapTask.CreatePlotByGPS:
-                    CurrentMapTaskHint = "Accept location when accurate enough";
+                    CurrentMapTaskHint = Localizer.GetString("task_hint_gps_location");
                     CurrentMapTaskHintIsVisible = true;
                     GPSLocationUIIsVisible = true;
                     SelectLocationUIIsVisible = false;
                     break;
                 case MapTask.SelectLocationForPlanner:
-                    CurrentMapTaskHint = "Click on map to select location";
+                    CurrentMapTaskHint = Localizer.GetString("task_hint_select_location");
                     CurrentMapTaskHintIsVisible = true;
                     SelectLocationUIIsVisible = true;
                     GPSLocationUIIsVisible = false;
