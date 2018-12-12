@@ -124,9 +124,9 @@
     <value>Cargar datos</value>
   </data>
   <data name="no_data" xml:space="preserve">
-    <value>Lo sentimos, no hay datos disponibles para esta parcela.</value>
+    <value>Lo sentimos, no hay datos disponibles para esta parcela</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Yield potencial</value>
+    <value>Rendimiento potencial</value>
   </data>
 </root>

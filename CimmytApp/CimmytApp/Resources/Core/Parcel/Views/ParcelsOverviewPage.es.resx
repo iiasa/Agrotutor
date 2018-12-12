@@ -121,13 +121,13 @@
     <value>Borrar</value>
   </data>
   <data name="detail" xml:space="preserve">
-    <value>Detalle</value>
+    <value>Detalles</value>
   </data>
   <data name="edit" xml:space="preserve">
     <value>Editar</value>
   </data>
   <data name="no_parcels_hint" xml:space="preserve">
-    <value>Aún no has creado una parcela.&amp;#x0a;Presione 'nueva parcela' para agregar una parcela.&amp;#x0a;&amp;#x0a;Regresar a la página principal</value>
+    <value>Aún no ha creado una parcela.Presione 'Agregar parcela' para hacerlo. Regresar a la página principal</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Información de parcela</value>

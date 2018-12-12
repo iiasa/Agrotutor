@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about" xml:space="preserve">
-    <value>Sobre el planificador</value>
+    <value>Acerca del planificador</value>
   </data>
   <data name="hint_own_yield" xml:space="preserve">
-    <value>Si ha producido este cultivo antes en esta ubicación, ingrese el rendimiento obtenido:</value>
+    <value>Si usted ya ha producido este cultivo en esta ubicación, ingrese el rendimiento obtenido:</value>
   </data>
   <data name="select" xml:space="preserve">
     <value>seleccionar</value>
   </data>
   <data name="select_crop" xml:space="preserve">
-    <value>Por favor selecciona tu cultivo</value>
+    <value>Por favor seleccione su cultivo</value>
   </data>
   <data name="select_location" xml:space="preserve">
-    <value>Selecciona tu ubicación</value>
+    <value>Seleccione su ubicación</value>
   </data>
   <data name="start" xml:space="preserve">
-    <value>Comienzo</value>
+    <value>Iniciar</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Planificador (CIAT)</value>
+    <value>Planificador</value>
   </data>
   <data name="unit_own_yield" xml:space="preserve">
     <value>[kilogramos] (opcional)</value>
   </data>
   <data name="use_gps" xml:space="preserve">
-    <value>Usando GPS</value>
+    <value>Usando ubicacion actual</value>
   </data>
   <data name="use_map" xml:space="preserve">
     <value>Sobre el mapa</value>

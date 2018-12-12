@@ -121,7 +121,7 @@
     <value>Comercialización</value>
   </data>
   <data name="deweeding" xml:space="preserve">
-    <value>Control de prevención de malezas</value>
+    <value>Prevención y control de malezas</value>
   </data>
   <data name="fertilizer" xml:space="preserve">
     <value>Fertilización</value>
@@ -145,12 +145,12 @@
     <value>Almacenamiento poscosecha</value>
   </data>
   <data name="soil_improvers" xml:space="preserve">
-    <value>Aplicación de mejoradores de suelo</value>
+    <value>Aplicación de mejoradores del suelo</value>
   </data>
   <data name="sowing" xml:space="preserve">
     <value>Siembra</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Aggregar actividad</value>
+    <value>Agregar actividad</value>
   </data>
 </root>
