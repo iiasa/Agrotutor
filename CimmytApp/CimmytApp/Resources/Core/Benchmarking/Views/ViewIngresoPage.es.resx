@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="loading_message" xml:space="preserve">
-    <value>Ordenamiento de datos en curso, por favor espere...</value>
+    <value>Descargando datos, por favor espere...</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Ingresos</value>

@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="add" xml:space="preserve">
-    <value>Aggregar actividad</value>
+    <value>Agregar actividad</value>
   </data>
   <data name="applied_products" xml:space="preserve">
     <value>Productos aplicados</value>
@@ -142,7 +142,7 @@
     <value>Cantidad aplicada</value>
   </data>
   <data name="seeds_kg" xml:space="preserve">
-    <value>kilogramos de siembra</value>
+    <value>Kilogramos de semilla</value>
   </data>
   <data name="seeds_nr" xml:space="preserve">
     <value>Número de semillas</value>
@@ -151,6 +151,6 @@
     <value>Variedad sembrada</value>
   </data>
   <data name="yield" xml:space="preserve">
-    <value>Yield</value>
+    <value>Rendimiento</value>
   </data>
 </root>

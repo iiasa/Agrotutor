@@ -130,13 +130,13 @@
     <value>Tipo de cultivo</value>
   </data>
   <data name="hint_gps_location" xml:space="preserve">
-    <value>Usando GPS</value>
+    <value>Usando ubicación actual</value>
   </data>
   <data name="hint_location" xml:space="preserve">
     <value>Selecciona la ubicación de tu parcela</value>
   </data>
   <data name="hint_management_info" xml:space="preserve">
-    <value>Agrega información de manejo de parcela</value>
+    <value>Agregue información de manejo de parcela</value>
   </data>
   <data name="hint_parcel_name" xml:space="preserve">
     <value>Nombre de parcela</value>

@@ -118,51 +118,51 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="email_subject" xml:space="preserve">
-    <value>Agrotutor enquiry</value>
+    <value>Requerimiento de usuario de AgroTutor</value>
   </data>
   <data name="location_permission_prompt_accept" xml:space="preserve">
-    <value>OK</value>
+    <value>Acepto</value>
   </data>
   <data name="location_permission_prompt_deny" xml:space="preserve">
-    <value>Deny</value>
+    <value>No acepto</value>
   </data>
   <data name="location_permission_prompt_deny_message" xml:space="preserve">
-    <value>You denied us the use of your location. The app cannot show location dependent information. Please enable the location in your phone's settings.</value>
+    <value>No ha aceptado que AgroTutor utilice su ubicaición actual, La aplicación no puede desplegar información que depende de la ubicación. Por favor active la ubicación en la configuración del teléfono.</value>
   </data>
   <data name="location_permission_prompt_message" xml:space="preserve">
-    <value>This app uses your location to show you weather information and help you with creating plots. Please allow us to use your device's location.</value>
+    <value>Esta aplicación utiliza su ubicación para desplegar información climatica relevante al sitio donde se encuentra y además para ayudarle a marcar y delinear parcelas. Por favor permita que AgroTutor pueda usar su ubicación actual.</value>
   </data>
   <data name="location_permission_prompt_title" xml:space="preserve">
-    <value>Location Permission</value>
+    <value>Permisos de ubicación</value>
   </data>
   <data name="new_plot_prompt_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="new_plot_prompt_message" xml:space="preserve">
-    <value>Do you want to create a new plot at this location?</value>
+    <value>Desea registrar una parcela en este sitio?</value>
   </data>
   <data name="new_plot_prompt_title" xml:space="preserve">
-    <value>Add plot</value>
+    <value>Agregar parcela</value>
   </data>
   <data name="new_plot_prompt_yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Sí</value>
   </data>
   <data name="replace_delineation_prompt_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="replace_delineation_prompt_message" xml:space="preserve">
-    <value>The plot already has a delineation. Do you really want to overwrite the old one?</value>
+    <value>La parcela seleccionada ya está delineada. Desea reemplazar la delineación existente?</value>
   </data>
   <data name="replace_delineation_prompt_title" xml:space="preserve">
-    <value>Delineation already exists</value>
+    <value>La delineación de esta parcela ya existe</value>
   </data>
   <data name="replace_delineation_prompt_yes" xml:space="preserve">
-    <value>Yes</value>
+    <value>Sí</value>
   </data>
   <data name="task_hint_gps_location" xml:space="preserve">
-    <value>Accept location when accurate enough</value>
+    <value>Aceptar la ubicación cuando sea lo suficientemente precisa</value>
   </data>
   <data name="task_hint_select_location" xml:space="preserve">
-    <value>Click on map to select location</value>
+    <value>Pulse sobre el mapa para seleccionar la ubicación deseada</value>
   </data>
 </root>

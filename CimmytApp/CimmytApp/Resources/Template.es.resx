@@ -118,225 +118,225 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="add_parcel_gps" xml:space="preserve">
-    <value>Using current location</value>
+    <value>Usando la ubicación actual</value>
   </data>
   <data name="add_parcel_select_on_map" xml:space="preserve">
-    <value>Selecting on the map</value>
+    <value>Seleccionando sobre el mapa</value>
   </data>
   <data name="add_parcel_title" xml:space="preserve">
-    <value>Add Parcel</value>
+    <value>Agregar parcela</value>
   </data>
   <data name="delineation_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="delineation_ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Aceptar</value>
   </data>
   <data name="delineation_undo" xml:space="preserve">
-    <value>Undo</value>
+    <value>Deshacer</value>
   </data>
   <data name="gps_location_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar</value>
   </data>
   <data name="gps_location_ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Aceptar</value>
   </data>
   <data name="hub_contact_actions" xml:space="preserve">
-    <value>Actions:</value>
+    <value>Acciones:</value>
   </data>
   <data name="hub_contact_assistant" xml:space="preserve">
-    <value>Assistant</value>
+    <value>Asistente</value>
   </data>
   <data name="hub_contact_call" xml:space="preserve">
-    <value>Call</value>
+    <value>Llamar</value>
   </data>
   <data name="hub_contact_contact_assistant" xml:space="preserve">
-    <value>Contact assistant</value>
+    <value>Contactar asistente</value>
   </data>
   <data name="hub_contact_contact_manager" xml:space="preserve">
-    <value>Contact manager</value>
+    <value>Contactar administrador</value>
   </data>
   <data name="hub_contact_hub" xml:space="preserve">
     <value>Hub</value>
   </data>
   <data name="hub_contact_manager" xml:space="preserve">
-    <value>Manager</value>
+    <value>Administrador</value>
   </data>
   <data name="hub_contact_navigate" xml:space="preserve">
-    <value>Navigate to hub contact</value>
+    <value>Navegar hacia el hub</value>
   </data>
   <data name="hub_contact_title" xml:space="preserve">
-    <value>Hub contact</value>
+    <value>Contacto del hub</value>
   </data>
   <data name="investigation_platform_actions" xml:space="preserve">
-    <value>Actions:</value>
+    <value>Acciones:</value>
   </data>
   <data name="investigation_platform_address" xml:space="preserve">
-    <value>Address</value>
+    <value>Dirección</value>
   </data>
   <data name="investigation_platform_agricultural_cycle" xml:space="preserve">
-    <value>Agricultural cycle</value>
+    <value>Ciclo agrícola</value>
   </data>
   <data name="investigation_platform_asnm" xml:space="preserve">
     <value>ASNM</value>
   </data>
   <data name="investigation_platform_call_ir" xml:space="preserve">
-    <value>Call inventory responsible</value>
+    <value>Llamar al responsable del inventario</value>
   </data>
   <data name="investigation_platform_call_tr" xml:space="preserve">
-    <value>Call technical responsible</value>
+    <value>Llamar al responsable técnico</value>
   </data>
   <data name="investigation_platform_campus" xml:space="preserve">
     <value>Campus</value>
   </data>
   <data name="investigation_platform_crop" xml:space="preserve">
-    <value>Crop</value>
+    <value>Cultivo</value>
   </data>
   <data name="investigation_platform_email_ir" xml:space="preserve">
-    <value>Email inventory responsible</value>
+    <value>Enviar un correo electrónico al responsable de inventario</value>
   </data>
   <data name="investigation_platform_email_tr" xml:space="preserve">
-    <value>Email technical responsible</value>
+    <value>Enviar un correo electrónico al responsable técnico</value>
   </data>
   <data name="investigation_platform_hub" xml:space="preserve">
     <value>Hub</value>
   </data>
   <data name="investigation_platform_institute" xml:space="preserve">
-    <value>Collaborating institute</value>
+    <value>Instituto colaborador</value>
   </data>
   <data name="investigation_platform_inventory_responsible" xml:space="preserve">
-    <value>Inventory responsible</value>
+    <value>responsable de inventario</value>
   </data>
   <data name="investigation_platform_irrigation_pv" xml:space="preserve">
-    <value>Irrigation Spring/Summer</value>
+    <value>Riego pirmavera/verano</value>
   </data>
   <data name="investigation_platform_location" xml:space="preserve">
-    <value>Location</value>
+    <value>Ubicación</value>
   </data>
   <data name="investigation_platform_municipality" xml:space="preserve">
-    <value>Municipality</value>
+    <value>Municipalidad</value>
   </data>
   <data name="investigation_platform_name" xml:space="preserve">
-    <value>Platform name</value>
+    <value>Nombre de la plataforma</value>
   </data>
   <data name="investigation_platform_navigate" xml:space="preserve">
-    <value>Navigate here</value>
+    <value>Navegar aquí</value>
   </data>
   <data name="investigation_platform_oi" xml:space="preserve">
-    <value>Irrigation Autumn/Winter</value>
+    <value>Riego otoño/invierno</value>
   </data>
   <data name="investigation_platform_short" xml:space="preserve">
-    <value>Short</value>
+    <value>Breve</value>
   </data>
   <data name="investigation_platform_state" xml:space="preserve">
-    <value>State</value>
+    <value>Estado</value>
   </data>
   <data name="investigation_platform_technical_responsible" xml:space="preserve">
-    <value>Technical responsible</value>
+    <value>Responsable Técnico</value>
   </data>
   <data name="investigation_platform_title" xml:space="preserve">
-    <value>Investigation platform</value>
+    <value>Plataforma de investigación</value>
   </data>
   <data name="investigation_platform_year" xml:space="preserve">
-    <value>Year started</value>
+    <value>Año de inicio</value>
   </data>
   <data name="machinery_point_actions" xml:space="preserve">
-    <value>Actions:</value>
+    <value>Acciones:</value>
   </data>
   <data name="machinery_point_hub" xml:space="preserve">
     <value>Hub</value>
   </data>
   <data name="machinery_point_institute" xml:space="preserve">
-    <value>Institution</value>
+    <value>Institución</value>
   </data>
   <data name="machinery_point_navigate" xml:space="preserve">
-    <value>Navigate here</value>
+    <value>Navegar aquí</value>
   </data>
   <data name="machinery_point_precomodad" xml:space="preserve">
-    <value>Precomodad</value>
+    <value>Precomodato</value>
   </data>
   <data name="machinery_point_registry" xml:space="preserve">
-    <value>Registry</value>
+    <value>Registro</value>
   </data>
   <data name="machinery_point_responsible" xml:space="preserve">
-    <value>Responsible person</value>
+    <value>Persona responsable</value>
   </data>
   <data name="machinery_point_title" xml:space="preserve">
-    <value>Machinery point</value>
+    <value>Punto de maquinaria</value>
   </data>
   <data name="machinery_point_year" xml:space="preserve">
-    <value>Year</value>
+    <value>Año</value>
   </data>
   <data name="main_menu_add_parcel" xml:space="preserve">
-    <value>Add parcel</value>
+    <value>Agregar parcela</value>
   </data>
   <data name="main_menu_calendar" xml:space="preserve">
-    <value>Calendar</value>
+    <value>Calendario</value>
   </data>
   <data name="main_menu_guide" xml:space="preserve">
-    <value>Guide</value>
+    <value>Guía</value>
   </data>
   <data name="main_menu_options" xml:space="preserve">
-    <value>Options</value>
+    <value>Opciones</value>
   </data>
   <data name="main_menu_weather" xml:space="preserve">
-    <value>Weather</value>
+    <value>Clima</value>
   </data>
   <data name="options_about" xml:space="preserve">
-    <value>About</value>
+    <value>Acerca de</value>
   </data>
   <data name="options_pest" xml:space="preserve">
-    <value>Pest and Disease identification</value>
+    <value>Identificación de plagas y enfermedades</value>
   </data>
   <data name="options_planner" xml:space="preserve">
-    <value>Planner</value>
+    <value>Planificador</value>
   </data>
   <data name="options_practices" xml:space="preserve">
-    <value>Best agronomical practices</value>
+    <value>Prácticas agrícolas recomendadas</value>
   </data>
   <data name="options_profile" xml:space="preserve">
-    <value>Your profile</value>
+    <value>Su perfil</value>
   </data>
   <data name="options_title" xml:space="preserve">
-    <value>Options</value>
+    <value>Opciones</value>
   </data>
   <data name="plot_detail_actions" xml:space="preserve">
-    <value>Actions:</value>
+    <value>Acciones:</value>
   </data>
   <data name="plot_detail_add_activity" xml:space="preserve">
-    <value>Add activity</value>
+    <value>Agregar actividad</value>
   </data>
   <data name="plot_detail_calendar" xml:space="preserve">
-    <value>Crop calendar</value>
+    <value>Calendario de cultivo</value>
   </data>
   <data name="plot_detail_climate" xml:space="preserve">
-    <value>Ideal climate</value>
+    <value>Clima idóneo</value>
   </data>
   <data name="plot_detail_delineate" xml:space="preserve">
-    <value>Delineate plot</value>
+    <value>Delinear la parcela</value>
   </data>
   <data name="plot_detail_historical_title" xml:space="preserve">
-    <value>Historical information</value>
+    <value>Información histórica</value>
   </data>
   <data name="plot_detail_irrigation" xml:space="preserve">
-    <value>Irrigation</value>
+    <value>Riego</value>
   </data>
   <data name="plot_detail_maturity" xml:space="preserve">
-    <value>Maturity type</value>
+    <value>Tipo de madurez</value>
   </data>
   <data name="plot_detail_picture" xml:space="preserve">
-    <value>Add a picture</value>
+    <value>Agregue una foto</value>
   </data>
   <data name="plot_detail_planting_date" xml:space="preserve">
-    <value>Planted on</value>
+    <value>Fecha de siembra:</value>
   </data>
   <data name="plot_detail_video" xml:space="preserve">
-    <value>Add a video</value>
+    <value>Agregue un vídeo</value>
   </data>
   <data name="select_location_cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Cancelar </value>
   </data>
   <data name="select_location_ok" xml:space="preserve">
-    <value>Ok</value>
+    <value>Aceptar</value>
   </data>
 </root>

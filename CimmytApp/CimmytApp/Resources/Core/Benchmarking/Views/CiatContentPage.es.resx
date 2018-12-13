@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="description" xml:space="preserve">
-    <value>Para su cultivo seleccionado con el tipo de riego en la ubicación:</value>
+    <value>Para el cultivo y ubicación seleccionados:</value>
   </data>
   <data name="interpretation" xml:space="preserve">
     <value>Cómo interpretar los resultados</value>
@@ -130,36 +130,36 @@
     <value>Cargando...</value>
   </data>
   <data name="marker_max" xml:space="preserve">
-    <value>&amp;lt;  Max</value>
+    <value>Max</value>
   </data>
   <data name="marker_min" xml:space="preserve">
-    <value>&amp;lt;  Min</value>
+    <value>Min</value>
   </data>
   <data name="marker_your_yield" xml:space="preserve">
-    <value>Tu rendimiento  &amp;gt;</value>
+    <value>Su rendimiento</value>
   </data>
   <data name="non_irrigated" xml:space="preserve">
     <value>No irrigado</value>
   </data>
   <data name="no_data" xml:space="preserve">
-    <value>Lo sentimos, no hay información disponible para esta ubicación.</value>
+    <value>Lo sentimos, aún no hay información disponible para esta ubicación</value>
   </data>
   <data name="placeholder_avoid" xml:space="preserve">
-    <value>Evitar los cultivares:</value>
+    <value>Evite sembrar los siguientes cultivares:</value>
   </data>
   <data name="placeholder_nitrogen" xml:space="preserve">
-    <value>Aplicar x cantidad de nitrógeno</value>
+    <value>Aplicar la siguiente cantidad de nitrógeno:</value>
   </data>
   <data name="placeholder_seed_density" xml:space="preserve">
-    <value>Densidad de semillas:</value>
+    <value>Densidad de siembra:</value>
   </data>
   <data name="placeholder_use" xml:space="preserve">
-    <value>Utilizar cultivares:</value>
+    <value>Prefiera los siguientes cultivares:</value>
   </data>
   <data name="recommendations" xml:space="preserve">
-    <value>Recommendaciones:</value>
+    <value>Recomendaciones:</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Selección CIAT</value>
+    <value>Planificador</value>
   </data>
 </root>

@@ -121,16 +121,16 @@
     <value>Calendario de actividades</value>
   </data>
   <data name="comparative_information" xml:space="preserve">
-    <value>Informacion comparativa</value>
+    <value>Información comparativa</value>
   </data>
   <data name="general_information" xml:space="preserve">
-    <value>Informacion general</value>
+    <value>Información general</value>
   </data>
   <data name="location" xml:space="preserve">
-    <value>Ubicacion</value>
+    <value>Ubicación</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Yield potencial</value>
+    <value>Rendimiento potencial</value>
   </data>
   <data name="weather" xml:space="preserve">
     <value>Clima</value>
