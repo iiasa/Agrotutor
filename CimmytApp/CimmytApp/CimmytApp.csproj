@@ -6,8 +6,6 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Resources\StaticContent\Views\CitationPage.es.resx" />
-    <EmbeddedResource Remove="Core\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml" />
-    <EmbeddedResource Remove="Core\Calendar\Components\Views\MonthlyCalendarMultipleEventEntries.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -72,7 +70,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Core\Calendar\Components\Views\MonthlyCalendarMultipleEventEntries.xaml.cs" />
     <Compile Update="Core\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml.cs">
       <DependentUpon>MonthlyCalendarEventEntry.xaml</DependentUpon>
     </Compile>
