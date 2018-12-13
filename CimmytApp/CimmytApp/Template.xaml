@@ -47,7 +47,7 @@
             <Button 
                 Style="{StaticResource ButtonCancel}"
                 Command="{TemplateBinding Parent.BindingContext.DelineationUndo}"
-                Text="{i18n:Translate delineation_undo"/>
+                Text="{i18n:Translate delineation_undo}"/>
         </StackLayout>
     </ControlTemplate>
 
@@ -89,7 +89,7 @@
                 Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="{i18n:Translate main_menu_weather}" IconSource="clear.png" 
-                Command="{TemplateBinding Parent.BindingContext.ShowSettings}"/>
+                Command="{TemplateBinding Parent.BindingContext.ShowWeather}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="{i18n:Translate main_menu_add_parcel}" IconSource="add.png" 
                 Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"/>
@@ -396,7 +396,7 @@
 
                         <components:IconWithText
                                 IconText="{i18n:Translate plot_detail_add_activity}"
-                                IconSource="add.png"
+                                IconSource="farmer.png"
                                 Command="{TemplateBinding Parent.BindingContext.AddActivityToSelectedPlot}" />
 
                         <components:IconWithText

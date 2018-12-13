@@ -30,6 +30,7 @@
 
         private string _amountApplied;
 
+        private Plot _plot;
         private string _appliedProduct;
 
         private List<string> _listSownVariety;
@@ -52,7 +53,6 @@
                 "Mejorado"
             };
             ActivityDate = DateTime.Now;
-            SaveCommand = new DelegateCommand(SaveCommandExecution);
         }
 
         /// <summary>
@@ -171,7 +171,38 @@
         /// <summary>
         ///     Gets or sets the SaveCommand
         /// </summary>
-        public DelegateCommand SaveCommand { get; set; }
+        public DelegateCommand SaveCommand => new DelegateCommand(()=> {
+            string activityName;
+            if (ActivityDynamicUIVisibility.ActivityNameListVisibility ||
+                ActivityDynamicUIVisibility.ActivityNameVisibility)
+            {
+                activityName = ActivityName;
+            }
+            else
+            {
+                activityName = ActivityNameText;
+            }
+            var activity = new Activity
+            {
+                AmountApplied = AmountApplied,
+                AppliedProduct = AppliedProduct,
+                ActivityType = ActivityType,
+                Cost = ActivityCost,
+                Date = ActivityDate,
+                Dose = ActivityDose,
+                Name = activityName,
+                NumberOfSeeds = NumberOfSeeds,
+                ProductObtained = ProductObtained,
+                Sown = SelectedSown,
+                WeightOfSeeds = WeightOfSeeds,
+                Yield = ActivityYield
+            };
+            if (Plot.Activities == null) Plot.Activities = new List<Activity>();
+            Plot.Activities.Add(activity);
+            //TODO save to DB ? 
+
+            _navigationService.NavigateAsync("app:///MapMainPage");
+        });
 
         /// <summary>
         ///     Gets or sets the SelectedSown
@@ -203,12 +234,24 @@
         {
         }
 
+        public Plot Plot
+        {
+            get => this._plot;
+            private set => SetProperty(ref this._plot, value);
+        }
+
         /// <summary>
         ///     The OnNavigatedTo
         /// </summary>
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
+            if (parameters.ContainsKey("Plot"))
+            {
+                parameters.TryGetValue<Plot>("Plot", out var plot);
+                Plot = plot;
+            }
+
             var activityName = (string)parameters["activityType"];
             ActivityType = (ActivityType)Enum.Parse(typeof(ActivityType), activityName);
             ActivityBaseClass baseClass = null;
@@ -267,44 +310,6 @@
                     ActivityName = ActivityDynamicUIVisibility.ActivityName;
                 }
             }
-        }
-
-        /// <summary>
-        ///     The SaveCommandExecution
-        /// </summary>
-        private void SaveCommandExecution()
-        {
-            string activityName;
-            if (ActivityDynamicUIVisibility.ActivityNameListVisibility ||
-                ActivityDynamicUIVisibility.ActivityNameVisibility)
-            {
-                activityName = ActivityName;
-            }
-            else
-            {
-                activityName = ActivityNameText;
-            }
-            var activity = new Activity
-            {
-                AmountApplied = AmountApplied,
-                AppliedProduct = AppliedProduct,
-                ActivityType = ActivityType,
-                Cost = ActivityCost,
-                Date = ActivityDate,
-                Dose = ActivityDose,
-                Name = activityName,
-                NumberOfSeeds = NumberOfSeeds,
-                ProductObtained = ProductObtained,
-                Sown = SelectedSown,
-                WeightOfSeeds = WeightOfSeeds,
-                Yield = ActivityYield
-            };
-
-            var parameters = new NavigationParameters
-            {
-                { "Activity", activity }
-            };
-            _navigationService.GoBackAsync(parameters);
         }
     }
 }

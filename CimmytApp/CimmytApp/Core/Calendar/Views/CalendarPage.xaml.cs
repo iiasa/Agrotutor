@@ -6,7 +6,7 @@
     using Xamarin.Forms;
     using CimmytApp.Core.Calendar.Types;
     using CimmytApp.Core.Calendar.ViewModels;
-    using CimmytApp.Core.Map.Views;
+    using CimmytApp.Core.Calendar.Components.Views;
 
     public partial class CalendarPage : ContentPage
     {

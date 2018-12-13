@@ -46,11 +46,21 @@
             Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="5"
             MapClicked="Handle_MapClicked" MapLongClicked="Handle_MapLongClicked"
             PinClicked="Handle_PinClicked" />
-         
-        <components:WeatherWidget 
+        
+        <ContentView
             Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" 
             HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
-            CurrentWeather="{Binding CurrentWeather}"/>
+            IsVisible="{Binding ShowWeatherWidget}">
+            <Frame BackgroundColor="Azure" Opacity="0.75" Padding="2" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Image Source="{Binding CurrentWeatherIconSource}" HeightRequest="24" WidthRequest="24" />
+                    <Label Text="{Binding CurrentWeatherText}" VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowWeather}"/>
+                </Frame.GestureRecognizers>
+            </Frame>
+        </ContentView>
 
         <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
             Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 

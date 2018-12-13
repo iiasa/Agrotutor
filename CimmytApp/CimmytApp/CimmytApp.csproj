@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <EmbeddedResource Remove="Resources\StaticContent\Views\CitationPage.es.resx" />
+    <EmbeddedResource Remove="Core\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml" />
+    <EmbeddedResource Remove="Core\Calendar\Components\Views\MonthlyCalendarMultipleEventEntries.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -69,6 +71,12 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Core\Calendar\Components\Views\MonthlyCalendarMultipleEventEntries.xaml.cs" />
+    <Compile Update="Core\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml.cs">
+      <DependentUpon>MonthlyCalendarEventEntry.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Update="Core\Benchmarking\Views\BenchmarkingPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
@@ -276,12 +284,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Core\Components\Views\CameraPicture.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Core\Components\Views\CameraVideo.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Core\Components\Views\Divider.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -297,19 +299,7 @@
     <EmbeddedResource Update="Core\Components\Views\SimpleStats.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Core\Components\Views\WeatherWidget.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Core\Map\Views\MapMainPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Core\Map\Views\MonthlyCalendarDayView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Core\Map\Views\MonthlyCalendarEventEntry.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Core\Map\Views\MonthlyCalendarMultipleEventEntries.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx">
@@ -509,16 +499,10 @@
     <None Update="Core\Components\Views\ValueLine.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="Core\Components\Views\WeatherWidget.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
     <None Update="Core\Map\Views\Map.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Map\Views\MapMainPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
-    <None Update="Core\Map\Views\MonthlyCalendarDayView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Core\Map\Views\MonthlyCalendarEventEntry.xaml">

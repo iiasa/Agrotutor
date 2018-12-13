@@ -1,4 +1,4 @@
-﻿namespace CimmytApp.Core.Map.Views
+﻿namespace CimmytApp.Core.Calendar.Components.Views
 {
     using System.Collections.Generic;
     using CimmytApp.Core.Calendar.Types;

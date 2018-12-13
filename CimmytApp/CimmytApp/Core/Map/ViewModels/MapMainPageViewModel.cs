@@ -1,6 +1,7 @@
 ﻿namespace CimmytApp.Core.Map.ViewModels
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using Acr.UserDialogs;
@@ -82,6 +83,9 @@
         private WeatherForecast currentWeather;
 
         private bool locationPermissionGiven;
+        private bool _showWeatherWidget;
+        private string _currentWeatherIconSource;
+        private string _currentWeatherText;
 
         public MapMainPageViewModel(
             INavigationService navigationService,
@@ -90,6 +94,7 @@
             : base(localizer)
         {
             LocationPermissionGiven = false;
+            ShowWeatherWidget = false;
             AppDataService = appDataService;
             NavigationService = navigationService;
             CurrentMapTask = MapTask.Default;
@@ -97,6 +102,31 @@
             OptionsIsVisible = false;
             LoadingSpinnerIsVisible = false;
         }
+
+        public DelegateCommand ShowWeather =>
+            new DelegateCommand(()=> 
+            {
+                var param = new NavigationParameters();
+                if (this.CurrentWeather != null) {
+                    param.Add("Forecast", CurrentWeather);
+                }
+                if (this.WeatherLocation != null){
+                    param.Add("Location", WeatherLocation);
+                } else {
+                    // TODO put message location missing, or select on map
+                    return;
+                }
+                NavigationService.NavigateAsync("WeatherMainPage", param);
+            });
+
+        public DelegateCommand AddActivityToSelectedPlot =>
+            new DelegateCommand(()=>{
+                var param = new NavigationParameters
+                {
+                    { "Plot", SelectedPlot }
+                };
+                NavigationService.NavigateAsync("ActivityPage", param);
+            });
 
         public DelegateCommand AddParcelClicked =>
             new DelegateCommand(
@@ -119,6 +149,8 @@
                 }
             }
         }
+
+        public bool ShowWeatherWidget { get => _showWeatherWidget; set => SetProperty(ref _showWeatherWidget, value); }
 
         public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
 
@@ -298,13 +330,13 @@
                 async emailAddress =>
                 {
                     EmailMessage message = new EmailMessage
-                                           {
-                                               To = new List<string>
+                    {
+                        To = new List<string>
                                                     {
                                                         emailAddress
                                                     },
-                                               Subject = Localizer.GetString("email_subject")
-                                           };
+                        Subject = Localizer.GetString("email_subject")
+                    };
                     await Email.ComposeAsync(message);
                 });
 
@@ -607,7 +639,7 @@
         private async void EnableUserLocation()
         {
             Device.BeginInvokeOnMainThread(
-                async() =>
+                async () =>
                 {
                     LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
                     if (LocationPermissionGiven)
@@ -637,15 +669,15 @@
         private async void GetUserLocation()
         {
             GeolocationRequest geolocationRequest = new GeolocationRequest
-                                                    {
-                                                        DesiredAccuracy = Constants.MainMapLocationAccuracy
-                                                    };
+            {
+                DesiredAccuracy = Constants.MainMapLocationAccuracy
+            };
             Xamarin.Essentials.Location location = await Geolocation.GetLastKnownLocationAsync();
             WeatherLocation = location;
 
             do
             {
-                CurrentPosition = (Persistence.Entities.Position)location;
+                CurrentPosition = Persistence.Entities.Position.FromLocation(location);
                 if (CurrentMapTask == MapTask.CreatePlotByGPS)
                 {
                     AddPlotPosition = CurrentPosition;
@@ -684,9 +716,9 @@
         private void NavigateToLocation(Xamarin.Essentials.Location location)
         {
             MapsLaunchOptions mapOptions = new MapsLaunchOptions
-                                           {
-                                               MapDirectionsMode = MapDirectionsMode.Driving
-                                           };
+            {
+                MapDirectionsMode = MapDirectionsMode.Driving
+            };
             Maps.OpenAsync(location, mapOptions);
         }
 
@@ -701,8 +733,18 @@
         public WeatherForecast CurrentWeather
         {
             get => this.currentWeather;
-            set => SetProperty(ref this.currentWeather, value);
+            set
+            {
+                SetProperty(ref this.currentWeather, value);
+                ShowWeatherWidget = true;
+                var cur = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
+                CurrentWeatherIconSource = cur.TinyWxIcon;
+                CurrentWeatherText = cur.WxText;
+            }
         }
+
+        public string CurrentWeatherIconSource { get => _currentWeatherIconSource; set => SetProperty(ref _currentWeatherIconSource, value); }
+        public string CurrentWeatherText { get => _currentWeatherText; set => SetProperty(ref _currentWeatherText, value); }
 
         private void SetUIForMapTask(MapTask value, MapTask oldValue)
         {

@@ -1,14 +1,13 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System;
-    using CimmytApp.Core.Persistence.Entities;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Prism.Commands;
     using Prism.Mvvm;
     using Prism.Navigation;
+    using Xamarin.Essentials;
 
-    /// <summary>
-    ///     Defines the <see cref="WeatherMainPageViewModel" />
-    /// </summary>
     public class WeatherMainPageViewModel : BindableBase, INavigationAware
     {
         /// <summary>
@@ -67,15 +66,15 @@
 
         private string _windDirection;
         private string _windSpeed;
+        private WeatherForecast _weatherForecast;
+        private bool _showForecastIsVisible;
+        private bool _showHistoryIsVisible;
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="WeatherMainPageViewModel" /> class.
-        /// </summary>
-        /// <param name="navigationService">The <see cref="INavigationService" /></param>
         public WeatherMainPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
+            ShowHistoryIsVisible = false;
+            ShowForecastIsVisible = false;
         }
 
         public string CloudCover
@@ -92,7 +91,7 @@
             get => _currentDay;
             set
             {
-                MinMaxTemperature = $"Máx: {value.MaxTempC}°C - Mín: {value.MinTempC}°C";
+                MinMaxTemperature = $"Mín: {value.MinTempC}°C - Máx: {value.MaxTempC}°C";
                 GrowingDegreeDays = value.Gdd;
                 WeatherIcon = value.WxIcon;
                 WeatherText = value.WxText;
@@ -161,38 +160,74 @@
             set => SetProperty(ref _minMaxTemperature, value);
         }
 
+        public bool ShowForecastIsVisible { get => _showForecastIsVisible; set => SetProperty(ref _showForecastIsVisible, value); }
+        public bool ShowHistoryIsVisible { get => _showHistoryIsVisible; set => SetProperty(ref _showHistoryIsVisible, value); }
+
+        public DelegateCommand ShowForecast =>
+            new DelegateCommand(() =>
+            {
+                var param = new NavigationParameters { { "Forecast", WeatherForecast } };
+                _navigationService.NavigateAsync("DailyForecastPage", param);
+            });
+
+        public DelegateCommand ShowHistory =>
+            new DelegateCommand(() =>
+            {
+                var param = new NavigationParameters { { "WeatherData", WeatherData } };
+                _navigationService.NavigateAsync("WeatherDataSelection", param);
+            });
+
         /// <summary>
         ///     Gets or sets the NavigateAsyncCommand
         /// </summary>
-        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
+        public DelegateCommand<string> NavigateAsyncCommand
+            => new DelegateCommand<string>((string page) =>
+            {
+                var parameters = new NavigationParameters
+                {
+                    //{ "DailyForecast", WeatherData.Location.DailySummaries.DailySummary }
+                };
 
-        /// <summary>
-        ///     Gets or sets the Plot
-        /// </summary>
-        public Plot Plot { get; private set; }
+                if (page == "DailyForecastPage")
+                {
+                    if (WeatherData == null)
+                    {
+                        return;
+                    }
+                    _navigationService.NavigateAsync(page, parameters);
+                }
+                else
+                {
+                    _navigationService.NavigateAsync(page, parameters);
+                }
+            });
 
-        /// <summary>
-        ///     Gets or sets the WeatherForecast
-        /// </summary>
         public WeatherData WeatherData
         {
             get => _weatherData;
             set
             {
                 SetProperty(ref _weatherData, value);
-                if (value == null)
-                {
-                    return;
-                }
-
-                //CurrentHour = value..HourlySummaries.HourlySummary.ElementAt(0);
-                //CurrentDay = value.Location.DailySummaries.DailySummary.ElementAt(0);
+                ShowHistoryIsVisible = value != null;
             }
         }
 
-        /// <summary>
-        ///     Gets or sets the WeatherIcon
-        /// </summary>
+        public WeatherForecast WeatherForecast
+        {
+            get => _weatherForecast;
+            set
+            {
+                SetProperty(ref _weatherForecast, value);
+                ShowForecastIsVisible = value != null;
+
+                if (value != null)
+                {
+                    CurrentHour = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
+                    CurrentDay = value.Location.DailySummaries.DailySummary.ElementAt(0);
+                }
+            }
+        }
+
         public string WeatherIcon
         {
             get => _weatherIcon;
@@ -220,73 +255,54 @@
             set => SetProperty(ref _windSpeed, value);
         }
 
-        /// <summary>
-        ///     The OnNavigatedFrom
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
+        public Location Location { get; set; }
+
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
         }
 
-        /// <summary>
-        ///     The OnNavigatedTo
-        /// </summary>
-        /// <param name="parameters">The <see cref="NavigationParameters" /></param>
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Plot"))
+            if (parameters.ContainsKey("Location"))
             {
-                parameters.TryGetValue<Plot>("Plot", out var plot);
-                if (plot != null)
+                parameters.TryGetValue<Location>("Location", out var location);
+                if (location != null)
                 {
-                    Plot = plot;
-                    LoadData();
+                    Location = location;
+                    Task.Run(() => LoadData());
                 }
             }
+
+
+            if (parameters.ContainsKey("Forecast"))
+            {
+                parameters.TryGetValue<WeatherForecast>("Forecast", out var forecast);
+                if (forecast != null)
+                {
+                    WeatherForecast = forecast;
+                }
+                else Task.Run(() => LoadForecast());
+            }
+            else Task.Run(() => LoadForecast());
         }
 
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
-        }
+        public void OnNavigatingTo(NavigationParameters parameters) { }
 
-        /// <summary>
-        ///     The LoadData
-        /// </summary>
         private async void LoadData()
         {
-            if (Plot.Position != null)
+            if (Location != null)
             {
-                WeatherData = await WeatherData.Download((double)Plot.Position.Latitude,
-                    (double)Plot.Position.Longitude);
+                WeatherData = await WeatherData.Download(Location.Latitude,
+                    Location.Longitude);
             }
         }
 
-        /// <summary>
-        ///     The NavigateAsync
-        /// </summary>
-        /// <param name="page">The <see cref="string" /></param>
-        private void NavigateAsync(string page)
+        private async void LoadForecast()
         {
-            if (page == "DailyForecastPage")
+            if (Location != null)
             {
-                if (WeatherData == null)
-                {
-                    return;
-                }
-
-                var parameters = new NavigationParameters
-                {
-                    //{ "DailyForecast", WeatherData.Location.DailySummaries.DailySummary }
-                };
-                _navigationService.NavigateAsync(page, parameters);
-            }
-            else
-            {
-                var parameters = new NavigationParameters
-                {
-                    { "Plot", Plot }
-                };
-                _navigationService.NavigateAsync(page, parameters);
+                WeatherForecast = await WeatherForecast.Download(Location.Latitude,
+                    Location.Longitude);
             }
         }
     }

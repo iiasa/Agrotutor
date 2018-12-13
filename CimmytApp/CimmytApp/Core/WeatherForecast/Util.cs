@@ -9,6 +9,8 @@ namespace CimmytApp.Core.WeatherForecast
     {
         public static bool ShouldRefresh(Location oldLocation, Location newLocation)
         {
+            if (newLocation == null) return false;
+            if (oldLocation == null) return true;
             if (newLocation.Timestamp.Subtract(oldLocation.Timestamp)
                 > TimeSpan.FromMinutes(Constants.MainMapWeatherRefreshDuration))
             {

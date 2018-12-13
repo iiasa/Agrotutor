@@ -12,7 +12,7 @@
         }
         public DelegateCommand NavigateToMain => new DelegateCommand(
             () => { 
-            navigationService.NavigateAsync("MapMainPage"); 
+            navigationService.NavigateAsync("NavigationPage/MapMainPage"); 
         });
         private INavigationService navigationService;
     }
