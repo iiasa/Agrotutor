@@ -464,7 +464,7 @@
                                 Command="{Binding StartPlanner}"/>
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_pest}"
-                                IconSource="add.png"
+                                IconSource="cockroach.png"
                                 Command="{Binding NavigateToPest}"/>
                         <components:Divider />
                         <components:IconWithText 
@@ -477,7 +477,7 @@
                                 Command="{Binding NavigateToPractices}"/>
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_about}"
-                                IconSource="add.png"
+                                IconSource="question.png"
                                 Command="{Binding NavigateToAbout}"/>
                     </StackLayout>
                 </ScrollView>

@@ -6,9 +6,9 @@
     x:Class="CimmytApp.WeatherForecast.Views.WeatherMainPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <Label Text="{Binding ForecastDate}" />
+            <Label Text="{Binding ForecastDate}" HorizontalOptions="CenterAndExpand" />
 
-            <Grid>
+            <Grid Margin="0,16,0,16">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
@@ -38,38 +38,40 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <Label Text="Crecimiento grados días: " HorizontalTextAlignment="Start" FontAttributes="Bold"
+                <Label Text="Crecimiento grados días: " HorizontalTextAlignment="Center" FontAttributes="Bold"
                     Grid.Row="0" Grid.Column="0" />
-                <Label Text="{Binding GrowingDegreeDays}" Grid.Row="0" Grid.Column="1" />
+                <Label Text="{Binding GrowingDegreeDays}" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="1" />
 
-                <Label Text="Velocidad del viento: " HorizontalTextAlignment="Start" FontAttributes="Bold" Grid.Row="1"
+                <Label Text="Velocidad del viento: " HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="1"
                     Grid.Column="0" />
-                <Label Text="{Binding WindSpeed}" Grid.Row="1" Grid.Column="1" />
+                <Label Text="{Binding WindSpeed}" HorizontalTextAlignment="Center" Grid.Row="1" Grid.Column="1" />
 
-                <Label Text="Dirección del viento: " HorizontalTextAlignment="Start" FontAttributes="Bold" Grid.Row="2"
+                <Label Text="Dirección del viento: " HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="2"
                     Grid.Column="0" />
-                <Label Text="{Binding WindDirection}" Grid.Row="2" Grid.Column="1" />
+                <Label Text="{Binding WindDirection}" HorizontalTextAlignment="Center" Grid.Row="2" Grid.Column="1" />
 
-                <Label Text="Cubierto de nubes: " HorizontalTextAlignment="Start" FontAttributes="Bold" Grid.Row="3"
+                <Label Text="Cubierto de nubes: "  HorizontalTextAlignment="Center" FontAttributes="Bold" Grid.Row="3"
                     Grid.Column="0" />
-                <Label Text="{Binding CloudCover}" Grid.Row="3" Grid.Column="1" />
+                <Label Text="{Binding CloudCover}" HorizontalTextAlignment="Center" Grid.Row="3" Grid.Column="1" />
             </Grid>
             
             <components:IconWithText 
                     IconText="Pronóstico del tiempo"
                     IconSource="forecast.png"
                     Command="{Binding ShowForecast}"
+                    Margin="16"
                     IsVisible="{Binding ShowForecastIsVisible}" />
             
             <components:IconWithText 
                     IconText="Datos histórico"
                     IconSource="history.png"
                     Command="{Binding ShowHistory}"
+                    Margin="16"
                     IsVisible="{Binding ShowHistoryIsVisible}" />
         </StackLayout>
     </ScrollView>

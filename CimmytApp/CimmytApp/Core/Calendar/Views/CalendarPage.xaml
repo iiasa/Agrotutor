@@ -19,9 +19,9 @@
                     <ColumnDefinition Width="auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Row="0" Grid.Column="0" WidthRequest="50" Text="fas-chevron-left" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowPreviousMonth}" />
+                <Button Grid.Row="0" Grid.Column="0" WidthRequest="50" Text="&lt;" FontSize="Large" BackgroundColor="Transparent" Command="{Binding ShowPreviousMonth}" />
                 <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateRangeText}" FontSize="Large" TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
-                <Button Grid.Row="0" Grid.Column="2" WidthRequest="50" Text="fas-chevron-right" FontSize="Medium" BackgroundColor="Transparent" Command="{Binding ShowNextMonth}" />
+                <Button Grid.Row="0" Grid.Column="2" WidthRequest="50" Text="&gt;" FontSize="Large" BackgroundColor="Transparent" Command="{Binding ShowNextMonth}" />
                 
             </Grid>
             <Grid>
@@ -50,7 +50,15 @@
                 <Label Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="F" />
                 <Label Grid.Column="5" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="S" />
                 <Label Grid.Column="6" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="S" />
+                <!--
+                <ContentView Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="5">
+                    <Frame>
                 
+                Event view goes here
+                
+                    </Frame>
+                </ContentView>
+                -->
                 <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="7">
                     <StackLayout>
                         <Grid HeightRequest="450" x:Name="MonthlyCalendarGrid">

@@ -104,13 +104,13 @@
         }
 
         public DelegateCommand ShowWeather =>
-            new DelegateCommand(()=> 
+            new DelegateCommand(() =>
             {
                 var param = new NavigationParameters();
                 if (this.CurrentWeather != null) {
                     param.Add("Forecast", CurrentWeather);
                 }
-                if (this.WeatherLocation != null){
+                if (this.WeatherLocation != null) {
                     param.Add("Location", WeatherLocation);
                 } else {
                     // TODO put message location missing, or select on map
@@ -118,6 +118,16 @@
                 }
                 NavigationService.NavigateAsync("WeatherMainPage", param);
             });
+
+        public DelegateCommand NavigateToProfile =>
+            new DelegateCommand(()=>{
+                NavigationService.NavigateAsync("ProfilePage");
+                });
+
+        public DelegateCommand NavigateToPractices =>
+            new DelegateCommand(()=> {
+                NavigationService.NavigateAsync("LinksPage");
+                });
 
         public DelegateCommand AddActivityToSelectedPlot =>
             new DelegateCommand(()=>{
