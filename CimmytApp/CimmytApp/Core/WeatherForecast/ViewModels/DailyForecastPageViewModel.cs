@@ -4,10 +4,12 @@
     using Prism.Mvvm;
     using Prism.Navigation;
 
-    public class DailyForecastPageViewModel : BindableBase, INavigationAware
+    public class DailyForecastPageViewModel : BindableBase, INavigatedAware
     {
         private readonly INavigationService _navigationService;
         private List<DailySummary> _dailySummaries;
+
+        private WeatherForecast weatherForecast;
 
         public DailyForecastPageViewModel(INavigationService navigationService)
         {
@@ -17,7 +19,17 @@
         public List<DailySummary> DailySummaries
         {
             get => _dailySummaries;
-            set => SetProperty(ref _dailySummaries, value);
+            set => SetProperty(ref this._dailySummaries, value);
+        }
+
+        public WeatherForecast WeatherForecast
+        {
+            get => this.weatherForecast;
+            set
+            {
+                SetProperty(ref this.weatherForecast, value);
+                DailySummaries = value.Location.DailySummaries.DailySummary;
+            }
         }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
@@ -26,22 +38,18 @@
 
         public void OnNavigatedTo(NavigationParameters parameters)
         {
-            if (parameters.ContainsKey("DailyForecast"))
+            if (parameters.ContainsKey("Forecast"))
             {
-                parameters.TryGetValue<List<DailySummary>>("DailyForecast", out var forecast);
+                parameters.TryGetValue<WeatherForecast>("Forecast", out var forecast);
                 if (forecast != null)
                 {
-                    DailySummaries = forecast;
+                    WeatherForecast = forecast;
                 }
             }
             else
             {
                 _navigationService.GoBackAsync();
             }
-        }
-
-        public void OnNavigatingTo(NavigationParameters parameters)
-        {
         }
     }
 }
