@@ -5,6 +5,7 @@
         Default,
         CreatePlotBySelection,
         CreatePlotByGPS,
+        GetLocationForPlanner,
         GetLocation,
         SelectLocation,
         SelectLocationForPlanner,

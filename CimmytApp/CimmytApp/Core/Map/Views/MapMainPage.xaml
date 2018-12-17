@@ -102,6 +102,11 @@
             IsVisible="{Binding InvestigationPlatformUIIsVisible}" />
 
         <ContentView
+            ControlTemplate="{StaticResource PlannerUI}" 
+            Style="{StaticResource MainMapPopup}"
+            IsVisible="{Binding PlannerUIIsVisible}" />
+
+        <ContentView
             ControlTemplate="{StaticResource HubContactUI}" 
             Style="{StaticResource MainMapPopup}"
             IsVisible="{Binding HubsContactUIIsVisible}" />

@@ -14,6 +14,7 @@
     using CimmytApp.Core.Parcel.ViewModels;
     using CimmytApp.Core.Persistence;
     using CimmytApp.Core.Persistence.Entities;
+    using CimmytApp.DTO.Parcel;
     using CimmytApp.StaticContent;
     using CimmytApp.ViewModels;
     using CimmytApp.WeatherForecast;
@@ -86,6 +87,8 @@
         private bool _showWeatherWidget;
         private string _currentWeatherIconSource;
         private string _currentWeatherText;
+        private bool _plannerUIIsVisible;
+        private int _pickerCropTypesSelectedIndex;
 
         public MapMainPageViewModel(
             INavigationService navigationService,
@@ -101,36 +104,56 @@
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
             LoadingSpinnerIsVisible = false;
+            PlannerUIIsVisible = true;
         }
 
         public DelegateCommand ShowWeather =>
             new DelegateCommand(() =>
             {
                 var param = new NavigationParameters();
-                if (this.CurrentWeather != null) {
+                if (this.CurrentWeather != null)
+                {
                     param.Add("Forecast", CurrentWeather);
                 }
-                if (this.WeatherLocation != null) {
+                if (this.WeatherLocation != null)
+                {
                     param.Add("Location", WeatherLocation);
-                } else {
+                }
+                else
+                {
                     // TODO put message location missing, or select on map
                     return;
                 }
                 NavigationService.NavigateAsync("WeatherMainPage", param);
             });
 
-        public DelegateCommand NavigateToProfile =>
-            new DelegateCommand(()=>{
-                NavigationService.NavigateAsync("ProfilePage");
-                });
+        public DelegateCommand StartPlanner =>
+            new DelegateCommand(() =>
+            {
+
+            });
+
+        public DelegateCommand NavigateToGuide =>
+            new DelegateCommand(() =>
+            {
+                NavigationService.NavigateAsync("WelcomePage");
+            });
 
         public DelegateCommand NavigateToPractices =>
-            new DelegateCommand(()=> {
+            new DelegateCommand(() =>
+            {
                 NavigationService.NavigateAsync("LinksPage");
-                });
+            });
+
+        public DelegateCommand NavigateToProfile =>
+            new DelegateCommand(() =>
+            {
+                NavigationService.NavigateAsync("ProfilePage");
+            });
 
         public DelegateCommand AddActivityToSelectedPlot =>
-            new DelegateCommand(()=>{
+            new DelegateCommand(() =>
+            {
                 var param = new NavigationParameters
                 {
                     { "Plot", SelectedPlot }
@@ -160,6 +183,8 @@
             }
         }
 
+        public bool PlannerUIIsVisible { get => _plannerUIIsVisible; set => SetProperty(ref _plannerUIIsVisible, value); }
+
         public bool ShowWeatherWidget { get => _showWeatherWidget; set => SetProperty(ref _showWeatherWidget, value); }
 
         public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
@@ -174,6 +199,14 @@
                     CurrentMapTask = MapTask.SelectLocation;
                 });
 
+        public DelegateCommand ClickChooseLocationPlanner =>
+            new DelegateCommand(
+                () =>
+                {
+                    DimBackground = false;
+                    CurrentMapTask = MapTask.SelectLocationForPlanner;
+                });
+
         public DelegateCommand ClickGetLocation =>
             new DelegateCommand(
                 () =>
@@ -181,6 +214,15 @@
                     DimBackground = false;
                     AddPlotPosition = CurrentPosition;
                     CurrentMapTask = MapTask.CreatePlotByGPS;
+                });
+
+        public DelegateCommand ClickGetLocationPlanner =>
+            new DelegateCommand(
+                () =>
+                {
+                    DimBackground = false;
+                    AddPlotPosition = CurrentPosition;
+                    CurrentMapTask = MapTask.GetLocationForPlanner;
                 });
 
         public DelegateCommand DelineateSelectedPlot =>
@@ -332,9 +374,6 @@
 
         public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.OpenSettings);
 
-        public DelegateCommand StartPlanner =>
-            new DelegateCommand(() => CurrentMapTask = MapTask.SelectLocationForPlanner);
-
         public DelegateCommand<string> WriteEmail =>
             new DelegateCommand<string>(
                 async emailAddress =>
@@ -349,6 +388,41 @@
                     };
                     await Email.ComposeAsync(message);
                 });
+
+
+
+        public List<string> CropTypes { get; } = new List<string>
+        {
+            "Maíz",
+            "Cebada",
+            "Frijol",
+            "Trigo",
+            "Triticale",
+            "Sorgo",
+            "Alfalfa",
+            "Avena",
+            "Ajonjolí",
+            "Amaranto",
+            "Arroz",
+            "Canola",
+            "Cartamo",
+            "Calabacín",
+            "Garbanzo",
+            "Haba",
+            "Soya",
+            "Ninguno",
+            "Otro"
+        };
+
+
+        public int PickerCropTypesSelectedIndex
+        {
+            get => this._pickerCropTypesSelectedIndex;
+            set
+            {
+                SetProperty(ref this._pickerCropTypesSelectedIndex, value);
+            }
+        }
 
         public bool AddParcelIsVisible
         {
@@ -766,24 +840,23 @@
                     GPSLocationUIIsVisible = false;
                     SelectLocationUIIsVisible = false;
                     break;
+
                 case MapTask.SelectLocation:
-                    CurrentMapTaskHint = Localizer.GetString("task_hint_select_location");
-                    CurrentMapTaskHintIsVisible = true;
-                    SelectLocationUIIsVisible = true;
-                    GPSLocationUIIsVisible = false;
-                    break;
-                case MapTask.CreatePlotByGPS:
-                    CurrentMapTaskHint = Localizer.GetString("task_hint_gps_location");
-                    CurrentMapTaskHintIsVisible = true;
-                    GPSLocationUIIsVisible = true;
-                    SelectLocationUIIsVisible = false;
-                    break;
                 case MapTask.SelectLocationForPlanner:
                     CurrentMapTaskHint = Localizer.GetString("task_hint_select_location");
                     CurrentMapTaskHintIsVisible = true;
                     SelectLocationUIIsVisible = true;
                     GPSLocationUIIsVisible = false;
                     break;
+
+                case MapTask.CreatePlotByGPS:
+                case MapTask.GetLocationForPlanner:
+                    CurrentMapTaskHint = Localizer.GetString("task_hint_gps_location");
+                    CurrentMapTaskHintIsVisible = true;
+                    GPSLocationUIIsVisible = true;
+                    SelectLocationUIIsVisible = false;
+                    break;
+
                 case MapTask.DelineationNotEnoughPoints:
                     if (oldValue != MapTask.DelineationEnoughPoints)
                     {

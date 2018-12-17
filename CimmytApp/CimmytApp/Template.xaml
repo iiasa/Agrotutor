@@ -80,7 +80,7 @@
         <StackLayout Orientation="Horizontal">
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="{i18n:Translate main_menu_guide}" IconSource="question.png" 
-                Command="{TemplateBinding Parent.BindingContext.NavigateToMain}"/>
+                Command="{TemplateBinding Parent.BindingContext.NavigateToGuide}"/>
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
                 IconText="{i18n:Translate main_menu_options}" IconSource="icons_settings_96.png" 
                 Command="{TemplateBinding Parent.BindingContext.ShowOptions}"/>
@@ -461,24 +461,59 @@
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_planner}"
                                 IconSource="planner.png"
-                                Command="{Binding StartPlanner}"/>
+                                Command="{TemplateBinding Parent.BindingContext.StartPlanner}"/>
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_pest}"
                                 IconSource="cockroach.png"
-                                Command="{Binding NavigateToPest}"/>
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToPest}"/>
                         <components:Divider />
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_profile}"
                                 IconSource="profile.png"
-                                Command="{Binding NavigateToProfile}"/>
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"/>
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_practices}"
                                 IconSource="link.png"
-                                Command="{Binding NavigateToPractices}"/>
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToPractices}"/>
                         <components:IconWithText 
                                 IconText="{i18n:Translate options_about}"
                                 IconSource="question.png"
-                                Command="{Binding NavigateToAbout}"/>
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToAbout}"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="PlannerUI">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Image Source="add.png" HeightRequest="20" />
+                    <Label
+                            HorizontalOptions="StartAndExpand"
+                            Text="Planner"
+                            FontSize="20" />
+                </StackLayout>
+                <components:Divider />
+                <ScrollView>
+                    <StackLayout>
+                        <Label Text="Please select your crop" FontSize="18" />
+                        <Picker ItemsSource="{TemplateBinding Parent.BindingContext.CropTypes}" 
+                            SelectedIndex="{TemplateBinding Parent.BindingContext.PickerCropTypesSelectedIndex}"
+                            Title="{i18n:Translate select}" Margin="0,0,0,16" />
+                        
+                        <Label Text="Select a location for the planner" />
+                        
+                        <components:IconWithText
+                            IconText="CurrentLocation"
+                            IconSource="get_location.png"
+                            Command="{TemplateBinding Parent.BindingContext.ClickGetLocationPlanner}" />
+
+                        <components:IconWithText
+                            IconText="Select on the map"
+                            IconSource="choose_location.png"
+                            Command="{TemplateBinding Parent.BindingContext.ClickChooseLocationPlanner}" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
