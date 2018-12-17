@@ -5,16 +5,12 @@
     x:Class="CimmytApp.WeatherForecast.Views.DailyForecastPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <Label Text="Pronóstico del tiempo" FontAttributes="Italic" />
-                <Image Source="forecast_small.png" HeightRequest="18" />
-            </StackLayout>
-            
+
             <ListView ItemsSource="{Binding DailySummaries}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
+                            <Grid Margin="16">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition />
@@ -25,8 +21,14 @@
                                 </Grid.ColumnDefinitions>
                                 <Label Text="" />
                                 <Image Source="{Binding WxIcon}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
-                                <Label Text="{Binding LocalizedDayOfWeek}" Grid.Row="0" Grid.Column="1" />
-                                <Label Text="{Binding TemperatureString}" Grid.Row="1" Grid.Column="1" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding LocalizedDayOfWeek}" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding TemperatureString}" Grid.Row="1" Grid.Column="1" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="GDD" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" />
+                                    <Label Text="{Binding Gdd}" Grid.Row="1" Grid.Column="1" />
+                                </StackLayout>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>
