@@ -100,6 +100,7 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_edit_blk.png" />
     <AndroidResource Include="Resources\drawable-mdpi\icon_edit_blk.png" />
     <AndroidResource Include="Resources\drawable-hdpi\icon_edit_blk.png" />
+    <AndroidResource Include="Resources\drawable\layers.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\tabs.xml" />

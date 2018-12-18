@@ -76,6 +76,10 @@
             IsVisible="{Binding LoadingSpinnerIsVisible}"
             Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
         
+        <ContentView
+            ControlTemplate="{StaticResource LayersButton}" Margin="0,0,0,28"
+            Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" />
+        
         <ContentView 
             ControlTemplate="{StaticResource MainMapMenuItems}"
             Style="{StaticResource MainMapIconsGroup}" /> 

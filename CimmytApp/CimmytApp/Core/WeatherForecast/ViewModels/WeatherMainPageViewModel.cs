@@ -32,22 +32,10 @@
         /// </summary>
         private string _currentTemperature;
 
-        /// <summary>
-        ///     Defines the _feltTemperature
-        /// </summary>
-        private string _feltTemperature;
-
-        /// <summary>
-        ///     Defines the _forecastDate
-        /// </summary>
-        private string _forecastDate;
-
         private string _growingDegreeDays;
 
-        /// <summary>
-        ///     Defines the _minMaxTemperature
-        /// </summary>
-        private string _minMaxTemperature;
+        private string _minTemperature;
+        private string _maxTemperature;
 
         /// <summary>
         ///     Defines the _weatherData
@@ -91,7 +79,8 @@
             get => _currentDay;
             set
             {
-                MinMaxTemperature = $"Mín: {value.MinTempC}°C - Máx: {value.MaxTempC}°C";
+                MinTemperature = $"{value.MinTempC}°C";
+                MaxTemperature = $"{value.MaxTempC}°C";
                 GrowingDegreeDays = value.Gdd;
                 WeatherIcon = value.WxIcon;
                 WeatherText = value.WxText;
@@ -109,8 +98,6 @@
             {
                 CurrentTemperature = $"{value.TempC}°C";
                 var date = DateTime.Parse(value.TimeUtc);
-                ForecastDate = date.ToString("yyyy-MM-dd, HH:mm");
-                FeltTemperature = $"sensación: {value.AppTempC}°C";
                 WindSpeed = value.WndSpdKph + " kph";
                 WindDirection = value.WndDir;
                 CloudCover = value.SkyCovPct + " %";
@@ -127,37 +114,22 @@
             set => SetProperty(ref _currentTemperature, value);
         }
 
-        /// <summary>
-        ///     Gets or sets the FeltTemperature
-        /// </summary>
-        public string FeltTemperature
-        {
-            get => _feltTemperature;
-            set => SetProperty(ref _feltTemperature, value);
-        }
-
-        /// <summary>
-        ///     Gets or sets the ForecastDate
-        /// </summary>
-        public string ForecastDate
-        {
-            get => _forecastDate;
-            set => SetProperty(ref _forecastDate, value);
-        }
-
         public string GrowingDegreeDays
         {
             get => _growingDegreeDays;
             set => SetProperty(ref _growingDegreeDays, value);
         }
 
-        /// <summary>
-        ///     Gets or sets the MinMaxTemperature
-        /// </summary>
-        public string MinMaxTemperature
+        public string MaxTemperature
         {
-            get => _minMaxTemperature;
-            set => SetProperty(ref _minMaxTemperature, value);
+            get => _maxTemperature;
+            set => SetProperty(ref _maxTemperature, value);
+        }
+
+        public string MinTemperature
+        {
+            get => _minTemperature;
+            set => SetProperty(ref _minTemperature, value);
         }
 
         public bool ShowForecastIsVisible { get => _showForecastIsVisible; set => SetProperty(ref _showForecastIsVisible, value); }

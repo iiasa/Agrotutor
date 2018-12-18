@@ -76,6 +76,20 @@
         </Frame>
     </ControlTemplate>
     
+    <ControlTemplate x:Key="LayersButton">
+        <Frame BackgroundColor="Azure" 
+               HorizontalOptions="StartAndExpand"
+               VerticalOptions="CenterAndExpand"
+               Margin="8,0,0,0"
+               Opacity="0.75" HeightRequest="38" WidthRequest="38" Padding="0" >
+            <Image Source="layers.png"
+               HeightRequest="34"
+               WidthRequest="34"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+        </Frame>
+    </ControlTemplate>
+    
     <ControlTemplate x:Key="MainMapMenuItems">
         <StackLayout Orientation="Horizontal">
             <components:MiniMenuIcon HorizontalOptions="CenterAndExpand"
@@ -489,7 +503,7 @@
         <Frame Style="{StaticResource MainMapPopupBackground}">
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Image Source="add.png" HeightRequest="20" />
+                    <Image Source="planner.png" HeightRequest="20" />
                     <Label
                             HorizontalOptions="StartAndExpand"
                             Text="Planner"

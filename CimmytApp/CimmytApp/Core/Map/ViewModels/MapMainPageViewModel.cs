@@ -104,7 +104,7 @@
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
             LoadingSpinnerIsVisible = false;
-            PlannerUIIsVisible = true;
+            PlannerUIIsVisible = false;
         }
 
         public DelegateCommand ShowWeather =>
@@ -130,7 +130,7 @@
         public DelegateCommand StartPlanner =>
             new DelegateCommand(() =>
             {
-
+                PlannerUIIsVisible = true;
             });
 
         public DelegateCommand NavigateToGuide =>
@@ -183,7 +183,20 @@
             }
         }
 
-        public bool PlannerUIIsVisible { get => _plannerUIIsVisible; set => SetProperty(ref _plannerUIIsVisible, value); }
+        public bool PlannerUIIsVisible { get => _plannerUIIsVisible; 
+        set { SetProperty(ref _plannerUIIsVisible, value);
+
+                if (this._plannerUIIsVisible)
+                {
+                    OptionsIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
+                    AddParcelIsVisible = false;
+                    DimBackground = true;
+                }
+            } }
 
         public bool ShowWeatherWidget { get => _showWeatherWidget; set => SetProperty(ref _showWeatherWidget, value); }
 
@@ -434,9 +447,11 @@
                 {
                     OptionsIsVisible = false;
                     PlotDetailIsVisible = false;
+                    PlannerUIIsVisible = false;
                     HubsContactUIIsVisible = false;
                     InvestigationPlatformUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
+                    PlannerUIIsVisible = false;
                     DimBackground = true;
                 }
             }
@@ -523,6 +538,7 @@
                     HubsContactUIIsVisible = false;
                     InvestigationPlatformUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
+                    PlannerUIIsVisible = false;
                 }
             }
         }
@@ -557,6 +573,7 @@
                     InvestigationPlatformUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     DimBackground = true;
+                    PlannerUIIsVisible = false;
                 }
             }
         }
@@ -584,6 +601,7 @@
                     OptionsIsVisible = false;
                     HubsContactUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
+                    PlannerUIIsVisible = false;
                     DimBackground = true;
                 }
             }
@@ -620,6 +638,7 @@
                     OptionsIsVisible = false;
                     HubsContactUIIsVisible = false;
                     InvestigationPlatformUIIsVisible = false;
+                    PlannerUIIsVisible = false;
                     DimBackground = true;
                 }
             }
@@ -641,6 +660,7 @@
                     PlotDetailIsVisible = false;
                     HubsContactUIIsVisible = false;
                     InvestigationPlatformUIIsVisible = false;
+                    PlannerUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     DimBackground = true;
                 }
@@ -659,6 +679,7 @@
                     AddParcelIsVisible = false;
                     HubsContactUIIsVisible = false;
                     InvestigationPlatformUIIsVisible = false;
+                    PlannerUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     DimBackground = true;
                 }
@@ -698,6 +719,10 @@
 
         private async void CreatePlot()
         {
+            var str = Localizer.GetString("new_plot_prompt_message");
+            str = Localizer["new_plot_prompt_message"];
+            str = ((IStringLocalizer<MapMainPageViewModel>)Localizer).GetString("new_plot_prompt_message");
+            str = ((IStringLocalizer<MapMainPageViewModel>)Localizer)["new_plot_prompt_message"];
             bool confirmPlotCreation = await UserDialogs.Instance.ConfirmAsync(
                                            new ConfirmConfig
                                            {
