@@ -20,13 +20,13 @@
 
         public MaturityType MaturityType { get; set; }
 
-        public List<Activity> Activities { get; set; }
+        public virtual List<Activity> Activities { get; set; }
 
-        public Position Position { get; set; }
+        public virtual Position Position { get; set; }
 
-        public List<Position> Delineation { get; set; }
+        public virtual List<Position> Delineation { get; set; }
 
-        public BemData BemData { get; set; }
+        public virtual BemData BemData { get; set; }
 
         //TODO: add pictures
         //Todo: add videos

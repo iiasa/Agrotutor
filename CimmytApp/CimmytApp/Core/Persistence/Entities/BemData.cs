@@ -11,15 +11,15 @@
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        public List<Cost> Costo { get; set; }
+        public virtual List<Cost> Costo { get; set; }
 
-        public List<Income> Ingreso { get; set; }
+        public virtual List<Income> Ingreso { get; set; }
 
-        public List<Yield> Rendimiento { get; set; }
+        public virtual List<Yield> Rendimiento { get; set; }
 
-        public List<Profit> Utilidad { get; set; }
+        public virtual List<Profit> Utilidad { get; set; }
 
-        public static async Task<BemData> LoadBEMData() // TODO: move?
+        public static async Task<BemData> LoadBEMData() 
         {
             var costo = await RequestJson.Get<List<Cost>>(
                 "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");

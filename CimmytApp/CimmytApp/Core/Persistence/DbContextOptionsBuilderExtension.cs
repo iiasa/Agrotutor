@@ -12,7 +12,7 @@
             string filename = "localdata.db") where TContext : DbContext
         {
             string path = Path.Combine(GetPlatformFolder(), filename);
-            dbContextOptionsBuilder.UseSqlite($"Filename={path}");
+            dbContextOptionsBuilder.UseSqlite($"Filename={path}").UseLazyLoadingProxies();
         }
 
         private static string GetPlatformFolder()
