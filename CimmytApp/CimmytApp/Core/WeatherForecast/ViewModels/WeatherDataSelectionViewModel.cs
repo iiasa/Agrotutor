@@ -1,9 +1,8 @@
 ﻿namespace CimmytApp.WeatherForecast.ViewModels
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using CimmytApp.Core.Persistence.Entities;
-    using Helper.DTO.SkywiseWeather.Historical;
+    using CimmytApp.Core.Datatypes;
+    using Microcharts;
     using Prism.Commands;
     using Prism.Events;
     using Prism.Mvvm;
@@ -11,15 +10,17 @@
 
     public class WeatherDataSelectionViewModel : BindableBase, INavigatedAware
     {
-        private readonly INavigationService _navigationService;
 
         private List<string> _datasetNames;
 
         private int _selectedDataset;
 
         private WeatherData _weatherData;
+        private Chart _currentChart;
+        private List<EntryWithTime> selectedValEntries;
+        private int _graphDays;
 
-        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator, INavigationService navigationService)
+        public WeatherDataSelectionViewModel(IEventAggregator eventAggregator)
         {
             DatasetNames = new List<string>
             {
@@ -63,9 +64,99 @@
                 "Hourly evapotranspiration short crop",
                 "Hourly evapotranspiration tall crop"
             };
-
-            _navigationService = navigationService;
         }
+
+        public int GraphDays { 
+            get => _graphDays; 
+            set { 
+                _graphDays = (value == 0) ? 365 : value; 
+
+                } 
+                }
+
+        public List<EntryWithTime> SelectedValEntries
+        {
+            get => selectedValEntries;
+            set
+            {
+                selectedValEntries = value;
+                CurrentChart = new LineChart { Entries = value };
+            }
+        }
+
+        public int SelectedDataset
+        {
+            get => _selectedDataset;
+            set
+            {
+                _selectedDataset = value;
+                if (MyWeatherData == null) return;
+                switch (value)
+                {
+                    case 0:
+                        SelectedValEntries = MyWeatherData.Gdd.GetChartEntries();
+                        break;
+                    case 1:
+                        SelectedValEntries = MyWeatherData.Cdd.GetChartEntries();
+                        break;
+                    case 2:
+                        SelectedValEntries = MyWeatherData.Hdd.GetChartEntries();
+                        break;
+                    case 3:
+                        SelectedValEntries = MyWeatherData.Dp.GetChartEntries();
+                        break;
+                    case 4:
+                        SelectedValEntries = MyWeatherData.Hp.GetChartEntries();
+                        break;
+                    case 5:
+                        SelectedValEntries = MyWeatherData.Hrh.GetChartEntries();
+                        break;
+                    case 6:
+                        SelectedValEntries = MyWeatherData.Dsr.GetChartEntries();
+                        break;
+                    case 7:
+                        SelectedValEntries = MyWeatherData.Hsr.GetChartEntries();
+                        break;
+                    case 8:
+                        SelectedValEntries = MyWeatherData.Ht.GetChartEntries();
+                        break;
+                    case 9:
+                        SelectedValEntries = MyWeatherData.Dht.GetChartEntries();
+                        break;
+                    case 10:
+                        SelectedValEntries = MyWeatherData.Dlt.GetChartEntries();
+                        break;
+                    case 11:
+                        SelectedValEntries = MyWeatherData.Hd.GetChartEntries();
+                        break;
+                    case 12:
+                        SelectedValEntries = MyWeatherData.Hws.GetChartEntries();
+                        break;
+                    case 13:
+                        SelectedValEntries = MyWeatherData.Hwd.GetChartEntries();
+                        break;
+                    case 14:
+                        SelectedValEntries = MyWeatherData.Desc.GetChartEntries();
+                        break;
+                    case 15:
+                        SelectedValEntries = MyWeatherData.Detc.GetChartEntries();
+                        break;
+                    case 16:
+                        SelectedValEntries = MyWeatherData.Hesc.GetChartEntries();
+                        break;
+                    case 17:
+                        SelectedValEntries = MyWeatherData.Hetc.GetChartEntries();
+                        break;
+                }
+            }
+        }
+
+        public DelegateCommand<string> SetGraphDays =>
+            new DelegateCommand<string>((string val) =>
+            {
+                GraphDays = int.Parse(val);
+            });
+
 
         public List<string> DatasetNames
         {
@@ -78,6 +169,8 @@
             get => _weatherData;
             set => SetProperty(ref _weatherData, value);
         }
+
+        public Chart CurrentChart { get => _currentChart; set => SetProperty(ref _currentChart, value); }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -93,10 +186,6 @@
                     MyWeatherData = weatherData;
                 }
             }
-        }
-
-        private void ShowWeatherData()
-        {
         }
     }
 }

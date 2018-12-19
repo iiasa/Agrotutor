@@ -7,12 +7,17 @@
 namespace CimmytApp.WeatherForecast
 {
     using System;
-
+    using System.Collections.Generic;
     using System.Globalization;
     using System.Net.Http;
     using System.Threading.Tasks;
+    using CimmytApp.Core.Datatypes;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+
+    public interface Series {
+        List<EntryWithTime> GetChartEntries();
+    }
 
     public partial class WeatherData
     {
@@ -71,7 +76,7 @@ namespace CimmytApp.WeatherForecast
         public Hd Hetc { get; set; }
     }
 
-    public partial class Cdd
+    public partial class Cdd : Series
     {
         [JsonProperty("startDate", NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset? StartDate { get; set; }
@@ -102,6 +107,22 @@ namespace CimmytApp.WeatherForecast
 
         [JsonProperty("solarRadiation", NullValueHandling = NullValueHandling.Ignore)]
         public double? SolarRadiation { get; set; }
+
+        public List<EntryWithTime> GetChartEntries()
+        {
+            var entries = new List<EntryWithTime>();
+            foreach (var item in Series)
+            {
+                if (item.Value == null || item.ValidDate == null) continue;
+                entries.Add(new EntryWithTime((float)item.Value)
+                {
+                    Time = ((DateTimeOffset)item.ValidDate).DateTime,
+                    ValueLabel = item.Value?.ToString(),
+                    Label = ((DateTimeOffset)item.ValidDate).DateTime.ToShortDateString()
+                });
+            }
+            return entries;
+        }
     }
 
     public partial class CddSeries
@@ -125,7 +146,7 @@ namespace CimmytApp.WeatherForecast
         public string Label { get; set; }
     }
 
-    public partial class Hd
+    public partial class Hd : Series
     {
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
         public HdSeries[] Series { get; set; }
@@ -147,6 +168,22 @@ namespace CimmytApp.WeatherForecast
 
         [JsonProperty("precipitation", NullValueHandling = NullValueHandling.Ignore)]
         public double? Precipitation { get; set; }
+
+        public List<EntryWithTime> GetChartEntries()
+        {
+            var entries = new List<EntryWithTime>();
+            foreach (var item in Series)
+            {
+                if (item.Value == null || item.ValidTime == null) continue;
+                entries.Add(new EntryWithTime((float)item.Value)
+                {
+                    Time = ((DateTimeOffset)item.ValidTime).DateTime,
+                    ValueLabel = item.Value?.ToString(),
+                    Label = ((DateTimeOffset)item.ValidTime).DateTime.ToShortDateString()
+                });
+            }
+            return entries;
+        }
     }
 
     public partial class HdSeries

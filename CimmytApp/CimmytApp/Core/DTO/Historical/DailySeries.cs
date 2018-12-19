@@ -1,7 +1,10 @@
 ﻿namespace Helper.DTO.SkywiseWeather.Historical
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
+    using CimmytApp.Core.Datatypes;
+    using Microcharts;
 
     public abstract class DailySeries : HistoricalSeries
     {

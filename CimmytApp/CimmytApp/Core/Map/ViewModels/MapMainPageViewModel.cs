@@ -817,8 +817,7 @@
 
         private async void LoadPlots()
         {
-            Plots = DevHelper.GetTestData(); // TODO dev data!
-            // Plots = await AppDataService.GetAllPlots();
+            Plots = await AppDataService.GetAllPlots();
             MapMainPage.AddPlots(Plots);
         }
 

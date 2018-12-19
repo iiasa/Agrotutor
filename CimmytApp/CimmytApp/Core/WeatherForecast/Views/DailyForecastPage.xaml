@@ -6,11 +6,11 @@
     <ScrollView>
         <StackLayout Orientation="Vertical">
 
-            <ListView ItemsSource="{Binding DailySummaries}">
+            <ListView ItemsSource="{Binding DailySummaries}" HasUnevenRows="true" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Margin="16">
+                            <Grid Margin="8" >
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition />
@@ -19,15 +19,14 @@
                                     <ColumnDefinition />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-                                <Label Text="" />
-                                <Image Source="{Binding WxIcon}" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding LocalizedDayOfWeek}" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" />
-                                    <Label Text="{Binding TemperatureString}" Grid.Row="1" Grid.Column="1" />
+                                <Image Source="{Binding WxIcon}" HeightRequest="24" WidthRequest="24" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
+                                <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
+                                    <Label Text="{Binding LocalizedDayOfWeek}" VerticalOptions="Center" FontAttributes="Bold" />
+                                    <Label Text="{Binding TemperatureString}" VerticalOptions="Center" />
                                 </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="GDD" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" />
-                                    <Label Text="{Binding Gdd}" Grid.Row="1" Grid.Column="1" />
+                                <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
+                                    <Label Text="GDD" FontAttributes="Bold" VerticalOptions="Center" />
+                                    <Label Text="{Binding Gdd}" VerticalOptions="Center" />
                                 </StackLayout>
                             </Grid>
                         </ViewCell>

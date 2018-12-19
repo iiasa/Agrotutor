@@ -1,4 +1,7 @@
-﻿namespace Helper.DTO.SkywiseWeather.Historical
+﻿using System.Collections.Generic;
+using CimmytApp.Core.Datatypes;
+
+namespace Helper.DTO.SkywiseWeather.Historical
 {
     public abstract class HistoricalSeries
     {
@@ -11,5 +14,18 @@
         public Unit unit { get; set; }
 
         public abstract void Sort();
+
+        public List<EntryWithTime> GetChartEntries()
+        {
+            var entries = new List<EntryWithTime>();
+            foreach (var item in series)
+            {
+                entries.Add(new EntryWithTime(item.value)
+                {
+                    Time = item.validTime
+                });
+            }
+            return entries;
+        }
     }
 }
