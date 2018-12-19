@@ -1,5 +1,6 @@
 ﻿namespace CimmytApp.iOS
 {
+    using SQLitePCL;
     using UIKit;
 
     public class Application
@@ -9,6 +10,7 @@
         {
             // if you want to use a different Application Delegate class from "AppDelegate"
             // you can specify it here.
+            Batteries_V2.Init();
             UIApplication.Main(args, null, "AppDelegate");
         }
     }
