@@ -135,11 +135,11 @@
   <data name="location_permission_prompt_title" xml:space="preserve">
     <value>Location Permission</value>
   </data>
-  <data name="new_plot_prompt_cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
   <data name="new_plot_prompt_message" xml:space="preserve">
     <value>Do you want to create a new plot at this location?</value>
+  </data>
+  <data name="new_plot_prompt_no" xml:space="preserve">
+    <value>Cancel</value>
   </data>
   <data name="new_plot_prompt_title" xml:space="preserve">
     <value>Add plot</value>

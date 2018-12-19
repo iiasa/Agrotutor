@@ -38,6 +38,7 @@
         public IEnumerable<CalendarEvent> GetCalendarEvents()
         {
             var events = new List<CalendarEvent>();
+            if (Activities == null) return events;
             foreach (Activity activity in Activities)
             {
                 events.Add(new CalendarEvent
@@ -62,6 +63,12 @@
             }
 
             return events;
+        }
+
+        public async void LoadBEMData(IAppDataService appDataService)
+        {
+            BemData = await Entities.BemData.LoadBEMData();
+            appDataService.UpdatePlot(this);
         }
     }
 }

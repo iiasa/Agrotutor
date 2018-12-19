@@ -135,11 +135,11 @@
   <data name="location_permission_prompt_title" xml:space="preserve">
     <value>Permisos de ubicación</value>
   </data>
-  <data name="new_plot_prompt_cancel" xml:space="preserve">
-    <value>Cancelar</value>
-  </data>
   <data name="new_plot_prompt_message" xml:space="preserve">
     <value>Desea registrar una parcela en este sitio?</value>
+  </data>
+  <data name="new_plot_prompt_no" xml:space="preserve">
+    <value>Cancelar</value>
   </data>
   <data name="new_plot_prompt_title" xml:space="preserve">
     <value>Agregar parcela</value>

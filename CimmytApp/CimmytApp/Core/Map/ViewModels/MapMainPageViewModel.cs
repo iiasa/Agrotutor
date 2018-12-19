@@ -14,8 +14,6 @@
     using CimmytApp.Core.Parcel.ViewModels;
     using CimmytApp.Core.Persistence;
     using CimmytApp.Core.Persistence.Entities;
-    using CimmytApp.DTO.Parcel;
-    using CimmytApp.StaticContent;
     using CimmytApp.ViewModels;
     using CimmytApp.WeatherForecast;
 
@@ -33,6 +31,16 @@
 
     public class MapMainPageViewModel : ViewModelBase, INavigatedAware
     {
+        private string _currentWeatherIconSource;
+
+        private string _currentWeatherText;
+
+        private int _pickerCropTypesSelectedIndex;
+
+        private bool _plannerUIIsVisible;
+
+        private bool _showWeatherWidget;
+
         private bool addParcelIsVisible;
 
         private Persistence.Entities.Position addPlotPosition;
@@ -51,6 +59,8 @@
 
         private Persistence.Entities.Position currentPosition;
 
+        private WeatherForecast currentWeather;
+
         private bool dimBackground;
 
         private bool gpsLocationUIIsVisible;
@@ -67,6 +77,8 @@
 
         private bool loadingSpinnerIsVisible;
 
+        private bool locationPermissionGiven;
+
         private MachineryPoints machineryPoints;
 
         private bool machineryPointUIIsVisible;
@@ -80,15 +92,6 @@
         private bool selectLocationUIIsVisible;
 
         private Xamarin.Essentials.Location weatherLocation;
-
-        private WeatherForecast currentWeather;
-
-        private bool locationPermissionGiven;
-        private bool _showWeatherWidget;
-        private string _currentWeatherIconSource;
-        private string _currentWeatherText;
-        private bool _plannerUIIsVisible;
-        private int _pickerCropTypesSelectedIndex;
 
         public MapMainPageViewModel(
             INavigationService navigationService,
@@ -107,59 +110,16 @@
             PlannerUIIsVisible = false;
         }
 
-        public DelegateCommand ShowWeather =>
-            new DelegateCommand(() =>
-            {
-                var param = new NavigationParameters();
-                if (this.CurrentWeather != null)
-                {
-                    param.Add("Forecast", CurrentWeather);
-                }
-                if (this.WeatherLocation != null)
-                {
-                    param.Add("Location", WeatherLocation);
-                }
-                else
-                {
-                    // TODO put message location missing, or select on map
-                    return;
-                }
-                NavigationService.NavigateAsync("WeatherMainPage", param);
-            });
-
-        public DelegateCommand StartPlanner =>
-            new DelegateCommand(() =>
-            {
-                PlannerUIIsVisible = true;
-            });
-
-        public DelegateCommand NavigateToGuide =>
-            new DelegateCommand(() =>
-            {
-                NavigationService.NavigateAsync("WelcomePage");
-            });
-
-        public DelegateCommand NavigateToPractices =>
-            new DelegateCommand(() =>
-            {
-                NavigationService.NavigateAsync("LinksPage");
-            });
-
-        public DelegateCommand NavigateToProfile =>
-            new DelegateCommand(() =>
-            {
-                NavigationService.NavigateAsync("ProfilePage");
-            });
-
         public DelegateCommand AddActivityToSelectedPlot =>
-            new DelegateCommand(() =>
-            {
-                var param = new NavigationParameters
+            new DelegateCommand(
+                () =>
                 {
-                    { "Plot", SelectedPlot }
-                };
-                NavigationService.NavigateAsync("ActivityPage", param);
-            });
+                    NavigationParameters param = new NavigationParameters
+                                                 {
+                                                     { "Plot", SelectedPlot }
+                                                 };
+                    NavigationService.NavigateAsync("ActivityPage", param);
+                });
 
         public DelegateCommand AddParcelClicked =>
             new DelegateCommand(
@@ -168,37 +128,6 @@
                     CurrentMapTask = MapTask.CreatePlotBySelection;
                     AddParcelIsVisible = true;
                 });
-
-        public bool LocationPermissionGiven
-        {
-            get => this.locationPermissionGiven;
-            set
-            {
-                SetProperty(ref this.locationPermissionGiven, value);
-                if (value)
-                {
-                    MapMainPage.EnableMyLocation();
-                    GetUserLocation();
-                }
-            }
-        }
-
-        public bool PlannerUIIsVisible { get => _plannerUIIsVisible; 
-        set { SetProperty(ref _plannerUIIsVisible, value);
-
-                if (this._plannerUIIsVisible)
-                {
-                    OptionsIsVisible = false;
-                    PlotDetailIsVisible = false;
-                    HubsContactUIIsVisible = false;
-                    InvestigationPlatformUIIsVisible = false;
-                    MachineryPointUIIsVisible = false;
-                    AddParcelIsVisible = false;
-                    DimBackground = true;
-                }
-            } }
-
-        public bool ShowWeatherWidget { get => _showWeatherWidget; set => SetProperty(ref _showWeatherWidget, value); }
 
         public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
 
@@ -238,6 +167,29 @@
                     CurrentMapTask = MapTask.GetLocationForPlanner;
                 });
 
+        public List<string> CropTypes { get; } = new List<string>
+                                                 {
+                                                     "Maíz",
+                                                     "Cebada",
+                                                     "Frijol",
+                                                     "Trigo",
+                                                     "Triticale",
+                                                     "Sorgo",
+                                                     "Alfalfa",
+                                                     "Avena",
+                                                     "Ajonjolí",
+                                                     "Amaranto",
+                                                     "Arroz",
+                                                     "Canola",
+                                                     "Cartamo",
+                                                     "Calabacín",
+                                                     "Garbanzo",
+                                                     "Haba",
+                                                     "Soya",
+                                                     "Ninguno",
+                                                     "Otro"
+                                                 };
+
         public DelegateCommand DelineateSelectedPlot =>
             new DelegateCommand(
                 async () =>
@@ -247,10 +199,14 @@
                         bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(
                                                       new ConfirmConfig
                                                       {
-                                                          Message = Localizer.GetString("replace_delineation_prompt_message"),
-                                                          OkText = Localizer.GetString("replace_delineation_prompt_yes"),
-                                                          CancelText = Localizer.GetString("replace_delineation_prompt_cancel"),
-                                                          Title = Localizer.GetString("replace_delineation_prompt_title")
+                                                          Message = Localizer.GetString(
+                                                              "replace_delineation_prompt_message"),
+                                                          OkText =
+                                                              Localizer.GetString("replace_delineation_prompt_yes"),
+                                                          CancelText =
+                                                              Localizer.GetString("replace_delineation_prompt_cancel"),
+                                                          Title = Localizer.GetString(
+                                                              "replace_delineation_prompt_title")
                                                       });
 
                         if (confirmDelineation)
@@ -318,8 +274,17 @@
         public DelegateCommand NavigateToCurrentMachineryPoint =>
             new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
 
+        public DelegateCommand NavigateToGuide =>
+            new DelegateCommand(() => { NavigationService.NavigateAsync("WelcomePage"); });
+
         public DelegateCommand NavigateToMain =>
             new DelegateCommand(() => NavigationService.NavigateAsync("NavigationPage/MainPage"));
+
+        public DelegateCommand NavigateToPractices =>
+            new DelegateCommand(() => { NavigationService.NavigateAsync("LinksPage"); });
+
+        public DelegateCommand NavigateToProfile =>
+            new DelegateCommand(() => { NavigationService.NavigateAsync("ProfilePage"); });
 
         public DelegateCommand<MediaFile> OnParcelPictureTaken =>
             new DelegateCommand<MediaFile>(
@@ -387,55 +352,45 @@
 
         public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.OpenSettings);
 
+        public DelegateCommand ShowWeather =>
+            new DelegateCommand(
+                () =>
+                {
+                    NavigationParameters param = new NavigationParameters();
+                    if (CurrentWeather != null)
+                    {
+                        param.Add("Forecast", CurrentWeather);
+                    }
+
+                    if (WeatherLocation != null)
+                    {
+                        param.Add("Location", WeatherLocation);
+                    }
+                    else
+                    {
+                        // TODO put message location missing, or select on map
+                        return;
+                    }
+
+                    NavigationService.NavigateAsync("WeatherMainPage", param);
+                });
+
+        public DelegateCommand StartPlanner => new DelegateCommand(() => { PlannerUIIsVisible = true; });
+
         public DelegateCommand<string> WriteEmail =>
             new DelegateCommand<string>(
                 async emailAddress =>
                 {
                     EmailMessage message = new EmailMessage
-                    {
-                        To = new List<string>
+                                           {
+                                               To = new List<string>
                                                     {
                                                         emailAddress
                                                     },
-                        Subject = Localizer.GetString("email_subject")
-                    };
+                                               Subject = Localizer.GetString("email_subject")
+                                           };
                     await Email.ComposeAsync(message);
                 });
-
-
-
-        public List<string> CropTypes { get; } = new List<string>
-        {
-            "Maíz",
-            "Cebada",
-            "Frijol",
-            "Trigo",
-            "Triticale",
-            "Sorgo",
-            "Alfalfa",
-            "Avena",
-            "Ajonjolí",
-            "Amaranto",
-            "Arroz",
-            "Canola",
-            "Cartamo",
-            "Calabacín",
-            "Garbanzo",
-            "Haba",
-            "Soya",
-            "Ninguno",
-            "Otro"
-        };
-
-
-        public int PickerCropTypesSelectedIndex
-        {
-            get => this._pickerCropTypesSelectedIndex;
-            set
-            {
-                SetProperty(ref this._pickerCropTypesSelectedIndex, value);
-            }
-        }
 
         public bool AddParcelIsVisible
         {
@@ -519,9 +474,34 @@
                 if (Core.WeatherForecast.Util.ShouldRefresh(this.weatherLocation, value))
                 {
                     this.weatherLocation = value;
-                    Task.Run(() => this.RefreshWeatherData());
+                    Task.Run(() => RefreshWeatherData());
                 }
             }
+        }
+
+        public WeatherForecast CurrentWeather
+        {
+            get => this.currentWeather;
+            set
+            {
+                SetProperty(ref this.currentWeather, value);
+                ShowWeatherWidget = true;
+                HourlySummary cur = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
+                CurrentWeatherIconSource = cur.TinyWxIcon;
+                CurrentWeatherText = cur.WxText;
+            }
+        }
+
+        public string CurrentWeatherIconSource
+        {
+            get => this._currentWeatherIconSource;
+            set => SetProperty(ref this._currentWeatherIconSource, value);
+        }
+
+        public string CurrentWeatherText
+        {
+            get => this._currentWeatherText;
+            set => SetProperty(ref this._currentWeatherText, value);
         }
 
         public bool DimBackground
@@ -615,6 +595,20 @@
             set => SetProperty(ref this.loadingSpinnerIsVisible, value);
         }
 
+        public bool LocationPermissionGiven
+        {
+            get => this.locationPermissionGiven;
+            set
+            {
+                SetProperty(ref this.locationPermissionGiven, value);
+                if (value)
+                {
+                    MapMainPage.EnableMyLocation();
+                    GetUserLocation();
+                }
+            }
+        }
+
         public MachineryPoints MachineryPoints
         {
             get => this.machineryPoints;
@@ -667,6 +661,32 @@
             }
         }
 
+        public int PickerCropTypesSelectedIndex
+        {
+            get => this._pickerCropTypesSelectedIndex;
+            set => SetProperty(ref this._pickerCropTypesSelectedIndex, value);
+        }
+
+        public bool PlannerUIIsVisible
+        {
+            get => this._plannerUIIsVisible;
+            set
+            {
+                SetProperty(ref this._plannerUIIsVisible, value);
+
+                if (this._plannerUIIsVisible)
+                {
+                    OptionsIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
+                    AddParcelIsVisible = false;
+                    DimBackground = true;
+                }
+            }
+        }
+
         public bool PlotDetailIsVisible
         {
             get => this.plotDetailIsVisible;
@@ -700,6 +720,22 @@
             set => SetProperty(ref this.selectLocationUIIsVisible, value);
         }
 
+        public bool ShowWeatherWidget
+        {
+            get => this._showWeatherWidget;
+            set => SetProperty(ref this._showWeatherWidget, value);
+        }
+
+        public Xamarin.Essentials.Location WeatherLocation
+        {
+            get => this.weatherLocation;
+            set
+            {
+                this.weatherLocation = value;
+                Task.Run(() => RefreshWeatherData());
+            }
+        }
+
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
             ListenForLocation = false;
@@ -719,7 +755,7 @@
 
         private async void CreatePlot()
         {
-            var str = Localizer.GetString("new_plot_prompt_message");
+            LocalizedString str = Localizer.GetString("new_plot_prompt_message");
             str = Localizer["new_plot_prompt_message"];
             str = ((IStringLocalizer<MapMainPageViewModel>)Localizer).GetString("new_plot_prompt_message");
             str = ((IStringLocalizer<MapMainPageViewModel>)Localizer)["new_plot_prompt_message"];
@@ -758,13 +794,14 @@
                     }
                     else
                     {
-                        var LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
-                                                Permission.Location,
-                                                Localizer.GetString("location_permission_prompt_title"),
-                                                Localizer.GetString("location_permission_prompt_message"),
-                                                Localizer.GetString("location_permission_prompt_accept"),
-                                                Localizer.GetString("location_permission_prompt_deny"),
-                                                Localizer.GetString("location_permission_prompt_deny_message"));
+                        bool LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
+                                                           Permission.Location,
+                                                           Localizer.GetString("location_permission_prompt_title"),
+                                                           Localizer.GetString("location_permission_prompt_message"),
+                                                           Localizer.GetString("location_permission_prompt_accept"),
+                                                           Localizer.GetString("location_permission_prompt_deny"),
+                                                           Localizer.GetString(
+                                                               "location_permission_prompt_deny_message"));
 
                         if (LocationPermissionGiven)
                         {
@@ -778,9 +815,9 @@
         private async void GetUserLocation()
         {
             GeolocationRequest geolocationRequest = new GeolocationRequest
-            {
-                DesiredAccuracy = Constants.MainMapLocationAccuracy
-            };
+                                                    {
+                                                        DesiredAccuracy = Constants.MainMapLocationAccuracy
+                                                    };
             Xamarin.Essentials.Location location = await Geolocation.GetLastKnownLocationAsync();
             WeatherLocation = location;
 
@@ -798,16 +835,6 @@
             while (ListenForLocation);
         }
 
-        public Xamarin.Essentials.Location WeatherLocation
-        {
-            get => this.weatherLocation;
-            set
-            {
-                this.weatherLocation = value;
-                Task.Run(() => RefreshWeatherData());
-            }
-        }
-
         private async void LoadMapData()
         {
             HubsContact = await HubsContact.FromEmbeddedResource();
@@ -819,40 +846,31 @@
         {
             Plots = await AppDataService.GetAllPlots();
             MapMainPage?.AddPlots(Plots);
+            foreach (Plot plot in Plots)
+            {
+                if (plot.BemData == null) Task.Run(()=>plot.LoadBEMData(AppDataService));
+            }
         }
 
         private void NavigateToLocation(Xamarin.Essentials.Location location)
         {
             MapsLaunchOptions mapOptions = new MapsLaunchOptions
-            {
-                MapDirectionsMode = MapDirectionsMode.Driving
-            };
+                                           {
+                                               MapDirectionsMode = MapDirectionsMode.Driving
+                                           };
             Maps.OpenAsync(location, mapOptions);
         }
 
         private async void RefreshWeatherData()
         {
-            if (WeatherLocation == null) return;
-            CurrentWeather = await CimmytApp.WeatherForecast.WeatherForecast.Download(
-                                 WeatherLocation.Latitude,
-                                 WeatherLocation.Longitude).ConfigureAwait(true);
-        }
-
-        public WeatherForecast CurrentWeather
-        {
-            get => this.currentWeather;
-            set
+            if (WeatherLocation == null)
             {
-                SetProperty(ref this.currentWeather, value);
-                ShowWeatherWidget = true;
-                var cur = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
-                CurrentWeatherIconSource = cur.TinyWxIcon;
-                CurrentWeatherText = cur.WxText;
+                return;
             }
-        }
 
-        public string CurrentWeatherIconSource { get => _currentWeatherIconSource; set => SetProperty(ref _currentWeatherIconSource, value); }
-        public string CurrentWeatherText { get => _currentWeatherText; set => SetProperty(ref _currentWeatherText, value); }
+            CurrentWeather = await WeatherForecast.Download(WeatherLocation.Latitude, WeatherLocation.Longitude)
+                                 .ConfigureAwait(true);
+        }
 
         private void SetUIForMapTask(MapTask value, MapTask oldValue)
         {
