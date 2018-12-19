@@ -3,7 +3,6 @@
     using System;
     using System.Threading.Tasks;
     using Acr.UserDialogs;
-    using Plugin.Geolocator.Abstractions;
     using Xamarin.Forms;
 
     public partial class MainPage : ContentPage
@@ -31,8 +30,8 @@
                 Duration = TimeSpan.FromSeconds(2)
             });
 
-            Position pos = new Position();
-            pos.CalculateDistance(new Position(), GeolocatorUtils.DistanceUnits.Kilometers);
+            //Position pos = new Position();
+            //pos.CalculateDistance(new Position(), GeolocatorUtils.DistanceUnits.Kilometers);
 
             return true;
         }

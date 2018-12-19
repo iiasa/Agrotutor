@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CimmytApp", "CimmytApp\CimmytApp\CimmytApp.csproj", "{B7DEC39B-EDA0-4BCA-8556-A56D8897A347}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp", "CimmytApp\CimmytApp\CimmytApp.csproj", "{B7DEC39B-EDA0-4BCA-8556-A56D8897A347}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CimmytApp.Droid", "CimmytApp\CimmytApp.Droid\CimmytApp.Droid.csproj", "{2E2A8A44-2C66-49C6-AC9D-00B6B3E1D5FF}"
 EndProject
@@ -191,6 +191,7 @@ Global
 		{7D67653B-3B99-43DF-8480-4C8C5E85C561}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 		{7D67653B-3B99-43DF-8480-4C8C5E85C561}.Release|x64.ActiveCfg = Release|iPhone
 		{7D67653B-3B99-43DF-8480-4C8C5E85C561}.Release|x86.ActiveCfg = Release|iPhone
+		{7D67653B-3B99-43DF-8480-4C8C5E85C561}.Debug|Any CPU.Build.0 = Debug|iPhone
 		{E6DE95C2-C0C9-47AC-A746-42F4E1085C94}.Ad-Hoc|Any CPU.ActiveCfg = Release|x86
 		{E6DE95C2-C0C9-47AC-A746-42F4E1085C94}.Ad-Hoc|Any CPU.Build.0 = Release|x86
 		{E6DE95C2-C0C9-47AC-A746-42F4E1085C94}.Ad-Hoc|Any CPU.Deploy.0 = Release|x86

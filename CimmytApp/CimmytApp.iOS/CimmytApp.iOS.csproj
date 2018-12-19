@@ -595,6 +595,12 @@
     <Reference Include="XF.Material.iOS">
       <HintPath>..\..\packages\XF.Material.1.2.4\lib\Xamarin.iOS10\XF.Material.iOS.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\packages\Castle.Core.4.2.1\lib\netstandard1.3\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.EntityFrameworkCore.Proxies">
+      <HintPath>..\..\packages\Microsoft.EntityFrameworkCore.Proxies.2.2.0\lib\netstandard2.0\Microsoft.EntityFrameworkCore.Proxies.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CimmytApp\CimmytApp.csproj">
