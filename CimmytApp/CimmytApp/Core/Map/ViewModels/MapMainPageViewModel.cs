@@ -818,7 +818,7 @@
         private async void LoadPlots()
         {
             Plots = await AppDataService.GetAllPlots();
-            MapMainPage.AddPlots(Plots);
+            MapMainPage?.AddPlots(Plots);
         }
 
         private void NavigateToLocation(Xamarin.Essentials.Location location)

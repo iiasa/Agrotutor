@@ -60,7 +60,7 @@
         }
 
         internal void AddPlots(IEnumerable<Plot> plots)
-        {
+        { 
             foreach (Pin pin in plots.Select(plot => new Pin
             {
                 Position = plot.Position.ForMap(),

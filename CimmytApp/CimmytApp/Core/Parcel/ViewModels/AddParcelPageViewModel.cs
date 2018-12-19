@@ -10,21 +10,16 @@
     using Prism.Commands;
     using Prism.Navigation;
     using Xamarin.Forms.GoogleMaps;
-    using Position = CimmytApp.Core.Persistence.Entities.Position;
 
     public class AddParcelPageViewModel : ViewModelBase, INavigatedAware
     {
-        public static string PositionParameterName = "Plot";
+        public static string PositionParameterName = "Position";
 
         public AddParcelPageViewModel(INavigationService navigationService,
             IStringLocalizer<AddParcelPageViewModel> localizer, IAppDataService appDataService) : base(localizer)
         {
             this._navigationService = navigationService;
             AppDataService = appDataService;
-
-            ClickSave = new DelegateCommand(SavePlot); //.ObservesCanExecute(o => IsSaveBtnEnabled);
-
-            NavigateAsyncCommand = new DelegateCommand<string>(NavigateAsync);
 
             Plot = new Plot();
 
@@ -37,8 +32,6 @@
 
         private readonly INavigationService _navigationService;
 
-        private bool _isSaveBtnEnabled = true;
-
         private Plot _plot;
 
         private int _pickerClimateTypesSelectedIndex;
@@ -46,8 +39,6 @@
         private int _pickerCropTypesSelectedIndex;
 
         private int _pickerMaturityClassesSelectedIndex;
-
-        private bool _userIsAtPlot;
 
         public List<string> ClimateTypes { get; } = new List<string>
         {
@@ -80,8 +71,6 @@
             "Otro"
         };
 
-        public bool InformationMissing => !IsSaveBtnEnabled;
-
         public List<string> MaturityClasses { get; } = new List<string>
         {
             "Temprana",
@@ -91,21 +80,13 @@
             "Tardía"
         };
 
-        public DelegateCommand ClickChooseLocation { get; set; }
+        public DelegateCommand ClickSave =>
+            new DelegateCommand(()=> {
+                // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
+                AppDataService.AddPlot(Plot);
+                this._navigationService.GoBackAsync();
 
-        public DelegateCommand ClickGetLocation { get; set; }
-
-        public DelegateCommand ClickDelineate { get; set; }
-
-        public DelegateCommand ClickSave { get; set; }
-
-        public bool IsSaveBtnEnabled
-        {
-            get => this._isSaveBtnEnabled;
-            set => SetProperty(ref this._isSaveBtnEnabled, value);
-        }
-
-        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
+            });
 
         public Plot Plot
         {
@@ -113,7 +94,6 @@
             set
             {
                 SetProperty(ref this._plot, value);
-                UpdateSelections();
             }
         }
 
@@ -154,12 +134,7 @@
             }
         }
 
-        public bool UserIsAtPlot
-        {
-            get => this._userIsAtPlot;
-            set => SetProperty(ref this._userIsAtPlot, value);
-        }
-        public Position Position { get; private set; }
+        public Persistence.Entities.Position Position { get; private set; }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -169,67 +144,12 @@
         {
             if (parameters.ContainsKey(AddParcelPageViewModel.PositionParameterName))
             {
-                parameters.TryGetValue<Position>(AddParcelPageViewModel.PositionParameterName, out var position);
+                parameters.TryGetValue<Persistence.Entities.Position>(AddParcelPageViewModel.PositionParameterName, out var position);
                 if (position != null)
                 {
                     Position = position;
                 }
             }
-        }
-
-        private void NavigateAsync(string page)
-        {
-            var parameters = new NavigationParameters
-            {
-                { "Caller", "AddPlotPage" },
-                { "Plot", Plot }
-            };
-            this._navigationService.NavigateAsync(page, parameters);
-        }
-
-        private void SavePlot()
-        {
-            IsSaveBtnEnabled = false;
-            // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
-            AppDataService.AddPlot(Plot);
-
-            this._navigationService.GoBackAsync();
-        }
-
-        private void UpdateSelections() // TODO fix
-        {
-            // for (int i = 0; i < CropTypes.Count; i++)
-            // {
-            //     if (CropTypes[i] != Plot.Crop)
-            //     {
-            //         continue;
-            //     }
-            //
-            //     PickerCropTypesSelectedIndex = i;
-            //     break;
-            // }
-            //
-            // for (int i = 0; i < MaturityClasses.Count; i++)
-            // {
-            //     if (MaturityClasses[i] != Plot.MaturityClass)
-            //     {
-            //         continue;
-            //     }
-            //
-            //     PickerMaturityClassesSelectedIndex = i;
-            //     break;
-            // }
-            //
-            // for (int i = 0; i < ClimateTypes.Count; i++)
-            // {
-            //     if (ClimateTypes[i] != Plot.ClimateType)
-            //     {
-            //         continue;
-            //     }
-            //
-            //     PickerClimateTypesSelectedIndex = i;
-            //     break;
-            // }
         }
     }
 }
