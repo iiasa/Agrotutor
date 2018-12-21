@@ -124,6 +124,18 @@
                     <Label Text="https://fontawesome.io/" />
                 </StackLayout>
             </StackLayout>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="350">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://pixelbuddha.net/" />
+                </StackLayout.GestureRecognizers>
+
+                <Image Source="ic_weblink.png" Margin="16" />
+                <StackLayout Orientation="Vertical" Margin="16">
+                    <Label Text="Pixel Buddha" />
+                    <Label Text="https://pixelbuddha.net/" />
+                </StackLayout>
+            </StackLayout>
         </StackLayout>
     </ScrollView>
 </ContentPage>

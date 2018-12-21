@@ -9,7 +9,6 @@
     Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <components:Header Text="{i18n:Translate title}" IconSource="icon_profit_96.png" />
             <Label Text="{i18n:Translate loading_message}" IsVisible="{Binding IsLoading}" Margin="0,0,0,16" />
             <microcharts:ChartView x:Name="chartView" HeightRequest="500"/>
         </StackLayout>

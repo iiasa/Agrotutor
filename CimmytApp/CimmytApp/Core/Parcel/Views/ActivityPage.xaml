@@ -8,8 +8,6 @@
     x:Class="CimmytApp.Core.Parcel.Views.ActivityPage" x:Name="ActivePage">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
-            <components:Header Text="{i18n:Translate title}" IconSource="farmer_small.png" />
-
             <StackLayout Orientation="Vertical">
                 <Grid Margin="16">
                     <Grid.RowDefinitions>

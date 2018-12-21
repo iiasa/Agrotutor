@@ -60,17 +60,17 @@
         }
 
         internal void AddPlots(IEnumerable<Plot> plots)
-        { 
-            foreach (Pin pin in plots.Select(plot => new Pin
-            {
-                Position = plot.Position.ForMap(),
-                Label = plot.Name,
-                Tag = plot
-            }))
+        {
+            foreach (Pin pin in from plot in plots where plot.Position != null select new Pin
+                  {
+                      Position = plot.Position.ForMap(),
+                      Label = plot.Name,
+                      Tag = plot
+                  })
             {
                 PlotPins.Append(pin);
                 Device.BeginInvokeOnMainThread(
-                    () => { this.map.Pins.Add(pin);});
+                    () => { this.map.Pins.Add(pin); });
             }
         }
 
@@ -112,6 +112,29 @@
 
             this.map.Pins.Append(PlotPins);
             this.map.Polygons.Append(PlotDelineations);
+
+            RestorePins();
+            this.map.AnimateCamera(CameraUpdateFactory.NewPositionZoom(new Xamarin.Forms.GoogleMaps.Position(20, -100), 5), TimeSpan.FromSeconds(2));
+        }
+
+        private void RestorePins()
+        {
+            foreach (Pin pin in HubContactPins)
+            {
+                Device.BeginInvokeOnMainThread(() => { this.map.Pins.Add(pin); });
+            }
+            foreach (Pin pin in InvestigationPlatformPins)
+            {
+                Device.BeginInvokeOnMainThread(() => { this.map.Pins.Add(pin); });
+            }
+            foreach (Pin pin in MachineryPointPins)
+            {
+                Device.BeginInvokeOnMainThread(() => { this.map.Pins.Add(pin); });
+            }
+            foreach (Pin pin in PlotPins)
+            {
+                Device.BeginInvokeOnMainThread(() => { this.map.Pins.Add(pin); });
+            }
         }
 
         public void AddDelineationPoint(Xamarin.Forms.GoogleMaps.Position position)
@@ -124,13 +147,14 @@
             };
             DelineationPins.Add(pin);
             this.map.Pins.Add(pin);
+
+            this.map.Polygons.Clear();
             DelineationPolygon.Positions.Clear();
             foreach (var delineationPosition in DelineationPositions)
             {
                 DelineationPolygon.Positions.Add(delineationPosition);
             }
 
-            this.map.Polygons.Clear();
             if (DelineationPolygon.Positions.Count > 2)
             {
                 this.map.Polygons.Add(DelineationPolygon);

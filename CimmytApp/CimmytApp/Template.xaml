@@ -415,28 +415,28 @@
 
                         <components:IconWithText
                                 IconText="{i18n:Translate plot_detail_delineate}"
-                                IconSource="add.png"
+                                IconSource="delineate.png"
                                 Command="{TemplateBinding Parent.BindingContext.DelineateSelectedPlot}" />
-
-                        <components:CameraPicture 
-                                IconText="{i18n:Translate plot_detail_picture}"
-                                IconSource="add.png"
-                                OnPictureTaken="{TemplateBinding Parent.BindingContext.OnParcelPictureTaken}" />
 
                         <components:IconWithText
                                 IconText="{i18n:Translate plot_detail_picture}"
-                                IconSource="add.png"
+                                IconSource="photo.png"
                                 Command="{TemplateBinding Parent.BindingContext.AddPictureToSelectedPlot}" />
 
                         <components:IconWithText
                                 IconText="{i18n:Translate plot_detail_video}"
-                                IconSource="add.png"
+                                IconSource="video.png"
                                 Command="{TemplateBinding Parent.BindingContext.AddVideoToSelectedPlot}" />
 
                         <components:IconWithText
-                                IconText="{i18n:Translate plot_detail_calendar}"
-                                IconSource="add.png"
-                                Command="{TemplateBinding Parent.BindingContext.ShowCalendarForSelectedPlot}" />
+                            IconText="{i18n:Translate plot_detail_calendar}"
+                            IconSource="calendar.png"
+                            Command="{TemplateBinding Parent.BindingContext.ShowCalendarForSelectedPlot}" />
+
+                        <components:IconWithText
+                            IconText="Show detailed information"
+                            IconSource="icon_info_squared_96.png"
+                            Command="{TemplateBinding Parent.BindingContext.ShowInfoForSelectedPlot}" />
                         <components:Divider />
                         <Label FontSize="15" Text="{i18n:Translate plot_detail_historical_title}"/>
                         <Grid>

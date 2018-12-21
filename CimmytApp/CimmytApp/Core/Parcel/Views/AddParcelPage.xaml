@@ -8,7 +8,7 @@
     x:Class="CimmytApp.Core.Parcel.Views.AddParcelPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <components:Header Text="{i18n:Translate add_plot}" IconSource="add_small.png" />
+            <components:Header Text="{i18n:Translate title}" IconSource="add_small.png" />
 
             <Label Text="{i18n:Translate hint_parcel_name}" FontSize="18" />
             <Entry Placeholder="{i18n:Translate hint_parcel_name_1}" Text="{Binding Plot.Name}"
@@ -19,7 +19,7 @@
                 Title="{i18n:Translate select}" Margin="0,0,0,16" />
             
             <Label Text="{i18n:Translate hint_planting_date}" FontSize="18" />
-            <DatePicker Date="{Binding Parcel.PlantingDate, Mode=TwoWay}"  Margin="0,0,0,16" />
+            <DatePicker Date="{Binding PlantingDate, Mode=TwoWay}"  Margin="0,0,0,16" />
 
             <Label Text="{i18n:Translate madurez}" FontSize="18" />
             <Picker ItemsSource="{Binding MaturityClasses}"

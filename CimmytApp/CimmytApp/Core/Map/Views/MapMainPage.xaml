@@ -82,12 +82,17 @@
         
         <ContentView 
             ControlTemplate="{StaticResource MainMapMenuItems}"
-            Style="{StaticResource MainMapIconsGroup}" /> 
+            Style="{StaticResource MainMapIconsGroup}" />
 
         <ContentView 
             ControlTemplate="{StaticResource MainMapSelectLocation}"
             Style="{StaticResource MainMapTaskUIContainer}"
             IsVisible="{Binding SelectLocationUIIsVisible}" />
+
+        <ContentView 
+            ControlTemplate="{StaticResource MainMapDelineation}"
+            Style="{StaticResource MainMapTaskUIContainer}"
+            IsVisible="{Binding DelineationUIIsVisible}" />
 
         <ContentView 
             ControlTemplate="{StaticResource MainMapGPSLocation}"

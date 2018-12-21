@@ -1,27 +1,46 @@
 ﻿namespace CimmytApp.Core.Parcel.ViewModels
 {
+    using System;
     using System.Collections.Generic;
+
     using CimmytApp.Core.Persistence;
     using CimmytApp.Core.Persistence.Entities;
     using CimmytApp.DTO.Parcel;
     using CimmytApp.ViewModels;
-    using Helper.Map.ViewModels;
+
     using Microsoft.Extensions.Localization;
+
     using Prism.Commands;
     using Prism.Navigation;
-    using Xamarin.Forms.GoogleMaps;
 
     public class AddParcelPageViewModel : ViewModelBase, INavigatedAware
     {
         public static string PositionParameterName = "Position";
 
-        public AddParcelPageViewModel(INavigationService navigationService,
-            IStringLocalizer<AddParcelPageViewModel> localizer, IAppDataService appDataService) : base(localizer)
+        private readonly INavigationService _navigationService;
+
+        private int _pickerClimateTypesSelectedIndex;
+
+        private int _pickerCropTypesSelectedIndex;
+
+        private int _pickerMaturityClassesSelectedIndex;
+
+        private Plot _plot;
+
+        private DateTime plantingDate;
+
+        public AddParcelPageViewModel(
+            INavigationService navigationService,
+            IStringLocalizer<AddParcelPageViewModel> localizer,
+            IAppDataService appDataService,
+            DateTime plantingDate)
+            : base(localizer)
         {
             this._navigationService = navigationService;
             AppDataService = appDataService;
 
             Plot = new Plot();
+            PlantingDate = DateTime.Today;
 
             PickerCropTypesSelectedIndex = -1;
             PickerClimateTypesSelectedIndex = -1;
@@ -30,81 +49,73 @@
 
         public IAppDataService AppDataService { get; }
 
-        private readonly INavigationService _navigationService;
-
-        private Plot _plot;
-
-        private int _pickerClimateTypesSelectedIndex;
-
-        private int _pickerCropTypesSelectedIndex;
-
-        private int _pickerMaturityClassesSelectedIndex;
-
-        public List<string> ClimateTypes { get; } = new List<string>
+        public DateTime PlantingDate
         {
-            "Frío",
-            "Templado/Subtropical",
-            "Tropical",
-            "Híbrido"
-        };
-
-        public List<string> CropTypes { get; } = new List<string>
-        {
-            "Maíz",
-            "Cebada",
-            "Frijol",
-            "Trigo",
-            "Triticale",
-            "Sorgo",
-            "Alfalfa",
-            "Avena",
-            "Ajonjolí",
-            "Amaranto",
-            "Arroz",
-            "Canola",
-            "Cartamo",
-            "Calabacín",
-            "Garbanzo",
-            "Haba",
-            "Soya",
-            "Ninguno",
-            "Otro"
-        };
-
-        public List<string> MaturityClasses { get; } = new List<string>
-        {
-            "Temprana",
-            "Semi-temprana",
-            "Intermedia",
-            "Semi-tardía",
-            "Tardía"
-        };
+            get => this.plantingDate;
+            set => SetProperty(ref this.plantingDate, value);
+        }
 
         public DelegateCommand ClickSave =>
-            new DelegateCommand(()=> {
-                // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
-                AppDataService.AddPlot(Plot);
-                this._navigationService.GoBackAsync();
+            new DelegateCommand(
+                () =>
+                {
+                    // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
+                    Plot.Activities = new List<Activity>
+                      {
+                          new Activity
+                          {
+                              ActivityType = ActivityType.Sowing,
+                              Date = PlantingDate
+                          }
+                      };
+                    AppDataService.AddPlot(Plot);
+                    this._navigationService.NavigateAsync("myapp:///MapMainPage");
+                });
 
-            });
+        public List<string> ClimateTypes { get; } = new List<string>
+                                                    {
+                                                        "Frío",
+                                                        "Templado/Subtropical",
+                                                        "Tropical",
+                                                        "Híbrido"
+                                                    };
 
-        public Plot Plot
-        {
-            get => this._plot;
-            set
-            {
-                SetProperty(ref this._plot, value);
-            }
-        }
+        public List<string> CropTypes { get; } = new List<string>
+                                                 {
+                                                     "Maíz",
+                                                     "Cebada",
+                                                     "Frijol",
+                                                     "Trigo",
+                                                     "Triticale",
+                                                     "Sorgo",
+                                                     "Alfalfa",
+                                                     "Avena",
+                                                     "Ajonjolí",
+                                                     "Amaranto",
+                                                     "Arroz",
+                                                     "Canola",
+                                                     "Cartamo",
+                                                     "Calabacín",
+                                                     "Garbanzo",
+                                                     "Haba",
+                                                     "Soya",
+                                                     "Ninguno",
+                                                     "Otro"
+                                                 };
+
+        public List<string> MaturityClasses { get; } = new List<string>
+                                                       {
+                                                           "Temprana",
+                                                           "Semi-temprana",
+                                                           "Intermedia",
+                                                           "Semi-tardía",
+                                                           "Tardía"
+                                                       };
 
         public int PickerClimateTypesSelectedIndex
         {
             get => this._pickerClimateTypesSelectedIndex;
-            set
-            {
-                SetProperty(ref this._pickerClimateTypesSelectedIndex, value);
-                // Plot.ClimateType = value == -1 ? null : ClimateTypes.ElementAt(value); TODO fix
-            }
+            set => SetProperty(ref this._pickerClimateTypesSelectedIndex, value);
         }
 
         public int PickerCropTypesSelectedIndex
@@ -127,14 +138,14 @@
         public int PickerMaturityClassesSelectedIndex
         {
             get => this._pickerMaturityClassesSelectedIndex;
-            set
-            {
-                SetProperty(ref this._pickerMaturityClassesSelectedIndex, value);
-                // Plot.MaturityClass = value == -1 ? null : MaturityClasses.ElementAt(value); todo: fix
-            }
+            set => SetProperty(ref this._pickerMaturityClassesSelectedIndex, value);
         }
 
-        public Persistence.Entities.Position Position { get; private set; }
+        public Plot Plot
+        {
+            get => this._plot;
+            set => SetProperty(ref this._plot, value);
+        }
 
         public void OnNavigatedFrom(NavigationParameters parameters)
         {
@@ -144,10 +155,10 @@
         {
             if (parameters.ContainsKey(AddParcelPageViewModel.PositionParameterName))
             {
-                parameters.TryGetValue<Persistence.Entities.Position>(AddParcelPageViewModel.PositionParameterName, out var position);
+                parameters.TryGetValue(AddParcelPageViewModel.PositionParameterName, out Position position);
                 if (position != null)
                 {
-                    Position = position;
+                    Plot.Position = position;
                 }
             }
         }

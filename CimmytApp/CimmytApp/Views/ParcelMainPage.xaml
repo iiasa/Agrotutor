@@ -8,10 +8,7 @@
 
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
-            <!--
-            <components:Header Text="{Binding Parcel.OverviewString}" IconSource="{Binding Parcel.IconSource}" />
--->
-            <components:Header Text="Beans 1" IconSource="crop_bean.png" />
+            <components:IconWithText />
 
             <Grid HorizontalOptions="Center">
                 <Grid.RowDefinitions>
