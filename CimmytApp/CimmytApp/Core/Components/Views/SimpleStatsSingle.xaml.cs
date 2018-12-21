@@ -58,10 +58,6 @@
             typeof(SimpleStatsSingle),
             string.Empty);
 
-        private ViewModes defaultViewMode;
-
-        private ViewModes viewMode;
-
         public SimpleStatsSingle()
         {
             InitializeComponent();
@@ -83,17 +79,10 @@
             this.lblMax.SetBinding(Label.TextProperty, new Binding(nameof(MaxText), source: this));
         }
 
-        public enum ViewModes
-        {
-            Irrigated,
-
-            Rainfed
-        }
-
         public ImageSource AverageImageSource
         {
-            get => (ImageSource)GetValue(SimpleStats.AverageImageSourceProperty);
-            set => SetValue(SimpleStats.AverageImageSourceProperty, value);
+            get => (ImageSource)GetValue(SimpleStatsSingle.AverageImageSourceProperty);
+            set => SetValue(SimpleStatsSingle.AverageImageSourceProperty, value);
         }
 
         public string AverageText

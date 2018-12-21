@@ -8,7 +8,6 @@
     x:Class="CimmytApp.Core.Parcel.Views.AddParcelPage" Padding="16">
     <ScrollView>
         <StackLayout Orientation="Vertical">
-            <components:Header Text="{i18n:Translate title}" IconSource="add_small.png" />
 
             <Label Text="{i18n:Translate hint_parcel_name}" FontSize="18" />
             <Entry Placeholder="{i18n:Translate hint_parcel_name_1}" Text="{Binding Plot.Name}"

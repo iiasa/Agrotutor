@@ -2,6 +2,8 @@
 {
     using Acr.UserDialogs;
 
+    using CimmytApp.Core.Benchmarking.ViewModels;
+    using CimmytApp.Core.Benchmarking.Views;
     using CimmytApp.Core.Persistence;
     using CimmytApp.Core.Persistence.Entities;
 
@@ -117,6 +119,33 @@
                                                  };
                     this._navigationService.NavigateAsync("ViewRendimientoPage", param);
                 });
+
+        public DelegateCommand NavigateToWeather => new DelegateCommand(
+            async () =>
+            {
+                var param = new NavigationParameters
+                {
+                    { "Location", Plot.Position }
+                };
+                this._navigationService.NavigateAsync("WeatherMainPage", param);
+            });
+
+        public DelegateCommand NavigateToPotentialYield => new DelegateCommand(
+            async () =>
+            {
+                this._navigationService.NavigateAsync("BenchmarkingPage");
+            });
+
+        public DelegateCommand NavigateToPlanner => new DelegateCommand(
+            async () =>
+            {
+                var param = new NavigationParameters
+                            {
+                                { CiatContentPageViewModel.PARAMETER_NAME_POSITION, Plot.Position },
+                                { CiatContentPageViewModel.PARAMETER_NAME_CROP, "Maize" } //TODO use var
+                            };
+                this._navigationService.NavigateAsync("CiatContentPage", param);
+            });
 
         public IAppDataService AppDataService { get; set; }
 

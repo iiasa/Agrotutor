@@ -20,52 +20,52 @@
                         x:Name="BtnIrrigated" />
                 </StackLayout>
 
-                <Label Text="{i18n:Translate description}"/>
-                <Label IsVisible="{Binding IsLoading}" Text="{i18n:Translate loading}"/>
-                <Label IsVisible="{Binding NoData}" Text="{i18n:Translate no_data}" />
-                <Grid Margin="0,32,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
-                    <Grid.ColumnSpacing>
-                        0
-                    </Grid.ColumnSpacing>
-                    <AbsoluteLayout x:Name="OldYieldLayout" 
-                        Grid.Column="0" Grid.Row="0" 
-                        HorizontalOptions="FillAndExpand" 
-                        VerticalOptions="FillAndExpand">
-                        <Label x:Name="MarkYieldOld" 
-                            AbsoluteLayout.LayoutBounds="0,0.1,1,0.05" 
-                            AbsoluteLayout.LayoutFlags="All" 
-                            HorizontalOptions="EndAndExpand"
-                            Text="{i18n:Translate marker_your_yield}"/>
-                    </AbsoluteLayout>
-
-                    <Image Source="colorramp_faded.png"  
-                        Grid.Row="0" Grid.Column="1" 
-                        Aspect="Fill" HeightRequest="400"
-                        HorizontalOptions="FillAndExpand" 
-                        VerticalOptions="FillAndExpand"/>
-                    
-                    <AbsoluteLayout x:Name="CiatYieldLayout" 
-                        Grid.Column="2" Grid.Row="0" 
-                        HorizontalOptions="FillAndExpand" 
-                        VerticalOptions="FillAndExpand">
-
-                        <Label x:Name="MarkYieldMax" 
-                            AbsoluteLayout.LayoutBounds="0,0,1,0.05" 
-                            AbsoluteLayout.LayoutFlags="All" 
-                            HorizontalOptions="StartAndExpand"
-                            Text="{i18n:Translate marker_max}" />
-                        <Label x:Name="MarkYieldMin"
-                            AbsoluteLayout.LayoutBounds="0,1,1,0.05"
-                            AbsoluteLayout.LayoutFlags="All"
-                            HorizontalOptions="StartAndExpand"
-                            Text="{i18n:Translate marker_min}" />
-                    </AbsoluteLayout>
-                </Grid>
+                <!-- <Label Text="{i18n:Translate description}"/> -->
+                <!-- <Label IsVisible="{Binding IsLoading}" Text="{i18n:Translate loading}"/> -->
+                <!-- <Label IsVisible="{Binding NoData}" Text="{i18n:Translate no_data}" /> -->
+                <!-- <Grid Margin="0,32,0,0"> -->
+                <!--     <Grid.ColumnDefinitions> -->
+                <!--         <ColumnDefinition /> -->
+                <!--         <ColumnDefinition Width="30" /> -->
+                <!--         <ColumnDefinition /> -->
+                <!--     </Grid.ColumnDefinitions> -->
+                <!--     <Grid.ColumnSpacing> -->
+                <!--         0 -->
+                <!--     </Grid.ColumnSpacing> -->
+                <!--     <AbsoluteLayout x:Name="OldYieldLayout"  -->
+                <!--         Grid.Column="0" Grid.Row="0"  -->
+                <!--         HorizontalOptions="FillAndExpand"  -->
+                <!--         VerticalOptions="FillAndExpand"> -->
+                <!--         <Label x:Name="MarkYieldOld"  -->
+                <!--             AbsoluteLayout.LayoutBounds="0,0.1,1,0.05"  -->
+                <!--             AbsoluteLayout.LayoutFlags="All"  -->
+                <!--             HorizontalOptions="EndAndExpand" -->
+                <!--             Text="{i18n:Translate marker_your_yield}"/> -->
+                <!--     </AbsoluteLayout> -->
+                <!-- -->
+                <!--     <Image Source="colorramp_faded.png"   -->
+                <!--         Grid.Row="0" Grid.Column="1"  -->
+                <!--         Aspect="Fill" HeightRequest="400" -->
+                <!--         HorizontalOptions="FillAndExpand"  -->
+                <!--         VerticalOptions="FillAndExpand"/> -->
+                <!--      -->
+                <!--     <AbsoluteLayout x:Name="CiatYieldLayout"  -->
+                <!--         Grid.Column="2" Grid.Row="0"  -->
+                <!--         HorizontalOptions="FillAndExpand"  -->
+                <!--         VerticalOptions="FillAndExpand"> -->
+                <!-- -->
+                <!--         <Label x:Name="MarkYieldMax"  -->
+                <!--             AbsoluteLayout.LayoutBounds="0,0,1,0.05"  -->
+                <!--             AbsoluteLayout.LayoutFlags="All"  -->
+                <!--             HorizontalOptions="StartAndExpand" -->
+                <!--             Text="{i18n:Translate marker_max}" /> -->
+                <!--         <Label x:Name="MarkYieldMin" -->
+                <!--             AbsoluteLayout.LayoutBounds="0,1,1,0.05" -->
+                <!--             AbsoluteLayout.LayoutFlags="All" -->
+                <!--             HorizontalOptions="StartAndExpand" -->
+                <!--             Text="{i18n:Translate marker_min}" /> -->
+                <!--     </AbsoluteLayout> -->
+                <!-- </Grid> -->
 
                 <Label Margin="0,16,0,16" Text="{i18n:Translate recommendations}" />
 

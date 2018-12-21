@@ -46,19 +46,23 @@
 
             <components:IconWithText 
                 IconText="Potential yield (models)"
-                IconSource="corn1.png"/>
+                IconSource="corn1.png"
+                Command="{Binding NavigateToPotentialYield}"/>
 
             <components:IconWithText 
                 IconText="Cropping recommendations"
-                IconSource="planner.png"/>
+                IconSource="planner.png"
+                Command="{Binding NavigateToPlanner}"/>
 
             <components:IconWithText 
                 IconText="Market price forecast"
-                IconSource="peso1.png"/>
+                IconSource="peso1.png"
+                Command="{Binding NavigateToMarketForecast}"/>
 
             <components:IconWithText 
                 IconText="Weather"
-                IconSource="weather.png"/>
+                IconSource="weather.png"
+                Command="{Binding NavigateToWeather}"/>
 
         </StackLayout>
     </ScrollView>

@@ -795,7 +795,7 @@
                                                                 AddPlotPosition
                                                             }
                                                         };
-                NavigationService.NavigateAsync("NavigationPage/AddParcelPage", navigationParams);
+                NavigationService.NavigateAsync("AddParcelPage", navigationParams);
             }
         }
 
