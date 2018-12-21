@@ -864,6 +864,11 @@
         {
             Plots = await AppDataService.GetAllPlots();
             MapMainPage?.AddPlots(Plots);
+            foreach (Plot plot in Plots.Where(plot => plot.BemData == null))
+            {
+                plot.BemData = await BemData.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
+                await AppDataService.UpdatePlot(plot);
+            }
         }
 
         private void NavigateToLocation(Xamarin.Essentials.Location location)

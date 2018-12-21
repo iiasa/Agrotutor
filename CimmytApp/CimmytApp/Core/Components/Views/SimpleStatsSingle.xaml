@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
+             x:Class="CimmytApp.Core.Components.Views.SimpleStatsSingle"
+             mvvm:ViewModelLocator.AutowireViewModel="True" >
+    <ContentView.Content>
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+            <ScrollView>
+                <Grid ColumnSpacing="0" RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="20" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+                    <Image x:Name="ImageMax" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" WidthRequest="48" HeightRequest="48" />
+                    <Image x:Name="ImageAverage" Grid.Column="0" Grid.Row="3" Grid.RowSpan="2" VerticalOptions="Center" WidthRequest="48" HeightRequest="48" />
+                    <Image x:Name="ImageMin" Grid.Column="0" Grid.Row="6" Grid.RowSpan="2" VerticalOptions="Center" WidthRequest="48" HeightRequest="48" />
+
+                    <Label x:Name="lblMax" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" VerticalOptions="Center" />
+                    <Label x:Name="lblAverage" Grid.Column="1" Grid.Row="3" Grid.RowSpan="2" VerticalOptions="Center" />
+                    <Label x:Name="lblMin" Grid.Column="1" Grid.Row="6" Grid.RowSpan="2" VerticalOptions="Center" />
+
+                    <BoxView Grid.Column="2" Grid.Row="1" Grid.RowSpan="6" Color="Black" HorizontalOptions="Center" WidthRequest="2"/>
+                    <BoxView Grid.Column="2" Grid.Row="1" Color="Black" HorizontalOptions="Center" VerticalOptions="Start"  HeightRequest="2" WidthRequest="20"/>
+                    <BoxView Grid.Column="2" Grid.Row="3" Grid.RowSpan="2" Color="Black" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="2" WidthRequest="20"/>
+                    <BoxView Grid.Column="2" Grid.Row="6" Color="Black" HorizontalOptions="Center" VerticalOptions="End" HeightRequest="2" WidthRequest="20"/>
+
+                    <StackLayout Grid.Column="3" Grid.Row="0" Orientation="Horizontal" Grid.RowSpan="2" VerticalOptions="Center" Margin="16">
+                        <Label x:Name="lblMaxValue" FontSize="Default" VerticalOptions="Center" />
+                        <Label x:Name="lblMaxUnit" VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="3" Grid.Row="3" Orientation="Horizontal" Grid.RowSpan="2" VerticalOptions="Center" Margin="16">
+                        <Label x:Name="lblAverageValue" FontSize="Large" VerticalOptions="Center" />
+                        <Label x:Name="lblAverageUnit" VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <StackLayout Grid.Column="3" Grid.Row="6" Orientation="Horizontal" Grid.RowSpan="2" VerticalOptions="Center" Margin="16">
+                        <Label x:Name="lblMinValue" FontSize="Default" VerticalOptions="Center" />
+                        <Label x:Name="lblMinUnit" VerticalOptions="Center" />
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

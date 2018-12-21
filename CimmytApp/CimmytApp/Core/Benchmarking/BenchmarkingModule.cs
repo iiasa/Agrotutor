@@ -9,7 +9,6 @@
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<BenchmarkingPage>();
-            containerRegistry.RegisterForNavigation<LocalBenchmarkingSelectionPage>();
             containerRegistry.RegisterForNavigation<ViewCostoPage>();
             containerRegistry.RegisterForNavigation<ViewIngresoPage>();
             containerRegistry.RegisterForNavigation<ViewRendimientoPage>();

@@ -86,9 +86,6 @@
     <Compile Update="Core\Benchmarking\Views\CiatSelectionPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
-    <Compile Update="Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
     <Compile Update="Core\Benchmarking\Views\ViewCostoPage.xaml.cs">
       <DependentUpon>%(Filename)</DependentUpon>
     </Compile>
@@ -127,6 +124,9 @@
     </Compile>
     <Compile Update="Core\Components\Views\MiniMenuIcon.xaml.cs">
       <DependentUpon>MiniMenuIcon.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Core\Components\Views\SimpleStatsSingle.xaml.cs">
+      <DependentUpon>SimpleStatsSingle.xaml</DependentUpon>
     </Compile>
     <Compile Update="Core\Components\Views\SimpleStats.xaml.cs">
       <DependentUpon>SimpleStats.xaml</DependentUpon>

@@ -2,16 +2,27 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-            xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
             xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
-            xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
             prism:ViewModelLocator.AutowireViewModel="True" 
             x:Class="CimmytApp.Core.Benchmarking.Views.ViewCostoPage" Padding="16">
-    <ScrollView>
-        <StackLayout Orientation="Vertical">
-            <components:Header Text="{i18n:Translate title}" IconSource="icons_pricetag_96.png" />
-            <Label Text="{i18n:Translate loading_message}" IsVisible="{Binding IsLoading}" Margin="0,0,0,16" />
-            <microcharts:ChartView x:Name="chartView" HeightRequest="500"/>
-        </StackLayout>
-    </ScrollView>
+    <StackLayout>
+        <Label
+            HorizontalOptions="StartAndExpand"
+            Text="Costs in this area"
+            FontSize="20" />
+
+        <components:SimpleStatsSingle
+            AverageImageSource="peso3.png"
+            MinImageSource="peso2.png"
+            MaxImageSource="peso4.png"
+            Unit="pesos"
+            AverageText="average"
+            MinText="minimum"
+            MaxText="maximum"
+            AverageValue="{Binding Avg}"
+            MinValue="{Binding Min}"
+            MaxValue="{Binding Max}"
+        />
+
+    </StackLayout>
 </ContentPage>

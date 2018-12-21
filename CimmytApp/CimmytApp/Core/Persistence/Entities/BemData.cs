@@ -1,17 +1,20 @@
 ﻿namespace CimmytApp.Core.Persistence.Entities
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Threading.Tasks;
+
     using CimmytApp.DTO.BEM;
+
     using Helper.HTTP;
 
     public class BemData
     {
+        public virtual List<Cost> Costo { get; set; }
+
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
-
-        public virtual List<Cost> Costo { get; set; }
 
         public virtual List<Income> Ingreso { get; set; }
 
@@ -19,33 +22,46 @@
 
         public virtual List<Profit> Utilidad { get; set; }
 
-        public static async Task<BemData> LoadBEMData() 
+        public static async Task<BemData> LoadBEMData(double? lat = null, double? lon = null)
         {
-            var costo = await RequestJson.Get<List<Cost>>(
-                "http://104.239.158.49/api.php?type=costo&tkn=E31C5F8478566357BA6875B32DC59");
-            var ingreso =
-                await RequestJson.Get<List<Income>>(
-                    "http://104.239.158.49/api.php?type=rendimiento&tkn=E31C5F8478566357BA6875B32DC59");
-            var rendimiento =
-                await RequestJson.Get<List<Yield>>(
-                    "http://104.239.158.49/api.php?type=ingreso&tkn=E31C5F8478566357BA6875B32DC59");
-            var utilidads =
-                await RequestJson.Get<List<Profit>>(
-                    "http://104.239.158.49/api.php?type=utilidad&tkn=E31C5F8478566357BA6875B32DC59");
+            List<Cost> costo = await Load<Cost>("costo", lat, lon);
+            List<Income> ingreso = await Load<Income>("ingreso", lat, lon);
+            List<Yield> rendimiento = await Load<Yield>("rendimiento", lat, lon);
+            List<Profit> utilidads = await Load<Profit>("utilidads", lat, lon);
 
-            if (costo == null || ingreso == null || rendimiento == null || utilidads == null)
+            BemData bemData = new BemData
+                              {
+                                  Costo = costo,
+                                  Ingreso = ingreso,
+                                  Rendimiento = rendimiento,
+                                  Utilidad = utilidads
+                              };
+            return bemData;
+        }
+
+        private static async Task<List<T>> Load<T>(string parameter, double? lat = null, double? lon = null)
+        {
+            string url = $"http://104.239.158.49/api.php?type={parameter}&tkn=E31C5F8478566357BA6875B32DC59";
+            if (lat != null)
             {
-                return null;
+                url += $"&lat={lat}";
             }
 
-            var bemData = new BemData
+            if (lon != null)
             {
-                Costo = costo,
-                Ingreso = ingreso,
-                Rendimiento = rendimiento,
-                Utilidad = utilidads
-            };
-            return bemData;
+                url += $"&lon={lon}";
+            }
+
+            List<T> data = null;
+            try
+            {
+                data = await RequestJson.Get<List<T>>(url);
+            }
+            catch (Exception)
+            {
+            }
+
+            return data;
         }
     }
 }

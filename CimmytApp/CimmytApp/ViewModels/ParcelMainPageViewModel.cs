@@ -1,30 +1,124 @@
 ﻿namespace CimmytApp.ViewModels
 {
+    using Acr.UserDialogs;
+
     using CimmytApp.Core.Persistence;
     using CimmytApp.Core.Persistence.Entities;
+
     using Microsoft.Extensions.Localization;
+
     using Prism.Commands;
     using Prism.Navigation;
 
     public class ParcelMainPageViewModel : ViewModelBase, INavigatedAware
     {
-        public IAppDataService AppDataService { get; set; }
-
         private readonly INavigationService _navigationService;
+
         private Plot plot;
 
-        public ParcelMainPageViewModel(INavigationService navigationService, IAppDataService appDataService,
-            IStringLocalizer<ParcelMainPageViewModel> localizer) : base(localizer)
+        public ParcelMainPageViewModel(
+            INavigationService navigationService,
+            IAppDataService appDataService,
+            IStringLocalizer<ParcelMainPageViewModel> localizer)
+            : base(localizer)
         {
-            _navigationService = navigationService;
+            this._navigationService = navigationService;
             AppDataService = appDataService;
         }
 
-        public DelegateCommand GoBackCommand { get; set; }
+        public DelegateCommand NavigateToCosts =>
+            new DelegateCommand(
+                async () =>
+                {
+                    if (Plot.BemData.Costo == null)
+                    {
+                        await UserDialogs.Instance.AlertAsync(
+                            new AlertConfig
+                            {
+                                Title = "No data",
+                                Message = "There isn't any cost data available at this location.",
+                                OkText = "Ok"
+                            });
+                        return;
+                    }
 
-        public DelegateCommand<string> NavigateAsyncCommand { get; set; }
+                    NavigationParameters param = new NavigationParameters
+                                                 {
+                                                     { "Cost", Plot.BemData.Costo }
+                                                 };
+                    this._navigationService.NavigateAsync("ViewCostoPage", param);
+                });
 
-        public DelegateCommand NavigateToMapCommand { get; set; }
+        public DelegateCommand NavigateToIncome =>
+            new DelegateCommand(
+                async () =>
+                {
+                    if (Plot.BemData.Ingreso == null)
+                    {
+                        await UserDialogs.Instance.AlertAsync(
+                            new AlertConfig
+                            {
+                                Title = "No data",
+                                Message = "There isn't any income data available at this location.",
+                                OkText = "Ok"
+                            });
+                        return;
+                    }
+
+                    NavigationParameters param = new NavigationParameters
+                                                 {
+                                                     { "Income", Plot.BemData.Ingreso }
+                                                 };
+                    this._navigationService.NavigateAsync("ViewIngresoPage", param);
+                });
+
+        public DelegateCommand NavigateToProfit =>
+            new DelegateCommand(
+                async () =>
+                {
+                    if (Plot.BemData.Utilidad == null)
+                    {
+                        await UserDialogs.Instance.AlertAsync(
+                            new AlertConfig
+                            {
+                                Title = "No data",
+                                Message = "There isn't any profit data available at this location.",
+                                OkText = "Ok"
+                            });
+                        return;
+                    }
+
+                    NavigationParameters param = new NavigationParameters
+                                                 {
+                                                     { "Profit", Plot.BemData.Utilidad }
+                                                 };
+                    this._navigationService.NavigateAsync("ViewUtilidadPage", param);
+                });
+
+        public DelegateCommand NavigateToYield =>
+            new DelegateCommand(
+                async () =>
+                {
+                    if (Plot.BemData.Rendimiento == null)
+                    {
+                        await UserDialogs.Instance.AlertAsync(
+                            new AlertConfig
+                            {
+                                Title = "No data",
+                                Message = "There isn't any yield data available at this location.",
+                                OkText = "Ok"
+                            });
+                        return;
+                    }
+
+                    NavigationParameters param = new NavigationParameters
+                                                 {
+                                                     { "Yield", Plot.BemData.Rendimiento }
+                                                 };
+                    this._navigationService.NavigateAsync("ViewRendimientoPage", param);
+                });
+
+        public IAppDataService AppDataService { get; set; }
 
         public Plot Plot
         {
@@ -40,12 +134,15 @@
         {
             if (parameters.ContainsKey("Plot"))
             {
-                parameters.TryGetValue<Plot>("Plot", out Plot plot);
+                parameters.TryGetValue("Plot", out Plot plot);
                 if (plot != null)
                 {
                     Plot = plot;
                 }
-                else this._navigationService.GoBackAsync();
+                else
+                {
+                    this._navigationService.GoBackAsync();
+                }
             }
         }
     }
