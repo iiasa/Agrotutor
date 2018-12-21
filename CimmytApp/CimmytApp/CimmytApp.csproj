@@ -218,6 +218,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>SimpleStats.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Core\Components\Views\WeatherWidget.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>WeatherWidget.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Core\Map\Views\MapMainPage.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -361,6 +366,10 @@
     <EmbeddedResource Update="Resources\Core\Components\Views\SimpleStats.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>SimpleStats.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Core\Components\Views\WeatherWidget.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>WeatherWidget.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Core\Map\Views\MapMainPage.resx">
       <Generator>ResXFileCodeGenerator</Generator>

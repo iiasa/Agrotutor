@@ -56,11 +56,11 @@
             double yOld = (yieldOld - min) / k;
             double yMin = (yieldMin - min) / k;
             double yMax = (yieldMax - min) / k;
-
-
-            AbsoluteLayout.SetLayoutBounds(this.MarkYieldMax, new Rectangle(0, 1-yMax, 1, 0.05));
-            AbsoluteLayout.SetLayoutBounds(this.MarkYieldMin, new Rectangle(0, 1-yMin, 1, 0.05));
-            AbsoluteLayout.SetLayoutBounds(this.MarkYieldOld, new Rectangle(0, 1-yOld, 1, 0.05));
+            //
+            //
+            // AbsoluteLayout.SetLayoutBounds(this.MarkYieldMax, new Rectangle(0, 1-yMax, 1, 0.05));
+            // AbsoluteLayout.SetLayoutBounds(this.MarkYieldMin, new Rectangle(0, 1-yMin, 1, 0.05));
+            // AbsoluteLayout.SetLayoutBounds(this.MarkYieldOld, new Rectangle(0, 1-yOld, 1, 0.05));
 
         }
 
