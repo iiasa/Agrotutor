@@ -35,8 +35,6 @@
                 IconSource="icons_datasheet_96.png"
                 Command="{Binding NavigateToYield}"/>
 
-
-
             <Label
                 HorizontalOptions="StartAndExpand"
                 Text="Additional information"

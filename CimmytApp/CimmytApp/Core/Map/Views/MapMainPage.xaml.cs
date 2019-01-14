@@ -61,11 +61,12 @@
 
         internal void AddPlots(IEnumerable<Plot> plots)
         {
+            if (plots == null) return;
             foreach (Pin pin in from plot in plots where plot.Position != null select new Pin
-                  {
-                      Position = plot.Position.ForMap(),
-                      Label = plot.Name,
-                      Tag = plot
+              {
+                  Position = plot.Position.ForMap(),
+                  Label = plot.Name,
+                  Tag = plot
                   })
             {
                 PlotPins.Append(pin);

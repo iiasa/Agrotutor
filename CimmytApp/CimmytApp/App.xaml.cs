@@ -35,14 +35,18 @@
         public App()
             : this(null)
         {
+            Console.WriteLine("App instantiated");
         }
 
         public App(IPlatformInitializer initializer = null)
             : base(initializer)
-        {}
+        {
+            Console.WriteLine("App instantiated");
+        }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
+            AppCenterLog.Info("App", "ConfigureModuleCatalog called");
             try
             {
                 Type benchmarkingModule = typeof(BenchmarkingModule);
@@ -101,14 +105,20 @@
             }
             catch (Exception e)
             {
+                AppCenterLog.Info("App", "ConfigureModuleCatalog error", e);
                 Crashes.TrackError(e);
             }
+            AppCenterLog.Info("App", "ConfigureModuleCatalog finished");
         }
 
         protected override void OnInitialized()
         {
+            AppCenterLog.Info("App", "Starting initialization");
+
             InitializeComponent();
+            AppCenterLog.Info("App", "Initialized component (XAML, Templates and Styles seem fine)");
             Material.Init(this);
+            AppCenterLog.Info("App", "Initializes XF.Material");
 
             if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS
                 || Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
@@ -118,7 +128,9 @@
                 localizer.SetLocale(cultureInfo);
             }
 
+            AppCenterLog.Info("App", "Navigating to initial page");
             NavigationService.NavigateAsync(GetInitialPage());
+            AppCenterLog.Info("App", "Finished initialization");
         }
 
         protected override void OnSleep()
@@ -150,10 +162,13 @@
                 $"android={Constants.AppCenterKeyAndroid};ios={Constants.AppCenterKeyIOs}",
                 typeof(Analytics),
                 typeof(Crashes));
+
+            AppCenterLog.Info("App", "OnStart concluded, AppCenter is initialized");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            AppCenterLog.Info("App", "Registering types");
             try
             {
                 containerRegistry.RegisterForNavigation<NavigationPage>();
@@ -169,8 +184,10 @@
             }
             catch (Exception e)
             {
+                AppCenterLog.Info("App", "Registering types error", e);
                 Crashes.TrackError(e);
             }
+            AppCenterLog.Info("App", "Finished registering types");
         }
 
         private string GetInitialPage()

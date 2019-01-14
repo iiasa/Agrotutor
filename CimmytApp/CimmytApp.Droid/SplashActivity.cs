@@ -12,7 +12,7 @@
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon", Theme = "@style/MyTheme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : FormsAppCompatActivity
     {
-        private static readonly string TAG = "X:" + typeof(SplashActivity).Name;
+        private static readonly string TAG = "CIMMYT.DROID";
 
         public override void OnCreate(Bundle savedInstanceState, PersistableBundle persistentState)
         {

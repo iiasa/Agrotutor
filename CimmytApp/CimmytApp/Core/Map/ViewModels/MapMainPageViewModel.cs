@@ -348,6 +348,7 @@
             new DelegateCommand(
                 () =>
                 {
+                    if (SelectedPlot == null) return;
                     NavigationParameters navigationParameters = new NavigationParameters
                                                                 {
                                                                     {
