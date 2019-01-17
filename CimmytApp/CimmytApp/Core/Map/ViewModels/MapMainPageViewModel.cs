@@ -495,11 +495,12 @@
             get => this.currentWeather;
             set
             {
+                if (value == null) return;
                 SetProperty(ref this.currentWeather, value);
                 ShowWeatherWidget = true;
-                HourlySummary cur = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
-                CurrentWeatherIconSource = cur.TinyWxIcon;
-                CurrentWeatherText = cur.WxText;
+                HourlySummary cur = value.Location?.HourlySummaries?.HourlySummary?.ElementAt(0);
+                CurrentWeatherIconSource = cur?.TinyWxIcon;
+                CurrentWeatherText = cur?.WxText;
             }
         }
 
