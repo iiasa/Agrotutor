@@ -37,7 +37,7 @@
 
         private void NavigateToMainPage()
         {
-            _navigationService.NavigateAsync("app:///MainPage");
+            _navigationService.NavigateAsync("app:///MapMainPage");
         }
     }
 }

@@ -44,7 +44,7 @@
     <AotAssemblies>false</AotAssemblies>
     <EnableLLVM>false</EnableLLVM>
     <BundleAssemblies>false</BundleAssemblies>
-    <AndroidTlsProvider>Default (Native TLS 1.2+)</AndroidTlsProvider>
+    <AndroidTlsProvider>Managed TLS 1.0</AndroidTlsProvider>
     <AndroidHttpClientHandlerType>Default</AndroidHttpClientHandlerType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

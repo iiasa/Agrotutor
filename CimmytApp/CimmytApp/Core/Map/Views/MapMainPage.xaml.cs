@@ -93,7 +93,7 @@
         {
             DelineationPolygon = new Polygon
             {
-                StrokeColor = Color.Green, // TODO!!
+                StrokeColor = Color.Green,
                 StrokeWidth = 2f
             };
             this.map.Polygons.Clear();

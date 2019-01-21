@@ -2,14 +2,14 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp"
-    xmlns:components="clr-namespace:CimmytApp.Core.Components.Views;assembly=CimmytApp"
     prism:ViewModelLocator.AutowireViewModel="True"
     x:Class="CimmytApp.Core.Parcel.Views.AddParcelPage" Padding="16">
     <ScrollView>
+        <!-- xmlns:i18n="clr-namespace:CimmytApp.Core.Localization;assembly=CimmytApp" -->
         <StackLayout Orientation="Vertical">
 
-            <Label Text="{i18n:Translate hint_parcel_name}" FontSize="18" />
+            <Label Text="Add parcel" FontSize="18" />
+            <!-- <Label Text="{i18n:Translate hint_parcel_name}" FontSize="18" />
             <Entry Placeholder="{i18n:Translate hint_parcel_name_1}" Text="{Binding Plot.Name}"
                 Margin="0,0,0,16" />
 
@@ -30,7 +30,7 @@
                 Title="{i18n:Translate select}" Margin="0,0,0,16" />
 
 
-            <Button Text="{i18n:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
+            <Button Text="{i18n:Translate btn_save_and_new}" Command="{Binding ClickSave}" /> -->
         </StackLayout>
     </ScrollView>
 </ContentPage>
