@@ -7,7 +7,9 @@
 
     using Components.Views;
     using ViewModels;
+    using Xamarin.Forms.Xaml;
 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CalendarPage : ContentPage
     {
         private List<ContentView> dayViews = new List<ContentView>();

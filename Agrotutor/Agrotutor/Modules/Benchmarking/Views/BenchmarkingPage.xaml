@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+     mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.Benchmarking.Views.BenchmarkingPage"
              Padding="16,16,16,0">
     <ContentPage.Content>

@@ -3,7 +3,9 @@
     using System;
     using System.Windows.Input;
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuIcon : ContentView
     {
         public event EventHandler Clicked;

@@ -2,7 +2,9 @@
 {
     using System;
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SimpleStats : ContentView
     {
         public static readonly BindableProperty AverageImageSourceProperty = BindableProperty.Create(

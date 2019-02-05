@@ -1,8 +1,10 @@
 ﻿namespace Agrotutor.Modules.Calendar.Components.Views
 {
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
     using Types;
 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonthlyCalendarEventEntry : Label
     {
         private CalendarEvent calendarEvent;

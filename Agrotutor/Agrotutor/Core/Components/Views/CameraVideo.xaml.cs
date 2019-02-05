@@ -5,7 +5,9 @@
     using Plugin.Media.Abstractions;
     using Prism.Commands;
     using Xamarin.Forms;
+    using Xamarin.Forms.Xaml;
 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CameraVideo : ContentView
     {
         private bool takeVideoActive;
