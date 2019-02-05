@@ -34,6 +34,7 @@
 
         private void InitializeLibs(Bundle bundle)
         {
+            Forms.SetFlags("FastRenderers_Experimental");
             Forms.Init(this, bundle);
 
             FormsGoogleMaps.Init(this, bundle);

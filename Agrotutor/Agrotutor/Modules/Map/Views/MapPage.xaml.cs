@@ -6,6 +6,7 @@
     using ImTools;
     using Xamarin.Forms;
     using Xamarin.Forms.GoogleMaps;
+    using Xamarin.Forms.Xaml;
 
     using Core.Entities;
     using Core.Cimmyt.HubsContact;
@@ -16,6 +17,7 @@
     using MPFeature = Core.Cimmyt.MachineryPoints.Feature;
     using ViewModels;
 
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
         public MapPageViewModel ViewModel { get; set; }
@@ -69,8 +71,9 @@
                                 select new Pin
                                 {
                                     Position = plot.Position.ForMap(),
-                                    Label = plot.Name,
-                                    Tag = plot
+                                    Label = plot.Name ?? "",
+                                    Tag = plot,
+                                    Icon = BitmapDescriptorFactory.DefaultMarker((Color) App.Current.Resources["PrimaryGreen"])
                                 })
             {
                 PlotPins.Append(pin);
@@ -122,6 +125,11 @@
             this.map.AnimateCamera(CameraUpdateFactory.NewPositionZoom(new Xamarin.Forms.GoogleMaps.Position(20, -100), 5), TimeSpan.FromSeconds(2));
         }
 
+        public void SetPlotLayerVisibility(bool visible)
+        {
+            this.PlotPins?.All(x => x.IsVisible = visible);
+        }
+
         private void RestorePins()
         {
             foreach (Pin pin in HubContactPins)
@@ -140,6 +148,16 @@
             {
                 Device.BeginInvokeOnMainThread(() => { this.map.Pins.Add(pin); });
             }
+        }
+
+        public void SetPlotDelineationLayerVisibility(bool value)
+        {
+            // TODO implement
+        }
+
+        public void SetHubContactsLayerVisibility(bool visible)
+        {
+            this.HubContactPins?.All(x => x.IsVisible = visible);
         }
 
         public void AddDelineationPoint(Xamarin.Forms.GoogleMaps.Position position)
@@ -166,6 +184,18 @@
             }
         }
 
+        public void SetMachineryPointLayerVisibility(bool visible)
+        {
+            var map = this.map;
+            var pins = map.Pins.Where(x => (x.Tag is MPFeature));
+            pins.All(x => x.IsVisible = visible);
+        }
+
+        public void SetInvestigationPlatformLayerVisibility(bool visible)
+        {
+            this.InvestigationPlatformPins?.All(x => x.IsVisible = visible);
+        }
+
         public void RemoveLastDelineationPoint()
         {
             if (DelineationPins.Count > 0)
@@ -184,6 +214,11 @@
             }
         }
 
+        public void SetOfflineLayerVisibility(bool value)
+        {
+            // TODO: implement
+        }
+
         public void SetHubsContact(HubsContact hubContacts)
         {
             foreach (HubFeature hubContact in hubContacts.Features)
@@ -195,7 +230,7 @@
                                   hubContact.Geometry.Coordinates[0]),
                     Tag = hubContact,
                     Label = hubContact.Properties.Hub,
-                    Icon = BitmapDescriptorFactory.DefaultMarker(Color.Aqua)
+                    Icon = BitmapDescriptorFactory.DefaultMarker((Color)App.Current.Resources["SecondaryOrange"])
                 };
                 this.HubContactPins.Add(pin);
                 Device.BeginInvokeOnMainThread(
@@ -213,7 +248,7 @@
                                                 investigationPlatform.Geometry.Coordinates[1], investigationPlatform.Geometry.Coordinates[0]),
                     Tag = investigationPlatform,
                     Label = investigationPlatform.Properties.Abrviacion,
-                    Icon = BitmapDescriptorFactory.DefaultMarker(Color.YellowGreen)
+                    Icon = BitmapDescriptorFactory.DefaultMarker((Color)App.Current.Resources["SecondaryGreenBrown"])
                 };
                 this.InvestigationPlatformPins.Add(pin);
                 Device.BeginInvokeOnMainThread(
@@ -231,7 +266,7 @@
                                                 machineryPoint.Geometry.Coordinates[1], machineryPoint.Geometry.Coordinates[0]),
                     Tag = machineryPoint,
                     Label = machineryPoint.Properties.Localidad,
-                    Icon = BitmapDescriptorFactory.DefaultMarker(Color.SandyBrown)
+                    Icon = BitmapDescriptorFactory.DefaultMarker((Color)App.Current.Resources["SecondaryDarkGreen"])
                 };
                 this.MachineryPointPins.Add(pin);
                 Device.BeginInvokeOnMainThread(

@@ -1,5 +1,4 @@
-﻿using Agrotutor.Modules.Plot.ViewModels;
-
+﻿
 namespace Agrotutor.Modules.Map.ViewModels
 {
     using System.Collections.Generic;
@@ -26,6 +25,7 @@ namespace Agrotutor.Modules.Map.ViewModels
     using Core.Rest.Bem;
     using Position = Core.Entities.Position;
     using Core.Persistence;
+    using Modules.Plot.ViewModels;
     using Modules.Weather;
     using Modules.Weather.Types;
     using Types;
@@ -33,6 +33,7 @@ namespace Agrotutor.Modules.Map.ViewModels
     using HubFeature = Core.Cimmyt.HubsContact.Feature;
     using IPFeature = Core.Cimmyt.InvestigationPlatforms.Feature;
     using MPFeature = Core.Cimmyt.MachineryPoints.Feature;
+    using XF.Material.Forms.UI.Dialogs;
 
     public class MapPageViewModel : ViewModelBase, INavigatedAware
     {
@@ -99,6 +100,13 @@ namespace Agrotutor.Modules.Map.ViewModels
         private Location weatherLocation;
 
         private bool delineationUIIsVisible;
+        private bool _plotsLayerVisible;
+        private bool _plotDelineationsLayerVisible;
+        private bool _hubContactsLayerVisible;
+        private bool _machineryPointsLayerVisible;
+        private bool _investigationPlatformsLayerVisible;
+        private bool _offlineBasemapLayerVisible;
+        private bool _layerSwitcherIsVisible;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -117,62 +125,121 @@ namespace Agrotutor.Modules.Map.ViewModels
             DelineationUIIsVisible = false;
         }
 
+        public bool PlotsLayerVisible
+        {
+            get => _plotsLayerVisible;
+            set
+            {
+                SetProperty(ref _plotsLayerVisible, value);
+                Preferences.Set(Constants.PlotsLayerVisiblePreference, value);
+                MapPage?.SetPlotLayerVisibility(value);
+            }
+        }
+
+        public bool PlotDelineationsLayerVisible
+        {
+            get => _plotDelineationsLayerVisible;
+            set
+            {
+                SetProperty(ref _plotDelineationsLayerVisible, value);
+                Preferences.Set(Constants.PlotDelineationsLayerVisiblePreference, value);
+                MapPage?.SetPlotDelineationLayerVisibility(value);
+            }
+        }
+
+        public bool HubContactsLayerVisible
+        {
+            get => _hubContactsLayerVisible;
+            set
+            {
+                SetProperty(ref _hubContactsLayerVisible, value);
+                Preferences.Set(Constants.HubContactsLayerVisiblePreference, value);
+                MapPage?.SetHubContactsLayerVisibility(value);
+            }
+        }
+
+        public bool MachineryPointsLayerVisible
+        {
+            get => _machineryPointsLayerVisible;
+            set
+            {
+                SetProperty(ref _machineryPointsLayerVisible, value);
+                Preferences.Set(Constants.MachineryPointsLayerVisiblePreference, value);
+                MapPage?.SetMachineryPointLayerVisibility(value);
+            }
+        }
+
+        public bool InvestigationPlatformsLayerVisible
+        {
+            get => _investigationPlatformsLayerVisible;
+            set
+            {
+                SetProperty(ref _investigationPlatformsLayerVisible, value);
+                Preferences.Set(Constants.InvestigationPlatformsLayerVisiblePreference, value);
+                MapPage?.SetInvestigationPlatformLayerVisibility(value);
+            }
+        }
+
+        public bool OfflineBasemapLayerVisible
+        {
+            get => _offlineBasemapLayerVisible;
+            set
+            {
+                SetProperty(ref _offlineBasemapLayerVisible, value);
+                Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
+                MapPage?.SetOfflineLayerVisibility(value);
+            }
+        }
+
         public DelegateCommand AddActivityToSelectedPlot =>
-            new DelegateCommand(
-                () =>
+            new DelegateCommand(() => {
+                NavigationParameters param = new NavigationParameters
                 {
-                    NavigationParameters param = new NavigationParameters
-                                                 {
-                                                     { "Plot", SelectedPlot }
-                                                 };
-                    NavigationService.NavigateAsync("ActivityPage", param);
-                });
+                    { "Plot", SelectedPlot }
+                };
+                NavigationService.NavigateAsync("ActivityPage", param);
+            });
+
+        public DelegateCommand ShowLayerSwitcher =>
+            new DelegateCommand(() => {
+                LayerSwitcherIsVisible = true;
+            });
 
         public DelegateCommand AddParcelClicked =>
-            new DelegateCommand(
-                () =>
-                {
-                    CurrentMapTask = MapTask.CreatePlotBySelection;
-                    AddParcelIsVisible = true;
-                });
+            new DelegateCommand(() => {
+                CurrentMapTask = MapTask.CreatePlotBySelection;
+                AddParcelIsVisible = true;
+            });
 
         public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
 
         public IAppDataService AppDataService { get; }
 
         public DelegateCommand ClickChooseLocation =>
-            new DelegateCommand(
-                () =>
-                {
-                    DimBackground = false;
-                    CurrentMapTask = MapTask.SelectLocation;
-                });
+            new DelegateCommand(() => {
+                DimBackground = false;
+                CurrentMapTask = MapTask.SelectLocation;
+            });
 
         public DelegateCommand ClickChooseLocationPlanner =>
-            new DelegateCommand(
-                () =>
-                {
-                    DimBackground = false;
-                    CurrentMapTask = MapTask.SelectLocationForPlanner;
-                });
+            new DelegateCommand(() => {
+                DimBackground = false;
+                CurrentMapTask = MapTask.SelectLocationForPlanner;
+            });
 
         public DelegateCommand ClickGetLocation =>
-            new DelegateCommand(
-                () =>
-                {
-                    DimBackground = false;
-                    AddPlotPosition = CurrentPosition;
-                    CurrentMapTask = MapTask.CreatePlotByGPS;
-                });
+            new DelegateCommand(() => {
+                DimBackground = false;
+                AddPlotPosition = CurrentPosition;
+                CurrentMapTask = MapTask.CreatePlotByGPS;
+            });
 
         public DelegateCommand ClickGetLocationPlanner =>
-            new DelegateCommand(
-                () =>
-                {
-                    DimBackground = false;
-                    AddPlotPosition = CurrentPosition;
-                    CurrentMapTask = MapTask.GetLocationForPlanner;
-                });
+            new DelegateCommand(() => {
+                DimBackground = false;
+                AddPlotPosition = CurrentPosition;
+                CurrentMapTask = MapTask.GetLocationForPlanner;
+            });
 
         public List<string> CropTypes { get; } = new List<string>
                                                  {
@@ -198,38 +265,32 @@ namespace Agrotutor.Modules.Map.ViewModels
                                                  };
 
         public DelegateCommand DelineateSelectedPlot =>
-            new DelegateCommand(
-                async () =>
+            new DelegateCommand(async () => {
+                if (this.selectedPlot.Delineation?.Count > 0)
                 {
-                    if (this.selectedPlot.Delineation?.Count > 0)
-                    {
-                        bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(
-                                                      new ConfirmConfig
-                                                      {
-                                                          Message = StringLocalizer.GetString(
-                                                              "replace_delineation_prompt_message"),
-                                                          OkText =
-                                                              StringLocalizer.GetString("replace_delineation_prompt_yes"),
-                                                          CancelText =
-                                                              StringLocalizer.GetString("replace_delineation_prompt_cancel"),
-                                                          Title = StringLocalizer.GetString(
-                                                              "replace_delineation_prompt_title")
-                                                      });
-
-                        if (confirmDelineation)
+                    bool confirmDelineation = await UserDialogs.Instance.ConfirmAsync(
+                        new ConfirmConfig
                         {
-                            MapPage.StartDelineation(this.selectedPlot);
-                            CurrentMapTask = MapTask.DelineationNotEnoughPoints;
-                        }
-                    }
-                    else
+                            Message = StringLocalizer.GetString("replace_delineation_prompt_message"),
+                            OkText = StringLocalizer.GetString("replace_delineation_prompt_yes"),
+                            CancelText = StringLocalizer.GetString("replace_delineation_prompt_cancel"),
+                            Title = StringLocalizer.GetString("replace_delineation_prompt_title")
+                        });
+
+                    if (confirmDelineation)
                     {
                         MapPage.StartDelineation(this.selectedPlot);
                         CurrentMapTask = MapTask.DelineationNotEnoughPoints;
                     }
+                }
+                else
+                {
+                    MapPage.StartDelineation(this.selectedPlot);
+                    CurrentMapTask = MapTask.DelineationNotEnoughPoints;
+                }
 
-                    DimBackground = false;
-                });
+                DimBackground = false;
+            });
 
         public DelegateCommand HideOverlays =>
             new DelegateCommand(
@@ -332,7 +393,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCalendar =>
             new DelegateCommand(
-                () =>
+                async () =>
                 {
                     NavigationParameters navigationParameters = new NavigationParameters
                                                                 {
@@ -342,12 +403,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                                                                     },
                                                                     { "Dev", true }
                                                                 };
-                    NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
+                    await NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
                 });
 
         public DelegateCommand ShowCalendarForSelectedPlot =>
             new DelegateCommand(
-                () =>
+                async () =>
                 {
                     NavigationParameters navigationParameters = new NavigationParameters
                                                                 {
@@ -356,7 +417,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                                                                         SelectedPlot.GetCalendarEvents()
                                                                     }
                                                                 };
-                    NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
+                    await NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
                 });
 
         public DelegateCommand ShowOptions => new DelegateCommand(() => { OptionsIsVisible = true; });
@@ -365,7 +426,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowWeather =>
             new DelegateCommand(
-                () =>
+                async () =>
                 {
                     NavigationParameters param = new NavigationParameters();
                     if (CurrentWeather != null)
@@ -379,11 +440,14 @@ namespace Agrotutor.Modules.Map.ViewModels
                     }
                     else
                     {
-                        // TODO put message location missing, or select on map
+                        await MaterialDialog.Instance.AlertAsync(
+                            message: "The weather feature needs to know your current location. This can take some time. Make sure you gave permission to use your location. Weather will be available when you see the current weather on the top of the screen.", 
+                            title: "Location not available", 
+                            acknowledgementText: "OK");
                         return;
                     }
 
-                    NavigationService.NavigateAsync("WeatherPage", param);
+                    await NavigationService.NavigateAsync("WeatherPage", param);
                 });
 
         public DelegateCommand StartPlanner => new DelegateCommand(() => { PlannerUIIsVisible = true; });
@@ -419,6 +483,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     MachineryPointUIIsVisible = false;
                     PlannerUIIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -476,6 +541,26 @@ namespace Agrotutor.Modules.Map.ViewModels
             set => SetProperty(ref this._currentMapTaskHintIsVisible, value);
         }
 
+        public bool LayerSwitcherIsVisible 
+        { 
+            get => _layerSwitcherIsVisible;
+            set { 
+                SetProperty(ref _layerSwitcherIsVisible, value);
+
+                if (value)
+                {
+                    AddParcelIsVisible = false;
+                    PlotDetailIsVisible = false;
+                    OptionsIsVisible = false;
+                    HubsContactUIIsVisible = false;
+                    InvestigationPlatformUIIsVisible = false;
+                    MachineryPointUIIsVisible = false;
+                    DimBackground = true;
+                    PlannerUIIsVisible = false;
+                }
+            } 
+        }
+
         public Position CurrentPosition
         {
             get => this.currentPosition;
@@ -530,6 +615,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     InvestigationPlatformUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     PlannerUIIsVisible = false;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -556,7 +642,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             set
             {
                 SetProperty(ref this.hubsContactUIIsVisible, value);
-                if (this.hubsContactUIIsVisible)
+                if (value)
                 {
                     AddParcelIsVisible = false;
                     PlotDetailIsVisible = false;
@@ -564,6 +650,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     InvestigationPlatformUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                     PlannerUIIsVisible = false;
                 }
             }
@@ -594,6 +681,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     MachineryPointUIIsVisible = false;
                     PlannerUIIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -645,6 +733,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     InvestigationPlatformUIIsVisible = false;
                     PlannerUIIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -666,6 +755,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     PlannerUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -692,6 +782,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     MachineryPointUIIsVisible = false;
                     AddParcelIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -711,6 +802,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     PlannerUIIsVisible = false;
                     MachineryPointUIIsVisible = false;
                     DimBackground = true;
+                    LayerSwitcherIsVisible = false;
                 }
             }
         }
@@ -860,6 +952,13 @@ namespace Agrotutor.Modules.Map.ViewModels
             HubsContact = await HubsContact.FromEmbeddedResource();
             InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
             MachineryPoints = await MachineryPoints.FromEmbeddedResource();
+
+            PlotsLayerVisible = Preferences.Get(Constants.PlotsLayerVisiblePreference, true);
+            PlotDelineationsLayerVisible = Preferences.Get(Constants.PlotDelineationsLayerVisiblePreference, true);
+            HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
+            MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, true);
+            InvestigationPlatformsLayerVisible = Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, true);
+            OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
         }
 
         private async void LoadPlots()

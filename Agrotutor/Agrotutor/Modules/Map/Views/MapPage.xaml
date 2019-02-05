@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             mvvm:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Modules.Map.Views.MapPage">
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+     mvvm:ViewModelLocator.AutowireViewModel="True"
+     x:Class="Agrotutor.Modules.Map.Views.MapPage">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -72,7 +72,11 @@
 
             <ContentView
                 ControlTemplate="{StaticResource LayersButton}" Margin="0,0,0,28"
-                Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" />
+                Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+                <ContentView.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowLayerSwitcher}" />
+                </ContentView.GestureRecognizers>
+            </ContentView>
 
             <ContentView
                 ControlTemplate="{StaticResource LoadingSpinner}"
@@ -136,6 +140,12 @@
                 ControlTemplate="{StaticResource AddParcelUI}"
                 Style="{StaticResource MainMapPopup}"
                 IsVisible="{Binding AddParcelIsVisible}" />
+
+            <ContentView 
+                x:Name="LayerSwitcherView"
+                ControlTemplate="{StaticResource LayerSwitcher}"
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding LayerSwitcherIsVisible}" />
 
             <ContentView
                 x:Name="OptionsView"

@@ -13,5 +13,12 @@
         public const int MainMapWeatherRefreshDuration = 5; // Minutes
         public const int MainMapLocationRefreshPeriod = 15; // Seconds
         public const GeolocationAccuracy MainMapLocationAccuracy = GeolocationAccuracy.Medium;
+
+        public const string PlotsLayerVisiblePreference = "MAP_PlotsLayerVisible";
+        public const string PlotDelineationsLayerVisiblePreference = "MAP_PlotDelineationsLayerVisible";
+        public const string HubContactsLayerVisiblePreference = "MAP_HubContactsLayerVisible";
+        public const string MachineryPointsLayerVisiblePreference = "MAP_MachineryPointsLayerVisible";
+        public const string InvestigationPlatformsLayerVisiblePreference = "MAP_InvestigationPlatformsLayerVisible";
+        public const string OfflineBasemapLayerVisiblePreference = "MAP_OfflineBasemapLayerVisible";
     }
 }

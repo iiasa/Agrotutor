@@ -5,6 +5,7 @@
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization;assembly=Agrotutor"
     xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor"
     xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms" 
     x:Class="Agrotutor.Template">
 
     <ControlTemplate x:Key="LayersButton">
@@ -488,26 +489,65 @@
                 <ScrollView>
                     <StackLayout>
                         <views:IconWithText 
-                                IconText="{localization:Translate options_planner}"
-                                IconSource="planner.png"
-                                Command="{TemplateBinding Parent.BindingContext.StartPlanner}"/>
+                            IconText="{localization:Translate options_planner}"
+                            IconSource="planner.png"
+                            Command="{TemplateBinding Parent.BindingContext.StartPlanner}"/>
                         <views:IconWithText 
-                                IconText="{localization:Translate options_pest}"
-                                IconSource="cockroach.png"
-                                Command="{TemplateBinding Parent.BindingContext.NavigateToPest}"/>
+                            IconText="{localization:Translate options_pest}"
+                            IconSource="cockroach.png"
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToPest}"/>
                         <views:Divider />
                         <views:IconWithText 
-                                IconText="{localization:Translate options_profile}"
-                                IconSource="profile.png"
-                                Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"/>
+                            IconText="{localization:Translate options_profile}"
+                            IconSource="profile.png"
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"/>
                         <views:IconWithText 
-                                IconText="{localization:Translate options_practices}"
-                                IconSource="link.png"
-                                Command="{TemplateBinding Parent.BindingContext.NavigateToPractices}"/>
+                            IconText="{localization:Translate options_practices}"
+                            IconSource="link.png"
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToPractices}"/>
                         <views:IconWithText 
-                                IconText="{localization:Translate options_about}"
-                                IconSource="question.png"
-                                Command="{TemplateBinding Parent.BindingContext.NavigateToAbout}"/>
+                            IconText="{localization:Translate options_about}"
+                            IconSource="question.png"
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToAbout}"/>
+                    </StackLayout>
+                </ScrollView>
+            </StackLayout>
+        </Frame>
+    </ControlTemplate>
+    
+    <ControlTemplate x:Key="LayerSwitcher">
+        <Frame Style="{StaticResource MainMapPopupBackground}">
+            <StackLayout>
+                <views:IconWithText
+                    IconText="Layers"
+                    IconSource="layers.png"/>
+                <ScrollView>
+                    <StackLayout>
+                        <material:MaterialCheckbox 
+                            Text="Plots"
+                            IsSelected="{TemplateBinding Parent.BindingContext.PlotsLayerVisible}"
+                            SelectedColor="{StaticResource PrimaryGreen}" />
+                        <material:MaterialCheckbox 
+                            Text="Plot delineations"
+                            IsSelected="{TemplateBinding Parent.BindingContext.PlotDelineationsLayerVisible}" 
+                            SelectedColor="{StaticResource PrimaryGreen}" />
+                        <views:Divider />
+                        <material:MaterialCheckbox 
+                            Text="Hub contact"
+                            IsSelected="{TemplateBinding Parent.BindingContext.HubContactsLayerVisible}" 
+                            SelectedColor="{StaticResource SecondaryOrange}"/>
+                        <material:MaterialCheckbox 
+                            Text="Machinery points"
+                            IsSelected="{TemplateBinding Parent.BindingContext.MachineryPointsLayerVisible}" 
+                            SelectedColor="{StaticResource SecondaryDarkGreen}" />
+                        <material:MaterialCheckbox 
+                            Text="Investigation platforms"
+                            IsSelected="{TemplateBinding Parent.BindingContext.InvestigationPlatformsLayerVisible}" 
+                            SelectedColor="{StaticResource SecondaryGreenBrown}" />
+                        <views:Divider />
+                        <material:MaterialCheckbox 
+                            Text="Offline basemap"
+                            IsSelected="{TemplateBinding Parent.BindingContext.OfflineBasemapLayerVisible}"  />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

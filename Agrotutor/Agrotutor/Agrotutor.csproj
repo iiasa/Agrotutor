@@ -170,5 +170,8 @@
     <Folder Include="Modules\Ciat\Types\" />
     <Folder Include="Modules\PriceForecasting\" />
     <Folder Include="Modules\PriceForecasting\Types\" />
+    <Folder Include="Resources\Modules\" />
+    <Folder Include="Resources\Modules\Map\" />
+    <Folder Include="Resources\Modules\Map\ViewModels\" />
   </ItemGroup>
 </Project>
