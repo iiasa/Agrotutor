@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+     mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.Weather.Views.WeatherHistoryPage">
     <ContentPage.Content>
         <Grid Margin="16">
