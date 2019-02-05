@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Globalization;
     using System.Net.Http;
     using System.Threading.Tasks;
@@ -17,92 +18,98 @@
 
     public partial class WeatherHistory
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("gdd", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Gdd { get; set; }
+        public virtual Cdd Gdd { get; set; }
 
         [JsonProperty("cdd", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Cdd { get; set; }
+        public virtual Cdd Cdd { get; set; }
 
         [JsonProperty("hdd", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Hdd { get; set; }
+        public virtual Cdd Hdd { get; set; }
 
         [JsonProperty("dp", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Dp { get; set; }
+        public virtual Cdd Dp { get; set; }
 
         [JsonProperty("hp", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hp { get; set; }
+        public virtual Hd Hp { get; set; }
 
         [JsonProperty("hrh", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hrh { get; set; }
+        public virtual Hd Hrh { get; set; }
 
         [JsonProperty("dsr", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Dsr { get; set; }
+        public virtual Cdd Dsr { get; set; }
 
         [JsonProperty("hsr", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hsr { get; set; }
+        public virtual Hd Hsr { get; set; }
 
         [JsonProperty("ht", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Ht { get; set; }
+        public virtual Hd Ht { get; set; }
 
         [JsonProperty("dht", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Dht { get; set; }
+        public virtual Cdd Dht { get; set; }
 
         [JsonProperty("dlt", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Dlt { get; set; }
+        public virtual Cdd Dlt { get; set; }
 
         [JsonProperty("hd", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hd { get; set; }
+        public virtual Hd Hd { get; set; }
 
         [JsonProperty("hws", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hws { get; set; }
+        public virtual Hd Hws { get; set; }
 
         [JsonProperty("hwd", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hwd { get; set; }
+        public virtual Hd Hwd { get; set; }
 
         [JsonProperty("desc", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Desc { get; set; }
+        public virtual Cdd Desc { get; set; }
 
         [JsonProperty("detc", NullValueHandling = NullValueHandling.Ignore)]
-        public Cdd Detc { get; set; }
+        public virtual Cdd Detc { get; set; }
 
         [JsonProperty("hesc", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hesc { get; set; }
+        public virtual Hd Hesc { get; set; }
 
         [JsonProperty("hetc", NullValueHandling = NullValueHandling.Ignore)]
-        public Hd Hetc { get; set; }
+        public virtual Hd Hetc { get; set; }
     }
 
     public partial class Cdd : Series
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("startDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? StartDate { get; set; }
+        public virtual DateTimeOffset? StartDate { get; set; }
 
         [JsonProperty("degreeDays", NullValueHandling = NullValueHandling.Ignore)]
-        public double? DegreeDays { get; set; }
+        public virtual double? DegreeDays { get; set; }
 
         [JsonProperty("endDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? EndDate { get; set; }
+        public virtual DateTimeOffset? EndDate { get; set; }
 
         [JsonProperty("baseTemperature", NullValueHandling = NullValueHandling.Ignore)]
-        public long? BaseTemperature { get; set; }
+        public virtual long? BaseTemperature { get; set; }
 
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
-        public CddSeries[] Series { get; set; }
+        public virtual CddSeries[] Series { get; set; }
 
         [JsonProperty("longitude", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Longitude { get; set; }
+        public virtual long? Longitude { get; set; }
 
         [JsonProperty("latitude", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Latitude { get; set; }
+        public virtual long? Latitude { get; set; }
 
         [JsonProperty("unit", NullValueHandling = NullValueHandling.Ignore)]
-        public Unit Unit { get; set; }
+        public virtual Unit Unit { get; set; }
 
         [JsonProperty("precipitation", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Precipitation { get; set; }
+        public virtual double? Precipitation { get; set; }
 
         [JsonProperty("solarRadiation", NullValueHandling = NullValueHandling.Ignore)]
-        public double? SolarRadiation { get; set; }
+        public virtual double? SolarRadiation { get; set; }
 
         public List<EntryWithTime> GetChartEntries()
         {
@@ -123,18 +130,25 @@
 
     public partial class CddSeries
     {
-        [JsonProperty("validDate", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? ValidDate { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
+        [JsonProperty("validDate", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual DateTimeOffset? ValidDate { get; set; }
+
+        [NotMapped]
         [JsonProperty("products", NullValueHandling = NullValueHandling.Ignore)]
-        public string[] Products { get; set; }
+        public string Products { get; set; }
 
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Value { get; set; }
+        public virtual double? Value { get; set; }
     }
 
     public partial class Unit
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("description", NullValueHandling = NullValueHandling.Ignore)]
         public string Description { get; set; }
 
@@ -144,26 +158,29 @@
 
     public partial class Hd : Series
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("series", NullValueHandling = NullValueHandling.Ignore)]
-        public HdSeries[] Series { get; set; }
+        public virtual HdSeries[] Series { get; set; }
 
         [JsonProperty("longitude", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Longitude { get; set; }
+        public virtual long? Longitude { get; set; }
 
         [JsonProperty("startTime", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? StartTime { get; set; }
+        public virtual DateTimeOffset? StartTime { get; set; }
 
         [JsonProperty("latitude", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Latitude { get; set; }
+        public virtual long? Latitude { get; set; }
 
         [JsonProperty("endTime", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? EndTime { get; set; }
+        public virtual DateTimeOffset? EndTime { get; set; }
 
         [JsonProperty("unit", NullValueHandling = NullValueHandling.Ignore)]
-        public Unit Unit { get; set; }
+        public virtual Unit Unit { get; set; }
 
         [JsonProperty("precipitation", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Precipitation { get; set; }
+        public virtual double? Precipitation { get; set; }
 
         public List<EntryWithTime> GetChartEntries()
         {
@@ -182,16 +199,20 @@
         }
     }
 
-    public partial class HdSeries
+    public class HdSeries
     {
-        [JsonProperty("validTime", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTimeOffset? ValidTime { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
+        [JsonProperty("validTime", NullValueHandling = NullValueHandling.Ignore)]
+        public virtual DateTimeOffset? ValidTime { get; set; }
+
+        [NotMapped]
         [JsonProperty("products", NullValueHandling = NullValueHandling.Ignore)]
-        public Product[] Products { get; set; }
+        public virtual Product[] Products { get; set; }
 
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
-        public double? Value { get; set; }
+        public virtual double? Value { get; set; }
     }
 
     public enum Product { SkywiseGlobal1HrDewpointTemperatureForecast, SkywiseGlobal1HrEvapotranspirationShortForecast, SkywiseGlobal1HrEvapotranspirationTallForecast, SkywiseGlobal1HrPrecipitationForecast, SkywiseGlobal1HrRelativeHumidityForecast, SkywiseGlobal1HrSolarRadiationForecast, SkywiseGlobal1HrTemperatureForecast, SkywiseGlobal1HrWindDirectionForecast, SkywiseGlobal1HrWindSpeedForecast };

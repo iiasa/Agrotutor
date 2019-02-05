@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Net.Http;
     using System.Threading.Tasks;
 
@@ -11,8 +12,11 @@
     
     public partial class WeatherForecast
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("location")]
-        public Location Location { get; set; }
+        public virtual Location Location { get; set; }
         
         [JsonProperty("units")]
         public string Units { get; set; }
@@ -20,18 +24,24 @@
     
     public class Location
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("@attributes")]
-        public Attributes Attributes { get; set; }
+        public virtual Attributes Attributes { get; set; }
         
         [JsonProperty("daily_summaries")]
-        public DailySummaries DailySummaries { get; set; }
+        public virtual DailySummaries DailySummaries { get; set; }
         
         [JsonProperty("hourly_summaries")]
-        public HourlySummaries HourlySummaries { get; set; }
+        public virtual HourlySummaries HourlySummaries { get; set; }
     }
     
     public class SfcOb
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("apparent_temp_C")]
         public string ApparentTempC { get; set; }
         
@@ -74,12 +84,18 @@
     
     public class HourlySummaries
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("hourly_summary")]
-        public List<HourlySummary> HourlySummary { get; set; }
+        public virtual List<HourlySummary> HourlySummary { get; set; }
     }
     
     public class HourlySummary
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         public string WxIcon => Util.GetIconSrcForWx(WxCode);
         public string TinyWxIcon => Util.GetTinyIconSrcForWx(WxCode);
         
@@ -136,12 +152,18 @@
     
     public class DailySummaries
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("daily_summary")]
-        public List<DailySummary> DailySummary { get; set; }
+        public virtual List<DailySummary> DailySummary { get; set; }
     }
 
     public class DailySummary
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         public string LocalizedDayOfWeek
         {
             get
@@ -214,20 +236,16 @@
     
     public class Attributes
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         [JsonProperty("city")]
         public string City { get; set; }
         
         [JsonProperty("country")]
         public string Country { get; set; }
     }
-    
-    public partial struct Qpf01hrMm
-    {
-        public string String;
-        
-        public List<object> PressMb;
-    }
-    
+
     public partial class WeatherForecast
     {
         public static async Task<WeatherForecast> Download(double latitude, double longitude)
@@ -256,8 +274,12 @@
             JsonConvert.DeserializeObject<WeatherForecast>(json, Converter.Settings);
     }
 
-    public partial struct Qpf01hrMm
+    public struct Qpf01hrMm
     {
+        public string String;
+
+        public List<object> PressMb;
+
         public Qpf01hrMm(JsonReader reader, JsonSerializer serializer)
         {
             String = null;

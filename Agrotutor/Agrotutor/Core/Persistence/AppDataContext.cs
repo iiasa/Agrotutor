@@ -3,6 +3,9 @@
     using Microsoft.EntityFrameworkCore;
 
     using Entities;
+    using Agrotutor.Modules.Weather.Types;
+    using Agrotutor.Modules.Benchmarking.Types;
+    using Agrotutor.Modules.PriceForecasting.Types;
 
     public class AppDataContext : DbContext, IAppDataContext
     {
@@ -25,6 +28,14 @@
         public DbSet<Profit> ProfitDatasets { get; set; }
 
         public DbSet<Yield> YieldDatasets { get; set; }
+
+        public DbSet<WeatherForecast> WeatherForecasts { get; set; }
+
+        public DbSet<WeatherHistory> WeatherHistories { get; set; }
+
+        public DbSet<BenchmarkingInformation> BenchmarkingInformation { get; set; }
+
+        public DbSet<PriceForecast> PriceForecasts { get; set; }
 
         public void DisableDetectChanges()
         {

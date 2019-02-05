@@ -30,11 +30,13 @@
 
         public virtual Position Position { get; set; }
 
-        public WeatherForecast WeatherForecast { get; set; }
-        public WeatherHistory WeatherHistory { get; set; }
+        public virtual WeatherForecast WeatherForecast { get; set; }
 
-        public BenchmarkingInformation BenchmarkingInformation { get; set; }
-        public PriceForecast PriceForecast { get; set; }
+        public virtual WeatherHistory WeatherHistory { get; set; }
+
+        public virtual BenchmarkingInformation BenchmarkingInformation { get; set; }
+
+        public virtual PriceForecast PriceForecast { get; set; }
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 

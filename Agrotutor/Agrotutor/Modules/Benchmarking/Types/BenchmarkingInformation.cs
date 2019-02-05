@@ -1,10 +1,14 @@
 ﻿namespace Agrotutor.Modules.Benchmarking.Types
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
     public class BenchmarkingInformation
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         public string GetAvg
         {
             get
@@ -29,7 +33,7 @@
             }
         }
 
-        public List<BenchmarkingDataset> BenchmarkingDatasets { get; set; }
+        public virtual List<BenchmarkingDataset> BenchmarkingDatasets { get; set; }
 
         public void KeepNewest(int count)
         {
@@ -49,6 +53,9 @@
 
         public class BenchmarkingDataset
         {
+            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+            public int ID { get; set; }
+
             public string filename { get; set; }
 
             public float val { get; set; }
