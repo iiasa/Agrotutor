@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Agrotutor.Modules.Map.Views.MapPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform x:TypeArguments="GridLength">
+                            <On Platform="Android" Value="0" />
+                            <On Platform="iOS" Value="32" />
+                        </OnPlatform>
+                    </RowDefinition.Height>
+                </RowDefinition>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition>
+                    <RowDefinition.Height>
+                        <OnPlatform x:TypeArguments="GridLength">
+                            <On Platform="Android" Value="0" />
+                            <On Platform="iOS" Value="16" />
+                        </OnPlatform>
+                    </RowDefinition.Height>
+                </RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <googleMaps:Map 
+            x:Name="map" MapType="Hybrid"
+            VerticalOptions="FillAndExpand" InitialCameraUpdate="20,-100,5"
+            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="5"
+            MapClicked="Handle_MapClicked" MapLongClicked="Handle_MapLongClicked"
+            PinClicked="Handle_PinClicked" />
+            
+            <ContentView
+            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" 
+            HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
+            IsVisible="{Binding ShowWeatherWidget}">
+                <Frame BackgroundColor="Azure" Opacity="0.75" Padding="2" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                        <Image Source="{Binding CurrentWeatherIconSource}" HeightRequest="24" WidthRequest="24" />
+                        <Label Text="{Binding CurrentWeatherText}" VerticalOptions="CenterAndExpand" />
+                    </StackLayout>
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowWeather}"/>
+                    </Frame.GestureRecognizers>
+                </Frame>
+            </ContentView>
+            
+            <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
+            Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
+            HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
+            IsVisible="{Binding CurrentMapTaskHintIsVisible}">
+                <StackLayout>
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8" Text="{Binding CurrentMapTaskHint}"/>
+                </StackLayout>
+            </Frame>
+
+            <ContentView
+                ControlTemplate="{StaticResource LayersButton}" Margin="0,0,0,28"
+                Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2" />
+
+            <ContentView
+                ControlTemplate="{StaticResource LoadingSpinner}"
+                IsVisible="{Binding LoadingSpinnerIsVisible}"
+                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
+
+
+
+            <ContentView 
+                ControlTemplate="{StaticResource MainMapMenuItems}"
+                Style="{StaticResource MainMapIconsGroup}" />
+
+            <ContentView 
+                ControlTemplate="{StaticResource MainMapSelectLocation}"
+                Style="{StaticResource MainMapTaskUIContainer}"
+                IsVisible="{Binding SelectLocationUIIsVisible}" />
+
+            <ContentView 
+                ControlTemplate="{StaticResource MainMapDelineation}"
+                Style="{StaticResource MainMapTaskUIContainer}"
+                IsVisible="{Binding DelineationUIIsVisible}" />
+
+            <ContentView 
+                ControlTemplate="{StaticResource MainMapGPSLocation}"
+                Style="{StaticResource MainMapTaskUIContainer}"
+                IsVisible="{Binding GPSLocationUIIsVisible}" />
+
+            <ContentView 
+                ControlTemplate="{StaticResource BackgroundDimmer}" 
+                IsVisible="{Binding DimBackground}"
+                Grid.Row="0" Grid.Column="0" 
+                Grid.ColumnSpan="7" Grid.RowSpan="7" />
+
+            <ContentView
+                ControlTemplate="{StaticResource InvestigationPlatformUI}" 
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding InvestigationPlatformUIIsVisible}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource PlannerUI}" 
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding PlannerUIIsVisible}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource HubContactUI}" 
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding HubsContactUIIsVisible}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource MachineryPointUI}" 
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding MachineryPointUIIsVisible}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource ParcelDetailUI}" 
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding PlotDetailIsVisible}" />
+
+            <ContentView 
+                x:Name="AddParcelView"
+                ControlTemplate="{StaticResource AddParcelUI}"
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding AddParcelIsVisible}" />
+
+            <ContentView
+                x:Name="OptionsView"
+                ControlTemplate="{StaticResource MenuUI}"
+                Style="{StaticResource MainMapPopup}"
+                IsVisible="{Binding OptionsIsVisible}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

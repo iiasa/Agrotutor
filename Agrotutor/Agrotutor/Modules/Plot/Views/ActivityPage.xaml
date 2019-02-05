@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+             x:Class="Agrotutor.Modules.Plot.Views.ActivityPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="16,16,16,0">
+                <StackLayout Orientation="Vertical">
+                    <Grid Margin="16">
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                            <RowDefinition />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition />
+                        </Grid.ColumnDefinitions>
+
+                        <views:MenuIcon 
+                        Grid.Row="0" Grid.Column="0"
+                        IconText="{localization:Translate soil_improvers}"
+                        IconSource="flask.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="SoilImprovers"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="0" Grid.Column="1"
+                        IconText="{localization:Translate ground_preparation}"
+                        IconSource="shovel.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="GroundPreperation"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="1" Grid.Column="0"
+                        IconText="{localization:Translate sowing}"
+                        IconSource="sowing.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Sowing"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="1" Grid.Column="1"
+                        IconText="{localization:Translate fertilizer}"
+                        IconSource="fertilizer.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Fertilization"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="2" Grid.Column="0"
+                        IconText="{localization:Translate irrigation}"
+                        IconSource="irrigation.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Irrigation"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="2" Grid.Column="1"
+                        IconText="{localization:Translate deweeding}"
+                        IconSource="weeds.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="WeedPreventionControl"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="3" Grid.Column="0"
+                        IconText="{localization:Translate harvest}"
+                        IconSource="harvest.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Harvest"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="3" Grid.Column="1"
+                        IconText="{localization:Translate post_harvest_storage}"
+                        IconSource="storage.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="PostHarvestStorage"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="4" Grid.Column="0"
+                        IconText="{localization:Translate commercialization}"
+                        IconSource="money_bigger.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="Commercialization"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="4" Grid.Column="1"
+                        IconText="{localization:Translate other_activities}"
+                        IconSource="farmer_bigger.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="OtherActivities"/>
+
+                        <views:MenuIcon 
+                        Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2"
+                        IconText="{localization:Translate pest_control}"
+                        IconSource="cockroach.png"
+                        Command="{Binding Path=BindingContext.ActivityClickedCommand, Source={x:Reference ActivePage}}"
+                        CommandParameter="PestAndDiseaseControlAndPrevention"/>
+                    </Grid>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

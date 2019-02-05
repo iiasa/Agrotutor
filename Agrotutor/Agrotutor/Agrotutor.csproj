@@ -1,0 +1,174 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.5.4" />
+    <PackageReference Include="Flurl.Http" Version="2.4.0" />
+    <PackageReference Include="Microcharts" Version="0.7.1" />
+    <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="1.13.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="1.13.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.2.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.2.1" />
+    <PackageReference Include="Microsoft.Extensions.Localization" Version="2.2.0" />
+    <PackageReference Include="modernhttpclient" Version="2.4.2" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />
+    <PackageReference Include="XF.Material" Version="1.2.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Resources\Resources\AppResources.en.resx" />
+    <EmbeddedResource Remove="Resources\Resources\AppResources.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\BenchmarkingPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatContentPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatContentPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\SimpleStats.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\SimpleStats.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\WeatherWidget.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\WeatherWidget.resx" />
+    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\CitationPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\CitationPage.resx" />
+    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\LinksPage.es.resx" />
+    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\LinksPage.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\AppData\hubs_contact.geojson" />
+    <None Remove="Resources\AppData\investigation_platforms.geojson" />
+    <None Remove="Resources\AppData\machinery_points.geojson" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\AppData\hubs_contact.geojson" />
+    <EmbeddedResource Include="Resources\AppData\investigation_platforms.geojson" />
+    <EmbeddedResource Include="Resources\AppData\machinery_points.geojson" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Core\Components\Views\CameraPicture.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\CameraVideo.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\Divider.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\IconWithText.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\MenuIcon.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\MiniMenuIcon.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\SimpleStats.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\SimpleStatsSingle.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Core\Components\Views\ValueLine.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Calendar\Components\Views\MonthlyCalendarDayView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Calendar\Components\Views\MonthlyCalendarMultipleEventsEntry.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Calendar\Views\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Map\Views\MapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Plot\Views\ActivityDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Plot\Views\ActivityPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Plot\Views\AddPlotPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Style.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Template.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Resources\Resources\Modules\Benchmarking\Views\BenchmarkingPage.es.resx" />
+    <None Include="Resources\Resources\Modules\Benchmarking\Views\BenchmarkingPage.resx" />
+    <None Include="Resources\Resources\Modules\Ciat\Views\CiatPage.es.resx" />
+    <None Include="Resources\Resources\Modules\Ciat\Views\CiatPage.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx" />
+    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx" />
+    <None Include="Resources\Resources\Core\Components\Views\SimpleStats.es.resx" />
+    <None Include="Resources\Resources\Core\Components\Views\SimpleStats.resx" />
+    <None Include="Resources\Resources\Core\Components\Views\WeatherWidget.es.resx" />
+    <None Include="Resources\Resources\Core\Components\Views\WeatherWidget.resx" />
+    <None Include="Resources\Resources\StaticContent\Views\CitationPage.es.resx" />
+    <None Include="Resources\Resources\StaticContent\Views\CitationPage.resx" />
+    <None Include="Resources\Resources\StaticContent\Views\LinksPage.es.resx" />
+    <None Include="Resources\Resources\StaticContent\Views\LinksPage.resx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Modules\Weather\" />
+    <Folder Include="Modules\Weather\Types\" />
+    <Folder Include="Modules\Weather\Views\" />
+    <Folder Include="Modules\Weather\ViewModels\" />
+    <Folder Include="Modules\Charts\" />
+    <Folder Include="Modules\Charts\Types\" />
+    <Folder Include="Modules\Benchmarking\" />
+    <Folder Include="Modules\Benchmarking\Views\" />
+    <Folder Include="Modules\Benchmarking\ViewModels\" />
+    <Folder Include="Modules\Benchmarking\Types\" />
+    <Folder Include="Modules\Ciat\" />
+    <Folder Include="Modules\Ciat\Views\" />
+    <Folder Include="Modules\Ciat\ViewModels\" />
+    <Folder Include="Modules\Ciat\Types\" />
+    <Folder Include="Modules\PriceForecasting\" />
+    <Folder Include="Modules\PriceForecasting\Types\" />
+  </ItemGroup>
+</Project>

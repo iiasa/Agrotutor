@@ -1,0 +1,480 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E55F632F-EBD9-4641-A0EB-EAAE6488C6E7}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Agrotutor.Droid</RootNamespace>
+    <AssemblyName>Agrotutor.Android</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidStoreUncompressedFileExtensions />
+    <MandroidI18n />
+    <JavaMaximumHeapSize />
+    <JavaOptions />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidSupportedAbis>arm64-v8a;armeabi-v7a</AndroidSupportedAbis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+    <AotAssemblies>true</AotAssemblies>
+    <EnableLLVM>true</EnableLLVM>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Mono.Android" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs">
+      <Version>7.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
+      <Version>2.5.4</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
+      <Version>2.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Localization">
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="modernhttpclient">
+      <Version>2.4.2</Version>
+    </PackageReference>
+    <PackageReference Include="System.Buffers">
+      <Version>4.5.0</Version>
+    </PackageReference>
+    <PackageReference Include="Xam.Plugin.Media">
+      <Version>4.0.1.5</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Essentials">
+      <Version>1.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.CardView" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.MediaRouter" Version="27.0.2.1" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
+    <PackageReference Include="Xamarin.Forms.GoogleMaps">
+      <Version>3.0.4</Version>
+    </PackageReference>
+    <PackageReference Include="XF.Material">
+      <Version>1.2.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.Designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="src\AndroidInitializer.cs" />
+    <Compile Include="src\Localizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\anim_loading.json" />
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Assets\AboutAssets.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\mipmap-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_alfalfa.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_amaranth.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_barley.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_bean.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_canola.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_cartamo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_chickpea.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_corn.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_none.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_oats.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_other.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_rice.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_sesame.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_sorghum.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_soy.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_triticale.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_wheat.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\crop_zucchini.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_chart.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_in_sync.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_location.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_ok.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_pending_changes.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_synching.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_weblink.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_benchmark.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_calendar.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_edit.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_edit_blk.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_info.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_links.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_map.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_overview.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_view.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\icon_weather.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_alfalfa.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_amaranth.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_barley.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_bean.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_canola.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_cartamo.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_chickpea.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_corn.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_none.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_oats.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_other.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_rice.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_sesame.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_sorghum.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_soy.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_triticale.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_wheat.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\crop_zucchini.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_chart.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_in_sync.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_location.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_ok.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_pending_changes.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_synching.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_weblink.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_benchmark.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_calendar.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_edit.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_edit_blk.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_info.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_links.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_map.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_overview.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_view.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\icon_weather.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_alfalfa.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_amaranth.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_barley.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_bean.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_canola.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_cartamo.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_chickpea.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_corn.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_none.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_oats.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_other.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_rice.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_sesame.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_sorghum.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_soy.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_triticale.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_wheat.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\crop_zucchini.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_chart.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_in_sync.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_location.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_ok.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_pending_changes.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_synching.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_weblink.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_benchmark.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_edit.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_edit_blk.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_info.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_links.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_map.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_overview.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_view.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\icon_weather.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_alfalfa.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_amaranth.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_barley.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_bean.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_canola.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_cartamo.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_chickpea.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_corn.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_none.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_oats.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_other.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_rice.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_sesame.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_sorghum.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_soy.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_triticale.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_wheat.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\crop_zucchini.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_chart.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_in_sync.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_location.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_ok.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_pending_changes.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_synching.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_weblink.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_benchmark.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_edit.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_edit_blk.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_info.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_links.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_map.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_overview.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_view.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\icon_weather.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\app_icon.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\app_logo.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_alfalfa.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_amaranth.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_barley.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_bean.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_canola.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_cartamo.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_chickpea.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_corn.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_none.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_oats.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_other.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_rice.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_sesame.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_sorghum.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_soy.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_triticale.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_wheat.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\crop_zucchini.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_chart.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_in_sync.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_pending_changes.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_synching.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_weblink.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_benchmark.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_calendar.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_edit.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_edit_blk.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_info.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_links.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_map.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_overview.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_view.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\icon_weather.png" />
+    <AndroidResource Include="Resources\drawable\add.png" />
+    <AndroidResource Include="Resources\drawable\add_small.png" />
+    <AndroidResource Include="Resources\drawable\app_icon.png" />
+    <AndroidResource Include="Resources\drawable\blowing_dust.png" />
+    <AndroidResource Include="Resources\drawable\blowing_snow.png" />
+    <AndroidResource Include="Resources\drawable\bullet_black.png" />
+    <AndroidResource Include="Resources\drawable\calendar.png" />
+    <AndroidResource Include="Resources\drawable\calendar2.png" />
+    <AndroidResource Include="Resources\drawable\calendar_medium.png" />
+    <AndroidResource Include="Resources\drawable\choose_location.png" />
+    <AndroidResource Include="Resources\drawable\clear.png" />
+    <AndroidResource Include="Resources\drawable\cloudy.png" />
+    <AndroidResource Include="Resources\drawable\cockroach.png" />
+    <AndroidResource Include="Resources\drawable\cockroach_small.png" />
+    <AndroidResource Include="Resources\drawable\colorramp_faded.png" />
+    <AndroidResource Include="Resources\drawable\comparison.png" />
+    <AndroidResource Include="Resources\drawable\corn1.png" />
+    <AndroidResource Include="Resources\drawable\corn2.png" />
+    <AndroidResource Include="Resources\drawable\corn3.png" />
+    <AndroidResource Include="Resources\drawable\corn4.png" />
+    <AndroidResource Include="Resources\drawable\creative_commons.png" />
+    <AndroidResource Include="Resources\drawable\crop_green.png" />
+    <AndroidResource Include="Resources\drawable\crop_orange.png" />
+    <AndroidResource Include="Resources\drawable\data.png" />
+    <AndroidResource Include="Resources\drawable\delineate.png" />
+    <AndroidResource Include="Resources\drawable\delineation.png" />
+    <AndroidResource Include="Resources\drawable\delineation_deact.png" />
+    <AndroidResource Include="Resources\drawable\download.png" />
+    <AndroidResource Include="Resources\drawable\drizzle.png" />
+    <AndroidResource Include="Resources\drawable\edit.png" />
+    <AndroidResource Include="Resources\drawable\farm.png" />
+    <AndroidResource Include="Resources\drawable\farmer.png" />
+    <AndroidResource Include="Resources\drawable\farmer_bigger.png" />
+    <AndroidResource Include="Resources\drawable\farmer_small.png" />
+    <AndroidResource Include="Resources\drawable\fertilizer.png" />
+    <AndroidResource Include="Resources\drawable\fertilizer_small.png" />
+    <AndroidResource Include="Resources\drawable\flask.png" />
+    <AndroidResource Include="Resources\drawable\flask_small.png" />
+    <AndroidResource Include="Resources\drawable\forecast.png" />
+    <AndroidResource Include="Resources\drawable\forecast_small.png" />
+    <AndroidResource Include="Resources\drawable\freezing_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\freezing_rain.png" />
+    <AndroidResource Include="Resources\drawable\get_location.png" />
+    <AndroidResource Include="Resources\drawable\globe.png" />
+    <AndroidResource Include="Resources\drawable\hail.png" />
+    <AndroidResource Include="Resources\drawable\harvest.png" />
+    <AndroidResource Include="Resources\drawable\harvest_small.png" />
+    <AndroidResource Include="Resources\drawable\haze.png" />
+    <AndroidResource Include="Resources\drawable\heavy_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\heavy_rain.png" />
+    <AndroidResource Include="Resources\drawable\heavy_snow.png" />
+    <AndroidResource Include="Resources\drawable\history.png" />
+    <AndroidResource Include="Resources\drawable\history_small.png" />
+    <AndroidResource Include="Resources\drawable\ic_info_black_24dp.xml" />
+    <AndroidResource Include="Resources\drawable\ic_notifications_black_24dp.xml" />
+    <AndroidResource Include="Resources\drawable\ic_sync_black_24dp.xml" />
+    <AndroidResource Include="Resources\drawable\icon.png" />
+    <AndroidResource Include="Resources\drawable\icon_info_squared_96.png" />
+    <AndroidResource Include="Resources\drawable\icon_map_96.png" />
+    <AndroidResource Include="Resources\drawable\icon_performance_96.png" />
+    <AndroidResource Include="Resources\drawable\icon_planner_96.png" />
+    <AndroidResource Include="Resources\drawable\icon_profit_96.png" />
+    <AndroidResource Include="Resources\drawable\icon_scales_96.png" />
+    <AndroidResource Include="Resources\drawable\icon_weather_96.png" />
+    <AndroidResource Include="Resources\drawable\icons_datasheet_96.png" />
+    <AndroidResource Include="Resources\drawable\icons_pricetag_96.png" />
+    <AndroidResource Include="Resources\drawable\icons_settings_96.png" />
+    <AndroidResource Include="Resources\drawable\info.png" />
+    <AndroidResource Include="Resources\drawable\irrigation.png" />
+    <AndroidResource Include="Resources\drawable\irrigation_small.png" />
+    <AndroidResource Include="Resources\drawable\layers.png" />
+    <AndroidResource Include="Resources\drawable\light_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\light_fog.png" />
+    <AndroidResource Include="Resources\drawable\light_hail.png" />
+    <AndroidResource Include="Resources\drawable\light_rain.png" />
+    <AndroidResource Include="Resources\drawable\light_snow.png" />
+    <AndroidResource Include="Resources\drawable\link.png" />
+    <AndroidResource Include="Resources\drawable\link_small.png" />
+    <AndroidResource Include="Resources\drawable\logo_big.png" />
+    <AndroidResource Include="Resources\drawable\mail.png" />
+    <AndroidResource Include="Resources\drawable\map.png" />
+    <AndroidResource Include="Resources\drawable\money.png" />
+    <AndroidResource Include="Resources\drawable\money_bigger.png" />
+    <AndroidResource Include="Resources\drawable\money_small.png" />
+    <AndroidResource Include="Resources\drawable\mostly_clear.png" />
+    <AndroidResource Include="Resources\drawable\mostly_cloudy.png" />
+    <AndroidResource Include="Resources\drawable\nitrogen.png" />
+    <AndroidResource Include="Resources\drawable\nitrogen_small.png" />
+    <AndroidResource Include="Resources\drawable\partly_cloudy.png" />
+    <AndroidResource Include="Resources\drawable\patchy_fog.png" />
+    <AndroidResource Include="Resources\drawable\peso1.png" />
+    <AndroidResource Include="Resources\drawable\peso2.png" />
+    <AndroidResource Include="Resources\drawable\peso3.png" />
+    <AndroidResource Include="Resources\drawable\peso4.png" />
+    <AndroidResource Include="Resources\drawable\phone.png" />
+    <AndroidResource Include="Resources\drawable\photo.png" />
+    <AndroidResource Include="Resources\drawable\planner.png" />
+    <AndroidResource Include="Resources\drawable\planner_small.png" />
+    <AndroidResource Include="Resources\drawable\profile.png" />
+    <AndroidResource Include="Resources\drawable\profile_small.png" />
+    <AndroidResource Include="Resources\drawable\question.png" />
+    <AndroidResource Include="Resources\drawable\rain.png" />
+    <AndroidResource Include="Resources\drawable\rain_showers.png" />
+    <AndroidResource Include="Resources\drawable\refresh.png" />
+    <AndroidResource Include="Resources\drawable\shovel.png" />
+    <AndroidResource Include="Resources\drawable\shovel_small.png" />
+    <AndroidResource Include="Resources\drawable\sleet.png" />
+    <AndroidResource Include="Resources\drawable\snow.png" />
+    <AndroidResource Include="Resources\drawable\sowing.png" />
+    <AndroidResource Include="Resources\drawable\sowing_small.png" />
+    <AndroidResource Include="Resources\drawable\splash_background.xml" />
+    <AndroidResource Include="Resources\drawable\splashscreen.png" />
+    <AndroidResource Include="Resources\drawable\storage.png" />
+    <AndroidResource Include="Resources\drawable\storage_small.png" />
+    <AndroidResource Include="Resources\drawable\thunderstorms.png" />
+    <AndroidResource Include="Resources\drawable\tiny_blowing_dust.png" />
+    <AndroidResource Include="Resources\drawable\tiny_blowing_snow.png" />
+    <AndroidResource Include="Resources\drawable\tiny_clear.png" />
+    <AndroidResource Include="Resources\drawable\tiny_cloudy.png" />
+    <AndroidResource Include="Resources\drawable\tiny_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\tiny_freezing_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\tiny_freezing_rain.png" />
+    <AndroidResource Include="Resources\drawable\tiny_haze.png" />
+    <AndroidResource Include="Resources\drawable\tiny_heavy_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\tiny_heavy_rain.png" />
+    <AndroidResource Include="Resources\drawable\tiny_heavy_snow.png" />
+    <AndroidResource Include="Resources\drawable\tiny_light_drizzle.png" />
+    <AndroidResource Include="Resources\drawable\tiny_light_fog.png" />
+    <AndroidResource Include="Resources\drawable\tiny_light_rain.png" />
+    <AndroidResource Include="Resources\drawable\tiny_light_snow.png" />
+    <AndroidResource Include="Resources\drawable\tiny_mostly_clear.png" />
+    <AndroidResource Include="Resources\drawable\tiny_mostly_cloudy.png" />
+    <AndroidResource Include="Resources\drawable\tiny_partly_cloudy.png" />
+    <AndroidResource Include="Resources\drawable\tiny_patchy_fog.png" />
+    <AndroidResource Include="Resources\drawable\tiny_rain.png" />
+    <AndroidResource Include="Resources\drawable\tiny_rain_showers.png" />
+    <AndroidResource Include="Resources\drawable\tiny_sleet.png" />
+    <AndroidResource Include="Resources\drawable\tiny_snow.png" />
+    <AndroidResource Include="Resources\drawable\tiny_thunderstorms.png" />
+    <AndroidResource Include="Resources\drawable\video.png" />
+    <AndroidResource Include="Resources\drawable\wand.png" />
+    <AndroidResource Include="Resources\drawable\wand_small.png" />
+    <AndroidResource Include="Resources\drawable\weather.png" />
+    <AndroidResource Include="Resources\drawable\weeds.png" />
+    <AndroidResource Include="Resources\drawable\weeds_small.png" />
+    <AndroidResource Include="Resources\drawable\welcome_1.png" />
+    <AndroidResource Include="Resources\drawable\welcome_2.png" />
+    <AndroidResource Include="Resources\drawable\welcome_3.png" />
+    <AndroidResource Include="Resources\drawable\welcome_4.png" />
+    <AndroidResource Include="Resources\drawable\welcome_5.png" />
+    <AndroidResource Include="Resources\drawable\welcome_6.png" />
+    <AndroidResource Include="Resources\drawable\welcome_7.png" />
+    <AndroidResource Include="Resources\drawable\welcome_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\AndroidManifest.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Tabbar.axml" />
+    <AndroidResource Include="Resources\layout\Toolbar.axml" />
+    <AndroidResource Include="Resources\values\styles.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Agrotutor\Agrotutor.csproj">
+      <Project>{8E89D8D4-12AA-4C97-AE33-7C33932EAA36}</Project>
+      <Name>Agrotutor</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\xml\file_paths.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\colors.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+</Project>

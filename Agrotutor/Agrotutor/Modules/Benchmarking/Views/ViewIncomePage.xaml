@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+             x:Class="Agrotutor.Modules.Benchmarking.Views.ViewIncomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="StartAndExpand"
+                Text="Income in this area"
+                FontSize="20" />
+
+            <views:SimpleStatsSingle
+                AverageImageSource="peso3.png"
+                MinImageSource="peso2.png"
+                MaxImageSource="peso4.png"
+                Unit="pesos"
+                AverageText="average"
+                MinText="minimum"
+                MaxText="maximum"
+                AverageValue="{Binding Avg}"
+                MinValue="{Binding Min}"
+                MaxValue="{Binding Max}"
+            />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

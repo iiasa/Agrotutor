@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agrotutor.Modules.Calendar.Views.CalendarPage"
+             Padding="16,16,16,0">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="16,0,16,16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Row="0" Grid.Column="0" WidthRequest="50" Text="&lt;" FontSize="Large" BackgroundColor="Transparent" Command="{Binding ShowPreviousMonth}" />
+                <Label Grid.Row="0" Grid.Column="1" Text="{Binding DateRangeText}" FontSize="Large" TextColor="Black" VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" />
+                <Button Grid.Row="0" Grid.Column="2" WidthRequest="50" Text="&gt;" FontSize="Large" BackgroundColor="Transparent" Command="{Binding ShowNextMonth}" />
+
+            </Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.GestureRecognizers>
+                    <SwipeGestureRecognizer Direction="Left" Command="{Binding ShowNextMonth}"/>
+                    <SwipeGestureRecognizer Direction="Right" Command="{Binding ShowPreviousMonth}"/>
+                </Grid.GestureRecognizers>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="M" FontSize="Small" />
+                <Label Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="T" />
+                <Label Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="W" />
+                <Label Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="T" />
+                <Label Grid.Column="4" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="F" />
+                <Label Grid.Column="5" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="S" />
+                <Label Grid.Column="6" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="S" />
+                <!--
+                <ContentView Grid.Column="1" Grid.Row="1" Grid.RowSpan="5" Grid.ColumnSpan="5">
+                    <Frame>
+                
+                Event view goes here
+                
+                    </Frame>
+                </ContentView>
+                -->
+                <ScrollView Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="7">
+                    <StackLayout>
+                        <Grid HeightRequest="450" x:Name="MonthlyCalendarGrid">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+             x:Class="Agrotutor.Modules.Ciat.Views.CiatPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Margin="16,16,16,0">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <Button Text="{localization:Translate non_irrigated}" 
+                        Command="{Binding NonIrrigatedClickedCommand}" 
+                        x:Name="BtnNonIrrigated" />
+                    <Button Text="{localization:Translate irrigated}" 
+                        Command="{Binding IrrigatedClickedCommand}" 
+                        x:Name="BtnIrrigated" />
+                </StackLayout>
+
+                <Label Margin="0,16,0,16" Text="{localization:Translate recommendations}" />
+
+                <Image Source="nitrogen.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblNitrogen"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" 
+                    Text="{localization:Translate placeholder_nitrogen}"/>
+                
+                <Image Source="crop_orange.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblAvoidCultivars"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                    Text="{localization:Translate placeholder_avoid}" />
+
+                <Image Source="crop_green.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblUseCultivars"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                    Text="{localization:Translate placeholder_use}" />
+
+                <Image Source="fertilizer.png"  WidthRequest="32" HeightRequest="64" />
+                <Label x:Name="lblSeedDensity"
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                    Text="{localization:Translate placeholder_seed_density}" />
+                
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command=""/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label VerticalOptions="End" Text="{localization:Translate interpretation}" />
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agrotutor.Core.Components.Views.CameraVideo"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+             mc:Ignorable="d" d:DesignHeight="300" d:DesignWidth="300">
+    <ContentView.Content>
+        <views:IconWithText x:Name="ui" />
+    </ContentView.Content>
+</ContentView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+             x:Class="Agrotutor.Views.LinksPage">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <Label Text="Ver enlaces y herramientas" FontAttributes="Italic" />
+                <Image Source="link_small.png" />
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="16">
+                <Image Source="ic_weblink.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                            CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="{localization:Translate weblink1}" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                            CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="16">
+                <Image Source="ic_weblink.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                            CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label Text="{localization:Translate weblink2}" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                            CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </StackLayout>
+
+            <Button Text="Ver guía rápida (ayuda)" Command="{Binding ShowIntroductionCommand}" Margin="16" />
+            <Button Text="Licencias" Command="{Binding ShowLicensesCommand}" VerticalOptions="End" Margin="16" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
