@@ -220,3 +220,4 @@ FakesAssemblies/
 _Pvt_Extensions
 /.idea/.idea.CimmytApp
 *.Designer.cs
+*.db
