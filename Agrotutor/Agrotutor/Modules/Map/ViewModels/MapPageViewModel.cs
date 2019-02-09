@@ -965,13 +965,13 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async void LoadPlots()
         {
-            Plots = await AppDataService.GetAllPlots();
+            Plots = await AppDataService.GetAllPlotsAsync();
             MapPage?.AddPlots(Plots);
             foreach (Plot plot in Plots.Where(plot => plot.BemData == null))
             {
                 if (plot.Position == null) continue;
                 plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
-                await AppDataService.UpdatePlot(plot);
+                await AppDataService.UpdatePlotAsync(plot);
             }
         }
 
@@ -1041,7 +1041,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 () =>
                 {
                     SelectedPlot.Delineation = CurrentDelineation;
-                    AppDataService.UpdatePlot(SelectedPlot);
+                    AppDataService.UpdatePlotAsync(SelectedPlot);
                     CurrentDelineation = new List<Position>();
                     CurrentMapTask = MapTask.Default;
                     MapPage.EndDelineation();

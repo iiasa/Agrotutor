@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Core.Persistence
+namespace Agrotutor.Core.Persistence
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -25,12 +25,12 @@
             Context.EnableDetectChanges();
         }
 
-        public async Task AddPlot(Plot plot)
+        public async Task AddPlotAsync(Plot plot)
         {
 
             if (Context.Plots.Where(x => x.ID == plot.ID).Count() > 0)
             {
-                await UpdatePlot(plot);
+                await UpdatePlotAsync(plot);
             }
             else
             {
@@ -39,26 +39,28 @@
             await Context.SaveChangesAsync();
         }
 
-        public async Task UpdatePlot(Plot plot)
+        public async Task UpdatePlotAsync(Plot plot)
         {
             Context.Plots.Update(plot);
             await Context.SaveChangesAsync();
         }
 
-        public async Task RemovePlot(Plot plot)
+        public async Task RemovePlotAsync(Plot plot)
         {
             Context.Plots.Remove(plot);
             await Context.SaveChangesAsync();
         }
 
-        public async Task<Plot> GetPlot(int id)
+        public async Task<Plot> GetPlotAsync(int id)
         {
             return await Context.Plots.FindAsync(id);
         }
 
-        public async Task<IEnumerable<Plot>> GetAllPlots()
+        public async Task<IEnumerable<Plot>> GetAllPlotsAsync()
         {
-            return await Context.Plots.ToListAsync();
+            var plots = await Context.Plots.ToListAsync();
+            if (plots == null) plots = new List<Plot>();
+            return plots;
         }
     }
 }

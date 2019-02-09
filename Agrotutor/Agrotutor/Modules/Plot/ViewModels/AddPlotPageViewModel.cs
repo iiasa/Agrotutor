@@ -61,9 +61,9 @@
                               Date = PlantingDate
                           }
                       };
-                    await NavigationService.NavigateAsync("myapp:///MainPage");
-                    await AppDataService.AddPlot(Plot);
                 });
+                    await NavigationService.NavigateAsync("myapp:///NavigationPage/MainPage");
+                    await AppDataService.AddPlotAsync(Plot);
 
         public List<string> ClimateTypes { get; } = new List<string>
                                                     {
