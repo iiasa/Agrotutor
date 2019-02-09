@@ -1,4 +1,4 @@
-﻿
+
 namespace Agrotutor.Modules.Map.ViewModels
 {
     using System.Collections.Generic;
@@ -894,7 +894,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private void EnableUserLocation()
         {
-            var text = this.StringLocalizer.GetString("location_permission_prompt_title");
             Device.BeginInvokeOnMainThread(
                 async () =>
                 {
