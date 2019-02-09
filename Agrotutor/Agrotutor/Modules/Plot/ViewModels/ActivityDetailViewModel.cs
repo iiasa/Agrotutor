@@ -1,4 +1,4 @@
-﻿
+
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
@@ -229,8 +229,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
         ///     The OnNavigatedFrom
         /// </summary>
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
         public Plot Plot
@@ -243,7 +244,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
         ///     The OnNavigatedTo
         /// </summary>
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Plot"))
             {
@@ -309,6 +310,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     ActivityName = ActivityDynamicUIVisibility.ActivityName;
                 }
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

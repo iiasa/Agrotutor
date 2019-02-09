@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Weather.ViewModels
+namespace Agrotutor.Modules.Weather.ViewModels
 {
     using System.Collections.Generic;
     using Microcharts;
@@ -177,11 +177,12 @@
 
         public Chart CurrentChart { get => _currentChart; set => SetProperty(ref _currentChart, value); }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("WeatherData"))
             {
@@ -191,6 +192,8 @@
                     MyWeatherData = weatherData;
                 }
             }
+
+            base.OnNavigatedTo(parameters);
         }
     }
 }

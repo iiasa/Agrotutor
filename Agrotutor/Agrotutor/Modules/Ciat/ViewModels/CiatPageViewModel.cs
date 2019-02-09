@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Ciat.ViewModels
+namespace Agrotutor.Modules.Ciat.ViewModels
 {
     using System.Collections.Generic;
     using Flurl;
@@ -105,11 +105,12 @@
             IsLoading = false;
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             parameters.TryGetValue(PARAMETER_NAME_POSITION, out Position position);
             GeoPosition = position;
@@ -124,6 +125,8 @@
             OldYield = oldYield;
 
             LoadData();
+
+            base.OnNavigatedTo(parameters);
         }
 
         private void IrrigatedClicked()

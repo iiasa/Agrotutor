@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Weather.ViewModels
+namespace Agrotutor.Modules.Weather.ViewModels
 {
     using System;
     using System.Linq;
@@ -228,11 +228,12 @@
 
         public Location Location { get; set; }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Location"))
             {
@@ -255,6 +256,7 @@
                 else Task.Run(() => LoadForecast());
             }
             else Task.Run(() => LoadForecast());
+            base.OnNavigatedTo(parameters);
         }
 
         private async void LoadData()

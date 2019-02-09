@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Benchmarking.ViewModels
+namespace Agrotutor.Modules.Benchmarking.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -59,11 +59,12 @@
             set => SetProperty(ref this.min, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Yield"))
             {
@@ -81,6 +82,7 @@
             {
                 NavigationService.GoBackAsync();
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

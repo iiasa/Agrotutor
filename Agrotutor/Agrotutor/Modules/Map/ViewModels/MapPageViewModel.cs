@@ -375,6 +375,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     object data = args.Pin.Tag;
                     if (data is Plot plot)
                     {
+                        SelectedPlot = plot;
                         ShowPlotInformation(plot);
                     }
                     else if (data is HubFeature hubContact)

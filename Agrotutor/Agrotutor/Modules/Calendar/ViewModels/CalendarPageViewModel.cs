@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Calendar.ViewModels
+namespace Agrotutor.Modules.Calendar.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -68,11 +68,12 @@
 
         public CalendarPage View { get; set; }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
 
             if (parameters.ContainsKey("Dev"))
@@ -92,6 +93,7 @@
                     Events = events;
                 }
             }
+            base.OnNavigatedTo(parameters);
         }
 
         public void SetView(CalendarPage calendarPage)

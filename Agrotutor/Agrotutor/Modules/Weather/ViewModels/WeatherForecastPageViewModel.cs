@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Weather.ViewModels
+namespace Agrotutor.Modules.Weather.ViewModels
 {
     using System.Collections.Generic;
     using Microsoft.Extensions.Localization;
@@ -34,11 +34,12 @@
             }
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Forecast"))
             {
@@ -52,6 +53,7 @@
             {
                 NavigationService.GoBackAsync();
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }
