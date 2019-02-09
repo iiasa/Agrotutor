@@ -580,9 +580,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => this.currentWeather;
             set
             {
+                if (value == null) return;
                 SetProperty(ref this.currentWeather, value);
                 ShowWeatherWidget = true;
-                HourlySummary cur = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
+                HourlySummary cur = value?.Location?.HourlySummaries?.HourlySummary?.ElementAt(0);
+                if (cur == null) return;
                 CurrentWeatherIconSource = cur.TinyWxIcon;
                 CurrentWeatherText = cur.WxText;
             }
