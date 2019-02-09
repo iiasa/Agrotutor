@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -121,7 +121,7 @@
     <value>Save</value>
   </data>
   <data name="hint_activities" xml:space="preserve">
-    <value>Add parcel activities</value>
+    <value>Add plot activities</value>
   </data>
   <data name="hint_choose_location" xml:space="preserve">
     <value>Choose on map</value>
@@ -133,10 +133,10 @@
     <value>Use GPS</value>
   </data>
   <data name="hint_location" xml:space="preserve">
-    <value>Select location of the parcel</value>
+    <value>Select location of the plot</value>
   </data>
   <data name="hint_management_info" xml:space="preserve">
-    <value>Add parcel management information</value>
+    <value>Add plot management information</value>
   </data>
   <data name="hint_parcel_name" xml:space="preserve">
     <value>Plot name</value>
@@ -160,6 +160,6 @@
     <value>Climate type of the cultivar</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Add parcel</value>
+    <value>Add plot</value>
   </data>
 </root>

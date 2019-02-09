@@ -51,7 +51,7 @@
             HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
             IsVisible="{Binding ShowWeatherWidget}">
                 <Frame BackgroundColor="Azure" Opacity="0.75" Padding="2" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Padding="8,0,8,0">
                         <Image Source="{Binding CurrentWeatherIconSource}" HeightRequest="24" WidthRequest="24" />
                         <Label Text="{Binding CurrentWeatherText}" VerticalOptions="CenterAndExpand" />
                     </StackLayout>

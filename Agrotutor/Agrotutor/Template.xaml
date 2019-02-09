@@ -297,7 +297,7 @@
                     <Image Source="add.png" HeightRequest="20" />
                     <Label
                             HorizontalOptions="StartAndExpand"
-                            Text="{localization:Translate investigation_platform_call_tr}"
+                            Text="{localization:Translate machinery_point_title}"
                             FontSize="20" />
                 </StackLayout>
 

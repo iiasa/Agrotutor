@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -124,7 +124,7 @@
     <value>Selecting on the map</value>
   </data>
   <data name="add_parcel_title" xml:space="preserve">
-    <value>Add Parcel</value>
+    <value>Add Plot</value>
   </data>
   <data name="delineation_cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -268,7 +268,7 @@
     <value>Year</value>
   </data>
   <data name="main_menu_add_parcel" xml:space="preserve">
-    <value>Add parcel</value>
+    <value>Add Plot</value>
   </data>
   <data name="main_menu_calendar" xml:space="preserve">
     <value>Calendar</value>

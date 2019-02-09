@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Plot.ViewModels
+namespace Agrotutor.Modules.Plot.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -23,6 +23,7 @@
         private Plot _plot;
 
         private DateTime plantingDate;
+        private bool savingPlot;
 
         public AddPlotPageViewModel(
             INavigationService navigationService,
@@ -42,6 +43,9 @@
 
         public IAppDataService AppDataService { get; }
 
+        public bool SavingPlot { get => savingPlot; set => SetProperty(ref savingPlot, value); }
+
+
         public DateTime PlantingDate
         {
             get => this.plantingDate;
@@ -50,9 +54,9 @@
 
         public DelegateCommand ClickSave =>
             new DelegateCommand(
-                async() =>
+                async () =>
                 {
-                    // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
+                    SavingPlot = true;
                     Plot.Activities = new List<Activity>
                       {
                           new Activity
@@ -61,9 +65,10 @@
                               Date = PlantingDate
                           }
                       };
-                });
                     await NavigationService.NavigateAsync("myapp:///NavigationPage/MainPage");
                     await AppDataService.AddPlotAsync(Plot);
+                    SavingPlot = false;
+                }, () => SavingPlot == false).ObservesProperty(()=>SavingPlot);
 
         public List<string> ClimateTypes { get; } = new List<string>
                                                     {
