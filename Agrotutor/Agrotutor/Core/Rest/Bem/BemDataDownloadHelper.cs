@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.Core.Rest.Bem
+﻿using Flurl;
+using Flurl.Http;
+
+namespace Agrotutor.Core.Rest.Bem
 {
     using System;
     using System.Collections.Generic;
@@ -28,26 +31,27 @@
 
         private static async Task<List<T>> Load<T>(string parameter, double? lat = null, double? lon = null, CropType? crop = null)
         {
-            string url = $"http://104.239.158.49/cimmytapiv2.php?type={parameter}&tkn=E31C5F8478566357BA6875B32DC59";
+            IFlurlRequest request = $"http://104.239.158.49/cimmytapiv2.php?type={parameter}&tkn=E31C5F8478566357BA6875B32DC59"
+                .WithBasicAuth("cimmy2018", "tBTAibgFtHxaNE8ld7hpKKsx3n1ORIO");
             if (lat != null)
             {
-                url += $"&lat={lat}";
+                request.SetQueryParam("lat", lat);
             }
 
             if (lon != null)
             {
-                url += $"&lon={lon}";
+                request.SetQueryParam("lon", lon);
             }
 
             if (crop != null && crop==CropType.Corn) //TODO: use crop types
             {
-                url += $"&cultivo=Maiz";
+                request.SetQueryParam("cultivo", "Maiz");
             }
 
             List<T> data = null;
             try
             {
-                data = await RequestJson.Get<List<T>>(url);
+                data = await request.GetJsonAsync<List<T>>();
             }
             catch (Exception)
             {
