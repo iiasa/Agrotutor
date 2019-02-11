@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     mvvm:ViewModelLocator.AutowireViewModel="True">
@@ -47,12 +48,17 @@
                 Grid.RowSpan="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="7"
-                InitialCameraUpdate="20,-100,5"
+                CameraPosition="{Binding CameraPositionUpdated}"
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
                 PinClicked="Handle_PinClicked"
-                VerticalOptions="FillAndExpand" />
+                VerticalOptions="FillAndExpand">
+                <googleMaps:Map.Behaviors>
+                    <bindings:UpdateRegionBehavior Region="{Binding Region}" />
+                    <bindings:BindingPinsBehavior Value="{Binding Pins}" />
+                </googleMaps:Map.Behaviors>
+            </googleMaps:Map>
 
             <ContentView
                 Grid.Row="1"
