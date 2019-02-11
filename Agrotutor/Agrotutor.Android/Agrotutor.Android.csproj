@@ -54,6 +54,7 @@
     <Reference Include="Mono.Android" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -102,6 +103,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\AndroidInitializer.cs" />
     <Compile Include="src\Localizer.cs" />
+    <Compile Include="UserInterface\CustomMapRenderer.cs" />
+    <Compile Include="UserInterface\CustomTileProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\anim_loading.json" />

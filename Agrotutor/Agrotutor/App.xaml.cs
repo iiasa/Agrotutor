@@ -1,21 +1,20 @@
-﻿using Prism.Modularity;
+﻿using Agrotutor.Core;
+using Agrotutor.Core.Localization;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using Prism;
+using Prism.Ioc;
+using Prism.Modularity;
+using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
+using XF.Material.Forms;
+using Device = Xamarin.Forms.Device;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+
 namespace Agrotutor
 {
-    using System.Globalization;
-    using Prism;
-    using Prism.Ioc;
-    using Microsoft.AppCenter;
-    using Microsoft.AppCenter.Analytics;
-    using Microsoft.AppCenter.Crashes;
-    using Xamarin.Essentials;
-    using XF.Material.Forms;
-
-    using Core;
-    using Core.Localization;
-
     public partial class App
     {
         /* 
@@ -23,7 +22,9 @@ namespace Agrotutor
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
-        public App() : this(null) {}
+        public App() : this(null)
+        {
+        }
 
         public App(IPlatformInitializer initializer) : base(initializer)
         {
@@ -54,6 +55,7 @@ namespace Agrotutor
             containerRegistry.RegisterLocalization();
             containerRegistry.RegisterPersistence();
             containerRegistry.RegisterPages();
+            containerRegistry.RegisterTileService();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
@@ -63,11 +65,11 @@ namespace Agrotutor
 
         private void InitializeLocalizer()
         {
-            if (Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.iOS
-                || Xamarin.Forms.Device.RuntimePlatform == Xamarin.Forms.Device.Android)
+            if (Device.RuntimePlatform == Device.iOS
+                || Device.RuntimePlatform == Device.Android)
             {
-                ILocalizer localizer = Container.Resolve<ILocalizer>();
-                CultureInfo cultureInfo = localizer.GetCurrentCultureInfo();
+                var localizer = Container.Resolve<ILocalizer>();
+                var cultureInfo = localizer.GetCurrentCultureInfo();
                 localizer.SetLocale(cultureInfo);
             }
         }
