@@ -47,6 +47,8 @@ namespace Agrotutor.Modules.Map.Views
             this.map.UiSettings.TiltGesturesEnabled = true;
             this.map.UiSettings.ZoomGesturesEnabled = true;
             this.map.UiSettings.MapToolbarEnabled = true;
+            this.map.MyLocationEnabled = true;
+            this.map.UiSettings.MyLocationButtonEnabled = true;
 
             PlotPins = new List<Pin>();
             PlotDelineations = new List<Polygon>();
@@ -60,8 +62,7 @@ namespace Agrotutor.Modules.Map.Views
 
         public void EnableMyLocation()
         {
-            this.map.MyLocationEnabled = true;
-            this.map.UiSettings.MyLocationButtonEnabled = true;
+            
         }
 
         internal void AddPlots(IEnumerable<Plot> plots)

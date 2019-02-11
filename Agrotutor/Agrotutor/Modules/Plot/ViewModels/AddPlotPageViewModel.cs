@@ -1,3 +1,6 @@
+using Xamarin.Essentials;
+using XF.Material.Forms.UI.Dialogs;
+
 namespace Agrotutor.Modules.Plot.ViewModels
 {
     using System;
@@ -56,19 +59,24 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    SavingPlot = true;
-                    Plot.Activities = new List<Activity>
-                      {
-                          new Activity
-                          {
-                              ActivityType = ActivityType.Sowing,
-                              Date = PlantingDate
-                          }
-                      };
-                    await NavigationService.NavigateAsync("myapp:///NavigationPage/MainPage");
-                    await AppDataService.AddPlotAsync(Plot);
-                    SavingPlot = false;
-                }, () => SavingPlot == false).ObservesProperty(()=>SavingPlot);
+                    using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading..."))
+                    {
+                        SavingPlot = true;
+                        Plot.Activities = new List<Activity>
+                        {
+                            new Activity
+                            {
+                                ActivityType = ActivityType.Sowing,
+                                Date = PlantingDate
+                            }
+                        };
+                        await AppDataService.AddPlotAsync(Plot);
+                        SavingPlot = false;
+                        //MainThread.BeginInvokeOnMainThread(async () =>
+                        //    await NavigationService.NavigateAsync("app:///NavigationPage/MainPage"));
+                    }
+                    await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
+                });
 
         public List<string> ClimateTypes { get; } = new List<string>
                                                     {
