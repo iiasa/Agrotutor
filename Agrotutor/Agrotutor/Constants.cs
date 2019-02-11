@@ -20,5 +20,10 @@
         public const string MachineryPointsLayerVisiblePreference = "MAP_MachineryPointsLayerVisible";
         public const string InvestigationPlatformsLayerVisiblePreference = "MAP_InvestigationPlatformsLayerVisible";
         public const string OfflineBasemapLayerVisiblePreference = "MAP_OfflineBasemapLayerVisible";
+
+
+        public const string Plots = "Plots";
+        public const string UserLocation = "UserLocation";
+        public const string MapData = "MapData";
     }
 }
