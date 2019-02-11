@@ -197,7 +197,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     { "Plot", SelectedPlot }
                 };
-                NavigationService.NavigateAsync("ActivityPage", param);
+                NavigationService.NavigateAsync("NavigationPage/ActivityPage", param);
             });
 
         public DelegateCommand ShowLayerSwitcher =>
@@ -343,7 +343,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
 
         public DelegateCommand NavigateToGuide =>
-            new DelegateCommand(() => { NavigationService.NavigateAsync("WelcomePage"); });
+            new DelegateCommand(() => { NavigationService.NavigateAsync("NavigationPage/WelcomePage"); });
 
         public DelegateCommand NavigateToPractices =>
             new DelegateCommand(() => { NavigationService.NavigateAsync("LinksPage"); });

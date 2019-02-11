@@ -3,7 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms" 
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms" 
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+    mvvm:ViewModelLocator.AutowireViewModel="True"
     x:Class="Agrotutor.Views.WelcomePage" 
     Title="MainPage">
 

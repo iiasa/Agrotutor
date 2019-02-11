@@ -42,7 +42,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     }
 
                     NavigationParameters param = new NavigationParameters
-                    {   
+                    {
                         { "Cost", Plot.BemData.Cost }
                     };
                     await this.NavigationService.NavigateAsync("ViewCostPage", param);
