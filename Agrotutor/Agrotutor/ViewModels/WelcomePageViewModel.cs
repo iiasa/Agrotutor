@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.ViewModels
+namespace Agrotutor.ViewModels
 {
     using System.Windows.Input;
     using Agrotutor.Core;
@@ -12,9 +12,9 @@
             : base (navigationService, stringLocalizer)
         { }
 
-        public ICommand NavigateToMainPageCommand => new DelegateCommand(
+        public DelegateCommand NavigateToMainPageCommand => new DelegateCommand(
             ()=> {
-                NavigationService.NavigateAsync("myapp:///MainPage");
+                NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
             });
     }
 }

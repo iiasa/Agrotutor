@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Map.Views
+namespace Agrotutor.Modules.Map.Views
 {
     using System;
     using System.Collections.Generic;
@@ -187,9 +187,7 @@
 
         public void SetMachineryPointLayerVisibility(bool visible)
         {
-            var map = this.map;
-            var pins = map.Pins.Where(x => (x.Tag is MPFeature));
-            pins.All(x => x.IsVisible = visible);
+            this.InvestigationPlatformPins?.All(x => x.IsVisible = visible);
         }
 
         public void SetInvestigationPlatformLayerVisibility(bool visible)

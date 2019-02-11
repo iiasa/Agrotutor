@@ -200,7 +200,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             Plot.Activities.Add(activity);
             //TODO save to DB ? 
 
-            NavigationService.NavigateAsync("myapp:///MapPage");
+            NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
         });
 
         /// <summary>
