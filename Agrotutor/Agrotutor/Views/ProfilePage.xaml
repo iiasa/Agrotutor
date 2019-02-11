@@ -1,14 +1,21 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Views.ProfilePage">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+         xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+         xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+         prism:ViewModelLocator.AutowireViewModel="True" x:Class="CimmytApp.Views.ProfilePage" Padding="16">
+    <ScrollView>
+        <StackLayout Orientation="Vertical">
+            <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
+            <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}"
+                   Margin="0,0,0,16" />
+
+            <Label Text="Estado" FontSize="10" />
+            <Picker ItemsSource="{Binding States}" SelectedIndex="{Binding StatesSelectedIndex}" Title="seleccionar"
+                    Margin="0,0,0,16" />
+
+            <Button Text="Tomar una foto" Command="{Binding TakePictureCommand}" />
+            <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350"
+                   Source="{Binding ImageSource}" />
         </StackLayout>
-    </ContentPage.Content>
+    </ScrollView>
 </ContentPage>

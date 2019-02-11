@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Agrotutor.Views.CitationPage">
+     mvvm:ViewModelLocator.AutowireViewModel="True" 
+     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     x:Class="Agrotutor.Views.CitationPage"
+     Padding="16,16,16,0">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <Image Source="creative-commons.png" Margin="16" />
                 <Label Text="Special thanks to the following providers of icons for this app and:" />
                 <Label Text="www.flaticon.com" HorizontalOptions="Center" Margin="16">
                     <Label.GestureRecognizers>
