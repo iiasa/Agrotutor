@@ -1130,12 +1130,16 @@ namespace Agrotutor.Modules.Map.ViewModels
         private async Task GetUserLocation()
         {
             var location = await Geolocation.GetLastKnownLocationAsync();
-            WeatherLocation = location;
 
+            if (location == null)
+            {
+                location = new Location(48.0644198, 16.3494591);
+            }
+
+            WeatherLocation = location;
 
             CurrentPosition = Position.FromLocation(location);
             if (CurrentMapTask == MapTask.CreatePlotByGPS) AddPlotPosition = CurrentPosition;
-
 
             Region = MapSpan.FromCenterAndRadius(
                 new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude),
