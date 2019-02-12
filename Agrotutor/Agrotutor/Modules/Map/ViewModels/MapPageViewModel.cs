@@ -889,17 +889,18 @@ namespace Agrotutor.Modules.Map.ViewModels
             //Task.Run(() => EnableUserLocation());
             //Task.Run(() => LoadPlots());
             //Task.Run(() => LoadMapData());
+
             base.OnNavigatedTo(parameters);
         }
 
         private async Task PageAppearing()
         {
-            //Profiler.Start(Constants.Plots);
-            //using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
-            //{
-            //    await LoadPlots();
-            //}
-            //Profiler.Stop(Constants.Plots);
+            Profiler.Start(Constants.Plots);
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
+            {
+                await LoadPlots();
+            }
+            Profiler.Stop(Constants.Plots);
 
             
 
