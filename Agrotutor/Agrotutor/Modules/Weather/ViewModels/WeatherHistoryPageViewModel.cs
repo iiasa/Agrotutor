@@ -10,7 +10,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
     using Types;
     using Charts.Types;
 
-    public class WeatherDataSelectionViewModel : ViewModelBase, INavigatedAware
+    public class WeatherHistoryPageViewModel : ViewModelBase, INavigatedAware
     {
 
         private List<string> _datasetNames;
@@ -22,7 +22,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         private List<EntryWithTime> selectedValEntries;
         private int _graphDays;
 
-        public WeatherDataSelectionViewModel(INavigationService navigationService, IStringLocalizer<WeatherDataSelectionViewModel> stringLocalizer)
+        public WeatherHistoryPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
             :base(navigationService,stringLocalizer)
         {
             DatasetNames = new List<string>
@@ -184,9 +184,9 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("WeatherData"))
+            if (parameters.ContainsKey("WeatherHistory"))
             {
-                parameters.TryGetValue<WeatherHistory>("WeatherData", out var weatherData);
+                parameters.TryGetValue<WeatherHistory>("WeatherHistory", out var weatherData);
                 if (weatherData != null)
                 {
                     MyWeatherData = weatherData;

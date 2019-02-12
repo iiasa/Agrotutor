@@ -36,7 +36,7 @@ namespace Agrotutor
             Material.Init(this);
             InitializeLocalizer();
 
-            await NavigationService.NavigateAsync("NavigationPage/WebContentPage");
+            await NavigationService.NavigateAsync("NavigationPage/MapPage");
         }
 
         protected override void OnStart()
