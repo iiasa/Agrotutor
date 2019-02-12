@@ -130,6 +130,9 @@
     <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Resources\Resources\Modules\Plot\Views\AddPlotPage.resx">
       <LogicalName>Resources.Resources.Modules.Plot.Views.AddPlotPage.resources</LogicalName>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\WebContentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>

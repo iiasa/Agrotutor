@@ -45,6 +45,7 @@
             containerRegistry.RegisterForNavigation<CitationPage, CitationPageViewModel>();
             containerRegistry.RegisterForNavigation<LinksPage, LinksPageViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
+            containerRegistry.RegisterForNavigation<WebContentPage, WebContentPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
         }
 

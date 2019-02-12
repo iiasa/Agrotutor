@@ -92,6 +92,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="src\iOSInitializer.cs" />
     <Compile Include="src\Localizer.cs" />
+    <Compile Include="src\HtmlBaseUrl.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
