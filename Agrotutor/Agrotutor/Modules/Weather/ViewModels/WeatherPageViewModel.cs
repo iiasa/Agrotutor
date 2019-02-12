@@ -138,14 +138,14 @@ namespace Agrotutor.Modules.Weather.ViewModels
             new DelegateCommand(() =>
             {
                 var param = new NavigationParameters { { "Forecast", WeatherForecast } };
-                NavigationService.NavigateAsync("DailyForecastPage", param);
+                NavigationService.NavigateAsync("WeatherForecastPage", param);
             });
 
         public DelegateCommand ShowHistory =>
             new DelegateCommand(() =>
             {
                 var param = new NavigationParameters { { "WeatherHistory", WeatherHistory } };
-                NavigationService.NavigateAsync("WeatherHistorySelection", param);
+                NavigationService.NavigateAsync("WeatherHistoryPage", param);
             });
 
         /// <summary>

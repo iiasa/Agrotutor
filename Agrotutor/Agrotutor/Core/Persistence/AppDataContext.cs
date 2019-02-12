@@ -1,4 +1,8 @@
-﻿namespace Agrotutor.Core.Persistence
+﻿using System.Collections.Generic;
+using Agrotutor.Modules.Ciat.Types;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+namespace Agrotutor.Core.Persistence
 {
     using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +41,10 @@
 
         public DbSet<PriceForecast> PriceForecasts { get; set; }
 
+        public DbSet<CiatData> CiatData { get; set; }
+
+        public DbSet<CiatData.CiatDataDetail> CiatDataDetail { get; set; }
+
         public void DisableDetectChanges()
         {
             ChangeTracker.AutoDetectChangesEnabled = false;
@@ -50,6 +58,9 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            var splitStringConverter = new ValueConverter<IEnumerable<string>, string>(v => string.Join(";", v), v => v.Split(new[] { ';' }));
+            modelBuilder.Entity<CiatData.CiatDataDetail>().Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.OptimalCultivars)).HasConversion(splitStringConverter);
+            modelBuilder.Entity<CiatData.CiatDataDetail>().Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.SuboptimalCultivars)).HasConversion(splitStringConverter);
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -92,6 +92,7 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="src\iOSInitializer.cs" />
     <Compile Include="src\Localizer.cs" />
+    <Compile Include="src\HtmlBaseUrl.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -474,6 +475,30 @@
       <Project>{8E89D8D4-12AA-4C97-AE33-7C33932EAA36}</Project>
       <Name>Agrotutor</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\filelist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\image001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\image003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\image005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\image007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\image009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\files\themedata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\html\about\page.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

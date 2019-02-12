@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+using Acr.UserDialogs;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Prism.Modularity;

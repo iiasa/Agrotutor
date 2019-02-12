@@ -656,11 +656,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => currentPosition;
             set
             {
+                if (value == null) return;
                 currentPosition = value;
                 if (Util.ShouldRefresh(weatherLocation, value))
                 {
-                    weatherLocation = value;
-                    Task.Run(() => RefreshWeatherData());
+                    WeatherLocation = value;
                 }
             }
         }
@@ -902,6 +902,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => weatherLocation;
             set
             {
+                if (value == null) return;
                 weatherLocation = value;
                 Task.Run(() => RefreshWeatherData());
             }

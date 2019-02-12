@@ -1,0 +1,98 @@
+[
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 1,
+    "price": 4495.46,
+    "minPrice": 4315.7,
+    "maxPrice": 4682.71
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 2,
+    "price": 4568.25,
+    "minPrice": 4345.25,
+    "maxPrice": 4802.68
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 3,
+    "price": 4609.42,
+    "minPrice": 4358.84,
+    "maxPrice": 4874.41
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 4,
+    "price": 4587.04,
+    "minPrice": 4317.64,
+    "maxPrice": 4873.24
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 5,
+    "price": 4617.44,
+    "minPrice": 4335.15,
+    "maxPrice": 4918.12
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 6,
+    "price": 4603.32,
+    "minPrice": 4312.83,
+    "maxPrice": 4913.38
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 7,
+    "price": 4480.66,
+    "minPrice": 4190.17,
+    "maxPrice": 4791.28
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 8,
+    "price": 4433.69,
+    "minPrice": 4139.74,
+    "maxPrice": 4748.5
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 9,
+    "price": 4419.1,
+    "minPrice": 4118.58,
+    "maxPrice": 4741.54
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 10,
+    "price": 4470.4,
+    "minPrice": 4163.01,
+    "maxPrice": 4800.5
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 11,
+    "price": 4525.88,
+    "minPrice": 4211.69,
+    "maxPrice": 4863.52
+  },
+  {
+    "Crop": "Corn",
+    "year": 2019,
+    "month": 12,
+    "price": 4573.93,
+    "minPrice": 4249.77,
+    "maxPrice": 4922.81
+  }
+]

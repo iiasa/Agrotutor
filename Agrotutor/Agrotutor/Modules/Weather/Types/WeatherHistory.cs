@@ -138,7 +138,7 @@
 
         [NotMapped]
         [JsonProperty("products", NullValueHandling = NullValueHandling.Ignore)]
-        public string Products { get; set; }
+        public List<string> Products { get; set; }
 
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
         public virtual double? Value { get; set; }

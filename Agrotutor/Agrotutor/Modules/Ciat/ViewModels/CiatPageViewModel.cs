@@ -23,6 +23,8 @@ namespace Agrotutor.Modules.Ciat.ViewModels
 
         public static string PARAMETER_NAME_POSITION = "Position";
 
+        public static string PARAMETER_NAME_CIAT_DATA = "CiatData";
+
         private CiatData.CiatDataDetail currentData;
 
         private CiatData data;
@@ -52,7 +54,11 @@ namespace Agrotutor.Modules.Ciat.ViewModels
         public CiatData Data
         {
             get => this.data;
-            set => SetProperty(ref this.data, value);
+            set { 
+                SetProperty(ref this.data, value);
+                IrrigatedClickedCommand.Execute();
+                IsLoading = false;
+            }
         }
 
         public Position GeoPosition { get; set; }
@@ -75,36 +81,6 @@ namespace Agrotutor.Modules.Ciat.ViewModels
 
         public double OldYield { get; set; }
 
-        public async void LoadData()
-        {
-            IsLoading = true;
-            IFlurlRequest request = "http://104.239.158.49".AppendPathSegment("matrizv2.php")
-                .SetQueryParams(
-                    new
-                    {
-                        lat = GeoPosition.Latitude,
-                        lon = GeoPosition.Longitude,
-                        type = "matriz",
-                        tkn = "E31C5F8478566357BA6875B32DC59",
-                        cultivo = Crop
-                    })
-                .WithBasicAuth("cimmy2018", "tBTAibgFtHxaNE8ld7hpKKsx3n1ORIO");
-
-            try
-            {
-                List<CiatResponseData> responseData = await request.GetJsonAsync<List<CiatResponseData>>();
-                Data = CiatData.FromResponse(responseData, request.Url);
-                IrrigatedClickedCommand.Execute();
-            }
-            catch
-            {
-                Data = null;
-                NoData = true;
-            }
-
-            IsLoading = false;
-        }
-
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
             base.OnNavigatedFrom(parameters);
@@ -124,9 +100,18 @@ namespace Agrotutor.Modules.Ciat.ViewModels
             parameters.TryGetValue(PARAMETER_NAME_OLD_YIELD, out double oldYield);
             OldYield = oldYield;
 
-            LoadData();
+            parameters.TryGetValue(PARAMETER_NAME_CIAT_DATA, out CiatData ciatData);
+            Data = ciatData;
+
+            if (Data == null) LoadData();
 
             base.OnNavigatedTo(parameters);
+        }
+
+        private async void LoadData() {
+            IsLoading = true;
+            Data = await CiatDownloadHelper.LoadData(GeoPosition, Crop);
+
         }
 
         private void IrrigatedClicked()
