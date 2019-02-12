@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Modules.Ciat.Types
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Agrotutor.Modules.Ciat.Types
 {
     using System;
     using Microsoft.AppCenter;
@@ -8,9 +10,12 @@
     {
         private const string Tag = "AGROTUTOR_CIAT_DATA";
 
-        public CiatDataDetail CiatDataIrrigated { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
 
-        public CiatDataDetail CiatDataNonIrrigated { get; set; }
+        public virtual CiatDataDetail CiatDataIrrigated { get; set; }
+
+        public virtual CiatDataDetail CiatDataNonIrrigated { get; set; }
 
         public static CiatData FromResponse(List<CiatResponseData> responseData, string requestUrl)
         {
@@ -126,11 +131,11 @@
                     case "Variedad":
                         if (ciatResponseData.ValueOptimal != null)
                         {
-                            detail.OptimalCultivars.Add(ciatResponseData.ValueOptimal);
+                            ((List<string>)detail.OptimalCultivars).Add(ciatResponseData.ValueOptimal);
                         }
                         if (ciatResponseData.ValueSuboptimal != null)
                         {
-                            detail.SuboptimalCultivars.Add(ciatResponseData.ValueSuboptimal);
+                            ((List<string>)detail.SuboptimalCultivars).Add(ciatResponseData.ValueSuboptimal);
                         }
 
                         break;
@@ -151,6 +156,9 @@
 
         public class CiatDataDetail
         {
+            [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+            public int ID { get; set; }
+
             public CiatDataType DataType { get; set; }
 
             public double SeedDensity { get; set; }
@@ -177,10 +185,10 @@
             public double YieldMax { get; set; }
 
             public string YieldUnit { get; set; }
-
-            public List<string> OptimalCultivars { get; set; }
-
-            public List<string> SuboptimalCultivars { get; set; }
+            
+            public IEnumerable<string> OptimalCultivars { get; set; }
+            
+            public IEnumerable<string> SuboptimalCultivars { get; set; }
         }
     }
 }
