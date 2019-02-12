@@ -1,4 +1,7 @@
-﻿using Prism.Modularity;
+using Acr.UserDialogs;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using Prism.Modularity;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -35,7 +38,11 @@ namespace Agrotutor
             InitializeComponent();
             Material.Init(this);
             InitializeLocalizer();
-
+            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+            if (permissionStatus != PermissionStatus.Granted)
+            {
+                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+            }
             await NavigationService.NavigateAsync("NavigationPage/MapPage");
         }
 

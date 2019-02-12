@@ -4,8 +4,11 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid>
@@ -47,12 +50,17 @@
                 Grid.RowSpan="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="7"
-                InitialCameraUpdate="20,-100,5"
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
+                MyLocationEnabled="{Binding LocationEnabled}"
                 PinClicked="Handle_PinClicked"
-                VerticalOptions="FillAndExpand" />
+                VerticalOptions="FillAndExpand">
+                <googleMaps:Map.Behaviors>
+                    <bindings:UpdateRegionBehavior Region="{Binding Region}" />
+                    <bindings:BindingPinsBehavior Value="{Binding Pins}" />
+                </googleMaps:Map.Behaviors>
+            </googleMaps:Map>
 
             <ContentView
                 Grid.Row="1"
@@ -181,9 +189,45 @@
 
             <ContentView
                 x:Name="LayerSwitcherView"
-                ControlTemplate="{StaticResource LayerSwitcher}"
                 IsVisible="{Binding LayerSwitcherIsVisible}"
-                Style="{StaticResource MainMapPopup}" />
+                Style="{StaticResource MainMapPopup}">
+                <Frame Style="{StaticResource MainMapPopupBackground}">
+                    <StackLayout>
+                        <views:IconWithText IconSource="layers.png" IconText="Layers" />
+                        <ScrollView>
+                            <StackLayout>
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding PlotsLayerVisible}"
+                                    SelectedColor="{StaticResource PrimaryGreen}"
+                                    Text="Plots" />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding PlotDelineationsLayerVisible}"
+                                    SelectedColor="{StaticResource PrimaryGreen}"
+                                    Text="Plot delineations" />
+                                <views:Divider />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding HubContactsLayerVisible}"
+                                    SelectedChangeCommand="{Binding HubContactsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource SecondaryOrange}"
+                                    Text="Hub contact" />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding MachineryPointsLayerVisible}"
+                                    SelectedChangeCommand="{Binding MachineryPointsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource SecondaryDarkGreen}"
+                                    Text="Machinery points" />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding InvestigationPlatformsLayerVisible}"
+                                    SelectedChangeCommand="{Binding InvestigationPlatformsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource SecondaryGreenBrown}"
+                                    Text="Investigation platforms" />
+                                <views:Divider />
+                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+
+            </ContentView>
 
             <ContentView
                 x:Name="OptionsView"
