@@ -1,4 +1,4 @@
-﻿using Prism.Modularity;
+using Prism.Modularity;
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -36,7 +36,7 @@ namespace Agrotutor
             Material.Init(this);
             InitializeLocalizer();
 
-            await NavigationService.NavigateAsync("NavigationPage/MapPage");
+            await NavigationService.NavigateAsync("NavigationPage/WebContentPage");
         }
 
         protected override void OnStart()

@@ -479,15 +479,10 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\html\about\files\image001.png" />
-    <AndroidAsset Include="Assets\html\about\files\image002.png" />
     <AndroidAsset Include="Assets\html\about\files\image003.png" />
-    <AndroidAsset Include="Assets\html\about\files\image004.png" />
     <AndroidAsset Include="Assets\html\about\files\image005.png" />
-    <AndroidAsset Include="Assets\html\about\files\image006.png" />
     <AndroidAsset Include="Assets\html\about\files\image007.png" />
-    <AndroidAsset Include="Assets\html\about\files\image008.png" />
     <AndroidAsset Include="Assets\html\about\files\image009.png" />
-    <AndroidAsset Include="Assets\html\about\files\image010.png" />
     <AndroidAsset Include="Assets\html\about\files\filelist.xml" />
     <AndroidAsset Include="Assets\html\about\files\themedata.xml" />
     <AndroidAsset Include="Assets\html\about\page.html" />
