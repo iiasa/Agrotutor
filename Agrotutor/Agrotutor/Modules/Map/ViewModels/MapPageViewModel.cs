@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
@@ -12,13 +13,13 @@ using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Dev;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Map.Types;
-using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
 using Microsoft.Extensions.Localization;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions.Abstractions;
+using Prism;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
@@ -42,6 +43,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool _addParcelIsVisible;
 
         private Position _addPlotPosition;
+        private CameraPosition _cameraPositionUpdated;
 
         private HubFeature _currentHubContact;
 
@@ -64,10 +66,13 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool _offlineBasemapLayerVisible;
 
         private int _pickerCropTypesSelectedIndex;
+        private ObservableCollection<Pin> _pins;
 
         private bool _plannerUIIsVisible;
         private bool _plotDelineationsLayerVisible;
         private bool _plotsLayerVisible;
+        private ObservableCollection<Polygon> _polygons;
+        private MapSpan _region;
 
         private bool _showWeatherWidget;
 
@@ -81,11 +86,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool gpsLocationUIIsVisible;
 
-        private HubsContact hubsContact;
-
         private bool hubsContactUIIsVisible;
-
-        private InvestigationPlatforms investigationPlatforms;
 
         private bool investigationPlatformUIIsVisible;
 
@@ -94,8 +95,6 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool loadingSpinnerIsVisible;
 
         private bool locationPermissionGiven;
-
-        private MachineryPoints machineryPoints;
 
         private bool machineryPointUIIsVisible;
 
@@ -108,10 +107,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool selectLocationUIIsVisible;
 
         private Location weatherLocation;
-        private CameraPosition _cameraPositionUpdated;
-        private MapSpan _region;
-        private ObservableCollection<Pin> _pins;
-        private ObservableCollection<Polygon> _polygons;
+        private bool _locationEnabled;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -157,6 +153,12 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public bool LocationEnabled
+        {
+            get => _locationEnabled;
+            set => SetProperty(ref _locationEnabled, value);
+        }
+
         public bool PlotDelineationsLayerVisible
         {
             get => _plotDelineationsLayerVisible;
@@ -179,6 +181,31 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public void RemoveHubsContact()
+        {
+            foreach (var pin in Pins.ToList().Where(x=> x.Tag is HubFeature))
+            {
+                Pins.Remove(pin);
+            }
+        }
+
+        public void RemoveInvestigationPlatforms()
+        {
+            foreach (var pin in Pins.ToList().Where(x=> x.Tag is IPFeature))
+            {
+                Pins.Remove(pin);
+            }
+        }
+
+
+        public void RemoveMachineryPoints()
+        {
+            foreach (var pin in Pins.ToList().Where(x => x.Tag is MPFeature))
+            {
+                Pins.Remove(pin);
+            }
+        }
+
         public bool MachineryPointsLayerVisible
         {
             get => _machineryPointsLayerVisible;
@@ -186,8 +213,51 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _machineryPointsLayerVisible, value);
                 Preferences.Set(Constants.MachineryPointsLayerVisiblePreference, value);
-                //MapPage?.SetMachineryPointLayerVisibility(value);
             }
+        }
+
+        public Command<bool> HubContactsSelectionChangedCommand => new Command<bool>(async e => await HubContactsSelectionChanged(e));
+
+        private async Task HubContactsSelectionChanged(bool b)
+        {
+            if (b)
+            {
+                await RenderHubsContact();
+            }
+            else
+            {
+                RemoveHubsContact();
+            }
+            await Task.CompletedTask;
+        }
+
+        public Command<bool> MachineryPointsSelectionChangedCommand => new Command<bool>(async e => await MachineryPointsSelectionChanged(e));
+
+        private async Task MachineryPointsSelectionChanged(bool b)
+        {
+            if (b)
+            {
+                await RenderMachineryPoints();
+            }
+            else
+            {
+                RemoveMachineryPoints();
+            }
+            await Task.CompletedTask;
+        }
+        public Command<bool> InvestigationPlatformsSelectionChangedCommand => new Command<bool>(async e => await InvestigationPlatformsSelectionChanged(e));
+
+        private async Task InvestigationPlatformsSelectionChanged(bool b)
+        {
+            if (b)
+            {
+                await RenderInvestigationPlatforms();
+            }
+            else
+            {
+                RemoveInvestigationPlatforms();
+            }
+            await Task.CompletedTask;
         }
 
         public bool InvestigationPlatformsLayerVisible
@@ -197,7 +267,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _investigationPlatformsLayerVisible, value);
                 Preferences.Set(Constants.InvestigationPlatformsLayerVisiblePreference, value);
-                //MapPage?.SetInvestigationPlatformLayerVisibility(value);
             }
         }
 
@@ -306,11 +375,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                             Title = StringLocalizer.GetString("replace_delineation_prompt_title")
                         });
 
-                    if (confirmDelineation)
-                    {
-                        //MapPage.StartDelineation(selectedPlot);
-                        CurrentMapTask = MapTask.DelineationNotEnoughPoints;
-                    }
+                    if (confirmDelineation) CurrentMapTask = MapTask.DelineationNotEnoughPoints;
                 }
                 else
                 {
@@ -653,15 +718,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             set => SetProperty(ref gpsLocationUIIsVisible, value);
         }
 
-        public HubsContact HubsContact
-        {
-            get => hubsContact;
-            private set
-            {
-                hubsContact = value;
-                //MapPage.SetHubsContact(value);
-            }
-        }
+        public HubsContact HubsContact { get; private set; }
 
         public bool HubsContactUIIsVisible
         {
@@ -683,15 +740,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public InvestigationPlatforms InvestigationPlatforms
-        {
-            get => investigationPlatforms;
-            private set
-            {
-                investigationPlatforms = value;
-                //MapPage.SetInvestigationPlatforms(value);
-            }
-        }
+        public InvestigationPlatforms InvestigationPlatforms { get; private set; }
 
         public bool InvestigationPlatformUIIsVisible
         {
@@ -727,23 +776,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             set
             {
                 SetProperty(ref locationPermissionGiven, value);
-                if (value)
-                {
-                    //MapPage.EnableMyLocation();
-                    GetUserLocation();
-                }
+                if (value) GetUserLocation();
             }
         }
 
-        public MachineryPoints MachineryPoints
-        {
-            get => machineryPoints;
-            private set
-            {
-                machineryPoints = value;
-                //MapPage.SetMachineryPoints(value);
-            }
-        }
+        public MachineryPoints MachineryPoints { get; private set; }
 
         public bool MachineryPointUIIsVisible
         {
@@ -935,12 +972,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             base.OnNavigatedFrom(parameters);
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
-        {
-            
-            base.OnNavigatedTo(parameters);
-        }
-
         private async Task PageAppearing()
         {
             Profiler.Start(Constants.MapData);
@@ -967,10 +998,75 @@ namespace Agrotutor.Modules.Map.ViewModels
             Profiler.Stop(Constants.Plots);
         }
 
-        //public void SetView(MapPage View)
-        //{
-        //    MapPage = View;
-        //}
+
+        public async Task RenderHubsContact()
+        {
+            if (HubsContact == null) return;
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading hub contact..."))
+            {
+                foreach (var hubContact in HubsContact.Features)
+                {
+                    var pin = new Pin
+                    {
+                        Position = new Xamarin.Forms.GoogleMaps.Position(
+                            hubContact.Geometry.Coordinates[1],
+                            hubContact.Geometry.Coordinates[0]),
+                        Tag = hubContact,
+                        Label = hubContact.Properties.Hub,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color)PrismApplicationBase.Current.Resources["SecondaryOrange"])
+                    };
+                    Pins.Add(pin);
+                }
+            }
+        }
+
+        public async Task RenderInvestigationPlatforms()
+        {
+            if (InvestigationPlatforms == null) return;
+
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading investigation platforms..."))
+            {
+                foreach (var investigationPlatform in InvestigationPlatforms.Features)
+                {
+                    var pin = new Pin
+                    {
+                        Position = new Xamarin.Forms.GoogleMaps.Position(
+                            investigationPlatform.Geometry.Coordinates[1],
+                            investigationPlatform.Geometry.Coordinates[0]),
+                        Tag = investigationPlatform,
+                        Label = investigationPlatform.Properties.Abrviacion,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color)PrismApplicationBase.Current.Resources["SecondaryGreenBrown"])
+                    };
+                    Pins.Add(pin);
+                }
+            }
+            
+        }
+
+        public async Task RenderMachineryPoints()
+        {
+            if (MachineryPoints == null) return;
+
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading machinery points..."))
+            {
+                foreach (var machineryPoint in MachineryPoints.Features)
+                {
+                    var pin = new Pin
+                    {
+                        Position = new Xamarin.Forms.GoogleMaps.Position(
+                            machineryPoint.Geometry.Coordinates[1], machineryPoint.Geometry.Coordinates[0]),
+                        Tag = machineryPoint,
+                        Label = machineryPoint.Properties.Localidad,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color)PrismApplicationBase.Current.Resources["SecondaryDarkGreen"])
+                    };
+                    Pins.Add(pin);
+                }
+            }
+            
+        }
 
         private async void CreatePlot()
         {
@@ -1010,7 +1106,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task EnableUserLocation()
         {
-
             LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
             if (LocationPermissionGiven)
             {
@@ -1027,10 +1122,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     StringLocalizer.GetString(
                         "location_permission_prompt_deny_message"));
 
-                if (LocationPermissionGiven)
-                {
-                    await GetUserLocation();
-                }
+                if (LocationPermissionGiven) await GetUserLocation();
             }
         }
 
@@ -1047,35 +1139,17 @@ namespace Agrotutor.Modules.Map.ViewModels
             Region = MapSpan.FromCenterAndRadius(
                 new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude),
                 Distance.FromKilometers(2));
-            //MapPage.ZoomToPosition(new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude));
-            //CameraPositionUpdated = new CameraPosition(new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude), 11);
-            //GeolocationRequest geolocationRequest = new GeolocationRequest
-            //{
-            //    DesiredAccuracy = Constants.MainMapLocationAccuracy
-            //};
-            //Xamarin.Essentials.Location location = await Geolocation.GetLastKnownLocationAsync();
-            //WeatherLocation = location;
-
-            //do
-            //{
-            //    CurrentPosition = Position.FromLocation(location);
-            //    if (CurrentMapTask == MapTask.CreatePlotByGPS)
-            //    {
-            //        AddPlotPosition = CurrentPosition;
-            //    }
-
-            //    await Task.Delay(Constants.MainMapLocationRefreshPeriod * 1000);
-            //    location = await Geolocation.GetLocationAsync(geolocationRequest);
-            //}
-            //while (ListenForLocation);
+            LocationEnabled = true;
         }
 
         private async Task LoadMapData()
         {
             HubsContact = await HubsContact.FromEmbeddedResource();
-            InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
+            //RenderHubsContact();
             MachineryPoints = await MachineryPoints.FromEmbeddedResource();
-
+            //RenderMachineryPoints();
+            InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
+            //RenderInvestigationPlatforms();
             PlotsLayerVisible = Preferences.Get(Constants.PlotsLayerVisiblePreference, true);
             PlotDelineationsLayerVisible = Preferences.Get(Constants.PlotDelineationsLayerVisiblePreference, true);
             HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
@@ -1090,28 +1164,27 @@ namespace Agrotutor.Modules.Map.ViewModels
             Plots = await AppDataService.GetAllPlotsAsync();
             var plots = Plots.ToList();
             AddPlots(plots);
-            //foreach (var plot in plots.Where(plot => plot.BemData == null))
-            //{
-            //    if (plot.Position == null) continue;
-            //    plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
-            //    await AppDataService.UpdatePlotAsync(plot);
-            //}
+            foreach (var plot in plots.Where(plot => plot.BemData == null))
+            {
+                if (plot.Position == null) continue;
+                plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
+                await AppDataService.UpdatePlotAsync(plot);
+            }
         }
 
         private void AddPlots(IEnumerable<Core.Entities.Plot> plots)
         {
-            foreach (Pin pin in from plot in plots
+            foreach (var pin in from plot in plots
                 where plot.Position != null
                 select new Pin
                 {
                     Position = plot.Position.ForMap(),
                     Label = plot.Name ?? "",
                     Tag = plot,
-                    Icon = BitmapDescriptorFactory.DefaultMarker((Color)App.Current.Resources["PrimaryGreen"])
+                    Icon = BitmapDescriptorFactory.DefaultMarker(
+                        (Color) PrismApplicationBase.Current.Resources["PrimaryGreen"])
                 })
-            {
                 Pins.Add(pin);
-            }
         }
 
         private void NavigateToLocation(Location location)
@@ -1165,7 +1238,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     if (oldValue != MapTask.DelineationEnoughPoints)
                         //MapPage.ZoomToPosition(selectedPlot.Position.ForMap());
 
-                    DelineationUIIsVisible = true;
+                        DelineationUIIsVisible = true;
                     break;
             }
         }

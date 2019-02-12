@@ -11,6 +11,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
 using XF.Material.Forms;
+using XF.Material.Forms.UI;
 using Feature = Agrotutor.Core.Cimmyt.HubsContact.Feature;
 
 namespace Agrotutor.Modules.Map.Views
@@ -30,25 +31,19 @@ namespace Agrotutor.Modules.Map.Views
             Material.PlatformConfiguration.ChangeStatusBarColor(new Color(1, 1, 1, 0.5));
             NavigationPage.SetHasNavigationBar(this, false);
             map.UiSettings.CompassEnabled = true;
-            map.UiSettings.MyLocationButtonEnabled = false;
+            map.UiSettings.MyLocationButtonEnabled = true;
             map.UiSettings.RotateGesturesEnabled = true;
             map.UiSettings.ZoomControlsEnabled = true;
             map.UiSettings.TiltGesturesEnabled = true;
             map.UiSettings.ZoomGesturesEnabled = true;
             map.UiSettings.MapToolbarEnabled = true;
-            map.MyLocationEnabled = true;
-            map.UiSettings.MyLocationButtonEnabled = true;
-
             PlotPins = new List<Pin>();
             PlotDelineations = new List<Polygon>();
             DelineationPins = new List<Pin>();
             DelineationPositions = new List<Position>();
-
             HubContactPins = new List<Pin>();
             InvestigationPlatformPins = new List<Pin>();
             MachineryPointPins = new List<Pin>();
-
-            
         }
 
         public MapPageViewModel ViewModel { get; set; }
