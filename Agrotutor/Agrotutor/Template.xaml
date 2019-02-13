@@ -5,9 +5,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
-    xmlns:localization="clr-namespace:Agrotutor.Core.Localization;assembly=Agrotutor"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
-    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor">
+    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views">
 
     <ControlTemplate x:Key="LayersButton">
         <Frame
@@ -512,11 +512,6 @@
                             IconSource="planner.png"
                             IconText="{localization:Translate options_planner}" />
                         <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.NavigateToPest}"
-                            IconSource="cockroach.png"
-                            IconText="{localization:Translate options_pest}" />
-                        <views:Divider />
-                        <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"
                             IconSource="profile.png"
                             IconText="{localization:Translate options_profile}" />
@@ -524,10 +519,6 @@
                             Command="{TemplateBinding Parent.BindingContext.NavigateToPractices}"
                             IconSource="link.png"
                             IconText="{localization:Translate options_practices}" />
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.NavigateToAbout}"
-                            IconSource="question.png"
-                            IconText="{localization:Translate options_about}" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>
