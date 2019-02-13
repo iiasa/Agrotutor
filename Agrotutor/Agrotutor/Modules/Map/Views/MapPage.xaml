@@ -57,6 +57,7 @@
                 PinClicked="Handle_PinClicked"
                 VerticalOptions="FillAndExpand">
                 <googleMaps:Map.Behaviors>
+                    <bindings:BindingPolygonsBehavior Value="{Binding Polygons}" />
                     <bindings:UpdateRegionBehavior Region="{Binding Region}" />
                     <bindings:BindingPinsBehavior Value="{Binding Pins}" />
                 </googleMaps:Map.Behaviors>
@@ -198,6 +199,7 @@
                             <StackLayout>
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotsLayerVisible}"
+                                    SelectedChangeCommand="{Binding PlotsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource PrimaryGreen}"
                                     Text="Plots" />
                                 <ui:MaterialCheckbox
