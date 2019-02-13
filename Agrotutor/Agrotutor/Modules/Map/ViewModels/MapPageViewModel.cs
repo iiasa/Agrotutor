@@ -362,6 +362,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                                 Tag = pos
                             };
                             CurrentPin = pin;
+                            Preferences.Set(Constants.Lat, args.Point.Latitude);
+                            Preferences.Set(Constants.Lng, args.Point.Longitude);
                             Pins.Add(pin);
                             RenderDelineationPolygon();
                             break;
@@ -384,6 +386,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 args =>
                 {
                     AddPlotPosition = Position.From(args.Point);
+                    Preferences.Set(Constants.Lat, args.Point.Latitude);
+                    Preferences.Set(Constants.Lng, args.Point.Longitude);
                     CreatePlot();
                 });
 
@@ -1026,6 +1030,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task PageAppearing()
         {
+            
+            
             Profiler.Start(Constants.MapData);
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
             {
@@ -1038,7 +1044,25 @@ namespace Agrotutor.Modules.Map.ViewModels
             Profiler.Start(Constants.UserLocation);
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
             {
-                await EnableUserLocation();
+                if (Preferences.ContainsKey(Constants.Lat) && Preferences.ContainsKey(Constants.Lng))
+                {
+                    var lat = Preferences.Get(Constants.Lat, 0.0);
+                    var lng = Preferences.Get(Constants.Lng, 0.0);
+                    if (lat > 0 && lng > 0)
+                    {
+                        Region = MapSpan.FromCenterAndRadius(
+                            new Xamarin.Forms.GoogleMaps.Position(lat, lng),
+                            Distance.FromKilometers(2));
+                    }
+                    else
+                    {
+                        await EnableUserLocation();
+                    }
+                }
+                else
+                {
+                    await EnableUserLocation();
+                }
             }
 
             Profiler.Stop(Constants.UserLocation);
