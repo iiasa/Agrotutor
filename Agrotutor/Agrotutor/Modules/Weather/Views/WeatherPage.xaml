@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Modules.Weather.Views.WeatherPage">
+         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+         xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+         xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+         mvvm:ViewModelLocator.AutowireViewModel="True"
+         xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+         Title="{localization:Translate title}"
+         x:Class="Agrotutor.Modules.Weather.Views.WeatherPage"
+         Padding="16,16,16,0">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
@@ -72,13 +75,19 @@
                         Command="{Binding ShowForecast}"
                         Margin="16"
                         IsVisible="{Binding ShowForecastIsVisible}" />
-                
+
                 <views:IconWithText 
-                        IconText="Datos histórico"
-                        IconSource="history.png"
-                        Command="{Binding ShowHistory}"
-                        Margin="16"
-                        IsVisible="{Binding ShowHistoryIsVisible}" />
+                    IconText="Datos histórico - cargando..."
+                    IconSource="history_inactive.png"
+                    IsVisible="{Binding HistoryIsLoading}" 
+                    Margin="16" />
+
+                <views:IconWithText 
+                    IconText="Datos histórico"
+                    IconSource="history.png"
+                    Command="{Binding ShowHistory}"
+                    Margin="16"
+                    IsVisible="{Binding ShowHistoryIsVisible}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

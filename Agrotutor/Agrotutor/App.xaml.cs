@@ -1,4 +1,6 @@
 using Acr.UserDialogs;
+using Agrotutor.ViewModels;
+using Agrotutor.Views;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Prism.Modularity;
@@ -61,6 +63,7 @@ namespace Agrotutor
             containerRegistry.RegisterLocalization();
             containerRegistry.RegisterPersistence();
             containerRegistry.RegisterPages();
+            containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

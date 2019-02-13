@@ -440,6 +440,9 @@
     <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie">
       <Version>2.5.4</Version>
     </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies">
+      <Version>2.2.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>2.2.1</Version>
     </PackageReference>
@@ -499,6 +502,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\html\about\page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\history_inactive.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

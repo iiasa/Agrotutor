@@ -56,12 +56,20 @@ namespace Agrotutor.Modules.Weather.ViewModels
         private WeatherForecast _weatherForecast;
         private bool _showForecastIsVisible;
         private bool _showHistoryIsVisible;
+        private bool _historyIsLoading;
 
         public WeatherPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
             ShowHistoryIsVisible = false;
             ShowForecastIsVisible = false;
+            HistoryIsLoading = true;
+        }
+
+        public bool HistoryIsLoading
+        {
+            get => _historyIsLoading;
+            set => SetProperty(ref _historyIsLoading, value);
         }
 
         public string CloudCover
@@ -266,6 +274,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 WeatherHistory = await WeatherHistory.Download(Location.Latitude,
                     Location.Longitude);
             }
+            HistoryIsLoading = false;
         }
 
         private async void LoadForecast()
