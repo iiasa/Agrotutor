@@ -674,9 +674,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
                 var cur = value?.Location?.HourlySummaries?.HourlySummary?.ElementAt(0);
+                var today = value?.Location?.DailySummaries?.DailySummary?.ElementAt(0);
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.TinyWxIcon;
-                CurrentWeatherText = cur.WxText;
+                var text = $"{cur.TempC} °C";
+                if (today != null) text += $" | Rain: {today.precipitationProbability} %";
+                CurrentWeatherText = text;
             }
         }
 

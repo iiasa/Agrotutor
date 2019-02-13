@@ -23,7 +23,7 @@
         public static async Task<WeatherForecast> Download(double latitude, double longitude)
         {
             var serviceUrl =
-                $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
+                $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json"; // TODO add LANG=es/en
             using (var wc = new HttpClient())
             {
                 wc.DefaultRequestHeaders.Add("app_id", "949a7457");
@@ -247,10 +247,13 @@
         
         [JsonProperty("wnd_spd_kph")]
         public string WndSpdKph { get; set; }
-        
+
+        [JsonProperty("pop")]
+        public string precipitationProbability { get; set; }
+
         [JsonProperty("wx")]
         public string Wx { get; set; }
-        
+
         [JsonProperty("wx_code")]
         public string WxCode { get; set; }
         
