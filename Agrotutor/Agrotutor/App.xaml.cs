@@ -63,6 +63,7 @@ namespace Agrotutor
             containerRegistry.RegisterLocalization();
             containerRegistry.RegisterPersistence();
             containerRegistry.RegisterPages();
+            containerRegistry.RegisterCameraService();
             containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
         }
 

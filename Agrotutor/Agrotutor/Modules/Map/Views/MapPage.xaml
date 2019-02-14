@@ -8,7 +8,8 @@
     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
-    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor"
+    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid>
@@ -177,10 +178,107 @@
                 IsVisible="{Binding MachineryPointUIIsVisible}"
                 Style="{StaticResource MainMapPopup}" />
 
-            <ContentView
-                ControlTemplate="{StaticResource ParcelDetailUI}"
+            <ContentView 
                 IsVisible="{Binding PlotDetailIsVisible}"
-                Style="{StaticResource MainMapPopup}" />
+                Style="{StaticResource MainMapPopup}">
+                <Frame Style="{StaticResource MainMapPopupBackground}">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="20" Source="add.png" />
+                            <Label
+                        FontSize="20"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding SelectedPlot.Name}" />
+
+                        </StackLayout>
+                        <views:Divider />
+                        <ScrollView>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_planting_date}" />
+                                    <Label>Oct. 3, 2018</Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_irrigation}" />
+                                    <Label>Irrigated</Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_maturity}" />
+                                    <Label>Late</Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_climate}" />
+                                    <Label>Hybrid</Label>
+                                </StackLayout>
+
+                                <views:Divider />
+
+                                <ScrollView Margin="5" Orientation="Horizontal">
+                                    <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
+                                </ScrollView>
+
+                                <views:Divider />
+
+                                <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
+
+                                <views:IconWithText
+                            Command="{Binding AddActivityToSelectedPlot}"
+                            IconSource="farmer.png"
+                            IconText="{localization:Translate plot_detail_add_activity}" />
+
+                                <views:IconWithText
+                            Command="{Binding DelineateSelectedPlot}"
+                            IconSource="delineate.png"
+                            IconText="{localization:Translate plot_detail_delineate}" />
+
+                                <views:IconWithText
+                            Command="{Binding AddPictureToSelectedPlot}"
+                            IconSource="photo.png"
+                            IconText="{localization:Translate plot_detail_picture}" />
+
+                                <views:IconWithText
+                            Command="{Binding AddVideoToSelectedPlot}"
+                            IconSource="video.png"
+                            IconText="{localization:Translate plot_detail_video}" />
+
+                                <views:IconWithText
+                            Command="{Binding ShowCalendarForSelectedPlot}"
+                            IconSource="calendar.png"
+                            IconText="{localization:Translate plot_detail_calendar}" />
+                                <views:Divider />
+                                <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
+                                <views:ValueLine
+                            Text="Costs ($/ha):"
+                            Value="{Binding CurrentPlotCost}"
+                            Command="{Binding ShowCurrentPlotCost}"/>
+                                <views:ValueLine
+                            Text="Income ($/ha):"
+                            Value="{Binding CurrentPlotIncome}" 
+                            Command="{Binding ShowCurrentPlotIncome}"/>
+                                <views:ValueLine
+                            Text="Profit ($/ha):"
+                            Value="{Binding CurrentPlotProfit}" 
+                            Command="{Binding ShowCurrentPlotProfit}"/>
+                                <views:ValueLine
+                            Text="Yield (kg/ha):"
+                            Value="{Binding CurrentPlotYield}" 
+                            Command="{Binding ShowCurrentPlotYield}"/>
+                                <views:Divider />
+                                <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
+                                <views:ValueLine
+                            Text="Potential yield (Average kg/ha):"
+                            Value="-" />
+                                <views:ValueLine
+                            Text="Nitrogen needed (kg/ha):"
+                            Value="-" />
+                                <views:ValueLine
+                            Text="Next month trading price (Expected avg $/kg):"
+                            Value="-" />
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+            </ContentView>
 
             <ContentView
                 x:Name="AddParcelView"

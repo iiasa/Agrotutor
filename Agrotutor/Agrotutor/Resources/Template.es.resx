@@ -300,42 +300,6 @@
   <data name="options_title" xml:space="preserve">
     <value>Opciones</value>
   </data>
-  <data name="plot_detail_actions" xml:space="preserve">
-    <value>Acciones:</value>
-  </data>
-  <data name="plot_detail_additional_title" xml:space="preserve">
-    <value>Información adicional (clic para detalles)</value>
-  </data>
-  <data name="plot_detail_add_activity" xml:space="preserve">
-    <value>Agregar actividad</value>
-  </data>
-  <data name="plot_detail_calendar" xml:space="preserve">
-    <value>Calendario de cultivo</value>
-  </data>
-  <data name="plot_detail_climate" xml:space="preserve">
-    <value>Clima idóneo</value>
-  </data>
-  <data name="plot_detail_delineate" xml:space="preserve">
-    <value>Delinear la parcela</value>
-  </data>
-  <data name="plot_detail_historical_title" xml:space="preserve">
-    <value>Información histórica</value>
-  </data>
-  <data name="plot_detail_irrigation" xml:space="preserve">
-    <value>Riego</value>
-  </data>
-  <data name="plot_detail_maturity" xml:space="preserve">
-    <value>Tipo de madurez</value>
-  </data>
-  <data name="plot_detail_picture" xml:space="preserve">
-    <value>Agregue una foto</value>
-  </data>
-  <data name="plot_detail_planting_date" xml:space="preserve">
-    <value>Fecha de siembra:</value>
-  </data>
-  <data name="plot_detail_video" xml:space="preserve">
-    <value>Agregue un vídeo</value>
-  </data>
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancelar </value>
   </data>

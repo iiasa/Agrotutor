@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core
+﻿using Agrotutor.Core.Camera;
+
+namespace Agrotutor.Core
 {
     using System;
     using System.Linq;
@@ -37,6 +39,11 @@
                     }, new SingletonReuse());
 
             containerRegistry.GetContainer().Register(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
+        }
+
+        public static void RegisterCameraService(this IContainerRegistry containerRegistry)
+        {
+            containerRegistry.Register<ICameraService, CameraService>();
         }
 
         public static void RegisterPages(this IContainerRegistry containerRegistry)

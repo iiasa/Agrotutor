@@ -42,6 +42,8 @@ namespace Agrotutor.Core.Entities
 
         public virtual CiatData CiatData { get; set; }
 
+        public virtual List<MediaItem> MediaItems { get; set; }
+
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 
             List<CalendarEvent> events = new List<CalendarEvent>();

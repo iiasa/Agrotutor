@@ -43,6 +43,8 @@ namespace Agrotutor.Core.Persistence
 
         public DbSet<CiatData> CiatData { get; set; }
 
+        public DbSet<MediaItem> MediaItems { get; set; }
+
         public DbSet<CiatData.CiatDataDetail> CiatDataDetail { get; set; }
 
         public void DisableDetectChanges()

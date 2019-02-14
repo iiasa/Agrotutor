@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -5,15 +6,18 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Agrotutor.Core;
+using Agrotutor.Core.Camera;
 using Agrotutor.Core.Cimmyt.HubsContact;
 using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
+using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Dev;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Map.Types;
+using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
@@ -115,12 +119,16 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotIncome;
         private string _currentPlotYield;
 
+        private ICameraService _cameraService;
+
         public MapPageViewModel(
             INavigationService navigationService,
             IAppDataService appDataService,
+            ICameraService cameraService,
             IStringLocalizer<MapPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            _cameraService = cameraService;
             LocationPermissionGiven = false;
             ShowWeatherWidget = false;
             AppDataService = appDataService;
@@ -305,6 +313,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 foreach (var plot in plots)
                 {
+                    if (plot.Delineation == null) continue;
+                    
                     var positions = plot.Delineation;
                     if (positions.Count > 3)
                     {
@@ -538,17 +548,43 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand ShowInfoForSelectedPlot =>
             new DelegateCommand(() =>
             {
-                var param = new NavigationParameters {{"Plot", SelectedPlot}};
+                var param = new NavigationParameters { { "Plot", SelectedPlot } };
                 NavigationService.NavigateAsync("PlotMainPage", param);
             });
 
-        public DelegateCommand<MediaFile> OnParcelPictureTaken =>
-            new DelegateCommand<MediaFile>(
-                mediaFile =>
+        public DelegateCommand AddPictureToSelectedPlot =>
+            new DelegateCommand(async () =>
+            {
+                var pic = await _cameraService.TakePicture();
+
+                var image = new MediaItem
                 {
-                    var i = 0;
-                    i++;
-                });
+                    Id = Guid.NewGuid(),
+                    Path = pic,
+                    IsUploaded = false,
+                    IsVideo = false
+                };
+                SelectedPlot.MediaItems.Add(image);
+                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                await MapPage.UpdateImages();
+            });
+
+        public DelegateCommand AddVideoToSelectedPlot =>
+            new DelegateCommand(async () =>
+            {
+                var pic = await _cameraService.TakeVideo();
+
+                var image = new MediaItem
+                {
+                    Id = Guid.NewGuid(),
+                    Path = pic,
+                    IsUploaded = false,
+                    IsVideo = true
+                };
+                SelectedPlot.MediaItems.Add(image);
+                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                await MapPage.UpdateImages();
+            });
 
         public DelegateCommand<string> PhoneCall => new DelegateCommand<string>(number => PhoneDialer.Open(number));
 
@@ -993,6 +1029,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 CurrentPlotYield = yield == null ? "-" : yield.ToString();
                 CurrentPlotProfit = profit == null ? "-" : profit.ToString();
                 CurrentPlotIncome = income == null ? "-" : income.ToString();
+
+                MapPage.UpdateImages();
             } 
         }
 
@@ -1510,5 +1548,12 @@ namespace Agrotutor.Modules.Map.ViewModels
             SelectedPlot = data;
             PlotDetailIsVisible = true;
         }
+
+        public void SetView(MapPage mapPage)
+        {
+            this.MapPage = mapPage;
+        }
+
+        public MapPage MapPage { get; set; }
     }
 }
