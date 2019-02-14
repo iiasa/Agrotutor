@@ -1,11 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
-             xmlns:local="clr-namespace:Agrotutor"
-             x:Class="Agrotutor.App">
+<prism:PrismApplication
+    x:Class="Agrotutor.App"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:Agrotutor"
+    xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms">
     <prism:PrismApplication.Resources>
         <ResourceDictionary>
+
+            <!--<Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="Transparent" />
+                <Setter Property="BarTextColor" Value="Black" />
+            </Style>-->
+
             <ResourceDictionary.MergedDictionaries>
                 <local:Style x:Key="Style" />
                 <local:Template x:Key="Template" />
