@@ -279,8 +279,45 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+
+
         public Command<bool> PlotsSelectionChangedCommand =>
             new Command<bool>(async e => await PlotsSelectionChanged(e));
+
+        public Command<bool> PlotDelineationsSelectionChangedCommand =>
+            new Command<bool>(async e => await PlotDelineationsSelectionChanged(e));
+
+        private async Task PlotDelineationsSelectionChanged(bool b)
+        {
+            if (b)
+                await RenderPlotDelineations();
+            else
+                RemoveDelineationPolygon();
+            await Task.CompletedTask;
+        }
+
+
+        private async Task RenderPlotDelineations()
+        {
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Rendering delineations..."))
+            {
+                var plots = await AppDataService.GetAllPlotsAsync();
+
+                foreach (var plot in plots)
+                {
+                    var positions = plot.Delineation;
+                    if (positions.Count > 3)
+                    {
+                        var polygon = new Polygon
+                        {
+                            Tag = plot.Position
+                        };
+                        foreach (var position in positions) polygon.Positions.Add(position.ForMap());
+                        Polygons.Add(polygon);
+                    }
+                }
+            }
+        }
 
         public Command<bool> HubContactsSelectionChangedCommand =>
             new Command<bool>(async e => await HubContactsSelectionChanged(e));

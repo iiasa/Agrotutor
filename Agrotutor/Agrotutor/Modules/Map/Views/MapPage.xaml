@@ -204,6 +204,7 @@
                                     Text="Plots" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotDelineationsLayerVisible}"
+                                    SelectedChangeCommand="{Binding PlotDelineationsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource PrimaryGreen}"
                                     Text="Plot delineations" />
                                 <views:Divider />
