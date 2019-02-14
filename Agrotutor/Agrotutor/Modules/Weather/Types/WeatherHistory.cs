@@ -74,6 +74,7 @@
 
         [JsonProperty("hetc", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Hd Hetc { get; set; }
+        public string Date { get; set; }
     }
 
     public partial class Cdd : Series
@@ -232,12 +233,14 @@
                 {
                     var json = await wc.GetStringAsync(serviceUrl);
                     data = FromJson(json);
+                    data.Date = DateTime.Now.ToShortDateString();
                 }
                 catch (Exception e)
                 {}
             }
             return data;
         }
+
     }
 
     public static class WeatherHistorySerialize

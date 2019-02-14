@@ -20,6 +20,9 @@
         
         [JsonProperty("units")]
         public string Units { get; set; }
+
+        public string Date { get; set; }
+
         public static async Task<WeatherForecast> Download(double latitude, double longitude)
         {
             var serviceUrl =
@@ -31,7 +34,9 @@
                 try
                 {
                     var json = await wc.GetStringAsync(serviceUrl);
-                    return FromJson(json);
+                    var forecast = FromJson(json);
+                    forecast.Date = DateTime.Now.ToShortDateString();
+                    return forecast;
                 }
                 catch (Exception e)
                 {

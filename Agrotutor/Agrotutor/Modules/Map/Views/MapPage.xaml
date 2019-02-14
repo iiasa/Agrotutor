@@ -267,13 +267,13 @@
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
                                 <views:ValueLine
                             Text="Potential yield (Average kg/ha):"
-                            Value="-" />
+                            Value="{Binding CurrentPlotPotentialYield}" />
                                 <views:ValueLine
                             Text="Nitrogen needed (kg/ha):"
-                            Value="-" />
+                            Value="{Binding CurrentPlotNitrogen}" />
                                 <views:ValueLine
                             Text="Next month trading price (Expected avg $/kg):"
-                            Value="-" />
+                            Value="{Binding CurrentPlotPriceForecast}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

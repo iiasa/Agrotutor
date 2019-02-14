@@ -14,11 +14,15 @@ using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Dev;
+using Agrotutor.Modules.Benchmarking.Types;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
+using Agrotutor.Modules.Ciat;
+using Agrotutor.Modules.Ciat.Types;
 using Agrotutor.Modules.Map.Types;
 using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
+using Agrotutor.Modules.PriceForecasting.Types;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
 using Castle.Core.Internal;
@@ -120,6 +124,9 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotYield;
 
         private ICameraService _cameraService;
+        private string _currentPlotPotentialYield;
+        private string _currentPlotNitrogen;
+        private string _currentPlotPriceForecast;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -1024,14 +1031,38 @@ namespace Agrotutor.Modules.Map.ViewModels
                 var yield = SelectedPlot?.BemData?.AverageYield;
                 var profit = SelectedPlot?.BemData?.AverageProfit;
                 var income = SelectedPlot?.BemData?.AverageIncome;
+                var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
+                var nitrogenNeeded = SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
+                var priceForecast = SelectedPlot?.PriceForecast?.ElementAt(0)?.Price; // TODO get info for actual next month!
 
                 CurrentPlotCost = cost == null ? "-" : cost.ToString();
                 CurrentPlotYield = yield == null ? "-" : yield.ToString();
                 CurrentPlotProfit = profit == null ? "-" : profit.ToString();
                 CurrentPlotIncome = income == null ? "-" : income.ToString();
+                CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
+                CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+                CurrentPlotPriceForecast = priceForecast == null ? "-" : priceForecast.ToString();
 
                 MapPage.UpdateImages();
             } 
+        }
+
+        public string CurrentPlotPriceForecast
+        {
+            get => _currentPlotPriceForecast;
+            set => SetProperty(ref _currentPlotPriceForecast, value);
+        }
+
+        public string CurrentPlotNitrogen
+        {
+            get => _currentPlotNitrogen;
+            set => SetProperty(ref _currentPlotNitrogen, value);
+        }
+
+        public string CurrentPlotPotentialYield
+        {
+            get => _currentPlotPotentialYield;
+            set => SetProperty(ref _currentPlotPotentialYield, value);
         }
 
         public async void LoadPlotData(Core.Entities.Plot plot)
@@ -1042,6 +1073,26 @@ namespace Agrotutor.Modules.Map.ViewModels
                 plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
                     plot.Position.Longitude, plot.CropType);
                 updatedPlot = true;
+            }
+            if (plot.WeatherForecast == null)
+            {
+                plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude,plot.Position.Longitude);
+                updatedPlot = true;
+            }
+
+            if (plot.CiatData == null)
+            {
+                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maize");
+                updatedPlot = true;
+            }
+
+            if (plot.PriceForecast == null)
+            {
+                if (plot.CropType == CropType.Corn)
+                {
+                    plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
+                    updatedPlot = true;
+                }
             }
 
             if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);

@@ -38,11 +38,12 @@ namespace Agrotutor.Core.Entities
 
         public virtual BenchmarkingInformation BenchmarkingInformation { get; set; }
 
-        public virtual PriceForecast PriceForecast { get; set; }
+        public virtual IEnumerable<PriceForecast> PriceForecast { get; set; }
 
         public virtual CiatData CiatData { get; set; }
 
         public virtual List<MediaItem> MediaItems { get; set; }
+
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 

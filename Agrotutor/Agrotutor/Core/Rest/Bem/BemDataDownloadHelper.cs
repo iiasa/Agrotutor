@@ -24,7 +24,8 @@ namespace Agrotutor.Core.Rest.Bem
                 Cost = cost,
                 Income = income,
                 Yield = yield,
-                Profit = profit
+                Profit = profit,
+                Date = DateTime.Now.ToShortDateString()
             };
             return bemData;
         }

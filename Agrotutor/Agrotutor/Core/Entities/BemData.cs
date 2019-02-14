@@ -18,6 +18,8 @@ namespace Agrotutor.Core.Entities
 
         public virtual List<Profit> Profit { get; set; }
 
+        public string Date { get; set; }
+
         public float? AverageCost
         {
             get
