@@ -303,6 +303,9 @@
   <data name="plot_detail_actions" xml:space="preserve">
     <value>Actions:</value>
   </data>
+  <data name="plot_detail_additional_title" xml:space="preserve">
+    <value>Additional information (click for detail)</value>
+  </data>
   <data name="plot_detail_add_activity" xml:space="preserve">
     <value>Add activity</value>
   </data>
@@ -316,7 +319,7 @@
     <value>Delineate plot</value>
   </data>
   <data name="plot_detail_historical_title" xml:space="preserve">
-    <value>Historical information</value>
+    <value>Historical information (click for detail)</value>
   </data>
   <data name="plot_detail_irrigation" xml:space="preserve">
     <value>Irrigation</value>

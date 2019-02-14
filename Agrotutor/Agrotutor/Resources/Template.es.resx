@@ -303,6 +303,9 @@
   <data name="plot_detail_actions" xml:space="preserve">
     <value>Acciones:</value>
   </data>
+  <data name="plot_detail_additional_title" xml:space="preserve">
+    <value>Información adicional (clic para detalles)</value>
+  </data>
   <data name="plot_detail_add_activity" xml:space="preserve">
     <value>Agregar actividad</value>
   </data>

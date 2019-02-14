@@ -9,7 +9,6 @@
         public ViewIncomePage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

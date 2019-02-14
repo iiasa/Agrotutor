@@ -9,7 +9,6 @@
         public ViewProfitPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

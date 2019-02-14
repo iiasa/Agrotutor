@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Agrotutor.Core;
@@ -10,11 +11,13 @@ using Agrotutor.Core.Cimmyt.MachineryPoints;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Dev;
+using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Map.Types;
 using Agrotutor.Modules.Plot.ViewModels;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
+using Castle.Core.Internal;
 using Microsoft.Extensions.Localization;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions.Abstractions;
@@ -107,6 +110,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool selectLocationUIIsVisible;
 
         private Location weatherLocation;
+        private string _currentPlotCost;
+        private string _currentPlotProfit;
+        private string _currentPlotIncome;
+        private string _currentPlotYield;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -152,40 +159,86 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(() => 
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewCostPage", new NavigationParameters
+            {
+                {ViewCostPageViewModel.CostsParameterName, SelectedPlot.BemData.Cost}
+            });
+        });
+
+        public DelegateCommand ShowCurrentPlotIncome => new DelegateCommand(() =>
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewIncomePage", new NavigationParameters
+            {
+                {ViewIncomePageViewModel.IncomesParameterName, SelectedPlot.BemData.Income}
+            });
+        });
+
+        public DelegateCommand ShowCurrentPlotProfit => new DelegateCommand(() =>
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewProfitPage", new NavigationParameters
+            {
+                {ViewProfitPageViewModel.ProfitsParameterName, SelectedPlot.BemData.Profit}
+            });
+
+        });
+
+        public DelegateCommand ShowCurrentPlotYield => new DelegateCommand(() =>
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewYieldPage", new NavigationParameters
+            {
+                {ViewYieldPageViewModel.YieldsParameterName, SelectedPlot.BemData.Yield}
+            });
+
+        });
+
         public string CurrentPlotCost
         {
-            get
-            {
-                var cost = SelectedPlot?.BemData.AverageCost;
-                return cost == null ? "-" : cost.ToString();
-            }
+            get => _currentPlotCost;
+            set => SetProperty(ref _currentPlotCost, value);
         }
 
         public string CurrentPlotProfit
         {
-            get
-            {
-                var profit = SelectedPlot?.BemData.AverageProfit;
-                return profit == null ? "-" : profit.ToString();
-            }
+            get => _currentPlotProfit;
+            set => SetProperty(ref _currentPlotProfit, value);
         }
 
         public string CurrentPlotIncome
         {
-            get
-            {
-                var income = SelectedPlot?.BemData.AverageIncome;
-                return income == null ? "-" : income.ToString();
-            }
+            get => _currentPlotIncome;
+            set => SetProperty(ref _currentPlotIncome, value);
         }
 
         public string CurrentPlotYield
         {
-            get
-            {
-                var yield = SelectedPlot?.BemData.AverageYield;
-                return yield == null ? "-" : yield.ToString();
-            }
+            get => _currentPlotYield;
+            set => SetProperty(ref _currentPlotYield, value);
         }
 
         public bool LocationEnabled
@@ -893,10 +946,16 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     LoadPlotData(value);
                 }
-                RaisePropertyChanged(CurrentPlotCost);
-                RaisePropertyChanged(CurrentPlotYield);
-                RaisePropertyChanged(CurrentPlotProfit);
-                RaisePropertyChanged(CurrentPlotIncome);
+
+                var cost = SelectedPlot?.BemData?.AverageCost;
+                var yield = SelectedPlot?.BemData?.AverageYield;
+                var profit = SelectedPlot?.BemData?.AverageProfit;
+                var income = SelectedPlot?.BemData?.AverageIncome;
+
+                CurrentPlotCost = cost == null ? "-" : cost.ToString();
+                CurrentPlotYield = yield == null ? "-" : yield.ToString();
+                CurrentPlotProfit = profit == null ? "-" : profit.ToString();
+                CurrentPlotIncome = income == null ? "-" : income.ToString();
             } 
         }
 

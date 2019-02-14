@@ -454,40 +454,32 @@
                         <views:Divider />
                         <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Costs ($/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotCost}" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotCost}"
+                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotCost}"/>
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Income ($/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotIncome}" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotIncome}" 
+                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotIncome}"/>
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Profit ($/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotProfit}" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotProfit}" 
+                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotProfit}"/>
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Yield (kg/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotYield}" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotYield}" 
+                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotYield}"/>
                         <views:Divider />
                         <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Potential yield (Average kg/ha):"
                             Value="-" />
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Nitrogen needed (kg/ha):"
                             Value="-" />
                         <views:ValueLine
-                            ImageSource="info.png"
                             Text="Next month trading price (Expected avg $/kg):"
                             Value="-" />
-
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.ShowInfoForSelectedPlot}"
-                            IconSource="icon_info_squared_96.png"
-                            IconText="Show detailed information" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

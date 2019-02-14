@@ -11,6 +11,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
     public class ViewProfitPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string ProfitsParameterName = "BENCHMARKING_PROFIT_PARAMETER";
         private double avg;
 
         private List<Profit> datasets;
@@ -41,7 +42,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
                 SetProperty(ref this.datasets, value);
                 Min = value.Select(x => double.Parse(x.Rentability)).Min();
                 Max = value.Select(x => double.Parse(x.Rentability)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.Rentability)).Average(), 2);
+                Avg = Math.Round(value.Select(x => double.Parse(x.Rentability)).Average(), 0);
             }
         }
 
@@ -64,12 +65,12 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Profit"))
+            if (parameters.ContainsKey(ProfitsParameterName))
             {
-                parameters.TryGetValue("Profit", out List<Profit> profit);
+                parameters.TryGetValue(ProfitsParameterName, out List<Profit> profit);
                 if (profit != null)
                 {
-                    this.datasets = profit;
+                    this.Datasets = profit;
                 }
                 else
                 {

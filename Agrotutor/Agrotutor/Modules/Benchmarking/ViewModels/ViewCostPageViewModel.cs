@@ -11,6 +11,8 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
     public class ViewCostPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string CostsParameterName = "BENCHMARKING_COST_PARAMETER";
+
         private double avg;
 
         private List<Cost> datasets;
@@ -41,7 +43,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
                 SetProperty(ref this.datasets, value);
                 Min = value.Select(x => double.Parse(x.ProductionCost)).Min();
                 Max = value.Select(x => double.Parse(x.ProductionCost)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.ProductionCost)).Average(), 2);
+                Avg = Math.Round(value.Select(x => double.Parse(x.ProductionCost)).Average(), 0);
             }
         }
 
@@ -64,12 +66,12 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Cost"))
+            if (parameters.ContainsKey(CostsParameterName))
             {
-                parameters.TryGetValue("Cost", out List<Cost> cost);
+                parameters.TryGetValue(CostsParameterName, out List<Cost> cost);
                 if (cost != null)
                 {
-                    this.datasets = cost;
+                    this.Datasets = cost;
                 }
                 else
                 {

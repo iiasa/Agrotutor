@@ -14,11 +14,11 @@
         AverageText="average"
         MinText="minimum"
         MaxText="maximum"
-        AverageValueIrrigated="3"
-        MinValueIrrigated="2"
-        MaxValueIrrigated="5"
-        AverageValueRainfed="2"
-        MinValueRainfed="1.5"
-        MaxValueRainfed="4"
+        AverageValueIrrigated="4300"
+        MinValueIrrigated="990"
+        MaxValueIrrigated="12500"
+        AverageValueRainfed="1200"
+        MinValueRainfed="150"
+        MaxValueRainfed="14000"
     />
 </ContentPage>
