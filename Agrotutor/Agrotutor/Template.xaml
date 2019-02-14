@@ -456,19 +456,19 @@
                         <views:ValueLine
                             ImageSource="info.png"
                             Text="Costs ($/ha):"
-                            Value="-" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotCost}" />
                         <views:ValueLine
                             ImageSource="info.png"
                             Text="Income ($/ha):"
-                            Value="-" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotIncome}" />
                         <views:ValueLine
                             ImageSource="info.png"
                             Text="Profit ($/ha):"
-                            Value="-" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotProfit}" />
                         <views:ValueLine
                             ImageSource="info.png"
                             Text="Yield (kg/ha):"
-                            Value="-" />
+                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotYield}" />
                         <views:Divider />
                         <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
                         <views:ValueLine
