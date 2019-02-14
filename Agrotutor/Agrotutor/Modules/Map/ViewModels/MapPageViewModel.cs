@@ -152,6 +152,42 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public string CurrentPlotCost
+        {
+            get
+            {
+                var cost = SelectedPlot?.BemData.AverageCost;
+                return cost == null ? "-" : cost.ToString();
+            }
+        }
+
+        public string CurrentPlotProfit
+        {
+            get
+            {
+                var profit = SelectedPlot?.BemData.AverageProfit;
+                return profit == null ? "-" : profit.ToString();
+            }
+        }
+
+        public string CurrentPlotIncome
+        {
+            get
+            {
+                var income = SelectedPlot?.BemData.AverageIncome;
+                return income == null ? "-" : income.ToString();
+            }
+        }
+
+        public string CurrentPlotYield
+        {
+            get
+            {
+                var yield = SelectedPlot?.BemData.AverageYield;
+                return yield == null ? "-" : yield.ToString();
+            }
+        }
+
         public bool LocationEnabled
         {
             get => _locationEnabled;
@@ -886,7 +922,32 @@ namespace Agrotutor.Modules.Map.ViewModels
         public Core.Entities.Plot SelectedPlot
         {
             get => selectedPlot;
-            set => SetProperty(ref selectedPlot, value);
+            set
+            {
+                if (value == selectedPlot) return;
+                SetProperty(ref selectedPlot, value);
+                if (value != null)
+                {
+                    LoadPlotData(value);
+                }
+                RaisePropertyChanged(CurrentPlotCost);
+                RaisePropertyChanged(CurrentPlotYield);
+                RaisePropertyChanged(CurrentPlotProfit);
+                RaisePropertyChanged(CurrentPlotIncome);
+            } 
+        }
+
+        public async void LoadPlotData(Core.Entities.Plot plot)
+        {
+            bool updatedPlot = false;
+            if (plot.BemData == null)
+            {
+                plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
+                    plot.Position.Longitude, plot.CropType);
+                updatedPlot = true;
+            }
+
+            if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
         }
 
         public bool SelectLocationUIIsVisible

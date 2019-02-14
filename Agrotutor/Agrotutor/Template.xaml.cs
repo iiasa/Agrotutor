@@ -1,6 +1,4 @@
-﻿using XF.Material.Forms.UI;
-
-namespace Agrotutor
+﻿namespace Agrotutor
 {
     public partial class Template
     {
@@ -8,7 +6,5 @@ namespace Agrotutor
         {
             InitializeComponent();
         }
-
-        
     }
 }

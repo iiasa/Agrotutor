@@ -17,16 +17,23 @@
             typeof(ValueLine),
             string.Empty);
 
-        public static readonly BindableProperty ValueTextProperty = BindableProperty.Create(
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(
             nameof(Value),
             typeof(string),
             typeof(ValueLine),
-            string.Empty);
+            string.Empty, 
+            defaultBindingMode: BindingMode.TwoWay);
 
         public static readonly BindableProperty ImageSourceProperty = BindableProperty.Create(
             nameof(ImageSource),
             typeof(ImageSource),
-            typeof(SimpleStats));
+            typeof(ValueLine));
+
+        public static readonly BindableProperty CommandProperty =
+            BindableProperty.Create(nameof(Command), typeof(ICommand), typeof(ValueLine));
+
+        public static readonly BindableProperty CommandParameterProperty =
+            BindableProperty.Create(nameof(CommandParameter), typeof(object), typeof(ValueLine));
 
         public string Text
         {
@@ -36,8 +43,8 @@
 
         public string Value
         {
-            get => (string)GetValue(ValueLine.ValueTextProperty);
-            set => SetValue(ValueLine.ValueTextProperty, value);
+            get => (string)GetValue(ValueLine.ValueProperty);
+            set => SetValue(ValueLine.ValueProperty, value);
         }
 
         public ImageSource ImageSource
@@ -48,14 +55,14 @@
 
         public ICommand Command
         {
-            get => (ICommand)GetValue(IconWithText.CommandProperty);
-            set => SetValue(IconWithText.CommandProperty, value);
+            get => (ICommand)GetValue(ValueLine.CommandProperty);
+            set => SetValue(ValueLine.CommandProperty, value);
         }
 
         public object CommandParameter
         {
-            get => GetValue(IconWithText.CommandParameterProperty);
-            set => SetValue(IconWithText.CommandParameterProperty, value);
+            get => GetValue(ValueLine.CommandParameterProperty);
+            set => SetValue(ValueLine.CommandParameterProperty, value);
         }
 
         public ValueLine()
