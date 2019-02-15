@@ -1,8 +1,12 @@
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
+using Agrotutor.ViewModels;
+using Agrotutor.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;

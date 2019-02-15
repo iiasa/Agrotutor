@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Reflection;
+using Agrotutor.Core.Camera;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Tile;
 using Agrotutor.Core.Tile.Resources;

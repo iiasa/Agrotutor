@@ -118,6 +118,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotYield;
 
         private ICameraService _cameraService;
+        private bool _showTileLayer;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -603,6 +604,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     {
                         SelectedPlot = plot;
                         ShowPlotInformation(plot);
+                    }
                     else if (data is HubFeature hubContact)
                         ShowHubContactInformation(hubContact);
                     else if (data is IPFeature investigationPlatform)
