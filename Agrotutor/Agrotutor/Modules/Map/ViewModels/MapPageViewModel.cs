@@ -324,7 +324,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     if (plot.Delineation == null) continue;
                     
                     var positions = plot.Delineation;
-                    if (positions.Count > 3)
+                    if (positions != null && positions.Count > 3)
                     {
                         var polygon = new Polygon
                         {
@@ -1272,18 +1272,12 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task PageAppearing()
         {
-            
-            
-            Profiler.Start(Constants.MapData);
+            var tasks = new List<Task>();
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
             {
-                await LoadMapData();
+                tasks.Add(LoadMapData());
             }
 
-            Profiler.Stop(Constants.MapData);
-
-
-            Profiler.Start(Constants.UserLocation);
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
             {
                 if (Preferences.ContainsKey(Constants.Lat) && Preferences.ContainsKey(Constants.Lng))
@@ -1295,28 +1289,25 @@ namespace Agrotutor.Modules.Map.ViewModels
                         Region = MapSpan.FromCenterAndRadius(
                             new Xamarin.Forms.GoogleMaps.Position(lat, lng),
                             Distance.FromKilometers(2));
+                        LocationEnabled = true;
                     }
                     else
                     {
-                        await EnableUserLocation();
+                        tasks.Add(EnableUserLocation());
                     }
                 }
                 else
                 {
-                    await EnableUserLocation();
+                    tasks.Add(EnableUserLocation());
                 }
             }
 
-            Profiler.Stop(Constants.UserLocation);
-
-
-            Profiler.Start(Constants.Plots);
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
             {
-                await LoadPlots();
+                tasks.Add(LoadPlots());
             }
 
-            Profiler.Stop(Constants.Plots);
+            await Task.WhenAll(tasks).ConfigureAwait(false);
         }
 
 
