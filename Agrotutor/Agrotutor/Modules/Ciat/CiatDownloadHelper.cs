@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Agrotutor.Core.Entities;
 using Agrotutor.Modules.Ciat.Types;
@@ -24,7 +25,17 @@ namespace Agrotutor.Modules.Ciat
                     })
                 .WithBasicAuth("cimmy2018", "tBTAibgFtHxaNE8ld7hpKKsx3n1ORIO");
 
-            var responseData = await request.GetJsonAsync<List<CiatResponseData>>();
+            List<CiatResponseData> responseData;
+
+            try
+            {
+                responseData = await request.GetJsonAsync<List<CiatResponseData>>();
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
             return CiatData.FromResponse(responseData, request.Url);
         }
     }

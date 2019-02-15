@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Agrotutor.Core;
@@ -14,11 +13,9 @@ using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Dev;
-using Agrotutor.Modules.Benchmarking.Types;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Ciat;
-using Agrotutor.Modules.Ciat.Types;
 using Agrotutor.Modules.Map.Types;
 using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
@@ -27,7 +24,6 @@ using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
 using Castle.Core.Internal;
 using Microsoft.Extensions.Localization;
-using Plugin.Media.Abstractions;
 using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Commands;
@@ -101,8 +97,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool investigationPlatformUIIsVisible;
 
-        private bool listenForLocation = true;
-
         private bool loadingSpinnerIsVisible;
 
         private bool locationPermissionGiven;
@@ -123,7 +117,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotIncome;
         private string _currentPlotYield;
 
-        private ICameraService _cameraService;
+        private readonly ICameraService _cameraService;
         private string _currentPlotPotentialYield;
         private string _currentPlotNitrogen;
         private string _currentPlotPriceForecast;
@@ -1020,12 +1014,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => selectedPlot;
             set
             {
-                if (value == selectedPlot) return;
+                if (value == null || value == selectedPlot) return;
                 SetProperty(ref selectedPlot, value);
-                if (value != null)
-                {
-                    LoadPlotData(value);
-                }
+
+                if (value.MediaItems == null) value.MediaItems = new List<MediaItem>();
+                LoadPlotData(value);
 
                 var cost = SelectedPlot?.BemData?.AverageCost;
                 var yield = SelectedPlot?.BemData?.AverageYield;
@@ -1033,7 +1026,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                 var income = SelectedPlot?.BemData?.AverageIncome;
                 var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
                 var nitrogenNeeded = SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
-                var priceForecast = SelectedPlot?.PriceForecast?.ElementAt(0)?.Price; // TODO get info for actual next month!
+                var priceForecast = SelectedPlot?.PriceForecast;
+                if (!priceForecast.IsNullOrEmpty())
+                {
+                    var priceForecastNextMonth = priceForecast.ElementAt(0)?.Price;
+                    CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
+                }
 
                 CurrentPlotCost = cost == null ? "-" : cost.ToString();
                 CurrentPlotYield = yield == null ? "-" : yield.ToString();
@@ -1041,7 +1039,6 @@ namespace Agrotutor.Modules.Map.ViewModels
                 CurrentPlotIncome = income == null ? "-" : income.ToString();
                 CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
                 CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
-                CurrentPlotPriceForecast = priceForecast == null ? "-" : priceForecast.ToString();
 
                 MapPage.UpdateImages();
             } 
@@ -1088,11 +1085,11 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             if (plot.PriceForecast == null)
             {
-                if (plot.CropType == CropType.Corn)
-                {
+                // if (plot.CropType == CropType.Corn)
+                // {
                     plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
                     updatedPlot = true;
-                }
+                // }
             }
 
             if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);

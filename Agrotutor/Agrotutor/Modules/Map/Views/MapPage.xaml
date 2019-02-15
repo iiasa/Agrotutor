@@ -222,58 +222,58 @@
                                 <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
 
                                 <views:IconWithText
-                            Command="{Binding AddActivityToSelectedPlot}"
-                            IconSource="farmer.png"
-                            IconText="{localization:Translate plot_detail_add_activity}" />
+                                    Command="{Binding AddActivityToSelectedPlot}"
+                                    IconSource="farmer.png"
+                                    IconText="{localization:Translate plot_detail_add_activity}" />
 
                                 <views:IconWithText
-                            Command="{Binding DelineateSelectedPlot}"
-                            IconSource="delineate.png"
-                            IconText="{localization:Translate plot_detail_delineate}" />
+                                    Command="{Binding DelineateSelectedPlot}"
+                                    IconSource="delineate.png"
+                                    IconText="{localization:Translate plot_detail_delineate}" />
 
                                 <views:IconWithText
-                            Command="{Binding AddPictureToSelectedPlot}"
-                            IconSource="photo.png"
-                            IconText="{localization:Translate plot_detail_picture}" />
+                                    Command="{Binding AddPictureToSelectedPlot}"
+                                    IconSource="photo.png"
+                                    IconText="{localization:Translate plot_detail_picture}" />
 
                                 <views:IconWithText
-                            Command="{Binding AddVideoToSelectedPlot}"
-                            IconSource="video.png"
-                            IconText="{localization:Translate plot_detail_video}" />
+                                    Command="{Binding AddVideoToSelectedPlot}"
+                                    IconSource="video.png"
+                                    IconText="{localization:Translate plot_detail_video}" />
 
                                 <views:IconWithText
-                            Command="{Binding ShowCalendarForSelectedPlot}"
-                            IconSource="calendar.png"
-                            IconText="{localization:Translate plot_detail_calendar}" />
+                                    Command="{Binding ShowCalendarForSelectedPlot}"
+                                    IconSource="calendar.png"
+                                    IconText="{localization:Translate plot_detail_calendar}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
                                 <views:ValueLine
-                            Text="Costs ($/ha):"
-                            Value="{Binding CurrentPlotCost}"
-                            Command="{Binding ShowCurrentPlotCost}"/>
+                                    Text="Costs ($/ha):"
+                                    Value="{Binding CurrentPlotCost}"
+                                    Command="{Binding ShowCurrentPlotCost}"/>
                                 <views:ValueLine
-                            Text="Income ($/ha):"
-                            Value="{Binding CurrentPlotIncome}" 
-                            Command="{Binding ShowCurrentPlotIncome}"/>
+                                    Text="Income ($/ha):"
+                                    Value="{Binding CurrentPlotIncome}" 
+                                    Command="{Binding ShowCurrentPlotIncome}"/>
                                 <views:ValueLine
-                            Text="Profit ($/ha):"
-                            Value="{Binding CurrentPlotProfit}" 
-                            Command="{Binding ShowCurrentPlotProfit}"/>
+                                    Text="Profit ($/ha):"
+                                    Value="{Binding CurrentPlotProfit}" 
+                                    Command="{Binding ShowCurrentPlotProfit}"/>
                                 <views:ValueLine
-                            Text="Yield (kg/ha):"
-                            Value="{Binding CurrentPlotYield}" 
-                            Command="{Binding ShowCurrentPlotYield}"/>
+                                    Text="Yield (kg/ha):"
+                                    Value="{Binding CurrentPlotYield}" 
+                                    Command="{Binding ShowCurrentPlotYield}"/>
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
                                 <views:ValueLine
-                            Text="Potential yield (Average kg/ha):"
-                            Value="{Binding CurrentPlotPotentialYield}" />
+                                    Text="Potential yield (Average kg/ha):"
+                                    Value="{Binding CurrentPlotPotentialYield}" />
                                 <views:ValueLine
-                            Text="Nitrogen needed (kg/ha):"
-                            Value="{Binding CurrentPlotNitrogen}" />
+                                    Text="Nitrogen needed (kg/ha):"
+                                    Value="{Binding CurrentPlotNitrogen}" />
                                 <views:ValueLine
-                            Text="Next month trading price (Expected avg $/kg):"
-                            Value="{Binding CurrentPlotPriceForecast}" />
+                                    Text="Next month trading price (Expected avg $/kg):"
+                                    Value="{Binding CurrentPlotPriceForecast}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
