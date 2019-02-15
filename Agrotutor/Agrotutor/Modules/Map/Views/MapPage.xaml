@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+ xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap;assembly=Agrotutor"
     xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -45,7 +46,8 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <googleMaps:Map
+            <customMap:CustomMap
+                ShowTileLayer="{Binding ShowTileLayer}"
                 x:Name="map"
                 Grid.Row="0"
                 Grid.RowSpan="5"
@@ -62,9 +64,9 @@
                     <bindings:UpdateRegionBehavior Region="{Binding Region}" />
                     <bindings:BindingPinsBehavior Value="{Binding Pins}" />
                 </googleMaps:Map.Behaviors>
-            </googleMaps:Map>
+            </customMap:CustomMap>
 
-            <ContentView
+            <ContentView 
                 Grid.Row="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
@@ -124,16 +126,9 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView
-                Grid.Row="1"
-                Grid.Column="0"
-                Grid.ColumnSpan="2"
-                ControlTemplate="{StaticResource LoadingSpinner}"
-                IsVisible="{Binding LoadingSpinnerIsVisible}" />
-
-
-
-            <ContentView ControlTemplate="{StaticResource MainMapMenuItems}" Style="{StaticResource MainMapIconsGroup}" />
+            <ContentView 
+                ControlTemplate="{StaticResource MainMapMenuItems}"
+                Style="{StaticResource MainMapIconsGroup}" />
 
             <ContentView
                 ControlTemplate="{StaticResource MainMapSelectLocation}"

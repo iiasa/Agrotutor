@@ -97,7 +97,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool investigationPlatformUIIsVisible;
 
-        private bool loadingSpinnerIsVisible;
+        private bool listenForLocation = true;
 
         private bool locationPermissionGiven;
 
@@ -121,6 +121,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotPotentialYield;
         private string _currentPlotNitrogen;
         private string _currentPlotPriceForecast;
+        private bool _showTileLayer;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -136,13 +137,13 @@ namespace Agrotutor.Modules.Map.ViewModels
             CurrentMapTask = MapTask.Default;
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
-            LoadingSpinnerIsVisible = false;
             PlannerUIIsVisible = false;
             DelineationUIIsVisible = false;
             Plots = new List<Core.Entities.Plot>();
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
+            ShowTileLayer = true;
         }
 
         public ObservableCollection<Polygon> Polygons
@@ -155,6 +156,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             get => _pins;
             set => SetProperty(ref _pins, value);
+        }
+
+        public bool ShowTileLayer
+        {
+            get => _showTileLayer;
+            set => SetProperty(ref _showTileLayer, value);
         }
 
         public bool PlotsLayerVisible
@@ -356,6 +363,8 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _offlineBasemapLayerVisible, value);
                 Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
+                ShowTileLayer = !ShowTileLayer;
+                // MapPage?.SetOfflineLayerVisibility(value);
                 //MapPage?.SetOfflineLayerVisibility(value);
             }
         }
@@ -549,7 +558,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand ShowInfoForSelectedPlot =>
             new DelegateCommand(() =>
             {
-                var param = new NavigationParameters { { "Plot", SelectedPlot } };
+                var param = new NavigationParameters {{"Plot", SelectedPlot}};
                 NavigationService.NavigateAsync("PlotMainPage", param);
             });
 
@@ -600,17 +609,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                         ShowPlotInformation(plot);
                     }
                     else if (data is HubFeature hubContact)
-                    {
                         ShowHubContactInformation(hubContact);
-                    }
                     else if (data is IPFeature investigationPlatform)
-                    {
                         ShowInvestigationPlatformInformation(investigationPlatform);
-                    }
-                    else if (data is MPFeature machineryPoint)
-                    {
-                        ShowMachineryPointInformation(machineryPoint);
-                    }
+                    else if (data is MPFeature machineryPoint) ShowMachineryPointInformation(machineryPoint);
                 });
 
         public DelegateCommand ShowCalendar =>
@@ -893,12 +895,6 @@ namespace Agrotutor.Modules.Map.ViewModels
         }
 
         public bool ListenForLocation { get; set; }
-
-        public bool LoadingSpinnerIsVisible
-        {
-            get => loadingSpinnerIsVisible;
-            set => SetProperty(ref loadingSpinnerIsVisible, value);
-        }
 
         public bool LocationPermissionGiven
         {

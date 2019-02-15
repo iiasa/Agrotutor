@@ -79,26 +79,6 @@
         </BoxView>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="LoadingSpinner">
-        <Frame
-            Margin="8,0,0,0"
-            Padding="0"
-            BackgroundColor="Azure"
-            HeightRequest="38"
-            HorizontalOptions="StartAndExpand"
-            Opacity="0.75"
-            VerticalOptions="CenterAndExpand"
-            WidthRequest="38">
-            <forms:AnimationView
-                x:Name="animationView"
-                Animation="anim_loading.json"
-                AutoPlay="True"
-                HeightRequest="38"
-                Loop="True"
-                WidthRequest="38" />
-        </Frame>
-    </ControlTemplate>
-
     <ControlTemplate x:Key="MainMapMenuItems">
         <StackLayout Orientation="Horizontal">
             <views:MiniMenuIcon

@@ -1,29 +1,29 @@
-﻿using Agrotutor.Core.Camera;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using Agrotutor.Core.Camera;
+using Agrotutor.Core.Persistence;
+using Agrotutor.Core.Tile;
+using Agrotutor.Core.Tile.Resources;
+using Agrotutor.ViewModels;
+using Agrotutor.Views;
+using DryIoc;
+using Microsoft.AppCenter;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
+using Microsoft.Extensions.Logging.Abstractions;
+using Microsoft.Extensions.Options;
+using Prism.DryIoc;
+using Prism.Ioc;
+using Xamarin.Forms;
 
 namespace Agrotutor.Core
 {
-    using System;
-    using System.Linq;
-    using System.Reflection;
-    using DryIoc;
-    using Microsoft.AppCenter;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Localization;
-    using Microsoft.Extensions.Logging.Abstractions;
-    using Microsoft.Extensions.Options;
-    using Prism.DryIoc;
-    using Prism.Ioc;
-    using Xamarin.Forms;
-
-    using Persistence;
-    using Views;
-    using ViewModels;
-
     public static class ContainerRegistryExtension
     {
-
         // Based on ASP.NET Core Localization https://docs.microsoft.com/en-us/aspnet/core/fundamentals/localization
-        public static void RegisterLocalization(this IContainerRegistry containerRegistry, string resourcesPath = "Resources")
+        public static void RegisterLocalization(this IContainerRegistry containerRegistry,
+            string resourcesPath = "Resources")
         {
             containerRegistry.GetContainer()
                 .RegisterDelegate<IStringLocalizerFactory>(
@@ -33,7 +33,8 @@ namespace Agrotutor.Core
                             new OptionsManager<LocalizationOptions>(new OptionsFactory<LocalizationOptions>(
                                 new IConfigureOptions<LocalizationOptions>[]
                                 {
-                                    new ConfigureOptions<LocalizationOptions>(options => options.ResourcesPath = resourcesPath),
+                                    new ConfigureOptions<LocalizationOptions>(options =>
+                                        options.ResourcesPath = resourcesPath)
                                 },
                                 new IPostConfigureOptions<LocalizationOptions>[] { })), new NullLoggerFactory());
                     }, new SingletonReuse());
@@ -68,7 +69,7 @@ namespace Agrotutor.Core
             containerRegistry.GetContainer()
                 .RegisterInitializer<DbContextOptionsBuilder<AppDataContext>>((builder, resolver) =>
                 {
-                    builder.Configure();
+                    Persistence.DbContextOptionsBuilderExtension.Configure(builder);
                 });
 
             containerRegistry.RegisterSingleton<IAppDataContext, AppDataContext>();
@@ -79,7 +80,7 @@ namespace Agrotutor.Core
                     ////((AppDataContext)context).Database.EnsureDeleted();
                     try
                     {
-                        ((AppDataContext)context).Database.EnsureCreated();
+                        ((AppDataContext) context).Database.EnsureCreated();
                     }
                     catch (Exception e)
                     {
@@ -97,10 +98,28 @@ namespace Agrotutor.Core
             containerRegistry.GetContainer()
                 .Register(typeof(DbContextOptions<>),
                     made: Made.Of(
-                        r => typeof(DbContextOptionsBuilder<>).MakeGenericType(r.ServiceType.GenericTypeArguments.Single())
-                            .GetProperty("Options", BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly),
+                        r => typeof(DbContextOptionsBuilder<>)
+                            .MakeGenericType(r.ServiceType.GenericTypeArguments.Single())
+                            .GetProperty("Options",
+                                BindingFlags.Instance | BindingFlags.Public | BindingFlags.DeclaredOnly),
                         r => ServiceInfo.Of(
-                            typeof(DbContextOptionsBuilder<>).MakeGenericType(r.ServiceType.GenericTypeArguments.Single()))));
+                            typeof(DbContextOptionsBuilder<>).MakeGenericType(
+                                r.ServiceType.GenericTypeArguments.Single()))));
+        }
+
+        public static void RegisterTileService(this IContainerRegistry containerRegistry)
+        {
+            containerRegistry.GetContainer()
+                .RegisterInitializer<DbContextOptionsBuilder<TileContext>>((builder, resolver) =>
+                {
+                    if (!Persistence.DbContextOptionsBuilderExtension.FileExists(builder, "mexico-simple.mbtiles"))
+                        Persistence.DbContextOptionsBuilderExtension.CopyFromStream(builder, Resources.GetIIASATiles(),
+                            "mexico-simple.mbtiles");
+
+                    Persistence.DbContextOptionsBuilderExtension.Configure(builder, "mexico-simple.mbtiles");
+                });
+
+            containerRegistry.Register<IReadOnlyTileService, ReadOnlyTileService>();
         }
     }
 }

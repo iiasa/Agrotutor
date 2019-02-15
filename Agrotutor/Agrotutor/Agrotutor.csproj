@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.1" />
-    <PackageReference Include="Com.Airbnb.Xamarin.Forms.Lottie" Version="2.5.4" />
     <PackageReference Include="Flurl.Http" Version="2.4.0" />
     <PackageReference Include="Microcharts" Version="0.7.1" />
     <PackageReference Include="Microcharts.Forms" Version="0.7.1" />
@@ -25,7 +24,7 @@
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
-    <PackageReference Include="XF.Material" Version="1.2.4" />
+    <PackageReference Include="XF.Material" Version="1.3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -58,6 +57,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="Core\Tile\Resources\mexico-simple.mbtiles" />
     <None Remove="Resources\AppData\hubs_contact.geojson" />
     <None Remove="Resources\AppData\investigation_platforms.geojson" />
     <None Remove="Resources\AppData\machinery_points.geojson" />
@@ -65,6 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Core\Tile\Resources\mexico-simple.mbtiles" />
     <EmbeddedResource Include="Resources\AppData\hubs_contact.geojson" />
     <EmbeddedResource Include="Resources\AppData\investigation_platforms.geojson" />
     <EmbeddedResource Include="Resources\AppData\machinery_points.geojson" />
