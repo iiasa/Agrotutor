@@ -79,26 +79,6 @@
         </BoxView>
     </ControlTemplate>
 
-    <ControlTemplate x:Key="LoadingSpinner">
-        <Frame
-            Margin="8,0,0,0"
-            Padding="0"
-            BackgroundColor="Azure"
-            HeightRequest="38"
-            HorizontalOptions="StartAndExpand"
-            Opacity="0.75"
-            VerticalOptions="CenterAndExpand"
-            WidthRequest="38">
-            <forms:AnimationView
-                x:Name="animationView"
-                Animation="anim_loading.json"
-                AutoPlay="True"
-                HeightRequest="38"
-                Loop="True"
-                WidthRequest="38" />
-        </Frame>
-    </ControlTemplate>
-
     <ControlTemplate x:Key="MainMapMenuItems">
         <StackLayout Orientation="Horizontal">
             <views:MiniMenuIcon
@@ -389,100 +369,6 @@
 
                 </StackLayout>
             </ScrollView>
-        </Frame>
-    </ControlTemplate>
-
-    <ControlTemplate x:Key="ParcelDetailUI">
-        <Frame Style="{StaticResource MainMapPopupBackground}">
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="add.png" />
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{TemplateBinding Parent.BindingContext.SelectedPlot.Name}" />
-
-                </StackLayout>
-                <views:Divider />
-                <ScrollView>
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{localization:Translate plot_detail_planting_date}" />
-                            <Label>Oct. 3, 2018</Label>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{localization:Translate plot_detail_irrigation}" />
-                            <Label>Irrigated</Label>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{localization:Translate plot_detail_maturity}" />
-                            <Label>Late</Label>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{localization:Translate plot_detail_climate}" />
-                            <Label>Hybrid</Label>
-                        </StackLayout>
-
-                        <views:Divider />
-
-                        <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
-
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.AddActivityToSelectedPlot}"
-                            IconSource="farmer.png"
-                            IconText="{localization:Translate plot_detail_add_activity}" />
-
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.DelineateSelectedPlot}"
-                            IconSource="delineate.png"
-                            IconText="{localization:Translate plot_detail_delineate}" />
-
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.AddPictureToSelectedPlot}"
-                            IconSource="photo.png"
-                            IconText="{localization:Translate plot_detail_picture}" />
-
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.AddVideoToSelectedPlot}"
-                            IconSource="video.png"
-                            IconText="{localization:Translate plot_detail_video}" />
-
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.ShowCalendarForSelectedPlot}"
-                            IconSource="calendar.png"
-                            IconText="{localization:Translate plot_detail_calendar}" />
-                        <views:Divider />
-                        <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
-                        <views:ValueLine
-                            Text="Costs ($/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotCost}"
-                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotCost}"/>
-                        <views:ValueLine
-                            Text="Income ($/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotIncome}" 
-                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotIncome}"/>
-                        <views:ValueLine
-                            Text="Profit ($/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotProfit}" 
-                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotProfit}"/>
-                        <views:ValueLine
-                            Text="Yield (kg/ha):"
-                            Value="{TemplateBinding Parent.BindingContext.CurrentPlotYield}" 
-                            Command="{TemplateBinding Parent.BindingContext.ShowCurrentPlotYield}"/>
-                        <views:Divider />
-                        <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                        <views:ValueLine
-                            Text="Potential yield (Average kg/ha):"
-                            Value="-" />
-                        <views:ValueLine
-                            Text="Nitrogen needed (kg/ha):"
-                            Value="-" />
-                        <views:ValueLine
-                            Text="Next month trading price (Expected avg $/kg):"
-                            Value="-" />
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
         </Frame>
     </ControlTemplate>
 

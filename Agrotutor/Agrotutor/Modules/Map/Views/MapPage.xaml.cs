@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Agrotutor.Core.Camera;
 using Agrotutor.Core.Cimmyt.HubsContact;
 using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
 using Agrotutor.Modules.Map.ViewModels;
+using FFImageLoading.Cache;
+using FFImageLoading.Forms;
 using ImTools;
 using Prism;
 using Xamarin.Forms;
@@ -12,6 +16,7 @@ using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.Xaml;
 using XF.Material.Forms;
 using XF.Material.Forms.UI;
+using XF.Material.Forms.UI.Dialogs;
 using Feature = Agrotutor.Core.Cimmyt.HubsContact.Feature;
 
 namespace Agrotutor.Modules.Map.Views
@@ -27,16 +32,9 @@ namespace Agrotutor.Modules.Map.Views
         {
             InitializeComponent();
             ViewModel = (MapPageViewModel) BindingContext;
-            //ViewModel.SetView(this);
+            ViewModel.SetView(this);
             Material.PlatformConfiguration.ChangeStatusBarColor(new Color(1, 1, 1, 0.5));
             NavigationPage.SetHasNavigationBar(this, false);
-            map.UiSettings.CompassEnabled = true;
-            map.UiSettings.MyLocationButtonEnabled = true;
-            map.UiSettings.RotateGesturesEnabled = true;
-            map.UiSettings.ZoomControlsEnabled = true;
-            map.UiSettings.TiltGesturesEnabled = true;
-            map.UiSettings.ZoomGesturesEnabled = true;
-            map.UiSettings.MapToolbarEnabled = true;
             PlotPins = new List<Pin>();
             PlotDelineations = new List<Polygon>();
             DelineationPins = new List<Pin>();
@@ -257,6 +255,66 @@ namespace Agrotutor.Modules.Map.Views
                 MachineryPointPins.Add(pin);
                 Device.BeginInvokeOnMainThread(
                     () => { map.Pins.Add(pin); });
+            }
+        }
+
+
+
+        public async Task UpdateImages()
+        {
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("UpdatingImages"))
+            {
+                AllImages.Children.Clear();
+                if (ViewModel.SelectedPlot?.MediaItems != null && (bool)ViewModel.SelectedPlot?.MediaItems.Any())
+                    foreach (var img in ViewModel.SelectedPlot.MediaItems)
+                    {
+                        var layout = new AbsoluteLayout { Margin = 10 };
+                        var imageSource = img.IsVideo
+                            ? ImageSource.FromResource("BirdLife.Core.UI.Assets.Images.video.png", typeof(AssetsHelper))
+                            : ImageSource.FromFile(img.Path);
+
+                        var closeImage = new CachedImage
+                        {
+                            HorizontalOptions = LayoutOptions.End,
+                            VerticalOptions = LayoutOptions.Start,
+                            HeightRequest = 20,
+                            WidthRequest = 20,
+                            DownsampleToViewSize = true,
+                            Source = ImageSource.FromResource("BirdLife.Core.UI.Assets.Images.close-cross.png",
+                                typeof(AssetsHelper))
+                        };
+
+                        var cachedImage = new CachedImage
+                        {
+                            HeightRequest = 150,
+                            WidthRequest = 150,
+                            IsVisible = true,
+                            Source = imageSource,
+                            ClassId = img.Id.ToString(),
+                            CacheType = CacheType.Disk,
+                            DownsampleToViewSize = true
+                        };
+
+                        layout.HeightRequest = 150;
+                        layout.WidthRequest = 150;
+                        AbsoluteLayout.SetLayoutBounds(closeImage, new Rectangle(1, 0, 30, 30));
+                        AbsoluteLayout.SetLayoutFlags(closeImage, AbsoluteLayoutFlags.All);
+                        layout.Children.Add(cachedImage);
+                        layout.Children.Add(closeImage);
+                        layout.RaiseChild(closeImage);
+
+                        closeImage.GestureRecognizers.Add(new TapGestureRecognizer
+                        {
+                            Command = new Command(async o =>
+                            {
+                                ViewModel.SelectedPlot?.MediaItems.Remove(img);
+                                await UpdateImages();
+                            }),
+                            NumberOfTapsRequired = 1
+                        });
+
+                        AllImages.Children.Add(layout);
+                    }
             }
         }
     }

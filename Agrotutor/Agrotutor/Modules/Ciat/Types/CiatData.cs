@@ -17,6 +17,8 @@ namespace Agrotutor.Modules.Ciat.Types
 
         public virtual CiatDataDetail CiatDataNonIrrigated { get; set; }
 
+        public string Date { get; set; }
+
         public static CiatData FromResponse(List<CiatResponseData> responseData, string requestUrl)
         {
             if (responseData == null) return null;
@@ -24,7 +26,8 @@ namespace Agrotutor.Modules.Ciat.Types
             CiatData data = new CiatData
             {
                 CiatDataIrrigated = new CiatDataDetail { DataType = CiatDataType.Irrigated },
-                CiatDataNonIrrigated = new CiatDataDetail { DataType = CiatDataType.NonIrrigated }
+                CiatDataNonIrrigated = new CiatDataDetail { DataType = CiatDataType.NonIrrigated },
+                Date = DateTime.Now.ToShortDateString()
             };
 
             data.CiatDataNonIrrigated.OptimalCultivars = new List<string>();

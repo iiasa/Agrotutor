@@ -1,25 +1,29 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Agrotutor.Core;
+using Agrotutor.Core.Camera;
 using Agrotutor.Core.Cimmyt.HubsContact;
 using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
+using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Dev;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
+using Agrotutor.Modules.Ciat;
 using Agrotutor.Modules.Map.Types;
+using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
+using Agrotutor.Modules.PriceForecasting.Types;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
 using Castle.Core.Internal;
 using Microsoft.Extensions.Localization;
-using Plugin.Media.Abstractions;
 using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Commands;
@@ -95,8 +99,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool listenForLocation = true;
 
-        private bool loadingSpinnerIsVisible;
-
         private bool locationPermissionGiven;
 
         private bool machineryPointUIIsVisible;
@@ -115,25 +117,33 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotIncome;
         private string _currentPlotYield;
 
+        private readonly ICameraService _cameraService;
+        private string _currentPlotPotentialYield;
+        private string _currentPlotNitrogen;
+        private string _currentPlotPriceForecast;
+        private bool _showTileLayer;
+
         public MapPageViewModel(
             INavigationService navigationService,
             IAppDataService appDataService,
+            ICameraService cameraService,
             IStringLocalizer<MapPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            _cameraService = cameraService;
             LocationPermissionGiven = false;
             ShowWeatherWidget = false;
             AppDataService = appDataService;
             CurrentMapTask = MapTask.Default;
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
-            LoadingSpinnerIsVisible = false;
             PlannerUIIsVisible = false;
             DelineationUIIsVisible = false;
             Plots = new List<Core.Entities.Plot>();
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
+            ShowTileLayer = true;
         }
 
         public ObservableCollection<Polygon> Polygons
@@ -146,6 +156,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             get => _pins;
             set => SetProperty(ref _pins, value);
+        }
+
+        public bool ShowTileLayer
+        {
+            get => _showTileLayer;
+            set => SetProperty(ref _showTileLayer, value);
         }
 
         public bool PlotsLayerVisible
@@ -305,6 +321,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 foreach (var plot in plots)
                 {
+                    if (plot.Delineation == null) continue;
+                    
                     var positions = plot.Delineation;
                     if (positions != null && positions.Count > 3)
                     {
@@ -345,6 +363,8 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _offlineBasemapLayerVisible, value);
                 Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
+                ShowTileLayer = !ShowTileLayer;
+                // MapPage?.SetOfflineLayerVisibility(value);
                 //MapPage?.SetOfflineLayerVisibility(value);
             }
         }
@@ -542,13 +562,39 @@ namespace Agrotutor.Modules.Map.ViewModels
                 NavigationService.NavigateAsync("PlotMainPage", param);
             });
 
-        public DelegateCommand<MediaFile> OnParcelPictureTaken =>
-            new DelegateCommand<MediaFile>(
-                mediaFile =>
+        public DelegateCommand AddPictureToSelectedPlot =>
+            new DelegateCommand(async () =>
+            {
+                var pic = await _cameraService.TakePicture();
+
+                var image = new MediaItem
                 {
-                    var i = 0;
-                    i++;
-                });
+                    Id = Guid.NewGuid(),
+                    Path = pic,
+                    IsUploaded = false,
+                    IsVideo = false
+                };
+                SelectedPlot.MediaItems.Add(image);
+                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                await MapPage.UpdateImages();
+            });
+
+        public DelegateCommand AddVideoToSelectedPlot =>
+            new DelegateCommand(async () =>
+            {
+                var pic = await _cameraService.TakeVideo();
+
+                var image = new MediaItem
+                {
+                    Id = Guid.NewGuid(),
+                    Path = pic,
+                    IsUploaded = false,
+                    IsVideo = true
+                };
+                SelectedPlot.MediaItems.Add(image);
+                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                await MapPage.UpdateImages();
+            });
 
         public DelegateCommand<string> PhoneCall => new DelegateCommand<string>(number => PhoneDialer.Open(number));
 
@@ -563,17 +609,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                         ShowPlotInformation(plot);
                     }
                     else if (data is HubFeature hubContact)
-                    {
                         ShowHubContactInformation(hubContact);
-                    }
                     else if (data is IPFeature investigationPlatform)
-                    {
                         ShowInvestigationPlatformInformation(investigationPlatform);
-                    }
-                    else if (data is MPFeature machineryPoint)
-                    {
-                        ShowMachineryPointInformation(machineryPoint);
-                    }
+                    else if (data is MPFeature machineryPoint) ShowMachineryPointInformation(machineryPoint);
                 });
 
         public DelegateCommand ShowCalendar =>
@@ -857,12 +896,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public bool ListenForLocation { get; set; }
 
-        public bool LoadingSpinnerIsVisible
-        {
-            get => loadingSpinnerIsVisible;
-            set => SetProperty(ref loadingSpinnerIsVisible, value);
-        }
-
         public bool LocationPermissionGiven
         {
             get => locationPermissionGiven;
@@ -977,23 +1010,52 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => selectedPlot;
             set
             {
-                if (value == selectedPlot) return;
+                if (value == null || value == selectedPlot) return;
                 SetProperty(ref selectedPlot, value);
-                if (value != null)
-                {
-                    LoadPlotData(value);
-                }
+
+                if (value.MediaItems == null) value.MediaItems = new List<MediaItem>();
+                LoadPlotData(value);
 
                 var cost = SelectedPlot?.BemData?.AverageCost;
                 var yield = SelectedPlot?.BemData?.AverageYield;
                 var profit = SelectedPlot?.BemData?.AverageProfit;
                 var income = SelectedPlot?.BemData?.AverageIncome;
+                var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
+                var nitrogenNeeded = SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
+                var priceForecast = SelectedPlot?.PriceForecast;
+                if (!priceForecast.IsNullOrEmpty())
+                {
+                    var priceForecastNextMonth = priceForecast.ElementAt(0)?.Price;
+                    CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
+                }
 
                 CurrentPlotCost = cost == null ? "-" : cost.ToString();
                 CurrentPlotYield = yield == null ? "-" : yield.ToString();
                 CurrentPlotProfit = profit == null ? "-" : profit.ToString();
                 CurrentPlotIncome = income == null ? "-" : income.ToString();
+                CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
+                CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+
+                MapPage.UpdateImages();
             } 
+        }
+
+        public string CurrentPlotPriceForecast
+        {
+            get => _currentPlotPriceForecast;
+            set => SetProperty(ref _currentPlotPriceForecast, value);
+        }
+
+        public string CurrentPlotNitrogen
+        {
+            get => _currentPlotNitrogen;
+            set => SetProperty(ref _currentPlotNitrogen, value);
+        }
+
+        public string CurrentPlotPotentialYield
+        {
+            get => _currentPlotPotentialYield;
+            set => SetProperty(ref _currentPlotPotentialYield, value);
         }
 
         public async void LoadPlotData(Core.Entities.Plot plot)
@@ -1004,6 +1066,26 @@ namespace Agrotutor.Modules.Map.ViewModels
                 plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
                     plot.Position.Longitude, plot.CropType);
                 updatedPlot = true;
+            }
+            if (plot.WeatherForecast == null)
+            {
+                plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude,plot.Position.Longitude);
+                updatedPlot = true;
+            }
+
+            if (plot.CiatData == null)
+            {
+                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maize");
+                updatedPlot = true;
+            }
+
+            if (plot.PriceForecast == null)
+            {
+                // if (plot.CropType == CropType.Corn)
+                // {
+                    plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
+                    updatedPlot = true;
+                // }
             }
 
             if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
@@ -1501,5 +1583,12 @@ namespace Agrotutor.Modules.Map.ViewModels
             SelectedPlot = data;
             PlotDetailIsVisible = true;
         }
+
+        public void SetView(MapPage mapPage)
+        {
+            this.MapPage = mapPage;
+        }
+
+        public MapPage MapPage { get; set; }
     }
 }
