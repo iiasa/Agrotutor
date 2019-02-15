@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Weather.ViewModels
+namespace Agrotutor.Modules.Weather.ViewModels
 {
     using System.Collections.Generic;
     using Microcharts;
@@ -10,7 +10,7 @@
     using Types;
     using Charts.Types;
 
-    public class WeatherDataSelectionViewModel : ViewModelBase, INavigatedAware
+    public class WeatherHistoryPageViewModel : ViewModelBase, INavigatedAware
     {
 
         private List<string> _datasetNames;
@@ -22,7 +22,7 @@
         private List<EntryWithTime> selectedValEntries;
         private int _graphDays;
 
-        public WeatherDataSelectionViewModel(INavigationService navigationService, IStringLocalizer<WeatherDataSelectionViewModel> stringLocalizer)
+        public WeatherHistoryPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
             :base(navigationService,stringLocalizer)
         {
             DatasetNames = new List<string>
@@ -177,20 +177,23 @@
 
         public Chart CurrentChart { get => _currentChart; set => SetProperty(ref _currentChart, value); }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("WeatherData"))
+            if (parameters.ContainsKey("WeatherHistory"))
             {
-                parameters.TryGetValue<WeatherHistory>("WeatherData", out var weatherData);
+                parameters.TryGetValue<WeatherHistory>("WeatherHistory", out var weatherData);
                 if (weatherData != null)
                 {
                     MyWeatherData = weatherData;
                 }
             }
+
+            base.OnNavigatedTo(parameters);
         }
     }
 }

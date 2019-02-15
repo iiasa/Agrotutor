@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Benchmarking.ViewModels
+namespace Agrotutor.Modules.Benchmarking.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +11,7 @@
 
     public class ViewYieldPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string YieldsParameterName = "BENCHMARKING_YIELD_PARAMETER";
         private double avg;
 
         private List<Yield> datasets;
@@ -43,7 +44,7 @@
                 SetProperty(ref this.datasets, value);
                 Min = value.Select(x => double.Parse(x.Performance)).Min();
                 Max = value.Select(x => double.Parse(x.Performance)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.Performance)).Average(), 2);
+                Avg = Math.Round(value.Select(x => double.Parse(x.Performance)).Average(), 0);
             }
         }
 
@@ -59,18 +60,19 @@
             set => SetProperty(ref this.min, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Yield"))
+            if (parameters.ContainsKey(YieldsParameterName))
             {
-                parameters.TryGetValue("Yield", out List<Yield> yield);
+                parameters.TryGetValue(YieldsParameterName, out List<Yield> yield);
                 if (yield != null)
                 {
-                    this.datasets = yield;
+                    this.Datasets = yield;
                 }
                 else
                 {
@@ -81,6 +83,7 @@
             {
                 NavigationService.GoBackAsync();
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

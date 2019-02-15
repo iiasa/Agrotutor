@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Benchmarking.ViewModels
+namespace Agrotutor.Modules.Benchmarking.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +11,7 @@
 
     public class ViewIncomePageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string IncomesParameterName = "BENCHMARKING_INCOME_PARAMETER";
         private double avg;
 
         private List<Income> datasets;
@@ -41,7 +42,7 @@
                 SetProperty(ref this.datasets, value);
                 Min = value.Select(x => double.Parse(x.IncomePerHa)).Min();
                 Max = value.Select(x => double.Parse(x.IncomePerHa)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.IncomePerHa)).Average(), 2);
+                Avg = Math.Round(value.Select(x => double.Parse(x.IncomePerHa)).Average(), 0);
             }
         }
 
@@ -57,18 +58,19 @@
             set => SetProperty(ref this.min, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Income"))
+            if (parameters.ContainsKey(IncomesParameterName))
             {
-                parameters.TryGetValue("Income", out List<Income> income);
+                parameters.TryGetValue(IncomesParameterName, out List<Income> income);
                 if (income != null)
                 {
-                    this.datasets = income;
+                    this.Datasets = income;
                 }
                 else
                 {
@@ -79,6 +81,7 @@
             {
                 NavigationService.GoBackAsync();
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

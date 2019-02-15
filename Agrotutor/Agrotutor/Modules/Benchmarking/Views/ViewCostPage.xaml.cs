@@ -9,7 +9,6 @@
         public ViewCostPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

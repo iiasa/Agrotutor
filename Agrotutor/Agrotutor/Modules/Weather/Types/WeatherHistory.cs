@@ -138,7 +138,7 @@
 
         [NotMapped]
         [JsonProperty("products", NullValueHandling = NullValueHandling.Ignore)]
-        public string Products { get; set; }
+        public List<string> Products { get; set; }
 
         [JsonProperty("value", NullValueHandling = NullValueHandling.Ignore)]
         public virtual double? Value { get; set; }
@@ -223,13 +223,20 @@
 
         public static async Task<WeatherHistory> Download(double latitude, double longitude)
         {
+            WeatherHistory data = null;
             var serviceUrl =
                 $"https://wsgi.geo-wiki.org/skywise_weather?lat={latitude}&lng={longitude}";
             using (var wc = new HttpClient())
             {
-                var json = await wc.GetStringAsync(serviceUrl);
-                return FromJson(json);
+                try
+                {
+                    var json = await wc.GetStringAsync(serviceUrl);
+                    data = FromJson(json);
+                }
+                catch (Exception e)
+                {}
             }
+            return data;
         }
     }
 

@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core.Cimmyt.InvestigationPlatforms
+﻿using XF.Material.Forms.UI.Dialogs;
+
+namespace Agrotutor.Core.Cimmyt.InvestigationPlatforms
 {
     using System;
     using System.Collections.Generic;
@@ -25,18 +27,21 @@
 
         public static async Task<InvestigationPlatforms> FromEmbeddedResource()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "Agrotutor.Resources.AppData.investigation_platforms.geojson";
-
-            string result;
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading investigation platforms..."))
             {
-                result = await reader.ReadToEndAsync();
-            }
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                string resourceName = "Agrotutor.Resources.AppData.investigation_platforms.geojson";
 
-            return FromJson(result);
+                string result;
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    result = await reader.ReadToEndAsync();
+                }
+
+                return FromJson(result);
+            }
         }
 
         public static InvestigationPlatforms FromJson(string json)

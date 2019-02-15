@@ -8,6 +8,7 @@
     {
         public WelcomePage()
         {
+            NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
         }
     }

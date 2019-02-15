@@ -12,13 +12,14 @@
     using Plugin.CurrentActivity;
     using Xamarin;
 
-    [Activity(Label = "Agrotutor", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon" ,Theme = "@style/splashscreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
             AttachExceptionHandlers();
             InitializeLayout();
+            base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(bundle);
             InitializeLibs(bundle);
             
@@ -38,6 +39,7 @@
             Forms.Init(this, bundle);
 
             FormsGoogleMaps.Init(this, bundle);
+            FormsGoogleMapsBindings.Init();
             UserDialogs.Init(this);
             CrossCurrentActivity.Current.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);

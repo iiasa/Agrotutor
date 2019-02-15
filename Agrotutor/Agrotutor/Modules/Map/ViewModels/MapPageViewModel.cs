@@ -1,22 +1,31 @@
-﻿using System.Collections.Generic;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Agrotutor.Core;
+using Agrotutor.Core.Camera;
 using Agrotutor.Core.Cimmyt.HubsContact;
 using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
+using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Rest.Bem;
+using Agrotutor.Dev;
+using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Map.Types;
 using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
+using Castle.Core.Internal;
 using Microsoft.Extensions.Localization;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions.Abstractions;
+using Prism;
 using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Essentials;
@@ -40,6 +49,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool _addParcelIsVisible;
 
         private Position _addPlotPosition;
+        private CameraPosition _cameraPositionUpdated;
 
         private HubFeature _currentHubContact;
 
@@ -58,15 +68,18 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool _hubContactsLayerVisible;
         private bool _investigationPlatformsLayerVisible;
         private bool _layerSwitcherIsVisible;
+        private bool _locationEnabled;
         private bool _machineryPointsLayerVisible;
         private bool _offlineBasemapLayerVisible;
 
         private int _pickerCropTypesSelectedIndex;
+        private ObservableCollection<Pin> _pins;
 
         private bool _plannerUIIsVisible;
         private bool _plotDelineationsLayerVisible;
         private bool _plotsLayerVisible;
-        private bool _showTileLayer;
+        private ObservableCollection<Polygon> _polygons;
+        private MapSpan _region;
 
         private bool _showWeatherWidget;
 
@@ -80,19 +93,13 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool gpsLocationUIIsVisible;
 
-        private HubsContact hubsContact;
-
         private bool hubsContactUIIsVisible;
-
-        private InvestigationPlatforms investigationPlatforms;
 
         private bool investigationPlatformUIIsVisible;
 
         private bool listenForLocation = true;
 
         private bool locationPermissionGiven;
-
-        private MachineryPoints machineryPoints;
 
         private bool machineryPointUIIsVisible;
 
@@ -105,13 +112,21 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool selectLocationUIIsVisible;
 
         private Location weatherLocation;
+        private string _currentPlotCost;
+        private string _currentPlotProfit;
+        private string _currentPlotIncome;
+        private string _currentPlotYield;
+
+        private ICameraService _cameraService;
 
         public MapPageViewModel(
             INavigationService navigationService,
             IAppDataService appDataService,
+            ICameraService cameraService,
             IStringLocalizer<MapPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            _cameraService = cameraService;
             LocationPermissionGiven = false;
             ShowWeatherWidget = false;
             AppDataService = appDataService;
@@ -120,7 +135,23 @@ namespace Agrotutor.Modules.Map.ViewModels
             OptionsIsVisible = false;
             PlannerUIIsVisible = false;
             DelineationUIIsVisible = false;
+            Plots = new List<Core.Entities.Plot>();
+
+            Polygons = new ObservableCollection<Polygon>();
+            Pins = new ObservableCollection<Pin>();
             ShowTileLayer = true;
+        }
+
+        public ObservableCollection<Polygon> Polygons
+        {
+            get => _polygons;
+            set => SetProperty(ref _polygons, value);
+        }
+
+        public ObservableCollection<Pin> Pins
+        {
+            get => _pins;
+            set => SetProperty(ref _pins, value);
         }
 
         public bool ShowTileLayer
@@ -136,8 +167,96 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _plotsLayerVisible, value);
                 Preferences.Set(Constants.PlotsLayerVisiblePreference, value);
-                MapPage?.SetPlotLayerVisibility(value);
+                //MapPage?.SetPlotLayerVisibility(value);
             }
+        }
+
+        public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(() => 
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewCostPage", new NavigationParameters
+            {
+                {ViewCostPageViewModel.CostsParameterName, SelectedPlot.BemData.Cost}
+            });
+        });
+
+        public DelegateCommand ShowCurrentPlotIncome => new DelegateCommand(() =>
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewIncomePage", new NavigationParameters
+            {
+                {ViewIncomePageViewModel.IncomesParameterName, SelectedPlot.BemData.Income}
+            });
+        });
+
+        public DelegateCommand ShowCurrentPlotProfit => new DelegateCommand(() =>
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewProfitPage", new NavigationParameters
+            {
+                {ViewProfitPageViewModel.ProfitsParameterName, SelectedPlot.BemData.Profit}
+            });
+
+        });
+
+        public DelegateCommand ShowCurrentPlotYield => new DelegateCommand(() =>
+        {
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield.IsNullOrEmpty())
+            {
+                // TODO: show toast
+                return;
+            }
+
+            NavigationService.NavigateAsync("ViewYieldPage", new NavigationParameters
+            {
+                {ViewYieldPageViewModel.YieldsParameterName, SelectedPlot.BemData.Yield}
+            });
+
+        });
+
+        public string CurrentPlotCost
+        {
+            get => _currentPlotCost;
+            set => SetProperty(ref _currentPlotCost, value);
+        }
+
+        public string CurrentPlotProfit
+        {
+            get => _currentPlotProfit;
+            set => SetProperty(ref _currentPlotProfit, value);
+        }
+
+        public string CurrentPlotIncome
+        {
+            get => _currentPlotIncome;
+            set => SetProperty(ref _currentPlotIncome, value);
+        }
+
+        public string CurrentPlotYield
+        {
+            get => _currentPlotYield;
+            set => SetProperty(ref _currentPlotYield, value);
+        }
+
+        public bool LocationEnabled
+        {
+            get => _locationEnabled;
+            set => SetProperty(ref _locationEnabled, value);
         }
 
         public bool PlotDelineationsLayerVisible
@@ -147,7 +266,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _plotDelineationsLayerVisible, value);
                 Preferences.Set(Constants.PlotDelineationsLayerVisiblePreference, value);
-                MapPage?.SetPlotDelineationLayerVisibility(value);
+                //MapPage?.SetPlotDelineationLayerVisibility(value);
             }
         }
 
@@ -158,7 +277,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _hubContactsLayerVisible, value);
                 Preferences.Set(Constants.HubContactsLayerVisiblePreference, value);
-                MapPage?.SetHubContactsLayerVisibility(value);
+                //MapPage?.SetHubContactsLayerVisibility(value);
             }
         }
 
@@ -169,9 +288,59 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _machineryPointsLayerVisible, value);
                 Preferences.Set(Constants.MachineryPointsLayerVisiblePreference, value);
-                MapPage?.SetMachineryPointLayerVisibility(value);
             }
         }
+
+
+
+        public Command<bool> PlotsSelectionChangedCommand =>
+            new Command<bool>(async e => await PlotsSelectionChanged(e));
+
+        public Command<bool> PlotDelineationsSelectionChangedCommand =>
+            new Command<bool>(async e => await PlotDelineationsSelectionChanged(e));
+
+        private async Task PlotDelineationsSelectionChanged(bool b)
+        {
+            if (b)
+                await RenderPlotDelineations();
+            else
+                RemoveDelineationPolygon();
+            await Task.CompletedTask;
+        }
+
+
+        private async Task RenderPlotDelineations()
+        {
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Rendering delineations..."))
+            {
+                var plots = await AppDataService.GetAllPlotsAsync();
+
+                foreach (var plot in plots)
+                {
+                    if (plot.Delineation == null) continue;
+                    
+                    var positions = plot.Delineation;
+                    if (positions.Count > 3)
+                    {
+                        var polygon = new Polygon
+                        {
+                            Tag = plot.Position
+                        };
+                        foreach (var position in positions) polygon.Positions.Add(position.ForMap());
+                        Polygons.Add(polygon);
+                    }
+                }
+            }
+        }
+
+        public Command<bool> HubContactsSelectionChangedCommand =>
+            new Command<bool>(async e => await HubContactsSelectionChanged(e));
+
+        public Command<bool> MachineryPointsSelectionChangedCommand =>
+            new Command<bool>(async e => await MachineryPointsSelectionChanged(e));
+
+        public Command<bool> InvestigationPlatformsSelectionChangedCommand =>
+            new Command<bool>(async e => await InvestigationPlatformsSelectionChanged(e));
 
         public bool InvestigationPlatformsLayerVisible
         {
@@ -180,7 +349,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _investigationPlatformsLayerVisible, value);
                 Preferences.Set(Constants.InvestigationPlatformsLayerVisiblePreference, value);
-                MapPage?.SetInvestigationPlatformLayerVisibility(value);
             }
         }
 
@@ -193,6 +361,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
                 ShowTileLayer = !ShowTileLayer;
                 // MapPage?.SetOfflineLayerVisibility(value);
+                //MapPage?.SetOfflineLayerVisibility(value);
             }
         }
 
@@ -203,11 +372,14 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     {"Plot", SelectedPlot}
                 };
-                NavigationService.NavigateAsync("ActivityPage", param);
+                NavigationService.NavigateAsync("NavigationPage/ActivityPage", param);
             });
 
         public DelegateCommand ShowLayerSwitcher =>
             new DelegateCommand(() => { LayerSwitcherIsVisible = true; });
+
+        public DelegateCommand PageAppearingCommand =>
+            new DelegateCommand(async () => await PageAppearing());
 
         public DelegateCommand AddParcelClicked =>
             new DelegateCommand(() =>
@@ -287,15 +459,11 @@ namespace Agrotutor.Modules.Map.ViewModels
                             Title = StringLocalizer.GetString("replace_delineation_prompt_title")
                         });
 
-                    if (confirmDelineation)
-                    {
-                        MapPage.StartDelineation(selectedPlot);
-                        CurrentMapTask = MapTask.DelineationNotEnoughPoints;
-                    }
+                    if (confirmDelineation) CurrentMapTask = MapTask.DelineationNotEnoughPoints;
                 }
                 else
                 {
-                    MapPage.StartDelineation(selectedPlot);
+                    //MapPage.StartDelineation(selectedPlot);
                     CurrentMapTask = MapTask.DelineationNotEnoughPoints;
                 }
 
@@ -310,6 +478,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     CurrentMapTaskHint = string.Empty;
                     DimBackground = false;
                 });
+
 
         public DelegateCommand<MapClickedEventArgs> MapClicked =>
             new DelegateCommand<MapClickedEventArgs>(
@@ -326,17 +495,41 @@ namespace Agrotutor.Modules.Map.ViewModels
                         case MapTask.DelineationEnoughPoints:
                             if (CurrentDelineation == null) CurrentDelineation = new List<Position>();
 
-                            CurrentDelineation.Add(Position.From(args.Point));
-                            MapPage.AddDelineationPoint(args.Point);
+                            var pos = Position.From(args.Point);
+                            CurrentDelineation.Add(pos);
+                            var pin = new Pin
+                            {
+                                Position = Position.From(args.Point).ForMap(),
+                                Label = "Delineation point",
+                                Tag = pos
+                            };
+                            CurrentPin = pin;
+                            Preferences.Set(Constants.Lat, args.Point.Latitude);
+                            Preferences.Set(Constants.Lng, args.Point.Longitude);
+                            Pins.Add(pin);
+                            RenderDelineationPolygon();
                             break;
                     }
                 });
+
+        private void RenderDelineationPolygon()
+        {
+            if (CurrentDelineation.Count < 3) return;
+            RemoveDelineationPolygon();
+            var polygon = new Polygon();
+            foreach (var position in CurrentDelineation) polygon.Positions.Add(position.ForMap());
+            CurrentPolygon = polygon;
+            Polygons.Add(polygon);
+        }
+
 
         public DelegateCommand<MapLongClickedEventArgs> MapLongClicked =>
             new DelegateCommand<MapLongClickedEventArgs>(
                 args =>
                 {
                     AddPlotPosition = Position.From(args.Point);
+                    Preferences.Set(Constants.Lat, args.Point.Latitude);
+                    Preferences.Set(Constants.Lng, args.Point.Longitude);
                     CreatePlot();
                 });
 
@@ -350,7 +543,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
 
         public DelegateCommand NavigateToGuide =>
-            new DelegateCommand(() => { NavigationService.NavigateAsync("WelcomePage"); });
+            new DelegateCommand(() => { NavigationService.NavigateAsync("NavigationPage/WelcomePage"); });
 
         public DelegateCommand NavigateToPractices =>
             new DelegateCommand(() => { NavigationService.NavigateAsync("LinksPage"); });
@@ -365,13 +558,39 @@ namespace Agrotutor.Modules.Map.ViewModels
                 NavigationService.NavigateAsync("PlotMainPage", param);
             });
 
-        public DelegateCommand<MediaFile> OnParcelPictureTaken =>
-            new DelegateCommand<MediaFile>(
-                mediaFile =>
+        public DelegateCommand AddPictureToSelectedPlot =>
+            new DelegateCommand(async () =>
+            {
+                var pic = await _cameraService.TakePicture();
+
+                var image = new MediaItem
                 {
-                    var i = 0;
-                    i++;
-                });
+                    Id = Guid.NewGuid(),
+                    Path = pic,
+                    IsUploaded = false,
+                    IsVideo = false
+                };
+                SelectedPlot.MediaItems.Add(image);
+                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                await MapPage.UpdateImages();
+            });
+
+        public DelegateCommand AddVideoToSelectedPlot =>
+            new DelegateCommand(async () =>
+            {
+                var pic = await _cameraService.TakeVideo();
+
+                var image = new MediaItem
+                {
+                    Id = Guid.NewGuid(),
+                    Path = pic,
+                    IsUploaded = false,
+                    IsVideo = true
+                };
+                SelectedPlot.MediaItems.Add(image);
+                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                await MapPage.UpdateImages();
+            });
 
         public DelegateCommand<string> PhoneCall => new DelegateCommand<string>(number => PhoneDialer.Open(number));
 
@@ -381,6 +600,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     var data = args.Pin.Tag;
                     if (data is Core.Entities.Plot plot)
+                    {
+                        SelectedPlot = plot;
                         ShowPlotInformation(plot);
                     else if (data is HubFeature hubContact)
                         ShowHubContactInformation(hubContact);
@@ -562,12 +783,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => currentPosition;
             set
             {
+                if (value == null) return;
                 currentPosition = value;
-                if (Util.ShouldRefresh(weatherLocation, value))
-                {
-                    weatherLocation = value;
-                    Task.Run(() => RefreshWeatherData());
-                }
+                if (Util.ShouldRefresh(weatherLocation, value)) WeatherLocation = value;
             }
         }
 
@@ -576,11 +794,16 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => currentWeather;
             set
             {
+                if (value == null) return;
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
-                var cur = value.Location.HourlySummaries.HourlySummary.ElementAt(0);
+                var cur = value?.Location?.HourlySummaries?.HourlySummary?.ElementAt(0);
+                var today = value?.Location?.DailySummaries?.DailySummary?.ElementAt(0);
+                if (cur == null) return;
                 CurrentWeatherIconSource = cur.TinyWxIcon;
-                CurrentWeatherText = cur.WxText;
+                var text = $"{cur.TempC} °C";
+                if (today != null) text += $" | Rain: {today.precipitationProbability} %";
+                CurrentWeatherText = text;
             }
         }
 
@@ -622,15 +845,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             set => SetProperty(ref gpsLocationUIIsVisible, value);
         }
 
-        public HubsContact HubsContact
-        {
-            get => hubsContact;
-            private set
-            {
-                hubsContact = value;
-                MapPage.SetHubsContact(value);
-            }
-        }
+        public HubsContact HubsContact { get; private set; }
 
         public bool HubsContactUIIsVisible
         {
@@ -652,15 +867,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public InvestigationPlatforms InvestigationPlatforms
-        {
-            get => investigationPlatforms;
-            private set
-            {
-                investigationPlatforms = value;
-                MapPage.SetInvestigationPlatforms(value);
-            }
-        }
+        public InvestigationPlatforms InvestigationPlatforms { get; private set; }
 
         public bool InvestigationPlatformUIIsVisible
         {
@@ -690,23 +897,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             set
             {
                 SetProperty(ref locationPermissionGiven, value);
-                if (value)
-                {
-                    MapPage.EnableMyLocation();
-                    GetUserLocation();
-                }
+                if (value) GetUserLocation();
             }
         }
 
-        public MachineryPoints MachineryPoints
-        {
-            get => machineryPoints;
-            private set
-            {
-                machineryPoints = value;
-                MapPage.SetMachineryPoints(value);
-            }
-        }
+        public MachineryPoints MachineryPoints { get; private set; }
 
         public bool MachineryPointUIIsVisible
         {
@@ -728,7 +923,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public MapPage MapPage { get; set; }
+        //public MapPage MapPage { get; set; }
 
         public bool OptionsIsVisible
         {
@@ -797,12 +992,51 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public CameraPosition CameraPositionUpdated
+        {
+            get => _cameraPositionUpdated;
+            set => SetProperty(ref _cameraPositionUpdated, value);
+        }
+
         public IEnumerable<Core.Entities.Plot> Plots { get; set; }
 
         public Core.Entities.Plot SelectedPlot
         {
             get => selectedPlot;
-            set => SetProperty(ref selectedPlot, value);
+            set
+            {
+                if (value == selectedPlot) return;
+                SetProperty(ref selectedPlot, value);
+                if (value != null)
+                {
+                    LoadPlotData(value);
+                }
+
+                var cost = SelectedPlot?.BemData?.AverageCost;
+                var yield = SelectedPlot?.BemData?.AverageYield;
+                var profit = SelectedPlot?.BemData?.AverageProfit;
+                var income = SelectedPlot?.BemData?.AverageIncome;
+
+                CurrentPlotCost = cost == null ? "-" : cost.ToString();
+                CurrentPlotYield = yield == null ? "-" : yield.ToString();
+                CurrentPlotProfit = profit == null ? "-" : profit.ToString();
+                CurrentPlotIncome = income == null ? "-" : income.ToString();
+
+                MapPage.UpdateImages();
+            } 
+        }
+
+        public async void LoadPlotData(Core.Entities.Plot plot)
+        {
+            bool updatedPlot = false;
+            if (plot.BemData == null)
+            {
+                plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
+                    plot.Position.Longitude, plot.CropType);
+                updatedPlot = true;
+            }
+
+            if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
         }
 
         public bool SelectLocationUIIsVisible
@@ -822,6 +1056,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => weatherLocation;
             set
             {
+                if (value == null) return;
                 weatherLocation = value;
                 Task.Run(() => RefreshWeatherData());
             }
@@ -832,10 +1067,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                 () =>
                 {
                     SelectedPlot.Delineation = CurrentDelineation;
-                    AppDataService.UpdatePlot(SelectedPlot);
+                    AppDataService.UpdatePlotAsync(SelectedPlot);
                     CurrentDelineation = new List<Position>();
                     CurrentMapTask = MapTask.Default;
-                    MapPage.EndDelineation();
+                    EndDelineation();
                 });
 
         public DelegateCommand DelineationCancel =>
@@ -844,7 +1079,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     CurrentDelineation = new List<Position>();
                     CurrentMapTask = MapTask.Default;
-                    MapPage.EndDelineation();
+                    EndDelineation();
                 });
 
         public DelegateCommand DelineationUndo =>
@@ -852,13 +1087,38 @@ namespace Agrotutor.Modules.Map.ViewModels
                 () =>
                 {
                     CurrentDelineation.RemoveAt(CurrentDelineation.Count - 1);
-                    MapPage.RemoveLastDelineationPoint();
+                    RemoveLastDelineationPoint();
                 });
+
+
+        //public void RemoveLastDelineationPoint()
+        //{
+        //    if (DelineationPins.Count > 0)
+        //    {
+        //        var position = DelineationPins.Count - 1;
+        //        DelineationPins.RemoveAt(position);
+        //        this.map.Pins.RemoveAt(position);
+        //        this.DelineationPolygon.Positions.RemoveAt(position);
+        //    }
+
+        //    this.map.Polygons.Clear();
+        //    if (DelineationPolygon.Positions.Count > 2)
+        //    {
+        //        this.map.Polygons.Add(DelineationPolygon);
+
+        //    }
+        //}
 
         public bool DelineationUIIsVisible
         {
             get => delineationUIIsVisible;
             set => SetProperty(ref delineationUIIsVisible, value);
+        }
+
+        public MapSpan Region
+        {
+            get => _region;
+            set => SetProperty(ref _region, value);
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
@@ -867,17 +1127,212 @@ namespace Agrotutor.Modules.Map.ViewModels
             base.OnNavigatedFrom(parameters);
         }
 
-        public override void OnNavigatedTo(INavigationParameters parameters)
+        public void RemoveHubsContact()
         {
-            Task.Run(() => EnableUserLocation());
-            Task.Run(() => LoadPlots());
-            Task.Run(() => LoadMapData());
-            base.OnNavigatedTo(parameters);
+            foreach (var pin in Pins.ToList().Where(x => x.Tag is HubFeature)) Pins.Remove(pin);
         }
 
-        public void SetView(MapPage View)
+        public void RemoveInvestigationPlatforms()
         {
-            MapPage = View;
+            foreach (var pin in Pins.ToList().Where(x => x.Tag is IPFeature)) Pins.Remove(pin);
+        }
+
+
+        public void RemoveMachineryPoints()
+        {
+            foreach (var pin in Pins.ToList().Where(x => x.Tag is MPFeature)) Pins.Remove(pin);
+        }
+
+        private async Task PlotsSelectionChanged(bool b)
+        {
+            if (b)
+                await AddPlots();
+            else
+                RemovePlots();
+            await Task.CompletedTask;
+        }
+
+        private void RemovePlots()
+        {
+            foreach (var pin in Pins.ToList().Where(x => x.Tag is Core.Entities.Plot)) Pins.Remove(pin);
+        }
+
+        private async Task HubContactsSelectionChanged(bool b)
+        {
+            if (b)
+                await RenderHubsContact();
+            else
+                RemoveHubsContact();
+            await Task.CompletedTask;
+        }
+
+        private async Task MachineryPointsSelectionChanged(bool b)
+        {
+            if (b)
+                await RenderMachineryPoints();
+            else
+                RemoveMachineryPoints();
+            await Task.CompletedTask;
+        }
+
+        private async Task InvestigationPlatformsSelectionChanged(bool b)
+        {
+            if (b)
+                await RenderInvestigationPlatforms();
+            else
+                RemoveInvestigationPlatforms();
+            await Task.CompletedTask;
+        }
+
+        private void EndDelineation()
+        {
+            RemoveDelineationPins();
+
+            RemoveDelineationPolygon();
+        }
+
+        private void RemoveDelineationPins()
+        {
+            foreach (var pin in Pins.ToList().Where(x => x.Tag is Position))
+            {
+                Pins.Remove(pin);
+            }
+        }
+
+        private void RemoveDelineationPolygon()
+        {
+            if (CurrentPolygon != null) Polygons.Remove(CurrentPolygon);
+            foreach (var polygon in Polygons.ToList().Where(x => x.Tag is Position))
+            {
+                Polygons.Remove(polygon);
+            }
+        }
+
+        public Pin CurrentPin { get; set; }
+
+        public Polygon CurrentPolygon { get; set; }
+
+        private void RemoveLastDelineationPoint()
+        {
+            if (CurrentPin != null) Pins.Remove(CurrentPin);
+            RenderDelineationPolygon();
+        }
+
+        private async Task PageAppearing()
+        {
+            
+            
+            Profiler.Start(Constants.MapData);
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
+            {
+                await LoadMapData();
+            }
+
+            Profiler.Stop(Constants.MapData);
+
+
+            Profiler.Start(Constants.UserLocation);
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
+            {
+                if (Preferences.ContainsKey(Constants.Lat) && Preferences.ContainsKey(Constants.Lng))
+                {
+                    var lat = Preferences.Get(Constants.Lat, 0.0);
+                    var lng = Preferences.Get(Constants.Lng, 0.0);
+                    if (lat > 0 && lng > 0)
+                    {
+                        Region = MapSpan.FromCenterAndRadius(
+                            new Xamarin.Forms.GoogleMaps.Position(lat, lng),
+                            Distance.FromKilometers(2));
+                    }
+                    else
+                    {
+                        await EnableUserLocation();
+                    }
+                }
+                else
+                {
+                    await EnableUserLocation();
+                }
+            }
+
+            Profiler.Stop(Constants.UserLocation);
+
+
+            Profiler.Start(Constants.Plots);
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
+            {
+                await LoadPlots();
+            }
+
+            Profiler.Stop(Constants.Plots);
+        }
+
+
+        public async Task RenderHubsContact()
+        {
+            if (HubsContact == null) return;
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading hub contact..."))
+            {
+                foreach (var hubContact in HubsContact.Features)
+                {
+                    var pin = new Pin
+                    {
+                        Position = new Xamarin.Forms.GoogleMaps.Position(
+                            hubContact.Geometry.Coordinates[1],
+                            hubContact.Geometry.Coordinates[0]),
+                        Tag = hubContact,
+                        Label = hubContact.Properties.Hub,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color) PrismApplicationBase.Current.Resources["SecondaryOrange"])
+                    };
+                    Pins.Add(pin);
+                }
+            }
+        }
+
+        public async Task RenderInvestigationPlatforms()
+        {
+            if (InvestigationPlatforms == null) return;
+
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading investigation platforms..."))
+            {
+                foreach (var investigationPlatform in InvestigationPlatforms.Features)
+                {
+                    var pin = new Pin
+                    {
+                        Position = new Xamarin.Forms.GoogleMaps.Position(
+                            investigationPlatform.Geometry.Coordinates[1],
+                            investigationPlatform.Geometry.Coordinates[0]),
+                        Tag = investigationPlatform,
+                        Label = investigationPlatform.Properties.Abrviacion,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color) PrismApplicationBase.Current.Resources["SecondaryGreenBrown"])
+                    };
+                    Pins.Add(pin);
+                }
+            }
+        }
+
+        public async Task RenderMachineryPoints()
+        {
+            if (MachineryPoints == null) return;
+
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading machinery points..."))
+            {
+                foreach (var machineryPoint in MachineryPoints.Features)
+                {
+                    var pin = new Pin
+                    {
+                        Position = new Xamarin.Forms.GoogleMaps.Position(
+                            machineryPoint.Geometry.Coordinates[1], machineryPoint.Geometry.Coordinates[0]),
+                        Tag = machineryPoint,
+                        Label = machineryPoint.Properties.Localidad,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color) PrismApplicationBase.Current.Resources["SecondaryDarkGreen"])
+                    };
+                    Pins.Add(pin);
+                }
+            }
         }
 
         private async void CreatePlot()
@@ -916,63 +1371,52 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        private void EnableUserLocation()
+        private async Task EnableUserLocation()
         {
-            var text = StringLocalizer.GetString("location_permission_prompt_title");
-            Device.BeginInvokeOnMainThread(
-                async () =>
-                {
-                    LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
-                    if (LocationPermissionGiven)
-                    {
-                        MapPage.EnableMyLocation();
-                        GetUserLocation();
-                    }
-                    else
-                    {
-                        var LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
-                            Permission.Location,
-                            StringLocalizer.GetString("location_permission_prompt_title"),
-                            StringLocalizer.GetString("location_permission_prompt_message"),
-                            StringLocalizer.GetString("location_permission_prompt_accept"),
-                            StringLocalizer.GetString("location_permission_prompt_deny"),
-                            StringLocalizer.GetString(
-                                "location_permission_prompt_deny_message"));
+            LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
+            if (LocationPermissionGiven)
+            {
+                await GetUserLocation();
+            }
+            else
+            {
+                LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
+                    Permission.Location,
+                    StringLocalizer.GetString("location_permission_prompt_title"),
+                    StringLocalizer.GetString("location_permission_prompt_message"),
+                    StringLocalizer.GetString("location_permission_prompt_accept"),
+                    StringLocalizer.GetString("location_permission_prompt_deny"),
+                    StringLocalizer.GetString(
+                        "location_permission_prompt_deny_message"));
 
-                        if (LocationPermissionGiven)
-                        {
-                            MapPage.EnableMyLocation();
-                            GetUserLocation();
-                        }
-                    }
-                });
+                if (LocationPermissionGiven) await GetUserLocation();
+            }
         }
 
-        private async void GetUserLocation()
+        private async Task GetUserLocation()
         {
-            var geolocationRequest = new GeolocationRequest
-            {
-                DesiredAccuracy = Constants.MainMapLocationAccuracy
-            };
             var location = await Geolocation.GetLastKnownLocationAsync();
-            WeatherLocation = location;
 
-            do
+            if (location != null)
             {
+                WeatherLocation = location;
                 CurrentPosition = Position.FromLocation(location);
                 if (CurrentMapTask == MapTask.CreatePlotByGPS) AddPlotPosition = CurrentPosition;
-
-                await Task.Delay(Constants.MainMapLocationRefreshPeriod * 1000);
-                location = await Geolocation.GetLocationAsync(geolocationRequest);
-            } while (ListenForLocation);
+                Region = MapSpan.FromCenterAndRadius(
+                    new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude),
+                    Distance.FromKilometers(2));
+                LocationEnabled = true;
+            }
         }
 
-        private async void LoadMapData()
+        private async Task LoadMapData()
         {
             HubsContact = await HubsContact.FromEmbeddedResource();
-            InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
+            //RenderHubsContact();
             MachineryPoints = await MachineryPoints.FromEmbeddedResource();
-
+            //RenderMachineryPoints();
+            InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
+            //RenderInvestigationPlatforms();
             PlotsLayerVisible = Preferences.Get(Constants.PlotsLayerVisiblePreference, true);
             PlotDelineationsLayerVisible = Preferences.Get(Constants.PlotDelineationsLayerVisiblePreference, true);
             HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
@@ -982,15 +1426,37 @@ namespace Agrotutor.Modules.Map.ViewModels
             OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
         }
 
-        private async void LoadPlots()
+        private async Task LoadPlots()
         {
-            Plots = await AppDataService.GetAllPlots();
-            MapPage?.AddPlots(Plots);
-            foreach (var plot in Plots.Where(plot => plot.BemData == null))
+            Plots = await AppDataService.GetAllPlotsAsync();
+            var plots = Plots.ToList();
+            await AddPlots();
+            foreach (var plot in plots.Where(plot => plot.BemData == null))
             {
                 if (plot.Position == null) continue;
                 plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
-                await AppDataService.UpdatePlot(plot);
+                await AppDataService.UpdatePlotAsync(plot);
+            }
+        }
+
+        private async Task AddPlots()
+        {
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Rendering plots..."))
+            {
+                Plots = await AppDataService.GetAllPlotsAsync();
+                var plots = Plots.ToList();
+                foreach (var pin in from plot in plots
+                    where plot.Position != null
+                    select new Pin
+                    {
+                        Position = plot.Position.ForMap(),
+                        Label = plot.Name ?? "",
+                        Tag = plot,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color) PrismApplicationBase.Current.Resources["PrimaryGreen"])
+                    })
+
+                    Pins.Add(pin);
             }
         }
 
@@ -1043,9 +1509,9 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 case MapTask.DelineationNotEnoughPoints:
                     if (oldValue != MapTask.DelineationEnoughPoints)
-                        MapPage.ZoomToPosition(selectedPlot.Position.ForMap());
+                        //MapPage.ZoomToPosition(selectedPlot.Position.ForMap());
 
-                    DelineationUIIsVisible = true;
+                        DelineationUIIsVisible = true;
                     break;
             }
         }
@@ -1074,5 +1540,12 @@ namespace Agrotutor.Modules.Map.ViewModels
             SelectedPlot = data;
             PlotDetailIsVisible = true;
         }
+
+        public void SetView(MapPage mapPage)
+        {
+            this.MapPage = mapPage;
+        }
+
+        public MapPage MapPage { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Plot.ViewModels
+namespace Agrotutor.Modules.Plot.ViewModels
 {
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
@@ -30,17 +30,19 @@
             private set => SetProperty(ref this._plot, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Plot"))
             {
                 parameters.TryGetValue<Plot>("Plot", out var plot);
                 Plot = plot;
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

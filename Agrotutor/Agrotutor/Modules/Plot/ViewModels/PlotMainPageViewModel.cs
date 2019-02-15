@@ -1,4 +1,4 @@
-﻿using Agrotutor.Modules.Ciat.ViewModels;
+using Agrotutor.Modules.Ciat.ViewModels;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
@@ -29,7 +29,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    if (Plot.BemData.Cost == null)
+                    if (Plot == null || Plot.BemData == null || Plot.BemData.Cost == null)
                     {
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
@@ -42,9 +42,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     }
 
                     NavigationParameters param = new NavigationParameters
-                                                 {
-                                                     { "Cost", Plot.BemData.Cost }
-                                                 };
+                    {
+                        { "Cost", Plot.BemData.Cost }
+                    };
                     await this.NavigationService.NavigateAsync("ViewCostPage", param);
                 });
 
@@ -52,7 +52,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    if (Plot.BemData.Income == null)
+                    if (Plot == null || Plot.BemData == null || Plot.BemData.Income == null)
                     {
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
@@ -75,7 +75,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    if (Plot.BemData.Profit == null)
+                    if (Plot == null || Plot.BemData == null || Plot.BemData.Profit == null)
                     {
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
@@ -98,7 +98,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    if (Plot.BemData.Yield == null)
+                    if (Plot == null || Plot.BemData == null || Plot.BemData.Yield == null)
                     {
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
@@ -152,11 +152,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
             set => SetProperty(ref this.plot, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Plot"))
             {
@@ -170,6 +171,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     this.NavigationService.GoBackAsync();
                 }
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

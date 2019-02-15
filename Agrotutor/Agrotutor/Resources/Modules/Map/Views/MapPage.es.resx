@@ -117,49 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_save_and_new" xml:space="preserve">
-    <value>Save</value>
+  <data name="plot_detail_actions" xml:space="preserve">
+    <value>Acciones:</value>
   </data>
-  <data name="hint_activities" xml:space="preserve">
-    <value>Add parcel activities</value>
+  <data name="plot_detail_additional_title" xml:space="preserve">
+    <value>Información adicional (clic para detalles)</value>
   </data>
-  <data name="hint_choose_location" xml:space="preserve">
-    <value>Choose on map</value>
+  <data name="plot_detail_add_activity" xml:space="preserve">
+    <value>Agregar actividad</value>
   </data>
-  <data name="hint_crop" xml:space="preserve">
-    <value>Type of crop</value>
+  <data name="plot_detail_calendar" xml:space="preserve">
+    <value>Calendario de cultivo</value>
   </data>
-  <data name="hint_gps_location" xml:space="preserve">
-    <value>Use GPS</value>
+  <data name="plot_detail_climate" xml:space="preserve">
+    <value>Clima idóneo</value>
   </data>
-  <data name="hint_location" xml:space="preserve">
-    <value>Select location of the parcel</value>
+  <data name="plot_detail_delineate" xml:space="preserve">
+    <value>Delinear la parcela</value>
   </data>
-  <data name="hint_management_info" xml:space="preserve">
-    <value>Add parcel management information</value>
+  <data name="plot_detail_historical_title" xml:space="preserve">
+    <value>Información histórica</value>
   </data>
-  <data name="hint_parcel_name" xml:space="preserve">
-    <value>Plot name</value>
+  <data name="plot_detail_irrigation" xml:space="preserve">
+    <value>Riego</value>
   </data>
-  <data name="hint_parcel_name_1" xml:space="preserve">
-    <value>(for identification, for example: Corn 1)</value>
+  <data name="plot_detail_maturity" xml:space="preserve">
+    <value>Tipo de madurez</value>
   </data>
-  <data name="hint_planting_date" xml:space="preserve">
-    <value>Date of sowing</value>
+  <data name="plot_detail_picture" xml:space="preserve">
+    <value>Agregue una foto</value>
   </data>
-  <data name="hint_technologies" xml:space="preserve">
-    <value>Add used technologies</value>
+  <data name="plot_detail_planting_date" xml:space="preserve">
+    <value>Fecha de siembra:</value>
   </data>
-  <data name="madurez" xml:space="preserve">
-    <value>Maturity type of the cultivar</value>
-  </data>
-  <data name="select" xml:space="preserve">
-    <value>select</value>
-  </data>
-  <data name="tipo_clima" xml:space="preserve">
-    <value>Climate type of the cultivar</value>
-  </data>
-  <data name="title" xml:space="preserve">
-    <value>Add parcel</value>
+  <data name="plot_detail_video" xml:space="preserve">
+    <value>Agregue un vídeo</value>
   </data>
 </root>

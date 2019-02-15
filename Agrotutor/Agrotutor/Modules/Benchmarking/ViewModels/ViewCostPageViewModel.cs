@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Benchmarking.ViewModels
+namespace Agrotutor.Modules.Benchmarking.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +11,8 @@
 
     public class ViewCostPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string CostsParameterName = "BENCHMARKING_COST_PARAMETER";
+
         private double avg;
 
         private List<Cost> datasets;
@@ -41,7 +43,7 @@
                 SetProperty(ref this.datasets, value);
                 Min = value.Select(x => double.Parse(x.ProductionCost)).Min();
                 Max = value.Select(x => double.Parse(x.ProductionCost)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.ProductionCost)).Average(), 2);
+                Avg = Math.Round(value.Select(x => double.Parse(x.ProductionCost)).Average(), 0);
             }
         }
 
@@ -57,18 +59,19 @@
             set => SetProperty(ref this.min, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Cost"))
+            if (parameters.ContainsKey(CostsParameterName))
             {
-                parameters.TryGetValue("Cost", out List<Cost> cost);
+                parameters.TryGetValue(CostsParameterName, out List<Cost> cost);
                 if (cost != null)
                 {
-                    this.datasets = cost;
+                    this.Datasets = cost;
                 }
                 else
                 {
@@ -79,6 +82,7 @@
             {
                 NavigationService.GoBackAsync();
             }
+            base.OnNavigatingTo(parameters);
         }
     }
 }

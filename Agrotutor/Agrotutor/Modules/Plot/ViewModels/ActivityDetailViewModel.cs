@@ -1,4 +1,6 @@
-﻿
+
+
+using Agrotutor.Core.Persistence;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
@@ -14,6 +16,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
     public class ActivityDetailViewModel : ViewModelBase, INavigatedAware
     {
+        private IAppDataService _appDataService;
+
         private double _activityCost;
 
         private DateTime _activityDate;
@@ -43,7 +47,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         private double _weightOfSeeds;
 
-        public ActivityDetailViewModel(INavigationService navigationService,
+        public ActivityDetailViewModel(INavigationService navigationService, IAppDataService appDataService,
             IStringLocalizer<ActivityDetailViewModel> localizer) : base(navigationService, localizer)
         {
             ListSownVariety = new List<string>
@@ -52,6 +56,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 "Mejorado"
             };
             ActivityDate = DateTime.Now;
+            _appDataService = appDataService;
         }
 
         /// <summary>
@@ -198,9 +203,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
             };
             if (Plot.Activities == null) Plot.Activities = new List<Activity>();
             Plot.Activities.Add(activity);
-            //TODO save to DB ? 
+            _appDataService.UpdatePlotAsync(Plot);
 
-            NavigationService.NavigateAsync("myapp:///MapPage");
+            NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
         });
 
         /// <summary>
@@ -229,8 +234,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
         ///     The OnNavigatedFrom
         /// </summary>
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
         public Plot Plot
@@ -243,7 +249,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
         ///     The OnNavigatedTo
         /// </summary>
         /// <param name="parameters">The <see cref="NavigationParameters" /></param>
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Plot"))
             {
@@ -309,6 +315,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     ActivityName = ActivityDynamicUIVisibility.ActivityName;
                 }
             }
+            base.OnNavigatedTo(parameters);
         }
     }
 }

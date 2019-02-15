@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core.Cimmyt.HubsContact
+﻿using XF.Material.Forms.UI.Dialogs;
+
+namespace Agrotutor.Core.Cimmyt.HubsContact
 {
     using System;
     using System.Collections.Generic;
@@ -27,18 +29,21 @@
 
         public static async Task<HubsContact> FromEmbeddedResource()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "Agrotutor.Resources.AppData.hubs_contact.geojson";
-
-            string result;
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading hub contacts..."))
             {
-                result = await reader.ReadToEndAsync();
-            }
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                string resourceName = "Agrotutor.Resources.AppData.hubs_contact.geojson";
 
-            return FromJson(result);
+                string result;
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    result = await reader.ReadToEndAsync();
+                }
+
+                return FromJson(result);
+            }
         }
 
     }

@@ -41,12 +41,18 @@ namespace Agrotutor.Core
             containerRegistry.GetContainer().Register(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
         }
 
+        public static void RegisterCameraService(this IContainerRegistry containerRegistry)
+        {
+            containerRegistry.Register<ICameraService, CameraService>();
+        }
+
         public static void RegisterPages(this IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<CitationPage, CitationPageViewModel>();
             containerRegistry.RegisterForNavigation<LinksPage, LinksPageViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
+            containerRegistry.RegisterForNavigation<WebContentPage, WebContentPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
         }
 

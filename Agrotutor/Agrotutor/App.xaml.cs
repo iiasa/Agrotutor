@@ -1,4 +1,4 @@
-﻿using Agrotutor.Core;
+using Agrotutor.Core;
 using Agrotutor.Core.Localization;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
@@ -36,7 +36,11 @@ namespace Agrotutor
             InitializeComponent();
             Material.Init(this);
             InitializeLocalizer();
-
+            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+            if (permissionStatus != PermissionStatus.Granted)
+            {
+                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+            }
             await NavigationService.NavigateAsync("NavigationPage/MapPage");
         }
 
@@ -55,6 +59,8 @@ namespace Agrotutor
             containerRegistry.RegisterLocalization();
             containerRegistry.RegisterPersistence();
             containerRegistry.RegisterPages();
+            containerRegistry.RegisterCameraService();
+            containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
             containerRegistry.RegisterTileService();
         }
 

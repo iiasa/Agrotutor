@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Modules.Weather.ViewModels
+namespace Agrotutor.Modules.Weather.ViewModels
 {
     using System;
     using System.Linq;
@@ -56,12 +56,20 @@
         private WeatherForecast _weatherForecast;
         private bool _showForecastIsVisible;
         private bool _showHistoryIsVisible;
+        private bool _historyIsLoading;
 
         public WeatherPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
             ShowHistoryIsVisible = false;
             ShowForecastIsVisible = false;
+            HistoryIsLoading = true;
+        }
+
+        public bool HistoryIsLoading
+        {
+            get => _historyIsLoading;
+            set => SetProperty(ref _historyIsLoading, value);
         }
 
         public string CloudCover
@@ -138,14 +146,14 @@
             new DelegateCommand(() =>
             {
                 var param = new NavigationParameters { { "Forecast", WeatherForecast } };
-                NavigationService.NavigateAsync("DailyForecastPage", param);
+                NavigationService.NavigateAsync("WeatherForecastPage", param);
             });
 
         public DelegateCommand ShowHistory =>
             new DelegateCommand(() =>
             {
                 var param = new NavigationParameters { { "WeatherHistory", WeatherHistory } };
-                NavigationService.NavigateAsync("WeatherHistorySelection", param);
+                NavigationService.NavigateAsync("WeatherHistoryPage", param);
             });
 
         /// <summary>
@@ -228,11 +236,12 @@
 
         public Location Location { get; set; }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Location"))
             {
@@ -255,6 +264,7 @@
                 else Task.Run(() => LoadForecast());
             }
             else Task.Run(() => LoadForecast());
+            base.OnNavigatedTo(parameters);
         }
 
         private async void LoadData()
@@ -264,6 +274,7 @@
                 WeatherHistory = await WeatherHistory.Download(Location.Latitude,
                     Location.Longitude);
             }
+            HistoryIsLoading = false;
         }
 
         private async void LoadForecast()

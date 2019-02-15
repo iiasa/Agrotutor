@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.iOS
+﻿using Xamarin;
+
+namespace Agrotutor.iOS
 {
     using Foundation;
     using UIKit;
@@ -21,6 +23,7 @@
             global::Xamarin.Forms.Forms.Init();
 
             Xamarin.FormsGoogleMaps.Init("AIzaSyCm-_Fc-5-vvbhTPQg38LlCreorYtsC2Us");
+            FormsGoogleMapsBindings.Init();
             XF.Material.iOS.Material.Init();
             LoadApplication(new App(new iOSInitializer()));
 

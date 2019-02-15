@@ -16,6 +16,7 @@
         {
             containerRegistry.RegisterForNavigation<WeatherPage, WeatherPageViewModel>();
             containerRegistry.RegisterForNavigation<WeatherForecastPage, WeatherForecastPageViewModel>();
+            containerRegistry.RegisterForNavigation<WeatherHistoryPage, WeatherHistoryPageViewModel>();
         }
     }
 }

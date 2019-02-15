@@ -9,7 +9,6 @@
         public ViewYieldPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

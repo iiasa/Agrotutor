@@ -1,4 +1,4 @@
-﻿using Agrotutor.Modules.GeoWiki;
+using Agrotutor.Modules.GeoWiki;
 
 namespace Agrotutor.Modules.Benchmarking.ViewModels
 {
@@ -79,11 +79,12 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
             set => SetProperty(ref this.plot, value);
         }
 
-        public void OnNavigatedFrom(NavigationParameters parameters)
+        public override void OnNavigatedFrom(INavigationParameters parameters)
         {
+            base.OnNavigatedFrom(parameters);
         }
 
-        public void OnNavigatedTo(NavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             if (parameters.ContainsKey("Plot"))
             {
@@ -98,6 +99,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
                     NavigationService.GoBackAsync();
                 }
             }
+            base.OnNavigatedTo(parameters);
         }
 
         private async Task<BenchmarkingInformation> DownloadData(double parcelLatitude, double parcelLongitude)

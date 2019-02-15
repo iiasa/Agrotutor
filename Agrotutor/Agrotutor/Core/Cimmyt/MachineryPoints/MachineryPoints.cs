@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core.Cimmyt.MachineryPoints
+﻿using XF.Material.Forms.UI.Dialogs;
+
+namespace Agrotutor.Core.Cimmyt.MachineryPoints
 {
     using System;
     using System.Collections.Generic;
@@ -25,18 +27,21 @@
 
         public static async Task<MachineryPoints> FromEmbeddedResource()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string resourceName = "Agrotutor.Resources.AppData.machinery_points.geojson";
-
-            string result;
-
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading machinery points..."))
             {
-                result = await reader.ReadToEndAsync();
-            }
+                Assembly assembly = Assembly.GetExecutingAssembly();
+                string resourceName = "Agrotutor.Resources.AppData.machinery_points.geojson";
 
-            return FromJson(result);
+                string result;
+
+                using (Stream stream = assembly.GetManifestResourceStream(resourceName))
+                using (StreamReader reader = new StreamReader(stream))
+                {
+                    result = await reader.ReadToEndAsync();
+                }
+
+                return FromJson(result);
+            }
         }
 
         public static MachineryPoints FromJson(string json)

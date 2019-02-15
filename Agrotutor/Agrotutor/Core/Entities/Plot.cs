@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core.Entities
+﻿using Agrotutor.Modules.Ciat.Types;
+
+namespace Agrotutor.Core.Entities
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -37,6 +39,10 @@
         public virtual BenchmarkingInformation BenchmarkingInformation { get; set; }
 
         public virtual PriceForecast PriceForecast { get; set; }
+
+        public virtual CiatData CiatData { get; set; }
+
+        public virtual List<MediaItem> MediaItems { get; set; }
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 

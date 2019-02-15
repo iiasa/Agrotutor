@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Core.Persistence
+namespace Agrotutor.Core.Persistence
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -11,14 +11,14 @@
 
         void EnableDetectChanges();
 
-        Task AddPlot(Plot plot);
+        Task AddPlotAsync(Plot plot);
 
-        Task UpdatePlot(Plot plot);
+        Task UpdatePlotAsync(Plot plot);
 
-        Task RemovePlot(Plot plot);
+        Task RemovePlotAsync(Plot plot);
 
-        Task<IEnumerable<Plot>> GetAllPlots();
+        Task<IEnumerable<Plot>> GetAllPlotsAsync();
 
-        Task<Plot> GetPlot(int id);
+        Task<Plot> GetPlotAsync(int id);
     }
 }

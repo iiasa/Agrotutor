@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.Modules.Plot.ViewModels
+using Xamarin.Essentials;
+using XF.Material.Forms.UI.Dialogs;
+
+namespace Agrotutor.Modules.Plot.ViewModels
 {
     using System;
     using System.Collections.Generic;
@@ -23,6 +26,7 @@
         private Plot _plot;
 
         private DateTime plantingDate;
+        private bool savingPlot;
 
         public AddPlotPageViewModel(
             INavigationService navigationService,
@@ -42,6 +46,9 @@
 
         public IAppDataService AppDataService { get; }
 
+        public bool SavingPlot { get => savingPlot; set => SetProperty(ref savingPlot, value); }
+
+
         public DateTime PlantingDate
         {
             get => this.plantingDate;
@@ -50,19 +57,25 @@
 
         public DelegateCommand ClickSave =>
             new DelegateCommand(
-                async() =>
+                async () =>
                 {
-                    // Plot.Uploaded = (int)DatasetUploadStatus.ChangesOnDevice; todo: add this?
-                    Plot.Activities = new List<Activity>
-                      {
-                          new Activity
-                          {
-                              ActivityType = ActivityType.Sowing,
-                              Date = PlantingDate
-                          }
-                      };
-                    await NavigationService.NavigateAsync("myapp:///MainPage");
-                    await AppDataService.AddPlot(Plot);
+                    using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading..."))
+                    {
+                        SavingPlot = true;
+                        Plot.Activities = new List<Activity>
+                        {
+                            new Activity
+                            {
+                                ActivityType = ActivityType.Sowing,
+                                Date = PlantingDate
+                            }
+                        };
+                        await AppDataService.AddPlotAsync(Plot);
+                        SavingPlot = false;
+                        //MainThread.BeginInvokeOnMainThread(async () =>
+                        //    await NavigationService.NavigateAsync("app:///NavigationPage/MainPage"));
+                    }
+                    await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
         public List<string> ClimateTypes { get; } = new List<string>

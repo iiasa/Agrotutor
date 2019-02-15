@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap;assembly=Agrotutor"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
-     x:Class="Agrotutor.Modules.Map.Views.MapPage">
+<ContentPage
+    x:Class="Agrotutor.Modules.Map.Views.MapPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+ xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap;assembly=Agrotutor"
+    xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+    xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
+    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -17,11 +23,11 @@
                         </OnPlatform>
                     </RowDefinition.Height>
                 </RowDefinition>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
                 <RowDefinition>
                     <RowDefinition.Height>
                         <OnPlatform x:TypeArguments="GridLength">
@@ -32,48 +38,89 @@
                 </RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="2*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <customMap:CustomMap
-            x:Name="map" MapType="Hybrid"
-            VerticalOptions="FillAndExpand"  InitialCameraUpdate="20,-100,5" ShowTileLayer="{Binding ShowTileLayer}"
-            Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" Grid.RowSpan="5"
-            MapClicked="Handle_MapClicked" MapLongClicked="Handle_MapLongClicked"
-            PinClicked="Handle_PinClicked" />
-            
-            <ContentView
-            Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" 
-            HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
-            IsVisible="{Binding ShowWeatherWidget}">
-                <Frame BackgroundColor="Azure" Opacity="0.75" Padding="2" HorizontalOptions="CenterAndExpand">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                        <Image Source="{Binding CurrentWeatherIconSource}" HeightRequest="24" WidthRequest="24" />
+                ShowTileLayer="{Binding ShowTileLayer}"
+                x:Name="map"
+                Grid.Row="0"
+                Grid.RowSpan="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="7"
+                MapClicked="Handle_MapClicked"
+                MapLongClicked="Handle_MapLongClicked"
+                MapType="Hybrid"
+                MyLocationEnabled="{Binding LocationEnabled}"
+                PinClicked="Handle_PinClicked"
+                VerticalOptions="FillAndExpand">
+                <googleMaps:Map.Behaviors>
+                    <bindings:BindingPolygonsBehavior Value="{Binding Polygons}" />
+                    <bindings:UpdateRegionBehavior Region="{Binding Region}" />
+                    <bindings:BindingPinsBehavior Value="{Binding Pins}" />
+                </googleMaps:Map.Behaviors>
+            </customMap:CustomMap>
+
+            <ContentView 
+                Grid.Row="1"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Margin="13"
+                HeightRequest="38"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding ShowWeatherWidget}">
+                <Frame
+                    Padding="2"
+                    BackgroundColor="Azure"
+                    HorizontalOptions="CenterAndExpand"
+                    Opacity="0.75">
+                    <StackLayout
+                        Padding="8,0,8,0"
+                        HorizontalOptions="CenterAndExpand"
+                        Orientation="Horizontal">
+                        <Image
+                            HeightRequest="24"
+                            Source="{Binding CurrentWeatherIconSource}"
+                            WidthRequest="24" />
                         <Label Text="{Binding CurrentWeatherText}" VerticalOptions="CenterAndExpand" />
                     </StackLayout>
                     <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ShowWeather}"/>
+                        <TapGestureRecognizer Command="{Binding ShowWeather}" />
                     </Frame.GestureRecognizers>
                 </Frame>
             </ContentView>
-            
-            <Frame BackgroundColor="Azure" Opacity="0.75" Padding="0"
-            Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="3" 
-            HorizontalOptions="CenterAndExpand" Margin="13" HeightRequest="38"
-            IsVisible="{Binding CurrentMapTaskHintIsVisible}">
+
+            <Frame
+                Grid.Row="3"
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Margin="13"
+                Padding="0"
+                BackgroundColor="Azure"
+                HeightRequest="38"
+                HorizontalOptions="CenterAndExpand"
+                IsVisible="{Binding CurrentMapTaskHintIsVisible}"
+                Opacity="0.75">
                 <StackLayout>
-                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" Margin="8" Text="{Binding CurrentMapTaskHint}"/>
+                    <Label
+                        Margin="8"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding CurrentMapTaskHint}"
+                        VerticalOptions="Center" />
                 </StackLayout>
             </Frame>
 
             <ContentView
-                ControlTemplate="{StaticResource LayersButton}" Margin="0,0,0,28"
-                Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2">
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="0,0,0,28"
+                ControlTemplate="{StaticResource LayersButton}">
                 <ContentView.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ShowLayerSwitcher}" />
                 </ContentView.GestureRecognizers>
@@ -83,69 +130,209 @@
                 ControlTemplate="{StaticResource MainMapMenuItems}"
                 Style="{StaticResource MainMapIconsGroup}" />
 
-            <ContentView 
+            <ContentView
                 ControlTemplate="{StaticResource MainMapSelectLocation}"
-                Style="{StaticResource MainMapTaskUIContainer}"
-                IsVisible="{Binding SelectLocationUIIsVisible}" />
+                IsVisible="{Binding SelectLocationUIIsVisible}"
+                Style="{StaticResource MainMapTaskUIContainer}" />
 
-            <ContentView 
+            <ContentView
                 ControlTemplate="{StaticResource MainMapDelineation}"
-                Style="{StaticResource MainMapTaskUIContainer}"
-                IsVisible="{Binding DelineationUIIsVisible}" />
+                IsVisible="{Binding DelineationUIIsVisible}"
+                Style="{StaticResource MainMapTaskUIContainer}" />
 
-            <ContentView 
+            <ContentView
                 ControlTemplate="{StaticResource MainMapGPSLocation}"
-                Style="{StaticResource MainMapTaskUIContainer}"
-                IsVisible="{Binding GPSLocationUIIsVisible}" />
+                IsVisible="{Binding GPSLocationUIIsVisible}"
+                Style="{StaticResource MainMapTaskUIContainer}" />
+
+            <ContentView
+                Grid.Row="0"
+                Grid.RowSpan="7"
+                Grid.Column="0"
+                Grid.ColumnSpan="7"
+                ControlTemplate="{StaticResource BackgroundDimmer}"
+                IsVisible="{Binding DimBackground}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource InvestigationPlatformUI}"
+                IsVisible="{Binding InvestigationPlatformUIIsVisible}"
+                Style="{StaticResource MainMapPopup}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource PlannerUI}"
+                IsVisible="{Binding PlannerUIIsVisible}"
+                Style="{StaticResource MainMapPopup}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource HubContactUI}"
+                IsVisible="{Binding HubsContactUIIsVisible}"
+                Style="{StaticResource MainMapPopup}" />
+
+            <ContentView
+                ControlTemplate="{StaticResource MachineryPointUI}"
+                IsVisible="{Binding MachineryPointUIIsVisible}"
+                Style="{StaticResource MainMapPopup}" />
 
             <ContentView 
-                ControlTemplate="{StaticResource BackgroundDimmer}" 
-                IsVisible="{Binding DimBackground}"
-                Grid.Row="0" Grid.Column="0" 
-                Grid.ColumnSpan="7" Grid.RowSpan="7" />
+                IsVisible="{Binding PlotDetailIsVisible}"
+                Style="{StaticResource MainMapPopup}">
+                <Frame Style="{StaticResource MainMapPopupBackground}">
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Image HeightRequest="20" Source="add.png" />
+                            <Label
+                        FontSize="20"
+                        HorizontalOptions="StartAndExpand"
+                        Text="{Binding SelectedPlot.Name}" />
+
+                        </StackLayout>
+                        <views:Divider />
+                        <ScrollView>
+                            <StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_planting_date}" />
+                                    <Label>Oct. 3, 2018</Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_irrigation}" />
+                                    <Label>Irrigated</Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_maturity}" />
+                                    <Label>Late</Label>
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_climate}" />
+                                    <Label>Hybrid</Label>
+                                </StackLayout>
+
+                                <views:Divider />
+
+                                <ScrollView Margin="5" Orientation="Horizontal">
+                                    <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
+                                </ScrollView>
+
+                                <views:Divider />
+
+                                <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
+
+                                <views:IconWithText
+                            Command="{Binding AddActivityToSelectedPlot}"
+                            IconSource="farmer.png"
+                            IconText="{localization:Translate plot_detail_add_activity}" />
+
+                                <views:IconWithText
+                            Command="{Binding DelineateSelectedPlot}"
+                            IconSource="delineate.png"
+                            IconText="{localization:Translate plot_detail_delineate}" />
+
+                                <views:IconWithText
+                            Command="{Binding AddPictureToSelectedPlot}"
+                            IconSource="photo.png"
+                            IconText="{localization:Translate plot_detail_picture}" />
+
+                                <views:IconWithText
+                            Command="{Binding AddVideoToSelectedPlot}"
+                            IconSource="video.png"
+                            IconText="{localization:Translate plot_detail_video}" />
+
+                                <views:IconWithText
+                            Command="{Binding ShowCalendarForSelectedPlot}"
+                            IconSource="calendar.png"
+                            IconText="{localization:Translate plot_detail_calendar}" />
+                                <views:Divider />
+                                <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
+                                <views:ValueLine
+                            Text="Costs ($/ha):"
+                            Value="{Binding CurrentPlotCost}"
+                            Command="{Binding ShowCurrentPlotCost}"/>
+                                <views:ValueLine
+                            Text="Income ($/ha):"
+                            Value="{Binding CurrentPlotIncome}" 
+                            Command="{Binding ShowCurrentPlotIncome}"/>
+                                <views:ValueLine
+                            Text="Profit ($/ha):"
+                            Value="{Binding CurrentPlotProfit}" 
+                            Command="{Binding ShowCurrentPlotProfit}"/>
+                                <views:ValueLine
+                            Text="Yield (kg/ha):"
+                            Value="{Binding CurrentPlotYield}" 
+                            Command="{Binding ShowCurrentPlotYield}"/>
+                                <views:Divider />
+                                <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
+                                <views:ValueLine
+                            Text="Potential yield (Average kg/ha):"
+                            Value="-" />
+                                <views:ValueLine
+                            Text="Nitrogen needed (kg/ha):"
+                            Value="-" />
+                                <views:ValueLine
+                            Text="Next month trading price (Expected avg $/kg):"
+                            Value="-" />
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+            </ContentView>
 
             <ContentView
-                ControlTemplate="{StaticResource InvestigationPlatformUI}" 
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding InvestigationPlatformUIIsVisible}" />
-
-            <ContentView
-                ControlTemplate="{StaticResource PlannerUI}" 
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding PlannerUIIsVisible}" />
-
-            <ContentView
-                ControlTemplate="{StaticResource HubContactUI}" 
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding HubsContactUIIsVisible}" />
-
-            <ContentView
-                ControlTemplate="{StaticResource MachineryPointUI}" 
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding MachineryPointUIIsVisible}" />
-
-            <ContentView
-                ControlTemplate="{StaticResource ParcelDetailUI}" 
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding PlotDetailIsVisible}" />
-
-            <ContentView 
                 x:Name="AddParcelView"
                 ControlTemplate="{StaticResource AddParcelUI}"
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding AddParcelIsVisible}" />
+                IsVisible="{Binding AddParcelIsVisible}"
+                Style="{StaticResource MainMapPopup}" />
 
-            <ContentView 
+            <ContentView
                 x:Name="LayerSwitcherView"
-                ControlTemplate="{StaticResource LayerSwitcher}"
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding LayerSwitcherIsVisible}" />
+                IsVisible="{Binding LayerSwitcherIsVisible}"
+                Style="{StaticResource MainMapPopup}">
+                <Frame Style="{StaticResource MainMapPopupBackground}">
+                    <StackLayout>
+                        <views:IconWithText IconSource="layers.png" IconText="Layers" />
+                        <ScrollView>
+                            <StackLayout>
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding PlotsLayerVisible}"
+                                    SelectedChangeCommand="{Binding PlotsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource PrimaryGreen}"
+                                    Text="Plots" />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding PlotDelineationsLayerVisible}"
+                                    SelectedChangeCommand="{Binding PlotDelineationsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource PrimaryGreen}"
+                                    Text="Plot delineations" />
+                                <views:Divider />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding HubContactsLayerVisible}"
+                                    SelectedChangeCommand="{Binding HubContactsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource SecondaryOrange}"
+                                    Text="Hub contact" />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding MachineryPointsLayerVisible}"
+                                    SelectedChangeCommand="{Binding MachineryPointsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource SecondaryDarkGreen}"
+                                    Text="Machinery points" />
+                                <ui:MaterialCheckbox
+                                    IsSelected="{Binding InvestigationPlatformsLayerVisible}"
+                                    SelectedChangeCommand="{Binding InvestigationPlatformsSelectionChangedCommand}"
+                                    SelectedColor="{StaticResource SecondaryGreenBrown}"
+                                    Text="Investigation platforms" />
+                                <views:Divider />
+                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />
+                            </StackLayout>
+                        </ScrollView>
+                    </StackLayout>
+                </Frame>
+
+            </ContentView>
 
             <ContentView
                 x:Name="OptionsView"
                 ControlTemplate="{StaticResource MenuUI}"
-                Style="{StaticResource MainMapPopup}"
-                IsVisible="{Binding OptionsIsVisible}" />
+                IsVisible="{Binding OptionsIsVisible}"
+                Style="{StaticResource MainMapPopup}" />
         </Grid>
     </ContentPage.Content>
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 </ContentPage>

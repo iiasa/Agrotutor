@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -124,7 +124,7 @@
     <value>Selecting on the map</value>
   </data>
   <data name="add_parcel_title" xml:space="preserve">
-    <value>Add Parcel</value>
+    <value>Add Plot</value>
   </data>
   <data name="delineation_cancel" xml:space="preserve">
     <value>Cancel</value>
@@ -268,7 +268,7 @@
     <value>Year</value>
   </data>
   <data name="main_menu_add_parcel" xml:space="preserve">
-    <value>Add parcel</value>
+    <value>Add Plot</value>
   </data>
   <data name="main_menu_calendar" xml:space="preserve">
     <value>Calendar</value>
@@ -299,39 +299,6 @@
   </data>
   <data name="options_title" xml:space="preserve">
     <value>Options</value>
-  </data>
-  <data name="plot_detail_actions" xml:space="preserve">
-    <value>Actions:</value>
-  </data>
-  <data name="plot_detail_add_activity" xml:space="preserve">
-    <value>Add activity</value>
-  </data>
-  <data name="plot_detail_calendar" xml:space="preserve">
-    <value>Crop calendar</value>
-  </data>
-  <data name="plot_detail_climate" xml:space="preserve">
-    <value>Ideal climate</value>
-  </data>
-  <data name="plot_detail_delineate" xml:space="preserve">
-    <value>Delineate plot</value>
-  </data>
-  <data name="plot_detail_historical_title" xml:space="preserve">
-    <value>Historical information</value>
-  </data>
-  <data name="plot_detail_irrigation" xml:space="preserve">
-    <value>Irrigation</value>
-  </data>
-  <data name="plot_detail_maturity" xml:space="preserve">
-    <value>Maturity type</value>
-  </data>
-  <data name="plot_detail_picture" xml:space="preserve">
-    <value>Add a picture</value>
-  </data>
-  <data name="plot_detail_planting_date" xml:space="preserve">
-    <value>Planted on</value>
-  </data>
-  <data name="plot_detail_video" xml:space="preserve">
-    <value>Add a video</value>
   </data>
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancel</value>

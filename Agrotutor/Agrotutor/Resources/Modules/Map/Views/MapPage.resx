@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,7 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="welcome" xml:space="preserve">
-    <value>Main Page</value>
+  <data name="plot_detail_actions" xml:space="preserve">
+    <value>Actions:</value>
+  </data>
+  <data name="plot_detail_additional_title" xml:space="preserve">
+    <value>Additional information (click for detail)</value>
+  </data>
+  <data name="plot_detail_add_activity" xml:space="preserve">
+    <value>Add activity</value>
+  </data>
+  <data name="plot_detail_calendar" xml:space="preserve">
+    <value>Crop calendar</value>
+  </data>
+  <data name="plot_detail_climate" xml:space="preserve">
+    <value>Ideal climate</value>
+  </data>
+  <data name="plot_detail_delineate" xml:space="preserve">
+    <value>Delineate plot</value>
+  </data>
+  <data name="plot_detail_historical_title" xml:space="preserve">
+    <value>Historical information (click for detail)</value>
+  </data>
+  <data name="plot_detail_irrigation" xml:space="preserve">
+    <value>Irrigation</value>
+  </data>
+  <data name="plot_detail_maturity" xml:space="preserve">
+    <value>Maturity type</value>
+  </data>
+  <data name="plot_detail_picture" xml:space="preserve">
+    <value>Add a picture</value>
+  </data>
+  <data name="plot_detail_planting_date" xml:space="preserve">
+    <value>Planted on</value>
+  </data>
+  <data name="plot_detail_video" xml:space="preserve">
+    <value>Add a video</value>
   </data>
 </root>

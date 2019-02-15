@@ -20,6 +20,30 @@
         
         [JsonProperty("units")]
         public string Units { get; set; }
+        public static async Task<WeatherForecast> Download(double latitude, double longitude)
+        {
+            var serviceUrl =
+                $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json"; // TODO add LANG=es/en
+            using (var wc = new HttpClient())
+            {
+                wc.DefaultRequestHeaders.Add("app_id", "949a7457");
+                wc.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
+                try
+                {
+                    var json = await wc.GetStringAsync(serviceUrl);
+                    return FromJson(json);
+                }
+                catch (Exception e)
+                {
+                    var ex = new AppCenterException("Weather error", e);
+                }
+            }
+
+            return null;
+        }
+
+        public static WeatherForecast FromJson(string json) =>
+            JsonConvert.DeserializeObject<WeatherForecast>(json, Converter.Settings);
     }
     
     public class Location
@@ -223,10 +247,13 @@
         
         [JsonProperty("wnd_spd_kph")]
         public string WndSpdKph { get; set; }
-        
+
+        [JsonProperty("pop")]
+        public string precipitationProbability { get; set; }
+
         [JsonProperty("wx")]
         public string Wx { get; set; }
-        
+
         [JsonProperty("wx_code")]
         public string WxCode { get; set; }
         
@@ -244,34 +271,6 @@
         
         [JsonProperty("country")]
         public string Country { get; set; }
-    }
-
-    public partial class WeatherForecast
-    {
-        public static async Task<WeatherForecast> Download(double latitude, double longitude)
-        {
-            var serviceUrl =
-                $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json";
-            using (var wc = new HttpClient())
-            {
-                wc.DefaultRequestHeaders.Add("app_id", "949a7457");
-                wc.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
-                try
-                {
-                    var json = await wc.GetStringAsync(serviceUrl);
-                    return FromJson(json);
-                }
-                catch (Exception e)
-                {
-                    var ex = new AppCenterException("Weather error", e);
-                }
-            }
-
-            return null;
-        }
-        
-        public static WeatherForecast FromJson(string json) =>
-            JsonConvert.DeserializeObject<WeatherForecast>(json, Converter.Settings);
     }
 
     public struct Qpf01hrMm
