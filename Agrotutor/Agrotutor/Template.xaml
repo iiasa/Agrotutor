@@ -403,44 +403,6 @@
         </Frame>
     </ControlTemplate>
 
-    <!--<ControlTemplate x:Key="LayerSwitcher">
-        <Frame Style="{StaticResource MainMapPopupBackground}">
-            <StackLayout>
-                <views:IconWithText IconSource="layers.png" IconText="Layers" />
-                <ScrollView>
-                    <StackLayout>
-                        <material:MaterialCheckbox
-                            IsSelected="{TemplateBinding Parent.BindingContext.PlotsLayerVisible}"
-                            SelectedColor="{StaticResource PrimaryGreen}"
-                            Text="Plots" />
-                        <material:MaterialCheckbox
-                            IsSelected="{TemplateBinding Parent.BindingContext.PlotDelineationsLayerVisible}"
-                            SelectedColor="{StaticResource PrimaryGreen}"
-                            Text="Plot delineations" />
-                        <views:Divider />
-                        <material:MaterialCheckbox
-                            IsSelected="{TemplateBinding Parent.BindingContext.HubContactsLayerVisible}"
-                            SelectedChangeCommand="{TemplateBinding Parent.BindingContext.HubContactsSelectionChangedCommand}"
-                            SelectedColor="{StaticResource SecondaryOrange}"
-                            Text="Hub contact" />
-
-                        <material:MaterialCheckbox SelectedChangeCommand="{Binding Parent.BindingContext.HourlyCommand}" Text="Test" />
-                        <material:MaterialCheckbox
-                            IsSelected="{TemplateBinding Parent.BindingContext.MachineryPointsLayerVisible}"
-                            SelectedColor="{StaticResource SecondaryDarkGreen}"
-                            Text="Machinery points" />
-                        <material:MaterialCheckbox
-                            IsSelected="{TemplateBinding Parent.BindingContext.InvestigationPlatformsLayerVisible}"
-                            SelectedColor="{StaticResource SecondaryGreenBrown}"
-                            Text="Investigation platforms" />
-                        <views:Divider />
-                        <material:MaterialCheckbox IsSelected="{TemplateBinding Parent.BindingContext.OfflineBasemapLayerVisible}" Text="Offline basemap" />
-                    </StackLayout>
-                </ScrollView>
-            </StackLayout>
-        </Frame>
-    </ControlTemplate>-->
-
     <ControlTemplate x:Key="PlannerUI">
         <Frame Style="{StaticResource MainMapPopupBackground}">
             <StackLayout>
