@@ -90,8 +90,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool listenForLocation = true;
 
-        private bool loadingSpinnerIsVisible;
-
         private bool locationPermissionGiven;
 
         private MachineryPoints machineryPoints;
@@ -120,7 +118,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             CurrentMapTask = MapTask.Default;
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
-            LoadingSpinnerIsVisible = false;
             PlannerUIIsVisible = false;
             DelineationUIIsVisible = false;
             ShowTileLayer = true;
@@ -686,12 +683,6 @@ namespace Agrotutor.Modules.Map.ViewModels
         }
 
         public bool ListenForLocation { get; set; }
-
-        public bool LoadingSpinnerIsVisible
-        {
-            get => loadingSpinnerIsVisible;
-            set => SetProperty(ref loadingSpinnerIsVisible, value);
-        }
 
         public bool LocationPermissionGiven
         {

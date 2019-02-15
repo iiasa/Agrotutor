@@ -79,13 +79,6 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView
-                ControlTemplate="{StaticResource LoadingSpinner}"
-                IsVisible="{Binding LoadingSpinnerIsVisible}"
-                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" />
-
-
-
             <ContentView 
                 ControlTemplate="{StaticResource MainMapMenuItems}"
                 Style="{StaticResource MainMapIconsGroup}" />

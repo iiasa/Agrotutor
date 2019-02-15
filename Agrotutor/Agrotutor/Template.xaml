@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization;assembly=Agrotutor"
     xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor"
-    xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
     xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms" 
     x:Class="Agrotutor.Template">
 
@@ -72,22 +71,6 @@
                 <TapGestureRecognizer Command="{TemplateBinding Parent.BindingContext.HideOverlays}" NumberOfTapsRequired="1"/>
             </BoxView.GestureRecognizers>
         </BoxView>
-    </ControlTemplate>
-
-    <ControlTemplate x:Key="LoadingSpinner">
-        <Frame BackgroundColor="Azure" 
-               HorizontalOptions="StartAndExpand"
-               VerticalOptions="CenterAndExpand"
-               Margin="8,0,0,0"
-               Opacity="0.75" HeightRequest="38" WidthRequest="38" Padding="0" >
-            <forms:AnimationView 
-                x:Name="animationView" 
-                Animation="anim_loading.json" 
-                HeightRequest="38"
-                WidthRequest="38" 
-                Loop="True" 
-                AutoPlay="True"/>
-        </Frame>
     </ControlTemplate>
 
     <ControlTemplate x:Key="MainMapMenuItems">
