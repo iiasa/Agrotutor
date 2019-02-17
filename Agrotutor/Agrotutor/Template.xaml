@@ -358,12 +358,12 @@
                     </StackLayout>
                     <views:Divider />
                     <views:IconWithText
-                        Command="{TemplateBinding Parent.BindingContext.ClickGetLocation}"
+                        Command="{TemplateBinding Parent.BindingContext.AddParcelGetLocation}"
                         IconSource="get_location.png"
                         IconText="{localization:Translate add_parcel_gps}" />
 
                     <views:IconWithText
-                        Command="{TemplateBinding Parent.BindingContext.ClickChooseLocation}"
+                        Command="{TemplateBinding Parent.BindingContext.AddParcelChooseLocation}"
                         IconSource="choose_location.png"
                         IconText="{localization:Translate add_parcel_select_on_map}" />
 

@@ -35,6 +35,7 @@ using XF.Material.Forms.UI.Dialogs;
 using Feature = Agrotutor.Core.Cimmyt.HubsContact.Feature;
 using Location = Xamarin.Essentials.Location;
 using NavigationMode = Xamarin.Essentials.NavigationMode;
+using MapsPosition = Xamarin.Forms.GoogleMaps.Position;
 using Position = Agrotutor.Core.Entities.Position;
 
 namespace Agrotutor.Modules.Map.ViewModels
@@ -388,7 +389,6 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand AddParcelClicked =>
             new DelegateCommand(() =>
             {
-                CurrentMapTask = MapTask.CreatePlotBySelection;
                 AddParcelIsVisible = true;
             });
 
@@ -396,11 +396,11 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public IAppDataService AppDataService { get; }
 
-        public DelegateCommand ClickChooseLocation =>
+        public DelegateCommand AddParcelChooseLocation =>
             new DelegateCommand(() =>
             {
                 DimBackground = false;
-                CurrentMapTask = MapTask.SelectLocation;
+                CurrentMapTask = MapTask.CreatePlotBySelection;
             });
 
         public DelegateCommand ClickChooseLocationPlanner =>
@@ -410,7 +410,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 CurrentMapTask = MapTask.SelectLocationForPlanner;
             });
 
-        public DelegateCommand ClickGetLocation =>
+        public DelegateCommand AddParcelGetLocation =>
             new DelegateCommand(() =>
             {
                 DimBackground = false;
@@ -491,8 +491,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     switch (CurrentMapTask)
                     {
                         case MapTask.CreatePlotBySelection:
+                            RemoveTempPin();
+                            AddTempPin(args.Point);
                             AddPlotPosition = Position.From(args.Point);
-                            CreatePlot();
                             break;
 
                         case MapTask.DelineationNotEnoughPoints:
@@ -1482,6 +1483,23 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        private void AddTempPin(MapsPosition pos) 
+        {
+            Pins.Add(new Pin { 
+                Position = pos,
+                Label = "",
+                Tag = "temp"
+            });
+        }
+
+        private void RemoveTempPin() {
+            var toRemove = Pins.SingleOrDefault(x => x.Tag == "temp");
+            if (toRemove != null)
+            {
+                Pins.Remove(toRemove);
+            }
+        }
+
         private async Task AddPlots()
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Rendering plots..."))
@@ -1532,7 +1550,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     DelineationUIIsVisible = false;
                     break;
 
-                case MapTask.SelectLocation:
+                case MapTask.CreatePlotBySelection:
                 case MapTask.SelectLocationForPlanner:
                     CurrentMapTaskHint = StringLocalizer.GetString("task_hint_select_location");
                     CurrentMapTaskHintIsVisible = true;
