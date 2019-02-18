@@ -25,6 +25,7 @@ namespace Agrotutor.iOS
             Xamarin.FormsGoogleMaps.Init("AIzaSyCm-_Fc-5-vvbhTPQg38LlCreorYtsC2Us");
             FormsGoogleMapsBindings.Init();
             XF.Material.iOS.Material.Init();
+            Rg.Plugins.Popup.Popup.Init();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);

@@ -24,6 +24,7 @@ using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
 using Castle.Core.Internal;
 using Microsoft.Extensions.Localization;
+using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Commands;
@@ -296,8 +297,6 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Preferences.Set(Constants.MachineryPointsLayerVisiblePreference, value);
             }
         }
-
-
 
         public Command<bool> PlotsSelectionChangedCommand =>
             new Command<bool>(async e => await PlotsSelectionChanged(e));
@@ -1305,42 +1304,32 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task PageAppearing()
         {
-            var tasks = new List<Task>();
+            //var tasks = new List<Task>();
+            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+            if (permissionStatus != PermissionStatus.Granted)
+            {
+                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+            }
+            
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
             {
-                tasks.Add(LoadMapData());
+                //tasks.Add(LoadMapData());
+                await LoadMapData();
             }
 
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
             {
-                if (Preferences.ContainsKey(Constants.Lat) && Preferences.ContainsKey(Constants.Lng))
-                {
-                    var lat = Preferences.Get(Constants.Lat, 0.0);
-                    var lng = Preferences.Get(Constants.Lng, 0.0);
-                    if (!lat.Equals(0.0) && !lng.Equals(0.0))
-                    {
-                        Region = MapSpan.FromCenterAndRadius(
-                            new Xamarin.Forms.GoogleMaps.Position(lat, lng),
-                            Distance.FromKilometers(2));
-                        LocationEnabled = true;
-                    }
-                    else
-                    {
-                        tasks.Add(EnableUserLocation());
-                    }
-                }
-                else
-                {
-                    tasks.Add(EnableUserLocation());
-                }
+                //tasks.Add(EnableUserLocation());
+                await EnableUserLocation();
             }
 
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
             {
-                tasks.Add(LoadPlots());
+                //tasks.Add(LoadPlots());
+                await LoadPlots();
             }
 
-            await Task.WhenAll(tasks).ConfigureAwait(false);
+            //await Task.WhenAll(tasks).ConfigureAwait(false);
         }
 
 
@@ -1502,9 +1491,24 @@ namespace Agrotutor.Modules.Map.ViewModels
                 WeatherLocation = location;
                 CurrentPosition = Position.FromLocation(location);
                 if (CurrentMapTask == MapTask.CreatePlotByGPS) AddPlotPosition = CurrentPosition;
-                Region = MapSpan.FromCenterAndRadius(
-                    new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude),
-                    Distance.FromKilometers(2));
+
+                var lat = Preferences.Get(Constants.Lat, 0.0);
+                var lng = Preferences.Get(Constants.Lng, 0.0);
+                if (Region == null)
+                {
+                    if (!lat.Equals(0.0) && !lng.Equals(0.0))
+                    {
+                        Region = MapSpan.FromCenterAndRadius(
+                            new Xamarin.Forms.GoogleMaps.Position(lat, lng),
+                            Distance.FromKilometers(2));
+                    }
+                    else
+                    {
+                        Region = MapSpan.FromCenterAndRadius(
+                            new Xamarin.Forms.GoogleMaps.Position(location.Latitude, location.Longitude),
+                            Distance.FromKilometers(2));
+                    }
+                }
                 LocationEnabled = true;
             }
         }
