@@ -38,6 +38,7 @@ using Location = Xamarin.Essentials.Location;
 using NavigationMode = Xamarin.Essentials.NavigationMode;
 using MapsPosition = Xamarin.Forms.GoogleMaps.Position;
 using Position = Agrotutor.Core.Entities.Position;
+using Agrotutor.Modules.Plot.Views;
 
 namespace Agrotutor.Modules.Map.ViewModels
 {
@@ -391,7 +392,29 @@ namespace Agrotutor.Modules.Map.ViewModels
                 AddParcelIsVisible = true;
             });
 
-        public DelegateCommand AddPlot => new DelegateCommand(CreatePlot);
+        public DelegateCommand AcceptGPSLocation => new DelegateCommand(() => 
+        { 
+            switch (CurrentMapTask) {
+                case MapTask.CreatePlotByGPS:
+                    CreatePlot();
+                    break;
+                case MapTask.GetLocationForPlanner:
+                    NavigateToPlanner();
+                    break;
+            }
+        });
+        public DelegateCommand AcceptSelectLocation => new DelegateCommand(() =>
+        {
+            switch (CurrentMapTask)
+            {
+                case MapTask.CreatePlotByGPS:
+                    CreatePlot();
+                    break;
+                case MapTask.GetLocationForPlanner:
+                    NavigateToPlanner();
+                    break;
+            }
+        });
 
         public IAppDataService AppDataService { get; }
 
@@ -500,6 +523,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     switch (CurrentMapTask)
                     {
                         case MapTask.CreatePlotBySelection:
+                        case MapTask.SelectLocationForPlanner:
                             RemoveTempPin();
                             AddTempPin(args.Point);
                             AddPlotPosition = Position.From(args.Point);
@@ -528,7 +552,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (CurrentDelineation.Count < 3) return;
             RemoveDelineationPolygon();
-            var polygon = new Polygon();
+            var polygon = new Polygon { FillColor = Color.Transparent };
             foreach (var position in CurrentDelineation) polygon.Positions.Add(position.ForMap());
             CurrentPolygon = polygon;
             Polygons.Add(polygon);
@@ -1374,6 +1398,30 @@ namespace Agrotutor.Modules.Map.ViewModels
                     Pins.Add(pin);
                 }
             }
+        }
+
+        private async void NavigateToPlanner()
+        {
+            if (AddPlotPosition == null)
+            {
+                await UserDialogs.Instance.AlertAsync(
+                    new AlertConfig
+                    {
+                        Title = "No position available",
+                        Message = "Please make sure the location for the planner is set.",
+                        OkText = "Ok"
+                    });
+                return;
+            }
+            var navigationParams = new NavigationParameters
+            {
+                {
+                    PlotMainPageViewModel.PositionParameterName,
+                    AddPlotPosition
+                }
+            };
+            await NavigationService.NavigateAsync("NavigationPage/PlotMainPage", navigationParams);
+
         }
 
         private async void CreatePlot()
