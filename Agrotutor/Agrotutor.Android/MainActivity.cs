@@ -43,6 +43,7 @@
             UserDialogs.Init(this);
             CrossCurrentActivity.Current.Init(this, bundle);
             XF.Material.Droid.Material.Init(this, bundle);
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
             Xamarin.Essentials.Platform.Init(this, bundle);
         }
 

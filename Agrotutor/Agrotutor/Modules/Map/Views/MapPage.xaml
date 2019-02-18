@@ -4,13 +4,13 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-    xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap"
     xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+    xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap"
     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid>
@@ -47,7 +47,6 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <customMap:CustomMap
-                ShowTileLayer="{Binding ShowTileLayer}"
                 x:Name="map"
                 Grid.Row="0"
                 Grid.RowSpan="5"
@@ -56,8 +55,9 @@
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
-                MyLocationEnabled="{Binding LocationEnabled}"
+                MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
+                ShowTileLayer="{Binding ShowTileLayer}"
                 VerticalOptions="FillAndExpand">
                 <googleMaps:Map.Behaviors>
                     <bindings:BindingPolygonsBehavior Value="{Binding Polygons}" />
@@ -66,7 +66,7 @@
                 </googleMaps:Map.Behaviors>
             </customMap:CustomMap>
 
-            <ContentView 
+            <ContentView
                 Grid.Row="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
@@ -94,7 +94,7 @@
                     </Frame.GestureRecognizers>
                 </Frame>
             </ContentView>
-
+            <ImageButton Grid.Row="1" Grid.Column="6" Source="layers.png"></ImageButton>
             <Frame
                 Grid.Row="3"
                 Grid.Column="2"
@@ -126,9 +126,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView 
-                ControlTemplate="{StaticResource MainMapMenuItems}"
-                Style="{StaticResource MainMapIconsGroup}" />
+            <ContentView ControlTemplate="{StaticResource MainMapMenuItems}" Style="{StaticResource MainMapIconsGroup}" />
 
             <ContentView
                 ControlTemplate="{StaticResource MainMapSelectLocation}"
@@ -173,17 +171,15 @@
                 IsVisible="{Binding MachineryPointUIIsVisible}"
                 Style="{StaticResource MainMapPopup}" />
 
-            <ContentView 
-                IsVisible="{Binding PlotDetailIsVisible}"
-                Style="{StaticResource MainMapPopup}">
+            <ContentView IsVisible="{Binding PlotDetailIsVisible}" Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image HeightRequest="20" Source="add.png" />
                             <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{Binding SelectedPlot.Name}" />
+                                FontSize="20"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding SelectedPlot.Name}" />
 
                         </StackLayout>
                         <views:Divider />
@@ -243,32 +239,26 @@
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
                                 <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotCost}"
                                     Text="Costs ($/ha):"
-                                    Value="{Binding CurrentPlotCost}"
-                                    Command="{Binding ShowCurrentPlotCost}"/>
+                                    Value="{Binding CurrentPlotCost}" />
                                 <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotIncome}"
                                     Text="Income ($/ha):"
-                                    Value="{Binding CurrentPlotIncome}" 
-                                    Command="{Binding ShowCurrentPlotIncome}"/>
+                                    Value="{Binding CurrentPlotIncome}" />
                                 <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotProfit}"
                                     Text="Profit ($/ha):"
-                                    Value="{Binding CurrentPlotProfit}" 
-                                    Command="{Binding ShowCurrentPlotProfit}"/>
+                                    Value="{Binding CurrentPlotProfit}" />
                                 <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotYield}"
                                     Text="Yield (kg/ha):"
-                                    Value="{Binding CurrentPlotYield}" 
-                                    Command="{Binding ShowCurrentPlotYield}"/>
+                                    Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine
-                                    Text="Potential yield (Average kg/ha):"
-                                    Value="{Binding CurrentPlotPotentialYield}" />
-                                <views:ValueLine
-                                    Text="Nitrogen needed (kg/ha):"
-                                    Value="{Binding CurrentPlotNitrogen}" />
-                                <views:ValueLine
-                                    Text="Next month trading price (Expected avg $/kg):"
-                                    Value="{Binding CurrentPlotPriceForecast}" />
+                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" />
+                                <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" />
+                                <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

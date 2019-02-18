@@ -40,11 +40,7 @@ namespace Agrotutor
             InitializeComponent();
             Material.Init(this);
             InitializeLocalizer();
-            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-            if (permissionStatus != PermissionStatus.Granted)
-            {
-                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
-            }
+            
             await NavigationService.NavigateAsync("NavigationPage/MapPage");
         }
 
