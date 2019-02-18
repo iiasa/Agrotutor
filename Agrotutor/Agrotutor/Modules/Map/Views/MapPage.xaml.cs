@@ -31,6 +31,8 @@ namespace Agrotutor.Modules.Map.Views
         public MapPage()
         {
             InitializeComponent();
+            this.map.UiSettings.MyLocationButtonEnabled = true;
+
             ViewModel = (MapPageViewModel) BindingContext;
             ViewModel.SetView(this);
             Material.PlatformConfiguration.ChangeStatusBarColor(new Color(1, 1, 1, 0.5));
@@ -56,10 +58,6 @@ namespace Agrotutor.Modules.Map.Views
         public IList<Pin> HubContactPins { get; set; }
         public IList<Pin> MachineryPointPins { get; set; }
         public IList<Pin> InvestigationPlatformPins { get; set; }
-
-        public void EnableMyLocation()
-        {
-        }
 
         internal void AddPlots(IEnumerable<Core.Entities.Plot> plots)
         {
