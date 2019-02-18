@@ -438,7 +438,6 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.1</Version>
     </PackageReference>
-
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies">
       <Version>2.2.2</Version>
     </PackageReference>
@@ -504,6 +503,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\history_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

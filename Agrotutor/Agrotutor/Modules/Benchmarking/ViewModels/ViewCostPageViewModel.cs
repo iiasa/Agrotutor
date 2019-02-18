@@ -43,7 +43,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
                 SetProperty(ref this.datasets, value);
                 Min = value.Select(x => double.Parse(x.ProductionCost)).Min();
                 Max = value.Select(x => double.Parse(x.ProductionCost)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.ProductionCost)).Average(), 0);
+                Avg = Math.Round(value.Select(x => double.Parse(x.ProductionCost)).Average(), 1);
             }
         }
 

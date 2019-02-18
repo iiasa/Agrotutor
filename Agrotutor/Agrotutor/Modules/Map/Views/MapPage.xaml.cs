@@ -142,11 +142,6 @@ namespace Agrotutor.Modules.Map.Views
             foreach (var pin in PlotPins) Device.BeginInvokeOnMainThread(() => { map.Pins.Add(pin); });
         }
 
-        public void SetPlotDelineationLayerVisibility(bool value)
-        {
-            // TODO implement
-        }
-
         public void SetHubContactsLayerVisibility(bool visible)
         {
             HubContactPins?.All(x => x.IsVisible = visible);
@@ -193,11 +188,6 @@ namespace Agrotutor.Modules.Map.Views
 
             map.Polygons.Clear();
             if (DelineationPolygon.Positions.Count > 2) map.Polygons.Add(DelineationPolygon);
-        }
-
-        public void SetOfflineLayerVisibility(bool value)
-        {
-            // TODO: implement
         }
 
         public void SetHubsContact(HubsContact hubContacts)
@@ -270,7 +260,7 @@ namespace Agrotutor.Modules.Map.Views
                     {
                         var layout = new AbsoluteLayout { Margin = 10 };
                         var imageSource = img.IsVideo
-                            ? ImageSource.FromResource("BirdLife.Core.UI.Assets.Images.video.png", typeof(AssetsHelper))
+                            ? "video.png"
                             : ImageSource.FromFile(img.Path);
 
                         var closeImage = new CachedImage
@@ -280,8 +270,7 @@ namespace Agrotutor.Modules.Map.Views
                             HeightRequest = 20,
                             WidthRequest = 20,
                             DownsampleToViewSize = true,
-                            Source = ImageSource.FromResource("BirdLife.Core.UI.Assets.Images.close-cross.png",
-                                typeof(AssetsHelper))
+                            Source = "close_cross.png"
                         };
 
                         var cachedImage = new CachedImage
