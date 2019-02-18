@@ -488,6 +488,16 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand<MapClickedEventArgs>(
                 args =>
                 {
+                    try
+                    {
+                        Preferences.Set(Constants.Lat, args.Point.Latitude);
+                        Preferences.Set(Constants.Lng, args.Point.Longitude);
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                    }
+                    
                     switch (CurrentMapTask)
                     {
                         case MapTask.CreatePlotBySelection:
@@ -509,8 +519,6 @@ namespace Agrotutor.Modules.Map.ViewModels
                                 Tag = pos
                             };
                             CurrentPin = pin;
-                            Preferences.Set(Constants.Lat, args.Point.Latitude);
-                            Preferences.Set(Constants.Lng, args.Point.Longitude);
                             Pins.Add(pin);
                             RenderDelineationPolygon();
                             break;
@@ -1285,7 +1293,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     var lat = Preferences.Get(Constants.Lat, 0.0);
                     var lng = Preferences.Get(Constants.Lng, 0.0);
-                    if (lat > 0 && lng > 0)
+                    if (!lat.Equals(0.0) && !lng.Equals(0.0))
                     {
                         Region = MapSpan.FromCenterAndRadius(
                             new Xamarin.Forms.GoogleMaps.Position(lat, lng),
