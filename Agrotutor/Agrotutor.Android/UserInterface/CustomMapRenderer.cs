@@ -50,7 +50,7 @@ namespace Agrotutor.Droid.UserInterface
             {
                 base.OnMapReady(nativeMap, map);
                 CustomMap.UiSettings.CompassEnabled = true;
-                nativeMap.UiSettings.MyLocationButtonEnabled = false;
+                nativeMap.UiSettings.MyLocationButtonEnabled = true;
                 nativeMap.UiSettings.RotateGesturesEnabled = true;
                 nativeMap.UiSettings.ZoomControlsEnabled = true;
                 nativeMap.UiSettings.TiltGesturesEnabled = true;

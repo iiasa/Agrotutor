@@ -55,6 +55,7 @@
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
+                InitialCameraUpdate="20,-100,5"
                 MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
                 ShowTileLayer="{Binding ShowTileLayer}"
@@ -94,7 +95,6 @@
                     </Frame.GestureRecognizers>
                 </Frame>
             </ContentView>
-            <ImageButton Grid.Row="1" Grid.Column="6" Source="layers.png"></ImageButton>
             <Frame
                 Grid.Row="3"
                 Grid.Column="2"
