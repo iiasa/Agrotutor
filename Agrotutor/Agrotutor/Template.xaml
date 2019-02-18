@@ -31,7 +31,7 @@
     <ControlTemplate x:Key="MainMapSelectLocation">
         <StackLayout Style="{StaticResource MainMapTaskUI}">
             <Button
-                Command="{TemplateBinding Parent.BindingContext.AddPlot}"
+                Command="{TemplateBinding Parent.BindingContext.AcceptSelectLocation}"
                 Style="{StaticResource ButtonOK}"
                 Text="{localization:Translate select_location_ok}" />
             <Button
@@ -44,7 +44,7 @@
     <ControlTemplate x:Key="MainMapGPSLocation">
         <StackLayout Style="{StaticResource MainMapTaskUI}">
             <Button
-                Command="{TemplateBinding Parent.BindingContext.AddPlot}"
+                Command="{TemplateBinding Parent.BindingContext.AcceptGPSLocation}"
                 Style="{StaticResource ButtonOK}"
                 Text="{localization:Translate gps_location_ok}" />
             <Button
