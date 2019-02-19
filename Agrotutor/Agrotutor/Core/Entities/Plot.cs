@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using Agrotutor.Modules.Ciat.Types;
 
 namespace Agrotutor.Core.Entities
@@ -14,6 +15,12 @@ namespace Agrotutor.Core.Entities
 
     public class Plot
     {
+        private Random randomColor;
+        public Plot()
+        {
+            randomColor=new Random();
+        }
+     
         public virtual List<Activity> Activities { get; set; }
 
         public virtual BemData BemData { get; set; }
@@ -63,6 +70,7 @@ namespace Agrotutor.Core.Entities
         public IEnumerable<CalendarEvent> GetCalendarEvents()
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
+            Color colorPerPlot = Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
             foreach (Activity activity in Activities)
             {
                 events.Add(
@@ -72,8 +80,9 @@ namespace Agrotutor.Core.Entities
                         AllDayEvent = true,
                         StartTime = activity.Date,
                         EndTime = activity.Date,
-                        Title = activity.Name
-                    });
+                        Title = activity.Name,
+                        Color = colorPerPlot
+            });
             }
 
             return events;

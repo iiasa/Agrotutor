@@ -5,6 +5,8 @@ using Agrotutor.Core.Camera;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Tile;
 using Agrotutor.Core.Tile.Resources;
+using Agrotutor.Modules.Calendar.Components.Views;
+using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.ViewModels;
 using Agrotutor.Views;
 using DryIoc;
@@ -55,6 +57,8 @@ namespace Agrotutor.Core
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterForNavigation<WebContentPage, WebContentPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
+
+
         }
 
         public static void RegisterPersistence(this IContainerRegistry containerRegistry)

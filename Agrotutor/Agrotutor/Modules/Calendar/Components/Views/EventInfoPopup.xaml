@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+                  xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+                  Padding="30,250,30,250" HeightRequest="300" 
+                  x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup" >
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation
+            PositionIn="Center"
+            PositionOut="Center"
+            ScaleIn="1.2"
+            ScaleOut="0.8"
+            DurationIn="400"
+            DurationOut="400"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True" />
+    </pages:PopupPage.Animation>
+    <ContentView>
+        <Grid>
+            <!--<Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>-->
+        <StackLayout HorizontalOptions="CenterAndExpand" 
+                     VerticalOptions="CenterAndExpand" BackgroundColor="White">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                <!--<Label Text="Title: "
+                       VerticalOptions="StartAndExpand" 
+                       HorizontalOptions="CenterAndExpand" />-->
+                <Label Text="{Binding  Title}"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+                <Label Text="Cost: "
+                       VerticalOptions="StartAndExpand" 
+                       HorizontalOptions="CenterAndExpand" />
+                <Label Text="{Binding  Cost}"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
+            </StackLayout>
+        </StackLayout>
+        </Grid>
+    </ContentView>
+</pages:PopupPage>

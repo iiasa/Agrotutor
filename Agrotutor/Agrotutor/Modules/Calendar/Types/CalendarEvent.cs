@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Modules.Calendar.Types
+﻿using Agrotutor.Core.Entities;
+
+namespace Agrotutor.Modules.Calendar.Types
 {
     using System;
     using Xamarin.Forms;
@@ -11,7 +13,7 @@
 
         public string Content { get; set; }
 
-        public object Data { get; set; }
+        public Activity Data { get; set; }
 
         public DateTime EndTime { get; set; }
 
