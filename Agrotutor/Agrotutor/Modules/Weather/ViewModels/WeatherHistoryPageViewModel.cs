@@ -1,29 +1,29 @@
+using System.Collections.Generic;
+using Agrotutor.Core;
+using Agrotutor.Modules.Charts.Types;
+using Agrotutor.Modules.Weather.Types;
+using Microcharts;
+using Microsoft.Extensions.Localization;
+using Prism.Commands;
+using Prism.Navigation;
+
 namespace Agrotutor.Modules.Weather.ViewModels
 {
-    using System.Collections.Generic;
-    using Microcharts;
-    using Prism.Commands;
-    using Prism.Navigation;
-    using Microsoft.Extensions.Localization;
-
-    using Core;
-    using Types;
-    using Charts.Types;
-
     public class WeatherHistoryPageViewModel : ViewModelBase, INavigatedAware
     {
+        private Chart _currentChart;
 
         private List<string> _datasetNames;
+        private int _graphDays;
 
         private int _selectedDataset;
 
         private WeatherHistory _weatherData;
-        private Chart _currentChart;
         private List<EntryWithTime> selectedValEntries;
-        private int _graphDays;
 
-        public WeatherHistoryPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
-            :base(navigationService,stringLocalizer)
+        public WeatherHistoryPageViewModel(INavigationService navigationService,
+            IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
+            : base(navigationService, stringLocalizer)
         {
             DatasetNames = new List<string>
             {
@@ -72,11 +72,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         public int GraphDays
         {
             get => _graphDays;
-            set
-            {
-                _graphDays = (value == 0) ? 365 : value;
-
-            }
+            set => _graphDays = value == 0 ? 365 : value;
         }
 
         public List<EntryWithTime> SelectedValEntries
@@ -85,7 +81,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set
             {
                 selectedValEntries = value;
-                CurrentChart = new LineChart { Entries = value };
+                CurrentChart = new LineChart {Entries = value};
             }
         }
 
@@ -157,10 +153,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         }
 
         public DelegateCommand<string> SetGraphDays =>
-            new DelegateCommand<string>((string val) =>
-            {
-                GraphDays = int.Parse(val);
-            });
+            new DelegateCommand<string>(val => { GraphDays = int.Parse(val); });
 
 
         public List<string> DatasetNames
@@ -175,7 +168,11 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set => SetProperty(ref _weatherData, value);
         }
 
-        public Chart CurrentChart { get => _currentChart; set => SetProperty(ref _currentChart, value); }
+        public Chart CurrentChart
+        {
+            get => _currentChart;
+            set => SetProperty(ref _currentChart, value);
+        }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -187,10 +184,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             if (parameters.ContainsKey("WeatherHistory"))
             {
                 parameters.TryGetValue<WeatherHistory>("WeatherHistory", out var weatherData);
-                if (weatherData != null)
-                {
-                    MyWeatherData = weatherData;
-                }
+                if (weatherData != null) MyWeatherData = weatherData;
             }
 
             base.OnNavigatedTo(parameters);
