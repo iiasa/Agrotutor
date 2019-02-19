@@ -1283,37 +1283,24 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task PageAppearing()
         {
-            //var tasks = new List<Task>();
+            var tasks = new List<Task>();
             var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
             if (permissionStatus != PermissionStatus.Granted)
                 await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
-            {
-                //tasks.Add(EnableUserLocation());
-                await EnableUserLocation();
-            }
+            tasks.Add(EnableUserLocation());
+            //await EnableUserLocation();
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
-            {
-                //tasks.Add(LoadMapData());
-                await LoadMapData();
-            }
+            tasks.Add(LoadMapData());
+            //await LoadMapData();
 
+            tasks.Add(LoadPlots());
+            //await LoadPlots();
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
-            {
-                //tasks.Add(LoadPlots());
-                await LoadPlots();
-            }
+            tasks.Add(RefreshWeatherData());
+            //await RefreshWeatherData();
 
-
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting weather data..."))
-            {
-                await RefreshWeatherData();
-            }
-
-            //await Task.WhenAll(tasks).ConfigureAwait(false);
+            await Task.WhenAll(tasks).ConfigureAwait(false);
         }
 
 
@@ -1446,23 +1433,26 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task EnableUserLocation()
         {
-            LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
-            if (LocationPermissionGiven)
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
             {
-                await GetUserLocation();
-            }
-            else
-            {
-                LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
-                    Permission.Location,
-                    StringLocalizer.GetString("location_permission_prompt_title"),
-                    StringLocalizer.GetString("location_permission_prompt_message"),
-                    StringLocalizer.GetString("location_permission_prompt_accept"),
-                    StringLocalizer.GetString("location_permission_prompt_deny"),
-                    StringLocalizer.GetString(
-                        "location_permission_prompt_deny_message"));
+                LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
+                if (LocationPermissionGiven)
+                {
+                    await GetUserLocation();
+                }
+                else
+                {
+                    LocationPermissionGiven = await PermissionHelper.CheckAndRequestPermissionAsync(
+                        Permission.Location,
+                        StringLocalizer.GetString("location_permission_prompt_title"),
+                        StringLocalizer.GetString("location_permission_prompt_message"),
+                        StringLocalizer.GetString("location_permission_prompt_accept"),
+                        StringLocalizer.GetString("location_permission_prompt_deny"),
+                        StringLocalizer.GetString(
+                            "location_permission_prompt_deny_message"));
 
-                if (LocationPermissionGiven) await GetUserLocation();
+                    if (LocationPermissionGiven) await GetUserLocation();
+                }
             }
         }
 
@@ -1507,31 +1497,40 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task LoadMapData()
         {
-            HubsContact = await HubsContact.FromEmbeddedResource();
-            //RenderHubsContact();
-            MachineryPoints = await MachineryPoints.FromEmbeddedResource();
-            //RenderMachineryPoints();
-            InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
-            //RenderInvestigationPlatforms();
-            PlotsLayerVisible = Preferences.Get(Constants.PlotsLayerVisiblePreference, true);
-            PlotDelineationsLayerVisible = Preferences.Get(Constants.PlotDelineationsLayerVisiblePreference, true);
-            HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
-            MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, false);
-            InvestigationPlatformsLayerVisible =
-                Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
-            OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
+            {
+                HubsContact = await HubsContact.FromEmbeddedResource();
+                //RenderHubsContact();
+                MachineryPoints = await MachineryPoints.FromEmbeddedResource();
+                //RenderMachineryPoints();
+                InvestigationPlatforms = await InvestigationPlatforms.FromEmbeddedResource();
+                //RenderInvestigationPlatforms();
+                PlotsLayerVisible = Preferences.Get(Constants.PlotsLayerVisiblePreference, true);
+                PlotDelineationsLayerVisible = Preferences.Get(Constants.PlotDelineationsLayerVisiblePreference, true);
+                HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
+                MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, false);
+                InvestigationPlatformsLayerVisible =
+                    Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
+                OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
+            }
         }
 
         private async Task LoadPlots()
         {
-            Plots = await AppDataService.GetAllPlotsAsync();
-            var plots = Plots.ToList();
-            await AddPlots();
-            foreach (var plot in plots.Where(plot => plot.BemData == null))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
             {
-                if (plot.Position == null) continue;
-                plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
-                await AppDataService.UpdatePlotAsync(plot);
+                using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
+                {
+                    Plots = await AppDataService.GetAllPlotsAsync();
+                    var plots = Plots.ToList();
+                    await AddPlots();
+                    foreach (var plot in plots.Where(plot => plot.BemData == null))
+                    {
+                        if (plot.Position == null) continue;
+                        plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
+                        await AppDataService.UpdatePlotAsync(plot);
+                    }
+                }
             }
         }
 
@@ -1583,9 +1582,12 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task RefreshWeatherData()
         {
-            if (WeatherLocation == null) return;
-            CurrentWeather = await WeatherForecast.Download(WeatherLocation.Latitude, WeatherLocation.Longitude)
-                .ConfigureAwait(true);
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting weather data..."))
+            {
+                if (WeatherLocation == null) return;
+                CurrentWeather = await WeatherForecast.Download(WeatherLocation.Latitude, WeatherLocation.Longitude)
+                    .ConfigureAwait(true);
+            }
         }
 
         private void SetUIForMapTask(MapTask value, MapTask oldValue)
