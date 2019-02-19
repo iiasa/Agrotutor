@@ -125,16 +125,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool selectLocationUIIsVisible;
 
         private Location weatherLocation;
-        private string _currentPlotCost;
-        private string _currentPlotProfit;
-        private string _currentPlotIncome;
-        private string _currentPlotYield;
-
-        private readonly ICameraService _cameraService;
-        private string _currentPlotPotentialYield;
-        private string _currentPlotNitrogen;
-        private string _currentPlotPriceForecast;
-        private bool _showTileLayer;
+        
         private string _selectedPlotDate;
         private string _selectedPlotIrrigation;
         private string _selectedPlotMaturity;
@@ -1098,39 +1089,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             set => SetProperty(ref _currentPlotPotentialYield, value);
         }
 
-        public async void LoadPlotData(Core.Entities.Plot plot)
-        {
-            bool updatedPlot = false;
-            if (plot.BemData == null)
-            {
-                plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
-                    plot.Position.Longitude, plot.CropType);
-                updatedPlot = true;
-            }
-            if (plot.WeatherForecast == null)
-            {
-                plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude,plot.Position.Longitude);
-                updatedPlot = true;
-            }
-
-            if (plot.CiatData == null)
-            {
-                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maiz");
-                updatedPlot = true;
-            }
-
-            if (plot.PriceForecast == null)
-            {
-                // if (plot.CropType == CropType.Corn)
-                // {
-                    plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
-                    updatedPlot = true;
-                // }
-            }
-
-            if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
-        }
-
         public bool SelectLocationUIIsVisible
         {
             get => selectLocationUIIsVisible;
@@ -1277,14 +1235,13 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotData(Core.Entities.Plot plot)
         {
-            var updatedPlot = false;
+            bool updatedPlot = false;
             if (plot.BemData == null)
             {
                 plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
                     plot.Position.Longitude, plot.CropType);
                 updatedPlot = true;
             }
-
             if (plot.WeatherForecast == null)
             {
                 plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude, plot.Position.Longitude);
@@ -1293,7 +1250,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             if (plot.CiatData == null)
             {
-                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maize");
+                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maiz");
                 updatedPlot = true;
             }
 
@@ -1308,7 +1265,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
         }
-
+        
         public void RemoveHubsContact()
         {
             foreach (var pin in Pins.ToList().Where(x => x.Tag is HubFeature)) Pins.Remove(pin);
