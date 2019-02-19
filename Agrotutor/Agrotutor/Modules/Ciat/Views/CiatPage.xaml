@@ -7,6 +7,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,0">
+                <Label Margin="0,16,0,16" Text="{localization:Translate recommendations}" />
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
                     <Button Text="{localization:Translate non_irrigated}" 
                         Command="{Binding NonIrrigatedClickedCommand}" 
@@ -16,7 +17,6 @@
                         x:Name="BtnIrrigated" />
                 </StackLayout>
 
-                <Label Margin="0,16,0,16" Text="{localization:Translate recommendations}" />
 
                 <Image Source="nitrogen.png"  WidthRequest="32" HeightRequest="64" />
                 <Label x:Name="lblNitrogen"

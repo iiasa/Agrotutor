@@ -13,6 +13,8 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
     public class WeatherPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string LocationParameterName = "WEATHER_PAGE_LOCATION";
+        public static string ForecastParameterName = "WEATHER_PAGE_FORECAST";
 
         private string _cloudCover;
 
@@ -152,7 +154,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         public DelegateCommand ShowHistory =>
             new DelegateCommand(() =>
             {
-                var param = new NavigationParameters { { "WeatherHistory", WeatherHistory } };
+                var param = new NavigationParameters { { WeatherHistoryPageViewModel.WeatherHistoryParameterName, WeatherHistory } };
                 NavigationService.NavigateAsync("WeatherHistoryPage", param);
             });
 
@@ -243,9 +245,9 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Location"))
+            if (parameters.ContainsKey(LocationParameterName))
             {
-                parameters.TryGetValue<Location>("Location", out var location);
+                parameters.TryGetValue<Location>(LocationParameterName, out var location);
                 if (location != null)
                 {
                     Location = location;
@@ -254,9 +256,9 @@ namespace Agrotutor.Modules.Weather.ViewModels
             }
 
 
-            if (parameters.ContainsKey("Forecast"))
+            if (parameters.ContainsKey(ForecastParameterName))
             {
-                parameters.TryGetValue<WeatherForecast>("Forecast", out var forecast);
+                parameters.TryGetValue<WeatherForecast>(ForecastParameterName, out var forecast);
                 if (forecast != null)
                 {
                     WeatherForecast = forecast;

@@ -187,19 +187,19 @@
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_planting_date}" />
-                                    <Label>Oct. 3, 2018</Label>
+                                    <Label Text="{Binding SelectedPlotDate}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_irrigation}" />
-                                    <Label>Irrigated</Label>
+                                    <Label Text="{Binding SelectedPlotIrrigation}"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_maturity}" />
-                                    <Label>Late</Label>
+                                    <Label Text="{Binding SelectedPlotMaturity}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_climate}" />
-                                    <Label>Hybrid</Label>
+                                    <Label Text="{Binding SelectedPlotClimate}" />
                                 </StackLayout>
 
                                 <views:Divider />
@@ -256,9 +256,9 @@
                                     Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" />
-                                <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" />
-                                <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" />
+                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" Command="{Binding NavigateToPotentialYied}"/>
+                                <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" Command="{Binding NavigateToCiat}" />
+                                <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" Command="{Binding NavigateToPriceForecast}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

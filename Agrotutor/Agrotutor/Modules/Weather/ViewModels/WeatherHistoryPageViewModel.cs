@@ -12,6 +12,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
     public class WeatherHistoryPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string WeatherHistoryParameterName = "WEATHER_HISTORY_PARAMETER";
 
         private List<string> _datasetNames;
 
@@ -135,9 +136,9 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("WeatherHistory"))
+            if (parameters.ContainsKey(WeatherHistoryParameterName))
             {
-                parameters.TryGetValue<WeatherHistory>("WeatherHistory", out var weatherData);
+                parameters.TryGetValue<WeatherHistory>(WeatherHistoryParameterName, out var weatherData);
                 if (weatherData != null)
                 {
                     MyWeatherData = weatherData;
