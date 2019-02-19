@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Grid xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agrotutor.Modules.PriceForecasting.Views.ForecastElement">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="Auto" />
+    </Grid.RowDefinitions>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+        <ColumnDefinition Width="Auto" />
+    </Grid.ColumnDefinitions>
+    <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" x:Name="lblMonths"  FontSize="18" TextColor="ForestGreen" HorizontalOptions="Center" />
+
+    <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="End" x:Name="lblAverage"  FontSize="18" VerticalOptions="Center" />
+    <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Start" x:Name="lblUnit1" VerticalOptions="Center" />
+
+    <Label Grid.Column="0" Grid.Row="2" HorizontalOptions="End" x:Name="lblMin" FontSize="16" VerticalOptions="Center" />
+    <Label Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" Text="to" VerticalOptions="Center" />
+    <Label Grid.Column="2" Grid.Row="2" HorizontalOptions="End" x:Name="lblMax" FontSize="16" VerticalOptions="Center" />
+    <Label Grid.Column="3" Grid.Row="2" HorizontalOptions="End" x:Name="lblUnit2"  VerticalOptions="Center" />
+</Grid>

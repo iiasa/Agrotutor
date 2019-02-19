@@ -450,6 +450,12 @@
     <PackageReference Include="modernhttpclient">
       <Version>2.4.2</Version>
     </PackageReference>
+    <PackageReference Include="MonkeyCache.SQLite">
+      <Version>1.2.0-beta</Version>
+    </PackageReference>
+    <PackageReference Include="OxyPlot.Xamarin.Forms">
+      <Version>1.1.0-unstable0011</Version>
+    </PackageReference>
     <PackageReference Include="Prism.Plugin.Popups">
       <Version>2.2.0.293</Version>
     </PackageReference>
@@ -506,6 +512,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\history_inactive.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\close_cross.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

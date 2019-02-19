@@ -4,13 +4,13 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
- xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap;assembly=Agrotutor"
     xmlns:bindings="clr-namespace:Xamarin.Forms.GoogleMaps.Bindings;assembly=Xamarin.Forms.GoogleMaps.Bindings"
+    xmlns:customMap="clr-namespace:Agrotutor.UserInterface.CustomMap"
     xmlns:googleMaps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid>
@@ -47,7 +47,6 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <customMap:CustomMap
-                ShowTileLayer="{Binding ShowTileLayer}"
                 x:Name="map"
                 Grid.Row="0"
                 Grid.RowSpan="5"
@@ -56,8 +55,10 @@
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
-                MyLocationEnabled="{Binding LocationEnabled}"
+                InitialCameraUpdate="20,-100,5"
+                MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
+                ShowTileLayer="{Binding ShowTileLayer}"
                 VerticalOptions="FillAndExpand">
                 <googleMaps:Map.Behaviors>
                     <bindings:BindingPolygonsBehavior Value="{Binding Polygons}" />
@@ -66,7 +67,7 @@
                 </googleMaps:Map.Behaviors>
             </customMap:CustomMap>
 
-            <ContentView 
+            <ContentView
                 Grid.Row="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
@@ -94,7 +95,6 @@
                     </Frame.GestureRecognizers>
                 </Frame>
             </ContentView>
-
             <Frame
                 Grid.Row="3"
                 Grid.Column="2"
@@ -126,9 +126,7 @@
                 </ContentView.GestureRecognizers>
             </ContentView>
 
-            <ContentView 
-                ControlTemplate="{StaticResource MainMapMenuItems}"
-                Style="{StaticResource MainMapIconsGroup}" />
+            <ContentView ControlTemplate="{StaticResource MainMapMenuItems}" Style="{StaticResource MainMapIconsGroup}" />
 
             <ContentView
                 ControlTemplate="{StaticResource MainMapSelectLocation}"
@@ -173,17 +171,15 @@
                 IsVisible="{Binding MachineryPointUIIsVisible}"
                 Style="{StaticResource MainMapPopup}" />
 
-            <ContentView 
-                IsVisible="{Binding PlotDetailIsVisible}"
-                Style="{StaticResource MainMapPopup}">
+            <ContentView IsVisible="{Binding PlotDetailIsVisible}" Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Image HeightRequest="20" Source="add.png" />
                             <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{Binding SelectedPlot.Name}" />
+                                FontSize="20"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{Binding SelectedPlot.Name}" />
 
                         </StackLayout>
                         <views:Divider />
@@ -191,22 +187,20 @@
                             <StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_planting_date}" />
-                                    <Label>Oct. 3, 2018</Label>
+                                    <Label Text="{Binding SelectedPlotDate}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_irrigation}" />
-                                    <Label>Irrigated</Label>
+                                    <Label Text="{Binding SelectedPlotIrrigation}"/>
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_maturity}" />
-                                    <Label>Late</Label>
+                                    <Label Text="{Binding SelectedPlotMaturity}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_climate}" />
-                                    <Label>Hybrid</Label>
+                                    <Label Text="{Binding SelectedPlotClimate}" />
                                 </StackLayout>
-
-                                <views:Divider />
 
                                 <ScrollView Margin="5" Orientation="Horizontal">
                                     <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
@@ -217,58 +211,52 @@
                                 <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
 
                                 <views:IconWithText
-                            Command="{Binding AddActivityToSelectedPlot}"
-                            IconSource="farmer.png"
-                            IconText="{localization:Translate plot_detail_add_activity}" />
+                                    Command="{Binding AddActivityToSelectedPlot}"
+                                    IconSource="farmer.png"
+                                    IconText="{localization:Translate plot_detail_add_activity}" />
 
                                 <views:IconWithText
-                            Command="{Binding DelineateSelectedPlot}"
-                            IconSource="delineate.png"
-                            IconText="{localization:Translate plot_detail_delineate}" />
+                                    Command="{Binding DelineateSelectedPlot}"
+                                    IconSource="delineate.png"
+                                    IconText="{localization:Translate plot_detail_delineate}" />
 
                                 <views:IconWithText
-                            Command="{Binding AddPictureToSelectedPlot}"
-                            IconSource="photo.png"
-                            IconText="{localization:Translate plot_detail_picture}" />
+                                    Command="{Binding AddPictureToSelectedPlot}"
+                                    IconSource="photo.png"
+                                    IconText="{localization:Translate plot_detail_picture}" />
 
                                 <views:IconWithText
-                            Command="{Binding AddVideoToSelectedPlot}"
-                            IconSource="video.png"
-                            IconText="{localization:Translate plot_detail_video}" />
+                                    Command="{Binding AddVideoToSelectedPlot}"
+                                    IconSource="video.png"
+                                    IconText="{localization:Translate plot_detail_video}" />
 
                                 <views:IconWithText
-                            Command="{Binding ShowCalendarForSelectedPlot}"
-                            IconSource="calendar.png"
-                            IconText="{localization:Translate plot_detail_calendar}" />
+                                    Command="{Binding ShowCalendarForSelectedPlot}"
+                                    IconSource="calendar.png"
+                                    IconText="{localization:Translate plot_detail_calendar}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
                                 <views:ValueLine
-                            Text="Costs ($/ha):"
-                            Value="{Binding CurrentPlotCost}"
-                            Command="{Binding ShowCurrentPlotCost}"/>
+                                    Command="{Binding ShowCurrentPlotCost}"
+                                    Text="Costs ($/ha):"
+                                    Value="{Binding CurrentPlotCost}" />
                                 <views:ValueLine
-                            Text="Income ($/ha):"
-                            Value="{Binding CurrentPlotIncome}" 
-                            Command="{Binding ShowCurrentPlotIncome}"/>
+                                    Command="{Binding ShowCurrentPlotIncome}"
+                                    Text="Income ($/ha):"
+                                    Value="{Binding CurrentPlotIncome}" />
                                 <views:ValueLine
-                            Text="Profit ($/ha):"
-                            Value="{Binding CurrentPlotProfit}" 
-                            Command="{Binding ShowCurrentPlotProfit}"/>
+                                    Command="{Binding ShowCurrentPlotProfit}"
+                                    Text="Profit ($/ha):"
+                                    Value="{Binding CurrentPlotProfit}" />
                                 <views:ValueLine
-                            Text="Yield (kg/ha):"
-                            Value="{Binding CurrentPlotYield}" 
-                            Command="{Binding ShowCurrentPlotYield}"/>
+                                    Command="{Binding ShowCurrentPlotYield}"
+                                    Text="Yield (kg/ha):"
+                                    Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine
-                            Text="Potential yield (Average kg/ha):"
-                            Value="-" />
-                                <views:ValueLine
-                            Text="Nitrogen needed (kg/ha):"
-                            Value="-" />
-                                <views:ValueLine
-                            Text="Next month trading price (Expected avg $/kg):"
-                            Value="-" />
+                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" Command="{Binding NavigateToPotentialYield}"/>
+                                <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" Command="{Binding NavigateToCiat}" />
+                                <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" Command="{Binding NavigateToPriceForecast}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Modules.Weather.Types
+﻿using Agrotutor.Core.Rest;
+
+namespace Agrotutor.Modules.Weather.Types
 {
     using System;
     using System.Collections.Generic;
@@ -11,7 +13,7 @@
 
     using Charts.Types;
 
-    public interface Series
+    public interface ISeries
     {
         List<EntryWithTime> GetChartEntries();
     }
@@ -33,20 +35,20 @@
         [JsonProperty("dp", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Cdd Dp { get; set; }
 
-        [JsonProperty("hp", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hp { get; set; }
+        //[JsonProperty("hp", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hp { get; set; }
 
-        [JsonProperty("hrh", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hrh { get; set; }
+        //[JsonProperty("hrh", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hrh { get; set; }
 
         [JsonProperty("dsr", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Cdd Dsr { get; set; }
 
-        [JsonProperty("hsr", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hsr { get; set; }
+        //[JsonProperty("hsr", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hsr { get; set; }
 
-        [JsonProperty("ht", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Ht { get; set; }
+        //[JsonProperty("ht", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Ht { get; set; }
 
         [JsonProperty("dht", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Cdd Dht { get; set; }
@@ -54,14 +56,14 @@
         [JsonProperty("dlt", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Cdd Dlt { get; set; }
 
-        [JsonProperty("hd", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hd { get; set; }
+        //[JsonProperty("hd", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hd { get; set; }
 
-        [JsonProperty("hws", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hws { get; set; }
+        //[JsonProperty("hws", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hws { get; set; }
 
-        [JsonProperty("hwd", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hwd { get; set; }
+        //[JsonProperty("hwd", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hwd { get; set; }
 
         [JsonProperty("desc", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Cdd Desc { get; set; }
@@ -69,14 +71,15 @@
         [JsonProperty("detc", NullValueHandling = NullValueHandling.Ignore)]
         public virtual Cdd Detc { get; set; }
 
-        [JsonProperty("hesc", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hesc { get; set; }
+        //[JsonProperty("hesc", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hesc { get; set; }
 
-        [JsonProperty("hetc", NullValueHandling = NullValueHandling.Ignore)]
-        public virtual Hd Hetc { get; set; }
+        //[JsonProperty("hetc", NullValueHandling = NullValueHandling.Ignore)]
+        //public virtual Hd Hetc { get; set; }
+        public string Date { get; set; }
     }
 
-    public partial class Cdd : Series
+    public partial class Cdd : ISeries
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -156,7 +159,7 @@
         public string Label { get; set; }
     }
 
-    public partial class Hd : Series
+    public partial class Hd : ISeries
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -230,14 +233,16 @@
             {
                 try
                 {
-                    var json = await wc.GetStringAsync(serviceUrl);
+                    var json = await wc.GetCachedStringAsync(serviceUrl, "WeatherHistory", TimeSpan.FromHours(2));
                     data = FromJson(json);
+                    data.Date = DateTime.Now.ToShortDateString();
                 }
                 catch (Exception e)
                 {}
             }
             return data;
         }
+
     }
 
     public static class WeatherHistorySerialize

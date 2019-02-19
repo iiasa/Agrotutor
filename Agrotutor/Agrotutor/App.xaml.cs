@@ -1,10 +1,13 @@
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
+using Agrotutor.Modules.Ciat.ViewModels;
+using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.ViewModels;
 using Agrotutor.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MonkeyCache.SQLite;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Prism;
@@ -44,12 +47,14 @@ namespace Agrotutor
             InitializeComponent();
             Material.Init(this);
             InitializeLocalizer();
-            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-            if (permissionStatus != PermissionStatus.Granted)
+            Barrel.ApplicationId = "AgroTutor";
+            var initialPage = "NavigationPage/MapPage";
+            if (VersionTracking.IsFirstLaunchEver)
             {
-                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                initialPage = "NavigationPage/WelcomePage";
             }
-            await NavigationService.NavigateAsync("NavigationPage/MapPage");
+
+            await NavigationService.NavigateAsync(initialPage);
         }
 
         protected override void OnStart()

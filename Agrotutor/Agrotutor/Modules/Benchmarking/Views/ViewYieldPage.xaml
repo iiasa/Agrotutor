@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
      mvvm:ViewModelLocator.AutowireViewModel="True"
-             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views;assembly=Agrotutor"
+             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
              x:Class="Agrotutor.Modules.Benchmarking.Views.ViewYieldPage">
     <ContentPage.Content>
         <StackLayout>
@@ -12,10 +12,10 @@
                 FontSize="20" />
 
             <views:SimpleStatsSingle
-                AverageImageSource="peso3.png"
-                MinImageSource="peso2.png"
-                MaxImageSource="peso4.png"
-                Unit="pesos"
+                AverageImageSource="corn3.png"
+                MinImageSource="corn2.png"
+                MaxImageSource="corn4.png"
+                Unit="tons"
                 AverageText="average"
                 MinText="minimum"
                 MaxText="maximum"

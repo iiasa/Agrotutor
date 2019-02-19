@@ -1,29 +1,36 @@
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Agrotutor.Core;
+using Agrotutor.Modules.Charts.Types;
+using Agrotutor.Modules.Weather.Types;
+using Microcharts;
+using Microsoft.Extensions.Localization;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
+using Prism.Commands;
+using Prism.Navigation;
+
 namespace Agrotutor.Modules.Weather.ViewModels
 {
-    using System.Collections.Generic;
-    using Microcharts;
-    using Prism.Commands;
-    using Prism.Navigation;
-    using Microsoft.Extensions.Localization;
-
-    using Core;
-    using Types;
-    using Charts.Types;
-
     public class WeatherHistoryPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string WeatherHistoryParameterName = "WEATHER_HISTORY_PARAMETER";
+        private Chart _currentChart;
 
         private List<string> _datasetNames;
+        private int _graphDays;
 
         private int _selectedDataset;
 
         private WeatherHistory _weatherData;
-        private Chart _currentChart;
         private List<EntryWithTime> selectedValEntries;
-        private int _graphDays;
+        private PlotModel _chartModel;
 
-        public WeatherHistoryPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
-            :base(navigationService,stringLocalizer)
+        public WeatherHistoryPageViewModel(INavigationService navigationService,
+            IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
+            : base(navigationService, stringLocalizer)
         {
             DatasetNames = new List<string>
             {
@@ -31,20 +38,11 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 "Días de grado de enfriamiento",
                 "Días de grado de calefacción",
                 "Precipitación diaria",
-                "Precipitaciones por hora",
-                "Humedad relativa por hora",
                 "Radiación solar diaria",
-                "Radiación solar por hora",
-                "Temperatura por hora",
                 "Temperatura alta diaria",
                 "Temperatura baja diaria",
-                "Punto de rocío por hora",
-                "Velocidad del viento por hora",
-                "Dirección del viento por hora",
                 "Evapotranspiración diaria de cultivos cortos",
                 "Evapotranspiración diaria de cultivos altos",
-                "Evapotranspiración horaria de cultivos cortos",
-                "Evapotranspiración horaria de cultivos altos"
             };
             DatasetNames = new List<string>
             {
@@ -52,31 +50,19 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 "Cooling degree days",
                 "Heating degree days",
                 "Daily precipitation",
-                "Hourly precipitation",
-                "Hourly relative humidity",
                 "Daily solar radiation",
-                "Hourly solar radiation",
-                "Hourly temperature",
                 "Daily high temperature",
                 "Daily low temperature",
-                "Hourly dewpoint",
-                "Hourly wind speed",
-                "Hourly wind direction",
                 "Daily evapotranspiration short crop",
                 "Daily evapotranspiration tall crop",
-                "Hourly evapotranspiration short crop",
-                "Hourly evapotranspiration tall crop"
             };
+            
         }
 
         public int GraphDays
         {
             get => _graphDays;
-            set
-            {
-                _graphDays = (value == 0) ? 365 : value;
-
-            }
+            set => _graphDays = (value == 0) ? 365 : value;
         }
 
         public List<EntryWithTime> SelectedValEntries
@@ -85,7 +71,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set
             {
                 selectedValEntries = value;
-                CurrentChart = new LineChart { Entries = value };
+                CurrentChart = new LineChart {Entries = value};
             }
         }
 
@@ -111,56 +97,58 @@ namespace Agrotutor.Modules.Weather.ViewModels
                         SelectedValEntries = MyWeatherData.Dp.GetChartEntries();
                         break;
                     case 4:
-                        SelectedValEntries = MyWeatherData.Hp.GetChartEntries();
-                        break;
-                    case 5:
-                        SelectedValEntries = MyWeatherData.Hrh.GetChartEntries();
-                        break;
-                    case 6:
                         SelectedValEntries = MyWeatherData.Dsr.GetChartEntries();
                         break;
-                    case 7:
-                        SelectedValEntries = MyWeatherData.Hsr.GetChartEntries();
-                        break;
-                    case 8:
-                        SelectedValEntries = MyWeatherData.Ht.GetChartEntries();
-                        break;
-                    case 9:
+                    case 5:
                         SelectedValEntries = MyWeatherData.Dht.GetChartEntries();
                         break;
-                    case 10:
+                    case 6:
                         SelectedValEntries = MyWeatherData.Dlt.GetChartEntries();
                         break;
-                    case 11:
-                        SelectedValEntries = MyWeatherData.Hd.GetChartEntries();
-                        break;
-                    case 12:
-                        SelectedValEntries = MyWeatherData.Hws.GetChartEntries();
-                        break;
-                    case 13:
-                        SelectedValEntries = MyWeatherData.Hwd.GetChartEntries();
-                        break;
-                    case 14:
+                    case 7:
                         SelectedValEntries = MyWeatherData.Desc.GetChartEntries();
                         break;
-                    case 15:
+                    case 8:
                         SelectedValEntries = MyWeatherData.Detc.GetChartEntries();
                         break;
-                    case 16:
-                        SelectedValEntries = MyWeatherData.Hesc.GetChartEntries();
-                        break;
-                    case 17:
-                        SelectedValEntries = MyWeatherData.Hetc.GetChartEntries();
-                        break;
                 }
+
+                RenderChart();
             }
         }
 
+        private void RenderChart()
+        {
+            ChartModel?.PlotView?.InvalidatePlot();
+            ChartModel?.Axes.Clear();
+            ChartModel?.Series.Clear();
+            ChartModel = new PlotModel {Title = "", PlotType = PlotType.XY};
+            //var Points = new List<DataPoint>
+            //{
+            //    new DataPoint(DateTimeAxis.CreateDataPoint(), 4),
+            //    new DataPoint(10, 13),
+            //    new DataPoint(20, 15),
+            //    new DataPoint(30, 16),
+            //    new DataPoint(40, 12),
+            //    new DataPoint(50, 12)
+            //};
+
+            var points = new List<DataPoint>();
+
+            if (SelectedValEntries != null)
+                foreach (var selectedValEntry in SelectedValEntries)
+                {
+                    var point = DateTimeAxis.CreateDataPoint(selectedValEntry.Time, selectedValEntry.Value);
+                    points.Add(point);
+                }
+
+            var s = new LineSeries {ItemsSource = points};
+            ChartModel.Axes.Add(new DateTimeAxis {Position = AxisPosition.Bottom, StringFormat = "M/d/yy"});
+            ChartModel.Series.Add(s);
+        }
+
         public DelegateCommand<string> SetGraphDays =>
-            new DelegateCommand<string>((string val) =>
-            {
-                GraphDays = int.Parse(val);
-            });
+            new DelegateCommand<string>(val => { GraphDays = int.Parse(val); });
 
 
         public List<string> DatasetNames
@@ -175,7 +163,28 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set => SetProperty(ref _weatherData, value);
         }
 
-        public Chart CurrentChart { get => _currentChart; set => SetProperty(ref _currentChart, value); }
+        public Chart CurrentChart
+        {
+            get => _currentChart;
+            set => SetProperty(ref _currentChart, value);
+        }
+
+
+        public PlotModel ChartModel
+        {
+            get => _chartModel;
+            set => SetProperty(ref _chartModel, value);
+        }
+
+        public DelegateCommand PageAppearingCommand =>
+            new DelegateCommand(async () => await PageAppearing());
+
+        private Task PageAppearing()
+        {
+            SelectedDataset = 0;
+            RenderChart();
+            return Task.CompletedTask;
+        }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -184,9 +193,9 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("WeatherHistory"))
+            if (parameters.ContainsKey(WeatherHistoryParameterName))
             {
-                parameters.TryGetValue<WeatherHistory>("WeatherHistory", out var weatherData);
+                parameters.TryGetValue<WeatherHistory>(WeatherHistoryParameterName, out var weatherData);
                 if (weatherData != null)
                 {
                     MyWeatherData = weatherData;

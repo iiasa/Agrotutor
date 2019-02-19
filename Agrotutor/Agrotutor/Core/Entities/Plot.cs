@@ -46,11 +46,12 @@ namespace Agrotutor.Core.Entities
 
         public virtual BenchmarkingInformation BenchmarkingInformation { get; set; }
 
-        public virtual PriceForecast PriceForecast { get; set; }
+        public virtual IEnumerable<PriceForecast> PriceForecast { get; set; }
 
         public virtual CiatData CiatData { get; set; }
 
         public virtual List<MediaItem> MediaItems { get; set; }
+
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 
@@ -98,6 +99,42 @@ namespace Agrotutor.Core.Entities
         {
             // TODO: remove this from here
             await GenericDatasetStorage.StoreDatasetAsync(this, -1, 16, 1, 1);
+        }
+
+        public string GetMaturityString()
+        {
+            switch (MaturityType)
+            {
+                case MaturityType.Early:
+                    return "Early";
+                case MaturityType.SemiEarly:
+                    return "Semi early";
+                case MaturityType.Intermediate:
+                    return "Intermediate";
+                case MaturityType.SemiLate:
+                    return "Semi late";
+                case MaturityType.Late:
+                    return "Late";
+                default:
+                    return "";
+            }
+        }
+
+        public string GetClimateString()
+        {
+            switch (ClimateType)
+            {
+                case ClimateType.Cold:
+                    return "Cold";
+                case ClimateType.TemperedSubtropical:
+                    return "Tempered / Subtropical";
+                case ClimateType.Tropical:
+                    return "Tropical";
+                case ClimateType.Hybrid:
+                    return "Hybrid";
+                default:
+                    return "";
+            }
         }
     }
 }

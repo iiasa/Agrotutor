@@ -4,11 +4,14 @@
              x:Class="Agrotutor.Core.Components.Views.ValueLine"
              Padding="8">
     <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="Auto" />
         <ColumnDefinition Width="*" />
         <ColumnDefinition Width="Auto" />
     </Grid.ColumnDefinitions>
-    <Label x:Name="LblText" Grid.Row="0" Grid.Column="0"/>
-    <Label x:Name="LblValue" Grid.Row="0" Grid.Column="1"/>
-    <Image x:Name="Image" WidthRequest="16" HorizontalOptions="Center" Grid.Row="0" Grid.Column="2"/>
+    <Grid.RowDefinitions>
+        <RowDefinition/>
+        <RowDefinition/>
+    </Grid.RowDefinitions>
+    <Label x:Name="LblText" Grid.Row="0" Grid.Column="0" FontAttributes="Bold" />
+    <Label x:Name="LblValue" Grid.Row="1" Grid.Column="0"  />
+    <Image x:Name="Image" WidthRequest="16" HorizontalOptions="Center" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
 </Grid>

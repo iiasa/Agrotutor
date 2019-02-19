@@ -6,36 +6,35 @@
              x:Class="Agrotutor.Modules.Ciat.Views.CiatPage">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Margin="16,16,16,0">
+            <StackLayout Margin="16,16,16,16">
                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                    <Button Text="{localization:Translate non_irrigated}" 
+                    <Button Text="{localization:Translate non_irrigated}" TextColor="#555555" Padding="16"
                         Command="{Binding NonIrrigatedClickedCommand}" 
                         x:Name="BtnNonIrrigated" />
-                    <Button Text="{localization:Translate irrigated}" 
+                    <Button Text="{localization:Translate irrigated}"  TextColor="#555555" Padding="16"
                         Command="{Binding IrrigatedClickedCommand}" 
                         x:Name="BtnIrrigated" />
                 </StackLayout>
 
-                <Label Margin="0,16,0,16" Text="{localization:Translate recommendations}" />
 
-                <Image Source="nitrogen.png"  WidthRequest="32" HeightRequest="64" />
+                <Image Source="nitrogen.png"  WidthRequest="46" HeightRequest="46" />
                 <Label x:Name="lblNitrogen"
-                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" 
+                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="18"
                     Text="{localization:Translate placeholder_nitrogen}"/>
                 
-                <Image Source="crop_orange.png"  WidthRequest="32" HeightRequest="64" />
-                <Label x:Name="lblAvoidCultivars"
-                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                <Image Source="crop_orange.png"  WidthRequest="46" HeightRequest="46" />
+                <Label x:Name="lblAvoidCultivars" FontSize="18"
+                    Margin="0,16,0,16" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                     Text="{localization:Translate placeholder_avoid}" />
 
-                <Image Source="crop_green.png"  WidthRequest="32" HeightRequest="64" />
-                <Label x:Name="lblUseCultivars"
-                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                <Image Source="crop_green.png"  WidthRequest="46" HeightRequest="46" />
+                <Label x:Name="lblUseCultivars" FontSize="18"
+                    Margin="0,16,0,16" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                     Text="{localization:Translate placeholder_use}" />
 
-                <Image Source="fertilizer.png"  WidthRequest="32" HeightRequest="64" />
-                <Label x:Name="lblSeedDensity"
-                    Margin="0,16,0,16" HorizontalOptions="CenterAndExpand"
+                <Image Source="fertilizer.png"  WidthRequest="46" HeightRequest="46" />
+                <Label x:Name="lblSeedDensity" FontSize="18"
+                    Margin="0,16,0,16" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                     Text="{localization:Translate placeholder_seed_density}" />
                 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">

@@ -15,6 +15,7 @@
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<CiatPage, CiatPageViewModel>();
+            containerRegistry.RegisterForNavigation<PotentialYieldPage, PotentialYieldPageViewModel>();
         }
     }
 }

@@ -103,7 +103,7 @@ namespace Agrotutor.Modules.Ciat.ViewModels
             parameters.TryGetValue(PARAMETER_NAME_CIAT_DATA, out CiatData ciatData);
             Data = ciatData;
 
-            if (Data == null) LoadData();
+            if (Data == null && GeoPosition != null && Crop != null) LoadData();
 
             base.OnNavigatedTo(parameters);
         }
