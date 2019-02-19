@@ -36,8 +36,9 @@
         private void InitializeLibs(Bundle bundle)
         {
             Forms.SetFlags("FastRenderers_Experimental");
-            Forms.Init(this, bundle);
 
+            Rg.Plugins.Popup.Popup.Init(this, bundle);
+            Forms.Init(this, bundle);
             FormsGoogleMaps.Init(this, bundle);
             FormsGoogleMapsBindings.Init();
             UserDialogs.Init(this);
