@@ -686,7 +686,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             set
             {
                 _addPlotPosition = value;
-                RefreshWeatherData().RunSynchronously();
+                RefreshWeatherData();
             }
         }
 
@@ -1472,27 +1472,37 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             if (location != null)
             {
-                WeatherLocation = location;
-
-                CurrentPosition = Position.FromLocation(location);
-                if (CurrentMapTask == MapTask.CreatePlotByGPS) AddPlotPosition = CurrentPosition;
-
-                var lat = Preferences.Get(Constants.Lat, 0.0);
-                var lng = Preferences.Get(Constants.Lng, 0.0);
-                if (Region == null)
-                {
-                    if (!lat.Equals(0.0) && !lng.Equals(0.0))
-                        Region = MapSpan.FromCenterAndRadius(
-                            new MapsPosition(lat, lng),
-                            Distance.FromKilometers(2));
-                    else
-                        Region = MapSpan.FromCenterAndRadius(
-                            new MapsPosition(location.Latitude, location.Longitude),
-                            Distance.FromKilometers(2));
-                }
-
-                LocationEnabled = true;
+                UpdateLocation(location);
             }
+            else
+            {
+                location = await Geolocation.GetLocationAsync();
+                UpdateLocation(location);
+            }
+        }
+
+        private void UpdateLocation(Location location)
+        {
+            WeatherLocation = location;
+
+            CurrentPosition = Position.FromLocation(location);
+            if (CurrentMapTask == MapTask.CreatePlotByGPS) AddPlotPosition = CurrentPosition;
+
+            var lat = Preferences.Get(Constants.Lat, 0.0);
+            var lng = Preferences.Get(Constants.Lng, 0.0);
+            if (Region == null)
+            {
+                if (!lat.Equals(0.0) && !lng.Equals(0.0))
+                    Region = MapSpan.FromCenterAndRadius(
+                        new MapsPosition(lat, lng),
+                        Distance.FromKilometers(2));
+                else
+                    Region = MapSpan.FromCenterAndRadius(
+                        new MapsPosition(location.Latitude, location.Longitude),
+                        Distance.FromKilometers(2));
+            }
+
+            LocationEnabled = true;
         }
 
         private async Task LoadMapData()

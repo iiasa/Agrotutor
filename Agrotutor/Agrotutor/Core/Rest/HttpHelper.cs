@@ -9,24 +9,29 @@ namespace Agrotutor.Core.Rest
 {
     public static class HttpHelper
     {
-        public static async Task<T> GetCachedAsync<T>(this HttpClient client, string url, int days = 7, bool forceRefresh = false)
+        public static async Task<T> GetCachedAsync<T>(this HttpClient client, string url, string key, TimeSpan timeSpan = default(TimeSpan), bool forceRefresh = false)
         {
             if (client == null) return default(T);
 
             var json = string.Empty;
 
-            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-                json = Barrel.Current.Get<string>(url);
+            if (timeSpan == default(TimeSpan))
+            {
+                timeSpan = TimeSpan.FromDays(1);
+            }
 
-            if (!forceRefresh && !Barrel.Current.IsExpired(url))
-                json = Barrel.Current.Get<string>(url);
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+                json = Barrel.Current.Get<string>(key);
+
+            if (!forceRefresh && !Barrel.Current.IsExpired(key))
+                json = Barrel.Current.Get<string>(key);
 
             try
             {
                 if (string.IsNullOrWhiteSpace(json))
                 {
                     json = await client.GetStringAsync(url);
-                    Barrel.Current.Add(url, json, TimeSpan.FromDays(days));
+                    Barrel.Current.Add(key, json, timeSpan);
                 }
                 return JsonConvert.DeserializeObject<T>(json);
             }
@@ -40,7 +45,7 @@ namespace Agrotutor.Core.Rest
         }
 
 
-        public static async Task<string> GetCachedStringAsync(this HttpClient client, string url, TimeSpan timeSpan = default(TimeSpan), bool forceRefresh = false)
+        public static async Task<string> GetCachedStringAsync(this HttpClient client, string url,string key, TimeSpan timeSpan = default(TimeSpan), bool forceRefresh = false)
         {
             if (client == null) return default(string);
 
@@ -48,21 +53,21 @@ namespace Agrotutor.Core.Rest
 
             if (timeSpan == default(TimeSpan))
             {
-                timeSpan = TimeSpan.FromDays(7);
+                timeSpan = TimeSpan.FromDays(1);
             }
 
             if (Connectivity.NetworkAccess != NetworkAccess.Internet)
-                json = Barrel.Current.Get<string>(url);
+                json = Barrel.Current.Get<string>(key);
 
-            if (!forceRefresh && !Barrel.Current.IsExpired(url))
-                json = Barrel.Current.Get<string>(url);
+            if (!forceRefresh && !Barrel.Current.IsExpired(key))
+                json = Barrel.Current.Get<string>(key);
 
             try
             {
                 if (string.IsNullOrWhiteSpace(json))
                 {
                     json = await client.GetStringAsync(url);
-                    Barrel.Current.Add(url, json, timeSpan);
+                    Barrel.Current.Add(key, json, timeSpan);
                 }
                 return json;
             }

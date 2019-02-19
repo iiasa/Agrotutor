@@ -35,7 +35,7 @@ namespace Agrotutor.Modules.Weather.Types
                 client.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
                 try
                 {
-                    var json = await client.GetCachedStringAsync(serviceUrl,  TimeSpan.FromHours(2));
+                    var json = await client.GetCachedStringAsync(serviceUrl, "WeatherForecast",  TimeSpan.FromHours(2));
                     var forecast = FromJson(json);
                     forecast.Date = DateTime.Now.ToShortDateString();
                     return forecast;
