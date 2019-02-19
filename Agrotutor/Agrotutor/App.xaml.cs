@@ -6,6 +6,7 @@ using Agrotutor.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using MonkeyCache.SQLite;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Prism;
@@ -41,7 +42,7 @@ namespace Agrotutor
             InitializeComponent();
             Material.Init(this);
             InitializeLocalizer();
-            
+            Barrel.ApplicationId = "AgroTutor";
             await NavigationService.NavigateAsync("NavigationPage/MapPage");
         }
 
