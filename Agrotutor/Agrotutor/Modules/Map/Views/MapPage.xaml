@@ -201,6 +201,12 @@
                                     <Label Text="{localization:Translate plot_detail_climate}" />
                                     <Label Text="{Binding SelectedPlotClimate}" />
                                 </StackLayout>
+                                
+                                <views:ValueLine Text="Growing Degree Days" 
+                                     Value="{Binding CurrentPlotGDD}" 
+                                     ImageSource="{Binding CurrentPlotWeatherIcon}"
+                                     Command="{Binding NavigateToPlotWeather}"/>
+
 
                                 <ScrollView Margin="5" Orientation="Horizontal">
                                     <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
