@@ -2,7 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.Weather.Views.WeatherHistoryPage">
     <ContentPage.Content>
         <Grid Margin="16">
@@ -21,17 +23,20 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             
-            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="CenterAndExpand" />
-            <microcharts:ChartView Chart="{Binding CurrentChart}" 
-                                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300"/>
-            
-            <Button Text="1d" Grid.Row="2" Grid.Column="0" Command="{Binding SetGraphDays}" CommandParameter="1" />
+            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" />
+            <!--<microcharts:ChartView Chart="{Binding CurrentChart}" 
+                                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300"/>-->
+            <oxy:PlotView Model="{Binding ChartModel}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center" />
+            <!--<Button Text="1d" Grid.Row="2" Grid.Column="0" Command="{Binding SetGraphDays}" CommandParameter="1" />
             <Button Text="3d" Grid.Row="2" Grid.Column="1" Command="{Binding SetGraphDays}" CommandParameter="3"/>
             <Button Text="1w" Grid.Row="2" Grid.Column="2" Command="{Binding SetGraphDays}" CommandParameter="7"/>
             <Button Text="1mo" Grid.Row="2" Grid.Column="3" Command="{Binding SetGraphDays}" CommandParameter="31"/>
             <Button Text="3mo" Grid.Row="2" Grid.Column="4" Command="{Binding SetGraphDays}" CommandParameter="92"/>
             <Button Text="6mo" Grid.Row="2" Grid.Column="5" Command="{Binding SetGraphDays}" CommandParameter="183"/>
-            <Button Text="1yr" Grid.Row="2" Grid.Column="6" Command="{Binding SetGraphDays}" CommandParameter="365"/>
+            <Button Text="1yr" Grid.Row="2" Grid.Column="6" Command="{Binding SetGraphDays}" CommandParameter="365"/>-->
         </Grid>
     </ContentPage.Content>
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </ContentPage.Behaviors>
 </ContentPage>
