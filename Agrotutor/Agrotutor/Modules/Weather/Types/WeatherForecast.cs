@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Modules.Weather.Types
+﻿using Agrotutor.Core.Rest;
+
+namespace Agrotutor.Modules.Weather.Types
 {
     using System;
     using System.Collections.Generic;
@@ -27,13 +29,13 @@
         {
             var serviceUrl =
                 $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json"; // TODO add LANG=es/en
-            using (var wc = new HttpClient())
+            using (var client = new HttpClient())
             {
-                wc.DefaultRequestHeaders.Add("app_id", "949a7457");
-                wc.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
+                client.DefaultRequestHeaders.Add("app_id", "949a7457");
+                client.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
                 try
                 {
-                    var json = await wc.GetStringAsync(serviceUrl);
+                    var json = await client.GetCachedStringAsync(serviceUrl,  TimeSpan.FromHours(2));
                     var forecast = FromJson(json);
                     forecast.Date = DateTime.Now.ToShortDateString();
                     return forecast;

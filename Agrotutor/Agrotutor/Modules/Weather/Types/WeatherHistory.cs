@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Modules.Weather.Types
+﻿using Agrotutor.Core.Rest;
+
+namespace Agrotutor.Modules.Weather.Types
 {
     using System;
     using System.Collections.Generic;
@@ -231,7 +233,7 @@
             {
                 try
                 {
-                    var json = await wc.GetStringAsync(serviceUrl);
+                    var json = await wc.GetCachedStringAsync(serviceUrl);
                     data = FromJson(json);
                     data.Date = DateTime.Now.ToShortDateString();
                 }
