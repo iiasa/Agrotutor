@@ -107,8 +107,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool investigationPlatformUIIsVisible;
 
-        private bool listenForLocation = true;
-
         private bool locationPermissionGiven;
 
         private bool machineryPointUIIsVisible;
@@ -1508,9 +1506,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             PlotsLayerVisible = Preferences.Get(Constants.PlotsLayerVisiblePreference, true);
             PlotDelineationsLayerVisible = Preferences.Get(Constants.PlotDelineationsLayerVisiblePreference, true);
             HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
-            MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, true);
+            MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, false);
             InvestigationPlatformsLayerVisible =
-                Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, true);
+                Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
             OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
         }
 
