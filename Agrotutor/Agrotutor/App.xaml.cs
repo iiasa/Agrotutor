@@ -44,7 +44,13 @@ namespace Agrotutor
             Material.Init(this);
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";
-            await NavigationService.NavigateAsync("NavigationPage/MapPage");
+            var initialPage = "NavigationPage/MapPage";
+            if (VersionTracking.IsFirstLaunchEver)
+            {
+                initialPage = "NavigationPage/WelcomePage";
+            }
+
+            await NavigationService.NavigateAsync(initialPage);
         }
 
         protected override void OnStart()

@@ -202,8 +202,6 @@
                                     <Label Text="{Binding SelectedPlotClimate}" />
                                 </StackLayout>
 
-                                <views:Divider />
-
                                 <ScrollView Margin="5" Orientation="Horizontal">
                                     <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
                                 </ScrollView>
