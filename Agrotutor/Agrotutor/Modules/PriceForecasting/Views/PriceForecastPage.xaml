@@ -46,15 +46,15 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition />
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Label Grid.Row="1" Grid.Column="0" Text="Price"/>
-                <Label Grid.Row="2" Grid.Column="0" Text="Range" VerticalOptions="Start"/>
 
-                <ScrollView Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Horizontal">
+                <StackLayout Grid.Column="0" Grid.Row="0">
+                    <Label FontSize="Large" Text=" "/>
+                    <Label Text="Price"/>
+                    <Label Text="Range" VerticalOptions="Start"/>
+
+                </StackLayout>
+
+                <ScrollView Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
                     <StackLayout Orientation="Horizontal" x:Name="ForecastStack">
                         <StackLayout>
                             <Label Text="in 3 months" FontSize="Large" TextColor="ForestGreen" />
