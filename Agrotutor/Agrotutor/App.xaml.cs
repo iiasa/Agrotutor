@@ -1,5 +1,6 @@
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
+using Agrotutor.Modules.Ciat.ViewModels;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.ViewModels;
 using Agrotutor.Views;

@@ -256,7 +256,7 @@
                                     Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" Command="{Binding NavigateToPotentialYied}"/>
+                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" Command="{Binding NavigateToPotentialYield}"/>
                                 <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" Command="{Binding NavigateToCiat}" />
                                 <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" Command="{Binding NavigateToPriceForecast}" />
                             </StackLayout>

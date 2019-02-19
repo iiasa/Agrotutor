@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage">
+    <ScrollView>
+        <StackLayout Margin="16,16,16,0">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <Button Text="{localization:Translate non_irrigated}" 
+                        Command="{Binding NonIrrigatedClickedCommand}" 
+                        x:Name="BtnNonIrrigated" />
+                <Button Text="{localization:Translate irrigated}" 
+                        Command="{Binding IrrigatedClickedCommand}" 
+                        x:Name="BtnIrrigated" />
+            </StackLayout>
+
+            <views:SimpleStatsSingle
+                AverageImageSource="peso3.png"
+                MinImageSource="peso2.png"
+                MaxImageSource="peso4.png"
+                Unit="pesos"
+                AverageText="average"
+                MinText="minimum"
+                MaxText="maximum"
+                AverageValue="{Binding Avg}"
+                MinValue="{Binding Min}"
+                MaxValue="{Binding Max}"
+            />
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

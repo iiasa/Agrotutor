@@ -1032,15 +1032,15 @@ namespace Agrotutor.Modules.Map.ViewModels
             var profit = SelectedPlot?.BemData?.AverageProfit;
             var income = SelectedPlot?.BemData?.AverageIncome;
             var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
-            var nitrogenNeeded = SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
+            var nitrogenNeeded =SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
             var priceForecast = await PriceForecast.FromEmbeddedResource();
             var priceForecastNextMonth = priceForecast.First().Price;
             CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
 
-            CurrentPlotCost = cost == null ? "-" : cost.ToString();
-            CurrentPlotYield = yield == null ? "-" : yield.ToString();
-            CurrentPlotProfit = profit == null ? "-" : profit.ToString();
-            CurrentPlotIncome = income == null ? "-" : income.ToString();
+            CurrentPlotCost = cost == null ? "-" : Math.Round((decimal)cost).ToString();
+            CurrentPlotYield = yield == null ? "-" : Math.Round((decimal)yield).ToString();
+            CurrentPlotProfit = profit == null ? "-" : Math.Round((decimal)profit).ToString();
+            CurrentPlotIncome = income == null ? "-" : Math.Round((decimal)income).ToString();
             CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
             CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
 
@@ -1140,9 +1140,14 @@ namespace Agrotutor.Modules.Map.ViewModels
                 });
 
         public DelegateCommand NavigateToPotentialYield => 
-            new DelegateCommand(() =>
+            new DelegateCommand(async() =>
             {
-                //TODO do something...
+                var param = new NavigationParameters
+                {
+                    {PotentialYieldPageViewModel.DataParameterName, SelectedPlot?.CiatData}
+                };
+
+                await NavigationService.NavigateAsync("PotentialYieldPage", param);
             });
 
         public DelegateCommand NavigateToCiat =>
@@ -1155,7 +1160,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 await NavigationService.NavigateAsync("CiatPage", param);
             });
 
-        public DelegateCommand NavigateToPriceForecasting =>
+        public DelegateCommand NavigateToPriceForecast =>
             new DelegateCommand(async() =>
             {
                 var param = new NavigationParameters
@@ -1256,11 +1261,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             if (plot.PriceForecast == null)
             {
-                // if (plot.CropType == CropType.Corn)
-                // {
                 plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
                 updatedPlot = true;
-                // }
             }
 
             if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);

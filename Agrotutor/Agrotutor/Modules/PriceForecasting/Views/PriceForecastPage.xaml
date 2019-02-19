@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:views="clr-namespace:Agrotutor.Modules.PriceForecasting.Views;assembly=Agrotutor"
+             xmlns:views="clr-namespace:Agrotutor.Modules.PriceForecasting.Views"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.PriceForecasting.Views.PriceForecastPage"
              Padding="16,16,16,0">
@@ -30,10 +30,10 @@
                 <Label Grid.Column="0" Grid.Row="0" Text="Expected price" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
                 <Label Grid.Column="0" Grid.Row="2" Text="Expected range" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange"/>
 
-                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="30" HorizontalOptions="Center" FontSize="56" FontAttributes="Bold" />
-                <Label Grid.Row="2" Grid.Column="1" Text="25" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" />
+                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
                 <Label Grid.Row="2" Grid.Column="2" Text="to" VerticalOptions="Center" />
-                <Label Grid.Row="2" Grid.Column="3" Text="35" FontSize="24" FontAttributes="Bold" VerticalOptions="Center" />
+                <Label Grid.Row="2" Grid.Column="3" Text="{Binding NextMax}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
 
                 <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#242424" HeightRequest="5"/>
 
@@ -55,35 +55,7 @@
                 <Label Grid.Row="2" Grid.Column="0" Text="Range" VerticalOptions="Start"/>
 
                 <ScrollView Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal">
-                        <views:ForecastElement
-                            Unit="($/kg)"
-                            Average="30"
-                            Minimum="23"
-                            Maximum="37"
-                            Month="2"/>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Text="in 2 months" FontSize="18" TextColor="ForestGreen" HorizontalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="End" Text="30" FontSize="18" VerticalOptions="Center" />
-                            <Label Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="Start" Text="($/kg)" VerticalOptions="Center" />
-
-                            <Label Grid.Column="0" Grid.Row="2" HorizontalOptions="End" Text="23" FontSize="16" VerticalOptions="Center" />
-                            <Label Grid.Column="1" Grid.Row="2" HorizontalOptions="Start" Text="to" VerticalOptions="Center" />
-                            <Label Grid.Column="2" Grid.Row="2" HorizontalOptions="End" Text="37" FontSize="16" VerticalOptions="Center" />
-                            <Label Grid.Column="3" Grid.Row="2" HorizontalOptions="End" Text="($/kg)" VerticalOptions="Center" />
-                        </Grid>
+                    <StackLayout Orientation="Horizontal" x:Name="ForecastStack">
                         <StackLayout>
                             <Label Text="in 3 months" FontSize="Large" TextColor="ForestGreen" />
                             <Label Text="30 ($/kg)" />

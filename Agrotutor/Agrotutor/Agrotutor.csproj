@@ -112,6 +112,9 @@
     <EmbeddedResource Update="Modules\Calendar\Views\CalendarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Ciat\Views\PotentialYieldPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Map\Views\MapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -187,9 +190,6 @@
     <Folder Include="Modules\Benchmarking\Views\" />
     <Folder Include="Modules\Benchmarking\ViewModels\" />
     <Folder Include="Modules\Benchmarking\Types\" />
-    <Folder Include="Modules\Ciat\" />
-    <Folder Include="Modules\Ciat\Views\" />
-    <Folder Include="Modules\Ciat\ViewModels\" />
     <Folder Include="Modules\Ciat\Types\" />
     <Folder Include="Modules\PriceForecasting\Types\" />
     <Folder Include="Resources\Modules\Map\ViewModels\" />

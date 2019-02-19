@@ -42,9 +42,9 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
             set
             {
                 SetProperty(ref this.datasets, value);
-                Min = value.Select(x => double.Parse(x.Performance)).Min();
-                Max = value.Select(x => double.Parse(x.Performance)).Max();
-                Avg = Math.Round(value.Select(x => double.Parse(x.Performance)).Average(), 0);
+                Min = Math.Round(value.Select(x => double.Parse(x.Performance)).Min(), 1);
+                Max = Math.Round(value.Select(x => double.Parse(x.Performance)).Max(), 1);
+                Avg = Math.Round(value.Select(x => double.Parse(x.Performance)).Average(), 1);
             }
         }
 
