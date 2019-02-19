@@ -1,9 +1,14 @@
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Modules.Charts.Types;
 using Agrotutor.Modules.Weather.Types;
 using Microcharts;
 using Microsoft.Extensions.Localization;
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Series;
 using Prism.Commands;
 using Prism.Navigation;
 
@@ -21,6 +26,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         private WeatherHistory _weatherData;
         private List<EntryWithTime> selectedValEntries;
+        private PlotModel _chartModel;
 
         public WeatherHistoryPageViewModel(INavigationService navigationService,
             IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
@@ -50,6 +56,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 "Daily evapotranspiration short crop",
                 "Daily evapotranspiration tall crop",
             };
+            
         }
 
         public int GraphDays
@@ -105,7 +112,39 @@ namespace Agrotutor.Modules.Weather.ViewModels
                         SelectedValEntries = MyWeatherData.Detc.GetChartEntries();
                         break;
                 }
+
+                RenderChart();
             }
+        }
+
+        private void RenderChart()
+        {
+            ChartModel?.PlotView?.InvalidatePlot();
+            ChartModel?.Axes.Clear();
+            ChartModel?.Series.Clear();
+            ChartModel = new PlotModel {Title = "", PlotType = PlotType.XY};
+            //var Points = new List<DataPoint>
+            //{
+            //    new DataPoint(DateTimeAxis.CreateDataPoint(), 4),
+            //    new DataPoint(10, 13),
+            //    new DataPoint(20, 15),
+            //    new DataPoint(30, 16),
+            //    new DataPoint(40, 12),
+            //    new DataPoint(50, 12)
+            //};
+
+            var points = new List<DataPoint>();
+
+            if (SelectedValEntries != null)
+                foreach (var selectedValEntry in SelectedValEntries)
+                {
+                    var point = DateTimeAxis.CreateDataPoint(selectedValEntry.Time, selectedValEntry.Value);
+                    points.Add(point);
+                }
+
+            var s = new LineSeries {ItemsSource = points};
+            ChartModel.Axes.Add(new DateTimeAxis {Position = AxisPosition.Bottom, StringFormat = "M/d/yy"});
+            ChartModel.Series.Add(s);
         }
 
         public DelegateCommand<string> SetGraphDays =>
@@ -128,6 +167,23 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             get => _currentChart;
             set => SetProperty(ref _currentChart, value);
+        }
+
+
+        public PlotModel ChartModel
+        {
+            get => _chartModel;
+            set => SetProperty(ref _chartModel, value);
+        }
+
+        public DelegateCommand PageAppearingCommand =>
+            new DelegateCommand(async () => await PageAppearing());
+
+        private Task PageAppearing()
+        {
+            SelectedDataset = 0;
+            RenderChart();
+            return Task.CompletedTask;
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

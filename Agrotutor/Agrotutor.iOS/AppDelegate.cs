@@ -26,6 +26,7 @@ namespace Agrotutor.iOS
             FormsGoogleMapsBindings.Init();
             XF.Material.iOS.Material.Init();
             Rg.Plugins.Popup.Popup.Init();
+            OxyPlot.Xamarin.Forms.Platform.iOS.PlotViewRenderer.Init();
             LoadApplication(new App(new iOSInitializer()));
 
             return base.FinishedLaunching(app, options);
