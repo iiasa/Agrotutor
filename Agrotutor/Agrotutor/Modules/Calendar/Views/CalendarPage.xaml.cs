@@ -40,8 +40,10 @@
                 var calendarEvents = ViewModel.Events?.Where(e => e.StartTime.Date.Equals(date)).ToList();
                 MonthlyCalendarDayView monthlyCalendarDayView = new MonthlyCalendarDayView
                 {
+                    NavigationService = this.ViewModel.NavigationService,
                     CalendarEvents = calendarEvents,
-                    Date = date
+                    Date = date,
+                   
                 };
                 gridElements.Add(monthlyCalendarDayView);
                 Grid.SetRow(monthlyCalendarDayView, positionRow);

@@ -62,7 +62,6 @@
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.1</Version>
     </PackageReference>
-
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies">
       <Version>2.2.2</Version>
     </PackageReference>
@@ -74,6 +73,9 @@
     </PackageReference>
     <PackageReference Include="modernhttpclient">
       <Version>2.4.2</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Plugin.Popups">
+      <Version>2.2.0.293</Version>
     </PackageReference>
     <PackageReference Include="System.Buffers">
       <Version>4.5.0</Version>
