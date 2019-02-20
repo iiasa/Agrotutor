@@ -1,38 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             mvvm:ViewModelLocator.AutowireViewModel="True"
-             Title="Add plot"
-             x:Class="Agrotutor.Modules.Plot.Views.AddPlotPage"
-             Padding="16">
+<ContentPage
+    x:Class="Agrotutor.Modules.Plot.Views.AddPlotPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    Title="Add plot"
+    
+    Padding="16"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <Label Text="{localization:Translate hint_parcel_name}" FontSize="18" />
-                <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Plot.Name}"
-                       Margin="0,0,0,16" />
+                <Label FontSize="18" Text="{localization:Translate hint_parcel_name}" />
+                <Entry
+                    Margin="0,0,0,16"
+                    Placeholder="{localization:Translate hint_parcel_name_1}"
+                    Text="{Binding Plot.Name}" />
 
-                <Label Text="{localization:Translate hint_crop}" FontSize="18" />
-                <Picker ItemsSource="{Binding CropTypes}" SelectedIndex="{Binding PickerCropTypesSelectedIndex}"
-                        Title="{localization:Translate select}" Margin="0,0,0,16" />
+                <Label FontSize="18" Text="{localization:Translate hint_crop}" />
+                <Picker
+                    Title="{localization:Translate select}"
+                    Margin="0,0,0,16"
+                    ItemsSource="{Binding CropTypes}"
+                    SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
 
-                <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
-                <DatePicker Date="{Binding PlantingDate, Mode=TwoWay}" Margin="0,0,0,16" />
+                <Label FontSize="18" Text="{localization:Translate hint_planting_date}" />
+                <DatePicker Margin="0,0,0,16" Date="{Binding PlantingDate, Mode=TwoWay}" />
 
-                <Label Text="{localization:Translate madurez}" FontSize="18" />
-                <Picker ItemsSource="{Binding MaturityClasses}"
-                        SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}"
-                        Title="{localization:Translate select}" Margin="0,0,0,16" />
+                <Label FontSize="18" Text="{localization:Translate madurez}" />
+                <Picker
+                    Title="{localization:Translate select}"
+                    Margin="0,0,0,16"
+                    ItemsSource="{Binding MaturityClasses}"
+                    SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" />
 
-                <Label Text="{localization:Translate tipo_clima}" FontSize="18" />
-                <Picker ItemsSource="{Binding ClimateTypes}" SelectedIndex="{Binding PickerClimateTypesSelectedIndex}"
-                        Title="{localization:Translate select}" Margin="0,0,0,16" />
+                <Label FontSize="18" Text="{localization:Translate tipo_clima}" />
+                <Picker
+                    Title="{localization:Translate select}"
+                    Margin="0,0,0,16"
+                    ItemsSource="{Binding ClimateTypes}"
+                    SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" />
 
 
-                <Button Text="{localization:Translate btn_save_and_new}" Command="{Binding ClickSave}" />
+                <Button Command="{Binding ClickSave}" Text="{localization:Translate btn_save_and_new}" />
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

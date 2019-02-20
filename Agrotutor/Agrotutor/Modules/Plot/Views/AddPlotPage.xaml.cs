@@ -9,7 +9,6 @@
         public AddPlotPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
