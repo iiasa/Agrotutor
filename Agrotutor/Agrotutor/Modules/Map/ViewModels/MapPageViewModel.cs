@@ -348,7 +348,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     {"Plot", SelectedPlot}
                 };
-                NavigationService.NavigateAsync("NavigationPage/ActivityPage", param);
+                NavigationService.NavigateAsync("ActivityPage", param);
             });
 
         public DelegateCommand ShowLayerSwitcher =>
@@ -356,6 +356,34 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand PageAppearingCommand =>
             new DelegateCommand(async () => await PageAppearing());
+
+
+        public DelegateCommand DeleteCommand =>
+            new DelegateCommand(async () => await DeletePlot());
+
+        private async Task DeletePlot()
+        {
+            try
+            {
+                var confirm = await MaterialDialog.Instance.ConfirmAsync("Are you sure?", "Delete");
+                if (confirm.Value)
+                {
+                    using (await MaterialDialog.Instance.LoadingDialogAsync("Deleting plot..."))
+                    {
+                        await AppDataService.RemovePlotAsync(SelectedPlot);
+                        RemovePlots();
+                        PlotDetailIsVisible = false;
+                        DimBackground = false;
+                        await LoadPlots();
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                await MaterialDialog.Instance.SnackbarAsync("Failed to delete the plot.");
+            }
+            
+        }
 
         public DelegateCommand AddParcelClicked =>
             new DelegateCommand(() => { AddParcelIsVisible = true; });
@@ -539,7 +567,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand(() => NavigateToLocation(CurrentMachineryPoint.Geometry.ToLocation()));
 
         public DelegateCommand NavigateToGuide =>
-            new DelegateCommand(() => { NavigationService.NavigateAsync("NavigationPage/WelcomePage"); });
+            new DelegateCommand(() => { NavigationService.NavigateAsync("WelcomePage"); });
 
         public DelegateCommand NavigateToPractices =>
             new DelegateCommand(() => { NavigationService.NavigateAsync("LinksPage"); });
@@ -626,7 +654,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         },
                         {"Dev", true}
                     };
-                    await NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
+                    await NavigationService.NavigateAsync("CalendarPage", navigationParameters);
                 });
 
         public DelegateCommand ShowCalendarForSelectedPlot =>
@@ -640,7 +668,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                             SelectedPlot.GetCalendarEvents()
                         }
                     };
-                    await NavigationService.NavigateAsync("NavigationPage/CalendarPage", navigationParameters);
+                    await NavigationService.NavigateAsync("CalendarPage", navigationParameters);
                 });
 
         public DelegateCommand ShowOptions => new DelegateCommand(() => { OptionsIsVisible = true; });
@@ -1282,38 +1310,41 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotData(Core.Entities.Plot plot)
         {
-            bool updatedPlot = false;
-            if (plot.BemData == null)
+            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
             {
-                plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
-                    plot.Position.Longitude, plot.CropType);
-                updatedPlot = true;
-            }
-            if (plot.WeatherForecast == null)
-            {
-                plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude, plot.Position.Longitude);
-                updatedPlot = true;
-            }
+                bool updatedPlot = false;
+                if (plot.BemData == null)
+                {
+                    plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
+                        plot.Position.Longitude, plot.CropType);
+                    updatedPlot = true;
+                }
+                if (plot.WeatherForecast == null)
+                {
+                    plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude, plot.Position.Longitude);
+                    updatedPlot = true;
+                }
 
-            if (plot.WeatherHistory == null)
-            {
-                plot.WeatherHistory = await WeatherHistory.Download(plot.Position.Latitude, plot.Position.Longitude);
-                updatedPlot = true;
-            }
+                if (plot.WeatherHistory == null)
+                {
+                    plot.WeatherHistory = await WeatherHistory.Download(plot.Position.Latitude, plot.Position.Longitude);
+                    updatedPlot = true;
+                }
 
-            if (plot.CiatData == null)
-            {
-                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maiz");
-                updatedPlot = true;
-            }
+                if (plot.CiatData == null)
+                {
+                    plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maiz");
+                    updatedPlot = true;
+                }
 
-            if (plot.PriceForecast == null)
-            {
-                plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
-                updatedPlot = true;
-            }
+                if (plot.PriceForecast == null)
+                {
+                    plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
+                    updatedPlot = true;
+                }
 
-            if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
+                if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
+            }
         }
         
         public void RemoveHubsContact()
@@ -1508,7 +1539,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     AddPlotPosition
                 }
             };
-            await NavigationService.NavigateAsync("NavigationPage/PlotMainPage", navigationParams);
+            await NavigationService.NavigateAsync("PlotMainPage", navigationParams);
         }
 
         private async void CreatePlot()
@@ -1543,7 +1574,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         AddPlotPosition
                     }
                 };
-                await NavigationService.NavigateAsync("NavigationPage/AddPlotPage", navigationParams);
+                await NavigationService.NavigateAsync("AddPlotPage", navigationParams);
             }
         }
 

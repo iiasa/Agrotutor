@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
              xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
              mvvm:ViewModelLocator.AutowireViewModel="True"
+             Title="Weather history"
              x:Class="Agrotutor.Modules.Weather.Views.WeatherHistoryPage">
     <ContentPage.Content>
         <Grid Margin="16">
@@ -22,11 +24,13 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
-            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" />
+
+            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" Grid.Row="0"
+                    Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" />
             <!--<microcharts:ChartView Chart="{Binding CurrentChart}" 
                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300"/>-->
-            <oxy:PlotView Model="{Binding ChartModel}"  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center" />
+            <oxy:PlotView Model="{Binding ChartModel}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
+                          WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center" />
             <!--<Button Text="1d" Grid.Row="2" Grid.Column="0" Command="{Binding SetGraphDays}" CommandParameter="1" />
             <Button Text="3d" Grid.Row="2" Grid.Column="1" Command="{Binding SetGraphDays}" CommandParameter="3"/>
             <Button Text="1w" Grid.Row="2" Grid.Column="2" Command="{Binding SetGraphDays}" CommandParameter="7"/>

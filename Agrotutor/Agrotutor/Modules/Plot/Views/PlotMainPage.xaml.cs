@@ -9,7 +9,6 @@
         public PlotMainPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

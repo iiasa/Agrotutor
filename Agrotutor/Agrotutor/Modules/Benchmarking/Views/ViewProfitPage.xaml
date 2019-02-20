@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             Title="Profit in this area"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
              x:Class="Agrotutor.Modules.Benchmarking.Views.ViewProfitPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label
+            <!--<Label
                 HorizontalOptions="StartAndExpand"
                 Text="Profit in this area"
-                FontSize="20" />
+                FontSize="20" />-->
 
             <views:SimpleStatsSingle
                 AverageImageSource="peso3.png"
@@ -21,8 +23,7 @@
                 MaxText="maximum"
                 AverageValue="{Binding Avg}"
                 MinValue="{Binding Min}"
-                MaxValue="{Binding Max}"
-            />
+                MaxValue="{Binding Max}" />
 
         </StackLayout>
     </ContentPage.Content>
