@@ -14,7 +14,7 @@ namespace Agrotutor.Core.Rest.Bem
         private static string CostParameter = "costo";
         private static string IncomeParameter = "ingreso";
         private static string YieldParameter = "rendimiento";
-        private static string ProfitParameter = "utilidads";
+        private static string ProfitParameter = "utilidad";
 
         public static async Task<BemData> LoadBEMData(double? lat = null, double? lon = null, CropType? crop = null)
         {

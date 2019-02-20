@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:views="clr-namespace:Agrotutor.Modules.PriceForecasting.Views"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Agrotutor.Modules.PriceForecasting.Views.PriceForecastPage"
+             Padding="16,16,16,0">
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal" >
+                <Image Source="calendar.png" HeightRequest="48" WidthRequest="48" Margin="16"/>
+                <Label VerticalOptions="Center" FontSize="Large" Text="Next month"/>
+            </StackLayout>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Column="0" Grid.Row="0" Text="Expected price" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
+                <Label Grid.Column="0" Grid.Row="2" Text="Expected range" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange"/>
+
+                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" />
+                <Label Grid.Row="2" Grid.Column="1" Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+                <Label Grid.Row="2" Grid.Column="2" Text="to" VerticalOptions="Center" />
+                <Label Grid.Row="2" Grid.Column="3" Text="{Binding NextMax}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+
+                <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#242424" HeightRequest="5"/>
+
+                <Label Grid.Row="0" Grid.Column="4" Text="($/kg)" VerticalOptions="Center" />
+                <Label Grid.Row="2" Grid.Column="4" Text="($/kg)" VerticalOptions="Center" />
+            </Grid>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <StackLayout Grid.Column="0" Grid.Row="0">
+                    <Label FontSize="Large" Text=" "/>
+                    <Label Text="Price"/>
+                    <Label Text="Range" VerticalOptions="Start"/>
+
+                </StackLayout>
+
+                <ScrollView Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                    <StackLayout Orientation="Horizontal" x:Name="ForecastStack">
+                        <StackLayout>
+                            <Label Text="in 3 months" FontSize="Large" TextColor="ForestGreen" />
+                            <Label Text="30 ($/kg)" />
+                            <Label Text="25 to 37 ($/kg)" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="in 4 months" FontSize="Large" TextColor="ForestGreen" />
+                            <Label Text="30 ($/kg)" />
+                            <Label Text="25 to 37 ($/kg)" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="in 5 months" FontSize="Large" TextColor="ForestGreen" />
+                            <Label Text="30 ($/kg)" />
+                            <Label Text="25 to 37 ($/kg)" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="in 6 months" FontSize="Large" TextColor="ForestGreen" />
+                            <Label Text="30 ($/kg)" />
+                            <Label Text="25 to 37 ($/kg)" />
+                        </StackLayout>
+                        <StackLayout>
+                            <Label Text="in 7 months" FontSize="Large" TextColor="ForestGreen" />
+                            <Label Text="30 ($/kg)" />
+                            <Label Text="25 to 37 ($/kg)" />
+                        </StackLayout>
+
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

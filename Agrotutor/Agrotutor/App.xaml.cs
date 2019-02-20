@@ -1,5 +1,7 @@
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
+using Agrotutor.Modules.Ciat.ViewModels;
+using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.ViewModels;
 using Agrotutor.Views;
 using Microsoft.AppCenter;
@@ -11,6 +13,7 @@ using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Plugin.Popups;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using XF.Material.Forms;
@@ -20,6 +23,7 @@ using Device = Xamarin.Forms.Device;
 
 namespace Agrotutor
 {
+
     public partial class App
     {
         /* 
@@ -27,6 +31,8 @@ namespace Agrotutor
          * This imposes a limitation in which the App class must have a default constructor. 
          * App(IPlatformInitializer initializer = null) cannot be handled by the Activator.
          */
+        private static volatile App _instance;
+        private static readonly object _SyncRoot = new object();
         public App() : this(null)
         {
         }
@@ -42,7 +48,13 @@ namespace Agrotutor
             Material.Init(this);
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";
-            await NavigationService.NavigateAsync("NavigationPage/MapPage");
+            var initialPage = "NavigationPage/MapPage";
+            if (VersionTracking.IsFirstLaunchEver)
+            {
+                initialPage = "NavigationPage/WelcomePage";
+            }
+
+            await NavigationService.NavigateAsync(initialPage);
         }
 
         protected override void OnStart()
@@ -57,12 +69,14 @@ namespace Agrotutor
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.RegisterPopupNavigationService();
             containerRegistry.RegisterLocalization();
             containerRegistry.RegisterPersistence();
             containerRegistry.RegisterPages();
             containerRegistry.RegisterCameraService();
             containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
             containerRegistry.RegisterTileService();
+ 
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)

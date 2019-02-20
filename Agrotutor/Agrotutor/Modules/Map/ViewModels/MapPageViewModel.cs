@@ -15,6 +15,7 @@ using Agrotutor.Core.Rest.Bem;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Ciat;
+using Agrotutor.Modules.Ciat.ViewModels;
 using Agrotutor.Modules.Map.Types;
 using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
@@ -37,6 +38,10 @@ using Location = Xamarin.Essentials.Location;
 using MapsPosition = Xamarin.Forms.GoogleMaps.Position;
 using NavigationMode = Xamarin.Essentials.NavigationMode;
 using Position = Agrotutor.Core.Entities.Position;
+using Agrotutor.Modules.Plot.Views;
+using Agrotutor.Modules.PriceForecasting.ViewModels;
+using Agrotutor.Modules.Weather.ViewModels;
+using Agrotutor.Modules.Weather.Views;
 
 namespace Agrotutor.Modules.Map.ViewModels
 {
@@ -120,6 +125,13 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool selectLocationUIIsVisible;
 
         private Location weatherLocation;
+        
+        private string _selectedPlotDate;
+        private string _selectedPlotIrrigation;
+        private string _selectedPlotMaturity;
+        private string _selectedPlotClimate;
+        private string _currentPlotWeatherIcon;
+        private string _currentPlotGdd;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -173,41 +185,57 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(() =>
+        public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(async() => 
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty()) return;
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty())
+            {
+                await MaterialDialog.Instance.SnackbarAsync("Cost data is not available.");
+                return;
+            }
 
-            NavigationService.NavigateAsync("ViewCostPage", new NavigationParameters
+            await NavigationService.NavigateAsync("ViewCostPage", new NavigationParameters
             {
                 {ViewCostPageViewModel.CostsParameterName, SelectedPlot.BemData.Cost}
             });
         });
 
-        public DelegateCommand ShowCurrentPlotIncome => new DelegateCommand(() =>
+        public DelegateCommand ShowCurrentPlotIncome => new DelegateCommand(async() =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income.IsNullOrEmpty()) return;
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income.IsNullOrEmpty())
+            {
+                await MaterialDialog.Instance.SnackbarAsync("Income data is not available.");
+                return;
+            }
 
-            NavigationService.NavigateAsync("ViewIncomePage", new NavigationParameters
+            await NavigationService.NavigateAsync("ViewIncomePage", new NavigationParameters
             {
                 {ViewIncomePageViewModel.IncomesParameterName, SelectedPlot.BemData.Income}
             });
         });
 
-        public DelegateCommand ShowCurrentPlotProfit => new DelegateCommand(() =>
+        public DelegateCommand ShowCurrentPlotProfit => new DelegateCommand(async() =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit.IsNullOrEmpty()) return;
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit.IsNullOrEmpty())
+            {
+                await MaterialDialog.Instance.SnackbarAsync("Profit data is not available.");
+                return;
+            }
 
-            NavigationService.NavigateAsync("ViewProfitPage", new NavigationParameters
+            await NavigationService.NavigateAsync("ViewProfitPage", new NavigationParameters
             {
                 {ViewProfitPageViewModel.ProfitsParameterName, SelectedPlot.BemData.Profit}
             });
         });
 
-        public DelegateCommand ShowCurrentPlotYield => new DelegateCommand(() =>
+        public DelegateCommand ShowCurrentPlotYield => new DelegateCommand(async() =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield.IsNullOrEmpty()) return;
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield.IsNullOrEmpty())
+            {
+                await MaterialDialog.Instance.SnackbarAsync("Yield data is not available.");
+                return;
+            }
 
-            NavigationService.NavigateAsync("ViewYieldPage", new NavigationParameters
+            await NavigationService.NavigateAsync("ViewYieldPage", new NavigationParameters
             {
                 {ViewYieldPageViewModel.YieldsParameterName, SelectedPlot.BemData.Yield}
             });
@@ -349,10 +377,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             switch (CurrentMapTask)
             {
-                case MapTask.CreatePlotByGPS:
+                case MapTask.CreatePlotBySelection:
                     CreatePlot();
                     break;
-                case MapTask.GetLocationForPlanner:
+                case MapTask.SelectLocationForPlanner:
                     NavigateToPlanner();
                     break;
             }
@@ -619,16 +647,39 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.ShowSettingsUI);
 
+        public DelegateCommand NavigateToPlotWeather => 
+            new DelegateCommand(() =>
+            {
+                var param = new NavigationParameters
+                {
+                    {
+                        WeatherPageViewModel.LocationParameterName,
+                        new Location(SelectedPlot.Position.Latitude, SelectedPlot.Position.Longitude)
+                    }
+                };
+                if (SelectedPlot?.WeatherForecast != null)
+                {
+                    param.Add(WeatherPageViewModel.ForecastParameterName, SelectedPlot.WeatherForecast);
+                }
+                if (SelectedPlot?.WeatherHistory != null)
+                {
+                    param.Add(WeatherPageViewModel.HistoryParameterName, SelectedPlot.WeatherHistory);
+                }
+
+                NavigationService.NavigateAsync("WeatherPage", param);
+
+            });
+
         public DelegateCommand ShowWeather =>
             new DelegateCommand(
                 async () =>
                 {
                     var param = new NavigationParameters();
-                    if (CurrentWeather != null) param.Add("Forecast", CurrentWeather);
+                    if (CurrentWeather != null) param.Add(WeatherPageViewModel.ForecastParameterName, CurrentWeather);
 
                     if (WeatherLocation != null)
                     {
-                        param.Add("Location", WeatherLocation);
+                        param.Add(WeatherPageViewModel.LocationParameterName, WeatherLocation);
                     }
                     else
                     {
@@ -986,29 +1037,80 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 if (value.MediaItems == null) value.MediaItems = new List<MediaItem>();
                 LoadPlotData(value);
+                UpdateInfo();
+            } 
+        }
 
-                var cost = SelectedPlot?.BemData?.AverageCost;
-                var yield = SelectedPlot?.BemData?.AverageYield;
-                var profit = SelectedPlot?.BemData?.AverageProfit;
-                var income = SelectedPlot?.BemData?.AverageIncome;
-                var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
-                var nitrogenNeeded = SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
-                var priceForecast = SelectedPlot?.PriceForecast;
-                if (!priceForecast.IsNullOrEmpty())
-                {
-                    var priceForecastNextMonth = priceForecast.ElementAt(0)?.Price;
-                    CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
-                }
+        private async void UpdateInfo()
+        {
+            SelectedPlotDate = SelectedPlot?.Activities.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
+                .ToShortDateString();
+            SelectedPlotIrrigation =
+                (SelectedPlot?.Activities.Any(x => x.ActivityType == ActivityType.Irrigation) != null)
+                    ? "Irrigated"
+                    : "Rainfed";
+            SelectedPlotMaturity = SelectedPlot.GetMaturityString();
+            SelectedPlotClimate = SelectedPlot.GetClimateString();
 
-                CurrentPlotCost = cost == null ? "-" : cost.ToString();
-                CurrentPlotYield = yield == null ? "-" : yield.ToString();
-                CurrentPlotProfit = profit == null ? "-" : profit.ToString();
-                CurrentPlotIncome = income == null ? "-" : income.ToString();
-                CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
-                CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+            var gdd = SelectedPlot?.WeatherHistory?.Gdd.Series.Sum(x => x.Value);
+            var weatherIcon = SelectedPlot?.WeatherForecast?.Location?.HourlySummaries?.HourlySummary?.FirstOrDefault()
+                ?.WxIcon;
+            var cost = SelectedPlot?.BemData?.AverageCost;
+            var yield = SelectedPlot?.BemData?.AverageYield;
+            var profit = SelectedPlot?.BemData?.AverageProfit;
+            var income = SelectedPlot?.BemData?.AverageIncome;
+            var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
+            var nitrogenNeeded =SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
+            var priceForecast = await PriceForecast.FromEmbeddedResource();
+            var priceForecastNextMonth = priceForecast.First().Price;
+            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
 
-                MapPage.UpdateImages();
-            }
+            CurrentPlotCost = cost == null ? "-" : Math.Round((decimal)cost).ToString();
+            CurrentPlotYield = yield == null ? "-" : Math.Round((decimal)yield).ToString();
+            CurrentPlotProfit = profit == null ? "-" : Math.Round((decimal)profit).ToString();
+            CurrentPlotIncome = income == null ? "-" : Math.Round((decimal)income).ToString();
+            CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
+            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+            CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
+            CurrentPlotWeatherIcon = weatherIcon ?? "";
+
+            await MapPage.UpdateImages();
+        }
+
+        public string CurrentPlotWeatherIcon
+        {
+            get => _currentPlotWeatherIcon;
+            set => SetProperty(ref _currentPlotWeatherIcon, value);
+        }
+
+        public string CurrentPlotGdd
+        {
+            get => _currentPlotGdd;
+            set => SetProperty(ref _currentPlotGdd, value);
+        }
+
+        public string SelectedPlotClimate
+        {
+            get => _selectedPlotClimate;
+            set => SetProperty(ref _selectedPlotClimate, value);
+        }
+
+        public string SelectedPlotMaturity
+        {
+            get => _selectedPlotMaturity;
+            set => SetProperty(ref _selectedPlotMaturity, value);
+        }
+
+        public string SelectedPlotIrrigation
+        {
+            get => _selectedPlotIrrigation;
+            set => SetProperty(ref _selectedPlotIrrigation, value);
+        }
+
+        public string SelectedPlotDate
+        {
+            get => _selectedPlotDate;
+            set => SetProperty(ref _selectedPlotDate, value);
         }
 
         public string CurrentPlotPriceForecast
@@ -1079,24 +1181,36 @@ namespace Agrotutor.Modules.Map.ViewModels
                     RemoveLastDelineationPoint();
                 });
 
+        public DelegateCommand NavigateToPotentialYield => 
+            new DelegateCommand(async() =>
+            {
+                var param = new NavigationParameters
+                {
+                    {PotentialYieldPageViewModel.DataParameterName, SelectedPlot?.CiatData}
+                };
 
-        //public void RemoveLastDelineationPoint()
-        //{
-        //    if (DelineationPins.Count > 0)
-        //    {
-        //        var position = DelineationPins.Count - 1;
-        //        DelineationPins.RemoveAt(position);
-        //        this.map.Pins.RemoveAt(position);
-        //        this.DelineationPolygon.Positions.RemoveAt(position);
-        //    }
+                await NavigationService.NavigateAsync("PotentialYieldPage", param);
+            });
 
-        //    this.map.Polygons.Clear();
-        //    if (DelineationPolygon.Positions.Count > 2)
-        //    {
-        //        this.map.Polygons.Add(DelineationPolygon);
+        public DelegateCommand NavigateToCiat =>
+            new DelegateCommand(async() =>
+            {
+                var param = new NavigationParameters
+                {
+                    {CiatPageViewModel.PARAMETER_NAME_CIAT_DATA, SelectedPlot.CiatData}
+                };
+                await NavigationService.NavigateAsync("CiatPage", param);
+            });
 
-        //    }
-        //}
+        public DelegateCommand NavigateToPriceForecast =>
+            new DelegateCommand(async() =>
+            {
+                var param = new NavigationParameters
+                {
+                    {PriceForecastPageViewModel.PriceForecastParameterName, SelectedPlot.PriceForecast}
+                };
+                await NavigationService.NavigateAsync("PriceForecastPage", param);
+            });
 
         public bool DelineationUIIsVisible
         {
@@ -1168,38 +1282,40 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotData(Core.Entities.Plot plot)
         {
-            var updatedPlot = false;
+            bool updatedPlot = false;
             if (plot.BemData == null)
             {
                 plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
                     plot.Position.Longitude, plot.CropType);
                 updatedPlot = true;
             }
-
             if (plot.WeatherForecast == null)
             {
                 plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude, plot.Position.Longitude);
                 updatedPlot = true;
             }
 
+            if (plot.WeatherHistory == null)
+            {
+                plot.WeatherHistory = await WeatherHistory.Download(plot.Position.Latitude, plot.Position.Longitude);
+                updatedPlot = true;
+            }
+
             if (plot.CiatData == null)
             {
-                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maize");
+                plot.CiatData = await CiatDownloadHelper.LoadData(plot.Position, "Maiz");
                 updatedPlot = true;
             }
 
             if (plot.PriceForecast == null)
             {
-                // if (plot.CropType == CropType.Corn)
-                // {
                 plot.PriceForecast = await PriceForecast.FromEmbeddedResource();
                 updatedPlot = true;
-                // }
             }
 
             if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
         }
-
+        
         public void RemoveHubsContact()
         {
             foreach (var pin in Pins.ToList().Where(x => x.Tag is HubFeature)) Pins.Remove(pin);

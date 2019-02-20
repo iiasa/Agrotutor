@@ -1,4 +1,6 @@
-﻿using Agrotutor.Modules.Ciat.Types;
+﻿using System;
+using System.Drawing;
+using Agrotutor.Modules.Ciat.Types;
 
 namespace Agrotutor.Core.Entities
 {
@@ -13,6 +15,12 @@ namespace Agrotutor.Core.Entities
 
     public class Plot
     {
+        private Random randomColor;
+        public Plot()
+        {
+            randomColor=new Random();
+        }
+     
         public virtual List<Activity> Activities { get; set; }
 
         public virtual BemData BemData { get; set; }
@@ -62,6 +70,7 @@ namespace Agrotutor.Core.Entities
         public IEnumerable<CalendarEvent> GetCalendarEvents()
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
+            Color colorPerPlot = Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
             foreach (Activity activity in Activities)
             {
                 events.Add(
@@ -71,8 +80,9 @@ namespace Agrotutor.Core.Entities
                         AllDayEvent = true,
                         StartTime = activity.Date,
                         EndTime = activity.Date,
-                        Title = activity.Name
-                    });
+                        Title = activity.Name,
+                        Color = colorPerPlot
+            });
             }
 
             return events;
@@ -89,6 +99,42 @@ namespace Agrotutor.Core.Entities
         {
             // TODO: remove this from here
             await GenericDatasetStorage.StoreDatasetAsync(this, -1, 16, 1, 1);
+        }
+
+        public string GetMaturityString()
+        {
+            switch (MaturityType)
+            {
+                case MaturityType.Early:
+                    return "Early";
+                case MaturityType.SemiEarly:
+                    return "Semi early";
+                case MaturityType.Intermediate:
+                    return "Intermediate";
+                case MaturityType.SemiLate:
+                    return "Semi late";
+                case MaturityType.Late:
+                    return "Late";
+                default:
+                    return "";
+            }
+        }
+
+        public string GetClimateString()
+        {
+            switch (ClimateType)
+            {
+                case ClimateType.Cold:
+                    return "Cold";
+                case ClimateType.TemperedSubtropical:
+                    return "Tempered / Subtropical";
+                case ClimateType.Tropical:
+                    return "Tropical";
+                case ClimateType.Hybrid:
+                    return "Hybrid";
+                default:
+                    return "";
+            }
         }
     }
 }

@@ -6,6 +6,7 @@
     using Xamarin.Forms.Xaml;
 
     using Types;
+    using Prism.Navigation;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonthlyCalendarDayView : ContentView
@@ -28,7 +29,7 @@
                 this.LblDay.Text = this.date.Day.ToString();
             }
         }
-
+        public INavigationService NavigationService { get; set; }
         public List<CalendarEvent> CalendarEvents
         {
             get => this.calendarEvents;
@@ -50,7 +51,8 @@
                 {
                     this.layoutEvents.Children.Add(new MonthlyCalendarEventEntry
                     {
-                        CalendarEvent = calendarEvent
+                        CalendarEvent = calendarEvent,
+                        NavigationService = NavigationService
                     });
                 }
             }
@@ -58,11 +60,14 @@
             {
                 this.layoutEvents.Children.Add(new MonthlyCalendarEventEntry
                 {
-                    CalendarEvent = CalendarEvents[0]
+                    CalendarEvent = CalendarEvents[0],
+                    NavigationService= NavigationService
+
                 });
                 this.layoutEvents.Children.Add(new MonthlyCalendarEventEntry
                 {
-                    CalendarEvent = CalendarEvents[1]
+                    CalendarEvent = CalendarEvents[1],
+                    NavigationService = NavigationService
                 });
                 this.layoutEvents.Children.Add(new MonthlyCalendarMultipleEventsEntry
                 {

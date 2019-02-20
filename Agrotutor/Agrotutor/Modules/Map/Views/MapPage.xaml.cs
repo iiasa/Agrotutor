@@ -246,8 +246,6 @@ namespace Agrotutor.Modules.Map.Views
             }
         }
 
-
-
         public async Task UpdateImages()
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync("UpdatingImages"))

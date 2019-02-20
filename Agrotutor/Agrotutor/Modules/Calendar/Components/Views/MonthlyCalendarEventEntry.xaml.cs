@@ -1,8 +1,11 @@
-﻿namespace Agrotutor.Modules.Calendar.Components.Views
+﻿using System;
+
+namespace Agrotutor.Modules.Calendar.Components.Views
 {
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
     using Types;
+    using Prism.Navigation;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonthlyCalendarEventEntry : Label
@@ -31,6 +34,13 @@
                 }
 
             }
+        }
+
+        public INavigationService NavigationService { get; set; }
+
+        private void ClickGestureRecognizer_OnClicked(object sender, EventArgs e)
+        {
+            NavigationService?.NavigateAsync("EventInfoPopup",new NavigationParameters(){{"event", CalendarEvent } });
         }
     }
 }

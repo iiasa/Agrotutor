@@ -67,7 +67,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
                             new Activity
                             {
                                 ActivityType = ActivityType.Sowing,
-                                Date = PlantingDate
+                                Date = PlantingDate,
+                                Name = "Sowing",
+                                Cost = 0
                             }
                         };
                         await AppDataService.AddPlotAsync(Plot);

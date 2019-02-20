@@ -19,12 +19,15 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         private DateTime firstDay;
         private string dateRangeText;
         private IEnumerable<CalendarEvent> events;
-
+        public INavigationService NavigationService { get; set; }
         public CalendarPageViewModel(INavigationService navigationService, IStringLocalizer<CalendarPageViewModel> stringLocalizer)
         :base(navigationService, stringLocalizer)
         {
 
+            NavigationService = navigationService;
         }
+
+ 
 
         public DelegateCommand ShowNextMonth => new DelegateCommand(() =>
         {

@@ -19,6 +19,7 @@
     <PackageReference Include="modernhttpclient" Version="2.4.2" />
     <PackageReference Include="MonkeyCache.SQLite" Version="1.2.0-beta" />
     <PackageReference Include="OxyPlot.Xamarin.Forms" Version="1.1.0-unstable0011" />
+    <PackageReference Include="Prism.Plugin.Popups" Version="2.2.0.293" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.2.5" />
@@ -101,6 +102,9 @@
     <EmbeddedResource Update="Core\Components\Views\ValueLine.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Calendar\Components\Views\EventInfoPopup.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Calendar\Components\Views\MonthlyCalendarDayView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -113,6 +117,9 @@
     <EmbeddedResource Update="Modules\Calendar\Views\CalendarPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Modules\Ciat\Views\PotentialYieldPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Modules\Map\Views\MapPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -123,6 +130,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Modules\Plot\Views\AddPlotPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\PriceForecasting\Views\ForecastElement.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Modules\PriceForecasting\Views\PriceForecastPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Style.xaml">
@@ -182,11 +195,7 @@
     <Folder Include="Modules\Benchmarking\Views\" />
     <Folder Include="Modules\Benchmarking\ViewModels\" />
     <Folder Include="Modules\Benchmarking\Types\" />
-    <Folder Include="Modules\Ciat\" />
-    <Folder Include="Modules\Ciat\Views\" />
-    <Folder Include="Modules\Ciat\ViewModels\" />
     <Folder Include="Modules\Ciat\Types\" />
-    <Folder Include="Modules\PriceForecasting\" />
     <Folder Include="Modules\PriceForecasting\Types\" />
     <Folder Include="Resources\Modules\Map\ViewModels\" />
   </ItemGroup>

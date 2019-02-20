@@ -456,6 +456,9 @@
     <PackageReference Include="OxyPlot.Xamarin.Forms">
       <Version>1.1.0-unstable0011</Version>
     </PackageReference>
+    <PackageReference Include="Prism.Plugin.Popups">
+      <Version>2.2.0.293</Version>
+    </PackageReference>
     <PackageReference Include="System.Buffers">
       <Version>4.5.0</Version>
     </PackageReference>

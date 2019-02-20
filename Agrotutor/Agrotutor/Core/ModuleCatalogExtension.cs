@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core
+﻿using Agrotutor.Modules.PriceForecasting;
+
+namespace Agrotutor.Core
 {
     using System;
     using Microsoft.AppCenter.Crashes;
@@ -51,6 +53,15 @@
                     {
                         ModuleName = benchmarkingModule.Name,
                         ModuleType = benchmarkingModule,
+                        InitializationMode = InitializationMode.WhenAvailable
+                    });
+
+                Type priceForecastModule = typeof(PriceForecastModule);
+                moduleCatalog.AddModule(
+                    new ModuleInfo(priceForecastModule)
+                    {
+                        ModuleName = priceForecastModule.Name,
+                        ModuleType = priceForecastModule,
                         InitializationMode = InitializationMode.WhenAvailable
                     });
 
