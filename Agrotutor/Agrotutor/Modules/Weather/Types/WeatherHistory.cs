@@ -233,7 +233,7 @@ namespace Agrotutor.Modules.Weather.Types
             {
                 try
                 {
-                    var json = await wc.GetCachedStringAsync(serviceUrl, "WeatherHistory", TimeSpan.FromHours(2));
+                    var json = await wc.GetCachedStringAsync(serviceUrl, "WeatherHistory", TimeSpan.FromDays(1));
                     data = FromJson(json);
                     data.Date = DateTime.Now.ToShortDateString();
                 }

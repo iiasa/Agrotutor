@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             Title="Add plot"
              x:Class="Agrotutor.Modules.Plot.Views.AddPlotPage"
              Padding="16">
     <ContentPage.Content>
@@ -18,11 +20,11 @@
                         Title="{localization:Translate select}" Margin="0,0,0,16" />
 
                 <Label Text="{localization:Translate hint_planting_date}" FontSize="18" />
-                <DatePicker Date="{Binding PlantingDate, Mode=TwoWay}"  Margin="0,0,0,16" />
+                <DatePicker Date="{Binding PlantingDate, Mode=TwoWay}" Margin="0,0,0,16" />
 
                 <Label Text="{localization:Translate madurez}" FontSize="18" />
                 <Picker ItemsSource="{Binding MaturityClasses}"
-                        SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" 
+                        SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}"
                         Title="{localization:Translate select}" Margin="0,0,0,16" />
 
                 <Label Text="{localization:Translate tipo_clima}" FontSize="18" />

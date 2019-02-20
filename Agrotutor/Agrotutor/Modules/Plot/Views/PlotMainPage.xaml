@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage"
-             >
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,0">
@@ -16,52 +16,52 @@
 
                 <views:Divider />
 
-                <views:IconWithText 
+                <views:IconWithText
                     IconText="Costs"
                     IconSource="icons_pricetag_96.png"
-                    Command="{Binding NavigateToCosts}"/>
+                    Command="{Binding NavigateToCosts}" />
 
-              <views:IconWithText
-                  IconText="Income"
+                <views:IconWithText
+                    IconText="Income"
                     IconSource="icon_profit_96.png"
-                    Command="{Binding NavigateToIncome}"/>
+                    Command="{Binding NavigateToIncome}" />
 
-              <views:IconWithText
-                  IconText="Profit"
+                <views:IconWithText
+                    IconText="Profit"
                     IconSource="icons_settings_96.png"
-                    Command="{Binding NavigateToProfit}"/>
+                    Command="{Binding NavigateToProfit}" />
 
-              <views:IconWithText
-                  IconText="Yield"
+                <views:IconWithText
+                    IconText="Yield"
                     IconSource="icons_datasheet_96.png"
-                    Command="{Binding NavigateToYield}"/>
+                    Command="{Binding NavigateToYield}" />
 
                 <Label
                     HorizontalOptions="StartAndExpand"
                     Text="Additional information"
                     FontSize="20" />
 
-              <views:Divider />
+                <views:Divider />
 
-              <views:IconWithText
-                  IconText="Potential yield (models)"
+                <views:IconWithText
+                    IconText="Potential yield (models)"
                     IconSource="corn1.png"
-                    Command="{Binding NavigateToPotentialYield}"/>
+                    Command="{Binding NavigateToPotentialYield}" />
 
-              <views:IconWithText
-                  IconText="Cropping recommendations"
+                <views:IconWithText
+                    IconText="Cropping recommendations"
                     IconSource="planner.png"
-                    Command="{Binding NavigateToPlanner}"/>
+                    Command="{Binding NavigateToPlanner}" />
 
-              <views:IconWithText
-                  IconText="Market price forecast"
+                <views:IconWithText
+                    IconText="Market price forecast"
                     IconSource="peso1.png"
-                    Command="{Binding NavigateToMarketForecast}"/>
+                    Command="{Binding NavigateToMarketForecast}" />
 
-              <views:IconWithText
-                  IconText="Weather"
+                <views:IconWithText
+                    IconText="Weather"
                     IconSource="weather.png"
-                    Command="{Binding NavigateToWeather}"/>
+                    Command="{Binding NavigateToWeather}" />
 
             </StackLayout>
         </ScrollView>
