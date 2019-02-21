@@ -17,7 +17,7 @@ namespace Agrotutor.ViewModels
         public DelegateCommand NavigateToMainPageCommand => new DelegateCommand(
             async ()=> {
 
-                using (await MaterialDialog.Instance.LoadingDialogAsync("Loading..."))
+                using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                 {
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 }

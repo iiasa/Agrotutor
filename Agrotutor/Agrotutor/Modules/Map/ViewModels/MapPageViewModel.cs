@@ -379,10 +379,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             try
             {
-                var confirm = await MaterialDialog.Instance.ConfirmAsync("Are you sure?", "Delete");
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(StringLocalizer.GetString("delete_plot_confirm_message" ), StringLocalizer.GetString("delete_plot_confirm_button"));
                 if (confirm.Value)
                 {
-                    using (await MaterialDialog.Instance.LoadingDialogAsync("Deleting plot..."))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("delete_plot_in_progress")))
                     {
                         await AppDataService.RemovePlotAsync(SelectedPlot);
                         RemovePlots();
@@ -394,7 +394,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
             catch (Exception e)
             {
-                await MaterialDialog.Instance.SnackbarAsync("Failed to delete the plot.");
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("delete_plot_failed"));
             }
             
         }

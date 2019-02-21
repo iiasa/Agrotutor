@@ -3,11 +3,11 @@
     x:Class="Agrotutor.Views.WelcomePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:converter="clr-namespace:Agrotutor.Core.Converter;assembly=Agrotutor"
+    xmlns:converter="clr-namespace:Agrotutor.Core.Converter"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     x:Name="Page"
-    Title="MainPage"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     NavigationPage.HasNavigationBar="False">
     <CarouselPage.Resources>
@@ -34,156 +34,10 @@
                         Command="{Binding Path=BindingContext.NavigateToMainPageCommand, Source={x:Reference Page}}"
                         HorizontalOptions="CenterAndExpand"
                         IsVisible="{Binding ShowGetStarted}"
-                        Text="Empezar ahora"
+                        Text="{localization:Translate start}"
                         VerticalOptions="CenterAndExpand" />
                 </StackLayout>
             </ContentPage>
         </DataTemplate>
     </CarouselPage.ItemTemplate>
-
-    <!--<ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_1.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Pantalla principal: Cree y maneje sus parcelas e información personal. Obtenga más información de CIMMYT. (Deslízate a la izquierda)"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_2.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Edite y visualize detalles e información de cualquier parcela"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_3.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Agregue actividades realizadas, incluyendo costos y fechas para un mejor manejo de parcela"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_4.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Identifique su parcela usando el GPS de su telèfono o seleccionela sobre el mapa para obtener información specífica"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_5.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Delinee su parcela presionando la pantalla en cada esquina de la ubicación seleccionada."
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_6.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Obtenga información útil, específica a la ubicación de su parcela, como clima y rendimiento potencial"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_7.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Obtenga información climática actual, pronóstico del tiempo así como información histórica de los últimos años"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
-            <Image Grid.Row="0" Source="welcome_8.png" />
-            <Label
-                Grid.Row="1"
-                Margin="16"
-                FontAttributes="Bold"
-                FontSize="24"
-                HorizontalTextAlignment="Center"
-                Text="Visualice las actividades realizadas en su parcela así como las sugerencias para optimizar la producción"
-                TextColor="DimGray" />
-        </Grid>
-    </ContentPage>
-    <ContentPage>
-        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-            <Button
-                Margin="15"
-                Padding="15"
-                Command="{Binding NavigateToMainPageCommand}"
-                Text="Empezar ahora" />
-        </StackLayout>
-    </ContentPage>-->
 </CarouselPage>

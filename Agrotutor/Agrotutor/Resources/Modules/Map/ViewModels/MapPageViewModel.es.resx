@@ -129,6 +129,18 @@
   <data name="cost_data_not_available" xml:space="preserve">
     <value>Los datos de costos no están disponibles.</value>
   </data>
+  <data name="delete_plot_confirm_button" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="delete_plot_confirm_message" xml:space="preserve">
+    <value>¿Estás seguro?</value>
+  </data>
+  <data name="delete_plot_failed" xml:space="preserve">
+    <value>Error al borrar la parcela.</value>
+  </data>
+  <data name="delete_plot_in_progress" xml:space="preserve">
+    <value>Borrando parcela...</value>
+  </data>
   <data name="delineation_pin_label" xml:space="preserve">
     <value>Punto de delineación</value>
   </data>
