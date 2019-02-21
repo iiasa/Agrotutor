@@ -31,35 +31,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Remove="Resources\Resources\AppResources.en.resx" />
-    <EmbeddedResource Remove="Resources\Resources\AppResources.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\BenchmarkingPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatContentPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatContentPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\SimpleStats.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\SimpleStats.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\WeatherWidget.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\WeatherWidget.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\CitationPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\CitationPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\LinksPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\LinksPage.resx" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="Core\Tile\Resources\mexico-simple.mbtiles" />
     <None Remove="Resources\AppData\hubs_contact.geojson" />
     <None Remove="Resources\AppData\investigation_platforms.geojson" />
@@ -150,39 +121,14 @@
     <EmbeddedResource Update="Views\ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Resources\Resources\Modules\Plot\Views\AddPlotPage.resx">
-      <LogicalName>Resources.Resources.Modules.Plot.Views.AddPlotPage.resources</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\WebContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Resources\Resources\Modules\Benchmarking\Views\BenchmarkingPage.es.resx" />
-    <None Include="Resources\Resources\Modules\Benchmarking\Views\BenchmarkingPage.resx" />
-    <None Include="Resources\Resources\Modules\Ciat\Views\CiatPage.es.resx" />
-    <None Include="Resources\Resources\Modules\Ciat\Views\CiatPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\SimpleStats.es.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\SimpleStats.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\WeatherWidget.es.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\WeatherWidget.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\CitationPage.es.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\CitationPage.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\LinksPage.es.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\LinksPage.resx" />
+    <None Include="Resources\Views\CitationPage.es.resx" />
+    <None Include="Resources\Views\CitationPage.resx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Weather\" />
@@ -191,7 +137,6 @@
     <Folder Include="Modules\Weather\ViewModels\" />
     <Folder Include="Modules\Charts\" />
     <Folder Include="Modules\Charts\Types\" />
-    <Folder Include="Modules\Benchmarking\" />
     <Folder Include="Modules\Benchmarking\Views\" />
     <Folder Include="Modules\Benchmarking\ViewModels\" />
     <Folder Include="Modules\Benchmarking\Types\" />

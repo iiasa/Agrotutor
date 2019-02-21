@@ -1,69 +1,69 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-
-<ContentPage
-    x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage"
-    xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-    Title="Plot"
-    mvvm:ViewModelLocator.AutowireViewModel="True">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+     mvvm:ViewModelLocator.AutowireViewModel="True"
+             x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage"
+             Title="{localization:Translate title}"
+             >
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,0">
                 <Label
-                    FontSize="20"
                     HorizontalOptions="StartAndExpand"
-                    Text="Historical information" />
+                    Text="{localization:Translate history}"
+                    FontSize="20" />
 
                 <views:Divider />
 
-                <views:IconWithText
-                    Command="{Binding NavigateToCosts}"
+                <views:IconWithText 
+                    IconText="{localization:Translate costs}"
                     IconSource="icons_pricetag_96.png"
-                    IconText="Costs" />
+                    Command="{Binding NavigateToCosts}"/>
 
-                <views:IconWithText
-                    Command="{Binding NavigateToIncome}"
+              <views:IconWithText
+                  IconText="{localization:Translate income}"
                     IconSource="icon_profit_96.png"
-                    IconText="Income" />
+                    Command="{Binding NavigateToIncome}"/>
 
-                <views:IconWithText
-                    Command="{Binding NavigateToProfit}"
+              <views:IconWithText
+                  IconText="{localization:Translate profit}"
                     IconSource="icons_settings_96.png"
-                    IconText="Profit" />
+                    Command="{Binding NavigateToProfit}"/>
 
-                <views:IconWithText
-                    Command="{Binding NavigateToYield}"
+              <views:IconWithText
+                  IconText="{localization:Translate yield}"
                     IconSource="icons_datasheet_96.png"
-                    IconText="Yield" />
+                    Command="{Binding NavigateToYield}"/>
 
                 <Label
-                    FontSize="20"
                     HorizontalOptions="StartAndExpand"
-                    Text="Additional information" />
+                    Text="{localization:Translate additional_info}"
+                    FontSize="20" />
 
-                <views:Divider />
+              <views:Divider />
 
-                <views:IconWithText
-                    Command="{Binding NavigateToPotentialYield}"
+              <views:IconWithText
+                  IconText="{localization:Translate potential_yield}"
                     IconSource="corn1.png"
-                    IconText="Potential yield (models)" />
+                    Command="{Binding NavigateToPotentialYield}"/>
 
-                <views:IconWithText
-                    Command="{Binding NavigateToPlanner}"
+              <views:IconWithText
+                  IconText="{localization:Translate recommendations}"
                     IconSource="planner.png"
-                    IconText="Cropping recommendations" />
+                    Command="{Binding NavigateToPlanner}"/>
 
-                <views:IconWithText
-                    Command="{Binding NavigateToMarketForecast}"
+              <views:IconWithText
+                  IconText="{localization:Translate price_forecast}"
                     IconSource="peso1.png"
-                    IconText="Market price forecast" />
+                    Command="{Binding NavigateToPriceForecast}"/>
 
-                <views:IconWithText
-                    Command="{Binding NavigateToWeather}"
+              <views:IconWithText
+                  IconText="{localization:Translate weather}"
                     IconSource="weather.png"
-                    IconText="Weather" />
+                    Command="{Binding NavigateToWeather}"/>
 
             </StackLayout>
         </ScrollView>

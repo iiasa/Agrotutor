@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.Modules.Plot.ActivityManagement
+﻿using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
+
+namespace Agrotutor.Modules.Plot.ActivityManagement
 {
     public class SoilImproversActivity : ActivityBaseClass
     {
@@ -17,10 +20,14 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = "Aplicación de mejoradores de suelo",
+                ActivityName = _stringLocalizer.GetString("soil_improvers"),
                 ActivityIcon = "flask_small.png",
-                ActivityTitle = "Aplicación de mejoradores de suelo"
+                ActivityTitle = _stringLocalizer.GetString("soil_improvers")
             };
+        }
+
+        public SoilImproversActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

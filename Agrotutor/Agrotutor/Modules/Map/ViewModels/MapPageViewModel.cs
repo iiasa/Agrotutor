@@ -11,7 +11,7 @@ using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
 using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
-using Agrotutor.Core.Rest.Bem;
+using Agrotutor.Modules.Benchmarking;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.Modules.Ciat;
@@ -189,7 +189,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty())
             {
-                await MaterialDialog.Instance.SnackbarAsync("Cost data is not available.");
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("cost_data_not_available"));
                 return;
             }
 
@@ -203,7 +203,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income.IsNullOrEmpty())
             {
-                await MaterialDialog.Instance.SnackbarAsync("Income data is not available.");
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("income_data_not_available"));
                 return;
             }
 
@@ -217,7 +217,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit.IsNullOrEmpty())
             {
-                await MaterialDialog.Instance.SnackbarAsync("Profit data is not available.");
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("profit_data_not_available"));
                 return;
             }
 
@@ -231,7 +231,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield.IsNullOrEmpty())
             {
-                await MaterialDialog.Instance.SnackbarAsync("Yield data is not available.");
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("yield_data_not_available"));
                 return;
             }
 
@@ -536,7 +536,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                             var pin = new Pin
                             {
                                 Position = Position.From(args.Point).ForMap(),
-                                Label = "Delineation point",
+                                Label = StringLocalizer.GetString("delineation_pin_label"),
                                 Tag = pos
                             };
                             CurrentPin = pin;
@@ -712,9 +712,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     else
                     {
                         await MaterialDialog.Instance.AlertAsync(
-                            "The weather feature needs to know your current location. This can take some time. Make sure you gave permission to use your location. Weather will be available when you see the current weather on the top of the screen.",
-                            "Location not available",
-                            "OK");
+                            StringLocalizer.GetString("weather_location_missing_title"),
+                            StringLocalizer.GetString("weather_location_missing_message"),
+                            StringLocalizer.GetString("weather_location_missing_ok"));
                         return;
                     }
 
@@ -857,7 +857,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.TinyWxIcon;
                 var text = $"{cur.TempC} °C";
-                if (today != null) text += $" | Rain: {today.precipitationProbability} %";
+                if (today != null) text += $" | {StringLocalizer.GetString("rain")}: {today.precipitationProbability} %";
                 CurrentWeatherText = text;
             }
         }
@@ -1071,24 +1071,25 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async void UpdateInfo()
         {
-            SelectedPlotDate = SelectedPlot?.Activities.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
+            if (SelectedPlot == null) return;
+            SelectedPlotDate = SelectedPlot.Activities.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
                 .ToShortDateString();
             SelectedPlotIrrigation =
-                (SelectedPlot?.Activities.Any(x => x.ActivityType == ActivityType.Irrigation) != null)
-                    ? "Irrigated"
-                    : "Rainfed";
-            SelectedPlotMaturity = SelectedPlot.GetMaturityString();
-            SelectedPlotClimate = SelectedPlot.GetClimateString();
+                (SelectedPlot.Activities.Any(x => x.ActivityType == ActivityType.Irrigation) != null)
+                    ? StringLocalizer.GetString("irrigated") 
+                    : StringLocalizer.GetString("rainfed");
+            SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
+            SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
 
-            var gdd = SelectedPlot?.WeatherHistory?.Gdd.Series.Sum(x => x.Value);
-            var weatherIcon = SelectedPlot?.WeatherForecast?.Location?.HourlySummaries?.HourlySummary?.FirstOrDefault()
+            var gdd = SelectedPlot.WeatherHistory?.Gdd.Series.Sum(x => x.Value);
+            var weatherIcon = SelectedPlot.WeatherForecast?.Location?.HourlySummaries?.HourlySummary?.FirstOrDefault()
                 ?.WxIcon;
-            var cost = SelectedPlot?.BemData?.AverageCost;
-            var yield = SelectedPlot?.BemData?.AverageYield;
-            var profit = SelectedPlot?.BemData?.AverageProfit;
-            var income = SelectedPlot?.BemData?.AverageIncome;
-            var potentialYield = SelectedPlot?.CiatData?.CiatDataIrrigated?.YieldMax;
-            var nitrogenNeeded =SelectedPlot?.CiatData?.CiatDataIrrigated?.TotalNitrogen;
+            var cost = SelectedPlot.BemData?.AverageCost;
+            var yield = SelectedPlot.BemData?.AverageYield;
+            var profit = SelectedPlot.BemData?.AverageProfit;
+            var income = SelectedPlot.BemData?.AverageIncome;
+            var potentialYield = SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax;
+            var nitrogenNeeded =SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen;
             var priceForecast = await PriceForecast.FromEmbeddedResource();
             var priceForecastNextMonth = priceForecast.First().Price;
             CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
@@ -1276,7 +1277,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task RenderPlotDelineations()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Rendering delineations..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_delineations")))
             {
                 var plots = await AppDataService.GetAllPlotsAsync();
 
@@ -1430,6 +1431,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task PageAppearing()
         {
+            RemoveTempPin();
             var tasks = new List<Task>();
             var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
             if (permissionStatus != PermissionStatus.Granted)
@@ -1454,7 +1456,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         public async Task RenderHubsContact()
         {
             if (HubsContact == null) return;
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading hub contact..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_hub_contact")))
             {
                 foreach (var hubContact in HubsContact.Features)
                 {
@@ -1477,7 +1479,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (InvestigationPlatforms == null) return;
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading investigation platforms..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_investigation_platforms")))
             {
                 foreach (var investigationPlatform in InvestigationPlatforms.Features)
                 {
@@ -1500,7 +1502,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (MachineryPoints == null) return;
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading machinery points..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_machinery_points")))
             {
                 foreach (var machineryPoint in MachineryPoints.Features)
                 {
@@ -1525,9 +1527,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                 await UserDialogs.Instance.AlertAsync(
                     new AlertConfig
                     {
-                        Title = "No position available",
-                        Message = "Please make sure the location for the planner is set.",
-                        OkText = "Ok"
+                        Title = StringLocalizer.GetString("planner_no_position_title"),
+                        Message = StringLocalizer.GetString("planner_no_position_message"),
+                        OkText = StringLocalizer.GetString("planner_no_position_ok")
                     });
                 return;
             }
@@ -1549,9 +1551,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                 await UserDialogs.Instance.AlertAsync(
                     new AlertConfig
                     {
-                        Title = "No position available",
-                        Message = "Please make sure the location for a new parcel is set.",
-                        OkText = "Ok"
+                        Title = StringLocalizer.GetString("add_plot_no_position_title"),
+                        Message = StringLocalizer.GetString("add_plot_no_position_message"),
+                        OkText = StringLocalizer.GetString("add_plot_no_position_ok")
                     });
                 return;
             }
@@ -1580,7 +1582,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task EnableUserLocation()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting user location..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("getting_location")))
             {
                 LocationPermissionGiven = await PermissionHelper.HasPermissionAsync(Permission.Location);
                 if (LocationPermissionGiven)
@@ -1644,7 +1646,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task LoadMapData()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading map data..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_data")))
             {
                 HubsContact = await HubsContact.FromEmbeddedResource();
                 //RenderHubsContact();
@@ -1664,19 +1666,16 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task LoadPlots()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_plots")))
             {
-                using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading plots..."))
+                Plots = await AppDataService.GetAllPlotsAsync();
+                var plots = Plots.ToList();
+                await AddPlots();
+                foreach (var plot in plots.Where(plot => plot.BemData == null))
                 {
-                    Plots = await AppDataService.GetAllPlotsAsync();
-                    var plots = Plots.ToList();
-                    await AddPlots();
-                    foreach (var plot in plots.Where(plot => plot.BemData == null))
-                    {
-                        if (plot.Position == null) continue;
-                        plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
-                        await AppDataService.UpdatePlotAsync(plot);
-                    }
+                    if (plot.Position == null) continue;
+                    plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
+                    await AppDataService.UpdatePlotAsync(plot);
                 }
             }
         }
@@ -1699,7 +1698,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task AddPlots()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Rendering plots..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_plots")))
             {
                 Plots = await AppDataService.GetAllPlotsAsync();
                 var plots = Plots.ToList();
@@ -1729,7 +1728,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task RefreshWeatherData()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync("Getting weather data..."))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("getting_weather_data")))
             {
                 if (WeatherLocation == null) return;
                 CurrentWeather = await WeatherForecast.Download(WeatherLocation.Latitude, WeatherLocation.Longitude)

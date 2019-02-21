@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -21,13 +23,17 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    "Aplicación de herbicidas después de la siembra",
-                    "Aplicación de herbicidas presiembra",
-                    "Labores culturales y control físico de malezas"
+                    _stringLocalizer.GetString("post_planting_herbicide"),
+                    _stringLocalizer.GetString("pre_planting_herbicide"),
+                    _stringLocalizer.GetString("physical_weed_control")
                 },
                 ActivityIcon = "weeds_small.png",
-                ActivityTitle = "Control de prevención de malezas"
+                ActivityTitle = _stringLocalizer.GetString("deweeding")
             };
+        }
+
+        public WeedPreventionControlActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

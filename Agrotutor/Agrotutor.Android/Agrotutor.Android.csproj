@@ -510,6 +510,7 @@
     <AndroidResource Include="Resources\drawable\close_cross.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidResource Include="Resources\drawable-es\splashscreen.png" />
     <AndroidResource Include="Resources\drawable\delete.png" />
   </ItemGroup>
   <ItemGroup>

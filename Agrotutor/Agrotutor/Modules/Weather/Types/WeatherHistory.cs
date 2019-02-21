@@ -228,7 +228,7 @@ namespace Agrotutor.Modules.Weather.Types
         {
             WeatherHistory data = null;
             var serviceUrl =
-                $"https://wsgi.geo-wiki.org/skywise_weather?lat={latitude}&lng={longitude}";
+                $"{Constants.WeatherHistoryApiBaseUrl}?lat={latitude}&lng={longitude}";
             using (var wc = new HttpClient())
             {
                 try

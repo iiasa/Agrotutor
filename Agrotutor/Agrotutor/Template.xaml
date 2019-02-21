@@ -306,27 +306,27 @@
                     <StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_year}" />
-                            <Label Text="{Binding CurrentMachineryPoint.Properties.Anio}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Anio}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_hub}" />
-                            <Label Text="{Binding CurrentMachineryPoint.Properties.Hub}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Hub}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{localization:Translate machinery_point_responsible}" />
-                            <Label Text="{Binding CurrentMachineryPoint.Properties.Responsabl}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Responsabl}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_institute}" />
-                            <Label Text="{Binding CurrentMachineryPoint.Properties.Entidad}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Entidad}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_precomodad}" />
-                            <Label Text="{Binding CurrentMachineryPoint.Properties.Precomodad}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Precomodad}" />
                         </StackLayout>
                         <StackLayout Orientation="Horizontal">
                             <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_registry}" />
-                            <Label Text="{Binding CurrentMachineryPoint.Properties.Registro}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Registro}" />
                         </StackLayout>
 
                         <views:Divider />
@@ -334,7 +334,7 @@
                         <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_actions}" />
 
                         <views:IconWithText
-                            Command="{Binding NavigateToCurrentMachineryPoint}"
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentMachineryPoint}"
                             IconSource="map.png"
                             IconText="{localization:Translate machinery_point_navigate}" />
 

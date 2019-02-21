@@ -13,14 +13,14 @@ namespace Agrotutor.Core
     public static class DbContextOptionsBuilderExtension
 	{
 		public static void Configure<TContext>(this DbContextOptionsBuilder<TContext> dbContextOptionsBuilder,
-			string filename = "localdata.db") where TContext : DbContext
+			string filename = Constants.LocalDBFilename) where TContext : DbContext
 		{
 			string path = Path.Combine(GetPlatformFolder(), filename);
 			dbContextOptionsBuilder.UseSqlite($"Filename={path}");
 		}
 
 		public static void CopyFromStream<TContext>(this DbContextOptionsBuilder<TContext> dbContextOptionsBuilder, Stream stream,
-			string filename = "localdata.db") where TContext : DbContext
+			string filename = Constants.LocalDBFilename) where TContext : DbContext
 		{
 			using (FileStream fileStream = File.Create(Path.Combine(GetPlatformFolder(), filename)))
 			{
@@ -30,7 +30,7 @@ namespace Agrotutor.Core
 		}
 
 		public static bool FileExists<TContext>(this DbContextOptionsBuilder<TContext> dbContextOptionsBuilder,
-			string filename = "localdata.db") where TContext : DbContext
+			string filename = Constants.LocalDBFilename) where TContext : DbContext
 		{
 			return File.Exists(Path.Combine(GetPlatformFolder(), filename));
 		}

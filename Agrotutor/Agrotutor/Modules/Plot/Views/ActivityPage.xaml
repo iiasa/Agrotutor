@@ -30,9 +30,7 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             Command="{Binding ActivityClickedCommand}"
-                            CommandParameter="GroundPreperation"
-                            IconSource="flask.png"
-                            IconText="{localization:Translate soil_improvers}" />
+                            CommandParameter="SoilImprovers"/>
 
                         <views:MenuIcon
                             Grid.Row="0"
