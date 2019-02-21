@@ -1,3 +1,5 @@
+using XF.Material.Forms.UI.Dialogs;
+
 namespace Agrotutor.ViewModels
 {
     using System.Windows.Input;
@@ -13,8 +15,13 @@ namespace Agrotutor.ViewModels
         { }
 
         public DelegateCommand NavigateToMainPageCommand => new DelegateCommand(
-            ()=> {
-                NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
+            async ()=> {
+
+                using (await MaterialDialog.Instance.LoadingDialogAsync("Loading..."))
+                {
+                    await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
+                }
+                
             });
     }
 }
