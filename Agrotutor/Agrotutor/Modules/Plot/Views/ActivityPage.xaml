@@ -5,6 +5,7 @@
      xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
      mvvm:ViewModelLocator.AutowireViewModel="True"
+     Title="Activity"
      x:Class="Agrotutor.Modules.Plot.Views.ActivityPage">
     <ContentPage.Content>
         <ScrollView>

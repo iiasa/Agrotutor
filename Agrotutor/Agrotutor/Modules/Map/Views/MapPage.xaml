@@ -52,10 +52,10 @@
                 Grid.RowSpan="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="7"
+                InitialCameraUpdate="20,-100,5"
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
-                InitialCameraUpdate="20,-100,5"
                 MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
                 ShowTileLayer="{Binding ShowTileLayer}"
@@ -191,7 +191,7 @@
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_irrigation}" />
-                                    <Label Text="{Binding SelectedPlotIrrigation}"/>
+                                    <Label Text="{Binding SelectedPlotIrrigation}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_maturity}" />
@@ -260,9 +260,22 @@
                                     Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" Command="{Binding NavigateToPotentialYield}"/>
-                                <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" Command="{Binding NavigateToCiat}" />
-                                <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" Command="{Binding NavigateToPriceForecast}" />
+                                <views:ValueLine
+                                    Command="{Binding NavigateToPotentialYield}"
+                                    Text="Potential yield (Average kg/ha):"
+                                    Value="{Binding CurrentPlotPotentialYield}" />
+                                <views:ValueLine
+                                    Command="{Binding NavigateToCiat}"
+                                    Text="Nitrogen needed (kg/ha):"
+                                    Value="{Binding CurrentPlotNitrogen}" />
+                                <views:ValueLine
+                                    Command="{Binding NavigateToPriceForecast}"
+                                    Text="Next month trading price (Expected avg $/kg):"
+                                    Value="{Binding CurrentPlotPriceForecast}" />
+                                <views:IconWithText
+                                    Command="{Binding DeleteCommand}"
+                                    IconSource="delete.png"
+                                    IconText="Delete" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

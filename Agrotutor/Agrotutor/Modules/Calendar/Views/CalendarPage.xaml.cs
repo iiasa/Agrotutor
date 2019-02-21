@@ -17,7 +17,6 @@
         public CalendarPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
             this.ViewModel = (CalendarPageViewModel)BindingContext;
             ViewModel.SetView(this);
         }

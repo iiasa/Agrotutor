@@ -2,14 +2,15 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
      mvvm:ViewModelLocator.AutowireViewModel="True"
+     Title="Yield in this area"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
              x:Class="Agrotutor.Modules.Benchmarking.Views.ViewYieldPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label
+            <!--<Label
                 HorizontalOptions="StartAndExpand"
                 Text="Yield in this area"
-                FontSize="20" />
+                FontSize="20" />-->
 
             <views:SimpleStatsSingle
                 AverageImageSource="corn3.png"
