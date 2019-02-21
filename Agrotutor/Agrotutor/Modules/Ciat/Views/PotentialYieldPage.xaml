@@ -5,7 +5,8 @@
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage">
+             x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage"
+             Title="{localization:Translate title}">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">

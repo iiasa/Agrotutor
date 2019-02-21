@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Agrotutor.Core.Persistence;
+using Microsoft.Extensions.Localization;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Prism.Services;
@@ -13,7 +14,9 @@ namespace Agrotutor.Core.Camera
 
         private readonly IPageDialogService pageDialogService;
 
-        public CameraService(IPageDialogService pageDialogService)
+        private readonly IStringLocalizer<CameraService> stringLocalizer;
+
+        public CameraService(IPageDialogService pageDialogService, IStringLocalizer<CameraService> stringLocalizer)
         {
             media = CrossMedia.Current;
             media.Initialize();
@@ -25,7 +28,10 @@ namespace Agrotutor.Core.Camera
         {
             if (!media.IsCameraAvailable || !media.IsTakePhotoSupported)
             {
-                await pageDialogService.DisplayAlertAsync("No Camera", "No camera available", "ok");
+                await pageDialogService.DisplayAlertAsync(
+                    stringLocalizer.GetString("no_camera_title"), 
+                    stringLocalizer.GetString("no_camera_message"),
+                    stringLocalizer.GetString("no_camera_ok"));
                 return string.Empty;
             }
 
@@ -33,9 +39,7 @@ namespace Agrotutor.Core.Camera
             var file = await media.TakePhotoAsync(
                 new StoreCameraMediaOptions { SaveToAlbum = true, Name = fileName, AllowCropping = false, CompressionQuality = 20 });
 
-            if (file == null) return string.Empty;
-
-            return file.Path;
+            return file == null ? string.Empty : file.Path;
         }
 
 
@@ -43,22 +47,26 @@ namespace Agrotutor.Core.Camera
         {
             if (!media.IsPickPhotoSupported)
             {
-                await pageDialogService.DisplayAlertAsync("No Upload", "Picking photo not supported", "ok");
+                await pageDialogService.DisplayAlertAsync(
+                    stringLocalizer.GetString("pick_photo_not_supported_title"), 
+                    stringLocalizer.GetString("pick_photo_not_supported_message"), 
+                    stringLocalizer.GetString("pick_photo_not_supported_ok"));
                 return string.Empty;
             }
 
             var file = await media.PickPhotoAsync();
 
-            if (file == null) return string.Empty;
-
-            return file.Path;
+            return file == null ? string.Empty : file.Path;
         }
 
         public async Task<string> TakeVideo()
         {
             if (!media.IsCameraAvailable || !media.IsTakeVideoSupported)
             {
-                await pageDialogService.DisplayAlertAsync("No Camera", ":( No camera available.", "OK");
+                await pageDialogService.DisplayAlertAsync(
+                    stringLocalizer.GetString("no_video_camera_title"),
+                    stringLocalizer.GetString("no_video_camera_message"),
+                    stringLocalizer.GetString("no_video_camera_ok"));
                 return string.Empty;
             }
 

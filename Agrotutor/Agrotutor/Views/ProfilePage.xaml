@@ -2,18 +2,19 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
          xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
          xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-         prism:ViewModelLocator.AutowireViewModel="True" x:Class="Agrotutor.Views.ProfilePage" Padding="16">
+         prism:ViewModelLocator.AutowireViewModel="True" x:Class="Agrotutor.Views.ProfilePage" Padding="16"
+         Title="{localization:Translate title}">
     <ScrollView>
         <StackLayout Orientation="Vertical">
             <Label Text="{localization:Translate hint_producer_name}" FontSize="10" />
             <Entry Placeholder="{localization:Translate hint_firstname_lastname}" Text="{Binding UserProfile.UserName}"
                    Margin="0,0,0,16" />
 
-            <Label Text="Estado" FontSize="10" />
-            <Picker ItemsSource="{Binding States}" SelectedIndex="{Binding StatesSelectedIndex}" Title="seleccionar"
+            <Label Text="{localization:Translate state}" FontSize="10" />
+            <Picker ItemsSource="{Binding States}" SelectedIndex="{Binding StatesSelectedIndex}" Title="{localization:Translate select}"
                     Margin="0,0,0,16" />
 
-            <Button Text="Tomar una foto" Command="{Binding TakePictureCommand}" />
+            <Button Text="{localization:Translate take_photo}" Command="{Binding TakePictureCommand}" />
             <Image IsVisible="{Binding PictureVisible}" HorizontalOptions="Center" WidthRequest="350"
                    Source="{Binding ImageSource}" />
         </StackLayout>

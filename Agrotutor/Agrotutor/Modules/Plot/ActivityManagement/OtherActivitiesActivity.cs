@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.Modules.Plot.ActivityManagement
+﻿using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
+
+namespace Agrotutor.Modules.Plot.ActivityManagement
 {
     public class OtherActivitiesActivity : ActivityBaseClass
     {
@@ -17,10 +20,14 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = "Otras actividades",
+                ActivityName = _stringLocalizer.GetString("other_activities"),
                 ActivityIcon = "farmer_small.png",
-                ActivityTitle = "Otras actividades"
+                ActivityTitle = _stringLocalizer.GetString("other_activities")
             };
+        }
+
+        public OtherActivitiesActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

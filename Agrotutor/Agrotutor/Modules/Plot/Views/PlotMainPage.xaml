@@ -3,63 +3,65 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
      mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage"
+             Title="{localization:Translate title}"
              >
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,0">
                 <Label
                     HorizontalOptions="StartAndExpand"
-                    Text="Historical information"
+                    Text="{localization:Translate history}"
                     FontSize="20" />
 
                 <views:Divider />
 
                 <views:IconWithText 
-                    IconText="Costs"
+                    IconText="{localization:Translate costs}"
                     IconSource="icons_pricetag_96.png"
                     Command="{Binding NavigateToCosts}"/>
 
               <views:IconWithText
-                  IconText="Income"
+                  IconText="{localization:Translate income}"
                     IconSource="icon_profit_96.png"
                     Command="{Binding NavigateToIncome}"/>
 
               <views:IconWithText
-                  IconText="Profit"
+                  IconText="{localization:Translate profit}"
                     IconSource="icons_settings_96.png"
                     Command="{Binding NavigateToProfit}"/>
 
               <views:IconWithText
-                  IconText="Yield"
+                  IconText="{localization:Translate yield}"
                     IconSource="icons_datasheet_96.png"
                     Command="{Binding NavigateToYield}"/>
 
                 <Label
                     HorizontalOptions="StartAndExpand"
-                    Text="Additional information"
+                    Text="{localization:Translate additional_info}"
                     FontSize="20" />
 
               <views:Divider />
 
               <views:IconWithText
-                  IconText="Potential yield (models)"
+                  IconText="{localization:Translate potential_yield}"
                     IconSource="corn1.png"
                     Command="{Binding NavigateToPotentialYield}"/>
 
               <views:IconWithText
-                  IconText="Cropping recommendations"
+                  IconText="{localization:Translate recommendations}"
                     IconSource="planner.png"
                     Command="{Binding NavigateToPlanner}"/>
 
               <views:IconWithText
-                  IconText="Market price forecast"
+                  IconText="{localization:Translate price_forecast}"
                     IconSource="peso1.png"
-                    Command="{Binding NavigateToMarketForecast}"/>
+                    Command="{Binding NavigateToPriceForecast}"/>
 
               <views:IconWithText
-                  IconText="Weather"
+                  IconText="{localization:Translate weather}"
                     IconSource="weather.png"
                     Command="{Binding NavigateToWeather}"/>
 

@@ -16,6 +16,8 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
     public class BenchmarkingPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string PlotParameterName = "Plot";
+
         public BenchmarkingPageViewModel(INavigationService navigationService,
             IStringLocalizer<BenchmarkingPageViewModel> localizer) : base(navigationService, localizer)
         {
@@ -86,9 +88,9 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey("Plot"))
+            if (parameters.ContainsKey(PlotParameterName))
             {
-                parameters.TryGetValue<Plot>("Plot", out var plot);
+                parameters.TryGetValue<Plot>(PlotParameterName, out var plot);
                 if (plot != null)
                 {
                     Plot = plot;

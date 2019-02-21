@@ -263,47 +263,47 @@ namespace Agrotutor.Modules.Plot.ViewModels
             switch (ActivityType)
             {
                 case ActivityType.SoilImprovers:
-                    baseClass = new SoilImproversActivity();
+                    baseClass = new SoilImproversActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.GroundPreperation:
-                    baseClass = new GroundPreperationActivity();
+                    baseClass = new GroundPreperationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.Sowing:
-                    baseClass = new SowingActivity();
+                    baseClass = new SowingActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.Fertilization:
-                    baseClass = new FertilizationActivity();
+                    baseClass = new FertilizationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.Irrigation:
-                    baseClass = new IrrigationActivity();
+                    baseClass = new IrrigationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.WeedPreventionControl:
-                    baseClass = new WeedPreventionControlActivity();
+                    baseClass = new WeedPreventionControlActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.PestAndDiseaseControlAndPrevention:
-                    baseClass = new PestAndDiseaseControlAndPreventionActivity();
+                    baseClass = new PestAndDiseaseControlAndPreventionActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.Harvest:
-                    baseClass = new HarvestActivity();
+                    baseClass = new HarvestActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.PostHarvestStorage:
-                    baseClass = new PostHarvestStorageActivity();
+                    baseClass = new PostHarvestStorageActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.Commercialization:
-                    baseClass = new CommercializationActivity();
+                    baseClass = new CommercializationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
 
                 case ActivityType.OtherActivities:
-                    baseClass = new OtherActivitiesActivity();
+                    baseClass = new OtherActivitiesActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
                     break;
             }
 

@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -21,12 +23,16 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 VarietySownVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    "Aplicación de fungicidas",
-                    "Aplicación de insecticidas"
+                    _stringLocalizer.GetString("fungicides"),
+                    _stringLocalizer.GetString("insecticides")
                 },
                 ActivityIcon = "cockroach_small.png",
-                ActivityTitle = "Control y prevención de plagas y enfermedades"
+                ActivityTitle = _stringLocalizer.GetString("pest_control")
             };
+        }
+
+        public PestAndDiseaseControlAndPreventionActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

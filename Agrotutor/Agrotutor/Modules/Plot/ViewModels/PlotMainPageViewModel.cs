@@ -1,4 +1,11 @@
+using Agrotutor.Modules.Benchmarking;
+using Agrotutor.Modules.Ciat;
+using Agrotutor.Modules.Ciat.Types;
 using Agrotutor.Modules.Ciat.ViewModels;
+using Agrotutor.Modules.PriceForecasting.Types;
+using Agrotutor.Modules.PriceForecasting.ViewModels;
+using Agrotutor.Modules.Weather.Types;
+using Agrotutor.Modules.Weather.ViewModels;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
@@ -13,7 +20,6 @@ namespace Agrotutor.Modules.Plot.ViewModels
     using Core.Persistence;
     using XF.Material.Forms.UI.Dialogs;
     using System.Collections.Generic;
-    using Agrotutor.Core.Rest.Bem;
     using Agrotutor.Modules.Benchmarking.ViewModels;
 
     public class PlotMainPageViewModel : ViewModelBase, INavigatedAware
@@ -38,7 +44,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 async () =>
                 {
                     List<Cost> costs = null;
-                    using (await MaterialDialog.Instance.LoadingDialogAsync("Loading"))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
                         {
@@ -51,9 +57,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
                             {
-                                Title = "No data",
-                                Message = "There isn't any cost data available at this location.",
-                                OkText = "Ok"
+                                Title = StringLocalizer.GetString("no_data_title"),
+                                Message = StringLocalizer.GetString("no_data_cost_message"),
+                                OkText = StringLocalizer.GetString("no_data_ok")
                             });
                         return;
                     }
@@ -71,7 +77,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 async () =>
                 {
                     List<Income> incomes = null;
-                    using (await MaterialDialog.Instance.LoadingDialogAsync("Loading"))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
                         {
@@ -84,9 +90,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
                             {
-                                Title = "No data",
-                                Message = "There isn't any income data available at this location.",
-                                OkText = "Ok"
+                                Title = StringLocalizer.GetString("no_data_title"),
+                                Message = StringLocalizer.GetString("no_data_income_message"),
+                                OkText = StringLocalizer.GetString("no_data_ok")
                             });
                         return;
                     }
@@ -104,7 +110,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 async () =>
                 {
                     List<Profit> profits = null;
-                    using (await MaterialDialog.Instance.LoadingDialogAsync("Loading"))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
                         {
@@ -117,9 +123,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
                             {
-                                Title = "No data",
-                                Message = "There isn't any profit data available at this location.",
-                                OkText = "Ok"
+                                Title = StringLocalizer.GetString("no_data_title"),
+                                Message = StringLocalizer.GetString("no_data_profit_message"),
+                                OkText = StringLocalizer.GetString("no_data_ok")
                             });
                         return;
                     }
@@ -137,7 +143,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 async () =>
                 {
                     List<Yield> yields = null;
-                    using (await MaterialDialog.Instance.LoadingDialogAsync("Loading"))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
                         {
@@ -150,9 +156,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         await UserDialogs.Instance.AlertAsync(
                             new AlertConfig
                             {
-                                Title = "No data",
-                                Message = "There isn't any yield data available at this location.",
-                                OkText = "Ok"
+                                Title = StringLocalizer.GetString("no_data_title"),
+                                Message = StringLocalizer.GetString("no_data_yield_message"),
+                                OkText = StringLocalizer.GetString("no_data_ok")
                             });
                         return;
                     }
@@ -168,9 +174,29 @@ namespace Agrotutor.Modules.Plot.ViewModels
         public DelegateCommand NavigateToWeather => new DelegateCommand(
             async () =>
             {
+                WeatherForecast weatherForecast = null;
+                using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
+                {
+                    weatherForecast = await WeatherForecast.Download(Position.Latitude, Position.Longitude);
+                }
+
+                if (weatherForecast == null)
+                {
+                    await UserDialogs.Instance.AlertAsync(
+                        new AlertConfig
+                        {
+                            Title = StringLocalizer.GetString("no_data_title"),
+                            Message = StringLocalizer.GetString("no_data_weather_message"),
+                            OkText = StringLocalizer.GetString("no_data_ok")
+                        });
+                    return;
+                }
+
                 var param = new NavigationParameters
                 {
-                    { "Location", Position }
+                    { "Location", Position },
+                    { WeatherPageViewModel.ForecastParameterName, weatherForecast}
+
                 };
                 await this.NavigationService.NavigateAsync("WeatherPage", param);
             });
@@ -178,7 +204,29 @@ namespace Agrotutor.Modules.Plot.ViewModels
         public DelegateCommand NavigateToPotentialYield => new DelegateCommand(
             async () =>
             {
-                await this.NavigationService.NavigateAsync("BenchmarkingPage");
+                CiatData ciatData = null;
+                using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
+                {
+                    ciatData = await CiatDownloadHelper.LoadData(Position, "Maiz");
+                }
+
+                if (ciatData == null)
+                {
+                    await UserDialogs.Instance.AlertAsync(
+                        new AlertConfig
+                        {
+                            Title = StringLocalizer.GetString("no_data_title"),
+                            Message = StringLocalizer.GetString("no_data_potential_yield_message"),
+                            OkText = StringLocalizer.GetString("no_data_ok")
+                        });
+                    return;
+                }
+                var param = new NavigationParameters
+                {
+                    {PotentialYieldPageViewModel.DataParameterName, ciatData}
+                };
+
+                await NavigationService.NavigateAsync("PotentialYieldPage", param);
             });
 
         public DelegateCommand NavigateToPlanner => new DelegateCommand(
@@ -187,10 +235,20 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 var param = new NavigationParameters
                             {
                                 { CiatPageViewModel.PARAMETER_NAME_POSITION, Position },
-                                { CiatPageViewModel.PARAMETER_NAME_CROP, "Maize" } //TODO use var
+                                { CiatPageViewModel.PARAMETER_NAME_CROP, "Maize" }
                             };
-                await this.NavigationService.NavigateAsync("CiatContentPage", param);
+                await this.NavigationService.NavigateAsync("CiatPage", param);
             });
+
+        public DelegateCommand NavigateToPriceForecast => new DelegateCommand(async () =>
+        {
+            var forecast = await PriceForecast.FromEmbeddedResource();
+            var param = new NavigationParameters
+            {
+                {PriceForecastPageViewModel.PriceForecastParameterName, forecast}
+            };
+            await this.NavigationService.NavigateAsync("PriceForecastPage", param);
+        });
 
         public IAppDataService AppDataService { get; set; }
 

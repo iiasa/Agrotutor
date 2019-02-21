@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -21,13 +23,17 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    "Aplicación de fertilizante foliar",
-                    "Aplicación de fertilizante orgánico",
-                    "Fertilización química al suelo"
+                    _stringLocalizer.GetString("liquid_fertilizer"),
+                    _stringLocalizer.GetString("organic_fertilizer"),
+                    _stringLocalizer.GetString("chemical_fertilizer")
                 },
                 ActivityIcon = "fertilizer_small.png",
-                ActivityTitle = "Fertilización"
+                ActivityTitle = _stringLocalizer.GetString("fertilizer")
             };
+        }
+
+        public FertilizationActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

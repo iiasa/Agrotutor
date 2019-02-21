@@ -153,4 +153,46 @@
   <data name="plot_detail_video" xml:space="preserve">
     <value>Add a video</value>
   </data>
+  <data name="costs" xml:space="preserve">
+    <value>Costs ($/ha):</value>
+  </data>
+  <data name="hub_contact" xml:space="preserve">
+    <value>Hub contact</value>
+  </data>
+  <data name="income" xml:space="preserve">
+    <value>Income ($/ha):</value>
+  </data>
+  <data name="investigation_platforms" xml:space="preserve">
+    <value>Investigation platforms</value>
+  </data>
+  <data name="layers" xml:space="preserve">
+    <value>Layers</value>
+  </data>
+  <data name="machinery_points" xml:space="preserve">
+    <value>Machinery points</value>
+  </data>
+  <data name="nitrogen" xml:space="preserve">
+    <value>Nitrogen needed (kg/ha):</value>
+  </data>
+  <data name="offline_basemap" xml:space="preserve">
+    <value>Offline basemap</value>
+  </data>
+  <data name="plots" xml:space="preserve">
+    <value>Plots</value>
+  </data>
+  <data name="plot_delineations" xml:space="preserve">
+    <value>Plot delineations</value>
+  </data>
+  <data name="potential_yield" xml:space="preserve">
+    <value>Potential yield (Average kg/ha):</value>
+  </data>
+  <data name="price_forecast" xml:space="preserve">
+    <value>Next month trading price (Expected avg $/kg):</value>
+  </data>
+  <data name="profit" xml:space="preserve">
+    <value>Profit ($/ha):</value>
+  </data>
+  <data name="yield" xml:space="preserve">
+    <value>Yield (kg/ha):</value>
+  </data>
 </root>

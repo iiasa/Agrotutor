@@ -203,7 +203,7 @@
                                 </StackLayout>
                                 
                                 <views:ValueLine Text="Growing Degree Days" 
-                                     Value="{Binding CurrentPlotGDD}" 
+                                     Value="{Binding CurrentPlotGdd}" 
                                      ImageSource="{Binding CurrentPlotWeatherIcon}"
                                      Command="{Binding NavigateToPlotWeather}"/>
 
@@ -281,37 +281,37 @@
                 Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
-                        <views:IconWithText IconSource="layers.png" IconText="Layers" />
+                        <views:IconWithText IconSource="layers.png" IconText="{localization:Translate layers}" />
                         <ScrollView>
                             <StackLayout>
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotsLayerVisible}"
                                     SelectedChangeCommand="{Binding PlotsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource PrimaryGreen}"
-                                    Text="Plots" />
+                                    Text="{localization:Translate plots}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotDelineationsLayerVisible}"
                                     SelectedChangeCommand="{Binding PlotDelineationsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource PrimaryGreen}"
-                                    Text="Plot delineations" />
+                                    Text="{localization:Translate plot_delineations}" />
                                 <views:Divider />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding HubContactsLayerVisible}"
                                     SelectedChangeCommand="{Binding HubContactsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource SecondaryOrange}"
-                                    Text="Hub contact" />
+                                    Text="{localization:Translate hub_contact}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding MachineryPointsLayerVisible}"
                                     SelectedChangeCommand="{Binding MachineryPointsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource SecondaryDarkGreen}"
-                                    Text="Machinery points" />
+                                    Text="{localization:Translate machinery_points}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding InvestigationPlatformsLayerVisible}"
                                     SelectedChangeCommand="{Binding InvestigationPlatformsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource SecondaryGreenBrown}"
-                                    Text="Investigation platforms" />
+                                    Text="{localization:Translate investigation_platforms}" />
                                 <views:Divider />
-                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />
+                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="{localization:Translate offline_basemap}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

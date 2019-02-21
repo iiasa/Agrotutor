@@ -29,7 +29,7 @@
                             IconText="{localization:Translate soil_improvers}"
                             IconSource="flask.png"
                             Command="{Binding ActivityClickedCommand}"
-                            CommandParameter="GroundPreperation"/>
+                            CommandParameter="SoilImprovers"/>
 
                         <views:MenuIcon 
                             Grid.Row="0" Grid.Column="1"

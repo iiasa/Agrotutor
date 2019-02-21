@@ -57,8 +57,6 @@ namespace Agrotutor.Core
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();
             containerRegistry.RegisterForNavigation<WebContentPage, WebContentPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
-
-
         }
 
         public static void RegisterPersistence(this IContainerRegistry containerRegistry)
@@ -93,7 +91,7 @@ namespace Agrotutor.Core
                 });
         }
 
-        public static void RegisterSharedContextClasses(this IContainerRegistry containerRegistry) //TODO: rename!!!
+        public static void RegisterSharedContextClasses(this IContainerRegistry containerRegistry)
         {
             containerRegistry.GetContainer()
                 .Register(typeof(DbContextOptionsBuilder<>),
@@ -116,11 +114,11 @@ namespace Agrotutor.Core
             containerRegistry.GetContainer()
                 .RegisterInitializer<DbContextOptionsBuilder<TileContext>>((builder, resolver) =>
                 {
-                    if (!Persistence.DbContextOptionsBuilderExtension.FileExists(builder, "mexico-simple.mbtiles"))
+                    if (!Persistence.DbContextOptionsBuilderExtension.FileExists(builder, Constants.OfflineBasemapFilename))
                         Persistence.DbContextOptionsBuilderExtension.CopyFromStream(builder, Resources.GetIIASATiles(),
-                            "mexico-simple.mbtiles");
+                            Constants.OfflineBasemapFilename);
 
-                    Persistence.DbContextOptionsBuilderExtension.Configure(builder, "mexico-simple.mbtiles");
+                    Persistence.DbContextOptionsBuilderExtension.Configure(builder, Constants.OfflineBasemapFilename);
                 });
 
             containerRegistry.Register<IReadOnlyTileService, ReadOnlyTileService>();

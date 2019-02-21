@@ -153,4 +153,46 @@
   <data name="plot_detail_video" xml:space="preserve">
     <value>Agregue un vídeo</value>
   </data>
+  <data name="costs" xml:space="preserve">
+    <value>Costos ($/ha):</value>
+  </data>
+  <data name="hub_contact" xml:space="preserve">
+    <value>Contacto del hub</value>
+  </data>
+  <data name="income" xml:space="preserve">
+    <value>Ingresos ($/ha):</value>
+  </data>
+  <data name="investigation_platforms" xml:space="preserve">
+    <value>Plataformas de investigación</value>
+  </data>
+  <data name="layers" xml:space="preserve">
+    <value>Capas</value>
+  </data>
+  <data name="machinery_points" xml:space="preserve">
+    <value>Puntos de maquinaria</value>
+  </data>
+  <data name="nitrogen" xml:space="preserve">
+    <value>Nitrógeno necesario (kg/ha):</value>
+  </data>
+  <data name="offline_basemap" xml:space="preserve">
+    <value>Mapa base sin conexión</value>
+  </data>
+  <data name="plots" xml:space="preserve">
+    <value>Parcelas</value>
+  </data>
+  <data name="plot_delineations" xml:space="preserve">
+    <value>Delineaciones de las parcelas</value>
+  </data>
+  <data name="potential_yield" xml:space="preserve">
+    <value>Rendimiento potencial (promedio kg/ha):</value>
+  </data>
+  <data name="price_forecast" xml:space="preserve">
+    <value>Precio de negociación del próximo mes (promedio de $/kg):</value>
+  </data>
+  <data name="profit" xml:space="preserve">
+    <value>Utilidad ($/ha):</value>
+  </data>
+  <data name="yield" xml:space="preserve">
+    <value>Rendimiento (kg/ha):</value>
+  </data>
 </root>

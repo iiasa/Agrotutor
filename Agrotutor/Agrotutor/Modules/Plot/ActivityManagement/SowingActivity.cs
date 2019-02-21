@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -21,12 +23,16 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    "Resiembra",
-                    "Siembra"
+                    _stringLocalizer.GetString("resowing"),
+                    _stringLocalizer.GetString("sowing")
                 },
                 ActivityIcon = "sowing_small.png",
-                ActivityTitle = "Siembra"
+                ActivityTitle = _stringLocalizer.GetString("sowing")
             };
+        }
+
+        public SowingActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }
