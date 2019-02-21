@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using Agrotutor.Core;
 using Agrotutor.Modules.PriceForecasting.Types;
+using Agrotutor.ViewModels;
 using Microsoft.Extensions.Localization;
+using Prism.Commands;
 using Prism.Navigation;
 using Xamarin.Forms;
 
@@ -96,5 +98,10 @@ namespace Agrotutor.Modules.PriceForecasting.ViewModels
                 }
             }
         }
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters { { "page", WebContentPageViewModel.PriceForecasting } };
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
     }
 }

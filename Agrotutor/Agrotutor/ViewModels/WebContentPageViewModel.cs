@@ -6,21 +6,46 @@ using Xamarin.Forms;
 
 namespace Agrotutor.ViewModels
 {
-    public class WebContentPageViewModel : ViewModelBase
+    public class WebContentPageViewModel : ViewModelBase, INavigatedAware
     {
+        public static string CultivarCharacteristics = "cultivarcharacteristics";
+        public static string PotentialYield = "potentialyield";
+        public static string LocalBenchmarking = "localbenchmarking";
+        public static string RecommendedPractices = "recommendedpractices";
+        public static string PriceForecasting = "priceforecasting";
+
         public WebContentPageViewModel(INavigationService navigationService, IStringLocalizer<WebContentPageViewModel> stringLocalizer) 
             : base(navigationService, stringLocalizer)
         {
-            var rootUrl = DependencyService.Get<IHtmlBaseUrl>().Get();
-            Url = $"{rootUrl}about/page.html";
+            _rootUrl = DependencyService.Get<IHtmlBaseUrl>().Get();
+            Url = $"{_rootUrl}about/page.html";
         }
 
         private string _url;
+        private string _rootUrl;
 
         public string Url
         {
             get => _url;
             set => SetProperty(ref _url, value);
+        }
+
+        public override void OnNavigatedFrom(INavigationParameters navigationParameters)
+        {
+            base.OnNavigatedFrom(navigationParameters);
+        }
+
+        public override void OnNavigatedTo(INavigationParameters navigationParameters)
+        {
+            if (navigationParameters.ContainsKey("page"))
+            {
+                navigationParameters.TryGetValue<string>("page", out var page);
+                if (page != null) Url = $"{_rootUrl}{page}/page.html";
+                else NavigationService.GoBackAsync();
+            }
+            else NavigationService.GoBackAsync();
+
+            base.OnNavigatedTo(navigationParameters);
         }
     }
 }

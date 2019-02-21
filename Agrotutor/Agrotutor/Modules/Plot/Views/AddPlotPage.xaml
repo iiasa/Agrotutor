@@ -29,6 +29,15 @@
                 <Label FontSize="18" Text="{localization:Translate hint_planting_date}" />
                 <DatePicker Margin="0,0,0,16" Date="{Binding PlantingDate, Mode=TwoWay}" />
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label VerticalOptions="Center" Text="About cultivar characteristics" />
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                </StackLayout>
+
                 <Label FontSize="18" Text="{localization:Translate madurez}" />
                 <Picker
                     Title="{localization:Translate select}"

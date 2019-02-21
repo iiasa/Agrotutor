@@ -31,6 +31,15 @@
                 MaxValue="{Binding Max}"
             />
 
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                </StackLayout.GestureRecognizers>
+
+                <Label VerticalOptions="Center" Text="About potential yield data" />
+                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+            </StackLayout>
+
         </StackLayout>
     </ScrollView>
 

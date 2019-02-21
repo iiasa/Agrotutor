@@ -40,10 +40,10 @@
                 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command=""/>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
                     </StackLayout.GestureRecognizers>
 
-                    <Label VerticalOptions="End" Text="{localization:Translate interpretation}" />
+                    <Label VerticalOptions="Center" Text="{localization:Translate interpretation}" />
                     <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
             </StackLayout>

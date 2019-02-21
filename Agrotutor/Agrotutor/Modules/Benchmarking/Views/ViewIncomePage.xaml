@@ -25,6 +25,15 @@
                 MinValue="{Binding Min}"
                 MaxValue="{Binding Max}" />
 
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                </StackLayout.GestureRecognizers>
+
+                <Label VerticalOptions="Center" Text="About historical data" />
+                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
