@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Droid
+﻿using Agrotutor.Core.Components;
+
+namespace Agrotutor.Droid
 {
     using Prism;
     using Prism.Ioc;
@@ -9,6 +11,7 @@
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterSingleton<ILocalizer, Localizer>();
+            containerRegistry.RegisterSingleton<IDocumentViewer, DocumentViewer_Droid>();
         }
     }
 }

@@ -292,6 +292,11 @@ namespace Agrotutor.Modules.Map.Views
                                 {
                                     ImagePopup.Show(img.Path);
                                 }
+                                else
+                                {
+                                    //Device.OpenUri(new Uri(img.Path));
+                                    ViewModel.DocumentViewer.ShowDocumentFile(img.Path, MimeTypes.Mp4);
+                                }
                             })
                         });
 

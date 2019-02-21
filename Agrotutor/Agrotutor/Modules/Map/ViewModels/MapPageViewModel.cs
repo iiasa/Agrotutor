@@ -9,6 +9,7 @@ using Agrotutor.Core.Camera;
 using Agrotutor.Core.Cimmyt.HubsContact;
 using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
+using Agrotutor.Core.Components;
 using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Modules.Benchmarking;
@@ -53,6 +54,7 @@ namespace Agrotutor.Modules.Map.ViewModels
     public class MapPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly ICameraService _cameraService;
+        public IDocumentViewer DocumentViewer;
         private bool _addParcelIsVisible;
 
         private Position _addPlotPosition;
@@ -137,10 +139,12 @@ namespace Agrotutor.Modules.Map.ViewModels
             INavigationService navigationService,
             IAppDataService appDataService,
             ICameraService cameraService,
+            IDocumentViewer documentViewer,
             IStringLocalizer<MapPageViewModel> localizer)
             : base(navigationService, localizer)
         {
             _cameraService = cameraService;
+            DocumentViewer = documentViewer;
             LocationPermissionGiven = false;
             ShowWeatherWidget = false;
             AppDataService = appDataService;
