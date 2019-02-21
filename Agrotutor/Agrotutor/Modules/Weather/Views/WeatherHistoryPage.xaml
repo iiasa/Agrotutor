@@ -1,13 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
-             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
-             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-             mvvm:ViewModelLocator.AutowireViewModel="True"
-             Title="Weather history"
-             x:Class="Agrotutor.Modules.Weather.Views.WeatherHistoryPage">
+<ContentPage
+    x:Class="Agrotutor.Modules.Weather.Views.WeatherHistoryPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+    xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:oxy="clr-namespace:OxyPlot.Xamarin.Forms;assembly=OxyPlot.Xamarin.Forms"
+    Title="Weather history"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid Margin="16">
             <Grid.RowDefinitions>
@@ -25,12 +27,23 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
-            <Picker ItemsSource="{Binding DatasetNames}" SelectedIndex="{Binding SelectedDataset}" Grid.Row="0"
-                    Grid.Column="0" Grid.ColumnSpan="7" HorizontalOptions="FillAndExpand" />
-            <!--<microcharts:ChartView Chart="{Binding CurrentChart}" 
+            <Picker
+                Grid.Row="0"
+                Grid.Column="0"
+                Grid.ColumnSpan="7"
+                HorizontalOptions="FillAndExpand"
+                ItemsSource="{Binding DatasetNames}"
+                SelectedIndex="{Binding SelectedDataset}" />
+            <!--<microcharts:ChartView Chart="{Binding CurrentChart}"
                                    Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300"/>-->
-            <oxy:PlotView Model="{Binding ChartModel}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7"
-                          WidthRequest="300" VerticalOptions="Center" HorizontalOptions="Center" />
+            <oxy:PlotView
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="7"
+                HorizontalOptions="Center"
+                Model="{Binding ChartModel}"
+                VerticalOptions="Center"
+                WidthRequest="300" />
             <!--<Button Text="1d" Grid.Row="2" Grid.Column="0" Command="{Binding SetGraphDays}" CommandParameter="1" />
             <Button Text="3d" Grid.Row="2" Grid.Column="1" Command="{Binding SetGraphDays}" CommandParameter="3"/>
             <Button Text="1w" Grid.Row="2" Grid.Column="2" Command="{Binding SetGraphDays}" CommandParameter="7"/>

@@ -3,12 +3,45 @@
     x:Class="Agrotutor.Views.WelcomePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:converter="clr-namespace:Agrotutor.Core.Converter;assembly=Agrotutor"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    x:Name="Page"
     Title="MainPage"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     NavigationPage.HasNavigationBar="False">
+    <CarouselPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBooleanConverter x:Key="BooleanConverter" />
+        </ResourceDictionary>
+    </CarouselPage.Resources>
+    <CarouselPage.ItemTemplate>
+        <DataTemplate>
+            <ContentPage>
+                <ContentPage.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="iOS, Android" Value="0,40,0,0" />
+                    </OnPlatform>
+                </ContentPage.Padding>
+                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <forms:CachedImage
+                        DownsampleToViewSize="True"
+                        IsVisible="{Binding ShowGetStarted, Converter={StaticResource BooleanConverter}}"
+                        Source="{Binding Picture}" />
+                    <Button
+                        Margin="15"
+                        Padding="15"
+                        Command="{Binding Path=BindingContext.NavigateToMainPageCommand, Source={x:Reference Page}}"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding ShowGetStarted}"
+                        Text="Empezar ahora"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+            </ContentPage>
+        </DataTemplate>
+    </CarouselPage.ItemTemplate>
 
-    <ContentPage>
+    <!--<ContentPage>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
@@ -152,5 +185,5 @@
                 Command="{Binding NavigateToMainPageCommand}"
                 Text="Empezar ahora" />
         </StackLayout>
-    </ContentPage>
+    </ContentPage>-->
 </CarouselPage>

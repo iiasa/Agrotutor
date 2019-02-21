@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Views
+﻿using Agrotutor.Core;
+
+namespace Agrotutor.Views
 {
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
@@ -10,6 +12,7 @@
         {
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
+            ItemsSource = ColorsDataModel.All;
         }
     }
 }
