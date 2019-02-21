@@ -1,10 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Views.WebContentPage">
+<ContentPage
+    x:Class="Agrotutor.Views.WebContentPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    prism:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
-        <WebView Source="{Binding Url}" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+        <WebView
+            HorizontalOptions="FillAndExpand"
+            Source="{Binding Url}"
+            VerticalOptions="FillAndExpand" />
     </ContentPage.Content>
 </ContentPage>

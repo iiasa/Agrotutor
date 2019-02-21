@@ -7,7 +7,6 @@
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     Title="Add plot"
-    
     Padding="16"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
