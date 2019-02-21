@@ -15,6 +15,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
     {
         public static string LocationParameterName = "WEATHER_PAGE_LOCATION";
         public static string ForecastParameterName = "WEATHER_PAGE_FORECAST";
+        public static string HistoryParameterName = "WEATHER_PAGE_HISTORY";
 
         private string _cloudCover;
 
@@ -245,27 +246,29 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
+
             if (parameters.ContainsKey(LocationParameterName))
             {
                 parameters.TryGetValue<Location>(LocationParameterName, out var location);
-                if (location != null)
-                {
-                    Location = location;
-                    Task.Run(() => LoadData());
-                }
+                Location = location;
             }
 
+            if (parameters.ContainsKey(HistoryParameterName))
+            {
+                parameters.TryGetValue<WeatherHistory>(HistoryParameterName, out var history);
+                if (history != null) WeatherHistory = history;
+                else Task.Run(() => LoadData());
+            }
+            else Task.Run(() => LoadData());
 
             if (parameters.ContainsKey(ForecastParameterName))
             {
                 parameters.TryGetValue<WeatherForecast>(ForecastParameterName, out var forecast);
-                if (forecast != null)
-                {
-                    WeatherForecast = forecast;
-                }
+                if (forecast != null) WeatherForecast = forecast;
                 else Task.Run(() => LoadForecast());
             }
             else Task.Run(() => LoadForecast());
+
             base.OnNavigatedTo(parameters);
         }
 

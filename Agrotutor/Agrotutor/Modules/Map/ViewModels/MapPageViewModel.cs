@@ -130,6 +130,8 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _selectedPlotIrrigation;
         private string _selectedPlotMaturity;
         private string _selectedPlotClimate;
+        private string _currentPlotWeatherIcon;
+        private string _currentPlotGdd;
         private bool _showSatelliteLayer;
 
         public MapPageViewModel(
@@ -655,6 +657,29 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowSettings => new DelegateCommand(AppInfo.ShowSettingsUI);
 
+        public DelegateCommand NavigateToPlotWeather => 
+            new DelegateCommand(() =>
+            {
+                var param = new NavigationParameters
+                {
+                    {
+                        WeatherPageViewModel.LocationParameterName,
+                        new Location(SelectedPlot.Position.Latitude, SelectedPlot.Position.Longitude)
+                    }
+                };
+                if (SelectedPlot?.WeatherForecast != null)
+                {
+                    param.Add(WeatherPageViewModel.ForecastParameterName, SelectedPlot.WeatherForecast);
+                }
+                if (SelectedPlot?.WeatherHistory != null)
+                {
+                    param.Add(WeatherPageViewModel.HistoryParameterName, SelectedPlot.WeatherHistory);
+                }
+
+                NavigationService.NavigateAsync("WeatherPage", param);
+
+            });
+
         public DelegateCommand ShowWeather =>
             new DelegateCommand(
                 async () =>
@@ -1037,6 +1062,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             SelectedPlotMaturity = SelectedPlot.GetMaturityString();
             SelectedPlotClimate = SelectedPlot.GetClimateString();
 
+            var gdd = SelectedPlot?.WeatherHistory?.Gdd.Series.Sum(x => x.Value);
+            var weatherIcon = SelectedPlot?.WeatherForecast?.Location?.HourlySummaries?.HourlySummary?.FirstOrDefault()
+                ?.WxIcon;
             var cost = SelectedPlot?.BemData?.AverageCost;
             var yield = SelectedPlot?.BemData?.AverageYield;
             var profit = SelectedPlot?.BemData?.AverageProfit;
@@ -1053,8 +1081,22 @@ namespace Agrotutor.Modules.Map.ViewModels
             CurrentPlotIncome = income == null ? "-" : Math.Round((decimal)income).ToString();
             CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
             CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+            CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
+            CurrentPlotWeatherIcon = weatherIcon ?? "";
 
             await MapPage.UpdateImages();
+        }
+
+        public string CurrentPlotWeatherIcon
+        {
+            get => _currentPlotWeatherIcon;
+            set => SetProperty(ref _currentPlotWeatherIcon, value);
+        }
+
+        public string CurrentPlotGdd
+        {
+            get => _currentPlotGdd;
+            set => SetProperty(ref _currentPlotGdd, value);
         }
 
         public string SelectedPlotClimate
@@ -1260,6 +1302,12 @@ namespace Agrotutor.Modules.Map.ViewModels
             if (plot.WeatherForecast == null)
             {
                 plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude, plot.Position.Longitude);
+                updatedPlot = true;
+            }
+
+            if (plot.WeatherHistory == null)
+            {
+                plot.WeatherHistory = await WeatherHistory.Download(plot.Position.Latitude, plot.Position.Longitude);
                 updatedPlot = true;
             }
 
