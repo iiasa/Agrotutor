@@ -12,11 +12,17 @@ namespace Agrotutor.UserInterface.CustomMap
     {
         public static readonly BindableProperty ShowTileLayerProperty =
             BindableProperty.Create(nameof(ShowTileLayer), typeof(bool), typeof(CustomMap), true);
-
+        public static readonly BindableProperty ShowSatelliteTileLayerProperty =
+            BindableProperty.Create(nameof(ShowSatelliteTileLayer), typeof(bool), typeof(CustomMap), true);
         public bool ShowTileLayer
         {
             get => (bool) GetValue(ShowTileLayerProperty);
             set => SetValue(ShowTileLayerProperty, value);
+        }
+        public bool ShowSatelliteTileLayer
+        {
+            get => (bool)GetValue(ShowSatelliteTileLayerProperty);
+            set => SetValue(ShowSatelliteTileLayerProperty, value);
         }
     }
 }

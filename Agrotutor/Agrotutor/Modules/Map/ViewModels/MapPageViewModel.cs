@@ -130,6 +130,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _selectedPlotIrrigation;
         private string _selectedPlotMaturity;
         private string _selectedPlotClimate;
+        private bool _showSatelliteLayer;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -151,9 +152,29 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
-            ShowTileLayer = true;
+        
         }
-
+        public bool OfflineBasemapLayerVisible
+        {
+            get => _offlineBasemapLayerVisible;
+            set
+            {
+                SetProperty(ref _offlineBasemapLayerVisible, value);
+                Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
+                // ShowTileLayer = !ShowTileLayer;
+                // MapPage?.SetOfflineLayerVisibility(value);
+                //MapPage?.SetOfflineLayerVisibility(value);
+            }
+        }
+        public bool ShowSatelliteTileLayer
+        {
+            get => _showSatelliteLayer;
+            set
+            {
+                SetProperty(ref _showSatelliteLayer, value);
+                Preferences.Set(Constants.ShowSatelliteTileLayerVisiblePreference, value);
+            }
+        }
         public ObservableCollection<Polygon> Polygons
         {
             get => _polygons;
@@ -326,18 +347,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public bool OfflineBasemapLayerVisible
-        {
-            get => _offlineBasemapLayerVisible;
-            set
-            {
-                SetProperty(ref _offlineBasemapLayerVisible, value);
-                Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
-                ShowTileLayer = !ShowTileLayer;
-                // MapPage?.SetOfflineLayerVisibility(value);
-                //MapPage?.SetOfflineLayerVisibility(value);
-            }
-        }
+
 
         public DelegateCommand AddActivityToSelectedPlot =>
             new DelegateCommand(() =>
@@ -1578,8 +1588,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                 HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
                 MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, false);
                 InvestigationPlatformsLayerVisible =
-                    Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
+                Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
                 OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
+                ShowSatelliteTileLayer = Preferences.Get(Constants.ShowSatelliteTileLayerVisiblePreference, true);
             }
         }
 

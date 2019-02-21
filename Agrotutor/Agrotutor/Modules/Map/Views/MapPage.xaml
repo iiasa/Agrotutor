@@ -58,7 +58,8 @@
                 InitialCameraUpdate="20,-100,5"
                 MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
-                ShowTileLayer="{Binding ShowTileLayer}"
+                ShowTileLayer="{Binding OfflineBasemapLayerVisible}"
+                ShowSatelliteTileLayer="{Binding ShowSatelliteTileLayer}"
                 VerticalOptions="FillAndExpand">
                 <googleMaps:Map.Behaviors>
                     <bindings:BindingPolygonsBehavior Value="{Binding Polygons}" />
@@ -305,7 +306,10 @@
                                     SelectedColor="{StaticResource SecondaryGreenBrown}"
                                     Text="Investigation platforms" />
                                 <views:Divider />
+                                <ui:MaterialCheckbox IsSelected="{Binding ShowSatelliteTileLayer}" Text="Satellite" />
                                 <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />
+                              
+
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
