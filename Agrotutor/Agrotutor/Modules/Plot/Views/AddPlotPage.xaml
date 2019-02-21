@@ -6,7 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    Title="Add plot"
+    Title="{localization:Translate title}"
     Padding="16"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,43 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="add" xml:space="preserve">
-    <value>Agregar actividad</value>
+  <data name="about" xml:space="preserve">
+    <value>About historical data</value>
   </data>
-  <data name="applied_products" xml:space="preserve">
-    <value>Productos aplicados</value>
+  <data name="average" xml:space="preserve">
+    <value>average</value>
   </data>
-  <data name="cost" xml:space="preserve">
-    <value>Cost total de la actividad ($)</value>
+  <data name="maximum" xml:space="preserve">
+    <value>maximum</value>
   </data>
-  <data name="date" xml:space="preserve">
-    <value>Fecha de la actividad</value>
-  </data>
-  <data name="dosis" xml:space="preserve">
-    <value>Dosis/ha</value>
-  </data>
-  <data name="name" xml:space="preserve">
-    <value>Nombre de la actividad</value>
-  </data>
-  <data name="product" xml:space="preserve">
-    <value>Producto obtenido</value>
-  </data>
-  <data name="quantity" xml:space="preserve">
-    <value>Cantidad aplicada</value>
-  </data>
-  <data name="seeds_kg" xml:space="preserve">
-    <value>Kilogramos de semilla</value>
-  </data>
-  <data name="seeds_nr" xml:space="preserve">
-    <value>Número de semillas</value>
+  <data name="minimum" xml:space="preserve">
+    <value>minimum</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Detalle de la actividad</value>
-  </data>
-  <data name="variety" xml:space="preserve">
-    <value>Variedad sembrada</value>
-  </data>
-  <data name="yield" xml:space="preserve">
-    <value>Rendimiento</value>
+    <value>Yield in this area</value>
   </data>
 </root>
