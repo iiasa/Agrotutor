@@ -23,6 +23,7 @@
         public const string MachineryPointsLayerVisiblePreference = "MAP_MachineryPointsLayerVisible";
         public const string InvestigationPlatformsLayerVisiblePreference = "MAP_InvestigationPlatformsLayerVisible";
         public const string OfflineBasemapLayerVisiblePreference = "MAP_OfflineBasemapLayerVisible";
+        public const string ShowSatelliteTileLayerVisiblePreference = "MAP_SatelliteTileLayerVisible";
         public const string Lat = "Lat";
         public const string Lng = "Lng";
 

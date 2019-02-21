@@ -504,7 +504,6 @@
     <AndroidResource Include="Resources\drawable\delete.png" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <AndroidAsset Include="Assets\html\cultivarcharacteristics\page.html" />
   </ItemGroup>
   <ItemGroup>
@@ -563,7 +562,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\html\recommendedpractices\files\themedata.xml" />
-=======
     <AndroidResource Include="Resources\drawable\en_2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -598,7 +596,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\en_1.png" />
->>>>>>> b3ea818db47802916ba126c124a82218e7f09b85
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

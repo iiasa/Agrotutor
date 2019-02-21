@@ -58,7 +58,8 @@
                 MapType="Hybrid"
                 MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
-                ShowTileLayer="{Binding ShowTileLayer}"
+                ShowTileLayer="{Binding OfflineBasemapLayerVisible}"
+                ShowSatelliteTileLayer="{Binding ShowSatelliteTileLayer}"
                 VerticalOptions="FillAndExpand">
                 <googleMaps:Map.Behaviors>
                     <bindings:BindingPolygonsBehavior Value="{Binding Polygons}" />
@@ -324,7 +325,10 @@
                                     SelectedColor="{StaticResource SecondaryGreenBrown}"
                                     Text="{localization:Translate investigation_platforms}" />
                                 <views:Divider />
-                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="{localization:Translate offline_basemap}" />
+                                <ui:MaterialCheckbox IsSelected="{Binding ShowSatelliteTileLayer}" Text="Satellite" />
+                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />
+                              
+
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
