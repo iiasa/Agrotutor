@@ -56,7 +56,7 @@
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
-                MyLocationEnabled="True"
+                MyLocationEnabled="{Binding LocationEnabled}"
                 PinClicked="Handle_PinClicked"
                 ShowTileLayer="{Binding OfflineBasemapLayerVisible}"
                 ShowSatelliteTileLayer="{Binding ShowSatelliteTileLayer}"
