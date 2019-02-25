@@ -6,7 +6,7 @@
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-    Title="Activity"
+    Title="{localization:Translate title}"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <ScrollView>

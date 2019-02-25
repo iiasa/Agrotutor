@@ -6,8 +6,7 @@
      xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
      mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage"
-             Title="{localization:Translate title}"
-             >
+             Title="{localization:Translate title}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,0">

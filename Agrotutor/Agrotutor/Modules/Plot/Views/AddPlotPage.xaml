@@ -6,7 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    Title="Add plot"
+    Title="{localization:Translate title}"
     Padding="16"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
@@ -27,6 +27,15 @@
 
                 <Label FontSize="18" Text="{localization:Translate hint_planting_date}" />
                 <DatePicker Margin="0,0,0,16" Date="{Binding PlantingDate, Mode=TwoWay}" />
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label VerticalOptions="Center" Text="About cultivar characteristics" />
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                </StackLayout>
 
                 <Label FontSize="18" Text="{localization:Translate madurez}" />
                 <Picker

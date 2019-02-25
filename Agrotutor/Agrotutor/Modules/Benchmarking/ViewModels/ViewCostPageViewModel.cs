@@ -1,3 +1,6 @@
+using Agrotutor.ViewModels;
+using Prism.Commands;
+
 namespace Agrotutor.Modules.Benchmarking.ViewModels
 {
     using System;
@@ -84,5 +87,10 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
             }
             base.OnNavigatingTo(parameters);
         }
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters { { "page", WebContentPageViewModel.LocalBenchmarking } };
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
     }
 }

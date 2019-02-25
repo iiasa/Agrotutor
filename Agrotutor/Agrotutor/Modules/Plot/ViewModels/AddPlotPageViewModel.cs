@@ -180,5 +180,10 @@ namespace Agrotutor.Modules.Plot.ViewModels
             }
             base.OnNavigatedTo(parameters);
         }
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters { { "page", WebContentPageViewModel.CultivarCharacteristics } };
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
     }
 }

@@ -5,7 +5,8 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-    Title="Weather forecast"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    Title="{localization:Translate title}"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <ScrollView>

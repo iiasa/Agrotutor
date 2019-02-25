@@ -5,7 +5,7 @@
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
              xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              mvvm:ViewModelLocator.AutowireViewModel="True"
-             Title="Details"
+             Title="{localization:Translate title}"
              x:Class="Agrotutor.Modules.Plot.Views.ActivityDetail">
     <ContentPage.Content>
         <ScrollView>

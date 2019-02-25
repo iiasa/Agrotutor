@@ -134,6 +134,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _selectedPlotClimate;
         private string _currentPlotWeatherIcon;
         private string _currentPlotGdd;
+        private bool _showSatelliteLayer;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -157,9 +158,29 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
-            ShowTileLayer = true;
+        
         }
-
+        public bool OfflineBasemapLayerVisible
+        {
+            get => _offlineBasemapLayerVisible;
+            set
+            {
+                SetProperty(ref _offlineBasemapLayerVisible, value);
+                Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
+                // ShowTileLayer = !ShowTileLayer;
+                // MapPage?.SetOfflineLayerVisibility(value);
+                //MapPage?.SetOfflineLayerVisibility(value);
+            }
+        }
+        public bool ShowSatelliteTileLayer
+        {
+            get => _showSatelliteLayer;
+            set
+            {
+                SetProperty(ref _showSatelliteLayer, value);
+                Preferences.Set(Constants.ShowSatelliteTileLayerVisiblePreference, value);
+            }
+        }
         public ObservableCollection<Polygon> Polygons
         {
             get => _polygons;
@@ -332,18 +353,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public bool OfflineBasemapLayerVisible
-        {
-            get => _offlineBasemapLayerVisible;
-            set
-            {
-                SetProperty(ref _offlineBasemapLayerVisible, value);
-                Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
-                ShowTileLayer = !ShowTileLayer;
-                // MapPage?.SetOfflineLayerVisibility(value);
-                //MapPage?.SetOfflineLayerVisibility(value);
-            }
-        }
+
 
         public DelegateCommand AddActivityToSelectedPlot =>
             new DelegateCommand(() =>
@@ -369,10 +379,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             try
             {
-                var confirm = await MaterialDialog.Instance.ConfirmAsync("Are you sure?", "Delete");
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(StringLocalizer.GetString("delete_plot_confirm_message" ), StringLocalizer.GetString("delete_plot_confirm_button"));
                 if (confirm.Value)
                 {
-                    using (await MaterialDialog.Instance.LoadingDialogAsync("Deleting plot..."))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("delete_plot_in_progress")))
                     {
                         await AppDataService.RemovePlotAsync(SelectedPlot);
                         RemovePlots();
@@ -384,7 +394,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
             catch (Exception e)
             {
-                await MaterialDialog.Instance.SnackbarAsync("Failed to delete the plot.");
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("delete_plot_failed"));
             }
             
         }
@@ -1655,8 +1665,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                 HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
                 MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, false);
                 InvestigationPlatformsLayerVisible =
-                    Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
+                Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
                 OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
+                ShowSatelliteTileLayer = Preferences.Get(Constants.ShowSatelliteTileLayerVisiblePreference, true);
             }
         }
 

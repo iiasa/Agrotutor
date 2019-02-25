@@ -493,16 +493,6 @@
     <AndroidResource Include="Resources\values\colors.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\html\about\files\image001.png" />
-    <AndroidAsset Include="Assets\html\about\files\image003.png" />
-    <AndroidAsset Include="Assets\html\about\files\image005.png" />
-    <AndroidAsset Include="Assets\html\about\files\image007.png" />
-    <AndroidAsset Include="Assets\html\about\files\image009.png" />
-    <AndroidAsset Include="Assets\html\about\files\filelist.xml" />
-    <AndroidAsset Include="Assets\html\about\files\themedata.xml" />
-    <AndroidAsset Include="Assets\html\about\page.html" />
-  </ItemGroup>
-  <ItemGroup>
     <AndroidResource Include="Resources\drawable\history_inactive.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
     </AndroidResource>
@@ -515,6 +505,64 @@
     <AndroidResource Include="Resources\drawable\delete.png" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\html\cultivarcharacteristics\page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\cultivarcharacteristics\files\filelist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\cultivarcharacteristics\files\image001.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\cultivarcharacteristics\files\themedata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\localbenchmarking\page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\localbenchmarking\files\filelist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\localbenchmarking\files\image005.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\localbenchmarking\files\themedata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\potentialyield\page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\potentialyield\files\filelist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\potentialyield\files\image003.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\potentialyield\files\themedata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\priceforecasting\page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\priceforecasting\files\filelist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\priceforecasting\files\image009.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\priceforecasting\files\themedata.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\recommendedpractices\page.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\recommendedpractices\files\filelist.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\recommendedpractices\files\image007.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\html\recommendedpractices\files\themedata.xml" />
     <AndroidResource Include="Resources\drawable\en_2.png" />
   </ItemGroup>
   <ItemGroup>

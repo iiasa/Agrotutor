@@ -129,6 +129,18 @@
   <data name="cost_data_not_available" xml:space="preserve">
     <value>Cost data is not available.</value>
   </data>
+  <data name="delete_plot_confirm_button" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="delete_plot_confirm_message" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="delete_plot_failed" xml:space="preserve">
+    <value>Failed to delete the plot.</value>
+  </data>
+  <data name="delete_plot_in_progress" xml:space="preserve">
+    <value>Deleting plot...</value>
+  </data>
   <data name="delineation_pin_label" xml:space="preserve">
     <value>Delineation point</value>
   </data>

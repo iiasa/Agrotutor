@@ -144,4 +144,123 @@
     <Folder Include="Modules\PriceForecasting\Types\" />
     <Folder Include="Resources\Modules\Map\ViewModels\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\CameraPicture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\CameraVideo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\Divider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\IconWithText.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\MenuIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\MiniMenuIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\SimpleStats.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\SimpleStatsSingle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\ValueLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewCostPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewIncomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewProfitPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewYieldPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\EventInfoPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\MonthlyCalendarDayView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\MonthlyCalendarMultipleEventsEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Views\CalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Ciat\Views\CiatPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Ciat\Views\PotentialYieldPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Map\Views\MapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\ActivityDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\ActivityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\AddPlotPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\PlotMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\PriceForecasting\Views\ForecastElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\PriceForecasting\Views\PriceForecastPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Weather\Views\WeatherForecastPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Weather\Views\WeatherHistoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Weather\Views\WeatherPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Template.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\CitationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\DevPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\LinksPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\WebContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\WelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
 </Project>

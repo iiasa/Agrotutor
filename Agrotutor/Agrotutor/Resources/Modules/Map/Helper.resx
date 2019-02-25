@@ -118,30 +118,30 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="cold" xml:space="preserve">
-    <value>Frío</value>
+    <value>Cold</value>
   </data>
   <data name="early" xml:space="preserve">
-    <value>Temprano</value>
+    <value>Early</value>
   </data>
   <data name="hybrid" xml:space="preserve">
-    <value>Híbrido</value>
+    <value>Hybrid</value>
   </data>
   <data name="intermediate" xml:space="preserve">
-    <value>Intermedio</value>
+    <value>Intermediate</value>
   </data>
   <data name="late" xml:space="preserve">
-    <value>Tarde</value>
+    <value>Late</value>
   </data>
   <data name="semi_early" xml:space="preserve">
-    <value>Semi temprano</value>
+    <value>Semi-early</value>
   </data>
   <data name="semi_late" xml:space="preserve">
-    <value>Semi tarde</value>
+    <value>Semi-late</value>
   </data>
   <data name="tempered" xml:space="preserve">
-    <value>Templado / Subtropico</value>
+    <value>Tempered / Subtropical</value>
   </data>
   <data name="tropical" xml:space="preserve">
-    <value>Tropico</value>
+    <value>Tropical</value>
   </data>
 </root>
