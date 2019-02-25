@@ -24,8 +24,7 @@
                     </OnPlatform>
                 </ContentPage.Padding>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <forms:CachedImage
-                        DownsampleToViewSize="True"
+                    <Image
                         IsVisible="{Binding ShowGetStarted, Converter={StaticResource BooleanConverter}}"
                         Source="{Binding Picture}" />
                     <Button
