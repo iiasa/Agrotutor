@@ -153,6 +153,12 @@
   <data name="madurez" xml:space="preserve">
     <value>Tipo de madurez del cultivar</value>
   </data>
+  <data name="plot_created" xml:space="preserve">
+    <value>Creación exitosa de la trama.</value>
+  </data>
+  <data name="saving_plot" xml:space="preserve">
+    <value>Parcela de ahorro</value>
+  </data>
   <data name="select" xml:space="preserve">
     <value>seleccionar</value>
   </data>

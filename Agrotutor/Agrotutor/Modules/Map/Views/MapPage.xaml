@@ -317,7 +317,7 @@
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding MachineryPointsLayerVisible}"
                                     SelectedChangeCommand="{Binding MachineryPointsSelectionChangedCommand}"
-                                    SelectedColor="{StaticResource SecondaryDarkGreen}"
+                                    SelectedColor="{StaticResource MachineryPoints}"
                                     Text="{localization:Translate machinery_points}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding InvestigationPlatformsLayerVisible}"

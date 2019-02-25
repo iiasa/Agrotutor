@@ -739,17 +739,9 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand<string> WriteEmail =>
             new DelegateCommand<string>(
-                async emailAddress =>
+                emailAddress =>
                 {
-                    var message = new EmailMessage
-                    {
-                        To = new List<string>
-                        {
-                            emailAddress
-                        },
-                        Subject = StringLocalizer.GetString("email_subject")
-                    };
-                    await Email.ComposeAsync(message);
+                    Device.OpenUri(new Uri($"mailto:{emailAddress}"));
                 });
 
         public bool AddParcelIsVisible
@@ -1527,7 +1519,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         Tag = machineryPoint,
                         Label = machineryPoint.Properties.Localidad,
                         Icon = BitmapDescriptorFactory.DefaultMarker(
-                            (Color) PrismApplicationBase.Current.Resources["SecondaryDarkGreen"])
+                            (Color) PrismApplicationBase.Current.Resources["MachineryPoints"])
                     };
                     Pins.Add(pin);
                 }

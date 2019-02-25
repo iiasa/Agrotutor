@@ -171,8 +171,14 @@
   <data name="other" xml:space="preserve">
     <value>Otro</value>
   </data>
+  <data name="plot_created" xml:space="preserve">
+    <value>Creación exitosa de la trama.</value>
+  </data>
   <data name="rice" xml:space="preserve">
     <value>Arroz</value>
+  </data>
+  <data name="saving_plot" xml:space="preserve">
+    <value>Parcela de ahorro</value>
   </data>
   <data name="semi_early" xml:space="preserve">
     <value>Semi temprano</value>
