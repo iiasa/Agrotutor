@@ -171,8 +171,14 @@
   <data name="other" xml:space="preserve">
     <value>Other</value>
   </data>
+  <data name="plot_created" xml:space="preserve">
+    <value>Plot creation successfull.</value>
+  </data>
   <data name="rice" xml:space="preserve">
     <value>Rice</value>
+  </data>
+  <data name="saving_plot" xml:space="preserve">
+    <value>Saving plot</value>
   </data>
   <data name="semi_early" xml:space="preserve">
     <value>Semi early</value>

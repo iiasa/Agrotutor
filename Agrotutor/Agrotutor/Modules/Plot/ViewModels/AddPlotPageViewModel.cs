@@ -1,4 +1,6 @@
+using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Modules.Plot.ViewModels
@@ -115,14 +117,14 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         await AppDataService.AddPlotAsync(Plot);
                         SavingPlot = false;
                     }
-
-                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("plot_created"));
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("plot_created"), 3000);
+                    await Task.Delay(2000);
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
-        public List<string> ClimateTypes { get; private set; } 
+        public List<string> ClimateTypes { get; private set; }
 
-        public List<string> CropTypes { get; private set;  }
+        public List<string> CropTypes { get; private set; }
 
         public List<string> MaturityClasses { get; }
 
