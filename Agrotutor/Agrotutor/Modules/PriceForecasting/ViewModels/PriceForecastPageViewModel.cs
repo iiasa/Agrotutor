@@ -94,7 +94,7 @@ namespace Agrotutor.Modules.PriceForecasting.ViewModels
                     parameters.TryGetValue<IEnumerable<PriceForecast>>(PriceForecastParameterName, out var forecast);
                     if (forecast != null)
                     {
-                        PriceForecasts = forecast.ToList();
+                        PriceForecasts = forecast.OrderBy(x => x.Month).ToList();
                     }
                 }
             }
