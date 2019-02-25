@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -22,7 +22,7 @@
                 AverageImageSource="peso3.png"
                 MinImageSource="peso2.png"
                 MaxImageSource="peso4.png"
-                Unit="pesos"
+                Unit="$"
                 AverageText="{localization:Translate average}"
                 MinText="{localization:Translate minimum}"
                 MaxText="{localization:Translate maximum}"
