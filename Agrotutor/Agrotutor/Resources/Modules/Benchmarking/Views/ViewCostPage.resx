@@ -121,13 +121,13 @@
     <value>About historical data</value>
   </data>
   <data name="average" xml:space="preserve">
-    <value>average</value>
+    <value>avg</value>
   </data>
   <data name="maximum" xml:space="preserve">
-    <value>maximum</value>
+    <value>max</value>
   </data>
   <data name="minimum" xml:space="preserve">
-    <value>minimum</value>
+    <value>min</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Costs in this area</value>
