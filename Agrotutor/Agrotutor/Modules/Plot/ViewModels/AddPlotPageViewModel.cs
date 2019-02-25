@@ -99,7 +99,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading")))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("saving_plot")))
                     {
                         SavingPlot = true;
                         Plot.Activities = new List<Activity>
@@ -115,6 +115,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         await AppDataService.AddPlotAsync(Plot);
                         SavingPlot = false;
                     }
+
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("plot_created"));
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
