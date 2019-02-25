@@ -28,7 +28,7 @@ namespace Agrotutor.Modules.PriceForecasting.Views
             {
                 try
                 {
-                    var headerLabel = new Label{Text = $"in {item.ID} months", FontSize = 18, TextColor = Color.ForestGreen};
+                    var headerLabel = new Label{Text = $"in {item.Month} months", FontSize = 18, TextColor = Color.ForestGreen};
                     var expectedLabel = new Label {Text = $"{item.Price} ($/kg)"};
                     var rangeLabel = new Label { Text = $"{item.MinPrice} to {item.MaxPrice} ($/kg)"};
                     var layout = new StackLayout();

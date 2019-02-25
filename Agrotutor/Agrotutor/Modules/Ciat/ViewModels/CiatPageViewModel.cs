@@ -95,22 +95,25 @@ namespace Agrotutor.Modules.Ciat.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            parameters.TryGetValue(PARAMETER_NAME_POSITION, out Position position);
-            GeoPosition = position;
+            if (Data == null)
+            {
+                parameters.TryGetValue(PARAMETER_NAME_POSITION, out Position position);
+                GeoPosition = position;
 
-            parameters.TryGetValue(PARAMETER_NAME_CROP, out string crop);
-            Crop = crop;
+                parameters.TryGetValue(PARAMETER_NAME_CROP, out string crop);
+                Crop = crop;
 
-            parameters.TryGetValue(PARAMETER_NAME_CROP_TYPE, out CropType cropType);
-            CropType = cropType;
+                parameters.TryGetValue(PARAMETER_NAME_CROP_TYPE, out CropType cropType);
+                CropType = cropType;
 
-            parameters.TryGetValue(PARAMETER_NAME_OLD_YIELD, out double oldYield);
-            OldYield = oldYield;
+                parameters.TryGetValue(PARAMETER_NAME_OLD_YIELD, out double oldYield);
+                OldYield = oldYield;
 
-            parameters.TryGetValue(PARAMETER_NAME_CIAT_DATA, out CiatData ciatData);
-            Data = ciatData;
+                parameters.TryGetValue(PARAMETER_NAME_CIAT_DATA, out CiatData ciatData);
+                Data = ciatData;
 
-            if (Data == null && GeoPosition != null && Crop != null) LoadData();
+                if (Data == null && GeoPosition != null && Crop != null) LoadData();
+            }
 
             base.OnNavigatedTo(parameters);
         }

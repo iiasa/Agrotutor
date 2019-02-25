@@ -72,7 +72,7 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
-                Margin="13"
+                Margin="6"
                 HeightRequest="38"
                 HorizontalOptions="CenterAndExpand"
                 IsVisible="{Binding ShowWeatherWidget}">
