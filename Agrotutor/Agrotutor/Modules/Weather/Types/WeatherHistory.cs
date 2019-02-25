@@ -228,12 +228,12 @@ namespace Agrotutor.Modules.Weather.Types
         {
             WeatherHistory data = null;
             var serviceUrl =
-                $"https://wsgi.geo-wiki.org/skywise_weather?lat={latitude}&lng={longitude}";
+                $"{Constants.WeatherHistoryApiBaseUrl}?lat={latitude}&lng={longitude}";
             using (var wc = new HttpClient())
             {
                 try
                 {
-                    var json = await wc.GetCachedStringAsync(serviceUrl, "WeatherHistory", TimeSpan.FromHours(2));
+                    var json = await wc.GetCachedStringAsync(serviceUrl, "WeatherHistory", TimeSpan.FromDays(1));
                     data = FromJson(json);
                     data.Date = DateTime.Now.ToShortDateString();
                 }

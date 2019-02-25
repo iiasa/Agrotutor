@@ -147,6 +147,9 @@
   <data name="seeds_nr" xml:space="preserve">
     <value>number of seeds</value>
   </data>
+  <data name="title" xml:space="preserve">
+    <value>Activity detail</value>
+  </data>
   <data name="variety" xml:space="preserve">
     <value>Variety planted</value>
   </data>

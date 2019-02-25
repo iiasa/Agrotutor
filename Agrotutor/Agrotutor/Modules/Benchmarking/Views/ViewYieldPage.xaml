@@ -2,27 +2,39 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
      mvvm:ViewModelLocator.AutowireViewModel="True"
+     Title="{localization:Translate title}"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
              x:Class="Agrotutor.Modules.Benchmarking.Views.ViewYieldPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label
+            <!--<Label
                 HorizontalOptions="StartAndExpand"
                 Text="Yield in this area"
-                FontSize="20" />
+                FontSize="20" />-->
 
             <views:SimpleStatsSingle
                 AverageImageSource="corn3.png"
                 MinImageSource="corn2.png"
                 MaxImageSource="corn4.png"
                 Unit="tons"
-                AverageText="average"
-                MinText="minimum"
-                MaxText="maximum"
+                AverageText="{localization:Translate average}"
+                MinText="{localization:Translate minimum}"
+                MaxText="{localization:Translate maximum}"
                 AverageValue="{Binding Avg}"
                 MinValue="{Binding Min}"
                 MaxValue="{Binding Max}"
             />
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                </StackLayout.GestureRecognizers>
+
+                <Label VerticalOptions="Center" Text="{localization:Translate about}" />
+                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+            </StackLayout>
 
         </StackLayout>
     </ContentPage.Content>

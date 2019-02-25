@@ -3,8 +3,10 @@
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
      mvvm:ViewModelLocator.AutowireViewModel="True" 
      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
      x:Class="Agrotutor.Views.CitationPage"
-     Padding="16,16,16,0">
+     Padding="16,16,16,0"
+     Title="{localization:Translate title}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">

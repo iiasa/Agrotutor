@@ -34,29 +34,16 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             DatasetNames = new List<string>
             {
-                "Días de grado creciente",
-                "Días de grado de enfriamiento",
-                "Días de grado de calefacción",
-                "Precipitación diaria",
-                "Radiación solar diaria",
-                "Temperatura alta diaria",
-                "Temperatura baja diaria",
-                "Evapotranspiración diaria de cultivos cortos",
-                "Evapotranspiración diaria de cultivos altos",
+                StringLocalizer.GetString("gdd"),
+                StringLocalizer.GetString("cdd"),
+                StringLocalizer.GetString("hdd"),
+                StringLocalizer.GetString("dp"),
+                StringLocalizer.GetString("sr"),
+                StringLocalizer.GetString("dht"),
+                StringLocalizer.GetString("dlt"),
+                StringLocalizer.GetString("short_evap"),
+                StringLocalizer.GetString("tall_evap")
             };
-            DatasetNames = new List<string>
-            {
-                "Growing degree days",
-                "Cooling degree days",
-                "Heating degree days",
-                "Daily precipitation",
-                "Daily solar radiation",
-                "Daily high temperature",
-                "Daily low temperature",
-                "Daily evapotranspiration short crop",
-                "Daily evapotranspiration tall crop",
-            };
-            
         }
 
         public int GraphDays

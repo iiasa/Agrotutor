@@ -1,4 +1,6 @@
-﻿using XF.Material.Forms.UI.Dialogs;
+﻿using Microsoft.Extensions.Localization;
+using Prism;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Core.Cimmyt.InvestigationPlatforms
 {
@@ -27,10 +29,11 @@ namespace Agrotutor.Core.Cimmyt.InvestigationPlatforms
 
         public static async Task<InvestigationPlatforms> FromEmbeddedResource()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading investigation platforms..."))
+            var stringLocalizer = (IStringLocalizer<InvestigationPlatforms>)PrismApplicationBase.Current.Container.Resolve(typeof(IStringLocalizer<InvestigationPlatforms>));
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: stringLocalizer.GetString("loading")))
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
-                string resourceName = "Agrotutor.Resources.AppData.investigation_platforms.geojson";
+                string resourceName = Constants.InvestigationPlatformsFile;
 
                 string result;
 

@@ -12,7 +12,7 @@ namespace Agrotutor.Core.Tile.Resources
     {
         public static Stream GetIIASATiles()
         {
-            return Assembly.GetCallingAssembly().GetManifestResourceStream($"{GetPath()}.mexico-simple.mbtiles");
+            return Assembly.GetCallingAssembly().GetManifestResourceStream($"{GetPath()}.{Constants.OfflineBasemapFilename}");
         }
 
         public static string GetPath()

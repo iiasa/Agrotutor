@@ -52,38 +52,38 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
-                    <Label Text="Crecimiento grados días: " HorizontalTextAlignment="Start" FontAttributes="Bold"
+                    <Label Text="{localization:Translate gdd}" HorizontalTextAlignment="Start" FontAttributes="Bold"
                         Grid.Row="0" Grid.Column="0" FontSize="Small" VerticalOptions="Center" />
                     <Label Text="{Binding GrowingDegreeDays}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1" />
 
-                    <Label Text="Velocidad del viento: " HorizontalTextAlignment="Start" FontAttributes="Bold" Grid.Row="1"
+                    <Label Text="{localization:Translate ws}" HorizontalTextAlignment="Start" FontAttributes="Bold" Grid.Row="1"
                         Grid.Column="0" FontSize="Small" VerticalOptions="Center" />
                     <Label Text="{Binding WindSpeed}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="1" Grid.Column="1" />
 
-                    <Label Text="Dirección del viento: " HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="2"
+                    <Label Text="{localization:Translate wd}" HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="2"
                         Grid.Column="0" FontSize="Small" />
                     <Label Text="{Binding WindDirection}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="2" Grid.Column="1" />
 
-                    <Label Text="Cubierto de nubes: "  HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="3"
+                    <Label Text="{localization:Translate cc}"  HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="3"
                         Grid.Column="0" FontSize="Small" />
                     <Label Text="{Binding CloudCover}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="1" />
                 </Grid>
                 
                 <views:IconWithText 
-                        IconText="Pronóstico del tiempo"
+                        IconText="{localization:Translate forecast}"
                         IconSource="forecast.png"
                         Command="{Binding ShowForecast}"
                         Margin="16"
                         IsVisible="{Binding ShowForecastIsVisible}" />
 
                 <views:IconWithText 
-                    IconText="Datos histórico - cargando..."
+                    IconText="{localization:Translate data_loading}"
                     IconSource="history_inactive.png"
                     IsVisible="{Binding HistoryIsLoading}" 
                     Margin="16" />
 
                 <views:IconWithText 
-                    IconText="Datos histórico"
+                    IconText="{localization:Translate data}"
                     IconSource="history.png"
                     Command="{Binding ShowHistory}"
                     Margin="16"

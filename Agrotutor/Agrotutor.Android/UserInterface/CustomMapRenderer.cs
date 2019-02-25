@@ -42,7 +42,7 @@ namespace Agrotutor.Droid.UserInterface
                     TileOverlay.Visible = CustomMap.ShowTileLayer;
             if (CustomMap.ShowSatelliteTileLayerProperty.PropertyName == e.PropertyName)
 
-                     CustomMap.MapType=CustomMap.ShowSatelliteTileLayer?MapType.Satellite:MapType.None;
+                     CustomMap.MapType=CustomMap.ShowSatelliteTileLayer?MapType.Hybrid:MapType.None;
         }
 
         protected override void OnMapReady(GoogleMap nativeMap, Map map)
@@ -69,7 +69,7 @@ namespace Agrotutor.Droid.UserInterface
 
                     TileOverlay = nativeMap.AddTileOverlay(options);
                     TileOverlay.Visible = CustomMap.ShowTileLayer;
-                    CustomMap.MapType = CustomMap.ShowSatelliteTileLayer ? MapType.Satellite : MapType.None;
+                    CustomMap.MapType = CustomMap.ShowSatelliteTileLayer ? MapType.Hybrid : MapType.None;
                 
 
                 }

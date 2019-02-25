@@ -28,11 +28,11 @@ namespace Agrotutor.Modules.Weather.Types
         public static async Task<WeatherForecast> Download(double latitude, double longitude)
         {
             var serviceUrl =
-                $"https://skywisefeeds.wdtinc.com/feeds/api/mega.php?LAT={latitude}&LON={longitude}&FORMAT=json"; // TODO add LANG=es/en
+                $"{Constants.WeatherForecastApiBaseUrl}?LAT={latitude}&LON={longitude}&FORMAT=json"; // TODO add LANG=es/en
             using (var client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("app_id", "949a7457");
-                client.DefaultRequestHeaders.Add("app_key", "5851174f1a3e6e1af42f5895098f69f8");
+                client.DefaultRequestHeaders.Add("app_id", Constants.WeatherAppId);
+                client.DefaultRequestHeaders.Add("app_key", Constants.WeatherAppKey);
                 try
                 {
                     var json = await client.GetCachedStringAsync(serviceUrl, "WeatherForecast",  TimeSpan.FromHours(2));

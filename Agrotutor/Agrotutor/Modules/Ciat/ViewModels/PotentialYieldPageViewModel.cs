@@ -1,6 +1,7 @@
 ﻿using System;
 using Agrotutor.Core;
 using Agrotutor.Modules.Ciat.Types;
+using Agrotutor.ViewModels;
 using Microsoft.Extensions.Localization;
 using Prism.Commands;
 using Prism.Navigation;
@@ -79,5 +80,10 @@ namespace Agrotutor.Modules.Ciat.ViewModels
                 Max = Math.Round(CiatData.CiatDataIrrigated.YieldMax,1);
                 Avg = Math.Round((Min + Max) / 2,1);
             });
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters { { "page", WebContentPageViewModel.PotentialYield } };
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
     }
 }

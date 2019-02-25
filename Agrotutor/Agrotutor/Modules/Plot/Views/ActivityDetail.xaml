@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             Title="{localization:Translate title}"
              x:Class="Agrotutor.Modules.Plot.Views.ActivityDetail">
     <ContentPage.Content>
         <ScrollView>
@@ -30,65 +32,68 @@
                 <StackLayout Orientation="Vertical" HorizontalOptions="Start" Grid.Row="1">
                     <Label Text="{localization:Translate name}" HorizontalOptions="Start" FontSize="18" />
                     <Label Text="{Binding ActivityName}" Margin="16,16,0,0" WidthRequest="250"
-                    IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameVisibility}" FontSize="18" />
+                           IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameVisibility}" FontSize="18" />
                     <Picker ItemsSource="{Binding ActivityDynamicUIVisibility.ActivityNameList}" Margin="16,16,0,0"
-                    WidthRequest="250" SelectedItem="{Binding ActivityName}" ItemDisplayBinding="{Binding}"
-                    IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}" />
+                            WidthRequest="250" SelectedItem="{Binding ActivityName}" ItemDisplayBinding="{Binding}"
+                            IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityNameText}"
-                    IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameTextVisibility}" />
+                           IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameTextVisibility}" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}"
-                Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
                     <Label Text="{localization:Translate date}" HorizontalOptions="Start" FontSize="18" />
-                    <DatePicker Date="{Binding ActivityDate}"  Margin="16,16,0,0" WidthRequest="250" />
+                    <DatePicker Date="{Binding ActivityDate}" Margin="16,16,0,0" WidthRequest="250" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityTotalCostVisibility}"
-                Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">
                     <Label Text="{localization:Translate cost}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Keyboard="Numeric" Text="{Binding ActivityCost}" WidthRequest="250" Margin="16,16,0,0" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AppliedProductsVisibility}"
-                Orientation="Vertical" HorizontalOptions="Start" Grid.Row="4">
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="4">
                     <Label Text="{localization:Translate applied_products}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding AppliedProduct}" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.DosageVisibility}" Orientation="Vertical"
-                HorizontalOptions="Start" Grid.Row="5">
+                             HorizontalOptions="Start" Grid.Row="5">
                     <Label Text="{localization:Translate dosis}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Keyboard="Numeric" Text="{Binding ActivityDose}" />
                 </StackLayout>
 
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AppliedAmountVisibility}"
-                Orientation="Vertical" HorizontalOptions="Start" Grid.Row="6">
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="6">
                     <Label Text="{localization:Translate quantity}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding AmountApplied}" />
                 </StackLayout>
-                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.VarietySownVisibility}" Orientation="Vertical"
-                HorizontalOptions="Start" Grid.Row="7">
+                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.VarietySownVisibility}"
+                             Orientation="Vertical"
+                             HorizontalOptions="Start" Grid.Row="7">
                     <Label Text="{localization:Translate variety}" HorizontalOptions="Start" FontSize="18" />
                     <Picker ItemsSource="{Binding ListSownVariety}" Margin="16,16,0,0" WidthRequest="250"
-                    SelectedItem="{Binding SelectedSown}" ItemDisplayBinding="{Binding}" />
+                            SelectedItem="{Binding SelectedSown}" ItemDisplayBinding="{Binding}" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PlantingDensityVisibility}"
-                Orientation="Vertical" HorizontalOptions="Start" Grid.Row="8">
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="8">
                     <Label Text="{localization:Translate seeds_kg}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding WeightOfSeeds}" Keyboard="Numeric" />
                     <Label Text="{localization:Translate seeds_nr}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding NumberOfSeeds}" Keyboard="Numeric" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ProductObtainedVisibility}"
-                Orientation="Vertical" HorizontalOptions="Start" Grid.Row="9">
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="9">
                     <Label Text="{localization:Translate product}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ProductObtained}" />
                 </StackLayout>
-                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PerformanceVisibility}" Orientation="Vertical"
-                HorizontalOptions="Start" Grid.Row="10">
+                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PerformanceVisibility}"
+                             Orientation="Vertical"
+                             HorizontalOptions="Start" Grid.Row="10">
                     <Label Text="{localization:Translate yield}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityYield}" />
                 </StackLayout>
 
-                <Button Text="{localization:Translate add}" VerticalOptions="End" HorizontalOptions="Center" Grid.Row="11"
-                Command="{Binding SaveCommand}" />
+                <Button Text="{localization:Translate add}" VerticalOptions="End" HorizontalOptions="Center"
+                        Grid.Row="11"
+                        Command="{Binding SaveCommand}" />
             </Grid>
         </ScrollView>
     </ContentPage.Content>

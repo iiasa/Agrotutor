@@ -13,17 +13,18 @@ namespace Agrotutor.Modules.Ciat
 
         public static async Task<CiatData> LoadData(Position position, string crop)
         {
-            IFlurlRequest request = "http://104.239.158.49".AppendPathSegment("matrizv2.php")
+            IFlurlRequest request = Constants
+                .MatrizBaseUrl
                 .SetQueryParams(
                     new
                     {
                         lat = position.Latitude,
                         lon = position.Longitude,
                         type = "matriz",
-                        tkn = "E31C5F8478566357BA6875B32DC59",
+                        tkn = Constants.BemToken,
                         cultivo = crop
                     })
-                .WithBasicAuth("cimmy2018", "tBTAibgFtHxaNE8ld7hpKKsx3n1ORIO");
+                .WithBasicAuth(Constants.BemUsername, Constants.BemPassword);
 
             List<CiatResponseData> responseData;
 

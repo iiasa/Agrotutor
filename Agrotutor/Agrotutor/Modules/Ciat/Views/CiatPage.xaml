@@ -2,8 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
      mvvm:ViewModelLocator.AutowireViewModel="True"
-             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-             x:Class="Agrotutor.Modules.Ciat.Views.CiatPage">
+     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+     x:Class="Agrotutor.Modules.Ciat.Views.CiatPage"
+     Title="{localization:Translate title}">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Margin="16,16,16,16">
@@ -39,10 +40,10 @@
                 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="End">
                     <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command=""/>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
                     </StackLayout.GestureRecognizers>
 
-                    <Label VerticalOptions="End" Text="{localization:Translate interpretation}" />
+                    <Label VerticalOptions="Center" Text="{localization:Translate interpretation}" />
                     <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
             </StackLayout>

@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>2019.2.18.0</AssemblyVersion>
-    <FileVersion>2019.2.18.0</FileVersion>
+    <AssemblyVersion>2019.2.21.0</AssemblyVersion>
+    <FileVersion>2019.2.21.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -23,40 +23,11 @@
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.2.5" />
-    <PackageReference Include="Xamarin.Forms" Version="3.4.0.1009999" />
+    <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
     <PackageReference Include="Prism.DryIoc.Forms" Version="7.1.0.431" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.0.4" />
     <PackageReference Include="Xamarin.Forms.GoogleMaps.Bindings" Version="2.2.0" />
     <PackageReference Include="XF.Material" Version="1.3.1.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Remove="Resources\Resources\AppResources.en.resx" />
-    <EmbeddedResource Remove="Resources\Resources\AppResources.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\BenchmarkingPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\BenchmarkingPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatContentPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatContentPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\SimpleStats.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\SimpleStats.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\WeatherWidget.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\Core\Components\Views\WeatherWidget.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\CitationPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\CitationPage.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\LinksPage.es.resx" />
-    <EmbeddedResource Remove="Resources\Resources\StaticContent\Views\LinksPage.resx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -150,39 +121,14 @@
     <EmbeddedResource Update="Views\ProfilePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Condition=" '$(EnableDefaultEmbeddedResourceItems)' == 'true' " Update="Resources\Resources\Modules\Plot\Views\AddPlotPage.resx">
-      <LogicalName>Resources.Resources.Modules.Plot.Views.AddPlotPage.resources</LogicalName>
-    </EmbeddedResource>
     <EmbeddedResource Update="Views\WebContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Resources\Resources\Modules\Benchmarking\Views\BenchmarkingPage.es.resx" />
-    <None Include="Resources\Resources\Modules\Benchmarking\Views\BenchmarkingPage.resx" />
-    <None Include="Resources\Resources\Modules\Ciat\Views\CiatPage.es.resx" />
-    <None Include="Resources\Resources\Modules\Ciat\Views\CiatPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\CiatSelectionPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\LocalBenchmarkingSelectionPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewCostoPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewIngresoPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewRendimientoPage.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.es.resx" />
-    <None Include="Resources\Resources\Core\Benchmarking\Views\ViewUtilidadPage.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\SimpleStats.es.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\SimpleStats.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\WeatherWidget.es.resx" />
-    <None Include="Resources\Resources\Core\Components\Views\WeatherWidget.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\CitationPage.es.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\CitationPage.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\LinksPage.es.resx" />
-    <None Include="Resources\Resources\StaticContent\Views\LinksPage.resx" />
+    <None Include="Resources\Views\CitationPage.es.resx" />
+    <None Include="Resources\Views\CitationPage.resx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Modules\Weather\" />
@@ -191,12 +137,130 @@
     <Folder Include="Modules\Weather\ViewModels\" />
     <Folder Include="Modules\Charts\" />
     <Folder Include="Modules\Charts\Types\" />
-    <Folder Include="Modules\Benchmarking\" />
     <Folder Include="Modules\Benchmarking\Views\" />
     <Folder Include="Modules\Benchmarking\ViewModels\" />
     <Folder Include="Modules\Benchmarking\Types\" />
     <Folder Include="Modules\Ciat\Types\" />
     <Folder Include="Modules\PriceForecasting\Types\" />
     <Folder Include="Resources\Modules\Map\ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\CameraPicture.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\CameraVideo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\Divider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\IconWithText.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\MenuIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\MiniMenuIcon.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\SimpleStats.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\SimpleStatsSingle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Core\Components\Views\ValueLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewCostPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewIncomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewProfitPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Benchmarking\Views\ViewYieldPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\EventInfoPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\MonthlyCalendarDayView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\MonthlyCalendarEventEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Components\Views\MonthlyCalendarMultipleEventsEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Calendar\Views\CalendarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Ciat\Views\CiatPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Ciat\Views\PotentialYieldPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Map\Views\MapPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\ActivityDetail.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\ActivityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\AddPlotPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Plot\Views\PlotMainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\PriceForecasting\Views\ForecastElement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\PriceForecasting\Views\PriceForecastPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Weather\Views\WeatherForecastPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Weather\Views\WeatherHistoryPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Modules\Weather\Views\WeatherPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Style.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Template.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\CitationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\DevPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\LinksPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\WebContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\WelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
   </ItemGroup>
 </Project>

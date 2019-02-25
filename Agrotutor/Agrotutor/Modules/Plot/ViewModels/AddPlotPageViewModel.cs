@@ -1,3 +1,4 @@
+using Agrotutor.ViewModels;
 using Xamarin.Essentials;
 using XF.Material.Forms.UI.Dialogs;
 
@@ -42,6 +43,46 @@ namespace Agrotutor.Modules.Plot.ViewModels
             PickerCropTypesSelectedIndex = -1;
             PickerClimateTypesSelectedIndex = -1;
             PickerMaturityClassesSelectedIndex = -1;
+
+            ClimateTypes = new List<string>
+            {
+                StringLocalizer.GetString("cold"),
+                StringLocalizer.GetString("tempered"),
+                StringLocalizer.GetString("tropical"),
+                StringLocalizer.GetString("hybrid")
+            };
+
+            CropTypes = new List<string>
+            {
+                StringLocalizer.GetString("maize"),
+                StringLocalizer.GetString("barley"),
+                StringLocalizer.GetString("bean"),
+                StringLocalizer.GetString("wheat"),
+                StringLocalizer.GetString("triticale"),
+                StringLocalizer.GetString("sorghum"),
+                StringLocalizer.GetString("alfalfa"),
+                StringLocalizer.GetString("oats"),
+                StringLocalizer.GetString("sesame"),
+                StringLocalizer.GetString("amaranth"),
+                StringLocalizer.GetString("rice"),
+                StringLocalizer.GetString("canola"),
+                StringLocalizer.GetString("cartamo"),
+                StringLocalizer.GetString("zucchini"),
+                StringLocalizer.GetString("chickpea"),
+                StringLocalizer.GetString("havabean"),
+                StringLocalizer.GetString("soy"),
+                StringLocalizer.GetString("none"),
+                StringLocalizer.GetString("other")
+            };
+
+            MaturityClasses = new List<string>
+            {
+                StringLocalizer.GetString("early"),
+                StringLocalizer.GetString("semi_early"),
+                StringLocalizer.GetString("intermediate"),
+                StringLocalizer.GetString("semi_late"),
+                StringLocalizer.GetString("late")
+            };
         }
 
         public IAppDataService AppDataService { get; }
@@ -59,7 +100,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    using (await MaterialDialog.Instance.LoadingSnackbarAsync("Loading..."))
+                    using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading")))
                     {
                         SavingPlot = true;
                         Plot.Activities = new List<Activity>
@@ -67,56 +108,22 @@ namespace Agrotutor.Modules.Plot.ViewModels
                             new Activity
                             {
                                 ActivityType = ActivityType.Sowing,
-                                Date = PlantingDate
+                                Date = PlantingDate,
+                                Name = StringLocalizer.GetString("sowing"),
+                                Cost = 0
                             }
                         };
                         await AppDataService.AddPlotAsync(Plot);
                         SavingPlot = false;
-                        //MainThread.BeginInvokeOnMainThread(async () =>
-                        //    await NavigationService.NavigateAsync("app:///NavigationPage/MainPage"));
                     }
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
-        public List<string> ClimateTypes { get; } = new List<string>
-                                                    {
-                                                        "Frío",
-                                                        "Templado/Subtropical",
-                                                        "Tropical",
-                                                        "Híbrido"
-                                                    };
+        public List<string> ClimateTypes { get; private set; } 
 
-        public List<string> CropTypes { get; } = new List<string>
-                                                 {
-                                                     "Maíz",
-                                                     "Cebada",
-                                                     "Frijol",
-                                                     "Trigo",
-                                                     "Triticale",
-                                                     "Sorgo",
-                                                     "Alfalfa",
-                                                     "Avena",
-                                                     "Ajonjolí",
-                                                     "Amaranto",
-                                                     "Arroz",
-                                                     "Canola",
-                                                     "Cartamo",
-                                                     "Calabacín",
-                                                     "Garbanzo",
-                                                     "Haba",
-                                                     "Soya",
-                                                     "Ninguno",
-                                                     "Otro"
-                                                 };
+        public List<string> CropTypes { get; private set;  }
 
-        public List<string> MaturityClasses { get; } = new List<string>
-                                                       {
-                                                           "Temprana",
-                                                           "Semi-temprana",
-                                                           "Intermedia",
-                                                           "Semi-tardía",
-                                                           "Tardía"
-                                                       };
+        public List<string> MaturityClasses { get; }
 
         public int PickerClimateTypesSelectedIndex
         {
@@ -170,5 +177,10 @@ namespace Agrotutor.Modules.Plot.ViewModels
             }
             base.OnNavigatedTo(parameters);
         }
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters { { "page", WebContentPageViewModel.CultivarCharacteristics } };
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
     }
 }

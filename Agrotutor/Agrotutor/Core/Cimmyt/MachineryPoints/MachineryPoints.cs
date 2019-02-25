@@ -1,4 +1,6 @@
-﻿using XF.Material.Forms.UI.Dialogs;
+﻿using Microsoft.Extensions.Localization;
+using Prism;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Core.Cimmyt.MachineryPoints
 {
@@ -27,10 +29,11 @@ namespace Agrotutor.Core.Cimmyt.MachineryPoints
 
         public static async Task<MachineryPoints> FromEmbeddedResource()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading machinery points..."))
+            var stringLocalizer = (IStringLocalizer<MachineryPoints>)PrismApplicationBase.Current.Container.Resolve(typeof(IStringLocalizer<MachineryPoints>));
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: stringLocalizer.GetString("loading")))
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
-                string resourceName = "Agrotutor.Resources.AppData.machinery_points.geojson";
+                string resourceName = Constants.MachineryPointsFile;
 
                 string result;
 

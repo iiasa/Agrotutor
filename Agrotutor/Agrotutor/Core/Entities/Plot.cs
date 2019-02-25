@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using Agrotutor.Modules.Benchmarking;
 using Agrotutor.Modules.Ciat.Types;
 
 namespace Agrotutor.Core.Entities
@@ -11,7 +12,6 @@ namespace Agrotutor.Core.Entities
     using Agrotutor.Modules.Weather.Types;
     using Modules.Calendar.Types;
     using Modules.GeoWiki.GenericDatasetStorage;
-    using Rest.Bem;
 
     public class Plot
     {
@@ -99,42 +99,6 @@ namespace Agrotutor.Core.Entities
         {
             // TODO: remove this from here
             await GenericDatasetStorage.StoreDatasetAsync(this, -1, 16, 1, 1);
-        }
-
-        public string GetMaturityString()
-        {
-            switch (MaturityType)
-            {
-                case MaturityType.Early:
-                    return "Early";
-                case MaturityType.SemiEarly:
-                    return "Semi early";
-                case MaturityType.Intermediate:
-                    return "Intermediate";
-                case MaturityType.SemiLate:
-                    return "Semi late";
-                case MaturityType.Late:
-                    return "Late";
-                default:
-                    return "";
-            }
-        }
-
-        public string GetClimateString()
-        {
-            switch (ClimateType)
-            {
-                case ClimateType.Cold:
-                    return "Cold";
-                case ClimateType.TemperedSubtropical:
-                    return "Tempered / Subtropical";
-                case ClimateType.Tropical:
-                    return "Tropical";
-                case ClimateType.Hybrid:
-                    return "Hybrid";
-                default:
-                    return "";
-            }
         }
     }
 }

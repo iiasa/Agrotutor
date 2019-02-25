@@ -1,16 +1,22 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True" x:Class="Agrotutor.Modules.Weather.Views.WeatherForecastPage">
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<ContentPage
+    x:Class="Agrotutor.Modules.Weather.Views.WeatherForecastPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    Title="{localization:Translate title}"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
 
-                <ListView ItemsSource="{Binding DailySummaries}" HasUnevenRows="true" >
+                <ListView HasUnevenRows="true" ItemsSource="{Binding DailySummaries}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Grid Margin="8" >
+                                <Grid Margin="8">
                                     <Grid.RowDefinitions>
                                         <RowDefinition />
                                         <RowDefinition />
@@ -19,13 +25,31 @@
                                         <ColumnDefinition />
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
-                                    <Image Source="{Binding WxIcon}" HeightRequest="24" WidthRequest="24" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" />
-                                    <StackLayout Orientation="Horizontal" Grid.Row="0" Grid.Column="1">
-                                        <Label Text="{Binding LocalizedDayOfWeek}" VerticalOptions="Center" FontAttributes="Bold" />
+                                    <Image
+                                        Grid.Row="0"
+                                        Grid.RowSpan="2"
+                                        Grid.Column="0"
+                                        HeightRequest="24"
+                                        Source="{Binding WxIcon}"
+                                        WidthRequest="24" />
+                                    <StackLayout
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="{Binding LocalizedDayOfWeek}"
+                                            VerticalOptions="Center" />
                                         <Label Text="{Binding TemperatureString}" VerticalOptions="Center" />
                                     </StackLayout>
-                                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.Column="1">
-                                        <Label Text="GDD" FontAttributes="Bold" VerticalOptions="Center" />
+                                    <StackLayout
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Orientation="Horizontal">
+                                        <Label
+                                            FontAttributes="Bold"
+                                            Text="GDD"
+                                            VerticalOptions="Center" />
                                         <Label Text="{Binding Gdd}" VerticalOptions="Center" />
                                     </StackLayout>
                                 </Grid>

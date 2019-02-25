@@ -5,7 +5,8 @@
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
              prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage">
+             x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage"
+             Title="{localization:Translate title}">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
@@ -29,6 +30,15 @@
                 MinValue="{Binding Min}"
                 MaxValue="{Binding Max}"
             />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                </StackLayout.GestureRecognizers>
+
+                <Label VerticalOptions="Center" Text="About potential yield data" />
+                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+            </StackLayout>
 
         </StackLayout>
     </ScrollView>

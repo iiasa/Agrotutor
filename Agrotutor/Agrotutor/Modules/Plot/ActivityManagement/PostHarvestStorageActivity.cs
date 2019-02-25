@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -21,12 +23,16 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    "Almacenamiento poscosecha con tecnologías herméticas",
-                    "Almacenamiento poscosecha tradicional"
+                    _stringLocalizer.GetString("hermetic_storage"),
+                    _stringLocalizer.GetString("traditional_storage")
                 },
                 ActivityIcon = "storage_small.png",
-                ActivityTitle = "Almacenamiento poscosecha"
+                ActivityTitle = _stringLocalizer.GetString("post_harvest_storage")
             };
+        }
+
+        public PostHarvestStorageActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

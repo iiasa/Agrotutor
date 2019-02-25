@@ -1,3 +1,5 @@
+using Agrotutor.ViewModels;
+
 namespace Agrotutor.Modules.Ciat.ViewModels
 {
     using System.Collections.Generic;
@@ -64,7 +66,12 @@ namespace Agrotutor.Modules.Ciat.ViewModels
         public Position GeoPosition { get; set; }
 
         public DelegateCommand IrrigatedClickedCommand { get; set; }
-
+        public DelegateCommand ShowAbout => new DelegateCommand(async() =>
+        {
+            var param = new NavigationParameters {{"page", WebContentPageViewModel.RecommendedPractices}};
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
+        
         public bool IsLoading
         {
             get => this.isLoading;

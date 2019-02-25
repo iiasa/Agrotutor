@@ -117,8 +117,62 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="add_plot_no_position_message" xml:space="preserve">
+    <value>Por favor, asegúrese de que la ubicación para una nueva parcela está establecida.</value>
+  </data>
+  <data name="add_plot_no_position_ok" xml:space="preserve">
+    <value>Vale</value>
+  </data>
+  <data name="add_plot_no_position_title" xml:space="preserve">
+    <value>No hay posición disponible</value>
+  </data>
+  <data name="cost_data_not_available" xml:space="preserve">
+    <value>Los datos de costos no están disponibles.</value>
+  </data>
+  <data name="delete_plot_confirm_button" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="delete_plot_confirm_message" xml:space="preserve">
+    <value>¿Estás seguro?</value>
+  </data>
+  <data name="delete_plot_failed" xml:space="preserve">
+    <value>Error al borrar la parcela.</value>
+  </data>
+  <data name="delete_plot_in_progress" xml:space="preserve">
+    <value>Borrando parcela...</value>
+  </data>
+  <data name="delineation_pin_label" xml:space="preserve">
+    <value>Punto de delineación</value>
+  </data>
   <data name="email_subject" xml:space="preserve">
     <value>Requerimiento de usuario de AgroTutor</value>
+  </data>
+  <data name="getting_location" xml:space="preserve">
+    <value>Obteniendo la ubicación del usuario...</value>
+  </data>
+  <data name="getting_weather_data" xml:space="preserve">
+    <value>Obteniendo datos del clima...</value>
+  </data>
+  <data name="income_data_not_available" xml:space="preserve">
+    <value>Los datos de ingresos no están disponibles.</value>
+  </data>
+  <data name="irrigated" xml:space="preserve">
+    <value>Irrigado</value>
+  </data>
+  <data name="loading_data" xml:space="preserve">
+    <value>Cargando datos del mapa...</value>
+  </data>
+  <data name="loading_hub_contact" xml:space="preserve">
+    <value>Cargando plataformas de investigación...</value>
+  </data>
+  <data name="loading_investigation_platforms" xml:space="preserve">
+    <value>Cargando hub de contacto...</value>
+  </data>
+  <data name="loading_machinery_points" xml:space="preserve">
+    <value>Cargando puntos de maquinaria...</value>
+  </data>
+  <data name="loading_plots" xml:space="preserve">
+    <value>Cargando parcelas...</value>
   </data>
   <data name="location_permission_prompt_accept" xml:space="preserve">
     <value>Acepto</value>
@@ -147,6 +201,30 @@
   <data name="new_plot_prompt_yes" xml:space="preserve">
     <value>Sí</value>
   </data>
+  <data name="planner_no_position_message" xml:space="preserve">
+    <value>Por favor, asegúrese de que la ubicación para el planificador está establecida.</value>
+  </data>
+  <data name="planner_no_position_ok" xml:space="preserve">
+    <value>Vale</value>
+  </data>
+  <data name="planner_no_position_title" xml:space="preserve">
+    <value>No hay posición disponible</value>
+  </data>
+  <data name="profit_data_not_available" xml:space="preserve">
+    <value>Los datos de ganancias no están disponibles.</value>
+  </data>
+  <data name="rain" xml:space="preserve">
+    <value>Lluvia</value>
+  </data>
+  <data name="rainfed" xml:space="preserve">
+    <value>De lluvia</value>
+  </data>
+  <data name="rendering_delineations" xml:space="preserve">
+    <value>Cargando las delineaciones...</value>
+  </data>
+  <data name="rendering_plots" xml:space="preserve">
+    <value>Cargando parcelas...</value>
+  </data>
   <data name="replace_delineation_prompt_cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -164,5 +242,17 @@
   </data>
   <data name="task_hint_select_location" xml:space="preserve">
     <value>Pulse sobre el mapa para seleccionar la ubicación deseada</value>
+  </data>
+  <data name="weather_location_missing_message" xml:space="preserve">
+    <value>La característica del tiempo necesita saber su ubicación actual. Esto puede llevar algún tiempo. Asegúrate de dar permiso para usar tu ubicación. El clima estará disponible cuando vea el clima actual en la parte superior de la pantalla.</value>
+  </data>
+  <data name="weather_location_missing_ok" xml:space="preserve">
+    <value>Vale</value>
+  </data>
+  <data name="weather_location_missing_title" xml:space="preserve">
+    <value>Ubicación no disponible</value>
+  </data>
+  <data name="yield_data_not_available" xml:space="preserve">
+    <value>Los datos de rendimiento no están disponibles.</value>
   </data>
 </root>

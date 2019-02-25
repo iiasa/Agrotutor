@@ -52,10 +52,10 @@
                 Grid.RowSpan="5"
                 Grid.Column="0"
                 Grid.ColumnSpan="7"
+                InitialCameraUpdate="20,-100,5"
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
-                InitialCameraUpdate="20,-100,5"
                 MyLocationEnabled="True"
                 PinClicked="Handle_PinClicked"
                 ShowTileLayer="{Binding OfflineBasemapLayerVisible}"
@@ -192,7 +192,7 @@
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_irrigation}" />
-                                    <Label Text="{Binding SelectedPlotIrrigation}"/>
+                                    <Label Text="{Binding SelectedPlotIrrigation}" />
                                 </StackLayout>
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{localization:Translate plot_detail_maturity}" />
@@ -204,7 +204,7 @@
                                 </StackLayout>
                                 
                                 <views:ValueLine Text="Growing Degree Days" 
-                                     Value="{Binding CurrentPlotGDD}" 
+                                     Value="{Binding CurrentPlotGdd}" 
                                      ImageSource="{Binding CurrentPlotWeatherIcon}"
                                      Command="{Binding NavigateToPlotWeather}"/>
 
@@ -261,9 +261,22 @@
                                     Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine Text="Potential yield (Average kg/ha):" Value="{Binding CurrentPlotPotentialYield}" Command="{Binding NavigateToPotentialYield}"/>
-                                <views:ValueLine Text="Nitrogen needed (kg/ha):" Value="{Binding CurrentPlotNitrogen}" Command="{Binding NavigateToCiat}" />
-                                <views:ValueLine Text="Next month trading price (Expected avg $/kg):" Value="{Binding CurrentPlotPriceForecast}" Command="{Binding NavigateToPriceForecast}" />
+                                <views:ValueLine
+                                    Command="{Binding NavigateToPotentialYield}"
+                                    Text="Potential yield (Average kg/ha):"
+                                    Value="{Binding CurrentPlotPotentialYield}" />
+                                <views:ValueLine
+                                    Command="{Binding NavigateToCiat}"
+                                    Text="Nitrogen needed (kg/ha):"
+                                    Value="{Binding CurrentPlotNitrogen}" />
+                                <views:ValueLine
+                                    Command="{Binding NavigateToPriceForecast}"
+                                    Text="Next month trading price (Expected avg $/kg):"
+                                    Value="{Binding CurrentPlotPriceForecast}" />
+                                <views:IconWithText
+                                    Command="{Binding DeleteCommand}"
+                                    IconSource="delete.png"
+                                    IconText="Delete" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>
@@ -282,35 +295,35 @@
                 Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
-                        <views:IconWithText IconSource="layers.png" IconText="Layers" />
+                        <views:IconWithText IconSource="layers.png" IconText="{localization:Translate layers}" />
                         <ScrollView>
                             <StackLayout>
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotsLayerVisible}"
                                     SelectedChangeCommand="{Binding PlotsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource PrimaryGreen}"
-                                    Text="Plots" />
+                                    Text="{localization:Translate plots}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotDelineationsLayerVisible}"
                                     SelectedChangeCommand="{Binding PlotDelineationsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource PrimaryGreen}"
-                                    Text="Plot delineations" />
+                                    Text="{localization:Translate plot_delineations}" />
                                 <views:Divider />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding HubContactsLayerVisible}"
                                     SelectedChangeCommand="{Binding HubContactsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource SecondaryOrange}"
-                                    Text="Hub contact" />
+                                    Text="{localization:Translate hub_contact}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding MachineryPointsLayerVisible}"
                                     SelectedChangeCommand="{Binding MachineryPointsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource SecondaryDarkGreen}"
-                                    Text="Machinery points" />
+                                    Text="{localization:Translate machinery_points}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding InvestigationPlatformsLayerVisible}"
                                     SelectedChangeCommand="{Binding InvestigationPlatformsSelectionChangedCommand}"
                                     SelectedColor="{StaticResource SecondaryGreenBrown}"
-                                    Text="Investigation platforms" />
+                                    Text="{localization:Translate investigation_platforms}" />
                                 <views:Divider />
                                 <ui:MaterialCheckbox IsSelected="{Binding ShowSatelliteTileLayer}" Text="Satellite" />
                                 <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />

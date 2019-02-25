@@ -7,11 +7,10 @@ namespace Agrotutor.Modules.Calendar.ViewModels
     using Prism.Navigation;
 
     using Core;
-    using Core.Entities;
     using Types;
     using Views;
 
-    public class CalendarPageViewModel:ViewModelBase
+    public class CalendarPageViewModel : ViewModelBase
     {
         public static string EventsParameterName = "Events";
         private string currentMonthName;
@@ -79,14 +78,6 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
 
-            if (parameters.ContainsKey("Dev"))
-            {
-                if (Events == null)
-                {
-                    Events = GetDevData();
-                }
-            }
-
             if (parameters.ContainsKey(CalendarPageViewModel.EventsParameterName))
             {
                 parameters.TryGetValue(CalendarPageViewModel.EventsParameterName,
@@ -103,18 +94,6 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         {
             View = calendarPage;
             FirstDay = Helper.FirstDayInMonth(DateTime.Today);
-        }
-
-        private List<CalendarEvent> GetDevData()
-        {
-            List<CalendarEvent> eventsDev = new List<CalendarEvent>();
-            List<Plot> plots = Dev.Helper.GetTestData();
-            foreach (Plot plot in plots)
-            {
-                eventsDev.AddRange(plot.GetCalendarEvents());
-            }
-
-            return eventsDev;
         }
     }
 }

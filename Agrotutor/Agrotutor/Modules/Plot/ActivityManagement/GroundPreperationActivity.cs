@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.Modules.Plot.ActivityManagement
+﻿using Agrotutor.Modules.Plot.ViewModels;
+using Microsoft.Extensions.Localization;
+
+namespace Agrotutor.Modules.Plot.ActivityManagement
 {
     public class GroundPreperationActivity : ActivityBaseClass
     {
@@ -17,10 +20,14 @@
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = "Preparación del terreno",
+                ActivityName = _stringLocalizer.GetString("ground_preparation"),
                 ActivityIcon = "shovel_small.png",
-                ActivityTitle = "Preparación del terreno"
+                ActivityTitle = _stringLocalizer.GetString("ground_preparation"),
             };
+        }
+
+        public GroundPreperationActivity(IStringLocalizer<ActivityDetailViewModel> stringLocalizer) : base(stringLocalizer)
+        {
         }
     }
 }

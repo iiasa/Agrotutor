@@ -6,6 +6,7 @@ using Agrotutor.Core.Camera;
 using Agrotutor.Core.Cimmyt.HubsContact;
 using Agrotutor.Core.Cimmyt.InvestigationPlatforms;
 using Agrotutor.Core.Cimmyt.MachineryPoints;
+using Agrotutor.Core.Components;
 using Agrotutor.Modules.Map.ViewModels;
 using FFImageLoading.Cache;
 using FFImageLoading.Forms;
@@ -44,7 +45,10 @@ namespace Agrotutor.Modules.Map.Views
             HubContactPins = new List<Pin>();
             InvestigationPlatformPins = new List<Pin>();
             MachineryPointPins = new List<Pin>();
+            ImagePopup = new ImagePopup();
         }
+
+        public ImagePopup ImagePopup { get; set; }
 
         public MapPageViewModel ViewModel { get; set; }
 
@@ -277,8 +281,24 @@ namespace Agrotutor.Modules.Map.Views
                             Source = imageSource,
                             ClassId = img.Id.ToString(),
                             CacheType = CacheType.Disk,
-                            DownsampleToViewSize = true
+                            DownsampleToViewSize = true,
                         };
+
+                        cachedImage.GestureRecognizers.Add(new TapGestureRecognizer
+                        {
+                            Command = new Command(() =>
+                            {
+                                if (!img.IsVideo)
+                                {
+                                    ImagePopup.Show(img.Path);
+                                }
+                                else
+                                {
+                                    //Device.OpenUri(new Uri(img.Path));
+                                    ViewModel.DocumentViewer.ShowDocumentFile(img.Path, MimeTypes.Mp4);
+                                }
+                            })
+                        });
 
                         layout.HeightRequest = 150;
                         layout.WidthRequest = 150;

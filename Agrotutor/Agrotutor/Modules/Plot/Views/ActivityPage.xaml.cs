@@ -9,7 +9,6 @@
         public ActivityPage()
         {
             InitializeComponent();
-            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }

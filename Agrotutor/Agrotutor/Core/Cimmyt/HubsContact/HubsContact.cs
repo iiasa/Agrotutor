@@ -1,6 +1,4 @@
-﻿using XF.Material.Forms.UI.Dialogs;
-
-namespace Agrotutor.Core.Cimmyt.HubsContact
+﻿namespace Agrotutor.Core.Cimmyt.HubsContact
 {
     using System;
     using System.Collections.Generic;
@@ -10,9 +8,13 @@ namespace Agrotutor.Core.Cimmyt.HubsContact
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
+    using Microsoft.Extensions.Localization;
+    using Prism;
+    using XF.Material.Forms.UI.Dialogs;
 
     public class HubsContact
     {
+
         [JsonProperty("type")]
         public string Type { get; set; }
 
@@ -29,10 +31,11 @@ namespace Agrotutor.Core.Cimmyt.HubsContact
 
         public static async Task<HubsContact> FromEmbeddedResource()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: "Loading hub contacts..."))
+            var stringLocalizer = (IStringLocalizer<HubsContact>)PrismApplicationBase.Current.Container.Resolve(typeof(IStringLocalizer<HubsContact>));
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(message: stringLocalizer.GetString("loading")))
             {
                 Assembly assembly = Assembly.GetExecutingAssembly();
-                string resourceName = "Agrotutor.Resources.AppData.hubs_contact.geojson";
+                string resourceName = Constants.HubsContactFile;
 
                 string result;
 
