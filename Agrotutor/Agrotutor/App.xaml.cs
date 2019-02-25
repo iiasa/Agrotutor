@@ -13,6 +13,7 @@ using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
+using Prism.Navigation;
 using Prism.Plugin.Popups;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
@@ -49,12 +50,14 @@ namespace Agrotutor
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";
             var initialPage = "NavigationPage/MapPage";
+            var param = new NavigationParameters();
             if (VersionTracking.IsFirstLaunchEver)
             {
+                param.Add("firstLaunch", true);
                 initialPage = "NavigationPage/WelcomePage";
             }
 
-            await NavigationService.NavigateAsync(initialPage);
+            await NavigationService.NavigateAsync(initialPage, param);
         }
 
         protected override void OnStart()

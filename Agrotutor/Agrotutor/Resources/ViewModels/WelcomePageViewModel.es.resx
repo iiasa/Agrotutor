@@ -120,4 +120,10 @@
   <data name="loading" xml:space="preserve">
     <value>Cargando...</value>
   </data>
+  <data name="navigateToMap" xml:space="preserve">
+    <value>Continuar para el mapa</value>
+  </data>
+  <data name="start" xml:space="preserve">
+    <value>Empezar ahora</value>
+  </data>
 </root>
