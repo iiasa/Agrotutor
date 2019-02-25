@@ -4,7 +4,7 @@
              x:Class="Agrotutor.Modules.Calendar.Components.Views.MonthlyCalendarMultipleEventsEntry">
   <ContentView.Content>
       <StackLayout>
-          <Label Text="Hello Xamarin.Forms!" />
+          <Label Text="" />
       </StackLayout>
   </ContentView.Content>
 </ContentView>
