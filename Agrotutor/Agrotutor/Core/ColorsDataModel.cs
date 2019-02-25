@@ -38,22 +38,22 @@ namespace Agrotutor.Core
 
             All = new ObservableCollection<ColorsDataModel> {
                 new ColorsDataModel {
-                    Picture = $"{lang}_1.png"
+                    Picture = $"{lang}_1.jpg"
                 },
                 new ColorsDataModel {
-                    Picture = $"{lang}_2.png"
+                    Picture = $"{lang}_2.jpg"
                 },
                 new ColorsDataModel {
-                    Picture = $"{lang}_3.png"
+                    Picture = $"{lang}_3.jpg"
                 },
                 new ColorsDataModel {
-                    Picture = $"{lang}_4.png"
+                    Picture = $"{lang}_4.jpg"
                 },
                 new ColorsDataModel {
-                    Picture = $"{lang}_5.png"
+                    Picture = $"{lang}_5.jpg"
                 },
                 new ColorsDataModel {
-                    Picture = $"{lang}_6.png"
+                    Picture = $"{lang}_6.jpg"
                 },
                 new ColorsDataModel {
                     ShowGetStarted = true
