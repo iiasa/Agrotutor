@@ -1,3 +1,6 @@
+using System.Threading.Tasks;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.ViewModels
@@ -14,6 +17,17 @@ namespace Agrotutor.ViewModels
             : base (navigationService, stringLocalizer)
         { }
 
+
+        public DelegateCommand PageAppearingCommand =>
+            new DelegateCommand(async () => await PageAppearing());
+
+        private async Task PageAppearing()
+        {
+            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+            if (permissionStatus != PermissionStatus.Granted)
+                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+        }
+
         public DelegateCommand NavigateToMainPageCommand => new DelegateCommand(
             async ()=> {
 
@@ -23,5 +37,7 @@ namespace Agrotutor.ViewModels
                 }
                 
             });
+
+        
     }
 }

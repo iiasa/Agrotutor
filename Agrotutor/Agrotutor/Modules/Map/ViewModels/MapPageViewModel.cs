@@ -1435,27 +1435,33 @@ namespace Agrotutor.Modules.Map.ViewModels
             RenderDelineationPolygon();
         }
 
+        public bool IsInitDone { get; set; }
+
         private async Task PageAppearing()
         {
-            RemoveTempPin();
-            var tasks = new List<Task>();
-            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-            if (permissionStatus != PermissionStatus.Granted)
-                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+            if (!IsInitDone)
+            {
+                RemoveTempPin();
+                //var tasks = new List<Task>();
+                var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (permissionStatus != PermissionStatus.Granted)
+                    await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
 
-            tasks.Add(EnableUserLocation());
-            //await EnableUserLocation();
+                //tasks.Add(EnableUserLocation());
+                await EnableUserLocation();
 
-            tasks.Add(LoadMapData());
-            //await LoadMapData();
+                //tasks.Add(LoadMapData());
+                await LoadMapData();
 
-            tasks.Add(LoadPlots());
-            //await LoadPlots();
+                //tasks.Add(LoadPlots());
+                await LoadPlots();
 
-            tasks.Add(RefreshWeatherData());
-            //await RefreshWeatherData();
+                //tasks.Add(RefreshWeatherData());
+                await RefreshWeatherData();
 
-            await Task.WhenAll(tasks).ConfigureAwait(false);
+                //await Task.WhenAll(tasks).ConfigureAwait(false);
+                IsInitDone = true;
+            }
         }
 
 

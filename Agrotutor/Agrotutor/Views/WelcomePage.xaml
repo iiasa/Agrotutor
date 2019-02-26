@@ -3,10 +3,11 @@
     x:Class="Agrotutor.Views.WelcomePage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
     xmlns:converter="clr-namespace:Agrotutor.Core.Converter"
     xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     x:Name="Page"
     mvvm:ViewModelLocator.AutowireViewModel="True"
     NavigationPage.HasNavigationBar="False">
@@ -24,9 +25,7 @@
                     </OnPlatform>
                 </ContentPage.Padding>
                 <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Image
-                        IsVisible="{Binding ShowGetStarted, Converter={StaticResource BooleanConverter}}"
-                        Source="{Binding Picture}" />
+                    <Image IsVisible="{Binding ShowGetStarted, Converter={StaticResource BooleanConverter}}" Source="{Binding Picture}" />
                     <Button
                         Margin="15"
                         Padding="15"
@@ -39,4 +38,7 @@
             </ContentPage>
         </DataTemplate>
     </CarouselPage.ItemTemplate>
+    <CarouselPage.Behaviors>
+        <behaviors:EventToCommandBehavior Command="{Binding PageAppearingCommand}" EventName="Appearing" />
+    </CarouselPage.Behaviors>
 </CarouselPage>

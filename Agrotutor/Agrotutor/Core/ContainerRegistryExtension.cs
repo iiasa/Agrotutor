@@ -11,6 +11,7 @@ using Agrotutor.ViewModels;
 using Agrotutor.Views;
 using DryIoc;
 using Microsoft.AppCenter;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -83,10 +84,30 @@ namespace Agrotutor.Core
                     try
                     {
                         ((AppDataContext) context).Database.EnsureCreated();
+                        
                     }
                     catch (Exception e)
                     {
                         AppCenterLog.Error("DbCreation", "Error during DB creation", e);
+                    }
+
+                    try
+                    {
+                        ((AppDataContext)context).Database.Migrate();
+                    }
+                    catch (Exception e)
+                    {
+                        AppCenterLog.Error("DbMigration", "Error during DB Migration", e);
+                        try
+                        {
+                            ((AppDataContext)context).Database.EnsureDeleted();
+                            ((AppDataContext)context).Database.EnsureCreated();
+                        }
+                        catch (Exception exception)
+                        {
+                            AppCenterLog.Error("DbMigration", "Error during DB Migration fallback", e);
+                            Crashes.TrackError(exception);
+                        }
                     }
                 });
         }

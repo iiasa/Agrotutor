@@ -32,7 +32,6 @@ namespace Agrotutor.Modules.Map.Views
         public MapPage()
         {
             InitializeComponent();
-            this.map.UiSettings.MyLocationButtonEnabled = true;
 
             ViewModel = (MapPageViewModel) BindingContext;
             ViewModel.SetView(this);

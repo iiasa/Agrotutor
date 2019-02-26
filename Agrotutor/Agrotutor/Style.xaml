@@ -1,14 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Agrotutor.Style">
+<ResourceDictionary
+    x:Class="Agrotutor.Style"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Style TargetType="{x:Type Label}">
-        <!-- Style applied to all labels -->
+        <!--  Style applied to all labels  -->
         <!--<Setter Property="TextColor" Value="Crimson" />-->
     </Style>
     <Style x:Key="LabelKey" TargetType="{x:Type Label}">
-        <!-- Style applied to all labels with x:Key set to LabelKey -->
+        <!--  Style applied to all labels with x:Key set to LabelKey  -->
         <!--<Setter Property="TextColor" Value="Crimson" />-->
         <Setter Property="FontSize" Value="18" />
     </Style>
@@ -22,7 +23,7 @@
     <Color x:Key="SecondaryGreenBrown">#908C14</Color>
     <Color x:Key="SecondaryLightYellow">#EEE49A</Color>
     <Color x:Key="SecondaryLightGreen">#D4EB8D</Color>
-    <Color x:Key="MachineryPoints">#D4EB8D</Color>
+    <Color x:Key="MachineryPoints">DarkBlue</Color>
 
     <Style TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource SecondaryLightYellow}" />
@@ -49,22 +50,22 @@
         iOS="0.5" />
 
     <Style x:Key="MainMapPopup" TargetType="ContentView">
-        <Setter Property="Grid.Column" Value="1"/>
-        <Setter Property="Grid.ColumnSpan" Value="5"/>
-        <Setter Property="Grid.Row" Value="2"/>
+        <Setter Property="Grid.Column" Value="1" />
+        <Setter Property="Grid.ColumnSpan" Value="5" />
+        <Setter Property="Grid.Row" Value="2" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
     </Style>
 
     <Style x:Key="MainMapPopupBackground" TargetType="Frame">
-        <Setter Property="BackgroundColor" Value="Azure"/>
-        <Setter Property="Opacity" Value="0.95"/>
+        <Setter Property="BackgroundColor" Value="Azure" />
+        <Setter Property="Opacity" Value="0.95" />
     </Style>
 
     <Style x:Key="MainMapIconsGroup" TargetType="StackLayout">
-        <Setter Property="Grid.Column" Value="0"/>
-        <Setter Property="Grid.ColumnSpan" Value="7"/>
-        <Setter Property="Grid.Row" Value="5"/>
+        <Setter Property="Grid.Column" Value="0" />
+        <Setter Property="Grid.ColumnSpan" Value="7" />
+        <Setter Property="Grid.Row" Value="5" />
     </Style>
 
     <Style x:Key="MainMapTaskUI" TargetType="StackLayout">
@@ -73,8 +74,8 @@
     </Style>
 
     <Style x:Key="MainMapTaskUIContainer" TargetType="StackLayout">
-        <Setter Property="Grid.Column" Value="2"/>
-        <Setter Property="Grid.ColumnSpan" Value="3"/>
-        <Setter Property="Grid.Row" Value="4"/>
+        <Setter Property="Grid.Column" Value="2" />
+        <Setter Property="Grid.ColumnSpan" Value="3" />
+        <Setter Property="Grid.Row" Value="4" />
     </Style>
 </ResourceDictionary>
