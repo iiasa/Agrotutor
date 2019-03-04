@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Reflection;
 using Agrotutor.Core.Camera;
@@ -89,6 +89,7 @@ namespace Agrotutor.Core
                     catch (Exception e)
                     {
                         AppCenterLog.Error("DbCreation", "Error during DB creation", e);
+                        Crashes.TrackError(e);
                     }
 
                     try
