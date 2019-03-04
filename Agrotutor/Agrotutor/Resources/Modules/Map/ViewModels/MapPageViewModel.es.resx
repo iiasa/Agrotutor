@@ -121,22 +121,22 @@
     <value>Por favor, asegúrese de que la ubicación para una nueva parcela está establecida.</value>
   </data>
   <data name="add_plot_no_position_ok" xml:space="preserve">
-    <value>Vale</value>
+    <value>Aceptar</value>
   </data>
   <data name="add_plot_no_position_title" xml:space="preserve">
-    <value>No hay posición disponible</value>
+    <value>No hay ubicación disponible</value>
   </data>
   <data name="cost_data_not_available" xml:space="preserve">
-    <value>Los datos de costos no están disponibles.</value>
+    <value>Los datos de costos no están disponibles</value>
   </data>
   <data name="delete_plot_confirm_button" xml:space="preserve">
     <value>Borrar</value>
   </data>
   <data name="delete_plot_confirm_message" xml:space="preserve">
-    <value>¿Estás seguro?</value>
+    <value>¿Está seguro?</value>
   </data>
   <data name="delete_plot_failed" xml:space="preserve">
-    <value>Error al borrar la parcela.</value>
+    <value>Error al borrar la parcela</value>
   </data>
   <data name="delete_plot_in_progress" xml:space="preserve">
     <value>Borrando parcela...</value>
@@ -154,19 +154,19 @@
     <value>Obteniendo datos del clima...</value>
   </data>
   <data name="income_data_not_available" xml:space="preserve">
-    <value>Los datos de ingresos no están disponibles.</value>
+    <value>Los datos de ingresos no están disponibles</value>
   </data>
   <data name="irrigated" xml:space="preserve">
-    <value>Irrigado</value>
+    <value>Con riego</value>
   </data>
   <data name="loading_data" xml:space="preserve">
-    <value>Cargando datos del mapa...</value>
+    <value>Cargando mapa...</value>
   </data>
   <data name="loading_hub_contact" xml:space="preserve">
     <value>Cargando plataformas de investigación...</value>
   </data>
   <data name="loading_investigation_platforms" xml:space="preserve">
-    <value>Cargando hub de contacto...</value>
+    <value>Cargando hubs...</value>
   </data>
   <data name="loading_machinery_points" xml:space="preserve">
     <value>Cargando puntos de maquinaria...</value>
@@ -202,22 +202,22 @@
     <value>Sí</value>
   </data>
   <data name="planner_no_position_message" xml:space="preserve">
-    <value>Por favor, asegúrese de que la ubicación para el planificador está establecida.</value>
+    <value>Por favor, asegúrese de que la ubicación está establecida</value>
   </data>
   <data name="planner_no_position_ok" xml:space="preserve">
-    <value>Vale</value>
+    <value>Aceptar</value>
   </data>
   <data name="planner_no_position_title" xml:space="preserve">
     <value>No hay posición disponible</value>
   </data>
   <data name="profit_data_not_available" xml:space="preserve">
-    <value>Los datos de ganancias no están disponibles.</value>
+    <value>Los datos de utilidades no están disponibles</value>
   </data>
   <data name="rain" xml:space="preserve">
     <value>Lluvia</value>
   </data>
   <data name="rainfed" xml:space="preserve">
-    <value>De lluvia</value>
+    <value>Sin riego</value>
   </data>
   <data name="rendering_delineations" xml:space="preserve">
     <value>Cargando las delineaciones...</value>
@@ -244,10 +244,10 @@
     <value>Pulse sobre el mapa para seleccionar la ubicación deseada</value>
   </data>
   <data name="weather_location_missing_message" xml:space="preserve">
-    <value>La característica del tiempo necesita saber su ubicación actual. Esto puede llevar algún tiempo. Asegúrate de dar permiso para usar tu ubicación. El clima estará disponible cuando vea el clima actual en la parte superior de la pantalla.</value>
+    <value>Para desplegar la información climática se necesita su ubicación actual. Esto puede tomar algún tiempo. Asegúrese de permitir el uso de su ubicación. Los datos de clima clima estarán disponibles en la parte superior de la pantalla.</value>
   </data>
   <data name="weather_location_missing_ok" xml:space="preserve">
-    <value>Vale</value>
+    <value>Aceptar</value>
   </data>
   <data name="weather_location_missing_title" xml:space="preserve">
     <value>Ubicación no disponible</value>

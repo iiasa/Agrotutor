@@ -121,22 +121,22 @@
     <value>Sobre estas recomendaciones</value>
   </data>
   <data name="irrigated" xml:space="preserve">
-    <value>Irrigado</value>
+    <value>Con riego</value>
   </data>
   <data name="non_irrigated" xml:space="preserve">
-    <value>De lluvia</value>
+    <value>Sin riego</value>
   </data>
   <data name="placeholder_avoid" xml:space="preserve">
-    <value>No se recomiendan cultivares para evitar</value>
+    <value>No existe ninguna recomendación en este sitio</value>
   </data>
   <data name="placeholder_nitrogen" xml:space="preserve">
-    <value>Ninguna recomendación sobre nitrógeno</value>
+    <value>No existe ninguna recomendación en este sitio</value>
   </data>
   <data name="placeholder_seed_density" xml:space="preserve">
-    <value>No se recomienda densidad de semillas.</value>
+    <value>No existe ninguna recomendación en este sitio</value>
   </data>
   <data name="placeholder_use" xml:space="preserve">
-    <value>No hay cultivares recomendados</value>
+    <value>No hay cultivares recomendados al momento</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Recomendaciones</value>

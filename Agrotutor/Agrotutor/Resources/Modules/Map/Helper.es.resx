@@ -130,13 +130,13 @@
     <value>Intermedio</value>
   </data>
   <data name="late" xml:space="preserve">
-    <value>Tarde</value>
+    <value>Tardío</value>
   </data>
   <data name="semi_early" xml:space="preserve">
     <value>Semi temprano</value>
   </data>
   <data name="semi_late" xml:space="preserve">
-    <value>Semi tarde</value>
+    <value>Semi tardío</value>
   </data>
   <data name="tempered" xml:space="preserve">
     <value>Templado / Subtropical</value>

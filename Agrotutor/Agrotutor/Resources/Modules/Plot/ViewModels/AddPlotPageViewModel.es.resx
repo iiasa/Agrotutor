@@ -172,19 +172,19 @@
     <value>Otro</value>
   </data>
   <data name="plot_created" xml:space="preserve">
-    <value>Creación exitosa de la trama.</value>
+    <value>Parcela guardada correctamente</value>
   </data>
   <data name="rice" xml:space="preserve">
     <value>Arroz</value>
   </data>
   <data name="saving_plot" xml:space="preserve">
-    <value>Parcela de ahorro</value>
+    <value>Guardando parcela...</value>
   </data>
   <data name="semi_early" xml:space="preserve">
-    <value>Semi temprano</value>
+    <value>Semi-temprano</value>
   </data>
   <data name="semi_late" xml:space="preserve">
-    <value>Semi tarde</value>
+    <value>Semi-tardío</value>
   </data>
   <data name="sesame" xml:space="preserve">
     <value>Ajonjolí</value>
@@ -196,7 +196,7 @@
     <value>Siembra</value>
   </data>
   <data name="soy" xml:space="preserve">
-    <value>Soja</value>
+    <value>Soya</value>
   </data>
   <data name="tempered" xml:space="preserve">
     <value>Templado / Subtropical</value>
@@ -208,7 +208,7 @@
     <value>Tropical</value>
   </data>
   <data name="wheat" xml:space="preserve">
-    <value>Wheat</value>
+    <value>Trigo</value>
   </data>
   <data name="zucchini" xml:space="preserve">
     <value>Calabacín</value>

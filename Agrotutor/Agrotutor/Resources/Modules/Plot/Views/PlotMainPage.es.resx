@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="additional_info" xml:space="preserve">
-    <value>Información adicional</value>
+    <value>Rendimiento potencial/Recomendaciones/Precios</value>
   </data>
   <data name="costs" xml:space="preserve">
     <value>Costo</value>
@@ -130,13 +130,13 @@
     <value>Ingreso</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Rendimiento potencial (modelos)</value>
+    <value>Rendimiento potencial</value>
   </data>
   <data name="price_forecast" xml:space="preserve">
-    <value>Previsión de precios de mercado</value>
+    <value>Precios de mercado</value>
   </data>
   <data name="profit" xml:space="preserve">
-    <value>Utilidad</value>
+    <value>Utilidades</value>
   </data>
   <data name="recommendations" xml:space="preserve">
     <value>Recomendaciones de cultivo</value>
@@ -148,6 +148,6 @@
     <value>Clima</value>
   </data>
   <data name="yield" xml:space="preserve">
-    <value>rendimiento</value>
+    <value>Rendimiento</value>
   </data>
 </root>

@@ -121,7 +121,7 @@
     <value>Nombre Apellido</value>
   </data>
   <data name="hint_producer_name" xml:space="preserve">
-    <value>Nombre de productor</value>
+    <value>Nombre del productor</value>
   </data>
   <data name="select" xml:space="preserve">
     <value>seleccionar</value>
@@ -133,6 +133,6 @@
     <value>Tomar una foto</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Perfil de productor</value>
+    <value>Perfil del productor</value>
   </data>
 </root>

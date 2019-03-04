@@ -127,7 +127,7 @@
     <value>No hay datos de ingresos disponibles en esta ubicación.</value>
   </data>
   <data name="no_data_ok" xml:space="preserve">
-    <value>Vale</value>
+    <value>Aceptar</value>
   </data>
   <data name="no_data_potential_yield_message" xml:space="preserve">
     <value>No hay datos de rendimiento potencial disponibles en esta ubicación.</value>

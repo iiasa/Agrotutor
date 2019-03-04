@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="icons_thanks" xml:space="preserve">
-    <value>Un agradecimiento especial a los siguientes proveedores de iconos para esta aplicación y:</value>
+    <value>Un agradecimiento especial a los siguientes proveedores de iconos para esta aplicación:</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Recursos que utilizamos</value>

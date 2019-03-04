@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="about" xml:space="preserve">
-    <value>Sobre información histórica</value>
+    <value>Acerca de la información histórica</value>
   </data>
   <data name="average" xml:space="preserve">
-    <value>med</value>
+    <value>Prom</value>
   </data>
   <data name="maximum" xml:space="preserve">
-    <value>máx</value>
+    <value>Max</value>
   </data>
   <data name="minimum" xml:space="preserve">
-    <value>mín</value>
+    <value>Min</value>
   </data>
   <data name="title" xml:space="preserve">
-    <value>Utilidad en esta area</value>
+    <value>Utilidades en esta area</value>
   </data>
 </root>

@@ -121,7 +121,7 @@
     <value>Acciones:</value>
   </data>
   <data name="plot_detail_additional_title" xml:space="preserve">
-    <value>Información adicional (clic para detalles)</value>
+    <value>Rendimiento potencial/Recomendaciones/Precios</value>
   </data>
   <data name="plot_detail_add_activity" xml:space="preserve">
     <value>Agregar actividad</value>
@@ -139,7 +139,7 @@
     <value>Información histórica</value>
   </data>
   <data name="plot_detail_irrigation" xml:space="preserve">
-    <value>Riego</value>
+    <value>Con riego</value>
   </data>
   <data name="plot_detail_maturity" xml:space="preserve">
     <value>Tipo de madurez</value>
@@ -154,13 +154,13 @@
     <value>Agregue un vídeo</value>
   </data>
   <data name="costs" xml:space="preserve">
-    <value>Costos ($/ha):</value>
+    <value>Costos (MXP/ha):</value>
   </data>
   <data name="hub_contact" xml:space="preserve">
     <value>Contacto del hub</value>
   </data>
   <data name="income" xml:space="preserve">
-    <value>Ingresos ($/ha):</value>
+    <value>Ingresos (MXP/ha):</value>
   </data>
   <data name="investigation_platforms" xml:space="preserve">
     <value>Plataformas de investigación</value>
@@ -172,7 +172,7 @@
     <value>Puntos de maquinaria</value>
   </data>
   <data name="nitrogen" xml:space="preserve">
-    <value>Nitrógeno necesario (kg/ha):</value>
+    <value>Fertilización recomendada (kg N/ha):</value>
   </data>
   <data name="offline_basemap" xml:space="preserve">
     <value>Mapa base sin conexión</value>
@@ -184,15 +184,15 @@
     <value>Delineaciones de las parcelas</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Rendimiento potencial (promedio kg/ha):</value>
+    <value>Rendimiento potencial (prom Ton/ha):</value>
   </data>
   <data name="price_forecast" xml:space="preserve">
-    <value>Precio de negociación del próximo mes (promedio de $/kg):</value>
+    <value>Precio próximo mes (Prom MXP/kg):</value>
   </data>
   <data name="profit" xml:space="preserve">
-    <value>Utilidad ($/ha):</value>
+    <value>Utilidad (MXP/ha):</value>
   </data>
   <data name="yield" xml:space="preserve">
-    <value>Rendimiento (kg/ha):</value>
+    <value>Rendimiento (Ton/ha):</value>
   </data>
 </root>

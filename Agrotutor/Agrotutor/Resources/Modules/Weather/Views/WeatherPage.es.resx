@@ -121,16 +121,16 @@
     <value>Cubierto de nubes: </value>
   </data>
   <data name="data" xml:space="preserve">
-    <value>Datos histórico</value>
+    <value>Datos históricos</value>
   </data>
   <data name="data_loading" xml:space="preserve">
-    <value>Datos histórico - cargando...</value>
+    <value>Datos históricos - cargando...</value>
   </data>
   <data name="forecast" xml:space="preserve">
     <value>Pronóstico del tiempo</value>
   </data>
   <data name="gdd" xml:space="preserve">
-    <value>Crecimiento grados días: </value>
+    <value>Crecimiento - grados días: </value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Clima</value>

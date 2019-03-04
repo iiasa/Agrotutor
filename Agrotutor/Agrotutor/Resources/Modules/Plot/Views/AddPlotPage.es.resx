@@ -133,7 +133,7 @@
     <value>Usando ubicación actual</value>
   </data>
   <data name="hint_location" xml:space="preserve">
-    <value>Selecciona la ubicación de tu parcela</value>
+    <value>Seleccione la ubicación de su parcela</value>
   </data>
   <data name="hint_management_info" xml:space="preserve">
     <value>Agregue información de manejo de parcela</value>
@@ -154,13 +154,13 @@
     <value>Tipo de madurez del cultivar</value>
   </data>
   <data name="plot_created" xml:space="preserve">
-    <value>Creación exitosa de la trama.</value>
+    <value>Parcela almacenada correctamente</value>
   </data>
   <data name="saving_plot" xml:space="preserve">
-    <value>Parcela de ahorro</value>
+    <value>Guardando parcela...</value>
   </data>
   <data name="select" xml:space="preserve">
-    <value>seleccionar</value>
+    <value>Seleccionar</value>
   </data>
   <data name="tipo_clima" xml:space="preserve">
     <value>Clima idóneo del cultivar</value>

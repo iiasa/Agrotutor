@@ -205,10 +205,10 @@
     <value>Instituto colaborador</value>
   </data>
   <data name="investigation_platform_inventory_responsible" xml:space="preserve">
-    <value>responsable de inventario</value>
+    <value>Responsable de inventario</value>
   </data>
   <data name="investigation_platform_irrigation_pv" xml:space="preserve">
-    <value>Riego pirmavera/verano</value>
+    <value>Riego - pirmavera/verano</value>
   </data>
   <data name="investigation_platform_location" xml:space="preserve">
     <value>Ubicación</value>
@@ -232,7 +232,7 @@
     <value>Estado</value>
   </data>
   <data name="investigation_platform_technical_responsible" xml:space="preserve">
-    <value>Responsable Técnico</value>
+    <value>Responsable técnico</value>
   </data>
   <data name="investigation_platform_title" xml:space="preserve">
     <value>Plataforma de investigación</value>

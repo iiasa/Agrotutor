@@ -124,13 +124,13 @@
     <value>Rango esperado</value>
   </data>
   <data name="months" xml:space="preserve">
-    <value>meses</value>
+    <value>Meses</value>
   </data>
   <data name="next_month" xml:space="preserve">
     <value>Próximo mes</value>
   </data>
   <data name="peso_per_kg" xml:space="preserve">
-    <value>($/kg)</value>
+    <value>(MXP/kg)</value>
   </data>
   <data name="price" xml:space="preserve">
     <value>Precio</value>
