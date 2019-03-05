@@ -1,7 +1,10 @@
-﻿using Agrotutor.Core;
+using Agrotutor.Core;
 using Agrotutor.Core.DependencyServices;
 using Microsoft.Extensions.Localization;
 using Prism.Navigation;
+using System;
+using System.Threading;
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace Agrotutor.ViewModels
@@ -37,10 +40,27 @@ namespace Agrotutor.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters navigationParameters)
         {
+            var supportedLang = new List<string>
+            {
+                "en", "es"
+            };
+            var lang = "en";
+            try
+            {
+                var currentLang = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+                if (supportedLang.Contains(currentLang))
+                {
+                    lang = currentLang;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
             if (navigationParameters.ContainsKey("page"))
             {
                 navigationParameters.TryGetValue<string>("page", out var page);
-                if (page != null) Url = $"{_rootUrl}{page}/page.html";
+                if (page != null) Url = $"{_rootUrl}{lang}/{page}/page.html";
                 else NavigationService.GoBackAsync();
             }
             else NavigationService.GoBackAsync();
