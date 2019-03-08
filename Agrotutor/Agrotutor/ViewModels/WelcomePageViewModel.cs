@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -23,9 +24,18 @@ namespace Agrotutor.ViewModels
 
         private async Task PageAppearing()
         {
-            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-            if (permissionStatus != PermissionStatus.Granted)
-                await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+            var permissionsToRequest = new List<Permission>();
+            var locationPermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+            if (locationPermissionStatus != PermissionStatus.Granted)
+                permissionsToRequest.Add(Permission.Location);
+            var cameraPermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+            if (cameraPermissionStatus != PermissionStatus.Granted)
+                permissionsToRequest.Add(Permission.Camera);
+            var storagePermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+            if (storagePermissionStatus != PermissionStatus.Granted)
+                permissionsToRequest.Add(Permission.Storage);
+            if (permissionsToRequest.Count>0)
+                await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
         }
 
         public DelegateCommand NavigateToMainPageCommand => new DelegateCommand(

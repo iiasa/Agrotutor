@@ -312,7 +312,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 ActivityDynamicUIVisibility = baseClass.ActivityDynamicUIVisibility;
                 if (ActivityDynamicUIVisibility != null)
                 {
-                    ActivityName = ActivityDynamicUIVisibility.ActivityName;
+                    ActivityName = ActivityDynamicUIVisibility.ActivityName; //TODO: Add translation
                 }
             }
             base.OnNavigatedTo(parameters);
