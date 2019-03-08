@@ -33,7 +33,7 @@
                         <TapGestureRecognizer Command="{Binding ShowAbout}"/>
                     </StackLayout.GestureRecognizers>
 
-                    <Label VerticalOptions="Center" Text="About cultivar characteristics" />
+                    <Label VerticalOptions="Center" Text="{localization:Translate about}" />
                     <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
 

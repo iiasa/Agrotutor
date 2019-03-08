@@ -1,3 +1,4 @@
+using System;
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
 using Agrotutor.Modules.Ciat.ViewModels;
@@ -53,6 +54,7 @@ namespace Agrotutor
             {
                 initialPage = "NavigationPage/WelcomePage";
             }
+            else { }
 
             await NavigationService.NavigateAsync(initialPage);
         }

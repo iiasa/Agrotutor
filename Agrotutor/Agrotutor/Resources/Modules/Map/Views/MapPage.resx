@@ -195,4 +195,7 @@
   <data name="yield" xml:space="preserve">
     <value>Yield (kg/ha):</value>
   </data>
+  <data name="delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>

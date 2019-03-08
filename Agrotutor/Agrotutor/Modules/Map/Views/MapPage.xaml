@@ -245,38 +245,38 @@
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
                                 <views:ValueLine
                                     Command="{Binding ShowCurrentPlotCost}"
-                                    Text="Costs ($/ha):"
+                                    Text="{localization:Translate costs}"
                                     Value="{Binding CurrentPlotCost}" />
                                 <views:ValueLine
                                     Command="{Binding ShowCurrentPlotIncome}"
-                                    Text="Income ($/ha):"
+                                    Text="{localization:Translate income}"
                                     Value="{Binding CurrentPlotIncome}" />
                                 <views:ValueLine
                                     Command="{Binding ShowCurrentPlotProfit}"
-                                    Text="Profit ($/ha):"
+                                    Text="{localization:Translate profit}"
                                     Value="{Binding CurrentPlotProfit}" />
                                 <views:ValueLine
                                     Command="{Binding ShowCurrentPlotYield}"
-                                    Text="Yield (kg/ha):"
+                                    Text="{localization:Translate yield}"
                                     Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
                                 <views:ValueLine
                                     Command="{Binding NavigateToPotentialYield}"
-                                    Text="Potential yield (Average kg/ha):"
+                                    Text="{localization:Translate potential_yield}"
                                     Value="{Binding CurrentPlotPotentialYield}" />
                                 <views:ValueLine
                                     Command="{Binding NavigateToCiat}"
-                                    Text="Nitrogen needed (kg/ha):"
+                                    Text="{localization:Translate nitrogen}"
                                     Value="{Binding CurrentPlotNitrogen}" />
                                 <views:ValueLine
                                     Command="{Binding NavigateToPriceForecast}"
-                                    Text="Next month trading price (Expected avg $/kg):"
+                                    Text="{localization:Translate price_forecast}"
                                     Value="{Binding CurrentPlotPriceForecast}" />
                                 <views:IconWithText
                                     Command="{Binding DeleteCommand}"
                                     IconSource="delete.png"
-                                    IconText="Delete" />
+                                    IconText="{localization:Translate delete}" />
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

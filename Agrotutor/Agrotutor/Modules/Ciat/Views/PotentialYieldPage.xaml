@@ -36,7 +36,7 @@
                     <TapGestureRecognizer Command="{Binding ShowAbout}"/>
                 </StackLayout.GestureRecognizers>
 
-                <Label VerticalOptions="Center" Text="About potential yield data" />
+                <Label VerticalOptions="Center" Text="{localization:Translate about}" />
                 <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
             </StackLayout>
 
