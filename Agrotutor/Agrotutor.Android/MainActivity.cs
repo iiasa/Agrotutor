@@ -1,4 +1,4 @@
-﻿namespace Agrotutor.Droid
+namespace Agrotutor.Droid
 {
     using System;
     using System.Threading.Tasks;
@@ -11,6 +11,7 @@
     using Android.Runtime;
     using Plugin.CurrentActivity;
     using Xamarin;
+    using FFImageLoading.Forms.Droid;
 
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon" ,Theme = "@style/splashscreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : FormsAppCompatActivity
@@ -36,7 +37,7 @@
         private void InitializeLibs(Bundle bundle)
         {
             Forms.SetFlags("FastRenderers_Experimental");
-
+            CachedImageRenderer.Init(true);
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             Forms.Init(this, bundle);
             FormsGoogleMaps.Init(this, bundle);

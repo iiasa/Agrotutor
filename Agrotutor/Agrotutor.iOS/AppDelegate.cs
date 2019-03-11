@@ -1,4 +1,4 @@
-﻿using Xamarin;
+using Xamarin;
 
 namespace Agrotutor.iOS
 {
@@ -24,7 +24,8 @@ namespace Agrotutor.iOS
             global::Xamarin.Forms.Forms.Init();
 
             Xamarin.FormsGoogleMaps.Init("AIzaSyCm-_Fc-5-vvbhTPQg38LlCreorYtsC2Us");
-            FormsGoogleMapsBindings.Init();
+            FormsGoogleMapsBindings.Init(); 
+            CachedImageRenderer.Init(true);
             XF.Material.iOS.Material.Init();
             Rg.Plugins.Popup.Popup.Init();
             OxyPlot.Xamarin.Forms.Platform.iOS.PlotViewRenderer.Init();
