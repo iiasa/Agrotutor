@@ -12,6 +12,7 @@ using Agrotutor.Core.Cimmyt.MachineryPoints;
 using Agrotutor.Core.Components;
 using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
+using Agrotutor.Core.Tile;
 using Agrotutor.Modules.Benchmarking;
 using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Calendar.ViewModels;
@@ -50,7 +51,8 @@ namespace Agrotutor.Modules.Map.ViewModels
     using HubFeature = Feature;
     using IPFeature = Core.Cimmyt.InvestigationPlatforms.Feature;
     using MPFeature = Core.Cimmyt.MachineryPoints.Feature;
-
+    using Plugin.DownloadManager;
+    using Plugin.DownloadManager.Abstractions;
     public class MapPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly ICameraService _cameraService;
@@ -135,6 +137,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         private string _currentPlotWeatherIcon;
         private string _currentPlotGdd;
         private bool _showSatelliteLayer;
+        private CropType _cropType;
+        private string _cacheButtonText;
+        private string _downloadStatusImage;
+     
+        private bool _isOfflineBasemapLayerEnabled;
+        private bool _isDownloadButtonEnabled;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -144,6 +152,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             IStringLocalizer<MapPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            IsDownloadButtonEnabled = true;
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
             LocationPermissionGiven = false;
@@ -158,7 +167,88 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
-        
+            DownloadDeleteCommand=new DelegateCommand(DownloadTiles);
+            CheckDownloadStatus();
+        }
+
+ 
+
+        public string CacheButtonText
+        {
+            get => _cacheButtonText;
+            set
+            {
+                SetProperty(ref _cacheButtonText, value);
+            }
+        }
+    public string DownloadStatusImage
+        {
+            get => _downloadStatusImage;
+            set
+            {
+                SetProperty(ref _downloadStatusImage, value);
+            }
+        }
+        private void CheckDownloadStatus()
+        {
+            if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
+            {
+                DownloadStatusImage = "ic_delete";
+                IsOfflineBasemapLayerEnabled = true;
+            }
+            else
+            {
+                DownloadStatusImage = "ic_download";
+                IsOfflineBasemapLayerEnabled = false;
+            }
+        }
+        public void DownloadTiles( )
+        {
+            if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
+            {
+                // remove files
+                FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
+              //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
+                DownloadStatusImage = "ic_download";
+                IsOfflineBasemapLayerEnabled = false;
+                OfflineBasemapLayerVisible = false;
+            }
+            else
+            {
+                TaskDownloadTiles();
+            }
+        }
+        private void TaskDownloadTiles()
+        {
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                IsDownloadButtonEnabled = false;
+                IDownloadFile file = CrossDownloadManager.Current.CreateDownloadFile(Constants.DownloadTileUrl);
+
+                CrossDownloadManager.Current.Start(file);
+                file.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == "Status")
+                    {
+                        switch (((IDownloadFile)sender).Status)
+                        {
+                            case DownloadFileStatus.COMPLETED:
+                                DownloadStatusImage = "ic_delete";
+                                IsDownloadButtonEnabled = true;
+                                IsOfflineBasemapLayerEnabled = true;
+                                LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
+                                System.Console.WriteLine("Downloading finished. " + file.DestinationPathName);
+                                break;
+
+                            case DownloadFileStatus.FAILED:
+                            case DownloadFileStatus.CANCELED:
+                                System.Console.WriteLine("Downloading error. ");
+                                break;
+                        }
+                    }
+                };
+       
+            }
         }
         public bool OfflineBasemapLayerVisible
         {
@@ -167,9 +257,23 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _offlineBasemapLayerVisible, value);
                 Preferences.Set(Constants.OfflineBasemapLayerVisiblePreference, value);
-                // ShowTileLayer = !ShowTileLayer;
-                // MapPage?.SetOfflineLayerVisibility(value);
-                //MapPage?.SetOfflineLayerVisibility(value);
+                LayerService.UpdateIsChecked(FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
+            }
+        }
+        public bool IsOfflineBasemapLayerEnabled
+        {
+            get => _isOfflineBasemapLayerEnabled;
+            set
+            {
+                SetProperty(ref _isOfflineBasemapLayerEnabled, value);
+            }
+        }
+        public bool IsDownloadButtonEnabled
+        {
+            get => _isDownloadButtonEnabled;
+            set
+            {
+                SetProperty(ref _isDownloadButtonEnabled, value);
             }
         }
         public bool ShowSatelliteTileLayer
@@ -185,6 +289,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             get => _polygons;
             set => SetProperty(ref _polygons, value);
+        }
+
+        public CropType CropType
+        {
+            get => _cropType;
+            set => SetProperty(ref _cropType, value);
         }
 
         public ObservableCollection<Pin> Pins
@@ -210,6 +320,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public DelegateCommand DownloadDeleteCommand { get; set; }
         public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(async() => 
         {
             if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty())
@@ -1094,7 +1205,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     : StringLocalizer.GetString("rainfed");
             SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
             SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
-
+            CropType = SelectedPlot.CropType;
             var gdd = SelectedPlot.WeatherHistory?.Gdd.Series.Sum(x => x.Value);
             var weatherIcon = SelectedPlot.WeatherForecast?.Location?.HourlySummaries?.HourlySummary?.FirstOrDefault()
                 ?.WxIcon;

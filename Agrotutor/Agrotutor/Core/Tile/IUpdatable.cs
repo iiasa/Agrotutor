@@ -7,6 +7,6 @@ namespace Agrotutor.Core.Tile
 {
 	public interface IUpdatable
 	{
-		void Update();
+		void Update( string mbtilesFileName);
 	}
 }

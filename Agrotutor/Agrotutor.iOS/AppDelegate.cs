@@ -1,8 +1,13 @@
-﻿using Xamarin;
+﻿using System;
+using Agrotutor.Core;
+using Plugin.DownloadManager;
+using Plugin.DownloadManager.Abstractions;
+using Xamarin;
 
 namespace Agrotutor.iOS
 {
     using Foundation;
+    using System.IO;
     using UIKit;
 
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -22,7 +27,14 @@ namespace Agrotutor.iOS
         {
             Rg.Plugins.Popup.Popup.Init();
             global::Xamarin.Forms.Forms.Init();
-
+            // Download manager
+           FileManager.SavingPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            CrossDownloadManager.Current.PathNameForDownloadedFile = new Func<IDownloadFile, string>(file =>
+            {
+                string fileName = file.Url.GetHashCode().ToString();
+                string path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), fileName);
+                return path;
+            });
             Xamarin.FormsGoogleMaps.Init("AIzaSyCm-_Fc-5-vvbhTPQg38LlCreorYtsC2Us");
             FormsGoogleMapsBindings.Init();
             XF.Material.iOS.Material.Init();

@@ -195,4 +195,7 @@
   <data name="yield" xml:space="preserve">
     <value>Yield (kg/ha):</value>
   </data>
+  <data name="plot_detail_CropType" xml:space="preserve">
+    <value>Crop type</value>
+  </data>
 </root>

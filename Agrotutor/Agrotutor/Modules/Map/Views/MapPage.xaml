@@ -11,6 +11,7 @@
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
         <Grid>
@@ -202,7 +203,12 @@
                                     <Label Text="{localization:Translate plot_detail_climate}" />
                                     <Label Text="{Binding SelectedPlotClimate}" />
                                 </StackLayout>
-                                
+
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{localization:Translate plot_detail_CropType}" />
+                                    <Label Text="{Binding CropType}" />
+                                </StackLayout>
+
                                 <views:ValueLine Text="Growing Degree Days" 
                                      Value="{Binding CurrentPlotGdd}" 
                                      ImageSource="{Binding CurrentPlotWeatherIcon}"
@@ -289,15 +295,16 @@
                 IsVisible="{Binding AddParcelIsVisible}"
                 Style="{StaticResource MainMapPopup}" />
 
-            <ContentView
+            <ContentView Grid.Row="0" Grid.RowSpan="5"
                 x:Name="LayerSwitcherView"
                 IsVisible="{Binding LayerSwitcherIsVisible}"
                 Style="{StaticResource MainMapPopup}">
-                <Frame Style="{StaticResource MainMapPopupBackground}">
-                    <StackLayout>
+                <Frame Style="{StaticResource MainMapPopupBackground}" >
+                    <ScrollView Orientation="Vertical">
+                        <StackLayout>
                         <views:IconWithText IconSource="layers.png" IconText="{localization:Translate layers}" />
-                        <ScrollView>
-                            <StackLayout>
+                      
+                            <StackLayout Spacing="0">
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding PlotsLayerVisible}"
                                     SelectedChangeCommand="{Binding PlotsSelectionChangedCommand}"
@@ -326,12 +333,22 @@
                                     Text="{localization:Translate investigation_platforms}" />
                                 <views:Divider />
                                 <ui:MaterialCheckbox IsSelected="{Binding ShowSatelliteTileLayer}" Text="Satellite" />
-                                <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" />
-                              
+                                <StackLayout Orientation="Horizontal">
+                                    <ui:MaterialCheckbox IsSelected="{Binding OfflineBasemapLayerVisible}" Text="Offline basemap" IsEnabled="{Binding IsOfflineBasemapLayerEnabled}" />
+                                    <Image IsEnabled="{Binding IsDownloadButtonEnabled}" WidthRequest="25" HeightRequest="25" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Teal">
+                                        <Image.Source>
+                                            <FileImageSource File="{Binding DownloadStatusImage}" />
+                                        </Image.Source>
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DownloadDeleteCommand}"></TapGestureRecognizer>
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                </StackLayout>
 
                             </StackLayout>
-                        </ScrollView>
+                      
                     </StackLayout>
+                    </ScrollView>
                 </Frame>
 
             </ContentView>

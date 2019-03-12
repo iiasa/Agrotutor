@@ -114,6 +114,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                             }
                         };
                         await AppDataService.AddPlotAsync(Plot);
+                   var res=     await AppDataService.GetAllPlotsAsync();
                         SavingPlot = false;
                     }
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
