@@ -153,6 +153,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             : base(navigationService, localizer)
         {
             IsDownloadButtonEnabled = true;
+            Title = "Map";
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
             LocationPermissionGiven = false;

@@ -566,40 +566,42 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\html\recommendedpractices\files\themedata.xml" />
-    <AndroidResource Include="Resources\drawable\en_2.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\en_3.png" />
+    <AndroidResource Include="Resources\drawable\en_1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\en_4.png" />
+    <AndroidResource Include="Resources\drawable\en_2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\en_5.png" />
+    <AndroidResource Include="Resources\drawable\en_3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\en_6.png" />
+    <AndroidResource Include="Resources\drawable\en_4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\es_1.png" />
+    <AndroidResource Include="Resources\drawable\en_5.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\es_2.png" />
+    <AndroidResource Include="Resources\drawable\en_6.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\es_3.png" />
+    <AndroidResource Include="Resources\drawable\es_1.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\es_4.png" />
+    <AndroidResource Include="Resources\drawable\es_2.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\es_5.png" />
+    <AndroidResource Include="Resources\drawable\es_3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\es_6.png" />
+    <AndroidResource Include="Resources\drawable\es_4.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\en_1.png" />
+    <AndroidResource Include="Resources\drawable\es_5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\es_6.jpg" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_delete.png" />
