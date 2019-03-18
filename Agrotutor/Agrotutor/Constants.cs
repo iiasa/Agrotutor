@@ -45,5 +45,6 @@
         public const string Plots = "Plots";
         public const string UserLocation = "UserLocation";
         public const string MapData = "MapData";
+        public const string TermsAccepted = "TermsAccepted";
     }
 }

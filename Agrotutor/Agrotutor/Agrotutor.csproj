@@ -32,6 +32,7 @@
 
   <ItemGroup>
     <None Remove="Core\Tile\Resources\mexico-simple.mbtiles" />
+    <None Remove="Data\TermsText.txt" />
     <None Remove="Resources\AppData\hubs_contact.geojson" />
     <None Remove="Resources\AppData\investigation_platforms.geojson" />
     <None Remove="Resources\AppData\machinery_points.geojson" />
@@ -40,6 +41,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Core\Tile\Resources\mexico-simple.mbtiles" />
+    <EmbeddedResource Include="Data\TermsText.txt" />
     <EmbeddedResource Include="Resources\AppData\hubs_contact.geojson" />
     <EmbeddedResource Include="Resources\AppData\investigation_platforms.geojson" />
     <EmbeddedResource Include="Resources\AppData\machinery_points.geojson" />
@@ -119,6 +121,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TermsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WebContentPage.xaml">
