@@ -11,6 +11,7 @@
         public string AmountApplied { get; set; }
         public string AppliedProduct { get; set; }
         public double Cost { get; set; }
+        public double Price { get; set; }
         public DateTime Date { get; set; }
         public double Dose { get; set; }
         public string Name { get; set; }
