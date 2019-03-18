@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using Xamarin.Essentials;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.ViewModels
@@ -43,9 +44,15 @@ namespace Agrotutor.ViewModels
 
                 using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                 {
-                    await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
+                    if (Preferences.ContainsKey(Constants.TermsAccepted))
+                    {
+                        await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
+                    }
+                    else
+                    {
+                        await NavigationService.NavigateAsync("TermsPage");
+                    }
                 }
-                
             });
 
         

@@ -59,7 +59,7 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
@@ -117,86 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-
-  <data name="plot_detail_actions" xml:space="preserve">
-    <value>Acciones:</value>
+  <data name="AcceptText" xml:space="preserve">
+    <value>Please accept the terms</value>
   </data>
-  <data name="plot_detail_additional_title" xml:space="preserve">
-    <value>Rendimiento potencial/Recomendaciones/Precios</value>
+  <data name="ProceedText" xml:space="preserve">
+    <value>Proceed</value>
   </data>
-  <data name="plot_detail_add_activity" xml:space="preserve">
-    <value>Agregar actividad</value>
-  </data>
-  <data name="plot_detail_calendar" xml:space="preserve">
-    <value>Calendario de cultivo</value>
-  </data>
-  <data name="plot_detail_climate" xml:space="preserve">
-    <value>Clima idóneo</value>
-  </data>
-  <data name="plot_detail_delineate" xml:space="preserve">
-    <value>Delinear la parcela</value>
-  </data>
-  <data name="plot_detail_historical_title" xml:space="preserve">
-    <value>Información histórica</value>
-  </data>
-  <data name="plot_detail_irrigation" xml:space="preserve">
-    <value>Con riego</value>
-  </data>
-  <data name="plot_detail_maturity" xml:space="preserve">
-    <value>Tipo de madurez</value>
-  </data>
-  <data name="plot_detail_picture" xml:space="preserve">
-    <value>Agregue una foto</value>
-  </data>
-  <data name="plot_detail_planting_date" xml:space="preserve">
-    <value>Fecha de siembra:</value>
-  </data>
-  <data name="plot_detail_video" xml:space="preserve">
-    <value>Agregue un vídeo</value>
-  </data>
-  <data name="costs" xml:space="preserve">
-    <value>Costos (MXP/ha):</value>
-  </data>
-  <data name="hub_contact" xml:space="preserve">
-    <value>Contacto del hub</value>
-  </data>
-  <data name="income" xml:space="preserve">
-    <value>Ingresos (MXP/ha):</value>
-  </data>
-  <data name="investigation_platforms" xml:space="preserve">
-    <value>Plataformas de investigación</value>
-  </data>
-  <data name="layers" xml:space="preserve">
-    <value>Capas</value>
-  </data>
-  <data name="machinery_points" xml:space="preserve">
-    <value>Puntos de maquinaria</value>
-  </data>
-  <data name="nitrogen" xml:space="preserve">
-    <value>Fertilización recomendada (kg N/ha):</value>
-  </data>
-  <data name="offline_basemap" xml:space="preserve">
-    <value>Mapa base sin conexión</value>
-  </data>
-  <data name="plots" xml:space="preserve">
-    <value>Parcelas</value>
-  </data>
-  <data name="plot_delineations" xml:space="preserve">
-    <value>Delineaciones de las parcelas</value>
-  </data>
-  <data name="potential_yield" xml:space="preserve">
-    <value>Rendimiento potencial (prom Ton/ha):</value>
-  </data>
-  <data name="price_forecast" xml:space="preserve">
-    <value>Precio próximo mes (Prom MXP/kg):</value>
-  </data>
-  <data name="profit" xml:space="preserve">
-    <value>Utilidad (MXP/ha):</value>
-  </data>
-  <data name="yield" xml:space="preserve">
-    <value>Rendimiento (Ton/ha):</value>
-  </data>
-  <data name="delete" xml:space="preserve">
-    <value>Borrar</value>
+  <data name="TermsWelcome" xml:space="preserve">
+    <value>Terms and conditions</value>
   </data>
 </root>

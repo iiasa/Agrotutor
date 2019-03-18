@@ -466,6 +466,9 @@
     <PackageReference Include="Xam.Plugin.Media">
       <Version>4.0.1.5</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugins.DownloadManager">
+      <Version>1.4.0</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Essentials">
       <Version>1.0.1</Version>
     </PackageReference>
@@ -516,6 +519,12 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\close_cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_download.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

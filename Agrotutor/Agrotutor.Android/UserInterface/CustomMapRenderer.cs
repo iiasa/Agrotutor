@@ -11,6 +11,7 @@ using Agrotutor.UserInterface.CustomMap;
 using Android.Content;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Microsoft.EntityFrameworkCore;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 using Xamarin.Forms.GoogleMaps.Android;
@@ -19,11 +20,13 @@ using Xamarin.Forms.GoogleMaps.Android;
 
 namespace Agrotutor.Droid.UserInterface
 {
-    public class CustomMapRenderer : MapRenderer
+    public class CustomMapRenderer : MapRenderer, IUpdatable
     {
         public CustomMapRenderer(Context context)
             : base(context)
         {
+            // Store the current Map Renderer into LayerService
+            LayerService.MapRenderer = this;
         }
 
         protected CustomMap CustomMap => Element as CustomMap;
@@ -59,27 +62,67 @@ namespace Agrotutor.Droid.UserInterface
                 nativeMap.UiSettings.TiltGesturesEnabled = true;
                 nativeMap.UiSettings.ZoomGesturesEnabled = true;
                 nativeMap.UiSettings.MapToolbarEnabled = true;
-                try
-                {
-                    // Find a better way to get dependencies
-                    var options = new TileOverlayOptions().InvokeZIndex(0f)
-                        .InvokeTileProvider(new CustomTileProvider(
-                            (IReadOnlyTileService) ((App) Application.Current).Container.Resolve(
-                                typeof(IReadOnlyTileService))));
+                LayerService.CurrentMap = nativeMap;
+                CustomMap.MapType = CustomMap.ShowSatelliteTileLayer ? MapType.Hybrid : MapType.None;
+                //try
+                //{
+                //    // Find a better way to get dependencies
+                //    var options = new TileOverlayOptions().InvokeZIndex(0f)
+                //        .InvokeTileProvider(new CustomTileProvider(
+                //            (IReadOnlyTileService) ((App) Application.Current).Container.Resolve(
+                //                typeof(IReadOnlyTileService))));
 
-                    TileOverlay = nativeMap.AddTileOverlay(options);
-                    TileOverlay.Visible = CustomMap.ShowTileLayer;
-                    CustomMap.MapType = CustomMap.ShowSatelliteTileLayer ? MapType.Hybrid : MapType.None;
-                
+                //    TileOverlay = nativeMap.AddTileOverlay(options);
+                //    TileOverlay.Visible = CustomMap.ShowTileLayer;
 
-                }
-                catch (Exception ex)
-                {
-                    Console.Write(ex.Message);
-                }
+
+
+                //}
+                //catch (Exception ex)
+                //{
+                //    Console.Write(ex.Message);
+                //}
 
                 IsInitialized = true;
             }
+        }
+
+        public void Update( string mbtilesFileName)
+        {
+
+            SetMbTilesAsBackground( mbtilesFileName);
+        }
+        public void SetMbTilesAsBackground(string mbtilesFileName)
+        {
+          
+                // Remove previous TileOverlay if created
+                if (TileOverlay != null)
+                {
+                    //TileOverlay.Remove();
+                    return;
+                }
+            
+                    // Make Db Context Options Builder to create sqlite db builder
+                    DbContextOptionsBuilder<TileContext> myContextBuilder = new DbContextOptionsBuilder<TileContext>();
+                myContextBuilder.UseSqlite($"Filename={mbtilesFileName}");
+
+                // Initialize TileContext with this builder
+                TileContext tileContext = new TileContext(myContextBuilder.Options);
+
+                // Create TileService with this TileConext
+                ReadOnlyTileService readOnlyTileService = new ReadOnlyTileService(tileContext);
+
+                // Create CustomTileProvider with this TileService
+                CustomTileProvider customTileProvider = new CustomTileProvider(readOnlyTileService);
+
+                // And finally, create the TileOverlayOptions
+                TileOverlayOptions options = new TileOverlayOptions().InvokeZIndex(0f)
+                    .InvokeTileProvider(customTileProvider);
+
+                // And TileOverlay
+                GoogleMap map = (GoogleMap) LayerService.CurrentMap;
+                TileOverlay = map.AddTileOverlay(options);
+            
         }
     }
 }

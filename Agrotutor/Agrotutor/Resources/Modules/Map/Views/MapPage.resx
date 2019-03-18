@@ -198,4 +198,7 @@
   <data name="delete" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="plot_detail_CropType" xml:space="preserve">
+    <value>Crop type</value>
+  </data>
 </root>

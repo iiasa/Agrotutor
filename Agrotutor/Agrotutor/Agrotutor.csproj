@@ -21,6 +21,7 @@
     <PackageReference Include="OxyPlot.Xamarin.Forms" Version="1.1.0-unstable0011" />
     <PackageReference Include="Prism.Plugin.Popups" Version="2.2.0.293" />
     <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xam.Plugins.DownloadManager" Version="1.4.0" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.4.859" />
     <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
@@ -32,6 +33,7 @@
 
   <ItemGroup>
     <None Remove="Core\Tile\Resources\mexico-simple.mbtiles" />
+    <None Remove="Data\TermsText.txt" />
     <None Remove="Resources\AppData\hubs_contact.geojson" />
     <None Remove="Resources\AppData\investigation_platforms.geojson" />
     <None Remove="Resources\AppData\machinery_points.geojson" />
@@ -40,6 +42,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Core\Tile\Resources\mexico-simple.mbtiles" />
+    <EmbeddedResource Include="Data\TermsText.txt" />
     <EmbeddedResource Include="Resources\AppData\hubs_contact.geojson" />
     <EmbeddedResource Include="Resources\AppData\investigation_platforms.geojson" />
     <EmbeddedResource Include="Resources\AppData\machinery_points.geojson" />
@@ -119,6 +122,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\TermsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\WebContentPage.xaml">

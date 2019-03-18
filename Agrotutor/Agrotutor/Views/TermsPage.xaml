@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization;assembly=Agrotutor"
+             xmlns:behaviors="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             Title="{localization:Translate TermsWelcome}"
+             x:Class="Agrotutor.Views.TermsPage">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <WebView Grid.Row="0" HorizontalOptions="FillAndExpand"
+                 VerticalOptions="FillAndExpand" x:Name="WebView" Source="{Binding TermsSource}" />
+        <StackLayout IsVisible="{Binding IsNotAccepted}"
+                     Grid.Row="1"
+                     Orientation="Horizontal"
+                     VerticalOptions="FillAndExpand">
+            <Switch HorizontalOptions="Start" IsToggled="{Binding IsTermsAccepted}" />
+            <Label
+                HorizontalOptions="FillAndExpand"
+                Text="{localization:Translate AcceptText}"
+                VerticalOptions="FillAndExpand" />
+        </StackLayout>
+        <Button IsVisible="{Binding IsNotAccepted}"
+                x:Name="NextButton"
+                Grid.Row="2"
+                Command="{Binding GetStartedCommand}"
+                HorizontalOptions="FillAndExpand"
+                Text="{localization:Translate ProceedText}"
+                VerticalOptions="EndAndExpand" />
+    </Grid>
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing"
+                                          Command="{Binding PageAppearingCommand}" />
+    </ContentPage.Behaviors>
+</ContentPage>
