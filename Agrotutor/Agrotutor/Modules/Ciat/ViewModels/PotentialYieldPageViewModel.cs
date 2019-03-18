@@ -36,13 +36,17 @@ namespace Agrotutor.Modules.Ciat.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            base.OnNavigatedTo(parameters);
-            if (parameters.ContainsKey(DataParameterName))
+            if (CiatData == null)
             {
-                parameters.TryGetValue<CiatData>(DataParameterName, out var ciatData);
-                CiatData = ciatData;
-                IrrigatedClickedCommand.Execute();
+                if (parameters.ContainsKey(DataParameterName))
+                {
+                    parameters.TryGetValue<CiatData>(DataParameterName, out var ciatData);
+                    CiatData = ciatData;
+                    IrrigatedClickedCommand.Execute();
+                }
             }
+
+            base.OnNavigatedTo(parameters);
         }
 
         public double Min

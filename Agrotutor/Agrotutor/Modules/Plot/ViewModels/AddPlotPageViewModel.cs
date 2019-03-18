@@ -1,5 +1,6 @@
-using Agrotutor.ViewModels;
+using System.Threading.Tasks;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Modules.Plot.ViewModels
@@ -100,7 +101,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
-                    using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading")))
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("saving_plot")))
                     {
                         SavingPlot = true;
                         Plot.Activities = new List<Activity>
@@ -117,12 +118,14 @@ namespace Agrotutor.Modules.Plot.ViewModels
                    var res=     await AppDataService.GetAllPlotsAsync();
                         SavingPlot = false;
                     }
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("plot_created"), 3000);
+                    await Task.Delay(2000);
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
-        public List<string> ClimateTypes { get; private set; } 
+        public List<string> ClimateTypes { get; private set; }
 
-        public List<string> CropTypes { get; private set;  }
+        public List<string> CropTypes { get; private set; }
 
         public List<string> MaturityClasses { get; }
 

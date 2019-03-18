@@ -1,4 +1,5 @@
 using Agrotutor.ViewModels;
+using Castle.Core.Internal;
 using Prism.Commands;
 
 namespace Agrotutor.Modules.Benchmarking.ViewModels
@@ -68,22 +69,26 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey(ProfitsParameterName))
+            if (this.Datasets.IsNullOrEmpty())
             {
-                parameters.TryGetValue(ProfitsParameterName, out List<Profit> profit);
-                if (profit != null)
+                if (parameters.ContainsKey(ProfitsParameterName))
                 {
-                    this.Datasets = profit;
+                    parameters.TryGetValue(ProfitsParameterName, out List<Profit> profit);
+                    if (profit != null)
+                    {
+                        this.Datasets = profit;
+                    }
+                    else
+                    {
+                        NavigationService.GoBackAsync();
+                    }
                 }
                 else
                 {
                     NavigationService.GoBackAsync();
                 }
             }
-            else
-            {
-                NavigationService.GoBackAsync();
-            }
+
             base.OnNavigatedTo(parameters);
         }
         public DelegateCommand ShowAbout => new DelegateCommand(async () =>

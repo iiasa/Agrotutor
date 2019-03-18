@@ -117,8 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="average" xml:space="preserve">
+    <value>avg</value>
+  </data>
   <data name="irrigated" xml:space="preserve">
     <value>Irrigated</value>
+  </data>
+  <data name="maximum" xml:space="preserve">
+    <value>max</value>
+  </data>
+  <data name="minimum" xml:space="preserve">
+    <value>min</value>
   </data>
   <data name="non_irrigated" xml:space="preserve">
     <value>Rainfed</value>

@@ -57,7 +57,7 @@
                 MapClicked="Handle_MapClicked"
                 MapLongClicked="Handle_MapLongClicked"
                 MapType="Hybrid"
-                MyLocationEnabled="True"
+                MyLocationEnabled="{Binding LocationEnabled}"
                 PinClicked="Handle_PinClicked"
                 ShowTileLayer="{Binding OfflineBasemapLayerVisible}"
                 ShowSatelliteTileLayer="{Binding ShowSatelliteTileLayer}"
@@ -73,7 +73,7 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 Grid.ColumnSpan="3"
-                Margin="13"
+                Margin="6"
                 HeightRequest="38"
                 HorizontalOptions="CenterAndExpand"
                 IsVisible="{Binding ShowWeatherWidget}">
@@ -324,7 +324,7 @@
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding MachineryPointsLayerVisible}"
                                     SelectedChangeCommand="{Binding MachineryPointsSelectionChangedCommand}"
-                                    SelectedColor="{StaticResource SecondaryDarkGreen}"
+                                    SelectedColor="{StaticResource MachineryPoints}"
                                     Text="{localization:Translate machinery_points}" />
                                 <ui:MaterialCheckbox
                                     IsSelected="{Binding InvestigationPlatformsLayerVisible}"

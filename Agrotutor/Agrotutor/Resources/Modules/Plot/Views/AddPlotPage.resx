@@ -153,6 +153,12 @@
   <data name="madurez" xml:space="preserve">
     <value>Maturity type of the cultivar</value>
   </data>
+  <data name="plot_created" xml:space="preserve">
+    <value>Plot creation successfull.</value>
+  </data>
+  <data name="saving_plot" xml:space="preserve">
+    <value>Saving plot</value>
+  </data>
   <data name="select" xml:space="preserve">
     <value>select</value>
   </data>

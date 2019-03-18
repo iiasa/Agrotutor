@@ -87,16 +87,19 @@ namespace Agrotutor.Modules.PriceForecasting.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            base.OnNavigatedTo(parameters);
-
-            if (parameters.ContainsKey(PriceForecastParameterName))
+            if (PriceForecasts == null)
             {
-                parameters.TryGetValue<IEnumerable<PriceForecast>>(PriceForecastParameterName, out var forecast);
-                if (forecast != null)
+                if (parameters.ContainsKey(PriceForecastParameterName))
                 {
-                    PriceForecasts = forecast.ToList();
+                    parameters.TryGetValue<IEnumerable<PriceForecast>>(PriceForecastParameterName, out var forecast);
+                    if (forecast != null)
+                    {
+                        PriceForecasts = forecast.OrderBy(x => x.Month).ToList();
+                    }
                 }
             }
+
+            base.OnNavigatedTo(parameters);
         }
         public DelegateCommand ShowAbout => new DelegateCommand(async () =>
         {
