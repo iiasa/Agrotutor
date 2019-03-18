@@ -264,57 +264,61 @@ namespace Agrotutor.Modules.Plot.ViewModels
             {
                 case ActivityType.SoilImprovers:
                     baseClass = new SoilImproversActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("soil_improvers");
                     break;
 
                 case ActivityType.GroundPreperation:
                     baseClass = new GroundPreperationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("ground_preparation");
                     break;
 
                 case ActivityType.Sowing:
                     baseClass = new SowingActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("sowing");
                     break;
 
                 case ActivityType.Fertilization:
                     baseClass = new FertilizationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("fertilization");
                     break;
 
                 case ActivityType.Irrigation:
                     baseClass = new IrrigationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("soil_improvers");
                     break;
 
                 case ActivityType.WeedPreventionControl:
                     baseClass = new WeedPreventionControlActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("weed_prevention");
                     break;
 
                 case ActivityType.PestAndDiseaseControlAndPrevention:
                     baseClass = new PestAndDiseaseControlAndPreventionActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("pest_and_disease");
                     break;
 
                 case ActivityType.Harvest:
                     baseClass = new HarvestActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("harvest");
                     break;
 
                 case ActivityType.PostHarvestStorage:
                     baseClass = new PostHarvestStorageActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("post_harvest_storage");
                     break;
 
                 case ActivityType.Commercialization:
                     baseClass = new CommercializationActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("commercialization");
                     break;
 
                 case ActivityType.OtherActivities:
                     baseClass = new OtherActivitiesActivity((IStringLocalizer<ActivityDetailViewModel>)StringLocalizer);
+                    ActivityName = StringLocalizer.GetString("other");
                     break;
             }
 
-            if (baseClass != null)
-            {
-                ActivityDynamicUIVisibility = baseClass.ActivityDynamicUIVisibility;
-                if (ActivityDynamicUIVisibility != null)
-                {
-                    ActivityName = ActivityDynamicUIVisibility.ActivityName; //TODO: Add translation
-                }
-            }
+            if (baseClass != null) ActivityDynamicUIVisibility = baseClass.ActivityDynamicUIVisibility;
             base.OnNavigatedTo(parameters);
         }
     }

@@ -153,9 +153,6 @@
   <data name="mechanical_harvest" xml:space="preserve">
     <value>Cosecha mecánica</value>
   </data>
-  <data name="name" xml:space="preserve">
-    <value>Comercialización</value>
-  </data>
   <data name="organic_fertilizer" xml:space="preserve">
     <value>Aplicación de fertilizante orgánico</value>
   </data>
@@ -188,5 +185,8 @@
   </data>
   <data name="traditional_storage" xml:space="preserve">
     <value>Almacenamiento poscosecha tradicional</value>
+  </data>
+  <data name="commercialization" xml:space="preserve">
+    <value>Comercialización</value>
   </data>
 </root>
