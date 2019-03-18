@@ -144,6 +144,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             IStringLocalizer<MapPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            Title = "Map";
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
             LocationPermissionGiven = false;
