@@ -483,6 +483,9 @@
     <PackageReference Include="XF.Material">
       <Version>1.4.0.4</Version>
     </PackageReference>
+    <PackageReference Include="System.Reflection.Emit" Version="4.3.0">
+      <ExcludeAssets>all</ExcludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Agrotutor\Agrotutor.csproj">
