@@ -41,7 +41,6 @@ namespace Agrotutor.iOS
             CachedImageRenderer.Init();
             XF.Material.iOS.Material.Init();
             Rg.Plugins.Popup.Popup.Init();
-            SQLitePCL.Batteries_V2.Init();
             OxyPlot.Xamarin.Forms.Platform.iOS.PlotViewRenderer.Init();
             LoadApplication(new App(new iOSInitializer()));
 
