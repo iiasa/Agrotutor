@@ -102,10 +102,10 @@
                 IconSource="clear.png"
                 IconText="{localization:Translate main_menu_weather}" />
             <views:MiniMenuIcon
-                Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"
+                Command="{TemplateBinding Parent.BindingContext.StartPlanner}"
                 HorizontalOptions="CenterAndExpand"
-                IconSource="add.png"
-                IconText="{localization:Translate main_menu_add_parcel}" />
+                IconSource="flag.png"
+                IconText="{localization:Translate main_menu_advice}" />
         </StackLayout>
     </ControlTemplate>
 
@@ -385,10 +385,6 @@
                 <views:Divider />
                 <ScrollView>
                     <StackLayout>
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.StartPlanner}"
-                            IconSource="planner.png"
-                            IconText="{localization:Translate options_planner}" />
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"
                             IconSource="profile.png"

@@ -471,6 +471,7 @@
     <AndroidResource Include="Resources\drawable\welcome_6.png" />
     <AndroidResource Include="Resources\drawable\welcome_7.png" />
     <AndroidResource Include="Resources\drawable\welcome_8.png" />
+    <AndroidResource Include="Resources\drawable\flag.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
