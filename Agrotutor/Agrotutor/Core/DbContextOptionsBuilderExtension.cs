@@ -40,7 +40,8 @@ namespace Agrotutor.Core
 			switch (Device.RuntimePlatform)
 			{
 				case Device.iOS:
-					return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
+                    SQLitePCL.Batteries_V2.Init();
+                    return Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "..", "Library");
 
 				case Device.Android:
 					return Environment.GetFolderPath(Environment.SpecialFolder.Personal);

@@ -104,34 +104,14 @@ namespace Agrotutor.Core.Tile
 			LayerItems.Clear();
 		}
 
-		/// <summary>
-		/// Update the visibility of a layer.
-		/// </summary>
-		/// <param name="id">Id of layer.</param>
-		/// <param name="isChecked">Visibility of layer.</param>
-		public static void UpdateIsChecked(int id, bool isChecked)
-		{
-		    LayerItem layer = GetLayerById(id);
-			if (layer != null)
-			{
-				layer.IsChecked = isChecked;
-				if ((layer.Id != LAYERPOINTS) && (layer.Id != LAYERGOOGLEMAP))
-				{
-					foreach (LayerItem lay in LayerItems)
-					{
-						if ((lay.Id != layer.Id) && (lay.Id != LAYERPOINTS) && (lay.Id != LAYERGOOGLEMAP))
-						{
-							lay.IsChecked = false;
-						}
-					}
-				}
-			}
-
-			if (MapRenderer != null)
-			{
-				MapRenderer.Update();
-			}
-		}
+        /// <summary>
+        /// Update the visibility of a layer.
+        /// </summary>
+        /// <param name="mbtilesFileName">name of layer.</param>
+        public static void UpdateIsChecked( string mbtilesFileName)
+        {
+            MapRenderer?.Update( mbtilesFileName);
+        }
 
 		/// <summary>
 		/// Return the current raster layer Id selected.

@@ -117,76 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="chemical_fertilizer" xml:space="preserve">
-    <value>Fertilización química al suelo</value>
+  <data name="AcceptText" xml:space="preserve">
+    <value>Please accept the terms</value>
   </data>
-  <data name="deweeding" xml:space="preserve">
-    <value>Prevención y control de malezas</value>
+  <data name="ProceedText" xml:space="preserve">
+    <value>Proceed</value>
   </data>
-  <data name="fertilizer" xml:space="preserve">
-    <value>Fertilización</value>
-  </data>
-  <data name="fungizide" xml:space="preserve">
-    <value>Aplicación de fungicidas</value>
-  </data>
-  <data name="ground_preparation" xml:space="preserve">
-    <value>Preparación del terreno</value>
-  </data>
-  <data name="harvest" xml:space="preserve">
-    <value>Cosecha</value>
-  </data>
-  <data name="hermetic_storage" xml:space="preserve">
-    <value>Almacenamiento poscosecha con tecnologías herméticas</value>
-  </data>
-  <data name="insecticide" xml:space="preserve">
-    <value>Aplicación de insecticidas</value>
-  </data>
-  <data name="irrigation" xml:space="preserve">
-    <value>Riego</value>
-  </data>
-  <data name="liquid_fertilizer" xml:space="preserve">
-    <value>Aplicación de fertilizante foliar</value>
-  </data>
-  <data name="manual_harvest" xml:space="preserve">
-    <value>Cosecha manual</value>
-  </data>
-  <data name="mechanical_harvest" xml:space="preserve">
-    <value>Cosecha mecánica</value>
-  </data>
-  <data name="organic_fertilizer" xml:space="preserve">
-    <value>Aplicación de fertilizante orgánico</value>
-  </data>
-  <data name="other_activities" xml:space="preserve">
-    <value>Otras actividades</value>
-  </data>
-  <data name="pest_control" xml:space="preserve">
-    <value>Control y prevención de plagas y enfermedades</value>
-  </data>
-  <data name="physical_weed_control" xml:space="preserve">
-    <value>Labores culturales y control físico de malezas</value>
-  </data>
-  <data name="post_harvest_storage" xml:space="preserve">
-    <value>Almacenamiento poscosecha</value>
-  </data>
-  <data name="post_planting_herbicide" xml:space="preserve">
-    <value>Aplicación de herbicidas después de la siembra</value>
-  </data>
-  <data name="pre_planting_herbicide" xml:space="preserve">
-    <value>Aplicación de herbicidas presiembra</value>
-  </data>
-  <data name="resowing" xml:space="preserve">
-    <value>Resiembra</value>
-  </data>
-  <data name="soil_improvers" xml:space="preserve">
-    <value>Aplicación de mejoradores del suelo</value>
-  </data>
-  <data name="sowing" xml:space="preserve">
-    <value>Siembra</value>
-  </data>
-  <data name="traditional_storage" xml:space="preserve">
-    <value>Almacenamiento poscosecha tradicional</value>
-  </data>
-  <data name="commercialization" xml:space="preserve">
-    <value>Comercialización</value>
+  <data name="TermsWelcome" xml:space="preserve">
+    <value>Terms and conditions</value>
   </data>
 </root>

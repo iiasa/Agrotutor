@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Agrotutor.Modules.Ciat.Types;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
@@ -63,6 +64,12 @@ namespace Agrotutor.Core.Persistence
             var splitStringConverter = new ValueConverter<IEnumerable<string>, string>(v => string.Join(";", v), v => v.Split(new[] { ';' }));
             modelBuilder.Entity<CiatData.CiatDataDetail>().Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.OptimalCultivars)).HasConversion(splitStringConverter);
             modelBuilder.Entity<CiatData.CiatDataDetail>().Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.SuboptimalCultivars)).HasConversion(splitStringConverter);
+            modelBuilder
+                .Entity<Plot>()
+                .Property(e => e.CropType)
+                .HasConversion(
+                    v => v.ToString(),
+                    v => (CropType)Enum.Parse(typeof(CropType), v));
             base.OnModelCreating(modelBuilder);
         }
     }

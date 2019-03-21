@@ -1,3 +1,6 @@
+using Agrotutor.Core;
+using Plugin.DownloadManager;
+using Plugin.DownloadManager.Abstractions;
 namespace Agrotutor.Droid
 {
     using System;
@@ -11,6 +14,7 @@ namespace Agrotutor.Droid
     using Android.Runtime;
     using Plugin.CurrentActivity;
     using Xamarin;
+    using System.IO;
     using FFImageLoading.Forms.Droid;
 
     [Activity(Label = "Agrotutor", Icon = "@drawable/app_icon" ,Theme = "@style/splashscreen", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -40,6 +44,17 @@ namespace Agrotutor.Droid
             CachedImageRenderer.Init(true);
             Rg.Plugins.Popup.Popup.Init(this, bundle);
             Forms.Init(this, bundle);
+           FileManager.SavingPath = ApplicationContext.GetExternalFilesDir(Android.OS.Environment.DirectoryDownloads).AbsolutePath;
+
+            // Donwload manager
+            CrossDownloadManager.Current.PathNameForDownloadedFile = new Func<IDownloadFile, string>(file =>
+            {
+                string fileName = file.Url.GetHashCode().ToString() ; 
+            //  string  fileName= Path.GetFileName(file.Url);
+                string path = Path.Combine(ApplicationContext.GetExternalFilesDir(Android.OS.Environment.DirectoryDownloads).AbsolutePath, fileName);
+
+                return path;
+            });
             FormsGoogleMaps.Init(this, bundle);
             FormsGoogleMapsBindings.Init();
             UserDialogs.Init(this);

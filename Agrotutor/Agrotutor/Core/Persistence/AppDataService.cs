@@ -14,6 +14,7 @@ namespace Agrotutor.Core.Persistence
         public AppDataService(IAppDataContext context)
         {
             Context = context;
+   
         }
         protected IAppDataContext Context { get; set; }
 
@@ -66,6 +67,7 @@ namespace Agrotutor.Core.Persistence
 
         public async Task<IEnumerable<Plot>> GetAllPlotsAsync()
         {
+  
             var plots = await Context.Plots.ToListAsync() ?? new List<Plot>();
             return plots;
         }

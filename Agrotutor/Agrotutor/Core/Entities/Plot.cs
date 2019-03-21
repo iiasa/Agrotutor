@@ -38,6 +38,8 @@ namespace Agrotutor.Core.Entities
 
         public string Name { get; set; }
 
+        public bool Irrigated { get; set; }
+
         public virtual Position Position { get; set; }
 
         public virtual WeatherForecast WeatherForecast { get; set; }

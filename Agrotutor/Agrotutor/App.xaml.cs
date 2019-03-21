@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
 using Agrotutor.Modules.Ciat.ViewModels;
@@ -59,7 +60,7 @@ namespace Agrotutor
             await NavigationService.NavigateAsync(initialPage);
         }
 
-        protected override void OnStart()
+        protected override async void OnStart()
         {
             base.OnStart();
 
@@ -67,6 +68,7 @@ namespace Agrotutor
                 $"android={Constants.AppCenterKeyAndroid};ios={Constants.AppCenterKeyIOs}",
                 typeof(Analytics),
                 typeof(Crashes));
+            await Analytics.SetEnabledAsync(true);
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -78,7 +80,8 @@ namespace Agrotutor
             containerRegistry.RegisterCameraService();
             containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
             containerRegistry.RegisterTileService();
- 
+
+            containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
         }
 
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
