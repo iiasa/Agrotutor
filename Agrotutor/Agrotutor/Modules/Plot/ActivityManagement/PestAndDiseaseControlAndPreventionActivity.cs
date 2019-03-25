@@ -26,7 +26,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("fungicides"),
                     _stringLocalizer.GetString("insecticides")
                 },
-                ActivityIcon = "cockroach_small.png",
+                ActivityIcon = "pest_control.png",
                 ActivityTitle = _stringLocalizer.GetString("pest_control")
             };
         }

@@ -21,7 +21,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("ground_preparation"),
-                ActivityIcon = "shovel_small.png",
+                ActivityIcon = "land_prep.png",
                 ActivityTitle = _stringLocalizer.GetString("ground_preparation"),
             };
         }

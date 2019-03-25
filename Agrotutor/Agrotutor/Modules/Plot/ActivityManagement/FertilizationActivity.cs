@@ -27,7 +27,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("organic_fertilizer"),
                     _stringLocalizer.GetString("chemical_fertilizer")
                 },
-                ActivityIcon = "fertilizer_small.png",
+                ActivityIcon = "fertilization.png",
                 ActivityTitle = _stringLocalizer.GetString("fertilizer")
             };
         }

@@ -21,7 +21,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("other_activities"),
-                ActivityIcon = "farmer_small.png",
+                ActivityIcon = "add.png",
                 ActivityTitle = _stringLocalizer.GetString("other_activities")
             };
         }

@@ -54,6 +54,8 @@ namespace Agrotutor.Core.Entities
 
         public virtual List<MediaItem> MediaItems { get; set; }
 
+        [NotMapped]
+        public bool IsTemporaryPlot { get; set; }
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 

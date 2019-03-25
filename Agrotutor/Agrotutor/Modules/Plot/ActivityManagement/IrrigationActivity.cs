@@ -21,7 +21,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("irrigation"),
-                ActivityIcon = "irrigation_small.png",
+                ActivityIcon = "irrigation.png",
                 ActivityTitle = _stringLocalizer.GetString("irrigation")
             };
         }

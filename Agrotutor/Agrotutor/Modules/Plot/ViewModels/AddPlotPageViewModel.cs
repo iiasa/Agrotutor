@@ -19,6 +19,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
     public class AddPlotPageViewModel : ViewModelBase
     {
         public static string PositionParameterName = "Position";
+        public static string PlotParameterName = "Plot";
 
         private int _pickerClimateTypesSelectedIndex;
 
@@ -180,6 +181,16 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     Plot.Position = position;
                 }
             }
+
+            if (parameters.ContainsKey(AddPlotPageViewModel.PlotParameterName))
+            {
+                parameters.TryGetValue(AddPlotPageViewModel.PlotParameterName, out Plot plot);
+                if (plot != null)
+                {
+                    Plot = plot;
+                }
+            }
+
             base.OnNavigatedTo(parameters);
         }
         public DelegateCommand ShowAbout => new DelegateCommand(async () =>

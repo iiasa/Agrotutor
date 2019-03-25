@@ -27,7 +27,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("manual_harvest"),
                     _stringLocalizer.GetString("mechanical_harvest")
                 },
-                ActivityIcon = "harvest_small.png",
+                ActivityIcon = "harvest.png",
                 ActivityTitle = _stringLocalizer.GetString("harvest")
             };
         }

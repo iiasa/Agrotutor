@@ -21,7 +21,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("soil_improvers"),
-                ActivityIcon = "flask_small.png",
+                ActivityIcon = "soil_improv.png",
                 ActivityTitle = _stringLocalizer.GetString("soil_improvers")
             };
         }

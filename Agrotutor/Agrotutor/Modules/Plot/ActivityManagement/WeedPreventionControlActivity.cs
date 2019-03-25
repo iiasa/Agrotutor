@@ -27,7 +27,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("pre_planting_herbicide"),
                     _stringLocalizer.GetString("physical_weed_control")
                 },
-                ActivityIcon = "weeds_small.png",
+                ActivityIcon = "weed_control.png",
                 ActivityTitle = _stringLocalizer.GetString("deweeding")
             };
         }

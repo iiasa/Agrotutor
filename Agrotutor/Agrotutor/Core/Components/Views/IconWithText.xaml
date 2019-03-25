@@ -4,7 +4,7 @@
              x:Class="Agrotutor.Core.Components.Views.IconWithText">
     <ContentView.Content>
         <StackLayout Orientation="Horizontal">
-            <Image x:Name="IconImage" Source="farmer.png" WidthRequest="32" />
+            <Image x:Name="IconImage" Source="farmer_bigger.png" WidthRequest="32" />
             <Label x:Name="IconTextLabel" VerticalOptions="Center" Margin="16" FontSize="16" />
         </StackLayout>
     </ContentView.Content>

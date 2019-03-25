@@ -26,7 +26,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("resowing"),
                     _stringLocalizer.GetString("sowing")
                 },
-                ActivityIcon = "sowing_small.png",
+                ActivityIcon = "sowing.png",
                 ActivityTitle = _stringLocalizer.GetString("sowing")
             };
         }

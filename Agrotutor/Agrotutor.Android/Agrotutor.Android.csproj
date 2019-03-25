@@ -322,28 +322,19 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_view.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\icon_weather.png" />
     <AndroidResource Include="Resources\drawable\add.png" />
-    <AndroidResource Include="Resources\drawable\add_small.png" />
     <AndroidResource Include="Resources\drawable\app_icon.png" />
     <AndroidResource Include="Resources\drawable\blowing_dust.png" />
     <AndroidResource Include="Resources\drawable\blowing_snow.png" />
-    <AndroidResource Include="Resources\drawable\bullet_black.png" />
     <AndroidResource Include="Resources\drawable\calendar.png" />
-    <AndroidResource Include="Resources\drawable\calendar2.png" />
-    <AndroidResource Include="Resources\drawable\calendar_medium.png" />
     <AndroidResource Include="Resources\drawable\choose_location.png" />
     <AndroidResource Include="Resources\drawable\clear.png" />
     <AndroidResource Include="Resources\drawable\cloudy.png" />
-    <AndroidResource Include="Resources\drawable\cockroach.png" />
-    <AndroidResource Include="Resources\drawable\cockroach_small.png" />
     <AndroidResource Include="Resources\drawable\colorramp_faded.png" />
     <AndroidResource Include="Resources\drawable\comparison.png" />
-    <AndroidResource Include="Resources\drawable\corn1.png" />
     <AndroidResource Include="Resources\drawable\corn2.png" />
     <AndroidResource Include="Resources\drawable\corn3.png" />
     <AndroidResource Include="Resources\drawable\corn4.png" />
     <AndroidResource Include="Resources\drawable\creative_commons.png" />
-    <AndroidResource Include="Resources\drawable\crop_green.png" />
-    <AndroidResource Include="Resources\drawable\crop_orange.png" />
     <AndroidResource Include="Resources\drawable\data.png" />
     <AndroidResource Include="Resources\drawable\delineate.png" />
     <AndroidResource Include="Resources\drawable\delineation.png" />
@@ -352,13 +343,7 @@
     <AndroidResource Include="Resources\drawable\drizzle.png" />
     <AndroidResource Include="Resources\drawable\edit.png" />
     <AndroidResource Include="Resources\drawable\farm.png" />
-    <AndroidResource Include="Resources\drawable\farmer.png" />
     <AndroidResource Include="Resources\drawable\farmer_bigger.png" />
-    <AndroidResource Include="Resources\drawable\farmer_small.png" />
-    <AndroidResource Include="Resources\drawable\fertilizer.png" />
-    <AndroidResource Include="Resources\drawable\fertilizer_small.png" />
-    <AndroidResource Include="Resources\drawable\flask.png" />
-    <AndroidResource Include="Resources\drawable\flask_small.png" />
     <AndroidResource Include="Resources\drawable\forecast.png" />
     <AndroidResource Include="Resources\drawable\forecast_small.png" />
     <AndroidResource Include="Resources\drawable\freezing_drizzle.png" />
@@ -367,7 +352,6 @@
     <AndroidResource Include="Resources\drawable\globe.png" />
     <AndroidResource Include="Resources\drawable\hail.png" />
     <AndroidResource Include="Resources\drawable\harvest.png" />
-    <AndroidResource Include="Resources\drawable\harvest_small.png" />
     <AndroidResource Include="Resources\drawable\haze.png" />
     <AndroidResource Include="Resources\drawable\heavy_drizzle.png" />
     <AndroidResource Include="Resources\drawable\heavy_rain.png" />
@@ -390,21 +374,16 @@
     <AndroidResource Include="Resources\drawable\icons_settings_96.png" />
     <AndroidResource Include="Resources\drawable\info.png" />
     <AndroidResource Include="Resources\drawable\irrigation.png" />
-    <AndroidResource Include="Resources\drawable\irrigation_small.png" />
     <AndroidResource Include="Resources\drawable\layers.png" />
     <AndroidResource Include="Resources\drawable\light_drizzle.png" />
     <AndroidResource Include="Resources\drawable\light_fog.png" />
     <AndroidResource Include="Resources\drawable\light_hail.png" />
     <AndroidResource Include="Resources\drawable\light_rain.png" />
     <AndroidResource Include="Resources\drawable\light_snow.png" />
-    <AndroidResource Include="Resources\drawable\link.png" />
-    <AndroidResource Include="Resources\drawable\link_small.png" />
     <AndroidResource Include="Resources\drawable\logo_big.png" />
-    <AndroidResource Include="Resources\drawable\mail.png" />
     <AndroidResource Include="Resources\drawable\map.png" />
     <AndroidResource Include="Resources\drawable\money.png" />
     <AndroidResource Include="Resources\drawable\money_bigger.png" />
-    <AndroidResource Include="Resources\drawable\money_small.png" />
     <AndroidResource Include="Resources\drawable\mostly_clear.png" />
     <AndroidResource Include="Resources\drawable\mostly_cloudy.png" />
     <AndroidResource Include="Resources\drawable\nitrogen.png" />
@@ -415,26 +394,18 @@
     <AndroidResource Include="Resources\drawable\peso2.png" />
     <AndroidResource Include="Resources\drawable\peso3.png" />
     <AndroidResource Include="Resources\drawable\peso4.png" />
-    <AndroidResource Include="Resources\drawable\phone.png" />
-    <AndroidResource Include="Resources\drawable\photo.png" />
     <AndroidResource Include="Resources\drawable\planner.png" />
     <AndroidResource Include="Resources\drawable\planner_small.png" />
     <AndroidResource Include="Resources\drawable\profile.png" />
-    <AndroidResource Include="Resources\drawable\profile_small.png" />
     <AndroidResource Include="Resources\drawable\question.png" />
     <AndroidResource Include="Resources\drawable\rain.png" />
     <AndroidResource Include="Resources\drawable\rain_showers.png" />
     <AndroidResource Include="Resources\drawable\refresh.png" />
-    <AndroidResource Include="Resources\drawable\shovel.png" />
-    <AndroidResource Include="Resources\drawable\shovel_small.png" />
     <AndroidResource Include="Resources\drawable\sleet.png" />
     <AndroidResource Include="Resources\drawable\snow.png" />
     <AndroidResource Include="Resources\drawable\sowing.png" />
-    <AndroidResource Include="Resources\drawable\sowing_small.png" />
     <AndroidResource Include="Resources\drawable\splash_background.xml" />
     <AndroidResource Include="Resources\drawable\splashscreen.png" />
-    <AndroidResource Include="Resources\drawable\storage.png" />
-    <AndroidResource Include="Resources\drawable\storage_small.png" />
     <AndroidResource Include="Resources\drawable\thunderstorms.png" />
     <AndroidResource Include="Resources\drawable\tiny_blowing_dust.png" />
     <AndroidResource Include="Resources\drawable\tiny_blowing_snow.png" />
@@ -460,12 +431,9 @@
     <AndroidResource Include="Resources\drawable\tiny_sleet.png" />
     <AndroidResource Include="Resources\drawable\tiny_snow.png" />
     <AndroidResource Include="Resources\drawable\tiny_thunderstorms.png" />
-    <AndroidResource Include="Resources\drawable\video.png" />
     <AndroidResource Include="Resources\drawable\wand.png" />
     <AndroidResource Include="Resources\drawable\wand_small.png" />
     <AndroidResource Include="Resources\drawable\weather.png" />
-    <AndroidResource Include="Resources\drawable\weeds.png" />
-    <AndroidResource Include="Resources\drawable\weeds_small.png" />
     <AndroidResource Include="Resources\drawable\welcome_1.png" />
     <AndroidResource Include="Resources\drawable\welcome_2.png" />
     <AndroidResource Include="Resources\drawable\welcome_3.png" />
@@ -622,6 +590,63 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\wait_gif.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\add_pic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\add_vid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\advice.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\prod_max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\options.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\guide.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\cultivate_use.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\cultivate_avoid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\contact_email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\contact_call.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\weed_control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\soil_improv.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\sales.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\pest_control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\land_prep.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\harvest_storage.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\fertilization.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\best_pract.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\feedback.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

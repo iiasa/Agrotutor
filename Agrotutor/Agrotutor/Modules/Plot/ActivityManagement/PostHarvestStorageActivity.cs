@@ -26,7 +26,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("hermetic_storage"),
                     _stringLocalizer.GetString("traditional_storage")
                 },
-                ActivityIcon = "storage_small.png",
+                ActivityIcon = "harvest_storage.png",
                 ActivityTitle = _stringLocalizer.GetString("post_harvest_storage")
             };
         }
