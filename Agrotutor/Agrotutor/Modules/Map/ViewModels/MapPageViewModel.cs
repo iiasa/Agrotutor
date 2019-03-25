@@ -143,7 +143,8 @@ namespace Agrotutor.Modules.Map.ViewModels
      
         private bool _isOfflineBasemapLayerEnabled;
         private bool _isDownloadButtonEnabled;
-
+        private readonly double tileSize = 130;
+        private string tileName = "Guanajuato";
         public MapPageViewModel(
             INavigationService navigationService,
             IAppDataService appDataService,
@@ -168,7 +169,10 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
-            DownloadDeleteCommand=new DelegateCommand(DownloadTiles);
+            DownloadDeleteCommand=new DelegateCommand(async () =>
+            {
+                await DownloadTilesAsync();
+            });
             CheckDownloadStatus();
         }
 
@@ -203,26 +207,50 @@ namespace Agrotutor.Modules.Map.ViewModels
                 IsOfflineBasemapLayerEnabled = false;
             }
         }
-        public void DownloadTiles( )
+
+    
+        public async Task DownloadTilesAsync( )
         {
+      
             if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
             {
-                // remove files
-                FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
-              //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
-                DownloadStatusImage = "ic_download";
-                IsOfflineBasemapLayerEnabled = false;
-                OfflineBasemapLayerVisible = false;
+                var deleteOfflineMapMessage =
+                    string.Format(StringLocalizer.GetString("delete_offline_map_message"), tileSize);
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(deleteOfflineMapMessage, null, StringLocalizer.GetString("download_offline_map_yes"),
+                    StringLocalizer.GetString("download_offline_map_cancel"));
+                if (confirm.Value)
+                {
+                    // remove files
+                    FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
+                    //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
+                    DownloadStatusImage = "ic_download";
+                    IsOfflineBasemapLayerEnabled = false;
+                    OfflineBasemapLayerVisible = false;
+                }
+   
             }
             else
             {
-                TaskDownloadTiles();
+             
+                var downloadOfflineMapMessage =
+                    string.Format(StringLocalizer.GetString("download_offline_map_message"), tileSize);
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(downloadOfflineMapMessage, null, StringLocalizer.GetString("download_offline_map_yes"),
+                    StringLocalizer.GetString("download_offline_map_cancel"));
+                if (confirm.Value)
+                {
+             
+               await TaskDownloadTiles();
+                    
+                }
+            
             }
         }
-        private void TaskDownloadTiles()
+        private async Task TaskDownloadTiles()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
+                var downloadOfflineMapInProgress = string.Format(StringLocalizer.GetString("download_offline_map_in_progress"), tileName);
+                var loadingDialog = await MaterialDialog.Instance.LoadingDialogAsync(downloadOfflineMapInProgress);
                 IsDownloadButtonEnabled = false;
                 IDownloadFile file = CrossDownloadManager.Current.CreateDownloadFile(Constants.DownloadTileUrl);
 
@@ -239,6 +267,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                                 IsOfflineBasemapLayerEnabled = true;
                                 LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
                                 System.Console.WriteLine("Downloading finished. " + file.DestinationPathName);
+                                loadingDialog.DismissAsync();
                                 break;
 
                             case DownloadFileStatus.FAILED:
