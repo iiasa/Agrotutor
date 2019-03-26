@@ -6,22 +6,22 @@
 
     using Entities;
 
-    public interface IAppDataContext
-    {
-        DbSet<Plot> Plots { get; }
-        DbSet<Position> Positions { get; }
+    //public interface IAppDataContext
+    //{
+    //    DbSet<Plot> Plots { get; }
+    //    DbSet<Position> Positions { get; }
 
 
-        void DisableDetectChanges();
+    //    void DisableDetectChanges();
 
-        void EnableDetectChanges();
+    //    void EnableDetectChanges();
 
-        int SaveChanges();
+    //    int SaveChanges();
 
-        int SaveChanges(bool acceptAllChangesOnSuccess);
+    //    int SaveChanges(bool acceptAllChangesOnSuccess);
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
+    //    Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
 
-        Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken));
-    }
+    //    Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken));
+    //}
 }

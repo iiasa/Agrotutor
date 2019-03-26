@@ -4,6 +4,7 @@
 
     public static class Constants
     {
+        public static string OFFLINE_DATABASE_NAME = "Agrotutor.db";
         public const string AppNotFirstLaunch = "APP_NotFirstLaunch";
 
         public const string LocalDBFilename = "localdata.db";

@@ -3,7 +3,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
-using System;
 using System.ComponentModel;
 using Agrotutor.Core.Tile;
 using Agrotutor.Droid.UserInterface;
@@ -35,6 +34,11 @@ namespace Agrotutor.Droid.UserInterface
 
         protected TileOverlay TileOverlay { get; set; }
 
+        public void Update(string mbtilesFileName)
+        {
+            SetMbTilesAsBackground(mbtilesFileName);
+        }
+
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -45,7 +49,7 @@ namespace Agrotutor.Droid.UserInterface
                     TileOverlay.Visible = CustomMap.ShowTileLayer;
             if (CustomMap.ShowSatelliteTileLayerProperty.PropertyName == e.PropertyName)
 
-                     CustomMap.MapType=CustomMap.ShowSatelliteTileLayer?MapType.Hybrid:MapType.None;
+                CustomMap.MapType = CustomMap.ShowSatelliteTileLayer ? MapType.Hybrid : MapType.None;
         }
 
         protected override void OnMapReady(GoogleMap nativeMap, Map map)
@@ -76,7 +80,6 @@ namespace Agrotutor.Droid.UserInterface
                 //    TileOverlay.Visible = CustomMap.ShowTileLayer;
 
 
-
                 //}
                 //catch (Exception ex)
                 //{
@@ -87,42 +90,31 @@ namespace Agrotutor.Droid.UserInterface
             }
         }
 
-        public void Update( string mbtilesFileName)
-        {
-
-            SetMbTilesAsBackground( mbtilesFileName);
-        }
         public void SetMbTilesAsBackground(string mbtilesFileName)
         {
-          
-                // Remove previous TileOverlay if created
-                if (TileOverlay != null)
-                {
-                    //TileOverlay.Remove();
-                    return;
-                }
-            
-                    // Make Db Context Options Builder to create sqlite db builder
-                    DbContextOptionsBuilder<TileContext> myContextBuilder = new DbContextOptionsBuilder<TileContext>();
-                myContextBuilder.UseSqlite($"Filename={mbtilesFileName}");
+            // Remove previous TileOverlay if created
+            if (TileOverlay != null) return;
 
-                // Initialize TileContext with this builder
-                TileContext tileContext = new TileContext(myContextBuilder.Options);
+            // Make Db Context Options Builder to create sqlite db builder
+            var myContextBuilder = new DbContextOptionsBuilder<TileContext>();
+            //myContextBuilder.UseSqlite($"Filename={mbtilesFileName}");
 
-                // Create TileService with this TileConext
-                ReadOnlyTileService readOnlyTileService = new ReadOnlyTileService(tileContext);
+            // Initialize TileContext with this builder
+            var tileContext = new TileContext(myContextBuilder.Options);
 
-                // Create CustomTileProvider with this TileService
-                CustomTileProvider customTileProvider = new CustomTileProvider(readOnlyTileService);
+            // Create TileService with this TileConext
+            var readOnlyTileService = new ReadOnlyTileService(tileContext);
 
-                // And finally, create the TileOverlayOptions
-                TileOverlayOptions options = new TileOverlayOptions().InvokeZIndex(0f)
-                    .InvokeTileProvider(customTileProvider);
+            // Create CustomTileProvider with this TileService
+            var customTileProvider = new CustomTileProvider(readOnlyTileService);
 
-                // And TileOverlay
-                GoogleMap map = (GoogleMap) LayerService.CurrentMap;
-                TileOverlay = map.AddTileOverlay(options);
-            
+            // And finally, create the TileOverlayOptions
+            var options = new TileOverlayOptions().InvokeZIndex(0f)
+                .InvokeTileProvider(customTileProvider);
+
+            // And TileOverlay
+            var map = (GoogleMap) LayerService.CurrentMap;
+            TileOverlay = map.AddTileOverlay(options);
         }
     }
 }

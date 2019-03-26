@@ -55,6 +55,7 @@ namespace Agrotutor.Modules.Map.ViewModels
     using Plugin.DownloadManager.Abstractions;
     public class MapPageViewModel : ViewModelBase, INavigatedAware
     {
+        private readonly IDbService<Core.Entities.Plot> _dbPlotDbService;
         private readonly ICameraService _cameraService;
         public IDocumentViewer DocumentViewer;
         private bool _addParcelIsVisible;
@@ -146,7 +147,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public MapPageViewModel(
             INavigationService navigationService,
-            IAppDataService appDataService,
+            IDbService<Core.Entities.Plot> dbPlotDbService,
             ICameraService cameraService,
             IDocumentViewer documentViewer,
             IStringLocalizer<MapPageViewModel> localizer)
@@ -154,11 +155,11 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             IsDownloadButtonEnabled = true;
             Title = "Map";
+            _dbPlotDbService = dbPlotDbService;
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
             LocationPermissionGiven = false;
             ShowWeatherWidget = false;
-            AppDataService = appDataService;
             CurrentMapTask = MapTask.Default;
             AddParcelIsVisible = false;
             OptionsIsVisible = false;
@@ -496,7 +497,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("delete_plot_in_progress")))
                     {
-                        await AppDataService.RemovePlotAsync(SelectedPlot);
+                        _dbPlotDbService.DeleteItem(selectedPlot.ID);
+                        //await AppDataService.RemovePlotAsync(SelectedPlot);
                         RemovePlots();
                         PlotDetailIsVisible = false;
                         DimBackground = false;
@@ -540,7 +542,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         });
 
-        public IAppDataService AppDataService { get; }
 
         public DelegateCommand AddParcelChooseLocation =>
             new DelegateCommand(() =>
@@ -721,7 +722,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     IsVideo = false
                 };
                 SelectedPlot.MediaItems.Add(image);
-                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                _dbPlotDbService.UpdateItem(SelectedPlot);
+                //await AppDataService.UpdatePlotAsync(SelectedPlot);
                 await MapPage.UpdateImages();
             });
 
@@ -738,7 +740,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     IsVideo = true
                 };
                 SelectedPlot.MediaItems.Add(image);
-                await AppDataService.UpdatePlotAsync(SelectedPlot);
+                _dbPlotDbService.UpdateItem(SelectedPlot);
+                //await AppDataService.UpdatePlotAsync(SelectedPlot);
                 await MapPage.UpdateImages();
             });
 
@@ -1305,7 +1308,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 () =>
                 {
                     SelectedPlot.Delineation = CurrentDelineation;
-                    AppDataService.UpdatePlotAsync(SelectedPlot);
+                    _dbPlotDbService.UpdateItem(SelectedPlot);
+                    //AppDataService.UpdatePlotAsync(SelectedPlot);
                     CurrentDelineation = new List<Position>();
                     CurrentMapTask = MapTask.Default;
                     EndDelineation();
@@ -1397,12 +1401,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_delineations")))
             {
-                var plots = await AppDataService.GetAllPlotsAsync();
+                
+                var plots = _dbPlotDbService.ReadAllItems();
+                //var plots = await AppDataService.GetAllPlotsAsync();
 
                 foreach (var plot in plots)
                 {
-                    if (plot.Delineation == null) continue;
-
                     var positions = plot.Delineation;
                     if (positions != null && positions.Count > 3)
                     {
@@ -1462,7 +1466,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     updatedPlot = true;
                 }
 
-                if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
+                if (updatedPlot) _dbPlotDbService.UpdateItem(plot);
+                //if (updatedPlot) await AppDataService.UpdatePlotAsync(plot);
             }
         }
         
@@ -1802,14 +1807,16 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_plots")))
             {
-                Plots = await AppDataService.GetAllPlotsAsync();
+                //Plots = await AppDataService.GetAllPlotsAsync();
+                Plots = _dbPlotDbService.ReadAllItems();
                 var plots = Plots.ToList();
                 await AddPlots();
                 foreach (var plot in plots.Where(plot => plot.BemData == null))
                 {
                     if (plot.Position == null) continue;
                     plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
-                    await AppDataService.UpdatePlotAsync(plot);
+                    //await AppDataService.UpdatePlotAsync(plot);
+                    _dbPlotDbService.UpdateItem(plot);
                 }
             }
         }
@@ -1834,7 +1841,8 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_plots")))
             {
-                Plots = await AppDataService.GetAllPlotsAsync();
+                //Plots = await AppDataService.GetAllPlotsAsync();
+                Plots = _dbPlotDbService.ReadAllItems();
                 var plots = Plots.ToList();
                 foreach (var pin in from plot in plots
                     where plot.Position != null

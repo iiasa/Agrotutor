@@ -2,6 +2,7 @@ using System;
 using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
+using Agrotutor.Core.Persistence;
 using Agrotutor.Modules.Ciat.ViewModels;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.ViewModels;
@@ -55,7 +56,6 @@ namespace Agrotutor
             {
                 initialPage = "NavigationPage/WelcomePage";
             }
-            else { }
 
             await NavigationService.NavigateAsync(initialPage);
         }
@@ -80,7 +80,7 @@ namespace Agrotutor
             containerRegistry.RegisterCameraService();
             containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
             containerRegistry.RegisterTileService();
-
+            
             containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
         }
 

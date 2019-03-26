@@ -1,24 +1,21 @@
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Agrotutor.Core;
+using Agrotutor.Core.Entities;
+using Agrotutor.Core.Persistence;
 using Agrotutor.ViewModels;
-using Xamarin.Essentials;
-using Xamarin.Forms;
+using Microsoft.Extensions.Localization;
+using Prism.Commands;
+using Prism.Navigation;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
-    using System;
-    using System.Collections.Generic;
-    using Microsoft.Extensions.Localization;
-    using Prism.Navigation;
-    using Prism.Commands;
-
-    using Core;
-    using Core.Entities;
-    using Core.Persistence;
-
     public class AddPlotPageViewModel : ViewModelBase
     {
         public static string PositionParameterName = "Position";
+        private readonly IDbService<Core.Entities.Plot> _plotDbService;
 
         private int _pickerClimateTypesSelectedIndex;
 
@@ -26,20 +23,19 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         private int _pickerMaturityClassesSelectedIndex;
 
-        private Plot _plot;
+        private Core.Entities.Plot _plot;
 
         private DateTime plantingDate;
         private bool savingPlot;
 
         public AddPlotPageViewModel(
-            INavigationService navigationService,
-            IStringLocalizer<AddPlotPageViewModel> stringLocalizer,
-            IAppDataService appDataService) : base(navigationService, stringLocalizer)
+            INavigationService navigationService, IDbService<Core.Entities.Plot> plotDbService,
+            IStringLocalizer<AddPlotPageViewModel> stringLocalizer) : base(navigationService, stringLocalizer)
         {
+            _plotDbService = plotDbService;
 
-            AppDataService = appDataService;
 
-            Plot = new Plot();
+            Plot = new Core.Entities.Plot();
             PlantingDate = DateTime.Today;
 
             PickerCropTypesSelectedIndex = -1;
@@ -87,15 +83,18 @@ namespace Agrotutor.Modules.Plot.ViewModels
             };
         }
 
-        public IAppDataService AppDataService { get; }
 
-        public bool SavingPlot { get => savingPlot; set => SetProperty(ref savingPlot, value); }
+        public bool SavingPlot
+        {
+            get => savingPlot;
+            set => SetProperty(ref savingPlot, value);
+        }
 
 
         public DateTime PlantingDate
         {
-            get => this.plantingDate;
-            set => SetProperty(ref this.plantingDate, value);
+            get => plantingDate;
+            set => SetProperty(ref plantingDate, value);
         }
 
         public DelegateCommand ClickSave =>
@@ -115,55 +114,59 @@ namespace Agrotutor.Modules.Plot.ViewModels
                                 Cost = 0
                             }
                         };
-                        await AppDataService.AddPlotAsync(Plot);
-                   var res=     await AppDataService.GetAllPlotsAsync();
+                        //await AppDataService.AddPlotAsync(Plot);
+                        _plotDbService.CreateItem(Plot);
+                        var res = _plotDbService.ReadAllItems();
                         SavingPlot = false;
                     }
+
                     await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("plot_created"), 3000);
                     await Task.Delay(2000);
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
-        public List<string> ClimateTypes { get; private set; }
+        public List<string> ClimateTypes { get; }
 
-        public List<string> CropTypes { get; private set; }
+        public List<string> CropTypes { get; }
 
         public List<string> MaturityClasses { get; }
 
         public int PickerClimateTypesSelectedIndex
         {
-            get => this._pickerClimateTypesSelectedIndex;
-            set => SetProperty(ref this._pickerClimateTypesSelectedIndex, value);
+            get => _pickerClimateTypesSelectedIndex;
+            set => SetProperty(ref _pickerClimateTypesSelectedIndex, value);
         }
 
         public int PickerCropTypesSelectedIndex
         {
-            get => this._pickerCropTypesSelectedIndex;
+            get => _pickerCropTypesSelectedIndex;
             set
             {
-                SetProperty(ref this._pickerCropTypesSelectedIndex, value);
+                SetProperty(ref _pickerCropTypesSelectedIndex, value);
                 if (value == -1)
-                {
                     Plot.CropType = CropType.None;
-                }
                 else
-                {
-                    Plot.CropType = (CropType)(value + 1); // TODO: verify
-                }
+                    Plot.CropType = (CropType) (value + 1); // TODO: verify
             }
         }
 
         public int PickerMaturityClassesSelectedIndex
         {
-            get => this._pickerMaturityClassesSelectedIndex;
-            set => SetProperty(ref this._pickerMaturityClassesSelectedIndex, value);
+            get => _pickerMaturityClassesSelectedIndex;
+            set => SetProperty(ref _pickerMaturityClassesSelectedIndex, value);
         }
 
-        public Plot Plot
+        public Core.Entities.Plot Plot
         {
-            get => this._plot;
-            set => SetProperty(ref this._plot, value);
+            get => _plot;
+            set => SetProperty(ref _plot, value);
         }
+
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters {{"page", WebContentPageViewModel.CultivarCharacteristics}};
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -172,20 +175,13 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            if (parameters.ContainsKey(AddPlotPageViewModel.PositionParameterName))
+            if (parameters.ContainsKey(PositionParameterName))
             {
-                parameters.TryGetValue(AddPlotPageViewModel.PositionParameterName, out Position position);
-                if (position != null)
-                {
-                    Plot.Position = position;
-                }
+                parameters.TryGetValue(PositionParameterName, out Position position);
+                if (position != null) Plot.Position = position;
             }
+
             base.OnNavigatedTo(parameters);
         }
-        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
-        {
-            var param = new NavigationParameters { { "page", WebContentPageViewModel.CultivarCharacteristics } };
-            await NavigationService.NavigateAsync("WebContentPage", param);
-        });
     }
 }

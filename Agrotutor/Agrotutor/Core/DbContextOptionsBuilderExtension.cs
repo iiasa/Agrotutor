@@ -16,7 +16,7 @@ namespace Agrotutor.Core
 			string filename = Constants.LocalDBFilename) where TContext : DbContext
 		{
 			string path = Path.Combine(GetPlatformFolder(), filename);
-			dbContextOptionsBuilder.UseSqlite($"Filename={path}");
+			//dbContextOptionsBuilder.UseSqlite($"Filename={path}");
 		}
 
 		public static void CopyFromStream<TContext>(this DbContextOptionsBuilder<TContext> dbContextOptionsBuilder, Stream stream,

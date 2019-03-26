@@ -3,8 +3,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 // </copyright>
 
+using System;
 using System.Linq;
-using Microsoft.Data.Sqlite;
 
 namespace Agrotutor.Core.Tile
 {
@@ -26,7 +26,7 @@ namespace Agrotutor.Core.Tile
 					returnedTile = TileContext.Tiles.SingleOrDefault(tile =>
 						tile.ZoomLevel == zoomLevel && tile.TileColumn == tileColumn && tile.TileRow == tileRow);
 				}
-				catch (SqliteException ex)
+				catch (Exception ex)
 				{
 					returnedTile = null;
 				}

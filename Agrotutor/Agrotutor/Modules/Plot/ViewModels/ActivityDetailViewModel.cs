@@ -16,7 +16,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
     public class ActivityDetailViewModel : ViewModelBase, INavigatedAware
     {
-        private IAppDataService _appDataService;
+        private readonly IDbService<Plot> _plotDbService;
 
         private double _activityCost;
 
@@ -47,16 +47,16 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         private double _weightOfSeeds;
 
-        public ActivityDetailViewModel(INavigationService navigationService, IAppDataService appDataService,
+        public ActivityDetailViewModel(INavigationService navigationService, IDbService<Plot> plotDbService,
             IStringLocalizer<ActivityDetailViewModel> localizer) : base(navigationService, localizer)
         {
+            _plotDbService = plotDbService;
             ListSownVariety = new List<string>
             {
                 "Criollo",
                 "Mejorado"
             };
             ActivityDate = DateTime.Now;
-            _appDataService = appDataService;
         }
 
         /// <summary>
@@ -203,7 +203,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
             };
             if (Plot.Activities == null) Plot.Activities = new List<Activity>();
             Plot.Activities.Add(activity);
-            _appDataService.UpdatePlotAsync(Plot);
+            //_appDataService.UpdatePlotAsync(Plot);
+            _plotDbService.UpdateItem(Plot);
 
             NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
         });

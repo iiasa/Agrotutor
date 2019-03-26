@@ -62,56 +62,57 @@ namespace Agrotutor.Core
 
         public static void RegisterPersistence(this IContainerRegistry containerRegistry)
         {
-            containerRegistry.RegisterSharedContextClasses();
-            containerRegistry.RegisterAppDataContext();
-            containerRegistry.Register<IAppDataService, AppDataService>();
+            containerRegistry.Register(typeof(IDbService<>), typeof(LiteDbService<>));
+            //containerRegistry.RegisterSharedContextClasses();
+            //containerRegistry.RegisterAppDataContext();
+            //containerRegistry.Register<IAppDataService, AppDataService>();
         }
 
-        public static void RegisterAppDataContext(this IContainerRegistry containerRegistry)
-        {
-            containerRegistry.GetContainer()
-                .RegisterInitializer<DbContextOptionsBuilder<AppDataContext>>((builder, resolver) =>
-                {
-                    Persistence.DbContextOptionsBuilderExtension.Configure(builder);
-                });
+        //public static void RegisterAppDataContext(this IContainerRegistry containerRegistry)
+        //{
+        //    containerRegistry.GetContainer()
+        //        .RegisterInitializer<DbContextOptionsBuilder<AppDataContext>>((builder, resolver) =>
+        //        {
+        //            Persistence.DbContextOptionsBuilderExtension.Configure(builder);
+        //        });
 
-            containerRegistry.RegisterSingleton<IAppDataContext, AppDataContext>();
-            containerRegistry.GetContainer()
-                .RegisterInitializer<IAppDataContext>((context, resolver) =>
-                {
-                    // Start with a clean database
-                    ////((AppDataContext)context).Database.EnsureDeleted();
-                    try
-                    {
-                        ((AppDataContext) context).Database.EnsureCreated();
+        //    containerRegistry.RegisterSingleton<IAppDataContext, AppDataContext>();
+        //    containerRegistry.GetContainer()
+        //        .RegisterInitializer<IAppDataContext>((context, resolver) =>
+        //        {
+        //            // Start with a clean database
+        //            ////((AppDataContext)context).Database.EnsureDeleted();
+        //            try
+        //            {
+        //                ((AppDataContext) context).Database.EnsureCreated();
                         
-                    }
-                    catch (Exception e)
-                    {
-                        AppCenterLog.Error("DbCreation", "Error during DB creation", e);
-                        Crashes.TrackError(e);
-                    }
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                AppCenterLog.Error("DbCreation", "Error during DB creation", e);
+        //                Crashes.TrackError(e);
+        //            }
 
-                    try
-                    {
-                        ((AppDataContext)context).Database.Migrate();
-                    }
-                    catch (Exception e)
-                    {
-                        AppCenterLog.Error("DbMigration", "Error during DB Migration", e);
-                        try
-                        {
-                            ((AppDataContext)context).Database.EnsureDeleted();
-                            ((AppDataContext)context).Database.EnsureCreated();
-                        }
-                        catch (Exception exception)
-                        {
-                            AppCenterLog.Error("DbMigration", "Error during DB Migration fallback", e);
-                            Crashes.TrackError(exception);
-                        }
-                    }
-                });
-        }
+        //            try
+        //            {
+        //                ((AppDataContext)context).Database.Migrate();
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                AppCenterLog.Error("DbMigration", "Error during DB Migration", e);
+        //                try
+        //                {
+        //                    ((AppDataContext)context).Database.EnsureDeleted();
+        //                    ((AppDataContext)context).Database.EnsureCreated();
+        //                }
+        //                catch (Exception exception)
+        //                {
+        //                    AppCenterLog.Error("DbMigration", "Error during DB Migration fallback", e);
+        //                    Crashes.TrackError(exception);
+        //                }
+        //            }
+        //        });
+        //}
 
         public static void RegisterSharedContextClasses(this IContainerRegistry containerRegistry)
         {

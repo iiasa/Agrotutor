@@ -32,7 +32,7 @@ namespace Agrotutor.Core.Tile
 
 				string typeName = propertyType.GetEnumOrNullableEnumType().Name;
 				string tableName = enumOptions.NamingFuction(typeName);
-				enumLookupBuilder.ToTable(tableName);
+				//enumLookupBuilder.ToTable(tableName);
 
 				// TODO: Check status of https://github.com/aspnet/EntityFrameworkCore/issues/12194 before using migrations
 				object[] data = Enum.GetValues(propertyType.GetEnumOrNullableEnumType())
@@ -69,30 +69,30 @@ namespace Agrotutor.Core.Tile
 				}
 
 				// Entity / Table
-				if (!namingOptions.EntitiesToSkipTableNaming(entity))
-				{
-					string tableName = namingOptions.TableNameSource(entity);
+				//if (!namingOptions.EntitiesToSkipTableNaming(entity))
+				//{
+				//	string tableName = namingOptions.TableNameSource(entity);
 
-					entity.Relational().TableName = namingOptions.TableNamingFunction(tableName);
-				}
+				//	entity.Relational().TableName = namingOptions.TableNamingFunction(tableName);
+				//}
 
-				// Properties
-				entity.GetProperties()
-					.ToList()
-					.ForEach(x => x.Relational().ColumnName = namingOptions.PropertyNamingFunction(x.Relational().ColumnName));
+				//// Properties
+				//entity.GetProperties()
+				//	.ToList()
+				//	.ForEach(x => x.Relational().ColumnName = namingOptions.PropertyNamingFunction(x.Relational().ColumnName));
 
-				// Primary and Alternative keys
-				entity.GetKeys().ToList().ForEach(x => x.Relational().Name = namingOptions.ConstraintNamingFunction(x.Relational().Name));
+				//// Primary and Alternative keys
+				//entity.GetKeys().ToList().ForEach(x => x.Relational().Name = namingOptions.ConstraintNamingFunction(x.Relational().Name));
 
-				// Foreign keys
-				entity.GetForeignKeys()
-					.ToList()
-					.ForEach(x => x.Relational().Name = namingOptions.ConstraintNamingFunction(x.Relational().Name));
+				//// Foreign keys
+				//entity.GetForeignKeys()
+				//	.ToList()
+				//	.ForEach(x => x.Relational().Name = namingOptions.ConstraintNamingFunction(x.Relational().Name));
 
-				// Indices
-				entity.GetIndexes()
-					.ToList()
-					.ForEach(x => x.Relational().Name = namingOptions.ConstraintNamingFunction(x.Relational().Name));
+				//// Indices
+				//entity.GetIndexes()
+				//	.ToList()
+				//	.ForEach(x => x.Relational().Name = namingOptions.ConstraintNamingFunction(x.Relational().Name));
 			}
 		}
 

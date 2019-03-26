@@ -12,7 +12,7 @@
             string filename = "localdata.db") where TContext : DbContext
         {
             string path = Path.Combine(GetPlatformFolder(), filename);
-            dbContextOptionsBuilder.UseSqlite($"Filename={path}").UseLazyLoadingProxies();
+            //dbContextOptionsBuilder.UseSqlite($"Filename={path}").UseLazyLoadingProxies();
         }
 
         public static void CopyFromStream<TContext>(this DbContextOptionsBuilder<TContext> dbContextOptionsBuilder, Stream stream,

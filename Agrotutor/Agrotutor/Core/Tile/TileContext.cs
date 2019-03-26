@@ -32,8 +32,8 @@ namespace Agrotutor.Core.Tile
                     x.TileRow
                 });
 
-            modelBuilder.ConfigureNames(NamingOptions.Default.SetNamingScheme(NamingScheme.SnakeCase)
-                .SetTableNamingSource(From.DbSet));
+            //modelBuilder.ConfigureNames(NamingOptions.Default.SetNamingScheme(NamingScheme.SnakeCase)
+            //    .SetTableNamingSource(From.DbSet));
         }
     }
 }

@@ -1,4 +1,10 @@
+using System.Collections.Generic;
+using Acr.UserDialogs;
+using Agrotutor.Core;
+using Agrotutor.Core.Entities;
+using Agrotutor.Core.Persistence;
 using Agrotutor.Modules.Benchmarking;
+using Agrotutor.Modules.Benchmarking.ViewModels;
 using Agrotutor.Modules.Ciat;
 using Agrotutor.Modules.Ciat.Types;
 using Agrotutor.Modules.Ciat.ViewModels;
@@ -6,37 +12,29 @@ using Agrotutor.Modules.PriceForecasting.Types;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather.Types;
 using Agrotutor.Modules.Weather.ViewModels;
+using Microsoft.Extensions.Localization;
+using Prism.Commands;
+using Prism.Navigation;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
-    using Acr.UserDialogs;
-    using Microsoft.Extensions.Localization;
-
-    using Prism.Commands;
-    using Prism.Navigation;
-
-    using Core;
-    using Core.Entities;
-    using Core.Persistence;
-    using XF.Material.Forms.UI.Dialogs;
-    using System.Collections.Generic;
-    using Agrotutor.Modules.Benchmarking.ViewModels;
-
     public class PlotMainPageViewModel : ViewModelBase, INavigatedAware
     {
         public static string PositionParameterName = "PLOT_MAIN_PAGE_POSITION";
         public static string CropTypeParameterName = "PLOT_MAIN_PAGE_CROP_TYPE";
+        private readonly IDbService<Core.Entities.Plot> _plotDbService;
+        private CropType cropType;
 
         private Position position;
-        private CropType cropType;
 
         public PlotMainPageViewModel(
             INavigationService navigationService,
-            IAppDataService appDataService,
+            IDbService<Core.Entities.Plot> plotDbService,
             IStringLocalizer<PlotMainPageViewModel> localizer)
             : base(navigationService, localizer)
         {
-            AppDataService = appDataService;
+            _plotDbService = plotDbService;
         }
 
         public DelegateCommand NavigateToCosts =>
@@ -47,9 +45,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
-                        {
-                            costs = await BemDataDownloadHelper.LoadCost(Position.Latitude, Position.Longitude, CropType);
-                        }
+                            costs = await BemDataDownloadHelper.LoadCost(Position.Latitude, Position.Longitude,
+                                CropType);
                     }
 
                     if (costs == null)
@@ -64,12 +61,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         return;
                     }
 
-                    NavigationParameters param = new NavigationParameters
+                    var param = new NavigationParameters
                     {
-                        { ViewCostPageViewModel.CostsParameterName, costs }
+                        {ViewCostPageViewModel.CostsParameterName, costs}
                     };
 
-                    await this.NavigationService.NavigateAsync("ViewCostPage", param);
+                    await NavigationService.NavigateAsync("ViewCostPage", param);
                 });
 
         public DelegateCommand NavigateToIncome =>
@@ -80,9 +77,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
-                        {
-                            incomes = await BemDataDownloadHelper.LoadIncome(Position.Latitude, Position.Longitude, CropType);
-                        }
+                            incomes = await BemDataDownloadHelper.LoadIncome(Position.Latitude, Position.Longitude,
+                                CropType);
                     }
 
                     if (incomes == null)
@@ -97,12 +93,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         return;
                     }
 
-                    NavigationParameters param = new NavigationParameters
+                    var param = new NavigationParameters
                     {
-                        {ViewIncomePageViewModel.IncomesParameterName, incomes }
+                        {ViewIncomePageViewModel.IncomesParameterName, incomes}
                     };
 
-                    await this.NavigationService.NavigateAsync("ViewIncomePage", param);
+                    await NavigationService.NavigateAsync("ViewIncomePage", param);
                 });
 
         public DelegateCommand NavigateToProfit =>
@@ -113,9 +109,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
-                        {
-                            profits = await BemDataDownloadHelper.LoadProfit(Position.Latitude, Position.Longitude, CropType);
-                        }
+                            profits = await BemDataDownloadHelper.LoadProfit(Position.Latitude, Position.Longitude,
+                                CropType);
                     }
 
                     if (profits == null)
@@ -130,12 +125,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         return;
                     }
 
-                    NavigationParameters param = new NavigationParameters
+                    var param = new NavigationParameters
                     {
-                        { ViewProfitPageViewModel.ProfitsParameterName, profits }
+                        {ViewProfitPageViewModel.ProfitsParameterName, profits}
                     };
 
-                    await this.NavigationService.NavigateAsync("ViewProfitPage", param);
+                    await NavigationService.NavigateAsync("ViewProfitPage", param);
                 });
 
         public DelegateCommand NavigateToYield =>
@@ -146,9 +141,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("loading")))
                     {
                         if (Position != null)
-                        {
-                            yields = await BemDataDownloadHelper.LoadYield(Position.Latitude, Position.Longitude, CropType);
-                        }
+                            yields = await BemDataDownloadHelper.LoadYield(Position.Latitude, Position.Longitude,
+                                CropType);
                     }
 
                     if (yields == null)
@@ -163,12 +157,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         return;
                     }
 
-                    NavigationParameters param = new NavigationParameters
+                    var param = new NavigationParameters
                     {
-                        { ViewYieldPageViewModel.YieldsParameterName, yields }
+                        {ViewYieldPageViewModel.YieldsParameterName, yields}
                     };
 
-                    await this.NavigationService.NavigateAsync("ViewYieldPage", param);
+                    await NavigationService.NavigateAsync("ViewYieldPage", param);
                 });
 
         public DelegateCommand NavigateToWeather => new DelegateCommand(
@@ -194,11 +188,10 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
                 var param = new NavigationParameters
                 {
-                    { "Location", Position },
-                    { WeatherPageViewModel.ForecastParameterName, weatherForecast}
-
+                    {"Location", Position},
+                    {WeatherPageViewModel.ForecastParameterName, weatherForecast}
                 };
-                await this.NavigationService.NavigateAsync("WeatherPage", param);
+                await NavigationService.NavigateAsync("WeatherPage", param);
             });
 
         public DelegateCommand NavigateToPotentialYield => new DelegateCommand(
@@ -221,6 +214,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         });
                     return;
                 }
+
                 var param = new NavigationParameters
                 {
                     {PotentialYieldPageViewModel.DataParameterName, ciatData}
@@ -233,11 +227,11 @@ namespace Agrotutor.Modules.Plot.ViewModels
             async () =>
             {
                 var param = new NavigationParameters
-                            {
-                                { CiatPageViewModel.PARAMETER_NAME_POSITION, Position },
-                                { CiatPageViewModel.PARAMETER_NAME_CROP, "Maize" }
-                            };
-                await this.NavigationService.NavigateAsync("CiatPage", param);
+                {
+                    {CiatPageViewModel.PARAMETER_NAME_POSITION, Position},
+                    {CiatPageViewModel.PARAMETER_NAME_CROP, "Maize"}
+                };
+                await NavigationService.NavigateAsync("CiatPage", param);
             });
 
         public DelegateCommand NavigateToPriceForecast => new DelegateCommand(async () =>
@@ -247,18 +241,21 @@ namespace Agrotutor.Modules.Plot.ViewModels
             {
                 {PriceForecastPageViewModel.PriceForecastParameterName, forecast}
             };
-            await this.NavigationService.NavigateAsync("PriceForecastPage", param);
+            await NavigationService.NavigateAsync("PriceForecastPage", param);
         });
 
-        public IAppDataService AppDataService { get; set; }
 
         public Position Position
         {
-            get => this.position;
-            set => SetProperty(ref this.position, value);
+            get => position;
+            set => SetProperty(ref position, value);
         }
 
-        public CropType CropType { get => cropType; set => SetProperty(ref cropType, value); }
+        public CropType CropType
+        {
+            get => cropType;
+            set => SetProperty(ref cropType, value);
+        }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
@@ -271,13 +268,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
             {
                 parameters.TryGetValue(PositionParameterName, out Position position);
                 if (position != null)
-                {
                     Position = position;
-                }
                 else
-                {
-                    this.NavigationService.GoBackAsync();
-                }
+                    NavigationService.GoBackAsync();
             }
 
             if (parameters.ContainsKey(CropTypeParameterName))
@@ -285,6 +278,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 parameters.TryGetValue(CropTypeParameterName, out CropType cropType);
                 CropType = cropType;
             }
+
             base.OnNavigatedTo(parameters);
         }
     }
