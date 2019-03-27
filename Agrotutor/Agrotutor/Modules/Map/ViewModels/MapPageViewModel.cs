@@ -150,6 +150,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool showAdditionalDataButton;
         private bool showSavePlotButton;
         private bool showDeletePlotButton;
+        private double selectedPlotActivityCost;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -343,6 +344,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 //MapPage?.SetPlotLayerVisibility(value);
             }
         }
+
+        public double SelectedPlotActivityCost { get => selectedPlotActivityCost; set => SetProperty(ref selectedPlotActivityCost, value); }
 
         public DelegateCommand DownloadDeleteCommand { get; set; }
         public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(async () =>
@@ -1209,15 +1212,17 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 if (value == null || value == selectedPlot) return;
                 SetProperty(ref selectedPlot, value);
-
+                
                 if (value.MediaItems == null) value.MediaItems = new List<MediaItem>();
 
-                if (value.IsTemporaryPlot) {
+                if (value.IsTemporaryPlot)
+                {
                     ShowSavePlotButton = true;
                     ShowDeletePlotButton = false;
                 }
                 else
                 {
+                    if (value.Activities != null) SelectedPlotActivityCost = value.Activities.Sum(x => x.Cost);
                     ShowSavePlotButton = false;
                     ShowDeletePlotButton = true;
                 }
