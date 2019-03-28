@@ -12,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = false,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
                 AmountSoldVisibility = false,
@@ -27,8 +27,17 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    _stringLocalizer.GetString("hermetic_storage"),
-                    _stringLocalizer.GetString("traditional_storage")
+                    _stringLocalizer.GetString("postharvest_storage_traditional"),
+                    _stringLocalizer.GetString("postharvest_storage_hermetic_containers"),
+                    _stringLocalizer.GetString("postharvest_storage_pheromones"),
+                    _stringLocalizer.GetString("postharvest_storage_drying"),
+                    _stringLocalizer.GetString("postharvest_storage_inert_lime"),
+                    _stringLocalizer.GetString("postharvest_storage_inert_diatom_earth"),
+                    _stringLocalizer.GetString("postharvest_storage_inert_silicon"),
+                    _stringLocalizer.GetString("postharvest_storage_inert_other"),
+                    _stringLocalizer.GetString("postharvest_storage_sheller"),
+                    _stringLocalizer.GetString("postharvest_storage_sex_pheromones"),
+                    _stringLocalizer.GetString("postharvest_storage_other")
                 },
                 ActivityIcon = "harvest_storage.png",
                 ActivityTitle = _stringLocalizer.GetString("post_harvest_storage")

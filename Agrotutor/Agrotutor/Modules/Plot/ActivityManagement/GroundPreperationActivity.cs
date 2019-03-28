@@ -1,5 +1,6 @@
 ﻿using Agrotutor.Modules.Plot.ViewModels;
 using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -11,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = true,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
                 AmountSoldVisibility = false,
@@ -24,7 +25,18 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 PerformanceVisibility = false,
                 PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = _stringLocalizer.GetString("ground_preparation"),
+                ActivityNameList = new List<string>
+                {
+                    _stringLocalizer.GetString("ground_prep_level"),
+                    _stringLocalizer.GetString("ground_prep_plot_level"),
+                    _stringLocalizer.GetString("ground_prep_floor_level"),
+                    _stringLocalizer.GetString("ground_prep_impl_conservation"),
+                    _stringLocalizer.GetString("ground_prep_fert_reformer"),
+                    _stringLocalizer.GetString("ground_prep_vertical rotating"),
+                    _stringLocalizer.GetString("ground_prep_permanent_beds"),
+                    _stringLocalizer.GetString("ground_prep_machinery"),
+                    _stringLocalizer.GetString("ground_prep_other")
+                },
                 ActivityIcon = "land_prep.png",
                 ActivityTitle = _stringLocalizer.GetString("ground_preparation"),
             };

@@ -12,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = false,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = true,
                 AmountSoldVisibility = false,
@@ -27,9 +27,25 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    _stringLocalizer.GetString("liquid_fertilizer"),
-                    _stringLocalizer.GetString("organic_fertilizer"),
-                    _stringLocalizer.GetString("chemical_fertilizer")
+                    _stringLocalizer.GetString("fertilization_diag_soil"),
+                    _stringLocalizer.GetString("fertilization_diag_tissue"),
+                    _stringLocalizer.GetString("fertilization_diag_rich_strip"),
+                    _stringLocalizer.GetString("fertilization_diag_green_seeker"),
+                    _stringLocalizer.GetString("fertilization_diag_green_sat"),
+                    _stringLocalizer.GetString("fertilization_diag_other"),
+                    _stringLocalizer.GetString("fertilization_inorg_manual"),
+                    _stringLocalizer.GetString("fertilization_inorg_mechanical"),
+                    _stringLocalizer.GetString("fertilization_inorg_yunta"),
+                    _stringLocalizer.GetString("fertilization_inorg_superficial"),
+                    _stringLocalizer.GetString("fertilization_inorg_foliar"),
+                    _stringLocalizer.GetString("fertilization_inorg_fertiriego"),
+                    _stringLocalizer.GetString("fertilization_biofertilizer_manual"),
+                    _stringLocalizer.GetString("fertilization_biofertilizer_mechanical"),
+                    _stringLocalizer.GetString("fertilization_biofertilizer_yunta"),
+                    _stringLocalizer.GetString("fertilization_biofertilizer_superficial"),
+                    _stringLocalizer.GetString("fertilization_biofertilizer_foliar"),
+                    _stringLocalizer.GetString("fertilization_biofertilizer_fertiriego"),
+                    _stringLocalizer.GetString("fertilization_other")
                 },
                 ActivityIcon = "fertilization.png",
                 ActivityTitle = _stringLocalizer.GetString("fertilizer")

@@ -12,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = false,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
                 AmountSoldVisibility = false,
@@ -27,9 +27,10 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = true,
                 ActivityNameList = new List<string>
                 {
-                    _stringLocalizer.GetString("harvest"),
-                    _stringLocalizer.GetString("manual_harvest"),
-                    _stringLocalizer.GetString("mechanical_harvest")
+                    _stringLocalizer.GetString("irrigation_sprinkler"),
+                    _stringLocalizer.GetString("irrigation_drip"),
+                    _stringLocalizer.GetString("irrigation_rolled"),
+                    _stringLocalizer.GetString("irrigation_other")
                 },
                 ActivityIcon = "harvest.png",
                 ActivityTitle = _stringLocalizer.GetString("harvest")
