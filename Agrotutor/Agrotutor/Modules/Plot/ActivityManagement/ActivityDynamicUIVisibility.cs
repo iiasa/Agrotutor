@@ -88,6 +88,10 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
         ///     Defines the _varietySownVisibility
         /// </summary>
         private bool _varietySownVisibility;
+        private bool commentVisibility;
+        private bool sellingPriceVisibility;
+        private bool plotAreaVisibility;
+        private bool amountSoldVisibility;
 
         /// <summary>
         ///     Gets or sets a value indicating whether ActivityDateVisibility
@@ -235,6 +239,42 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
         {
             get => _varietySownVisibility;
             set => SetProperty(ref _varietySownVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether CommentVisibility
+        /// </summary>
+        public bool CommentVisibility
+        {
+            get => commentVisibility;
+            set => SetProperty(ref commentVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether SellingPriceVisibility
+        /// </summary>
+        public bool SellingPriceVisibility
+        {
+            get => sellingPriceVisibility;
+            set => SetProperty(ref sellingPriceVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether PlotAreaVisibility
+        /// </summary>
+        public bool PlotAreaVisibility
+        {
+            get => plotAreaVisibility;
+            set => SetProperty(ref plotAreaVisibility, value);
+        }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether AmountSoldVisibility
+        /// </summary>
+        public bool AmountSoldVisibility
+        {
+            get => amountSoldVisibility;
+            set => SetProperty(ref amountSoldVisibility, value);
         }
     }
 }

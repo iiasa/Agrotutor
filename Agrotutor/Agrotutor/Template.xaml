@@ -84,12 +84,12 @@
             <views:MiniMenuIcon
                 Command="{TemplateBinding Parent.BindingContext.NavigateToGuide}"
                 HorizontalOptions="CenterAndExpand"
-                IconSource="question.png"
+                IconSource="guide.png"
                 IconText="{localization:Translate main_menu_guide}" />
             <views:MiniMenuIcon
                 Command="{TemplateBinding Parent.BindingContext.ShowOptions}"
                 HorizontalOptions="CenterAndExpand"
-                IconSource="icons_settings_96.png"
+                IconSource="options.png"
                 IconText="{localization:Translate main_menu_options}" />
             <views:MiniMenuIcon
                 Command="{TemplateBinding Parent.BindingContext.ShowCalendar}"
@@ -99,13 +99,13 @@
             <views:MiniMenuIcon
                 Command="{TemplateBinding Parent.BindingContext.ShowWeather}"
                 HorizontalOptions="CenterAndExpand"
-                IconSource="clear.png"
+                IconSource="weather.png"
                 IconText="{localization:Translate main_menu_weather}" />
             <views:MiniMenuIcon
-                Command="{TemplateBinding Parent.BindingContext.AddParcelClicked}"
+                Command="{TemplateBinding Parent.BindingContext.StartPlanner}"
                 HorizontalOptions="CenterAndExpand"
-                IconSource="add.png"
-                IconText="{localization:Translate main_menu_add_parcel}" />
+                IconSource="advice.png"
+                IconText="{localization:Translate main_menu_advice}" />
         </StackLayout>
     </ControlTemplate>
 
@@ -147,19 +147,19 @@
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailGte}"
-                            IconSource="mail.png"
+                            IconSource="contact_email.png"
                             IconText="{localization:Translate hub_contact_contact_manager}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailAsis}"
-                            IconSource="mail.png"
+                            IconSource="contact_email.png"
                             IconText="{localization:Translate hub_contact_contact_assistant}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.PhoneCall}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Telefono}"
-                            IconSource="phone.png"
+                            IconSource="contact_call.png"
                             IconText="{localization:Translate hub_contact_call}" />
 
                     </StackLayout>
@@ -262,25 +262,25 @@
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.EmailIr}"
-                            IconSource="mail.png"
+                            IconSource="contact_email.png"
                             IconText="{localization:Translate investigation_platform_email_ir}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.EmailTr}"
-                            IconSource="mail.png"
+                            IconSource="contact_email.png"
                             IconText="{localization:Translate investigation_platform_email_tr}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.PhoneCall}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TelIr}"
-                            IconSource="phone.png"
+                            IconSource="contact_call.png"
                             IconText="{localization:Translate investigation_platform_call_ir}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.PhoneCall}"
                             CommandParameter="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TelTr}"
-                            IconSource="phone.png"
+                            IconSource="contact_call.png"
                             IconText="{localization:Translate investigation_platform_call_tr}" />
 
                     </StackLayout>
@@ -376,7 +376,7 @@
         <Frame Style="{StaticResource MainMapPopupBackground}">
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="add.png" />
+                    <Image HeightRequest="20" Source="options.png" />
                     <Label
                         FontSize="20"
                         HorizontalOptions="StartAndExpand"
@@ -386,17 +386,17 @@
                 <ScrollView>
                     <StackLayout>
                         <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.StartPlanner}"
-                            IconSource="planner.png"
-                            IconText="{localization:Translate options_planner}" />
-                        <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"
                             IconSource="profile.png"
                             IconText="{localization:Translate options_profile}" />
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.NavigateToPractices}"
-                            IconSource="link.png"
+                            IconSource="best_pract.png"
                             IconText="{localization:Translate options_practices}" />
+                        <views:IconWithText
+                            Command="{TemplateBinding Parent.BindingContext.ProvideFeedback}"
+                            IconSource="feedback.png"
+                            IconText="{localization:Translate options_feedback}" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

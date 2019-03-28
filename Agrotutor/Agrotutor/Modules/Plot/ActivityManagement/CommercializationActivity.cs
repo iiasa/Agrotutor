@@ -17,14 +17,18 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = true,
+                SellingPriceVisibility = true,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("commercialization"),
-                ActivityIcon = "money_small.png",
+                ActivityIcon = "sales.png",
                 ActivityTitle = _stringLocalizer.GetString("commercialization")
             };
         }

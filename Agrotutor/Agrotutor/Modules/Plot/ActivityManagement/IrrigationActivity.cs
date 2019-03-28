@@ -14,14 +14,18 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
+                PlotAreaVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("irrigation"),
-                ActivityIcon = "irrigation_small.png",
+                ActivityIcon = "irrigation.png",
                 ActivityTitle = _stringLocalizer.GetString("irrigation")
             };
         }

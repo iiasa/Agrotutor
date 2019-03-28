@@ -15,11 +15,15 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = true,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = true,
                 AppliedAmountVisibility = true,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
@@ -27,7 +31,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("organic_fertilizer"),
                     _stringLocalizer.GetString("chemical_fertilizer")
                 },
-                ActivityIcon = "fertilizer_small.png",
+                ActivityIcon = "fertilization.png",
                 ActivityTitle = _stringLocalizer.GetString("fertilizer")
             };
         }

@@ -16,9 +16,13 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityTotalCostVisibility = true,
                 AppliedAmountVisibility = true,
                 AppliedProductsVisibility = true,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = true,
                 PerformanceVisibility = false,
                 PlantingDensityVisibility = false,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
                 VarietySownVisibility = false,
                 ActivityNameList = new List<string>
@@ -26,7 +30,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("fungicides"),
                     _stringLocalizer.GetString("insecticides")
                 },
-                ActivityIcon = "cockroach_small.png",
+                ActivityIcon = "pest_control.png",
                 ActivityTitle = _stringLocalizer.GetString("pest_control")
             };
         }

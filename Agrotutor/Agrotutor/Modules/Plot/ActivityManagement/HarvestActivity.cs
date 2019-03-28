@@ -15,11 +15,15 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = true,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = true,
                 ActivityNameList = new List<string>
                 {
@@ -27,7 +31,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("manual_harvest"),
                     _stringLocalizer.GetString("mechanical_harvest")
                 },
-                ActivityIcon = "harvest_small.png",
+                ActivityIcon = "harvest.png",
                 ActivityTitle = _stringLocalizer.GetString("harvest")
             };
         }

@@ -30,14 +30,16 @@
                             Grid.Row="0"
                             Grid.Column="0"
                             Command="{Binding ActivityClickedCommand}"
-                            CommandParameter="SoilImprovers"/>
+                            CommandParameter="SoilImprovers"
+                            IconSource="soil_improv.png"
+                            IconText="{localization:Translate soil_improvers}"/>
 
                         <views:MenuIcon
                             Grid.Row="0"
                             Grid.Column="1"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="GroundPreperation"
-                            IconSource="shovel.png"
+                            IconSource="land_prep.png"
                             IconText="{localization:Translate ground_preparation}" />
 
                         <views:MenuIcon
@@ -53,7 +55,7 @@
                             Grid.Column="1"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="Fertilization"
-                            IconSource="fertilizer.png"
+                            IconSource="fertilization.png"
                             IconText="{localization:Translate fertilizer}" />
 
                         <views:MenuIcon
@@ -69,7 +71,7 @@
                             Grid.Column="1"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="WeedPreventionControl"
-                            IconSource="weeds.png"
+                            IconSource="weed_control.png"
                             IconText="{localization:Translate deweeding}" />
 
                         <views:MenuIcon
@@ -85,7 +87,7 @@
                             Grid.Column="1"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="PostHarvestStorage"
-                            IconSource="storage.png"
+                            IconSource="harvest_storage.png"
                             IconText="{localization:Translate post_harvest_storage}" />
 
                         <views:MenuIcon
@@ -93,7 +95,7 @@
                             Grid.Column="0"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="Commercialization"
-                            IconSource="money_bigger.png"
+                            IconSource="sales.png"
                             IconText="{localization:Translate commercialization}" />
 
                         <views:MenuIcon
@@ -101,7 +103,7 @@
                             Grid.Column="1"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="OtherActivities"
-                            IconSource="farmer_bigger.png"
+                            IconSource="add.png"
                             IconText="{localization:Translate other_activities}" />
 
                         <views:MenuIcon
@@ -110,7 +112,7 @@
                             Grid.ColumnSpan="2"
                             Command="{Binding ActivityClickedCommand}"
                             CommandParameter="PestAndDiseaseControlAndPrevention"
-                            IconSource="cockroach.png"
+                            IconSource="pest_control.png"
                             IconText="{localization:Translate pest_control}" />
 
                     </Grid>

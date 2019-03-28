@@ -15,10 +15,14 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = true,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = true,
                 AppliedAmountVisibility = true,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
+                PlotAreaVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
@@ -27,7 +31,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("pre_planting_herbicide"),
                     _stringLocalizer.GetString("physical_weed_control")
                 },
-                ActivityIcon = "weeds_small.png",
+                ActivityIcon = "weed_control.png",
                 ActivityTitle = _stringLocalizer.GetString("deweeding")
             };
         }

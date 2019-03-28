@@ -15,18 +15,22 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
                 {
                     _stringLocalizer.GetString("hermetic_storage"),
                     _stringLocalizer.GetString("traditional_storage")
                 },
-                ActivityIcon = "storage_small.png",
+                ActivityIcon = "harvest_storage.png",
                 ActivityTitle = _stringLocalizer.GetString("post_harvest_storage")
             };
         }

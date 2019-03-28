@@ -14,14 +14,18 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = true,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = true,
                 AppliedAmountVisibility = true,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityName = _stringLocalizer.GetString("soil_improvers"),
-                ActivityIcon = "flask_small.png",
+                ActivityIcon = "soil_improv.png",
                 ActivityTitle = _stringLocalizer.GetString("soil_improvers")
             };
         }

@@ -15,10 +15,14 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = true,
                 PlantingDensityVisibility = true,
+                PlotAreaVisibility = true,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
                 ActivityNameList = new List<string>
@@ -26,7 +30,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                     _stringLocalizer.GetString("resowing"),
                     _stringLocalizer.GetString("sowing")
                 },
-                ActivityIcon = "sowing_small.png",
+                ActivityIcon = "sowing.png",
                 ActivityTitle = _stringLocalizer.GetString("sowing")
             };
         }
