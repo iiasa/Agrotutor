@@ -204,6 +204,10 @@
                                         <Label Text="{localization:Translate plot_detail_climate}" />
                                         <Label Text="{Binding SelectedPlotClimate}" />
                                     </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_cost}" />
+                                        <Label Text="{Binding SelectedPlotActivityCost}" />
+                                    </StackLayout>
 
                                     <StackLayout Orientation="Horizontal">
                                         <Label Text="{localization:Translate plot_detail_CropType}" />

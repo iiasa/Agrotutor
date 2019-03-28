@@ -15,11 +15,15 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ActivityNameTextVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = true,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = true,
                 ActivityNameList = new List<string>
                 {
