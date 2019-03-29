@@ -46,6 +46,10 @@ namespace Agrotutor.Modules.Plot.ViewModels
         private string _selectedSown;
 
         private double _weightOfSeeds;
+        private string activityComment;
+        private int activitySellingPrice;
+        private int plotArea;
+        private string amountSold;
 
         public ActivityDetailViewModel(INavigationService navigationService, IDbService<Plot> plotDbService,
             IStringLocalizer<ActivityDetailViewModel> localizer) : base(navigationService, localizer)
@@ -66,6 +70,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
         {
             get => _activityCost;
             set => SetProperty(ref _activityCost, value);
+        }
+
+        public int ActivitySellingPrice
+        {
+            get => activitySellingPrice;
+            set => SetProperty(ref activitySellingPrice, value);
         }
 
         /// <summary>
@@ -102,6 +112,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
         {
             get => _activityName;
             set => SetProperty(ref _activityName, value);
+        }
+
+        public string ActivityComment
+        {
+            get => activityComment;
+            set => SetProperty(ref activityComment, value);
         }
 
         /// <summary>
@@ -175,7 +191,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
         /// <summary>
         ///     Gets or sets the SaveCommand
         /// </summary>
-        public DelegateCommand SaveCommand => new DelegateCommand(() => {
+        public DelegateCommand SaveCommand => new DelegateCommand(() =>
+        {
             string activityName;
             if (ActivityDynamicUIVisibility.ActivityNameListVisibility ||
                 ActivityDynamicUIVisibility.ActivityNameVisibility)
@@ -189,14 +206,18 @@ namespace Agrotutor.Modules.Plot.ViewModels
             var activity = new Activity
             {
                 AmountApplied = AmountApplied,
+                AmountSold = AmountSold,
                 AppliedProduct = AppliedProduct,
                 ActivityType = ActivityType,
+                Comment = ActivityComment,
                 Cost = ActivityCost,
                 Date = ActivityDate,
                 Dose = ActivityDose,
                 Name = activityName,
                 NumberOfSeeds = NumberOfSeeds,
+                PlotArea = PlotArea,
                 ProductObtained = ProductObtained,
+                SellingPrice = ActivitySellingPrice,
                 Sown = SelectedSown,
                 WeightOfSeeds = WeightOfSeeds,
                 Yield = ActivityYield
@@ -229,6 +250,18 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 _weightOfSeeds = value;
                 SetProperty(ref _weightOfSeeds, value);
             }
+        }
+
+        public int PlotArea
+        {
+            get => plotArea;
+            set => SetProperty(ref plotArea, value);
+        }
+
+        public string AmountSold
+        {
+            get => amountSold;
+            set => SetProperty(ref amountSold, value);
         }
 
         /// <summary>

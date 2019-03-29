@@ -19,9 +19,9 @@
             </StackLayout>
 
             <views:SimpleStatsSingle
-                AverageImageSource="peso3.png"
-                MinImageSource="peso2.png"
-                MaxImageSource="peso4.png"
+                AverageImageSource="money_avg.png"
+                MinImageSource="money_min.png"
+                MaxImageSource="money_max.png"
                 Unit="$"
                 AverageText="{localization:Translate average}"
                 MinText="{localization:Translate minimum}"

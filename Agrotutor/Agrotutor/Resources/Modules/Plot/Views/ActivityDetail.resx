@@ -120,8 +120,14 @@
   <data name="add" xml:space="preserve">
     <value>Save activity</value>
   </data>
+  <data name="amount_sold" xml:space="preserve">
+    <value>Amount sold</value>
+  </data>
   <data name="applied_products" xml:space="preserve">
     <value>Applied products</value>
+  </data>
+  <data name="comment" xml:space="preserve">
+    <value>Comment</value>
   </data>
   <data name="cost" xml:space="preserve">
     <value>Total cost of the activity ($)</value>
@@ -135,6 +141,9 @@
   <data name="name" xml:space="preserve">
     <value>Name of the activity</value>
   </data>
+  <data name="plot_area" xml:space="preserve">
+    <value>Plot area</value>
+  </data>
   <data name="product" xml:space="preserve">
     <value>product obtained</value>
   </data>
@@ -146,6 +155,9 @@
   </data>
   <data name="seeds_nr" xml:space="preserve">
     <value>number of seeds</value>
+  </data>
+  <data name="selling_price" xml:space="preserve">
+    <value>Selling price</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Activity detail</value>

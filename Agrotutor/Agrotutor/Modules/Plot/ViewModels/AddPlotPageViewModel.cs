@@ -16,6 +16,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
     {
         public static string PositionParameterName = "Position";
         private readonly IDbService<Core.Entities.Plot> _plotDbService;
+        public static string PlotParameterName = "Plot";
 
         private int _pickerClimateTypesSelectedIndex;
 
@@ -179,6 +180,15 @@ namespace Agrotutor.Modules.Plot.ViewModels
             {
                 parameters.TryGetValue(PositionParameterName, out Position position);
                 if (position != null) Plot.Position = position;
+            }
+
+            if (parameters.ContainsKey(AddPlotPageViewModel.PlotParameterName))
+            {
+                parameters.TryGetValue(AddPlotPageViewModel.PlotParameterName, out Plot plot);
+                if (plot != null)
+                {
+                    Plot = plot;
+                }
             }
 
             base.OnNavigatedTo(parameters);

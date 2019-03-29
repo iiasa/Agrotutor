@@ -14,9 +14,9 @@
                 FontSize="20" />-->
 
             <views:SimpleStatsSingle
-                AverageImageSource="corn3.png"
-                MinImageSource="corn2.png"
-                MaxImageSource="corn4.png"
+                AverageImageSource="prod_avg.png"
+                MinImageSource="prod_min.png"
+                MaxImageSource="prod_max.png"
                 Unit="tons"
                 AverageText="{localization:Translate average}"
                 MinText="{localization:Translate minimum}"

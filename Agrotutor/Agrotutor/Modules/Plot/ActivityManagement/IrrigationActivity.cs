@@ -1,5 +1,6 @@
 ﻿using Agrotutor.Modules.Plot.ViewModels;
 using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -11,17 +12,26 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = true,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = false,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = false,
+                SellingPriceVisibility = false,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
+                PlotAreaVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = _stringLocalizer.GetString("irrigation"),
-                ActivityIcon = "irrigation_small.png",
+                ActivityNameList = new List<string>
+                {
+                    _stringLocalizer.GetString("harvest_manual"),
+                    _stringLocalizer.GetString("harvest_mechanical"),
+                    _stringLocalizer.GetString("harvest_other")
+                },
+                ActivityIcon = "irrigation.png",
                 ActivityTitle = _stringLocalizer.GetString("irrigation")
             };
         }

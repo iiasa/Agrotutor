@@ -267,8 +267,8 @@
   <data name="machinery_point_year" xml:space="preserve">
     <value>Year</value>
   </data>
-  <data name="main_menu_add_parcel" xml:space="preserve">
-    <value>Add Plot</value>
+  <data name="main_menu_advice" xml:space="preserve">
+    <value>Advice</value>
   </data>
   <data name="main_menu_calendar" xml:space="preserve">
     <value>Calendar</value>
@@ -284,6 +284,9 @@
   </data>
   <data name="options_about" xml:space="preserve">
     <value>About</value>
+  </data>
+  <data name="options_feedback" xml:space="preserve">
+    <value>Feedback</value>
   </data>
   <data name="options_pest" xml:space="preserve">
     <value>Pest and Disease identification</value>
