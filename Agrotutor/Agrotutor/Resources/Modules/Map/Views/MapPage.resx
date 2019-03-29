@@ -201,4 +201,7 @@
   <data name="plot_detail_CropType" xml:space="preserve">
     <value>Crop type</value>
   </data>
+  <data name="plot_detail_cost" xml:space="preserve">
+    <value>Total cost</value>
+  </data>
 </root>
