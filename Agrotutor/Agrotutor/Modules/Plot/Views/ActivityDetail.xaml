@@ -112,6 +112,15 @@
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityComment}" />
                 </StackLayout>
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label VerticalOptions="Center" Text="{localization:Translate about}" />
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                </StackLayout>
+
                 <Button Text="{localization:Translate add}" VerticalOptions="End" HorizontalOptions="Center"
                         Grid.Row="11"
                         Command="{Binding SaveCommand}" />

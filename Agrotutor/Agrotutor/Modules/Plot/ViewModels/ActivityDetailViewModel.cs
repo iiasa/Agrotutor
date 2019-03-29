@@ -1,6 +1,7 @@
 
 
 using Agrotutor.Core.Persistence;
+using Agrotutor.ViewModels;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
@@ -62,6 +63,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
             ActivityDate = DateTime.Now;
             _appDataService = appDataService;
         }
+        
+        public DelegateCommand ShowAbout => new DelegateCommand(async () =>
+        {
+            var param = new NavigationParameters { { "page", WebContentPageViewModel.Activities } };
+            await NavigationService.NavigateAsync("WebContentPage", param);
+        });
 
         /// <summary>
         ///     Gets or sets the ActivityCost
