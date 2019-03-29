@@ -401,6 +401,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             });
         });
 
+        public DelegateCommand ProvideFeedback => new DelegateCommand(() =>
+            {
+                Device.OpenUri(new Uri($"mailto:{Constants.FeedbackEmail}?subject=AgroTutor-Feedback"));
+            });
+
         public string CurrentPlotCost
         {
             get => _currentPlotCost;
