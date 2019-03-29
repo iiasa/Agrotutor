@@ -120,13 +120,8 @@
     <BundleResource Include="Resources\clear.png" />
     <BundleResource Include="Resources\cloud.png" />
     <BundleResource Include="Resources\cloudy.png" />
-    <BundleResource Include="Resources\colorramp_faded.png" />
     <BundleResource Include="Resources\comparison.png" />
     <BundleResource Include="Resources\corn.png" />
-    <BundleResource Include="Resources\corn2.png" />
-    <BundleResource Include="Resources\corn3.png" />
-    <BundleResource Include="Resources\corn4.png" />
-    <BundleResource Include="Resources\creative_commons.png" />
     <BundleResource Include="Resources\crop_alfalfa.png" />
     <BundleResource Include="Resources\crop_alfalfa%402x.png" />
     <BundleResource Include="Resources\crop_amaranth.png" />
@@ -165,15 +160,11 @@
     <BundleResource Include="Resources\crop_zucchini%402x.png" />
     <BundleResource Include="Resources\data.png" />
     <BundleResource Include="Resources\delineate.png" />
-    <BundleResource Include="Resources\delineation.png" />
-    <BundleResource Include="Resources\delineation_deact.png" />
     <BundleResource Include="Resources\download.png" />
     <BundleResource Include="Resources\drizzle.png" />
-    <BundleResource Include="Resources\edit.png" />
     <BundleResource Include="Resources\farm.png" />
     <BundleResource Include="Resources\farmer_bigger.png" />
     <BundleResource Include="Resources\forecast.png" />
-    <BundleResource Include="Resources\forecast_small.png" />
     <BundleResource Include="Resources\freezing_drizzle.png" />
     <BundleResource Include="Resources\freezing_rain.png" />
     <BundleResource Include="Resources\get_location.png" />
@@ -185,14 +176,11 @@
     <BundleResource Include="Resources\heavy_rain.png" />
     <BundleResource Include="Resources\heavy_snow.png" />
     <BundleResource Include="Resources\history.png" />
-    <BundleResource Include="Resources\history_small.png" />
     <BundleResource Include="Resources\ic_chart.png" />
     <BundleResource Include="Resources\ic_chart%402x.png" />
     <BundleResource Include="Resources\ic_in_sync.png" />
     <BundleResource Include="Resources\ic_in_sync%402x.png" />
     <BundleResource Include="Resources\ic_info_black_24dp.xml" />
-    <BundleResource Include="Resources\ic_location.png" />
-    <BundleResource Include="Resources\ic_location%402x.png" />
     <BundleResource Include="Resources\ic_notifications_black_24dp.xml" />
     <BundleResource Include="Resources\ic_ok.png" />
     <BundleResource Include="Resources\ic_ok%402x.png" />
@@ -205,33 +193,7 @@
     <BundleResource Include="Resources\ic_weblink%402x.png" />
     <BundleResource Include="Resources\icon.png" />
     <BundleResource Include="Resources\icon%402x.png" />
-    <BundleResource Include="Resources\icon_benchmark.png" />
-    <BundleResource Include="Resources\icon_benchmark%402x.png" />
-    <BundleResource Include="Resources\icon_calendar.png" />
-    <BundleResource Include="Resources\icon_calendar%402x.png" />
-    <BundleResource Include="Resources\icon_edit.png" />
-    <BundleResource Include="Resources\icon_edit%402x.png" />
-    <BundleResource Include="Resources\icon_edit_blk.png" />
-    <BundleResource Include="Resources\icon_edit_blk%402x.png" />
-    <BundleResource Include="Resources\icon_info.png" />
-    <BundleResource Include="Resources\icon_info%402x.png" />
-    <BundleResource Include="Resources\icon_info_squared_96.png" />
-    <BundleResource Include="Resources\icon_links.png" />
-    <BundleResource Include="Resources\icon_links%402x.png" />
-    <BundleResource Include="Resources\icon_map.png" />
-    <BundleResource Include="Resources\icon_map%402x.png" />
-    <BundleResource Include="Resources\icon_map_96.png" />
-    <BundleResource Include="Resources\icon_overview.png" />
-    <BundleResource Include="Resources\icon_overview%402x.png" />
-    <BundleResource Include="Resources\icon_performance_96.png" />
-    <BundleResource Include="Resources\icon_planner_96.png" />
     <BundleResource Include="Resources\icon_profit_96.png" />
-    <BundleResource Include="Resources\icon_scales_96.png" />
-    <BundleResource Include="Resources\icon_view.png" />
-    <BundleResource Include="Resources\icon_view%402x.png" />
-    <BundleResource Include="Resources\icon_weather.png" />
-    <BundleResource Include="Resources\icon_weather%402x.png" />
-    <BundleResource Include="Resources\icon_weather_96.png" />
     <BundleResource Include="Resources\icons_datasheet_96.png" />
     <BundleResource Include="Resources\icons_pricetag_96.png" />
     <BundleResource Include="Resources\icons_settings_96.png" />
@@ -247,23 +209,15 @@
     <BundleResource Include="Resources\logo_big.png" />
     <BundleResource Include="Resources\map.png" />
     <BundleResource Include="Resources\mapall.png" />
-    <BundleResource Include="Resources\mapempty.png" />
-    <BundleResource Include="Resources\mapone.png" />
     <BundleResource Include="Resources\money.png" />
     <BundleResource Include="Resources\money_bigger.png" />
     <BundleResource Include="Resources\mostly_clear.png" />
     <BundleResource Include="Resources\mostly_cloudy.png" />
     <BundleResource Include="Resources\nitrogen.png" />
-    <BundleResource Include="Resources\nitrogen_small.png" />
     <BundleResource Include="Resources\opportunity.png" />
     <BundleResource Include="Resources\partly_cloudy.png" />
     <BundleResource Include="Resources\patchy_fog.png" />
-    <BundleResource Include="Resources\peso1.png" />
-    <BundleResource Include="Resources\peso2.png" />
-    <BundleResource Include="Resources\peso3.png" />
-    <BundleResource Include="Resources\peso4.png" />
     <BundleResource Include="Resources\planner.png" />
-    <BundleResource Include="Resources\planner_small.png" />
     <BundleResource Include="Resources\potato.png" />
     <BundleResource Include="Resources\profile.png" />
     <BundleResource Include="Resources\question.png" />
@@ -276,7 +230,6 @@
     <BundleResource Include="Resources\sleet.png" />
     <BundleResource Include="Resources\snow.png" />
     <BundleResource Include="Resources\sowing.png" />
-    <BundleResource Include="Resources\sowing_small.png" />
     <BundleResource Include="Resources\splashscreen.png" />
     <BundleResource Include="Resources\sun.png" />
     <BundleResource Include="Resources\suncloud.png" />
@@ -308,13 +261,7 @@
     <BundleResource Include="Resources\tiny_sleet.png" />
     <BundleResource Include="Resources\tiny_snow.png" />
     <BundleResource Include="Resources\tiny_thunderstorms.png" />
-    <BundleResource Include="Resources\wand.png" />
-    <BundleResource Include="Resources\wand_small.png" />
     <BundleResource Include="Resources\weather.png" />
-    <BundleResource Include="Resources\welcome_1.png" />
-    <BundleResource Include="Resources\welcome_2.png" />
-    <BundleResource Include="Resources\welcome_3.png" />
-    <BundleResource Include="Resources\welcome_4.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Contents.json">
@@ -560,6 +507,33 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\feedback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\calendar_crop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\forecast_historical_weather.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\forecast_price.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\forecast_weather.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\money_avg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\money_max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\money_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\prod_avg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\prod_min.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
