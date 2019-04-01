@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28407.52
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrotutor", "Agrotutor\Agrotutor\Agrotutor.csproj", "{8E89D8D4-12AA-4C97-AE33-7C33932EAA36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Agrotutor", "Agrotutor\Agrotutor\Agrotutor.csproj", "{8E89D8D4-12AA-4C97-AE33-7C33932EAA36}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Agrotutor.Android", "Agrotutor\Agrotutor.Android\Agrotutor.Android.csproj", "{E55F632F-EBD9-4641-A0EB-EAAE6488C6E7}"
 EndProject
@@ -105,7 +105,6 @@ Global
 		{248534C7-4C00-4145-87A7-FEA646AD19CD}.Release|iPhone.Build.0 = Release|iPhone
 		{248534C7-4C00-4145-87A7-FEA646AD19CD}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{248534C7-4C00-4145-87A7-FEA646AD19CD}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{248534C7-4C00-4145-87A7-FEA646AD19CD}.Debug|Any CPU.Build.0 = Debug|iPhone
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

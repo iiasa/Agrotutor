@@ -29,7 +29,7 @@ namespace Agrotutor.Core.Entities
 
         public CropType CropType { get; set; }
 
-        public virtual List<Position> Delineation { get; set; }
+        public virtual List<DelineationPosition> Delineation { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
