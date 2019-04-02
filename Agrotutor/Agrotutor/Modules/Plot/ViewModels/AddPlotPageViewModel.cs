@@ -184,7 +184,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
             if (parameters.ContainsKey(AddPlotPageViewModel.PlotParameterName))
             {
-                parameters.TryGetValue(AddPlotPageViewModel.PlotParameterName, out Plot plot);
+                parameters.TryGetValue(AddPlotPageViewModel.PlotParameterName, out Core.Entities.Plot plot);
                 if (plot != null)
                 {
                     Plot = plot;

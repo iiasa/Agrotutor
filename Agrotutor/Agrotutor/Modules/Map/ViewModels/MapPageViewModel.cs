@@ -1489,7 +1489,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                     updatedPlot = true;
                 }
 
-                if (updatedPlot && !plot.IsTemporaryPlot) await AppDataService.UpdatePlotAsync(plot);
+                if (updatedPlot && !plot.IsTemporaryPlot) _dbPlotDbService.UpdateItem(plot);
 
                 if (plot.IsTemporaryPlot)
                 {
