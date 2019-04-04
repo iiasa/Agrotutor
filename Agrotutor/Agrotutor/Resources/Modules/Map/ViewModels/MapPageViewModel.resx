@@ -129,6 +129,9 @@
   <data name="cost_data_not_available" xml:space="preserve">
     <value>Cost data is not available.</value>
   </data>
+  <data name="delete_offline_map_message" xml:space="preserve">
+    <value>You are about to delete {0} MB of offline maps. Are you sure you want to proceed?</value>
+  </data>
   <data name="delete_plot_confirm_button" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -143,6 +146,18 @@
   </data>
   <data name="delineation_pin_label" xml:space="preserve">
     <value>Delineation point</value>
+  </data>
+  <data name="download_offline_map_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="download_offline_map_in_progress" xml:space="preserve">
+    <value>Downloading {0} offline map</value>
+  </data>
+  <data name="download_offline_map_message" xml:space="preserve">
+    <value>You are about to download {0} MB. Please make sure you are on WiFi. Are you sure you want to proceed?</value>
+  </data>
+  <data name="download_offline_map_yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="email_subject" xml:space="preserve">
     <value>Agrotutor enquiry</value>

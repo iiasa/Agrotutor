@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using Acr.UserDialogs;
 using Agrotutor.Core;
@@ -44,6 +46,7 @@ using Agrotutor.Modules.Plot.Views;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather.ViewModels;
 using Agrotutor.Modules.Weather.Views;
+using Flurl.Http;
 
 namespace Agrotutor.Modules.Map.ViewModels
 {
@@ -152,6 +155,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool showDeletePlotButton;
         private double selectedPlotActivityCost;
 
+        private readonly double tileSize = 130;
+        private string tileName = "Guanajuato";
+        private string _lastUploadDateString;
+
         public MapPageViewModel(
             INavigationService navigationService,
             IAppDataService appDataService,
@@ -176,7 +183,10 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
-            DownloadDeleteCommand = new DelegateCommand(DownloadTiles);
+            DownloadDeleteCommand=new DelegateCommand(async () =>
+            {
+                await DownloadTilesAsync();
+            });
             CheckDownloadStatus();
         }
 
@@ -211,26 +221,94 @@ namespace Agrotutor.Modules.Map.ViewModels
                 IsOfflineBasemapLayerEnabled = false;
             }
         }
-        public void DownloadTiles()
+
+        private async Task UpLoadDataAsync()
         {
+            try
+            {
+                TimeSpan dateRes;
+                if (_lastUploadDateString != null)
+                {
+                    DateTime uploadDateTime=DateTime.Parse(_lastUploadDateString);
+                     dateRes = DateTime.UtcNow.Subtract(uploadDateTime);
+                }
+
+                if (_lastUploadDateString == null||dateRes.Days >= 90)
+                {
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
+                        HttpClient client = new HttpClient();
+                        if (Plots.ToList().Count > 0)
+                        {
+                            foreach (var plot in Plots)
+                            {
+                                var jsonObj = JsonConvert.SerializeObject(plot);
+                                var res = await client.PostAsync(Constants.UploadDataUrl,
+                                    new StringContent(jsonObj, Encoding.UTF8, "application/json"));
+                                if (!res.IsSuccessStatusCode)
+                                {
+                                    //todo:show notification or log the result
+                                    return;
+                                }
+
+                            }
+
+                            LastUploadDateString = DateTime.UtcNow.ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+        
+            }
+
+
+        }
+
+        public async Task DownloadTilesAsync( )
+        {
+      
             if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
             {
-                // remove files
-                FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
-                //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
-                DownloadStatusImage = "ic_download";
-                IsOfflineBasemapLayerEnabled = false;
-                OfflineBasemapLayerVisible = false;
+                var deleteOfflineMapMessage =
+                    string.Format(StringLocalizer.GetString("delete_offline_map_message"), tileSize);
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(deleteOfflineMapMessage, null, StringLocalizer.GetString("download_offline_map_yes"),
+                    StringLocalizer.GetString("download_offline_map_cancel"));
+                if (confirm.Value)
+                {
+                    // remove files
+                    FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
+                    //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
+                    DownloadStatusImage = "ic_download";
+                    IsOfflineBasemapLayerEnabled = false;
+                    OfflineBasemapLayerVisible = false;
+                }
+   
             }
             else
             {
-                TaskDownloadTiles();
+             
+                var downloadOfflineMapMessage =
+                    string.Format(StringLocalizer.GetString("download_offline_map_message"), tileSize);
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(downloadOfflineMapMessage, null, StringLocalizer.GetString("download_offline_map_yes"),
+                    StringLocalizer.GetString("download_offline_map_cancel"));
+                if (confirm.Value)
+                {
+             
+               await TaskDownloadTiles();
+                    
+                }
+            
             }
         }
-        private void TaskDownloadTiles()
+        private async Task TaskDownloadTiles()
         {
             if (Connectivity.NetworkAccess == NetworkAccess.Internet)
             {
+                var downloadOfflineMapInProgress = string.Format(StringLocalizer.GetString("download_offline_map_in_progress"), tileName);
+                var loadingDialog = await MaterialDialog.Instance.LoadingDialogAsync(downloadOfflineMapInProgress);
                 IsDownloadButtonEnabled = false;
                 IDownloadFile file = CrossDownloadManager.Current.CreateDownloadFile(Constants.DownloadTileUrl);
 
@@ -247,6 +325,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                                 IsOfflineBasemapLayerEnabled = true;
                                 LayerService.UpdateIsChecked(FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
                                 System.Console.WriteLine("Downloading finished. " + file.DestinationPathName);
+                                loadingDialog.DismissAsync();
                                 break;
 
                             case DownloadFileStatus.FAILED:
@@ -292,6 +371,15 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 SetProperty(ref _showSatelliteLayer, value);
                 Preferences.Set(Constants.ShowSatelliteTileLayerVisiblePreference, value);
+            }
+        }
+        public string LastUploadDateString
+        {
+            get => _lastUploadDateString;
+            set
+            {
+                SetProperty(ref _lastUploadDateString, value);
+                Preferences.Set(Constants.LastUploadDatePreference, value);
             }
         }
         public ObservableCollection<Polygon> Polygons
@@ -686,10 +774,10 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                         case MapTask.DelineationNotEnoughPoints:
                         case MapTask.DelineationEnoughPoints:
-                            if (CurrentDelineation == null) CurrentDelineation = new List<Position>();
+                            if (CurrentDelineation == null) CurrentDelineation = new List<DelineationPosition>();
 
                             var pos = Position.From(args.Point);
-                            CurrentDelineation.Add(pos);
+                            CurrentDelineation.Add(new DelineationPosition{Position= pos });
                             var pin = new Pin
                             {
                                 Position = Position.From(args.Point).ForMap(),
@@ -924,7 +1012,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public List<Position> CurrentDelineation { get; set; }
+        public List<DelineationPosition> CurrentDelineation { get; set; }
 
         public HubFeature CurrentHubContact
         {
@@ -1362,7 +1450,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     SelectedPlot.Delineation = CurrentDelineation;
                     AppDataService.UpdatePlotAsync(SelectedPlot);
-                    CurrentDelineation = new List<Position>();
+                    CurrentDelineation = new List<DelineationPosition>();
                     CurrentMapTask = MapTask.Default;
                     EndDelineation();
                 });
@@ -1371,7 +1459,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand(
                 () =>
                 {
-                    CurrentDelineation = new List<Position>();
+                    CurrentDelineation = new List<DelineationPosition>();
                     CurrentMapTask = MapTask.Default;
                     EndDelineation();
                 });
@@ -1466,7 +1554,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                         {
                             Tag = plot.Position
                         };
-                        foreach (var position in positions) polygon.Positions.Add(position.ForMap());
+                        foreach (var position in positions)
+                            polygon.Positions.Add(position.Position.ForMap());
                         Polygons.Add(polygon);
                     }
                 }
@@ -1478,7 +1567,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             if (CurrentDelineation.Count < 3) return;
             RemoveDelineationPolygon();
             var polygon = new Polygon { FillColor = Color.Transparent };
-            foreach (var position in CurrentDelineation) polygon.Positions.Add(position.ForMap());
+            foreach (var position in CurrentDelineation) polygon.Positions.Add(position.Position.ForMap());
             CurrentPolygon = polygon;
             Polygons.Add(polygon);
         }
@@ -1654,7 +1743,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 //tasks.Add(LoadPlots());
                 await LoadPlots();
-
+                await UpLoadDataAsync();
                 //tasks.Add(RefreshWeatherData());
                 await RefreshWeatherData();
 
@@ -1905,6 +1994,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
                 OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
                 ShowSatelliteTileLayer = Preferences.Get(Constants.ShowSatelliteTileLayerVisiblePreference, true);
+                LastUploadDateString = Preferences.Get(Constants.LastUploadDatePreference,null);
             }
         }
 
