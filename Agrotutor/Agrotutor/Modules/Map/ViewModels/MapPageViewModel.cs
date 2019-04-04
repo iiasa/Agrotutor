@@ -714,6 +714,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     CreatePlot();
                 });
 
+        public DelegateCommand AddPlotCommand =>
+            new DelegateCommand(() => CreatePlot());
+
         public DelegateCommand NavigateToCurrentHubContact =>
             new DelegateCommand(() => NavigateToLocation(CurrentHubContact.Geometry.ToLocation()));
 

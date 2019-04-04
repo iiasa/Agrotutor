@@ -1,4 +1,4 @@
-﻿using Prism.Commands;
+using Prism.Commands;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -12,5 +12,10 @@ namespace Agrotutor.ViewModels
         {
 
         }
+
+        public DelegateCommand Weather = new DelegateCommand(()=> 
+        {
+             
+        });
     }
 }
