@@ -123,8 +123,74 @@
   <data name="commercialization" xml:space="preserve">
     <value>Commercialization</value>
   </data>
+  <data name="commercialization_direct" xml:space="preserve">
+    <value>Direct sale to consumer</value>
+  </data>
+  <data name="commercialization_intermediary" xml:space="preserve">
+    <value>Sale to intermediary</value>
+  </data>
+  <data name="commercialization_other" xml:space="preserve">
+    <value>Another type of marketing activity</value>
+  </data>
   <data name="deweeding" xml:space="preserve">
     <value>Weed control</value>
+  </data>
+  <data name="fertilization_biofertilizer_fertiriego" xml:space="preserve">
+    <value>Biofertilizer: fertiriego</value>
+  </data>
+  <data name="fertilization_biofertilizer_foliar" xml:space="preserve">
+    <value>Biofertilizer: foliar</value>
+  </data>
+  <data name="fertilization_biofertilizer_manual" xml:space="preserve">
+    <value>Biofertilizer: manual buried</value>
+  </data>
+  <data name="fertilization_biofertilizer_mechanical" xml:space="preserve">
+    <value>Biofertilizer: mechanical buried</value>
+  </data>
+  <data name="fertilization_biofertilizer_superficial" xml:space="preserve">
+    <value>Biofertilizer: superficial</value>
+  </data>
+  <data name="fertilization_biofertilizer_yunta" xml:space="preserve">
+    <value>Biofertilizer: buried with yunta</value>
+  </data>
+  <data name="fertilization_diag_green_sat" xml:space="preserve">
+    <value>Fertility diagnosis: GreenSat</value>
+  </data>
+  <data name="fertilization_diag_green_seeker" xml:space="preserve">
+    <value>Fertility diagnosis: GreenSeeker</value>
+  </data>
+  <data name="fertilization_diag_other" xml:space="preserve">
+    <value>Fertility diagnosis: other</value>
+  </data>
+  <data name="fertilization_diag_rich_strip" xml:space="preserve">
+    <value>Fertility diagnosis: rich strip</value>
+  </data>
+  <data name="fertilization_diag_soil" xml:space="preserve">
+    <value>Fertility diagnosis: soil analysis</value>
+  </data>
+  <data name="fertilization_diag_tissue" xml:space="preserve">
+    <value>Fertility diagnosis: tissue analysis</value>
+  </data>
+  <data name="fertilization_inorg_fertiriego" xml:space="preserve">
+    <value>Inorganic fertilizer: fertiriego</value>
+  </data>
+  <data name="fertilization_inorg_foliar" xml:space="preserve">
+    <value>Inorganic fertilizer: foliar</value>
+  </data>
+  <data name="fertilization_inorg_manual" xml:space="preserve">
+    <value>Inorganic fertilizer: manual buried</value>
+  </data>
+  <data name="fertilization_inorg_mechanical" xml:space="preserve">
+    <value>Inorganic Fertilizer: buried mechanically</value>
+  </data>
+  <data name="fertilization_inorg_superficial" xml:space="preserve">
+    <value>Inorganic fertilizer: superficial</value>
+  </data>
+  <data name="fertilization_inorg_yunta" xml:space="preserve">
+    <value>Inorganic fertilizer: buried with yunta</value>
+  </data>
+  <data name="fertilization_other" xml:space="preserve">
+    <value>Other activity related to fertilization</value>
   </data>
   <data name="fertilizer" xml:space="preserve">
     <value>Fertilization</value>
@@ -135,8 +201,44 @@
   <data name="ground_preparation" xml:space="preserve">
     <value>Ground preparation</value>
   </data>
+  <data name="ground_prep_fert_reformer" xml:space="preserve">
+    <value>Fertilizer-reformer Ag. Conservation</value>
+  </data>
+  <data name="ground_prep_floor_level" xml:space="preserve">
+    <value>Leveling of floors</value>
+  </data>
+  <data name="ground_prep_impl_conservation" xml:space="preserve">
+    <value>Implements (cutting discs etc.) Ag. Conservation</value>
+  </data>
+  <data name="ground_prep_level" xml:space="preserve">
+    <value>Level or vertical level curves</value>
+  </data>
+  <data name="ground_prep_machinery" xml:space="preserve">
+    <value>Multi-use and multi-crop machinery - prep soil</value>
+  </data>
+  <data name="ground_prep_other" xml:space="preserve">
+    <value>Another type of soil preparation activity</value>
+  </data>
+  <data name="ground_prep_permanent_beds" xml:space="preserve">
+    <value>Use of permanent beds</value>
+  </data>
+  <data name="ground_prep_plot_level" xml:space="preserve">
+    <value>Leveling of the plot</value>
+  </data>
+  <data name="ground_prep_vertical rotating" xml:space="preserve">
+    <value>Vertical rotating with subsoil and chisel plow</value>
+  </data>
   <data name="harvest" xml:space="preserve">
     <value>Harvest</value>
+  </data>
+  <data name="harvest_manual" xml:space="preserve">
+    <value>Manual harvest</value>
+  </data>
+  <data name="harvest_mechanical" xml:space="preserve">
+    <value>Mechanical harvest</value>
+  </data>
+  <data name="harvest_other" xml:space="preserve">
+    <value>Another type of harvesting activity</value>
   </data>
   <data name="hermetic_storage" xml:space="preserve">
     <value>Post-harvest storage with hermetic technologies</value>
@@ -146,6 +248,18 @@
   </data>
   <data name="irrigation" xml:space="preserve">
     <value>Irrigation</value>
+  </data>
+  <data name="irrigation_drip" xml:space="preserve">
+    <value>Drip irrigation</value>
+  </data>
+  <data name="irrigation_other" xml:space="preserve">
+    <value>Another type of irrigation</value>
+  </data>
+  <data name="irrigation_rolled" xml:space="preserve">
+    <value>Irrigation rolled</value>
+  </data>
+  <data name="irrigation_sprinkler" xml:space="preserve">
+    <value>Sprinkler irrigation</value>
   </data>
   <data name="liquid_fertilizer" xml:space="preserve">
     <value>Application of liquid fertilizer</value>
@@ -162,11 +276,98 @@
   <data name="other_activities" xml:space="preserve">
     <value>Other activities</value>
   </data>
+  <data name="other_agriculture_contract" xml:space="preserve">
+    <value>Use of agriculture by contract</value>
+  </data>
+  <data name="other_conservation_contreo" xml:space="preserve">
+    <value>Conservation works: contreo or piletreo</value>
+  </data>
+  <data name="other_conservation_dykes" xml:space="preserve">
+    <value>Conservation works: dykes</value>
+  </data>
+  <data name="other_conservation_filtering" xml:space="preserve">
+    <value>Conservation works: filtering dams</value>
+  </data>
+  <data name="other_conservation_living_barriers" xml:space="preserve">
+    <value>Conservation works: living barriers</value>
+  </data>
+  <data name="other_conservation_other" xml:space="preserve">
+    <value>Conservation works: other</value>
+  </data>
+  <data name="other_crop_rotation" xml:space="preserve">
+    <value>Use of crop rotation</value>
+  </data>
+  <data name="other_multiuse_conservation" xml:space="preserve">
+    <value>Multi use / cultivation machinery - Ag. Conservation</value>
+  </data>
+  <data name="other_multiuse_miaf" xml:space="preserve">
+    <value>Milpa system interspersed with fruit trees (MIAF)</value>
+  </data>
+  <data name="other_multiuse_traditional" xml:space="preserve">
+    <value>Multi use / cultivation machinery - Ag. Traditional</value>
+  </data>
+  <data name="other_other" xml:space="preserve">
+    <value>Other activity (use the comment section)</value>
+  </data>
   <data name="pest_control" xml:space="preserve">
     <value>Pest control</value>
   </data>
+  <data name="pest_control_fungicide" xml:space="preserve">
+    <value>Fungicide</value>
+  </data>
+  <data name="pest_control_natural_enemies" xml:space="preserve">
+    <value>Beneficial insects (natural enemies)</value>
+  </data>
+  <data name="pest_control_other" xml:space="preserve">
+    <value>Another type of disease / pest control</value>
+  </data>
+  <data name="pest_control_pesticide" xml:space="preserve">
+    <value>Pesticide</value>
+  </data>
+  <data name="pest_control_pest_monitoring" xml:space="preserve">
+    <value>Pest monitoring in the field</value>
+  </data>
+  <data name="pest_control_pheromones" xml:space="preserve">
+    <value>Pheromones for pest control</value>
+  </data>
+  <data name="pest_control_seed_treatment" xml:space="preserve">
+    <value>Seed treatments (fungicides, insecticides, mycorrhizae)</value>
+  </data>
   <data name="physical_weed_control" xml:space="preserve">
     <value>Cultural work and physical control of weeds</value>
+  </data>
+  <data name="postharvest_storage_drying" xml:space="preserve">
+    <value>Grain drying</value>
+  </data>
+  <data name="postharvest_storage_hermetic_containers" xml:space="preserve">
+    <value>Storage in hermetic containers</value>
+  </data>
+  <data name="postharvest_storage_inert_diatom_earth" xml:space="preserve">
+    <value>Inert powders: diatomaceous earth</value>
+  </data>
+  <data name="postharvest_storage_inert_lime" xml:space="preserve">
+    <value>Inert powders: micronized lime</value>
+  </data>
+  <data name="postharvest_storage_inert_other" xml:space="preserve">
+    <value>Inert powders: other</value>
+  </data>
+  <data name="postharvest_storage_inert_silicon" xml:space="preserve">
+    <value>Inert powders: silicon</value>
+  </data>
+  <data name="postharvest_storage_other" xml:space="preserve">
+    <value>Another type of post-harvest activity</value>
+  </data>
+  <data name="postharvest_storage_pheromones" xml:space="preserve">
+    <value>Pheromones for pest control</value>
+  </data>
+  <data name="postharvest_storage_sex_pheromones" xml:space="preserve">
+    <value>Use of sex pheromones - field / warehouse</value>
+  </data>
+  <data name="postharvest_storage_sheller" xml:space="preserve">
+    <value>Efficient sheller</value>
+  </data>
+  <data name="postharvest_storage_traditional" xml:space="preserve">
+    <value>Traditional storage</value>
   </data>
   <data name="post_harvest_storage" xml:space="preserve">
     <value>Post harvest storage</value>
@@ -183,10 +384,49 @@
   <data name="soil_improvers" xml:space="preserve">
     <value>Application of soil improvers</value>
   </data>
+  <data name="soil_improvers_dolomite_lime" xml:space="preserve">
+    <value>Dolomite lime and agricultural gypsum</value>
+  </data>
+  <data name="soil_improvers_organic_fertilizer" xml:space="preserve">
+    <value>Organic fertilizers (compost / manure, etc.)</value>
+  </data>
+  <data name="soil_improvers_other" xml:space="preserve">
+    <value>Other types of soil improvers</value>
+  </data>
+  <data name="soil_improvers_stubble_handling" xml:space="preserve">
+    <value>Stubble handling (manual / mechanical)</value>
+  </data>
   <data name="sowing" xml:space="preserve">
     <value>Sowing</value>
   </data>
+  <data name="sowing_add_cover" xml:space="preserve">
+    <value>Additional sowing of cover crop</value>
+  </data>
+  <data name="sowing_add_high_market_value" xml:space="preserve">
+    <value>Additional sowing of high market value crops</value>
+  </data>
+  <data name="sowing_add_new" xml:space="preserve">
+    <value>Additional sowing of new crops</value>
+  </data>
+  <data name="sowing_other" xml:space="preserve">
+    <value>Another type of planting activity</value>
+  </data>
+  <data name="sowing_traditional" xml:space="preserve">
+    <value>Sowing traditional crop</value>
+  </data>
   <data name="traditional_storage" xml:space="preserve">
     <value>Traditional post-harvest storage</value>
+  </data>
+  <data name="weed_prevention_cultural_work" xml:space="preserve">
+    <value>Cultural work for weed control</value>
+  </data>
+  <data name="weed_prevention_other" xml:space="preserve">
+    <value>Another activity for weed control</value>
+  </data>
+  <data name="weed_prevention_post_sowing" xml:space="preserve">
+    <value>Post-sowing herbicides</value>
+  </data>
+  <data name="weed_prevention_pre_sowing" xml:space="preserve">
+    <value>Pre-sowing herbicides</value>
   </data>
 </root>

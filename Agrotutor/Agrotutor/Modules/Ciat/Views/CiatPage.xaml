@@ -23,17 +23,17 @@
                     Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="18"
                     Text="{localization:Translate placeholder_nitrogen}"/>
                 
-                <Image Source="crop_orange.png"  WidthRequest="46" HeightRequest="46" />
+                <Image Source="cultivate_avoid.png"  WidthRequest="46" HeightRequest="46" />
                 <Label x:Name="lblAvoidCultivars" FontSize="18"
                     Margin="0,16,0,16" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                     Text="{localization:Translate placeholder_avoid}" />
 
-                <Image Source="crop_green.png"  WidthRequest="46" HeightRequest="46" />
+                <Image Source="cultivate_use.png"  WidthRequest="46" HeightRequest="46" />
                 <Label x:Name="lblUseCultivars" FontSize="18"
                     Margin="0,16,0,16" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                     Text="{localization:Translate placeholder_use}" />
 
-                <Image Source="fertilizer.png"  WidthRequest="46" HeightRequest="46" />
+                <Image Source="sowing.png"  WidthRequest="46" HeightRequest="46" />
                 <Label x:Name="lblSeedDensity" FontSize="18"
                     Margin="0,16,0,16" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                     Text="{localization:Translate placeholder_seed_density}" />

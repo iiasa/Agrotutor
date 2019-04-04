@@ -46,7 +46,7 @@
 
               <views:IconWithText
                   IconText="{localization:Translate potential_yield}"
-                    IconSource="corn1.png"
+                    IconSource="prod_max.png"
                     Command="{Binding NavigateToPotentialYield}"/>
 
               <views:IconWithText
@@ -56,7 +56,7 @@
 
               <views:IconWithText
                   IconText="{localization:Translate price_forecast}"
-                    IconSource="peso1.png"
+                    IconSource="money_min.png"
                     Command="{Binding NavigateToPriceForecast}"/>
 
               <views:IconWithText

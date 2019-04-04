@@ -29,7 +29,7 @@ namespace Agrotutor.Core.Entities
 
         public CropType CropType { get; set; }
 
-        public virtual List<Position> Delineation { get; set; }
+        public virtual List<DelineationPosition> Delineation { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -54,6 +54,8 @@ namespace Agrotutor.Core.Entities
 
         public virtual List<MediaItem> MediaItems { get; set; }
 
+        [NotMapped]
+        public bool IsTemporaryPlot { get; set; }
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 
