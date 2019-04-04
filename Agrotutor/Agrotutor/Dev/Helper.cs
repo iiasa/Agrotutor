@@ -35,33 +35,36 @@
                     },
                     ClimateType = ClimateType.Hybrid,
                     CropType = CropType.Bean,
-                    Delineation = new List<Position>
+                    Delineation = new List<DelineationPosition>
                     {
+                        new  DelineationPosition{Position = 
                         new Position
                         {
                             Latitude = 20.5,
                             Longitude = -105.0
-                        },
+                        }},
+                            new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 21.5,
                             Longitude = -105.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 21.5,
                             Longitude = -106.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 20.5,
                             Longitude = -106.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 20.5,
                             Longitude = -105.0
                         },
+                            }
                     },
                     MaturityType = MaturityType.Late,
                     Name = "Beans 1"
@@ -90,33 +93,34 @@
                     },
                     ClimateType = ClimateType.Hybrid,
                     CropType = CropType.Corn,
-                    Delineation = new List<Position>
+                    Delineation = new List<DelineationPosition>
                     {
+                        new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 22.5,
                             Longitude = -105.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 23.5,
                             Longitude = -105.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 23.5,
                             Longitude = -106.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 22.5,
                             Longitude = -106.0
-                        },
+                        }},    new  DelineationPosition{Position =
                         new Position
                         {
                             Latitude = 22.5,
                             Longitude = -105.0
-                        },
+                        }},
                     },
                     MaturityType = MaturityType.Late,
                     Name = "Corn 1"

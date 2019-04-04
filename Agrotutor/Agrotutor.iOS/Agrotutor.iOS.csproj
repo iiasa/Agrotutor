@@ -50,7 +50,8 @@
     <CodesignKey>iPhone Developer: Mathias Karner (MAK4J666SA)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision>AgroTutor Dev1</CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <MtouchLink>None</MtouchLink>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>true</OptimizePNGs>
@@ -357,9 +358,6 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs">
       <Version>7.0.3</Version>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies">
-      <Version>2.2.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
       <Version>2.2.3</Version>
