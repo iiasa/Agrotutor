@@ -26,7 +26,6 @@ using Agrotutor.Modules.Plot.ViewModels;
 using Agrotutor.Modules.PriceForecasting.Types;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Types;
-using Castle.Core.Internal;
 using Microsoft.Extensions.Localization;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -438,7 +437,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand DownloadDeleteCommand { get; set; }
         public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost.IsNullOrEmpty())
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost==null||SelectedPlot.BemData.Cost.Count==0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("cost_data_not_available"));
                 return;
@@ -452,7 +451,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCurrentPlotIncome => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income.IsNullOrEmpty())
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income==null||SelectedPlot.BemData.Income.Count==0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("income_data_not_available"));
                 return;
@@ -466,7 +465,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCurrentPlotProfit => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit.IsNullOrEmpty())
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit==null|| SelectedPlot.BemData.Profit.Count==0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("profit_data_not_available"));
                 return;
@@ -480,7 +479,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCurrentPlotYield => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield.IsNullOrEmpty())
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield==null||SelectedPlot.BemData.Yield.Count==0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("yield_data_not_available"));
                 return;
