@@ -1,5 +1,6 @@
 ﻿using Agrotutor.Modules.Plot.ViewModels;
 using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -11,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = true,
-                ActivityNameTextVisibility = true,
+                ActivityNameListVisibility = true,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
                 SellingPriceVisibility = false,
@@ -24,7 +25,20 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 PlotAreaVisibility = false,
                 PerformanceVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = _stringLocalizer.GetString("other_activities"),
+                ActivityNameList = new List<string>
+                {
+                    _stringLocalizer.GetString("other_multiuse_conservation"),
+                    _stringLocalizer.GetString("other_multiuse_traditional"),
+                    _stringLocalizer.GetString("other_multiuse_miaf"),
+                    _stringLocalizer.GetString("other_agriculture_contract"),
+                    _stringLocalizer.GetString("other_conservation_filtering"),
+                    _stringLocalizer.GetString("other_conservation_living_barriers"),
+                    _stringLocalizer.GetString("other_conservation_dykes"),
+                    _stringLocalizer.GetString("other_conservation_contreo"),
+                    _stringLocalizer.GetString("other_conservation_other"),
+                    _stringLocalizer.GetString("other_crop_rotation"),
+                    _stringLocalizer.GetString("other_other")
+                },
                 ActivityIcon = "add.png",
                 ActivityTitle = _stringLocalizer.GetString("other_activities")
             };

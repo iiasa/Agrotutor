@@ -35,11 +35,6 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
         private bool _activityNameListVisibility;
 
         /// <summary>
-        ///     Defines the _activityNameTextVisibility
-        /// </summary>
-        private bool _activityNameTextVisibility;
-
-        /// <summary>
         ///     Defines the _activityNameVisibility
         /// </summary>
         private bool _activityNameVisibility;
@@ -136,15 +131,6 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
         {
             get => _activityNameListVisibility;
             set => SetProperty(ref _activityNameListVisibility, value);
-        }
-
-        /// <summary>
-        ///     Gets or sets a value indicating whether ActivityNameTextVisibility
-        /// </summary>
-        public bool ActivityNameTextVisibility
-        {
-            get => _activityNameTextVisibility;
-            set => SetProperty(ref _activityNameTextVisibility, value);
         }
 
         /// <summary>

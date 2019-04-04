@@ -12,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = false,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = true,
                 ActivityTotalCostVisibility = true,
                 AppliedAmountVisibility = true,
                 AppliedProductsVisibility = true,
@@ -27,8 +27,13 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 VarietySownVisibility = false,
                 ActivityNameList = new List<string>
                 {
-                    _stringLocalizer.GetString("fungicides"),
-                    _stringLocalizer.GetString("insecticides")
+                    _stringLocalizer.GetString("pest_control_fungicide"),
+                    _stringLocalizer.GetString("pest_control_pesticide"),
+                    _stringLocalizer.GetString("pest_control_pheromones"),
+                    _stringLocalizer.GetString("pest_control_natural_enemies"),
+                    _stringLocalizer.GetString("pest_control_pest_monitoring"),
+                    _stringLocalizer.GetString("pest_control_seed_treatment"),
+                    _stringLocalizer.GetString("pest_control_other")
                 },
                 ActivityIcon = "pest_control.png",
                 ActivityTitle = _stringLocalizer.GetString("pest_control")

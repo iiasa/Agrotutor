@@ -31,6 +31,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         private DateTime plantingDate;
         private bool savingPlot;
+        private bool _cultivarCharacteristicsVisible;
 
         public AddPlotPageViewModel(
             INavigationService navigationService,
@@ -92,6 +93,11 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         public bool SavingPlot { get => savingPlot; set => SetProperty(ref savingPlot, value); }
 
+        public bool CultivarCharacteristicsVisible
+        {
+            get => _cultivarCharacteristicsVisible;
+            set => SetProperty(ref _cultivarCharacteristicsVisible, value);
+        }
 
         public DateTime PlantingDate
         {
@@ -106,6 +112,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("saving_plot")))
                     {
                         SavingPlot = true;
+                        Plot.IsTemporaryPlot = false;
                         Plot.Activities = new List<Activity>
                         {
                             new Activity
@@ -151,6 +158,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 {
                     Plot.CropType = (CropType)(value + 1); // TODO: verify
                 }
+
+                CultivarCharacteristicsVisible = (Plot.CropType == CropType.Corn);
             }
         }
 

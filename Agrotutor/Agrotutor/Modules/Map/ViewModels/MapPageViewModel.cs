@@ -153,6 +153,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool showAdditionalDataButton;
         private bool showSavePlotButton;
         private bool showDeletePlotButton;
+        private double selectedPlotActivityCost;
 
         private readonly double tileSize = 130;
         private string tileName = "Guanajuato";
@@ -432,6 +433,8 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
+        public double SelectedPlotActivityCost { get => selectedPlotActivityCost; set => SetProperty(ref selectedPlotActivityCost, value); }
+
         public DelegateCommand DownloadDeleteCommand { get; set; }
         public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(async () =>
         {
@@ -488,6 +491,11 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {ViewYieldPageViewModel.YieldsParameterName, SelectedPlot.BemData.Yield}
             });
         });
+
+        public DelegateCommand ProvideFeedback => new DelegateCommand(() =>
+            {
+                Device.OpenUri(new Uri($"mailto:{Constants.FeedbackEmail}?subject=AgroTutor-Feedback"));
+            });
 
         public string CurrentPlotCost
         {
@@ -1297,15 +1305,17 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 if (value == null || value == selectedPlot) return;
                 SetProperty(ref selectedPlot, value);
-
+                
                 if (value.MediaItems == null) value.MediaItems = new List<MediaItem>();
 
-                if (value.IsTemporaryPlot) {
+                if (value.IsTemporaryPlot)
+                {
                     ShowSavePlotButton = true;
                     ShowDeletePlotButton = false;
                 }
                 else
                 {
+                    if (value.Activities != null) SelectedPlotActivityCost = value.Activities.Sum(x => x.Cost);
                     ShowSavePlotButton = false;
                     ShowDeletePlotButton = true;
                 }

@@ -117,11 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="about" xml:space="preserve">
+    <value>Acerca actividades</value>
+  </data>
   <data name="add" xml:space="preserve">
     <value>Agregar actividad</value>
   </data>
+  <data name="amount_sold" xml:space="preserve">
+    <value>Cantidad vendida</value>
+  </data>
   <data name="applied_products" xml:space="preserve">
     <value>Productos aplicados</value>
+  </data>
+  <data name="comment" xml:space="preserve">
+    <value>Comentario</value>
   </data>
   <data name="cost" xml:space="preserve">
     <value>Cost total de la actividad ($)</value>
@@ -135,6 +144,9 @@
   <data name="name" xml:space="preserve">
     <value>Nombre de la actividad</value>
   </data>
+  <data name="plot_area" xml:space="preserve">
+    <value>Área de parcela</value>
+  </data>
   <data name="product" xml:space="preserve">
     <value>Producto obtenido</value>
   </data>
@@ -146,6 +158,9 @@
   </data>
   <data name="seeds_nr" xml:space="preserve">
     <value>Número de semillas</value>
+  </data>
+  <data name="selling_price" xml:space="preserve">
+    <value>Precio de venta</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Detalle de la actividad</value>

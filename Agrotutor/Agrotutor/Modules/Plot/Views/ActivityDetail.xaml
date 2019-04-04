@@ -36,8 +36,6 @@
                     <Picker ItemsSource="{Binding ActivityDynamicUIVisibility.ActivityNameList}" Margin="16,16,0,0"
                             WidthRequest="250" SelectedItem="{Binding ActivityName}" ItemDisplayBinding="{Binding}"
                             IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}" />
-                    <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityNameText}"
-                           IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameTextVisibility}" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}"
                              Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
@@ -112,6 +110,15 @@
                              HorizontalOptions="Start" Grid.Row="10">
                     <Label Text="{localization:Translate comment}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityComment}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label VerticalOptions="Center" Text="{localization:Translate about}" />
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
 
                 <Button Text="{localization:Translate add}" VerticalOptions="End" HorizontalOptions="Center"

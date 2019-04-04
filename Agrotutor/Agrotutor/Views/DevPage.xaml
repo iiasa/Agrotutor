@@ -8,7 +8,7 @@
     prism:ViewModelLocator.AutowireViewModel="True">
 
     <views:SimpleStats
-        AverageImageSource="peso3.png"
+        AverageImageSource="money_max.png"
         AverageText="Avg"
         AverageValueIrrigated="4300"
         AverageValueRainfed="1200"

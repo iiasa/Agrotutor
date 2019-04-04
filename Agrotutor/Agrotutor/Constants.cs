@@ -49,6 +49,8 @@
         public const string DownloadTileUrl = "https://static.geo-wiki.org/tiles/mexico_5.mbtiles";
         //https://static.geo-wiki.org/tiles/mexico_guanajuato.mbtiles
         public const string TermsAccepted = "TermsAccepted";
+
+        public const string FeedbackEmail = "to@be.set";
         public const string UploadDataUrl = "http://147.125.53.3:45459/api/plots/CreatePlot";
     }
 }
