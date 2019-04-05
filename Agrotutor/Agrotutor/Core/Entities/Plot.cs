@@ -19,6 +19,8 @@ namespace Agrotutor.Core.Entities
         public Plot()
         {
             randomColor=new Random();
+
+
         }
      
         public virtual List<Activity> Activities { get; set; }
@@ -75,19 +77,22 @@ namespace Agrotutor.Core.Entities
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
             Color colorPerPlot = Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
-            foreach (Activity activity in Activities)
+            if (Activities != null)
             {
-                events.Add(
-                    new CalendarEvent
-                    {
-                        Data = activity,
-                        AllDayEvent = true,
-                        StartTime = activity.Date,
-                        EndTime = activity.Date,
-                        Title = activity.Name,
-                        Color = colorPerPlot,
-                        Plot = this
-            });
+                foreach (Activity activity in Activities)
+                {
+                    events.Add(
+                        new CalendarEvent
+                        {
+                            Data = activity,
+                            AllDayEvent = true,
+                            StartTime = activity.Date,
+                            EndTime = activity.Date,
+                            Title = activity.Name,
+                            Color = colorPerPlot,
+                            Plot = this
+                        });
+                }
             }
 
             return events;

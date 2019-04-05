@@ -52,6 +52,7 @@
         public const string TermsAccepted = "TermsAccepted";
 
         public const string FeedbackEmail = "to@be.set";
-        public const string UploadDataUrl = "http://147.125.53.3:45459/api/plots/CreatePlot";
+        public const string UploadDataUrl = "https://agrotutor.dev.geo-wiki.org/api/plots/CreatePlot";
+        public const int UploadPlotDataPeriod = 90;
     }
 }
