@@ -23,9 +23,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         {
             var token = await GetToken(credentials);
             var URL = $"{ApiURL}{latitude},{longitude}/forecasts";
-
             var forecast = await URL.WithOAuthBearerToken(token).GetJsonAsync<ForecastResponse>();
-
             return forecast;
         }
 
@@ -37,7 +35,15 @@ namespace Agrotutor.Modules.Weather.Awhere.API
             var dates = (start != null && end != null) ? $"{start},{end}" : "";
             var url = $"{ApiURL}{latitude},{longitude}/observations/{dates}";
 
-            var observations = await url.WithOAuthBearerToken(token).GetJsonAsync<ObservationsResponse>();
+            var observationsResponse = await url.WithOAuthBearerToken(token).GetJsonAsync<ObservationsResponse>();
+            var observations = observationsResponse;
+
+            while (observationsResponse.Links.Next != null) {
+                var offsetParams = observationsResponse.Links.Next.Href.Split('?')[1];
+                var pageUrl = $"{url}?{offsetParams}";
+                observationsResponse = await pageUrl.WithOAuthBearerToken(token).GetJsonAsync<ObservationsResponse>();
+                observations.Observations.AddRange(observationsResponse.Observations);
+            }
 
             return observations;
         }

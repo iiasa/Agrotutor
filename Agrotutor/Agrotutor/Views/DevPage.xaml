@@ -8,7 +8,7 @@
     prism:ViewModelLocator.AutowireViewModel="True">
     
     <Button Text="Weather" Command="{Binding Weather}" />
-    
+    <!--
     <views:SimpleStats
         AverageImageSource="money_max.png"
         AverageText="Avg"
@@ -22,5 +22,5 @@
         MinText="Min"
         MinValueIrrigated="990"
         MinValueRainfed="150"
-        Unit="$" />
+        Unit="$" />-->
 </ContentPage>

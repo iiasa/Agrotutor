@@ -18,55 +18,54 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
     public class ObservationsResponse
     {
         [JsonProperty("observations", NullValueHandling = NullValueHandling.Ignore)]
-        public List<Observation> Observations { get; set; }
+        public List<ObservationResponseObservation> Observations { get; set; }
 
         [JsonProperty("_links", NullValueHandling = NullValueHandling.Ignore)]
         public ObservationsResponseLinks Links { get; set; }
         
-        public static ObservationsResponse FromJson(string json) => JsonConvert.DeserializeObject<ObservationsResponse>(json, Agrotutor.Modules.Weather.Awhere.API.ResponseEntities.ObservationsConverter.Settings);
-
+        public static ObservationsResponse FromJson(string json) => JsonConvert.DeserializeObject<ObservationsResponse>(json, Agrotutor.Modules.Weather.Awhere.API.ResponseEntities.ObservationsResponseConverter.Settings);
     }
 
     public class ObservationsResponseLinks
     {
         [JsonProperty("self", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationsLink Self { get; set; }
+        public ObservationResponseLink Self { get; set; }
 
         [JsonProperty("next", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationsLink Next { get; set; }
+        public ObservationResponseLink Next { get; set; }
 
         [JsonProperty("prev", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationsLink Prev { get; set; }
+        public ObservationResponseLink Previous { get; set; }
     }
 
-    public class ObservationsLink
+    public class ObservationResponseLink
     {
         [JsonProperty("href", NullValueHandling = NullValueHandling.Ignore)]
         public string Href { get; set; }
     }
 
-    public class Observation
+    public class ObservationResponseObservation
     {
         [JsonProperty("date", NullValueHandling = NullValueHandling.Ignore)]
         public DateTimeOffset? Date { get; set; }
 
         [JsonProperty("location", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationLocation Location { get; set; }
+        public ObservationResponseLocation Location { get; set; }
 
         [JsonProperty("temperatures", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationTemperatures Temperatures { get; set; }
+        public ObservationResponseTemperatures Temperatures { get; set; }
 
         [JsonProperty("precipitation", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationPrecipitation Precipitation { get; set; }
+        public ObservationResponsePrecipitation Precipitation { get; set; }
 
         [JsonProperty("solar", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationPrecipitation Solar { get; set; }
+        public ObservationResponsePrecipitation Solar { get; set; }
 
         [JsonProperty("relativeHumidity", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationRelativeHumidity RelativeHumidity { get; set; }
+        public ObservationResponseRelativeHumidity RelativeHumidity { get; set; }
 
         [JsonProperty("wind", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationWind Wind { get; set; }
+        public ObservationResponseWind Wind { get; set; }
 
         [JsonProperty("_links", NullValueHandling = NullValueHandling.Ignore)]
         public ObservationLinks Links { get; set; }
@@ -75,10 +74,10 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
     public class ObservationLinks
     {
         [JsonProperty("self", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationsLink Self { get; set; }
+        public ObservationResponseLink Self { get; set; }
     }
 
-    public class ObservationLocation
+    public class ObservationResponseLocation
     {
         [JsonProperty("latitude", NullValueHandling = NullValueHandling.Ignore)]
         public long? Latitude { get; set; }
@@ -87,16 +86,16 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
         public long? Longitude { get; set; }
     }
 
-    public class ObservationPrecipitation
+    public class ObservationResponsePrecipitation
     {
         [JsonProperty("amount", NullValueHandling = NullValueHandling.Ignore)]
         public double? Amount { get; set; }
 
         [JsonProperty("units", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationPrecipitationUnits? Units { get; set; }
+        public string Units { get; set; }
     }
 
-    public class ObservationRelativeHumidity
+    public class ObservationResponseRelativeHumidity
     {
         [JsonProperty("max", NullValueHandling = NullValueHandling.Ignore)]
         public double? Max { get; set; }
@@ -105,7 +104,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
         public double? Min { get; set; }
     }
 
-    public class ObservationTemperatures
+    public class ObservationResponseTemperatures
     {
         [JsonProperty("max", NullValueHandling = NullValueHandling.Ignore)]
         public double? Max { get; set; }
@@ -114,10 +113,10 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
         public double? Min { get; set; }
 
         [JsonProperty("units", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationTemperaturesUnits? Units { get; set; }
+        public string Units { get; set; }
     }
 
-    public class ObservationWind
+    public class ObservationResponseWind
     {
         [JsonProperty("morningMax", NullValueHandling = NullValueHandling.Ignore)]
         public double? MorningMax { get; set; }
@@ -129,21 +128,15 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
         public double? Average { get; set; }
 
         [JsonProperty("units", NullValueHandling = NullValueHandling.Ignore)]
-        public ObservationWindUnits? Units { get; set; }
+        public string Units { get; set; }
     }
 
-    public enum ObservationPrecipitationUnits { Mm, WhM2 };
-
-    public enum ObservationTemperaturesUnits { C };
-
-    public enum ObservationWindUnits { MSec };
-
-    public static class ObservationsSerializer
+    public static class ObservationsResponseSerializer
     {
-        public static string ToJson(this ObservationsResponse self) => JsonConvert.SerializeObject(self, Agrotutor.Modules.Weather.Awhere.API.ResponseEntities.ObservationsConverter.Settings);
+        public static string ToJson(this ObservationsResponse self) => JsonConvert.SerializeObject(self, Agrotutor.Modules.Weather.Awhere.API.ResponseEntities.ObservationsResponseConverter.Settings);
     }
 
-    internal static class ObservationsConverter
+    internal static class ObservationsResponseConverter
     {
         public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
         {
@@ -151,120 +144,8 @@ namespace Agrotutor.Modules.Weather.Awhere.API.ResponseEntities
             DateParseHandling = DateParseHandling.None,
             Converters =
             {
-                ObservationPrecipitationUnitsConverter.Singleton,
-                ObservationTemperaturesUnitsConverter.Singleton,
-                ObservationWindUnitsConverter.Singleton,
                 new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
             },
         };
-    }
-
-    internal class ObservationPrecipitationUnitsConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(ObservationPrecipitationUnits) || t == typeof(ObservationPrecipitationUnits?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            switch (value)
-            {
-                case "Wh/m^2":
-                    return ObservationPrecipitationUnits.WhM2;
-                case "mm":
-                    return ObservationPrecipitationUnits.Mm;
-            }
-            throw new Exception("Cannot unmarshal type PrecipitationUnits");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (ObservationPrecipitationUnits)untypedValue;
-            switch (value)
-            {
-                case ObservationPrecipitationUnits.WhM2:
-                    serializer.Serialize(writer, "Wh/m^2");
-                    return;
-                case ObservationPrecipitationUnits.Mm:
-                    serializer.Serialize(writer, "mm");
-                    return;
-            }
-            throw new Exception("Cannot marshal type PrecipitationUnits");
-        }
-
-        public static readonly ObservationPrecipitationUnitsConverter Singleton = new ObservationPrecipitationUnitsConverter();
-    }
-
-    internal class ObservationTemperaturesUnitsConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(ObservationTemperaturesUnits) || t == typeof(ObservationTemperaturesUnits?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            if (value == "C")
-            {
-                return ObservationTemperaturesUnits.C;
-            }
-            throw new Exception("Cannot unmarshal type TemperaturesUnits");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (ObservationTemperaturesUnits)untypedValue;
-            if (value == ObservationTemperaturesUnits.C)
-            {
-                serializer.Serialize(writer, "C");
-                return;
-            }
-            throw new Exception("Cannot marshal type TemperaturesUnits");
-        }
-
-        public static readonly ObservationTemperaturesUnitsConverter Singleton = new ObservationTemperaturesUnitsConverter();
-    }
-
-    internal class ObservationWindUnitsConverter : JsonConverter
-    {
-        public override bool CanConvert(Type t) => t == typeof(ObservationWindUnits) || t == typeof(ObservationWindUnits?);
-
-        public override object ReadJson(JsonReader reader, Type t, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType == JsonToken.Null) return null;
-            var value = serializer.Deserialize<string>(reader);
-            if (value == "m/sec")
-            {
-                return ObservationWindUnits.MSec;
-            }
-            throw new Exception("Cannot unmarshal type WindUnits");
-        }
-
-        public override void WriteJson(JsonWriter writer, object untypedValue, JsonSerializer serializer)
-        {
-            if (untypedValue == null)
-            {
-                serializer.Serialize(writer, null);
-                return;
-            }
-            var value = (ObservationWindUnits)untypedValue;
-            if (value == ObservationWindUnits.MSec)
-            {
-                serializer.Serialize(writer, "m/sec");
-                return;
-            }
-            throw new Exception("Cannot marshal type WindUnits");
-        }
-
-        public static readonly ObservationWindUnitsConverter Singleton = new ObservationWindUnitsConverter();
     }
 }
