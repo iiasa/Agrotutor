@@ -89,7 +89,8 @@ namespace Agrotutor.Core.Entities
                             StartTime = activity.Date,
                             EndTime = activity.Date,
                             Title = activity.Name,
-                            Color = colorPerPlot
+                            Color = colorPerPlot,
+                            Plot = this
                         });
                 }
             }
