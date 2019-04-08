@@ -9,8 +9,7 @@
     public interface IAppDataContext
     {
         DbSet<Plot> Plots { get; }
-        DbSet<Position> Positions { get; }
-
+       // DbSet<Position> Positions { get; }
 
         void DisableDetectChanges();
 

@@ -28,7 +28,9 @@ namespace Agrotutor.Core.Persistence
 
         public DbSet<Plot> Plots { get; set; }
 
-        public DbSet<Position> Positions { get; set; }
+        //public DbSet<Position> Positions { get; set; }
+
+        private DbSet<DelineationPosition> Delineations { get; set; }
 
         public DbSet<Profit> ProfitDatasets { get; set; }
 
@@ -71,6 +73,8 @@ namespace Agrotutor.Core.Persistence
                     v => v.ToString(),
                     v => (CropType)Enum.Parse(typeof(CropType), v));
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Plot>().OwnsOne(s => s.Position);
+            modelBuilder.Entity<DelineationPosition>().OwnsOne(s => s.Position);
         }
     }
 }
