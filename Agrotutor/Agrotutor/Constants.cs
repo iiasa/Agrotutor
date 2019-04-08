@@ -4,8 +4,6 @@
 
     public static class Constants
     {
-        public const string AppNotFirstLaunch = "APP_NotFirstLaunch";
-
         public const string LocalDBFilename = "localdata.db";
         public const string OfflineBasemapFilename = "mexico-simple.mbtiles";
 
@@ -42,6 +40,9 @@
         public const string WeatherAppKey = "5851174f1a3e6e1af42f5895098f69f8";
         public const string WeatherForecastApiBaseUrl = "https://skywisefeeds.wdtinc.com/feeds/api/mega.php";
         public const string WeatherHistoryApiBaseUrl = "https://wsgi.geo-wiki.org/skywise_weather";
+        
+        public const string AWhereWeatherAPIUsername = "vRLd6W5w1DdeDjClZmgbvYeRn87tnHcp";
+        public const string AWhereWeatherAPIPassword = "ugoBqiZnAcM1suFu";
 
         public const string Plots = "Plots";
         public const string UserLocation = "UserLocation";
