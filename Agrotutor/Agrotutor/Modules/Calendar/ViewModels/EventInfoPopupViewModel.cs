@@ -13,13 +13,25 @@ namespace Agrotutor.Modules.Calendar.ViewModels
    public class EventInfoPopupViewModel : BindableBase, INavigationAware
     {
        private CalendarEvent _calenderEvent;
-        private string _title;
+        private string _cropName;
         private string _cost;
+        private string _plotName;
+        private string _activityName;
 
-        public string Title
+        public string CropName
         {
-            get => _title;
-            set => SetProperty(ref this._title, value);
+            get => _cropName;
+            set => SetProperty(ref this._cropName, value);
+        }
+        public string PlotName
+        {
+            get => _plotName;
+            set => SetProperty(ref this._plotName, value);
+        }
+        public string ActivityName
+        {
+            get => _activityName;
+            set => SetProperty(ref this._activityName, value);
         }
         public string Cost
         {
@@ -47,8 +59,13 @@ namespace Agrotutor.Modules.Calendar.ViewModels
                     out _calenderEvent);
                 if (_calenderEvent != null)
                 {
-                    Title = _calenderEvent.Title;
-                    Cost = _calenderEvent.Data.Cost.ToString();
+                    CropName = _calenderEvent.Plot.CropType.ToString();
+                    PlotName = _calenderEvent.Plot.Name;
+                    if(_calenderEvent.Data!=null)
+                    {
+                        ActivityName = _calenderEvent.Data.ActivityType.ToString();
+                        Cost = _calenderEvent.Data.Cost.ToString();
+                    }
                 }
 
             }
