@@ -19,6 +19,8 @@ namespace Agrotutor.Core.Entities
         public Plot()
         {
             randomColor=new Random();
+
+
         }
      
         public virtual List<Activity> Activities { get; set; }
@@ -29,7 +31,7 @@ namespace Agrotutor.Core.Entities
 
         public CropType CropType { get; set; }
 
-        public virtual List<Position> Delineation { get; set; }
+        public virtual List<DelineationPosition> Delineation { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -54,6 +56,8 @@ namespace Agrotutor.Core.Entities
 
         public virtual List<MediaItem> MediaItems { get; set; }
 
+        [NotMapped]
+        public bool IsTemporaryPlot { get; set; }
 
         public static IEnumerable<CalendarEvent> GetCalendarEvents(IEnumerable<Plot> plots)
         { 
@@ -73,18 +77,22 @@ namespace Agrotutor.Core.Entities
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
             Color colorPerPlot = Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
-            foreach (Activity activity in Activities)
+            if (Activities != null)
             {
-                events.Add(
-                    new CalendarEvent
-                    {
-                        Data = activity,
-                        AllDayEvent = true,
-                        StartTime = activity.Date,
-                        EndTime = activity.Date,
-                        Title = activity.Name,
-                        Color = colorPerPlot
-            });
+                foreach (Activity activity in Activities)
+                {
+                    events.Add(
+                        new CalendarEvent
+                        {
+                            Data = activity,
+                            AllDayEvent = true,
+                            StartTime = activity.Date,
+                            EndTime = activity.Date,
+                            Title = activity.Name,
+                            Color = colorPerPlot,
+                            Plot = this
+                        });
+                }
             }
 
             return events;

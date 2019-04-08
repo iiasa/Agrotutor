@@ -187,67 +187,74 @@
                         <views:Divider />
                         <ScrollView>
                             <StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{localization:Translate plot_detail_planting_date}" />
-                                    <Label Text="{Binding SelectedPlotDate}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{localization:Translate plot_detail_irrigation}" />
-                                    <Label Text="{Binding SelectedPlotIrrigation}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{localization:Translate plot_detail_maturity}" />
-                                    <Label Text="{Binding SelectedPlotMaturity}" />
-                                </StackLayout>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{localization:Translate plot_detail_climate}" />
-                                    <Label Text="{Binding SelectedPlotClimate}" />
-                                </StackLayout>
+                                <StackLayout IsVisible="{Binding ShowPlotDetailInformation}">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_planting_date}" />
+                                        <Label Text="{Binding SelectedPlotDate}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_irrigation}" />
+                                        <Label Text="{Binding SelectedPlotIrrigation}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_maturity}" />
+                                        <Label Text="{Binding SelectedPlotMaturity}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_climate}" />
+                                        <Label Text="{Binding SelectedPlotClimate}" />
+                                    </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_cost}" />
+                                        <Label Text="{Binding SelectedPlotActivityCost}" />
+                                    </StackLayout>
 
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{localization:Translate plot_detail_CropType}" />
-                                    <Label Text="{Binding CropType}" />
-                                </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{localization:Translate plot_detail_CropType}" />
+                                        <Label Text="{Binding CropType}" />
+                                    </StackLayout>
 
-                                <views:ValueLine Text="Growing Degree Days" 
-                                     Value="{Binding CurrentPlotGdd}" 
-                                     ImageSource="{Binding CurrentPlotWeatherIcon}"
-                                     Command="{Binding NavigateToPlotWeather}"/>
+                                    <views:ValueLine Text="Growing Degree Days" 
+                                         Value="{Binding CurrentPlotGdd}" 
+                                         ImageSource="{Binding CurrentPlotWeatherIcon}"
+                                         Command="{Binding NavigateToPlotWeather}"/>
 
+                                    <ScrollView Margin="5" Orientation="Horizontal">
+                                        <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
+                                    </ScrollView>
 
-                                <ScrollView Margin="5" Orientation="Horizontal">
-                                    <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />
-                                </ScrollView>
+                                    <views:Divider />
 
-                                <views:Divider />
+                                    <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
 
-                                <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
-
-                                <views:IconWithText
+                                    <views:IconWithText
                                     Command="{Binding AddActivityToSelectedPlot}"
-                                    IconSource="farmer.png"
+                                    IconSource="add.png"
                                     IconText="{localization:Translate plot_detail_add_activity}" />
 
-                                <views:IconWithText
+                                    <views:IconWithText
                                     Command="{Binding DelineateSelectedPlot}"
                                     IconSource="delineate.png"
                                     IconText="{localization:Translate plot_detail_delineate}" />
 
-                                <views:IconWithText
+                                    <views:IconWithText
                                     Command="{Binding AddPictureToSelectedPlot}"
-                                    IconSource="photo.png"
+                                    IconSource="add_pic.png"
                                     IconText="{localization:Translate plot_detail_picture}" />
 
-                                <views:IconWithText
+                                    <views:IconWithText
                                     Command="{Binding AddVideoToSelectedPlot}"
-                                    IconSource="video.png"
+                                    IconSource="add_vid.png"
                                     IconText="{localization:Translate plot_detail_video}" />
 
-                                <views:IconWithText
+                                    <views:IconWithText
                                     Command="{Binding ShowCalendarForSelectedPlot}"
                                     IconSource="calendar.png"
                                     IconText="{localization:Translate plot_detail_calendar}" />
-                                <views:Divider />
+                                    
+                                    <views:Divider />
+                                </StackLayout>
+                                
                                 <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
                                 <views:ValueLine
                                     Command="{Binding ShowCurrentPlotCost}"
@@ -266,23 +273,39 @@
                                     Text="{localization:Translate yield}"
                                     Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
-                                <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
-                                <views:ValueLine
-                                    Command="{Binding NavigateToPotentialYield}"
-                                    Text="{localization:Translate potential_yield}"
-                                    Value="{Binding CurrentPlotPotentialYield}" />
-                                <views:ValueLine
-                                    Command="{Binding NavigateToCiat}"
-                                    Text="{localization:Translate nitrogen}"
-                                    Value="{Binding CurrentPlotNitrogen}" />
-                                <views:ValueLine
-                                    Command="{Binding NavigateToPriceForecast}"
-                                    Text="{localization:Translate price_forecast}"
-                                    Value="{Binding CurrentPlotPriceForecast}" />
+
+                                <Button IsVisible="{Binding ShowAdditionalDataButton}" Command="{Binding DownloadAdditionalPlotData}" Text="Download"/>
+
+                                <StackLayout IsVisible="{Binding AdditionalDataLoaded}">
+                                    <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
+                                
+                                    <views:ValueLine
+                                        Command="{Binding NavigateToPotentialYield}"
+                                        Text="{localization:Translate potential_yield}"
+                                        Value="{Binding CurrentPlotPotentialYield}" />
+                                    <views:ValueLine
+                                        Command="{Binding NavigateToCiat}"
+                                        Text="{localization:Translate nitrogen}"
+                                        Value="{Binding CurrentPlotNitrogen}" />
+                                    <views:ValueLine
+                                        Command="{Binding NavigateToPriceForecast}"
+                                        Text="{localization:Translate price_forecast}"
+                                        Value="{Binding CurrentPlotPriceForecast}" />
+                                </StackLayout>
+
                                 <views:IconWithText
                                     Command="{Binding DeleteCommand}"
+                                    IsVisible="{Binding ShowDeletePlotButton}"
                                     IconSource="delete.png"
                                     IconText="{localization:Translate delete}" />
+
+                                <views:IconWithText
+                                    Command="{Binding AddPlotCommand}"
+                                    IsVisible="{Binding ShowSavePlotButton}"
+                                    IconSource="add.png"
+                                    IconText="Save Plot" />
+                                
+                                
                             </StackLayout>
                         </ScrollView>
                     </StackLayout>

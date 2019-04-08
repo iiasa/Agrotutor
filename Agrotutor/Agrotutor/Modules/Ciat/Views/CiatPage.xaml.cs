@@ -1,7 +1,7 @@
 ﻿using System;
+using System.Linq;
 using Agrotutor.Modules.Ciat.Types;
 using Agrotutor.Modules.Ciat.ViewModels;
-using Castle.Core.Internal;
 
 namespace Agrotutor.Modules.Ciat.Views
 {
@@ -40,12 +40,12 @@ namespace Agrotutor.Modules.Ciat.Views
                     nitrogenText = $"Apply {currentData.TotalNitrogen} {currentData.TotalNitrogenUnit} of nitrogen.";
                 }
 
-                if (!currentData.SuboptimalCultivars.IsNullOrEmpty())
+                if (currentData.SuboptimalCultivars!=null&&currentData.SuboptimalCultivars.Any())
                 {
                     cultivarToAvoidText = $"Avoid cultivars: {string.Join(", ", currentData.SuboptimalCultivars)}";
                 }
 
-                if (!currentData.OptimalCultivars.IsNullOrEmpty())
+                if (currentData.OptimalCultivars != null && currentData.OptimalCultivars.Any())
                 {
                     cultivarToUseText = $"Use cultivars: {string.Join(", ", currentData.OptimalCultivars)}";
                 }

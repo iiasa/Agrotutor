@@ -1,5 +1,6 @@
 ﻿using Agrotutor.Modules.Plot.ViewModels;
 using Microsoft.Extensions.Localization;
+using System.Collections.Generic;
 
 namespace Agrotutor.Modules.Plot.ActivityManagement
 {
@@ -14,17 +15,26 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = true,
-                ActivityNameTextVisibility = false,
+                ActivityNameListVisibility = true,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
+                AmountSoldVisibility = true,
+                SellingPriceVisibility = true,
+                CommentVisibility = true,
                 DosageVisibility = false,
                 AppliedAmountVisibility = false,
                 VarietySownVisibility = false,
                 PlantingDensityVisibility = false,
                 PerformanceVisibility = false,
+                PlotAreaVisibility = false,
                 ProductObtainedVisibility = false,
-                ActivityName = _stringLocalizer.GetString("commercialization"),
-                ActivityIcon = "money_small.png",
+                ActivityNameList = new List<string>
+                {
+                    _stringLocalizer.GetString("commercialization_direct"),
+                    _stringLocalizer.GetString("commercialization_intermediary"),
+                    _stringLocalizer.GetString("commercialization_other")
+                },
+                ActivityIcon = "sales.png",
                 ActivityTitle = _stringLocalizer.GetString("commercialization")
             };
         }

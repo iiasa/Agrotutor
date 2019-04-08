@@ -4,8 +4,6 @@
 
     public static class Constants
     {
-        public const string AppNotFirstLaunch = "APP_NotFirstLaunch";
-
         public const string LocalDBFilename = "localdata.db";
         public const string OfflineBasemapFilename = "mexico-simple.mbtiles";
 
@@ -24,6 +22,7 @@
         public const string InvestigationPlatformsLayerVisiblePreference = "MAP_InvestigationPlatformsLayerVisible";
         public const string OfflineBasemapLayerVisiblePreference = "MAP_OfflineBasemapLayerVisible";
         public const string ShowSatelliteTileLayerVisiblePreference = "MAP_SatelliteTileLayerVisible";
+        public const string LastUploadDatePreference = "LastUploadDate";
         public const string Lat = "Lat";
         public const string Lng = "Lng";
 
@@ -41,6 +40,9 @@
         public const string WeatherAppKey = "5851174f1a3e6e1af42f5895098f69f8";
         public const string WeatherForecastApiBaseUrl = "https://skywisefeeds.wdtinc.com/feeds/api/mega.php";
         public const string WeatherHistoryApiBaseUrl = "https://wsgi.geo-wiki.org/skywise_weather";
+        
+        public const string AWhereWeatherAPIUsername = "vRLd6W5w1DdeDjClZmgbvYeRn87tnHcp";
+        public const string AWhereWeatherAPIPassword = "ugoBqiZnAcM1suFu";
 
         public const string Plots = "Plots";
         public const string UserLocation = "UserLocation";
@@ -48,5 +50,9 @@
         public const string DownloadTileUrl = "https://static.geo-wiki.org/tiles/mexico_5.mbtiles";
         //https://static.geo-wiki.org/tiles/mexico_guanajuato.mbtiles
         public const string TermsAccepted = "TermsAccepted";
+
+        public const string FeedbackEmail = "to@be.set";
+        public const string UploadDataUrl = "https://agrotutor.dev.geo-wiki.org/api/plots/CreatePlot";
+        public const int UploadPlotDataPeriod = 90;
     }
 }

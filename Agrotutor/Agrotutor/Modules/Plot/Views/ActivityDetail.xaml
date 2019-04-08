@@ -36,8 +36,6 @@
                     <Picker ItemsSource="{Binding ActivityDynamicUIVisibility.ActivityNameList}" Margin="16,16,0,0"
                             WidthRequest="250" SelectedItem="{Binding ActivityName}" ItemDisplayBinding="{Binding}"
                             IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameListVisibility}" />
-                    <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityNameText}"
-                           IsVisible="{Binding ActivityDynamicUIVisibility.ActivityNameTextVisibility}" />
                 </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ActivityDateVisibility}"
                              Orientation="Vertical" HorizontalOptions="Start" Grid.Row="2">
@@ -65,6 +63,7 @@
                     <Label Text="{localization:Translate quantity}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding AmountApplied}" />
                 </StackLayout>
+                
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.VarietySownVisibility}"
                              Orientation="Vertical"
                              HorizontalOptions="Start" Grid.Row="7">
@@ -79,6 +78,21 @@
                     <Label Text="{localization:Translate seeds_nr}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding NumberOfSeeds}" Keyboard="Numeric" />
                 </StackLayout>
+                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.SellingPriceVisibility}"
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">
+                    <Label Text="{localization:Translate selling_price}" HorizontalOptions="Start" FontSize="18" />
+                    <Entry Keyboard="Numeric" Text="{Binding ActivitySellingPrice}" WidthRequest="250" Margin="16,16,0,0" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.AmountSoldVisibility}"
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">
+                    <Label Text="{localization:Translate amount_sold}" HorizontalOptions="Start" FontSize="18" />
+                    <Entry Keyboard="Numeric" Text="{Binding AmountSold}" WidthRequest="250" Margin="16,16,0,0" />
+                </StackLayout>
+                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.PlotAreaVisibility}"
+                             Orientation="Vertical" HorizontalOptions="Start" Grid.Row="3">
+                    <Label Text="{localization:Translate plot_area}" HorizontalOptions="Start" FontSize="18" />
+                    <Entry Keyboard="Numeric" Text="{Binding PlotArea}" WidthRequest="250" Margin="16,16,0,0" />
+                </StackLayout>
                 <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.ProductObtainedVisibility}"
                              Orientation="Vertical" HorizontalOptions="Start" Grid.Row="9">
                     <Label Text="{localization:Translate product}" HorizontalOptions="Start" FontSize="18" />
@@ -89,6 +103,22 @@
                              HorizontalOptions="Start" Grid.Row="10">
                     <Label Text="{localization:Translate yield}" HorizontalOptions="Start" FontSize="18" />
                     <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityYield}" />
+                </StackLayout>
+                
+                <StackLayout IsVisible="{Binding ActivityDynamicUIVisibility.CommentVisibility}"
+                             Orientation="Vertical"
+                             HorizontalOptions="Start" Grid.Row="10">
+                    <Label Text="{localization:Translate comment}" HorizontalOptions="Start" FontSize="18" />
+                    <Entry Margin="16,16,0,0" WidthRequest="250" Text="{Binding ActivityComment}" />
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    </StackLayout.GestureRecognizers>
+
+                    <Label VerticalOptions="Center" Text="{localization:Translate about}" />
+                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
                 </StackLayout>
 
                 <Button Text="{localization:Translate add}" VerticalOptions="End" HorizontalOptions="Center"

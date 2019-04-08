@@ -6,6 +6,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:ui="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material.Forms"
     Title="{localization:Translate title}"
     Padding="16"
     mvvm:ViewModelLocator.AutowireViewModel="True">
@@ -28,29 +29,34 @@
                 <Label FontSize="18" Text="{localization:Translate hint_planting_date}" />
                 <DatePicker Margin="0,0,0,16" Date="{Binding PlantingDate, Mode=TwoWay}" />
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
-                    </StackLayout.GestureRecognizers>
+                <ui:MaterialCheckbox
+                    IsSelected="{Binding Plot.Irrigated}"
+                    Text="{localization:Translate irrigated}" />
 
-                    <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                <StackLayout Orientation="Vertical" IsVisible="{Binding CultivarCharacteristicsVisible}">
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                        </StackLayout.GestureRecognizers>
+
+                        <Label VerticalOptions="Center" Text="{localization:Translate about}" />
+                        <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                    </StackLayout>
+
+                    <Label FontSize="18" Text="{localization:Translate madurez}" />
+                    <Picker
+                        Title="{localization:Translate select}"
+                        Margin="0,0,0,16"
+                        ItemsSource="{Binding MaturityClasses}"
+                        SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" />
+
+                    <Label FontSize="18" Text="{localization:Translate tipo_clima}" />
+                    <Picker
+                        Title="{localization:Translate select}"
+                        Margin="0,0,0,16"
+                        ItemsSource="{Binding ClimateTypes}"
+                        SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" />
                 </StackLayout>
-
-                <Label FontSize="18" Text="{localization:Translate madurez}" />
-                <Picker
-                    Title="{localization:Translate select}"
-                    Margin="0,0,0,16"
-                    ItemsSource="{Binding MaturityClasses}"
-                    SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" />
-
-                <Label FontSize="18" Text="{localization:Translate tipo_clima}" />
-                <Picker
-                    Title="{localization:Translate select}"
-                    Margin="0,0,0,16"
-                    ItemsSource="{Binding ClimateTypes}"
-                    SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" />
-
 
                 <Button Command="{Binding ClickSave}" Text="{localization:Translate btn_save_and_new}" />
             </StackLayout>

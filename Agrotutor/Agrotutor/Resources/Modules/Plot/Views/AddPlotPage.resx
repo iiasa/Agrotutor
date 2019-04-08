@@ -153,6 +153,9 @@
   <data name="hint_technologies" xml:space="preserve">
     <value>Add used technologies</value>
   </data>
+  <data name="irrigated" xml:space="preserve">
+    <value>Irrigated</value>
+  </data>
   <data name="madurez" xml:space="preserve">
     <value>Maturity type of the cultivar</value>
   </data>
