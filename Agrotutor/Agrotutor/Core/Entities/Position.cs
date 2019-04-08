@@ -5,8 +5,8 @@
 
     public class Position : Location
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        //[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        //public int ID { get; set; }
         public static Position From(Xamarin.Forms.GoogleMaps.Position positionFrom)
         {
             Position position = new Position
