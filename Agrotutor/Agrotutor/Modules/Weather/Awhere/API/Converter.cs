@@ -67,6 +67,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
                 RelativeHumidity = relativeHumidity,
                 TemperatureUnit = forecastHour.Temperatures.Units
             };
+            forecast.UpdateConditions(forecastHour.ConditionsCode);
             return forecast;
         }
 

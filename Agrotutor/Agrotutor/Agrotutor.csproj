@@ -148,6 +148,7 @@
     <Folder Include="Modules\Ciat\Types\" />
     <Folder Include="Modules\PriceForecasting\Types\" />
     <Folder Include="Resources\Modules\Map\ViewModels\" />
+    <Folder Include="Modules\Weather\WDT\" />
   </ItemGroup>
   <ItemGroup>
     <None Update="App.xaml">
