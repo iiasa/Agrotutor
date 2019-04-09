@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Modules.Charts.Types;
-using Agrotutor.Modules.Weather.Types;
 using Microcharts;
 using Microsoft.Extensions.Localization;
 using OxyPlot;
@@ -11,6 +10,7 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using Prism.Commands;
 using Prism.Navigation;
+
 
 namespace Agrotutor.Modules.Weather.ViewModels
 {
@@ -24,7 +24,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         private int _selectedDataset;
 
-        private WeatherHistory _weatherData;
+        private Types.WeatherHistory _weatherData;
         private List<EntryWithTime> selectedValEntries;
         private PlotModel _chartModel;
 
@@ -144,7 +144,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set => SetProperty(ref _datasetNames, value);
         }
 
-        public WeatherHistory MyWeatherData
+        public Types.WeatherHistory MyWeatherData
         {
             get => _weatherData;
             set => SetProperty(ref _weatherData, value);
@@ -182,7 +182,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             if (parameters.ContainsKey(WeatherHistoryParameterName))
             {
-                parameters.TryGetValue<WeatherHistory>(WeatherHistoryParameterName, out var weatherData);
+                parameters.TryGetValue<Types.WeatherHistory>(WeatherHistoryParameterName, out var weatherData);
                 if (weatherData != null)
                 {
                     MyWeatherData = weatherData;

@@ -69,5 +69,37 @@ namespace Agrotutor.Modules.Weather.Awhere.API
             };
             return forecast;
         }
+
+        public static List<WeatherHistory> GetHistoryFromApiResponse(ObservationsResponse historyResponse)
+        {
+            var history = new List<WeatherHistory>();
+            foreach (var observation in historyResponse.Observations)
+            {
+                history.Add(GetHistoryItemFromApiResponse(observation));
+            }
+            return history;
+        }
+
+        public static WeatherHistory GetHistoryItemFromApiResponse(ObservationResponseObservation history)
+        {
+            var historyElement = new WeatherHistory
+            {
+                Date = ((DateTimeOffset)history.Date).UtcDateTime,
+                PrecipitationAmount = (double)history.Precipitation.Amount,
+                PrecipitationUnits = history.Precipitation.Units,
+                RelativeHumidityMax = (double)history.RelativeHumidity.Max,
+                RelativeHumidityMin = (double)history.RelativeHumidity.Min,
+                SolarRadiationAmount = (double)history.Solar.Amount,
+                SolarRadiationUnits = history.Solar.Units,
+                TemperatureMax = (double)history.Temperatures.Max,
+                TemperatureMin = (double)history.Temperatures.Min,
+                TemperatureUnits = history.Temperatures.Units,
+                WindAverage = (double)history.Wind.Average,
+                WindUnits = history.Wind.Units,
+                WindDayMax = (double)history.Wind.DayMax,
+                WindMorningMax = (double)history.Wind.MorningMax
+            };
+            return historyElement;
+        }
     }
 }

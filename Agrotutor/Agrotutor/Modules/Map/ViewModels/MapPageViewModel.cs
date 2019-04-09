@@ -42,6 +42,7 @@ using MapsPosition = Xamarin.Forms.GoogleMaps.Position;
 using NavigationMode = Xamarin.Essentials.NavigationMode;
 using Position = Agrotutor.Core.Entities.Position;
 using WeatherForecast = Agrotutor.Modules.Weather.Types.WeatherForecast;
+using WeatherHistory = Agrotutor.Modules.Weather.Types.WeatherHistory;
 using Agrotutor.Modules.Plot.Views;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather.ViewModels;
