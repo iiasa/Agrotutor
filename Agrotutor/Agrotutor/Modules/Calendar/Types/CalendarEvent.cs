@@ -14,6 +14,7 @@ namespace Agrotutor.Modules.Calendar.Types
         public string Content { get; set; }
 
         public Activity Data { get; set; }
+        public Core.Entities.Plot Plot { get; set; }
 
         public DateTime EndTime { get; set; }
 

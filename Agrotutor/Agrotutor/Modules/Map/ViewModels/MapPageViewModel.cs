@@ -233,7 +233,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                      dateRes = DateTime.UtcNow.Subtract(uploadDateTime);
                 }
 
-                if (_lastUploadDateString == null||dateRes.Days >= 90)
+                if (_lastUploadDateString == null||dateRes.Days >=Constants.UploadPlotDataPeriod)
                 {
                     if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                     {

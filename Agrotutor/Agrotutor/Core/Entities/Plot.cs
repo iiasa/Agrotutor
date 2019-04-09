@@ -19,17 +19,21 @@ namespace Agrotutor.Core.Entities
         public Plot()
         {
             randomColor=new Random();
+            Activities=new List<Activity>();
+            Delineation=new List<DelineationPosition>();
+            MediaItems=new List<MediaItem>();
+            PriceForecast=new List<PriceForecast>();
         }
      
-        public virtual List<Activity> Activities { get; set; }
+        public List<Activity> Activities { get; set; }
 
-        public virtual BemData BemData { get; set; }
+        public BemData BemData { get; set; }
 
         public ClimateType ClimateType { get; set; }
 
         public CropType CropType { get; set; }
 
-        public virtual List<DelineationPosition> Delineation { get; set; }
+        public List<DelineationPosition> Delineation { get; set; }
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -40,19 +44,19 @@ namespace Agrotutor.Core.Entities
 
         public bool Irrigated { get; set; }
 
-        public virtual Position Position { get; set; }
+        public Position Position { get; set; }
 
-        public virtual WeatherForecast WeatherForecast { get; set; }
+        public WeatherForecast WeatherForecast { get; set; }
 
-        public virtual WeatherHistory WeatherHistory { get; set; }
+        public  WeatherHistory WeatherHistory { get; set; }
 
-        public virtual BenchmarkingInformation BenchmarkingInformation { get; set; }
+        public  BenchmarkingInformation BenchmarkingInformation { get; set; }
 
-        public virtual IEnumerable<PriceForecast> PriceForecast { get; set; }
+        public  IEnumerable<PriceForecast> PriceForecast { get; set; }
 
-        public virtual CiatData CiatData { get; set; }
+        public  CiatData CiatData { get; set; }
 
-        public virtual List<MediaItem> MediaItems { get; set; }
+        public  List<MediaItem> MediaItems { get; set; }
 
         [NotMapped]
         public bool IsTemporaryPlot { get; set; }
@@ -75,18 +79,22 @@ namespace Agrotutor.Core.Entities
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
             Color colorPerPlot = Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
-            foreach (Activity activity in Activities)
+            if (Activities != null)
             {
-                events.Add(
-                    new CalendarEvent
-                    {
-                        Data = activity,
-                        AllDayEvent = true,
-                        StartTime = activity.Date,
-                        EndTime = activity.Date,
-                        Title = activity.Name,
-                        Color = colorPerPlot
-            });
+                foreach (Activity activity in Activities)
+                {
+                    events.Add(
+                        new CalendarEvent
+                        {
+                            Data = activity,
+                            AllDayEvent = true,
+                            StartTime = activity.Date,
+                            EndTime = activity.Date,
+                            Title = activity.Name,
+                            Color = colorPerPlot,
+                            Plot = this
+                        });
+                }
             }
 
             return events;
