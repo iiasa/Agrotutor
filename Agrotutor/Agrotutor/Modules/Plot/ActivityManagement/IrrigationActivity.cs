@@ -12,7 +12,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
             {
                 ActivityDateVisibility = true,
                 ActivityNameVisibility = true,
-                ActivityNameListVisibility = false,
+                ActivityNameListVisibility = true,
                 ActivityTotalCostVisibility = true,
                 AppliedProductsVisibility = false,
                 AmountSoldVisibility = false,
