@@ -939,6 +939,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                     {
                         WeatherPageViewModel.LocationParameterName,
                         new Location(SelectedPlot.Position.Latitude, SelectedPlot.Position.Longitude)
+                    },
+                    {
+                        WeatherPageViewModel.PlotParameterName,
+                        SelectedPlot
                     }
                 };
                 if (SelectedPlot?.WeatherForecast != null)
@@ -1104,7 +1108,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 var cur = today?.ForecastHours?.ElementAt(0);
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.GetWeatherIcon();
-                var text = $"{cur.AvgTemperature} °C";
+                var text = $"{cur.Temperature} °C";
                 if (today != null) text += $" | {StringLocalizer.GetString("rain")}: {today.PrecipitationProbability} %";
                 CurrentWeatherText = text;
             }

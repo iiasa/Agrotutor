@@ -5,7 +5,6 @@ namespace Agrotutor.Modules.Weather.ViewModels
     using Prism.Navigation;
 
     using Core;
-    using Types;
 
     public class WeatherForecastPageViewModel : ViewModelBase, INavigatedAware
     {

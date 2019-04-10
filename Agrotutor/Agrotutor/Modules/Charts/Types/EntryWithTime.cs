@@ -15,9 +15,10 @@ namespace Agrotutor.Modules.Charts.Types
         public DateTime Time { get; set; }
 
         public static List<EntryWithTime> From(List<double> items, List<DateTime> dates)
-        {
+        { 
             var entries = new List<EntryWithTime>();
-            if (items.Count == dates.Count)
+            if (items == null || dates == null) return entries;
+            if (items?.Count == dates?.Count)
             {
                 for (int i = 0; i < items.Count; i++)
                 {

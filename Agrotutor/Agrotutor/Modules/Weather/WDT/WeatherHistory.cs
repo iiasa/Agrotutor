@@ -78,10 +78,6 @@ namespace Agrotutor.Modules.Weather.Types
         //public virtual Hd Hetc { get; set; }
         public string Date { get; set; }
 
-        internal static object CalculateGdd(object v)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public partial class Cdd : ISeries

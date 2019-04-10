@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Agrotutor.Modules.Weather.Awhere.API.ResponseEntities;
 
@@ -26,6 +26,10 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
         private static WeatherForecast GetForecastFromApiResponse(ForecastResponseForecastHour forecastHour)
         {
+            double temperature = (forecastHour.Temperatures?.Value != null)
+                ? (double)Math.Round((decimal)forecastHour.Temperatures?.Value, 1)
+                : -999.9999;
+
             double avgTemperature = (forecastHour.Temperatures?.Average != null)
                 ? (double)Math.Round((decimal)forecastHour.Temperatures?.Average, 1)
                 : -999.9999;
@@ -56,6 +60,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
             var forecast = new WeatherForecast
             {
+                Temperature = temperature,
                 AvgTemperature = avgTemperature,
                 CloudCoverPercent = cloudCoverPercent,
                 DateTime = ((DateTimeOffset)forecastHour.StartTime).UtcDateTime,

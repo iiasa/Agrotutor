@@ -110,10 +110,8 @@ namespace Agrotutor.Modules.Weather.ViewModels
                         items = MyWeatherData.Select(x => x.WindMorningMax).ToList();
                         unit = MyWeatherData.ElementAt(0).WindUnits;
                         break;
-                    default:
-                        dates = MyWeatherData.Select(x => x.Date).ToList();
-                        break;
                 }
+                dates = MyWeatherData.Select(x => x.Date).ToList();
 
                 SelectedValEntries = EntryWithTime.From(items, dates);
 
