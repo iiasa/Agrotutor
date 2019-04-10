@@ -27,9 +27,11 @@ namespace Agrotutor.Modules.Weather
         public double WindMorningMax { get; set; }
         public string WindUnits { get; set; }
 
-        internal static object CalculateGdd(object v)
+        public double CalculateGdd(int? baseTemperature)
         {
-            throw new NotImplementedException();
+            if (baseTemperature == null) return 0;
+            var gdd = ((TemperatureMax - TemperatureMin) / 2) - (int)baseTemperature;
+            return (gdd > 0) ? gdd : 0;
         }
     }
 }

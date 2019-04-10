@@ -63,5 +63,12 @@ namespace Agrotutor.Modules.Weather
         {
             throw new NotImplementedException();
         }
+
+        internal double CalculateGdd(int? baseTemperature)
+        {
+            if (baseTemperature == null) return 0;
+            var gdd = ((MaxTemperature - MinTemperature) / 2) - (int)baseTemperature;
+            return (gdd > 0) ? gdd : 0;
+        }
     }
 }

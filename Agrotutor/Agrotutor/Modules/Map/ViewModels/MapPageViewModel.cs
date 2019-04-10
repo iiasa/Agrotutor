@@ -1343,7 +1343,8 @@ namespace Agrotutor.Modules.Map.ViewModels
             SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
             SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
             CropType = SelectedPlot.CropType;
-            var gdd = WeatherHistory.CalculateGdd(SelectedPlot.GetBaseTemperature());
+            var baseTemperature = SelectedPlot.GetBaseTemperature();
+            var gdd = (baseTemperature != null && baseTemperature > 0) ? SelectedPlot?.WeatherHistory?.Sum(x=>x.CalculateGdd(baseTemperature)) : null;
             var weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
             var cost = SelectedPlot.BemData?.AverageCost;
             var yield = SelectedPlot.BemData?.AverageYield;

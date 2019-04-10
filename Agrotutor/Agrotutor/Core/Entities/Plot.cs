@@ -97,7 +97,112 @@ namespace Agrotutor.Core.Entities
                 }
             }
 
+
+            if (GetTargetCumulativeGdd() != null) {
+                events.AddRange(GetWindowsOfOpportunity());
+            }
+
             return events;
+        }
+
+        private IEnumerable<CalendarEvent> GetWindowsOfOpportunity()
+        {
+            var target = GetTargetCumulativeGdd();
+            int fertilizationDistance = (int)Math.Round((decimal)target / 3);
+            int[] thresholds = { 0, fertilizationDistance, fertilizationDistance * 2 };
+            int i = 0;
+            double sum = 0.0;
+            var dates = new List<DateTime>();
+            var events = new List<CalendarEvent>();
+
+            if (WeatherHistory != null)
+            {
+                foreach (var historyItem in WeatherHistory)
+                {
+                    sum += historyItem.CalculateGdd(GetBaseTemperature());
+                    if (sum > thresholds[i])
+                    {
+                        i++;
+                        dates.Add(historyItem.Date);
+                        if (i > 2) break;
+                    }
+                }
+            }
+
+            if (i <= 2 && WeatherForecast!=null)
+            {
+
+                foreach (var forecastItem in WeatherForecast)
+                {
+                    sum += forecastItem.CalculateGdd(GetBaseTemperature());
+                    if (sum > thresholds[i])
+                    {
+                        i++;
+                        dates.Add(forecastItem.DateTime);
+                        if (i > 2) break;
+                    }
+                }
+            }
+
+            foreach (var date in dates)
+            {
+                events.Add(new CalendarEvent { StartTime = date });
+                events.Add(new CalendarEvent { StartTime = date.AddDays(1) });
+                events.Add(new CalendarEvent { StartTime = date.AddDays(2) });
+            }
+
+            return events;
+        }
+
+        public int? GetTargetCumulativeGdd()
+        {
+            int? targetGdd = null;
+            if (CropType == CropType.Corn)
+            {
+                switch (MaturityType)
+                {
+                    case MaturityType.Early:
+                        targetGdd = 1680;
+                        break;
+                    case MaturityType.SemiEarly:
+                        targetGdd = 1890;
+                        break;
+                    case MaturityType.Intermediate:
+                        targetGdd = 2100;
+                        break;
+                    case MaturityType.SemiLate:
+                        targetGdd = 2310;
+                        break;
+                    case MaturityType.Late:
+                        targetGdd = 2520;
+                        break;
+                }
+            }
+            return targetGdd;
+        }
+
+        public int? GetBaseTemperature()
+        {
+            int? baseTemperature = null;
+            if (CropType == CropType.Corn)
+            {
+                switch (ClimateType)
+                {
+                    case ClimateType.Cold:
+                        baseTemperature = 4;
+                        break;
+                    case ClimateType.TemperedSubtropical:
+                        baseTemperature = 7;
+                        break;
+                    case ClimateType.Tropical:
+                        baseTemperature = 9;
+                        break;
+                    case ClimateType.Hybrid:
+                        baseTemperature = 10;
+                        break;
+                }
+            }
+            return baseTemperature;
         }
 
         public async void LoadBEMData()
@@ -111,11 +216,6 @@ namespace Agrotutor.Core.Entities
         {
             // TODO: remove this from here
             await GenericDatasetStorage.StoreDatasetAsync(this, -1, 16, 1, 1);
-        }
-
-        internal object GetBaseTemperature()
-        {
-            throw new NotImplementedException();
         }
     }
 }
