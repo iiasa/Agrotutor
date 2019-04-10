@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Agrotutor.Modules.Ciat.Types;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
@@ -8,7 +8,7 @@ namespace Agrotutor.Core.Persistence
     using Microsoft.EntityFrameworkCore;
 
     using Entities;
-    using Agrotutor.Modules.Weather.Types;
+    using Agrotutor.Modules.Weather;
     using Agrotutor.Modules.Benchmarking.Types;
     using Agrotutor.Modules.PriceForecasting.Types;
 

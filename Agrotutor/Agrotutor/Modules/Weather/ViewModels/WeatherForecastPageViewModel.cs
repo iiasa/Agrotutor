@@ -9,28 +9,19 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
     public class WeatherForecastPageViewModel : ViewModelBase, INavigatedAware
     {
-        private List<DailySummary> _dailySummaries;
-
-        private WeatherForecast weatherForecast;
+        private List<WeatherForecast> weatherForecast;
 
         public WeatherForecastPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherForecastPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
         }
 
-        public List<DailySummary> DailySummaries
-        {
-            get => _dailySummaries;
-            set => SetProperty(ref this._dailySummaries, value);
-        }
-
-        public WeatherForecast WeatherForecast
+        public List<WeatherForecast> WeatherForecast
         {
             get => this.weatherForecast;
             set
             {
                 SetProperty(ref this.weatherForecast, value);
-                DailySummaries = value.Location.DailySummaries.DailySummary;
             }
         }
 
@@ -43,7 +34,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             if (parameters.ContainsKey("Forecast"))
             {
-                parameters.TryGetValue<WeatherForecast>("Forecast", out var forecast);
+                parameters.TryGetValue<List<WeatherForecast>>("Forecast", out var forecast);
                 if (forecast != null)
                 {
                     WeatherForecast = forecast;

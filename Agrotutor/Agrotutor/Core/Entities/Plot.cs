@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using Agrotutor.Modules.Benchmarking;
 using Agrotutor.Modules.Ciat.Types;
@@ -9,7 +9,7 @@ namespace Agrotutor.Core.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using Agrotutor.Modules.Benchmarking.Types;
     using Agrotutor.Modules.PriceForecasting.Types;
-    using Agrotutor.Modules.Weather.Types;
+    using Agrotutor.Modules.Weather;
     using Modules.Calendar.Types;
     using Modules.GeoWiki.GenericDatasetStorage;
 
@@ -46,9 +46,9 @@ namespace Agrotutor.Core.Entities
 
         public Position Position { get; set; }
 
-        public WeatherForecast WeatherForecast { get; set; }
+        public List<WeatherForecast> WeatherForecast { get; set; }
 
-        public  WeatherHistory WeatherHistory { get; set; }
+        public  List<WeatherHistory> WeatherHistory { get; set; }
 
         public  BenchmarkingInformation BenchmarkingInformation { get; set; }
 
@@ -111,6 +111,11 @@ namespace Agrotutor.Core.Entities
         {
             // TODO: remove this from here
             await GenericDatasetStorage.StoreDatasetAsync(this, -1, 16, 1, 1);
+        }
+
+        internal object GetBaseTemperature()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -1,8 +1,12 @@
-﻿using System;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Agrotutor.Modules.Weather
 {
     public class WeatherHistory
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         public DateTime Date { get; set; }
 
         public double PrecipitationAmount { get; set; }
@@ -22,5 +26,10 @@ namespace Agrotutor.Modules.Weather
         public double WindDayMax { get; set; }
         public double WindMorningMax { get; set; }
         public string WindUnits { get; set; }
+
+        internal static object CalculateGdd(object v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

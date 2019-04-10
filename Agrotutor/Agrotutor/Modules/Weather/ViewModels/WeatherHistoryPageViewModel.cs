@@ -1,4 +1,4 @@
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Agrotutor.Core;
@@ -10,7 +10,7 @@ using OxyPlot.Axes;
 using OxyPlot.Series;
 using Prism.Commands;
 using Prism.Navigation;
-
+using System;
 
 namespace Agrotutor.Modules.Weather.ViewModels
 {
@@ -24,7 +24,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         private int _selectedDataset;
 
-        private Types.WeatherHistory _weatherData;
+        private List<WeatherHistory> _weatherData;
         private List<EntryWithTime> selectedValEntries;
         private PlotModel _chartModel;
 
@@ -34,15 +34,15 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             DatasetNames = new List<string>
             {
-                StringLocalizer.GetString("gdd"),
-                StringLocalizer.GetString("cdd"),
-                StringLocalizer.GetString("hdd"),
-                StringLocalizer.GetString("dp"),
+                StringLocalizer.GetString("precip"),
+                StringLocalizer.GetString("rhh"),
+                StringLocalizer.GetString("rhl"),
                 StringLocalizer.GetString("sr"),
-                StringLocalizer.GetString("dht"),
-                StringLocalizer.GetString("dlt"),
-                StringLocalizer.GetString("short_evap"),
-                StringLocalizer.GetString("tall_evap")
+                StringLocalizer.GetString("tl"),
+                StringLocalizer.GetString("th"),
+                StringLocalizer.GetString("wa"),
+                StringLocalizer.GetString("wdh"),
+                StringLocalizer.GetString("wmh")
             };
         }
 
@@ -69,36 +69,53 @@ namespace Agrotutor.Modules.Weather.ViewModels
             {
                 _selectedDataset = value;
                 if (MyWeatherData == null) return;
+                List<double> items = null;
+                List<DateTime> dates = null;
+                var unit = "";
                 switch (value)
                 {
                     case 0:
-                        SelectedValEntries = MyWeatherData.Gdd.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.PrecipitationAmount).ToList();
+                        unit = MyWeatherData.ElementAt(0).PrecipitationUnits;
                         break;
                     case 1:
-                        SelectedValEntries = MyWeatherData.Cdd.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.RelativeHumidityMax).ToList();
+                        unit = "%"; 
                         break;
                     case 2:
-                        SelectedValEntries = MyWeatherData.Hdd.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.RelativeHumidityMin).ToList();
+                        unit = "%";
                         break;
                     case 3:
-                        SelectedValEntries = MyWeatherData.Dp.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.SolarRadiationAmount).ToList();
+                        unit = MyWeatherData.ElementAt(0).SolarRadiationUnits;
                         break;
                     case 4:
-                        SelectedValEntries = MyWeatherData.Dsr.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.TemperatureMin).ToList();
+                        unit = MyWeatherData.ElementAt(0).TemperatureUnits;
                         break;
                     case 5:
-                        SelectedValEntries = MyWeatherData.Dht.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.TemperatureMax).ToList();
+                        unit = MyWeatherData.ElementAt(0).TemperatureUnits;
                         break;
                     case 6:
-                        SelectedValEntries = MyWeatherData.Dlt.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.WindAverage).ToList();
+                        unit = MyWeatherData.ElementAt(0).WindUnits;
                         break;
                     case 7:
-                        SelectedValEntries = MyWeatherData.Desc.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.WindDayMax).ToList();
+                        unit = MyWeatherData.ElementAt(0).WindUnits;
                         break;
                     case 8:
-                        SelectedValEntries = MyWeatherData.Detc.GetChartEntries();
+                        items = MyWeatherData.Select(x => x.WindMorningMax).ToList();
+                        unit = MyWeatherData.ElementAt(0).WindUnits;
+                        break;
+                    default:
+                        dates = MyWeatherData.Select(x => x.Date).ToList();
                         break;
                 }
+
+                SelectedValEntries = EntryWithTime.From(items, dates);
 
                 RenderChart();
             }
@@ -144,7 +161,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set => SetProperty(ref _datasetNames, value);
         }
 
-        public Types.WeatherHistory MyWeatherData
+        public List<WeatherHistory> MyWeatherData
         {
             get => _weatherData;
             set => SetProperty(ref _weatherData, value);
@@ -182,7 +199,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             if (parameters.ContainsKey(WeatherHistoryParameterName))
             {
-                parameters.TryGetValue<Types.WeatherHistory>(WeatherHistoryParameterName, out var weatherData);
+                parameters.TryGetValue<List<WeatherHistory>>(WeatherHistoryParameterName, out var weatherData);
                 if (weatherData != null)
                 {
                     MyWeatherData = weatherData;

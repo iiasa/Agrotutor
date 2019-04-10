@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using Agrotutor.Modules.Weather.Types;
 
@@ -7,6 +8,9 @@ namespace Agrotutor.Modules.Weather
 {
     public class WeatherForecast
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { get; set; }
+
         public DateTime DateTime { get; set; }
 
         public CloudCondition CloudCondition { get; set; }
@@ -53,6 +57,11 @@ namespace Agrotutor.Modules.Weather
             CloudCondition = (conditionsCode[0] > '9') ? (CloudCondition)(conditionsCode[0] - 'A' + 10) : (CloudCondition)(conditionsCode[0] - '0');
             RainCondition = (RainCondition)(conditionsCode[1] - '0');
             WindCondition = (WindCondition)(conditionsCode[2] - '0');
+        }
+
+        public string GetWeatherIcon()
+        {
+            throw new NotImplementedException();
         }
     }
 }

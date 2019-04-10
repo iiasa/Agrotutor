@@ -1,4 +1,4 @@
-﻿using Agrotutor.Core.Rest;
+using Agrotutor.Core.Rest;
 
 namespace Agrotutor.Modules.Weather.Types
 {
@@ -77,6 +77,11 @@ namespace Agrotutor.Modules.Weather.Types
         //[JsonProperty("hetc", NullValueHandling = NullValueHandling.Ignore)]
         //public virtual Hd Hetc { get; set; }
         public string Date { get; set; }
+
+        internal static object CalculateGdd(object v)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public partial class Cdd : ISeries
@@ -238,7 +243,7 @@ namespace Agrotutor.Modules.Weather.Types
                     data.Date = DateTime.Now.ToShortDateString();
                 }
                 catch (Exception e)
-                {}
+                { }
             }
             return data;
         }
