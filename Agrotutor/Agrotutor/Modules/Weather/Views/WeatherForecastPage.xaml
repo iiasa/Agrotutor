@@ -12,7 +12,7 @@
         <ScrollView>
             <StackLayout Orientation="Vertical">
 
-                <ListView HasUnevenRows="true" ItemsSource="{Binding DailySummaries}">
+                <ListView HasUnevenRows="true" ItemsSource="{Binding WeatherForecast}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -38,7 +38,7 @@
                                         Orientation="Horizontal">
                                         <Label
                                             FontAttributes="Bold"
-                                            Text="{Binding LocalizedDayOfWeek}"
+                                            Text="{Binding Date}"
                                             VerticalOptions="Center" />
                                         <Label Text="{Binding TemperatureString}" VerticalOptions="Center" />
                                     </StackLayout>
@@ -48,9 +48,9 @@
                                         Orientation="Horizontal">
                                         <Label
                                             FontAttributes="Bold"
-                                            Text="GDD"
+                                            Text="Rain"
                                             VerticalOptions="Center" />
-                                        <Label Text="{Binding Gdd}" VerticalOptions="Center" />
+                                        <Label Text="{Binding PrecipitationAmount}" VerticalOptions="Center" />
                                     </StackLayout>
                                 </Grid>
                             </ViewCell>

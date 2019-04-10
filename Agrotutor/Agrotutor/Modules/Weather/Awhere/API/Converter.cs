@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Agrotutor.Modules.Weather.Awhere.API.ResponseEntities;
 
@@ -26,6 +26,10 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
         private static WeatherForecast GetForecastFromApiResponse(ForecastResponseForecastHour forecastHour)
         {
+            double temperature = (forecastHour.Temperatures?.Value != null)
+                ? (double)Math.Round((decimal)forecastHour.Temperatures?.Value, 1)
+                : -999.9999;
+
             double avgTemperature = (forecastHour.Temperatures?.Average != null)
                 ? (double)Math.Round((decimal)forecastHour.Temperatures?.Average, 1)
                 : -999.9999;
@@ -56,6 +60,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
             var forecast = new WeatherForecast
             {
+                Temperature = temperature,
                 AvgTemperature = avgTemperature,
                 CloudCoverPercent = cloudCoverPercent,
                 DateTime = ((DateTimeOffset)forecastHour.StartTime).UtcDateTime,
@@ -67,7 +72,40 @@ namespace Agrotutor.Modules.Weather.Awhere.API
                 RelativeHumidity = relativeHumidity,
                 TemperatureUnit = forecastHour.Temperatures.Units
             };
+            forecast.UpdateConditions(forecastHour.ConditionsCode);
             return forecast;
+        }
+
+        public static List<WeatherHistory> GetHistoryFromApiResponse(ObservationsResponse historyResponse)
+        {
+            var history = new List<WeatherHistory>();
+            foreach (var observation in historyResponse.Observations)
+            {
+                history.Add(GetHistoryItemFromApiResponse(observation));
+            }
+            return history;
+        }
+
+        public static WeatherHistory GetHistoryItemFromApiResponse(ObservationResponseObservation history)
+        {
+            var historyElement = new WeatherHistory
+            {
+                Date = ((DateTimeOffset)history.Date).UtcDateTime,
+                PrecipitationAmount = (double)history.Precipitation.Amount,
+                PrecipitationUnits = history.Precipitation.Units,
+                RelativeHumidityMax = (double)history.RelativeHumidity.Max,
+                RelativeHumidityMin = (double)history.RelativeHumidity.Min,
+                SolarRadiationAmount = (double)history.Solar.Amount,
+                SolarRadiationUnits = history.Solar.Units,
+                TemperatureMax = (double)history.Temperatures.Max,
+                TemperatureMin = (double)history.Temperatures.Min,
+                TemperatureUnits = history.Temperatures.Units,
+                WindAverage = (double)history.Wind.Average,
+                WindUnits = history.Wind.Units,
+                WindDayMax = (double)history.Wind.DayMax,
+                WindMorningMax = (double)history.Wind.MorningMax
+            };
+            return historyElement;
         }
     }
 }

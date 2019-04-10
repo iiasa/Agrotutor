@@ -50,7 +50,6 @@
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="*" />
-                        <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Label Text="{localization:Translate gdd}" HorizontalTextAlignment="Start" FontAttributes="Bold"
                         Grid.Row="0" Grid.Column="0" FontSize="Small" VerticalOptions="Center" />
@@ -60,11 +59,7 @@
                         Grid.Column="0" FontSize="Small" VerticalOptions="Center" />
                     <Label Text="{Binding WindSpeed}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="1" Grid.Column="1" />
 
-                    <Label Text="{localization:Translate wd}" HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="2"
-                        Grid.Column="0" FontSize="Small" />
-                    <Label Text="{Binding WindDirection}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="2" Grid.Column="1" />
-
-                    <Label Text="{localization:Translate cc}"  HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="3"
+                    <Label Text="{localization:Translate cc}"  HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="2"
                         Grid.Column="0" FontSize="Small" />
                     <Label Text="{Binding CloudCover}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="1" />
                 </Grid>

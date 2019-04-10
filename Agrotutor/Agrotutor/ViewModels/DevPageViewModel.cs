@@ -24,7 +24,11 @@ namespace Agrotutor.ViewModels
             try
             {
                 var forecast = await WeatherAPI.GetForecastAsync(20, -100, creds);
+                var forecastData = Converter.GetForecastsFromApiResponse(forecast);
+                forecast = null;
                 var history = await WeatherAPI.GetObservationsAsync(20, -100, creds, DateTime.Parse("2018-12-01"), DateTime.Parse("2019-04-01"));
+                var historyData = Converter.GetHistoryFromApiResponse(history);
+                history = null;
                 var normals = await WeatherAPI.GetNormsAsync(20, -100, 03, 01, creds);
             }catch (Exception e) {
                 Console.WriteLine(e.Message);

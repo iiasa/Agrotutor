@@ -41,7 +41,8 @@ using Location = Xamarin.Essentials.Location;
 using MapsPosition = Xamarin.Forms.GoogleMaps.Position;
 using NavigationMode = Xamarin.Essentials.NavigationMode;
 using Position = Agrotutor.Core.Entities.Position;
-using WeatherForecast = Agrotutor.Modules.Weather.Types.WeatherForecast;
+using WeatherForecast = Agrotutor.Modules.Weather.WeatherForecast;
+using WeatherHistory = Agrotutor.Modules.Weather.WeatherHistory;
 using Agrotutor.Modules.Plot.Views;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather.ViewModels;
@@ -57,6 +58,7 @@ namespace Agrotutor.Modules.Map.ViewModels
     using Plugin.DownloadManager;
     using Plugin.DownloadManager.Abstractions;
     using Newtonsoft.Json;
+    using Agrotutor.Modules.Weather.Awhere.API;
 
     public class MapPageViewModel : ViewModelBase, INavigatedAware
     {
@@ -109,7 +111,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private Position currentPosition;
 
-        private WeatherForecast currentWeather;
+        private List<WeatherForecast> currentWeather;
 
         private bool delineationUIIsVisible;
 
@@ -937,6 +939,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                     {
                         WeatherPageViewModel.LocationParameterName,
                         new Location(SelectedPlot.Position.Latitude, SelectedPlot.Position.Longitude)
+                    },
+                    {
+                        WeatherPageViewModel.PlotParameterName,
+                        SelectedPlot
                     }
                 };
                 if (SelectedPlot?.WeatherForecast != null)
@@ -1090,7 +1096,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public WeatherForecast CurrentWeather
+        public List<WeatherForecast> CurrentWeather
         {
             get => currentWeather;
             set
@@ -1098,12 +1104,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (value == null) return;
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
-                var cur = value?.Location?.HourlySummaries?.HourlySummary?.ElementAt(0);
-                var today = value?.Location?.DailySummaries?.DailySummary?.ElementAt(0);
+                var today = value.ElementAt(0);
+                var cur = today?.ForecastHours?.ElementAt(0);
                 if (cur == null) return;
-                CurrentWeatherIconSource = cur.TinyWxIcon;
-                var text = $"{cur.TempC} °C";
-                if (today != null) text += $" | {StringLocalizer.GetString("rain")}: {today.precipitationProbability} %";
+                CurrentWeatherIconSource = cur.GetWeatherIcon();
+                var text = $"{cur.Temperature} °C";
+                if (today != null) text += $" | {StringLocalizer.GetString("rain")}: {today.PrecipitationProbability} %";
                 CurrentWeatherText = text;
             }
         }
@@ -1341,9 +1347,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
             SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
             CropType = SelectedPlot.CropType;
-            var gdd = SelectedPlot.WeatherHistory?.Gdd.Series.Sum(x => x.Value);
-            var weatherIcon = SelectedPlot.WeatherForecast?.Location?.HourlySummaries?.HourlySummary?.FirstOrDefault()
-                ?.WxIcon;
+            var baseTemperature = SelectedPlot.GetBaseTemperature();
+            var gdd = (baseTemperature != null && baseTemperature > 0) ? SelectedPlot?.WeatherHistory?.Sum(x=>x.CalculateGdd(baseTemperature)) : null;
+            var weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
             var cost = SelectedPlot.BemData?.AverageCost;
             var yield = SelectedPlot.BemData?.AverageYield;
             var profit = SelectedPlot.BemData?.AverageProfit;
@@ -1605,16 +1611,23 @@ namespace Agrotutor.Modules.Map.ViewModels
             using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
             {
                 bool updatedPlot = false;
+                var creds = new UserCredentials
+                {
+                    Username = Constants.AWhereWeatherAPIUsername,
+                    Password = Constants.AWhereWeatherAPIPassword
+                };
 
                 if (plot.WeatherForecast == null)
                 {
-                    plot.WeatherForecast = await WeatherForecast.Download(plot.Position.Latitude, plot.Position.Longitude);
+                    var forecast = await WeatherAPI.GetForecastAsync(plot.Position.Latitude, plot.Position.Longitude, creds);
+                    plot.WeatherForecast = Converter.GetForecastsFromApiResponse(forecast);
                     updatedPlot = true;
                 }
 
                 if (plot.WeatherHistory == null)
                 {
-                    plot.WeatherHistory = await WeatherHistory.Download(plot.Position.Latitude, plot.Position.Longitude);
+                    var history = await WeatherAPI.GetObservationsAsync(plot.Position.Latitude, plot.Position.Longitude, creds, plot.Activities.Where(x=>x.ActivityType == ActivityType.Sowing)?.FirstOrDefault()?.Date, DateTime.Today);
+                    plot.WeatherHistory = Converter.GetHistoryFromApiResponse(history);
                     updatedPlot = true;
                 }
 
@@ -2068,8 +2081,16 @@ namespace Agrotutor.Modules.Map.ViewModels
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("getting_weather_data")))
             {
                 if (WeatherLocation == null) return;
-                CurrentWeather = await WeatherForecast.Download(WeatherLocation.Latitude, WeatherLocation.Longitude)
-                    .ConfigureAwait(true);
+
+
+                var creds = new UserCredentials
+                {
+                    Username = Constants.AWhereWeatherAPIUsername,
+                    Password = Constants.AWhereWeatherAPIPassword
+                };
+
+                var forecast = await WeatherAPI.GetForecastAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
+                CurrentWeather = Converter.GetForecastsFromApiResponse(forecast);
             }
         }
 
