@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -1341,15 +1342,20 @@ namespace Agrotutor.Modules.Map.ViewModels
                 .ToShortDateString();
             SelectedPlotIrrigation =
                 (SelectedPlot.Activities?.Any(x => x.ActivityType == ActivityType.Irrigation) != null)
-                    ? StringLocalizer.GetString("irrigated")
-                    : StringLocalizer.GetString("rainfed");
+                    ? StringLocalizer.GetString("yes")
+                    : StringLocalizer.GetString("no");
 
             SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
             SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
             CropType = SelectedPlot.CropType;
             var baseTemperature = SelectedPlot.GetBaseTemperature();
             var gdd = (baseTemperature != null && baseTemperature > 0) ? SelectedPlot?.WeatherHistory?.Sum(x=>x.CalculateGdd(baseTemperature)) : null;
-            var weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
+            var weatherIcon = string.Empty;
+            if (SelectedPlot.WeatherForecast.Any())
+            {
+                weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
+            }
+            
             var cost = SelectedPlot.BemData?.AverageCost;
             var yield = SelectedPlot.BemData?.AverageYield;
             var profit = SelectedPlot.BemData?.AverageProfit;
@@ -1360,10 +1366,10 @@ namespace Agrotutor.Modules.Map.ViewModels
             var priceForecastNextMonth = priceForecast.First().Price;
             CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
 
-            CurrentPlotCost = cost == null ? "-" : Math.Round((decimal)cost).ToString();
-            CurrentPlotYield = yield == null ? "-" : Math.Round((decimal)yield).ToString();
-            CurrentPlotProfit = profit == null ? "-" : Math.Round((decimal)profit).ToString();
-            CurrentPlotIncome = income == null ? "-" : Math.Round((decimal)income).ToString();
+            CurrentPlotCost = cost == null ? "-" : Math.Round((decimal)cost).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotYield = yield == null ? "-" : Math.Round((decimal)yield).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotProfit = profit == null ? "-" : Math.Round((decimal)profit).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotIncome = income == null ? "-" : Math.Round((decimal)income).ToString(CultureInfo.InvariantCulture);
             CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
             CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
             CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
@@ -1561,7 +1567,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     {
                         var polygon = new Polygon
                         {
-                            Tag = plot.Position
+                            Tag = plot.Position,
+                            FillColor = new Color(253, 216, 33, 0.2),
+                            StrokeColor = new Color(253, 216, 33)
                         };
                         foreach (var position in positions)
                             polygon.Positions.Add(position.Position.ForMap());

@@ -17,6 +17,7 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Plugin.Popups;
 using Xamarin.Essentials;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XF.Material.Forms;
 using Device = Xamarin.Forms.Device;
@@ -47,6 +48,9 @@ namespace Agrotutor
         protected override async void OnInitialized()
         {
             InitializeComponent();
+#if DEBUG
+            HotReloader.Current.Start(this);
+#endif
             Material.Init(this);
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";
@@ -55,7 +59,6 @@ namespace Agrotutor
             {
                 initialPage = "NavigationPage/WelcomePage";
             }
-            else { }
 
             await NavigationService.NavigateAsync(initialPage);
         }
