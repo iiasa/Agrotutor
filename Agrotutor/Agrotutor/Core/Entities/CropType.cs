@@ -2,6 +2,7 @@
 {
     public enum CropType
     {
+        None =0,
         Corn = 1,
         Barley = 2,
         Bean = 3,
@@ -19,7 +20,6 @@
         Chickpea = 15,
         FavaBean = 16,
         Soy = 17,
-        None = 18,
-        Other = 19
+        Other = 18
     }
 }

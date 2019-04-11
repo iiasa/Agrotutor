@@ -9,7 +9,7 @@ namespace Agrotutor.Modules.Calendar.Types
     {
         public bool AllDayEvent { get; set; }
 
-        public Color? Color { get; set; }
+        public Color? PlotColor { get; set; }
 
         public string Content { get; set; }
 

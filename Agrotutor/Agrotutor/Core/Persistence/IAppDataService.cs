@@ -16,7 +16,7 @@ namespace Agrotutor.Core.Persistence
         Task UpdatePlotAsync(Plot plot);
 
         Task RemovePlotAsync(Plot plot);
-
+        Task<bool> RemovePlotActivityAsync(Activity activity);
         Task<IEnumerable<Plot>> GetAllPlotsAsync();
 
         Task<Plot> GetPlotAsync(int id);
