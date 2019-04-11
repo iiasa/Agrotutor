@@ -18,6 +18,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
     public class AddPlotPageViewModel : ViewModelBase
     {
+        private Random randomColor;
         public static string PositionParameterName = "Position";
         public static string PlotParameterName = "Plot";
 
@@ -38,13 +39,13 @@ namespace Agrotutor.Modules.Plot.ViewModels
             IStringLocalizer<AddPlotPageViewModel> stringLocalizer,
             IAppDataService appDataService) : base(navigationService, stringLocalizer)
         {
-
+            randomColor=new Random();
             AppDataService = appDataService;
 
             Plot = new Plot();
             PlantingDate = DateTime.Today;
 
-            PickerCropTypesSelectedIndex = -1;
+           // PickerCropTypesSelectedIndex = -1;
             PickerClimateTypesSelectedIndex = -1;
             PickerMaturityClassesSelectedIndex = -1;
 
@@ -58,6 +59,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
             CropTypes = new List<string>
             {
+                StringLocalizer.GetString("none"),
                 StringLocalizer.GetString("maize"),
                 StringLocalizer.GetString("barley"),
                 StringLocalizer.GetString("bean"),
@@ -75,7 +77,6 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 StringLocalizer.GetString("chickpea"),
                 StringLocalizer.GetString("havabean"),
                 StringLocalizer.GetString("soy"),
-                StringLocalizer.GetString("none"),
                 StringLocalizer.GetString("other")
             };
 
@@ -117,12 +118,15 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         {
                             new Activity
                             {
-                                ActivityType = ActivityType.Sowing,
+                                ActivityType = ActivityType.Intialization,
                                 Date = PlantingDate,
-                                Name = StringLocalizer.GetString("sowing"),
-                                Cost = 0
+                               // Name = StringLocalizer.GetString("sowing"),
+                               // Cost = 0
                             }
                         };
+                   
+                            this.Plot.PlotColor =System.Drawing.Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
+                        this.Plot.ArgbPlotColor = this.Plot.PlotColor.Value.ToArgb();
                         await AppDataService.AddPlotAsync(Plot);
                    var res=     await AppDataService.GetAllPlotsAsync();
                         SavingPlot = false;
@@ -150,14 +154,18 @@ namespace Agrotutor.Modules.Plot.ViewModels
             set
             {
                 SetProperty(ref this._pickerCropTypesSelectedIndex, value);
-                if (value == -1)
-                {
-                    Plot.CropType = CropType.None;
-                }
-                else
-                {
-                    Plot.CropType = (CropType)(value + 1); // TODO: verify
-                }
+                //if (Plot.CropType == 0)
+                //{
+                //    if (value == -1)
+                //    {
+                //        Plot.CropType = CropType.None;
+                //    }
+                  //  else
+                   // {
+         if(_pickerCropTypesSelectedIndex!=-1)
+                        Plot.CropType = (CropType) (value); // TODO: verify
+                  // }
+              //  }
 
                 CultivarCharacteristicsVisible = (Plot.CropType == CropType.Corn);
             }

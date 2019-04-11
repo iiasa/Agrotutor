@@ -44,6 +44,10 @@ namespace Agrotutor.Core.Entities
 
         public bool Irrigated { get; set; }
 
+        public int ArgbPlotColor { get; set; }
+
+        [NotMapped]
+        public Color? PlotColor { get; set; }
         public Position Position { get; set; }
 
         public List<WeatherForecast> WeatherForecast { get; set; }
@@ -78,7 +82,7 @@ namespace Agrotutor.Core.Entities
         public IEnumerable<CalendarEvent> GetCalendarEvents()
         {
             List<CalendarEvent> events = new List<CalendarEvent>();
-            Color colorPerPlot = Color.FromArgb(randomColor.Next(256), randomColor.Next(256), randomColor.Next(256));
+
             if (Activities != null)
             {
                 foreach (Activity activity in Activities)
@@ -91,7 +95,7 @@ namespace Agrotutor.Core.Entities
                             StartTime = activity.Date,
                             EndTime = activity.Date,
                             Title = activity.Name,
-                            Color = colorPerPlot,
+                            PlotColor = System.Drawing.Color.FromArgb(ArgbPlotColor),
                             Plot = this
                         });
                 }

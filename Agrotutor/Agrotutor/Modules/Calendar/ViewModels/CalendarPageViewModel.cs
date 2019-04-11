@@ -1,3 +1,5 @@
+using System.Threading.Tasks;
+
 namespace Agrotutor.Modules.Calendar.ViewModels
 {
     using System;
@@ -9,6 +11,7 @@ namespace Agrotutor.Modules.Calendar.ViewModels
     using Core;
     using Types;
     using Views;
+    using Agrotutor.Core.Persistence;
 
     public class CalendarPageViewModel : ViewModelBase
     {
@@ -19,11 +22,13 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         private string dateRangeText;
         private IEnumerable<CalendarEvent> events;
         public INavigationService NavigationService { get; set; }
-        public CalendarPageViewModel(INavigationService navigationService, IStringLocalizer<CalendarPageViewModel> stringLocalizer)
+        private IAppDataService _appDataService;
+        public CalendarPageViewModel(INavigationService navigationService, IStringLocalizer<CalendarPageViewModel> stringLocalizer, IAppDataService appDataService)
         :base(navigationService, stringLocalizer)
         {
 
             NavigationService = navigationService;
+            _appDataService = appDataService;
         }
 
  
@@ -86,8 +91,18 @@ namespace Agrotutor.Modules.Calendar.ViewModels
                 {
                     Events = events;
                 }
+                base.OnNavigatedTo(parameters);
             }
-            base.OnNavigatedTo(parameters);
+            else
+            {
+ 
+                var plots = _appDataService.GetAllPlotsAsync().Result;
+                Events = Core.Entities.Plot.GetCalendarEvents(plots);
+                base.OnNavigatedTo(parameters);
+          
+
+            }
+          
         }
 
         public void SetView(CalendarPage calendarPage)

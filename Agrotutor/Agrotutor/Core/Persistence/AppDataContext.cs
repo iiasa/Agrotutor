@@ -49,6 +49,7 @@ namespace Agrotutor.Core.Persistence
         public DbSet<MediaItem> MediaItems { get; set; }
 
         public DbSet<CiatData.CiatDataDetail> CiatDataDetail { get; set; }
+        DbSet<DelineationPosition> IAppDataContext.Delineations { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public void DisableDetectChanges()
         {

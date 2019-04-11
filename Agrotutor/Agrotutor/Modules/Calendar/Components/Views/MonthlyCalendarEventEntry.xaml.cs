@@ -24,9 +24,9 @@ namespace Agrotutor.Modules.Calendar.Components.Views
             {
                 this.calendarEvent = value;
                 this.Text = CalendarEvent.Title;
-                if (CalendarEvent.Color != null)
+                if (CalendarEvent.PlotColor != null)
                 {
-                    this.BackgroundColor = (Color)CalendarEvent.Color;
+                    this.BackgroundColor = (Color)CalendarEvent.PlotColor;
                 }
                 else
                 {
