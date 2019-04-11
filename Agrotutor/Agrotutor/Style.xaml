@@ -14,10 +14,11 @@
         <Setter Property="FontSize" Value="18" />
     </Style>
 
-    <Color x:Key="PrimaryGreen">#7BC142</Color>
+    <Color x:Key="PrimaryGreen">#136F63</Color>
     <Color x:Key="PrimaryGrey">#696A6C</Color>
-    <Color x:Key="SecondaryBlue">#00A7CE</Color>
-    <Color x:Key="SecondaryOrange">#FF6B00</Color>
+    <Color x:Key="PrimaryYellow">#FDD821</Color>
+    <Color x:Key="SecondaryBlue">#3F88C5</Color>
+    <Color x:Key="SecondaryOrange">#EA7824</Color>
     <Color x:Key="SecondaryDarkYellow">#C7B000</Color>
     <Color x:Key="SecondaryDarkGreen">#2A4634</Color>
     <Color x:Key="SecondaryGreenBrown">#908C14</Color>
@@ -26,7 +27,7 @@
     <Color x:Key="MachineryPoints">DarkBlue</Color>
 
     <Style TargetType="Button">
-        <Setter Property="BackgroundColor" Value="{StaticResource SecondaryLightYellow}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource PrimaryYellow}" />
     </Style>
     <Style x:Key="ButtonGreen" TargetType="Button">
         <Setter Property="BackgroundColor" Value="{StaticResource PrimaryGreen}" />

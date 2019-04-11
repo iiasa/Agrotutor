@@ -9,29 +9,11 @@
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
-        public string GetAvg
-        {
-            get
-            {
-                return "\tPromedio: " + BenchmarkingDatasets.Average(r => r.val);
-            }
-        }
+        public string GetAvg => "\tPromedio: " + BenchmarkingDatasets.Average(r => r.val);
 
-        public string GetMax
-        {
-            get
-            {
-                return "\tMáximo: " + BenchmarkingDatasets.Max(r => r.val);
-            }
-        }
+        public string GetMax => "\tMáximo: " + BenchmarkingDatasets.Max(r => r.val);
 
-        public string GetMin
-        {
-            get
-            {
-                return "\tMínimo: " + BenchmarkingDatasets.Min(r => r.val);
-            }
-        }
+        public string GetMin => "\tMínimo: " + BenchmarkingDatasets.Min(r => r.val);
 
         public virtual List<BenchmarkingDataset> BenchmarkingDatasets { get; set; }
 
@@ -62,10 +44,7 @@
 
             public string year { get; set; }
 
-            public void SetYear()
-            {
-                year = filename.Substring(filename.Length - 15, 4);
-            }
+            public void SetYear() => year = filename.Substring(filename.Length - 15, 4);
         }
     }
 }

@@ -15,7 +15,7 @@ namespace Agrotutor.Core.Rest
 
             var json = string.Empty;
 
-            if (timeSpan == default(TimeSpan))
+            if (timeSpan == default)
             {
                 timeSpan = TimeSpan.FromDays(1);
             }
@@ -51,7 +51,7 @@ namespace Agrotutor.Core.Rest
 
             var json = string.Empty;
 
-            if (timeSpan == default(TimeSpan))
+            if (timeSpan == default)
             {
                 timeSpan = TimeSpan.FromDays(1);
             }
