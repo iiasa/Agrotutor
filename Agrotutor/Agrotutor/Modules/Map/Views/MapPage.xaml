@@ -292,11 +292,15 @@
                                         Value="{Binding CurrentPlotPriceForecast}" />
                                 </StackLayout>
 
-                                <views:IconWithText
+                                <Button
+                                    Command="{Binding DeleteCommand}"
+                                    IsVisible="{Binding ShowDeletePlotButton}"
+                                    Text="{localization:Translate delete}" />
+                                <!--<views:IconWithText
                                     Command="{Binding DeleteCommand}"
                                     IconSource="delete.png"
                                     IconText="{localization:Translate delete}"
-                                    IsVisible="{Binding ShowDeletePlotButton}" />
+                                    IsVisible="{Binding ShowDeletePlotButton}" />-->
 
                                 <views:IconWithText
                                     Command="{Binding AddPlotCommand}"

@@ -172,6 +172,28 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             IsDownloadButtonEnabled = true;
             Title = "Map";
+            CropTypes = new List<string>
+            {
+                StringLocalizer.GetString("Maíz"),
+                StringLocalizer.GetString("Cebada"),
+                StringLocalizer.GetString("Frijol"),
+                StringLocalizer.GetString("Trigo"),
+                StringLocalizer.GetString("Triticale"),
+                StringLocalizer.GetString("Sorgo"),
+                StringLocalizer.GetString("Alfalfa"),
+                StringLocalizer.GetString("Avena"),
+                StringLocalizer.GetString("Ajonjolí"),
+                StringLocalizer.GetString("Amaranto"),
+                StringLocalizer.GetString("Arroz"),
+                StringLocalizer.GetString("Canola"),
+                StringLocalizer.GetString("Cartamo"),
+                StringLocalizer.GetString("Calabacín"),
+                StringLocalizer.GetString("Garbanzo"),
+                StringLocalizer.GetString("Haba"),
+                StringLocalizer.GetString("Soya"),
+                StringLocalizer.GetString("Ninguno"),
+                StringLocalizer.GetString("Otro")
+            };
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
             LocationPermissionGiven = false;
@@ -694,28 +716,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 CurrentMapTask = MapTask.GetLocationForPlanner;
             });
 
-        public List<string> CropTypes { get; } = new List<string>
-        {
-            "Maíz",
-            "Cebada",
-            "Frijol",
-            "Trigo",
-            "Triticale",
-            "Sorgo",
-            "Alfalfa",
-            "Avena",
-            "Ajonjolí",
-            "Amaranto",
-            "Arroz",
-            "Canola",
-            "Cartamo",
-            "Calabacín",
-            "Garbanzo",
-            "Haba",
-            "Soya",
-            "Ninguno",
-            "Otro"
-        };
+        public List<string> CropTypes { get; }
 
         public DelegateCommand DelineateSelectedPlot =>
             new DelegateCommand(async () =>
