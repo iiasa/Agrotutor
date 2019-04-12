@@ -25,9 +25,14 @@ using Agrotutor.Modules.Map.Types;
 using Agrotutor.Modules.Map.Views;
 using Agrotutor.Modules.Plot.ViewModels;
 using Agrotutor.Modules.PriceForecasting.Types;
+using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather;
-using Agrotutor.Modules.Weather.Types;
+using Agrotutor.Modules.Weather.Awhere.API;
+using Agrotutor.Modules.Weather.ViewModels;
 using Microsoft.Extensions.Localization;
+using Newtonsoft.Json;
+using Plugin.DownloadManager;
+using Plugin.DownloadManager.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Prism;
@@ -37,18 +42,11 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.GoogleMaps;
 using XF.Material.Forms.UI.Dialogs;
+using Converter = Agrotutor.Modules.Weather.Awhere.API.Converter;
 using Feature = Agrotutor.Core.Cimmyt.HubsContact.Feature;
-using Location = Xamarin.Essentials.Location;
 using MapsPosition = Xamarin.Forms.GoogleMaps.Position;
 using NavigationMode = Xamarin.Essentials.NavigationMode;
 using Position = Agrotutor.Core.Entities.Position;
-using WeatherForecast = Agrotutor.Modules.Weather.WeatherForecast;
-using WeatherHistory = Agrotutor.Modules.Weather.WeatherHistory;
-using Agrotutor.Modules.Plot.Views;
-using Agrotutor.Modules.PriceForecasting.ViewModels;
-using Agrotutor.Modules.Weather.ViewModels;
-using Agrotutor.Modules.Weather.Views;
-using Flurl.Http;
 
 namespace Agrotutor.Modules.Map.ViewModels
 {
@@ -56,19 +54,18 @@ namespace Agrotutor.Modules.Map.ViewModels
     using HubFeature = Feature;
     using IPFeature = Core.Cimmyt.InvestigationPlatforms.Feature;
     using MPFeature = Core.Cimmyt.MachineryPoints.Feature;
-    using Plugin.DownloadManager;
-    using Plugin.DownloadManager.Abstractions;
-    using Newtonsoft.Json;
-    using Agrotutor.Modules.Weather.Awhere.API;
 
     public class MapPageViewModel : ViewModelBase, INavigatedAware
     {
         private readonly ICameraService _cameraService;
-        public IDocumentViewer DocumentViewer;
+
+        private readonly double tileSize = 130;
         private bool _addParcelIsVisible;
 
         private Position _addPlotPosition;
+        private string _cacheButtonText;
         private CameraPosition _cameraPositionUpdated;
+        private CropType _cropType;
 
         private HubFeature _currentHubContact;
 
@@ -82,17 +79,24 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool _currentMapTaskHintIsVisible;
         private string _currentPlotCost;
+        private string _currentPlotGdd;
         private string _currentPlotIncome;
         private string _currentPlotNitrogen;
         private string _currentPlotPotentialYield;
         private string _currentPlotPriceForecast;
         private string _currentPlotProfit;
+        private string _currentPlotWeatherIcon;
         private string _currentPlotYield;
         private string _currentWeatherIconSource;
 
         private string _currentWeatherText;
+        private string _downloadStatusImage;
         private bool _hubContactsLayerVisible;
         private bool _investigationPlatformsLayerVisible;
+        private bool _isDownloadButtonEnabled;
+
+        private bool _isOfflineBasemapLayerEnabled;
+        private string _lastUploadDateString;
         private bool _layerSwitcherIsVisible;
         private bool _locationEnabled;
         private bool _machineryPointsLayerVisible;
@@ -106,9 +110,16 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool _plotsLayerVisible;
         private ObservableCollection<Polygon> _polygons;
         private MapSpan _region;
+        private string _selectedPlotClimate;
+
+        private string _selectedPlotDate;
+        private string _selectedPlotIrrigation;
+        private string _selectedPlotMaturity;
+        private bool _showSatelliteLayer;
         private bool _showTileLayer;
 
         private bool _showWeatherWidget;
+        private bool additionalDataLoaded;
 
         private Position currentPosition;
 
@@ -117,6 +128,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool delineationUIIsVisible;
 
         private bool dimBackground;
+        public IDocumentViewer DocumentViewer;
 
         private bool gpsLocationUIIsVisible;
 
@@ -133,34 +145,16 @@ namespace Agrotutor.Modules.Map.ViewModels
         private bool plotDetailIsVisible;
 
         private Core.Entities.Plot selectedPlot;
-
-        private bool selectLocationUIIsVisible;
-
-        private Location weatherLocation;
-
-        private string _selectedPlotDate;
-        private string _selectedPlotIrrigation;
-        private string _selectedPlotMaturity;
-        private string _selectedPlotClimate;
-        private string _currentPlotWeatherIcon;
-        private string _currentPlotGdd;
-        private bool _showSatelliteLayer;
-        private CropType _cropType;
-        private string _cacheButtonText;
-        private string _downloadStatusImage;
-
-        private bool _isOfflineBasemapLayerEnabled;
-        private bool _isDownloadButtonEnabled;
-        private bool showPlotDetailInformation;
-        private bool additionalDataLoaded;
-        private bool showAdditionalDataButton;
-        private bool showSavePlotButton;
-        private bool showDeletePlotButton;
         private double selectedPlotActivityCost;
 
-        private readonly double tileSize = 130;
-        private string tileName = "Guanajuato";
-        private string _lastUploadDateString;
+        private bool selectLocationUIIsVisible;
+        private bool showAdditionalDataButton;
+        private bool showDeletePlotButton;
+        private bool showPlotDetailInformation;
+        private bool showSavePlotButton;
+        private readonly string tileName = "Guanajuato";
+
+        private Location weatherLocation;
 
         public MapPageViewModel(
             INavigationService navigationService,
@@ -208,161 +202,23 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             Polygons = new ObservableCollection<Polygon>();
             Pins = new ObservableCollection<Pin>();
-            DownloadDeleteCommand=new DelegateCommand(async () =>
-            {
-                await DownloadTilesAsync();
-            });
+            DownloadDeleteCommand = new DelegateCommand(async () => { await DownloadTilesAsync(); });
             CheckDownloadStatus();
         }
-
 
 
         public string CacheButtonText
         {
             get => _cacheButtonText;
-            set
-            {
-                SetProperty(ref _cacheButtonText, value);
-            }
+            set => SetProperty(ref _cacheButtonText, value);
         }
+
         public string DownloadStatusImage
         {
             get => _downloadStatusImage;
-            set
-            {
-                SetProperty(ref _downloadStatusImage, value);
-            }
-        }
-        private void CheckDownloadStatus()
-        {
-            if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
-            {
-                DownloadStatusImage = "ic_delete";
-                IsOfflineBasemapLayerEnabled = true;
-            }
-            else
-            {
-                DownloadStatusImage = "ic_download";
-                IsOfflineBasemapLayerEnabled = false;
-            }
+            set => SetProperty(ref _downloadStatusImage, value);
         }
 
-        private async Task UpLoadDataAsync()
-        {
-            try
-            {
-                TimeSpan dateRes;
-                if (_lastUploadDateString != null)
-                {
-                    DateTime uploadDateTime=DateTime.Parse(_lastUploadDateString);
-                     dateRes = DateTime.UtcNow.Subtract(uploadDateTime);
-                }
-
-                if (_lastUploadDateString == null||dateRes.Days >=Constants.UploadPlotDataPeriod)
-                {
-                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-                    {
-                        HttpClient client = new HttpClient();
-                        if (Plots.ToList().Count > 0)
-                        {
-                            foreach (var plot in Plots)
-                            {
-                                var jsonObj = JsonConvert.SerializeObject(plot);
-                                var res = await client.PostAsync(Constants.UploadDataUrl,
-                                    new StringContent(jsonObj, Encoding.UTF8, "application/json"));
-                                if (!res.IsSuccessStatusCode)
-                                {
-                                    //todo:show notification or log the result
-                                    return;
-                                }
-
-                            }
-
-                            LastUploadDateString = DateTime.UtcNow.ToString();
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-        
-            }
-
-
-        }
-
-        public async Task DownloadTilesAsync( )
-        {
-      
-            if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
-            {
-                var deleteOfflineMapMessage =
-                    string.Format(StringLocalizer.GetString("delete_offline_map_message"), tileSize);
-                var confirm = await MaterialDialog.Instance.ConfirmAsync(deleteOfflineMapMessage, null, StringLocalizer.GetString("download_offline_map_yes"),
-                    StringLocalizer.GetString("download_offline_map_cancel"));
-                if (confirm.Value)
-                {
-                    // remove files
-                    FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
-                    //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
-                    DownloadStatusImage = "ic_download";
-                    IsOfflineBasemapLayerEnabled = false;
-                    OfflineBasemapLayerVisible = false;
-                }
-   
-            }
-            else
-            {
-             
-                var downloadOfflineMapMessage =
-                    string.Format(StringLocalizer.GetString("download_offline_map_message"), tileSize);
-                var confirm = await MaterialDialog.Instance.ConfirmAsync(downloadOfflineMapMessage, null, StringLocalizer.GetString("download_offline_map_yes"),
-                    StringLocalizer.GetString("download_offline_map_cancel"));
-                if (confirm.Value)
-                {
-             
-               await TaskDownloadTiles();
-                    
-                }
-            
-            }
-        }
-        private async Task TaskDownloadTiles()
-        {
-            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
-            {
-                var downloadOfflineMapInProgress = string.Format(StringLocalizer.GetString("download_offline_map_in_progress"), tileName);
-                var loadingDialog = await MaterialDialog.Instance.LoadingDialogAsync(downloadOfflineMapInProgress);
-                IsDownloadButtonEnabled = false;
-                IDownloadFile file = CrossDownloadManager.Current.CreateDownloadFile(Constants.DownloadTileUrl);
-
-                CrossDownloadManager.Current.Start(file);
-                file.PropertyChanged += (sender, e) =>
-                {
-                    if (e.PropertyName == "Status")
-                    {
-                        switch (((IDownloadFile)sender).Status)
-                        {
-                            case DownloadFileStatus.COMPLETED:
-                                DownloadStatusImage = "ic_delete";
-                                IsDownloadButtonEnabled = true;
-                                IsOfflineBasemapLayerEnabled = true;
-                                LayerService.UpdateIsChecked(FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
-                                System.Console.WriteLine("Downloading finished. " + file.DestinationPathName);
-                                loadingDialog.DismissAsync();
-                                break;
-
-                            case DownloadFileStatus.FAILED:
-                            case DownloadFileStatus.CANCELED:
-                                System.Console.WriteLine("Downloading error. ");
-                                break;
-                        }
-                    }
-                };
-
-            }
-        }
         public bool OfflineBasemapLayerVisible
         {
             get => _offlineBasemapLayerVisible;
@@ -373,22 +229,19 @@ namespace Agrotutor.Modules.Map.ViewModels
                 LayerService.UpdateIsChecked(FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
             }
         }
+
         public bool IsOfflineBasemapLayerEnabled
         {
             get => _isOfflineBasemapLayerEnabled;
-            set
-            {
-                SetProperty(ref _isOfflineBasemapLayerEnabled, value);
-            }
+            set => SetProperty(ref _isOfflineBasemapLayerEnabled, value);
         }
+
         public bool IsDownloadButtonEnabled
         {
             get => _isDownloadButtonEnabled;
-            set
-            {
-                SetProperty(ref _isDownloadButtonEnabled, value);
-            }
+            set => SetProperty(ref _isDownloadButtonEnabled, value);
         }
+
         public bool ShowSatelliteTileLayer
         {
             get => _showSatelliteLayer;
@@ -398,6 +251,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Preferences.Set(Constants.ShowSatelliteTileLayerVisiblePreference, value);
             }
         }
+
         public string LastUploadDateString
         {
             get => _lastUploadDateString;
@@ -407,6 +261,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Preferences.Set(Constants.LastUploadDatePreference, value);
             }
         }
+
         public ObservableCollection<Polygon> Polygons
         {
             get => _polygons;
@@ -458,12 +313,18 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
         }
 
-        public double SelectedPlotActivityCost { get => selectedPlotActivityCost; set => SetProperty(ref selectedPlotActivityCost, value); }
+        public double SelectedPlotActivityCost
+        {
+            get => selectedPlotActivityCost;
+            set => SetProperty(ref selectedPlotActivityCost, value);
+        }
 
         public DelegateCommand DownloadDeleteCommand { get; set; }
+
         public DelegateCommand ShowCurrentPlotCost => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost==null||SelectedPlot.BemData.Cost.Count==0)
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Cost == null ||
+                SelectedPlot.BemData.Cost.Count == 0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("cost_data_not_available"));
                 return;
@@ -477,7 +338,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCurrentPlotIncome => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income==null||SelectedPlot.BemData.Income.Count==0)
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Income == null ||
+                SelectedPlot.BemData.Income.Count == 0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("income_data_not_available"));
                 return;
@@ -491,7 +353,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCurrentPlotProfit => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit==null|| SelectedPlot.BemData.Profit.Count==0)
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Profit == null ||
+                SelectedPlot.BemData.Profit.Count == 0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("profit_data_not_available"));
                 return;
@@ -505,7 +368,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand ShowCurrentPlotYield => new DelegateCommand(async () =>
         {
-            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield==null||SelectedPlot.BemData.Yield.Count==0)
+            if (SelectedPlot?.BemData == null || SelectedPlot.BemData.Yield == null ||
+                SelectedPlot.BemData.Yield.Count == 0)
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("yield_data_not_available"));
                 return;
@@ -518,9 +382,9 @@ namespace Agrotutor.Modules.Map.ViewModels
         });
 
         public DelegateCommand ProvideFeedback => new DelegateCommand(() =>
-            {
-                Device.OpenUri(new Uri($"mailto:{Constants.FeedbackEmail}?subject=AgroTutor-Feedback"));
-            });
+        {
+            Device.OpenUri(new Uri($"mailto:{Constants.FeedbackEmail}?subject=AgroTutor-Feedback"));
+        });
 
         public string CurrentPlotCost
         {
@@ -552,8 +416,17 @@ namespace Agrotutor.Modules.Map.ViewModels
             set => SetProperty(ref _locationEnabled, value);
         }
 
-        public bool ShowSavePlotButton { get => showSavePlotButton; set => SetProperty(ref showSavePlotButton, value); }
-        public bool ShowDeletePlotButton { get => showDeletePlotButton; set => SetProperty(ref showDeletePlotButton, value); }
+        public bool ShowSavePlotButton
+        {
+            get => showSavePlotButton;
+            set => SetProperty(ref showSavePlotButton, value);
+        }
+
+        public bool ShowDeletePlotButton
+        {
+            get => showDeletePlotButton;
+            set => SetProperty(ref showDeletePlotButton, value);
+        }
 
         public bool PlotDelineationsLayerVisible
         {
@@ -613,7 +486,6 @@ namespace Agrotutor.Modules.Map.ViewModels
         }
 
 
-
         public DelegateCommand AddActivityToSelectedPlot =>
             new DelegateCommand(() =>
             {
@@ -633,30 +505,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand DeleteCommand =>
             new DelegateCommand(async () => await DeletePlot());
-
-        private async Task DeletePlot()
-        {
-            try
-            {
-                var confirm = await MaterialDialog.Instance.ConfirmAsync(StringLocalizer.GetString("delete_plot_confirm_message"), StringLocalizer.GetString("delete_plot_confirm_button"));
-                if (confirm.Value)
-                {
-                    using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("delete_plot_in_progress")))
-                    {
-                        await AppDataService.RemovePlotAsync(SelectedPlot);
-                        RemovePlots();
-                        PlotDetailIsVisible = false;
-                        DimBackground = false;
-                        await LoadPlots();
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("delete_plot_failed"));
-            }
-
-        }
 
         public DelegateCommand AcceptGPSLocation => new DelegateCommand(() =>
         {
@@ -781,7 +629,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                             if (CurrentDelineation == null) CurrentDelineation = new List<DelineationPosition>();
 
                             var pos = Position.From(args.Point);
-                            CurrentDelineation.Add(new DelineationPosition{Position= pos });
+                            CurrentDelineation.Add(new DelineationPosition {Position = pos});
                             var pin = new Pin
                             {
                                 Position = Position.From(args.Point).ForMap(),
@@ -830,15 +678,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand ShowInfoForSelectedPlot =>
             new DelegateCommand(() =>
             {
-                var param = new NavigationParameters { { "Plot", SelectedPlot } };
+                var param = new NavigationParameters {{"Plot", SelectedPlot}};
                 NavigationService.NavigateAsync("PlotMainPage", param);
             });
 
         public DelegateCommand DownloadAdditionalPlotData =>
-            new DelegateCommand(() =>
-            {
-                LoadPlotAdditionalData(SelectedPlot);
-            });
+            new DelegateCommand(() => { LoadPlotAdditionalData(SelectedPlot); });
 
         public DelegateCommand AddPictureToSelectedPlot =>
             new DelegateCommand(async () =>
@@ -948,16 +793,11 @@ namespace Agrotutor.Modules.Map.ViewModels
                     }
                 };
                 if (SelectedPlot?.WeatherForecast != null)
-                {
                     param.Add(WeatherPageViewModel.ForecastParameterName, SelectedPlot.WeatherForecast);
-                }
                 if (SelectedPlot?.WeatherHistory != null)
-                {
                     param.Add(WeatherPageViewModel.HistoryParameterName, SelectedPlot.WeatherHistory);
-                }
 
                 NavigationService.NavigateAsync("WeatherPage", param);
-
             });
 
         public DelegateCommand ShowWeather =>
@@ -987,10 +827,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public DelegateCommand<string> WriteEmail =>
             new DelegateCommand<string>(
-                emailAddress =>
-                {
-                    Device.OpenUri(new Uri($"mailto:{emailAddress}"));
-                });
+                emailAddress => { Device.OpenUri(new Uri($"mailto:{emailAddress}")); });
 
         public bool AddParcelIsVisible
         {
@@ -1111,7 +948,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.GetWeatherIcon();
                 var text = $"{cur.Temperature} °C";
-                if (today != null) text += $" | {StringLocalizer.GetString("rain")}: {today.PrecipitationProbability} %";
+                if (today != null)
+                    text += $" | {StringLocalizer.GetString("rain")}: {today.PrecipitationProbability} %";
                 CurrentWeatherText = text;
             }
         }
@@ -1316,7 +1154,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 if (value == null || value == selectedPlot) return;
                 SetProperty(ref selectedPlot, value);
-                
+
                 if (value.MediaItems == null) value.MediaItems = new List<MediaItem>();
 
                 if (value.IsTemporaryPlot)
@@ -1330,53 +1168,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     ShowSavePlotButton = false;
                     ShowDeletePlotButton = true;
                 }
+
                 LoadPlotData(value);
             }
-        }
-
-        private async void UpdateInfo()
-        {
-            if (SelectedPlot == null) return;
-            ShowPlotDetailInformation = !SelectedPlot.IsTemporaryPlot;
-
-            SelectedPlotDate = SelectedPlot.Activities?.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
-                .ToShortDateString();
-            SelectedPlotIrrigation =
-                (SelectedPlot.Activities?.Any(x => x.ActivityType == ActivityType.Irrigation) != null)
-                    ? StringLocalizer.GetString("yes")
-                    : StringLocalizer.GetString("no");
-
-            SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
-            SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
-            CropType = SelectedPlot.CropType;
-            var baseTemperature = SelectedPlot.GetBaseTemperature();
-            var gdd = (baseTemperature != null && baseTemperature > 0) ? SelectedPlot?.WeatherHistory?.Sum(x=>x.CalculateGdd(baseTemperature)) : null;
-            var weatherIcon = string.Empty;
-            if (SelectedPlot.WeatherForecast.Any())
-            {
-                weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
-            }
-            
-            var cost = SelectedPlot.BemData?.AverageCost;
-            var yield = SelectedPlot.BemData?.AverageYield;
-            var profit = SelectedPlot.BemData?.AverageProfit;
-            var income = SelectedPlot.BemData?.AverageIncome;
-            var potentialYield = SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax;
-            var nitrogenNeeded = SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen;
-            var priceForecast = await PriceForecast.FromEmbeddedResource();
-            var priceForecastNextMonth = priceForecast.First().Price;
-            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
-
-            CurrentPlotCost = cost == null ? "-" : Math.Round((decimal)cost).ToString(CultureInfo.InvariantCulture);
-            CurrentPlotYield = yield == null ? "-" : Math.Round((decimal)yield).ToString(CultureInfo.InvariantCulture);
-            CurrentPlotProfit = profit == null ? "-" : Math.Round((decimal)profit).ToString(CultureInfo.InvariantCulture);
-            CurrentPlotIncome = income == null ? "-" : Math.Round((decimal)income).ToString(CultureInfo.InvariantCulture);
-            CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
-            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
-            CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
-            CurrentPlotWeatherIcon = weatherIcon ?? "";
-
-            await MapPage.UpdateImages();
         }
 
         public string CurrentPlotWeatherIcon
@@ -1408,6 +1202,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             get => _selectedPlotIrrigation;
             set => SetProperty(ref _selectedPlotIrrigation, value);
         }
+
         public bool ShowPlotDetailInformation
         {
             get => showPlotDetailInformation;
@@ -1537,10 +1332,196 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public MapPage MapPage { get; set; }
 
+        public bool IsInitDone { get; set; }
+
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
             ListenForLocation = false;
             base.OnNavigatedFrom(parameters);
+        }
+
+        private void CheckDownloadStatus()
+        {
+            if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
+            {
+                DownloadStatusImage = "ic_delete";
+                IsOfflineBasemapLayerEnabled = true;
+            }
+            else
+            {
+                DownloadStatusImage = "ic_download";
+                IsOfflineBasemapLayerEnabled = false;
+            }
+        }
+
+        private async Task UpLoadDataAsync()
+        {
+            try
+            {
+                TimeSpan dateRes;
+                if (_lastUploadDateString != null)
+                {
+                    var uploadDateTime = DateTime.Parse(_lastUploadDateString);
+                    dateRes = DateTime.UtcNow.Subtract(uploadDateTime);
+                }
+
+                if (_lastUploadDateString == null || dateRes.Days >= Constants.UploadPlotDataPeriod)
+                    if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+                    {
+                        var client = new HttpClient();
+                        if (Plots.ToList().Count > 0)
+                        {
+                            foreach (var plot in Plots)
+                            {
+                                var jsonObj = JsonConvert.SerializeObject(plot);
+                                var res = await client.PostAsync(Constants.UploadDataUrl,
+                                    new StringContent(jsonObj, Encoding.UTF8, "application/json"));
+                                if (!res.IsSuccessStatusCode) return;
+                            }
+
+                            LastUploadDateString = DateTime.UtcNow.ToString();
+                        }
+                    }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
+
+        public async Task DownloadTilesAsync()
+        {
+            if (FileManager.CacheFileExists(Constants.DownloadTileUrl))
+            {
+                var deleteOfflineMapMessage =
+                    string.Format(StringLocalizer.GetString("delete_offline_map_message"), tileSize);
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(deleteOfflineMapMessage, null,
+                    StringLocalizer.GetString("download_offline_map_yes"),
+                    StringLocalizer.GetString("download_offline_map_cancel"));
+                if (confirm.Value)
+                {
+                    // remove files
+                    FileManager.DeleteOfflineCache(Constants.DownloadTileUrl);
+                    //  LayerService.UpdateIsChecked( FileManager.GetCacheFilePath(downloadUrl));
+                    DownloadStatusImage = "ic_download";
+                    IsOfflineBasemapLayerEnabled = false;
+                    OfflineBasemapLayerVisible = false;
+                }
+            }
+            else
+            {
+                var downloadOfflineMapMessage =
+                    string.Format(StringLocalizer.GetString("download_offline_map_message"), tileSize);
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(downloadOfflineMapMessage, null,
+                    StringLocalizer.GetString("download_offline_map_yes"),
+                    StringLocalizer.GetString("download_offline_map_cancel"));
+                if (confirm.Value) await TaskDownloadTiles();
+            }
+        }
+
+        private async Task TaskDownloadTiles()
+        {
+            if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+            {
+                var downloadOfflineMapInProgress =
+                    string.Format(StringLocalizer.GetString("download_offline_map_in_progress"), tileName);
+                var loadingDialog = await MaterialDialog.Instance.LoadingDialogAsync(downloadOfflineMapInProgress);
+                IsDownloadButtonEnabled = false;
+                var file = CrossDownloadManager.Current.CreateDownloadFile(Constants.DownloadTileUrl);
+
+                CrossDownloadManager.Current.Start(file);
+                file.PropertyChanged += (sender, e) =>
+                {
+                    if (e.PropertyName == "Status")
+                        switch (((IDownloadFile) sender).Status)
+                        {
+                            case DownloadFileStatus.COMPLETED:
+                                DownloadStatusImage = "ic_delete";
+                                IsDownloadButtonEnabled = true;
+                                IsOfflineBasemapLayerEnabled = true;
+                                LayerService.UpdateIsChecked(FileManager.GetCacheFilePath(Constants.DownloadTileUrl));
+                                Console.WriteLine("Downloading finished. " + file.DestinationPathName);
+                                loadingDialog.DismissAsync();
+                                break;
+
+                            case DownloadFileStatus.FAILED:
+                            case DownloadFileStatus.CANCELED:
+                                Console.WriteLine("Downloading error. ");
+                                break;
+                        }
+                };
+            }
+        }
+
+        private async Task DeletePlot()
+        {
+            try
+            {
+                var confirm = await MaterialDialog.Instance.ConfirmAsync(
+                    StringLocalizer.GetString("delete_plot_confirm_message"),
+                    StringLocalizer.GetString("delete_plot_confirm_button"));
+                if (confirm.Value)
+                    using (await MaterialDialog.Instance.LoadingDialogAsync(
+                        StringLocalizer.GetString("delete_plot_in_progress")))
+                    {
+                        await AppDataService.RemovePlotAsync(SelectedPlot);
+                        RemovePlots();
+                        PlotDetailIsVisible = false;
+                        DimBackground = false;
+                        await LoadPlots();
+                    }
+            }
+            catch (Exception e)
+            {
+                await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("delete_plot_failed"));
+            }
+        }
+
+        private async void UpdateInfo()
+        {
+            if (SelectedPlot == null) return;
+            ShowPlotDetailInformation = !SelectedPlot.IsTemporaryPlot;
+
+            SelectedPlotDate = SelectedPlot.Activities?.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
+                .ToShortDateString();
+            SelectedPlotIrrigation =
+                SelectedPlot.Activities?.Any(x => x.ActivityType == ActivityType.Irrigation) != null
+                    ? StringLocalizer.GetString("yes")
+                    : StringLocalizer.GetString("no");
+
+            SelectedPlotMaturity = Helper.GetMaturityTypeString(SelectedPlot.MaturityType);
+            SelectedPlotClimate = Helper.GetClimateTypeString(SelectedPlot.ClimateType);
+            CropType = SelectedPlot.CropType;
+            var baseTemperature = SelectedPlot.GetBaseTemperature();
+            var gdd = baseTemperature != null && baseTemperature > 0
+                ? SelectedPlot?.WeatherHistory?.Sum(x => x.CalculateGdd(baseTemperature))
+                : null;
+            var weatherIcon = string.Empty;
+            if (SelectedPlot.WeatherForecast.Any())
+                weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
+
+            var cost = SelectedPlot.BemData?.AverageCost;
+            var yield = SelectedPlot.BemData?.AverageYield;
+            var profit = SelectedPlot.BemData?.AverageProfit;
+            var income = SelectedPlot.BemData?.AverageIncome;
+            var potentialYield = SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax;
+            var nitrogenNeeded = SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen;
+            var priceForecast = await PriceForecast.FromEmbeddedResource();
+            var priceForecastNextMonth = priceForecast.First().Price;
+            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
+
+            CurrentPlotCost = cost == null ? "-" : Math.Round((decimal) cost).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotYield = yield == null ? "-" : Math.Round((decimal) yield).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotProfit =
+                profit == null ? "-" : Math.Round((decimal) profit).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotIncome =
+                income == null ? "-" : Math.Round((decimal) income).ToString(CultureInfo.InvariantCulture);
+            CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
+            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+            CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
+            CurrentPlotWeatherIcon = weatherIcon ?? "";
+
+            await MapPage.UpdateImages();
         }
 
         private async Task PlotDelineationsSelectionChanged(bool b)
@@ -1555,14 +1536,13 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task RenderPlotDelineations()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_delineations")))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(
+                StringLocalizer.GetString("rendering_delineations")))
             {
                 var plots = await AppDataService.GetAllPlotsAsync();
 
                 foreach (var plot in plots)
                 {
-                    if (plot.Delineation == null) continue;
-
                     var positions = plot.Delineation;
                     if (positions != null && positions.Count > 3)
                     {
@@ -1584,7 +1564,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (CurrentDelineation.Count < 3) return;
             RemoveDelineationPolygon();
-            var polygon = new Polygon { FillColor = Color.Transparent };
+            var polygon = new Polygon {FillColor = Color.Transparent};
             foreach (var position in CurrentDelineation) polygon.Positions.Add(position.Position.ForMap());
             CurrentPolygon = polygon;
             Polygons.Add(polygon);
@@ -1594,7 +1574,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
             {
-                bool updatedPlot = false;
+                var updatedPlot = false;
                 if (plot.BemData == null)
                 {
                     plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
@@ -1605,13 +1585,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (updatedPlot && !plot.IsTemporaryPlot) await AppDataService.UpdatePlotAsync(plot);
 
                 if (plot.IsTemporaryPlot)
-                {
                     UpdateInfo();
-                }
                 else
-                {
                     LoadPlotAdditionalData(plot);
-                }
             }
         }
 
@@ -1619,7 +1595,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
             {
-                bool updatedPlot = false;
+                var updatedPlot = false;
                 var creds = new UserCredentials
                 {
                     Username = Constants.AWhereWeatherAPIUsername,
@@ -1628,14 +1604,18 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 if (plot.WeatherForecast == null)
                 {
-                    var forecast = await WeatherAPI.GetForecastAsync(plot.Position.Latitude, plot.Position.Longitude, creds);
+                    var forecast =
+                        await WeatherAPI.GetForecastAsync(plot.Position.Latitude, plot.Position.Longitude, creds);
                     plot.WeatherForecast = Converter.GetForecastsFromApiResponse(forecast);
                     updatedPlot = true;
                 }
 
                 if (plot.WeatherHistory == null)
                 {
-                    var history = await WeatherAPI.GetObservationsAsync(plot.Position.Latitude, plot.Position.Longitude, creds, plot.Activities.Where(x=>x.ActivityType == ActivityType.Sowing)?.FirstOrDefault()?.Date, DateTime.Today);
+                    var history = await WeatherAPI.GetObservationsAsync(plot.Position.Latitude, plot.Position.Longitude,
+                        creds,
+                        plot.Activities.Where(x => x.ActivityType == ActivityType.Sowing)?.FirstOrDefault()?.Date,
+                        DateTime.Today);
                     plot.WeatherHistory = Converter.GetHistoryFromApiResponse(history);
                     updatedPlot = true;
                 }
@@ -1739,8 +1719,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             RenderDelineationPolygon();
         }
 
-        public bool IsInitDone { get; set; }
-
         private async Task PageAppearing()
         {
             if (!IsInitDone)
@@ -1748,13 +1726,16 @@ namespace Agrotutor.Modules.Map.ViewModels
                 RemoveTempPin();
                 //var tasks = new List<Task>();
                 var permissionsToRequest = new List<Permission>();
-                var locationPermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                var locationPermissionStatus =
+                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
                 if (locationPermissionStatus != PermissionStatus.Granted)
                     permissionsToRequest.Add(Permission.Location);
-                var cameraPermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                var cameraPermissionStatus =
+                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
                 if (cameraPermissionStatus != PermissionStatus.Granted)
                     permissionsToRequest.Add(Permission.Camera);
-                var storagePermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                var storagePermissionStatus =
+                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
                 if (storagePermissionStatus != PermissionStatus.Granted)
                     permissionsToRequest.Add(Permission.Storage);
                 if (permissionsToRequest.Count > 0)
@@ -1793,7 +1774,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         Tag = hubContact,
                         Label = hubContact.Properties.Hub,
                         Icon = BitmapDescriptorFactory.DefaultMarker(
-                            (Color)PrismApplicationBase.Current.Resources["SecondaryOrange"])
+                            (Color) PrismApplicationBase.Current.Resources["SecondaryOrange"])
                     };
                     Pins.Add(pin);
                 }
@@ -1804,7 +1785,8 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (InvestigationPlatforms == null) return;
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_investigation_platforms")))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(
+                StringLocalizer.GetString("loading_investigation_platforms")))
             {
                 foreach (var investigationPlatform in InvestigationPlatforms.Features)
                 {
@@ -1816,7 +1798,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         Tag = investigationPlatform,
                         Label = investigationPlatform.Properties.Abrviacion,
                         Icon = BitmapDescriptorFactory.DefaultMarker(
-                            (Color)PrismApplicationBase.Current.Resources["SecondaryGreenBrown"])
+                            (Color) PrismApplicationBase.Current.Resources["SecondaryGreenBrown"])
                     };
                     Pins.Add(pin);
                 }
@@ -1827,7 +1809,8 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (MachineryPoints == null) return;
 
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("loading_machinery_points")))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(
+                StringLocalizer.GetString("loading_machinery_points")))
             {
                 foreach (var machineryPoint in MachineryPoints.Features)
                 {
@@ -1838,7 +1821,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         Tag = machineryPoint,
                         Label = machineryPoint.Properties.Localidad,
                         Icon = BitmapDescriptorFactory.DefaultMarker(
-                            (Color)PrismApplicationBase.Current.Resources["MachineryPoints"])
+                            (Color) PrismApplicationBase.Current.Resources["MachineryPoints"])
                     };
                     Pins.Add(pin);
                 }
@@ -1865,13 +1848,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             plot.Position = AddPlotPosition;
 
             if (PickerCropTypesSelectedIndex == -1)
-            {
                 plot.CropType = CropType.None;
-            }
             else
-            {
-                plot.CropType = (CropType)(PickerCropTypesSelectedIndex + 1); // TODO: verify
-            }
+                plot.CropType = (CropType) (PickerCropTypesSelectedIndex + 1); // TODO: verify
 
             plot.IsTemporaryPlot = true;
             Preferences.Set("TempPlot", JsonConvert.SerializeObject(plot));
@@ -1893,7 +1872,6 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             if (SelectedPlot != null && SelectedPlot.IsTemporaryPlot)
             {
-
                 if (confirmPlotCreation)
                 {
                     var navigationParams = new NavigationParameters
@@ -1905,12 +1883,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                     };
                     await NavigationService.NavigateAsync("AddPlotPage", navigationParams);
                 }
-
             }
 
             else
             {
-
                 if (AddPlotPosition == null)
                 {
                     await UserDialogs.Instance.AlertAsync(
@@ -2016,10 +1992,10 @@ namespace Agrotutor.Modules.Map.ViewModels
                 HubContactsLayerVisible = Preferences.Get(Constants.HubContactsLayerVisiblePreference, true);
                 MachineryPointsLayerVisible = Preferences.Get(Constants.MachineryPointsLayerVisiblePreference, false);
                 InvestigationPlatformsLayerVisible =
-                Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
+                    Preferences.Get(Constants.InvestigationPlatformsLayerVisiblePreference, false);
                 OfflineBasemapLayerVisible = Preferences.Get(Constants.OfflineBasemapLayerVisiblePreference, false);
                 ShowSatelliteTileLayer = Preferences.Get(Constants.ShowSatelliteTileLayerVisiblePreference, true);
-                LastUploadDateString = Preferences.Get(Constants.LastUploadDatePreference,null);
+                LastUploadDateString = Preferences.Get(Constants.LastUploadDatePreference, null);
             }
         }
 
@@ -2033,7 +2009,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 foreach (var plot in plots.Where(plot => plot.BemData == null))
                 {
                     if (plot.Position == null) continue;
-                    plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
+                    plot.BemData =
+                        await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude, plot.Position.Longitude);
                     await AppDataService.UpdatePlotAsync(plot);
                 }
             }
@@ -2062,15 +2039,15 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Plots = await AppDataService.GetAllPlotsAsync();
                 var plots = Plots.ToList();
                 foreach (var pin in from plot in plots
-                                    where plot.Position != null
-                                    select new Pin
-                                    {
-                                        Position = plot.Position.ForMap(),
-                                        Label = plot.Name ?? "",
-                                        Tag = plot,
-                                        Icon = BitmapDescriptorFactory.DefaultMarker(
-                                            (Color)PrismApplicationBase.Current.Resources["PrimaryGreen"])
-                                    })
+                    where plot.Position != null
+                    select new Pin
+                    {
+                        Position = plot.Position.ForMap(),
+                        Label = plot.Name ?? "",
+                        Tag = plot,
+                        Icon = BitmapDescriptorFactory.DefaultMarker(
+                            (Color) PrismApplicationBase.Current.Resources["PrimaryGreen"])
+                    })
 
                     Pins.Add(pin);
             }
@@ -2087,7 +2064,8 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task RefreshWeatherData()
         {
-            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("getting_weather_data")))
+            using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("getting_weather_data"))
+            )
             {
                 if (WeatherLocation == null) return;
 
@@ -2098,7 +2076,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     Password = Constants.AWhereWeatherAPIPassword
                 };
 
-                var forecast = await WeatherAPI.GetForecastAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
+                var forecast =
+                    await WeatherAPI.GetForecastAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
                 CurrentWeather = Converter.GetForecastsFromApiResponse(forecast);
             }
         }

@@ -23,7 +23,7 @@ namespace Agrotutor.Core.Persistence
 
          DbSet<Plot> Plots { get; set; }
 
-        //public DbSet<Position> Positions { get; set; }
+         DbSet<Position> Positions { get; set; }
 
          DbSet<DelineationPosition> Delineations { get; set; }
 

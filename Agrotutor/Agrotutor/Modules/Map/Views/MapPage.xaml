@@ -198,8 +198,6 @@
                                             <views:MapDataView LabelText="{localization:Translate plot_detail_CropType}" ValueText="{Binding CropType}" />
                                         </StackLayout>
                                     </Frame>
-
-
                                     <views:ValueLine
                                         Command="{Binding NavigateToPlotWeather}"
                                         ImageSource="{Binding CurrentPlotWeatherIcon}"
@@ -212,7 +210,10 @@
 
                                     <views:Divider />
 
-                                    <Label FontAttributes="Bold" Text="{localization:Translate plot_detail_actions}" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        Text="{localization:Translate plot_detail_actions}" />
 
                                     <views:IconWithText
                                         Command="{Binding AddActivityToSelectedPlot}"
@@ -242,31 +243,26 @@
                                     <views:Divider />
                                 </StackLayout>
 
-                                <Label FontSize="15" Text="{localization:Translate plot_detail_historical_title}" />
-                                <Frame Style="{StaticResource FrameStyle}">
-                                    <views:ValueLine
-                                        Command="{Binding ShowCurrentPlotCost}"
-                                        Text="{localization:Translate costs}"
-                                        Value="{Binding CurrentPlotCost}" />
-                                </Frame>
-                                <Frame Style="{StaticResource FrameStyle}">
-                                    <views:ValueLine
-                                        Command="{Binding ShowCurrentPlotIncome}"
-                                        Text="{localization:Translate income}"
-                                        Value="{Binding CurrentPlotIncome}" />
-                                </Frame>
-                                <Frame Style="{StaticResource FrameStyle}">
-                                    <views:ValueLine
-                                        Command="{Binding ShowCurrentPlotProfit}"
-                                        Text="{localization:Translate profit}"
-                                        Value="{Binding CurrentPlotProfit}" />
-                                </Frame>
-                                <Frame Style="{StaticResource FrameStyle}">
-                                    <views:ValueLine
-                                        Command="{Binding ShowCurrentPlotYield}"
-                                        Text="{localization:Translate yield}"
-                                        Value="{Binding CurrentPlotYield}" />
-                                </Frame>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Text="{localization:Translate plot_detail_historical_title}" />
+                                <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotCost}"
+                                    Text="{localization:Translate costs}"
+                                    Value="{Binding CurrentPlotCost}" />
+                                <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotIncome}"
+                                    Text="{localization:Translate income}"
+                                    Value="{Binding CurrentPlotIncome}" />
+                                <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotProfit}"
+                                    Text="{localization:Translate profit}"
+                                    Value="{Binding CurrentPlotProfit}" />
+                                <views:ValueLine
+                                    Command="{Binding ShowCurrentPlotYield}"
+                                    Text="{localization:Translate yield}"
+                                    Value="{Binding CurrentPlotYield}" />
                                 <views:Divider />
 
 
@@ -276,7 +272,10 @@
                                     Text="Download" />
 
                                 <StackLayout IsVisible="{Binding AdditionalDataLoaded}">
-                                    <Label FontSize="15" Text="{localization:Translate plot_detail_additional_title}" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        Text="{localization:Translate plot_detail_additional_title}" />
 
                                     <views:ValueLine
                                         Command="{Binding NavigateToPotentialYield}"
@@ -304,9 +303,8 @@
 
                                 <Button
                                     Command="{Binding AddPlotCommand}"
-                                    IconSource="add.png"
-                                    IconText="Save Plot"
-                                    IsVisible="{Binding ShowSavePlotButton}" />
+                                    IsVisible="{Binding ShowSavePlotButton}"
+                                    Text="Save Plot" />
 
 
                             </StackLayout>

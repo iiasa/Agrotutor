@@ -1,31 +1,36 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
-<Grid
+<Frame
     x:Class="Agrotutor.Core.Components.Views.ValueLine"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Padding="8">
-    <Grid.ColumnDefinitions>
-        <ColumnDefinition Width="*" />
-        <ColumnDefinition Width="Auto" />
-    </Grid.ColumnDefinitions>
-    <Grid.RowDefinitions>
-        <RowDefinition />
-        <RowDefinition />
-    </Grid.RowDefinitions>
-    <Label
-        x:Name="LblText"
-        Grid.Row="0"
-        Grid.Column="0"
-        FontAttributes="Bold" />
-    <Label
-        x:Name="LblValue"
-        Grid.Row="1"
-        Grid.Column="0" />
-    <Image
-        x:Name="Image"
-        Grid.Row="0"
-        Grid.RowSpan="2"
-        Grid.Column="1"
-        HorizontalOptions="Center"
-        WidthRequest="16" />
-</Grid>
+    BackgroundColor="AliceBlue"
+    CornerRadius="20">
+    <Grid Padding="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Label
+            x:Name="LblText"
+            Grid.Row="0"
+            Grid.Column="0"
+            FontAttributes="Bold"
+            FontSize="Medium" />
+        <Label
+            x:Name="LblValue"
+            Grid.Row="1"
+            Grid.Column="0"
+            FontSize="Medium" />
+        <Image
+            x:Name="Image"
+            Grid.Row="0"
+            Grid.RowSpan="2"
+            Grid.Column="1"
+            HorizontalOptions="Center"
+            WidthRequest="16" />
+    </Grid>
+</Frame>
