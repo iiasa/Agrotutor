@@ -216,6 +216,9 @@
   <data name="new_plot_prompt_yes" xml:space="preserve">
     <value>Yes</value>
   </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
   <data name="planner_no_position_message" xml:space="preserve">
     <value>Please make sure the location for the planner is set.</value>
   </data>
@@ -266,6 +269,9 @@
   </data>
   <data name="weather_location_missing_title" xml:space="preserve">
     <value>Location not available</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
   </data>
   <data name="yield_data_not_available" xml:space="preserve">
     <value>Yield data is not available.</value>

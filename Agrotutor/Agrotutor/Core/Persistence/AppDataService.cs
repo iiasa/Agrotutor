@@ -11,11 +11,7 @@ namespace Agrotutor.Core.Persistence
 
     public class AppDataService : IAppDataService
     {
-        public AppDataService(IAppDataContext context)
-        {
-            Context = context;
-   
-        }
+        public AppDataService(IAppDataContext context) => Context = context;
         protected IAppDataContext Context { get; set; }
 
         public void DisableDetectChanges()

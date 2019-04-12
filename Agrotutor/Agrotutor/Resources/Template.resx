@@ -126,6 +126,9 @@
   <data name="add_parcel_title" xml:space="preserve">
     <value>Add Plot</value>
   </data>
+  <data name="current_location" xml:space="preserve">
+    <value>Current location</value>
+  </data>
   <data name="delineation_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
@@ -303,10 +306,22 @@
   <data name="options_title" xml:space="preserve">
     <value>Options</value>
   </data>
+  <data name="planner" xml:space="preserve">
+    <value>Planner</value>
+  </data>
+  <data name="please_select_your_crop" xml:space="preserve">
+    <value>Please select your crop</value>
+  </data>
+  <data name="select_a_location_for_the_planner" xml:space="preserve">
+    <value>Select a location for the planner</value>
+  </data>
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
   <data name="select_location_ok" xml:space="preserve">
     <value>Ok</value>
+  </data>
+  <data name="select_on_the_map" xml:space="preserve">
+    <value>Select on the map</value>
   </data>
 </root>

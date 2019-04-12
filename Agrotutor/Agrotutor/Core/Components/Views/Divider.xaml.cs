@@ -6,9 +6,6 @@
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Divider : ContentView
     {
-        public Divider()
-        {
-            InitializeComponent();
-        }
+        public Divider() => InitializeComponent();
     }
 }

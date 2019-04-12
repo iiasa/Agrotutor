@@ -121,7 +121,7 @@
     <value>Actions:</value>
   </data>
   <data name="plot_detail_additional_title" xml:space="preserve">
-    <value>Additional information (click for detail)</value>
+    <value>Additional information</value>
   </data>
   <data name="plot_detail_add_activity" xml:space="preserve">
     <value>Add activity</value>
@@ -136,7 +136,7 @@
     <value>Delineate plot</value>
   </data>
   <data name="plot_detail_historical_title" xml:space="preserve">
-    <value>Historical information (click for detail)</value>
+    <value>Historical information </value>
   </data>
   <data name="plot_detail_irrigation" xml:space="preserve">
     <value>Irrigation</value>
@@ -203,5 +203,17 @@
   </data>
   <data name="plot_detail_cost" xml:space="preserve">
     <value>Total cost</value>
+  </data>
+  <data name="no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="average_kg_ha" xml:space="preserve">
+    <value>(Average kg/ha)</value>
+  </data>
+  <data name="click_for_detail" xml:space="preserve">
+    <value>(click for detail)</value>
   </data>
 </root>

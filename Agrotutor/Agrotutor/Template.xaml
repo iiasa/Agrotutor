@@ -407,33 +407,33 @@
         <Frame Style="{StaticResource MainMapPopupBackground}">
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="planner.png" />
+                    <Image HeightRequest="20" Source="advice.png" />
                     <Label
                         FontSize="20"
                         HorizontalOptions="StartAndExpand"
-                        Text="Planner" />
+                        Text="{localization:Translate planner}" />
                 </StackLayout>
                 <views:Divider />
                 <ScrollView>
                     <StackLayout>
-                        <Label FontSize="18" Text="Please select your crop" />
+                        <Label FontSize="18" Text="{localization:Translate please_select_your_crop}" />
                         <Picker
                             Title="{localization:Translate select}"
                             Margin="0,0,0,16"
                             ItemsSource="{TemplateBinding Parent.BindingContext.CropTypes}"
                             SelectedIndex="{TemplateBinding Parent.BindingContext.PickerCropTypesSelectedIndex}" />
 
-                        <Label Text="Select a location for the planner" />
+                        <Label Text="{localization:Translate select_a_location_for_the_planner}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.ClickGetLocationPlanner}"
                             IconSource="get_location.png"
-                            IconText="CurrentLocation" />
+                            IconText="{localization:Translate current_location}" />
 
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.ClickChooseLocationPlanner}"
                             IconSource="choose_location.png"
-                            IconText="Select on the map" />
+                            IconText="{localization:Translate select_on_the_map}" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

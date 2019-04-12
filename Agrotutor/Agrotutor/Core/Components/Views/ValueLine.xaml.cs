@@ -7,7 +7,7 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ValueLine : Grid
+    public partial class ValueLine : Frame
     {
         public event EventHandler Clicked;
 

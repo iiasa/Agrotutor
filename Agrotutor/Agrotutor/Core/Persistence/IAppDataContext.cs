@@ -23,7 +23,7 @@ namespace Agrotutor.Core.Persistence
 
          DbSet<Plot> Plots { get; set; }
 
-        //public DbSet<Position> Positions { get; set; }
+         DbSet<Position> Positions { get; set; }
 
          DbSet<DelineationPosition> Delineations { get; set; }
 
@@ -53,8 +53,8 @@ namespace Agrotutor.Core.Persistence
 
         int SaveChanges(bool acceptAllChangesOnSuccess);
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 
-        Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default(CancellationToken));
+        Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default);
     }
 }
