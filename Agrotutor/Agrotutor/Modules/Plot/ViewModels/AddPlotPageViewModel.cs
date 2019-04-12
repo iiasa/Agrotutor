@@ -130,12 +130,10 @@ namespace Agrotutor.Modules.Plot.ViewModels
                             randomColor.Next(256));
                         Plot.ArgbPlotColor = Plot.PlotColor.Value.ToArgb();
                         await AppDataService.AddPlotAsync(Plot);
-                        var res = await AppDataService.GetAllPlotsAsync();
                         SavingPlot = false;
                     }
 
                     await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("plot_created"), 3000);
-                    await Task.Delay(2000);
                     await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                 });
 
