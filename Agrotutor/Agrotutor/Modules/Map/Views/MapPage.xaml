@@ -302,7 +302,7 @@
                                     IconText="{localization:Translate delete}"
                                     IsVisible="{Binding ShowDeletePlotButton}" />-->
 
-                                <views:IconWithText
+                                <Button
                                     Command="{Binding AddPlotCommand}"
                                     IconSource="add.png"
                                     IconText="Save Plot"

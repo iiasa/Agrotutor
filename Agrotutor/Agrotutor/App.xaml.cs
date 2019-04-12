@@ -40,10 +40,7 @@ namespace Agrotutor
         {
         }
 
-        public App(IPlatformInitializer initializer) : base(initializer)
-        {
-            VersionTracking.Track();
-        }
+        public App(IPlatformInitializer initializer) : base(initializer) => VersionTracking.Track();
 
         protected override async void OnInitialized()
         {
