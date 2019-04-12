@@ -1,4 +1,9 @@
-﻿namespace Agrotutor.Core.Persistence
+﻿using Agrotutor.Modules.Benchmarking.Types;
+using Agrotutor.Modules.Ciat.Types;
+using Agrotutor.Modules.PriceForecasting.Types;
+using Agrotutor.Modules.Weather.Types;
+
+namespace Agrotutor.Core.Persistence
 {
     using System.Threading;
     using System.Threading.Tasks;
@@ -8,8 +13,37 @@
 
     public interface IAppDataContext
     {
-        DbSet<Plot> Plots { get; }
-       // DbSet<Position> Positions { get; }
+         DbSet<Activity> Activities { get; set; }
+
+         DbSet<BemData> BemDatasets { get; set; }
+
+         DbSet<Cost> CostDatasets { get; set; }
+
+         DbSet<Income> IncomeDatasets { get; set; }
+
+         DbSet<Plot> Plots { get; set; }
+
+        //public DbSet<Position> Positions { get; set; }
+
+         DbSet<DelineationPosition> Delineations { get; set; }
+
+         DbSet<Profit> ProfitDatasets { get; set; }
+
+         DbSet<Yield> YieldDatasets { get; set; }
+
+         DbSet<WeatherForecast> WeatherForecasts { get; set; }
+
+         DbSet<WeatherHistory> WeatherHistories { get; set; }
+
+         DbSet<BenchmarkingInformation> BenchmarkingInformation { get; set; }
+
+         DbSet<PriceForecast> PriceForecasts { get; set; }
+
+         DbSet<CiatData> CiatData { get; set; }
+
+         DbSet<MediaItem> MediaItems { get; set; }
+
+         DbSet<CiatData.CiatDataDetail> CiatDataDetail { get; set; }
 
         void DisableDetectChanges();
 

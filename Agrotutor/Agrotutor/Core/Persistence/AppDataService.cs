@@ -49,6 +49,11 @@ namespace Agrotutor.Core.Persistence
             Context.Plots.Update(plot);
             await Context.SaveChangesAsync();
         }
+        public async Task<bool> RemovePlotActivityAsync(Activity activity)
+        {
+            Context.Activities.Remove(activity);
+           return await Context.SaveChangesAsync()>0;
+        }
 
         public async Task RemovePlotAsync(Plot plot)
         {
