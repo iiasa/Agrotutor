@@ -1497,7 +1497,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 ? SelectedPlot?.WeatherHistory?.Sum(x => x.CalculateGdd(baseTemperature))
                 : null;
             var weatherIcon = string.Empty;
-            if (SelectedPlot.WeatherForecast.Any())
+            if (SelectedPlot.WeatherForecast?.Any() == true)
                 weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
 
             var cost = SelectedPlot.BemData?.AverageCost;
@@ -1844,8 +1844,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             AdditionalDataLoaded = false;
 
-            var plot = new Core.Entities.Plot();
-            plot.Position = AddPlotPosition;
+            var plot = new Core.Entities.Plot {Position = AddPlotPosition};
 
             if (PickerCropTypesSelectedIndex == -1)
                 plot.CropType = CropType.None;
@@ -1856,6 +1855,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             Preferences.Set("TempPlot", JsonConvert.SerializeObject(plot));
 
             SelectedPlot = plot;
+
+            CurrentMapTaskHintIsVisible = false;
+            SelectLocationUIIsVisible = false;
+            GPSLocationUIIsVisible = false;
+
             ShowPlotInformation(plot);
         }
 

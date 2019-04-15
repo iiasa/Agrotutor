@@ -54,6 +54,7 @@
         <Setter Property="Grid.Column" Value="1" />
         <Setter Property="Grid.ColumnSpan" Value="5" />
         <Setter Property="Grid.Row" Value="2" />
+        <Setter Property="Grid.RowSpan" Value="3" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
     </Style>
