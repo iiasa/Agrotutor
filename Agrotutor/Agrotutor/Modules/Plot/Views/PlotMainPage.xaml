@@ -2,9 +2,9 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.Plot.Views.PlotMainPage"
              Title="{localization:Translate title}">
     <ContentPage.Content>
@@ -16,8 +16,7 @@
                     FontSize="20" />
 
                 <views:Divider />
-
-                <views:IconWithText 
+                    <views:IconWithText 
                     IconText="{localization:Translate costs}"
                     IconSource="icons_pricetag_96.png"
                     Command="{Binding NavigateToCosts}"/>

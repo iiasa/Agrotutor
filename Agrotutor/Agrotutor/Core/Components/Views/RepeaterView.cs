@@ -19,10 +19,7 @@ namespace Agrotutor.Core.Components.Views
             BindingMode.TwoWay,
             propertyChanged: ItemsChanged);
 
-        public RepeaterView()
-        {
-            Spacing = 0;
-        }
+        public RepeaterView() => Spacing = 0;
 
         public ICollection ItemsSource
         {

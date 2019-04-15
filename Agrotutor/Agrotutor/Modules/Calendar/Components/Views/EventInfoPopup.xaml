@@ -4,8 +4,10 @@
                   xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                   xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-                  Padding="30,250,30,250" HeightRequest="300" WidthRequest="300" 
-                  x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup" >
+                  Padding="30,235,30,235" 
+                  x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup">
+    
+
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
             PositionIn="Center"
@@ -19,29 +21,45 @@
             HasBackgroundAnimation="True" />
     </pages:PopupPage.Animation>
     <ContentView>
-        <Grid>
+        <Grid >
             <!--<Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>-->
-        <StackLayout HorizontalOptions="CenterAndExpand" 
-                     VerticalOptions="CenterAndExpand" BackgroundColor="White" Padding="20" WidthRequest="300"  >
-            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
-                <!--<Label Text="Title: "
-                       VerticalOptions="StartAndExpand" 
-                       HorizontalOptions="CenterAndExpand" />-->
-                <Label Text="{Binding  Title}"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-            </StackLayout>
-            <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand"
+                     VerticalOptions="FillAndExpand" BackgroundColor="White"   >
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Margin="10,20,10,0">
+                    <Label Text="{Binding  CropName}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+                    <Label Text="{Binding  PlotName}"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Margin="10,0,10,20" IsVisible="{Binding IsActivityInfoShown}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+                <Label Text="{Binding  ActivityName}"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
                     <Label Text="Costs ($): "
                        VerticalOptions="StartAndExpand" 
                        HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
                 <Label Text="{Binding  Cost}"
                    VerticalOptions="CenterAndExpand" 
                    HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-            </StackLayout>
+                <Image  WidthRequest="25" HeightRequest="25" Margin="30,0,0,0" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Red">
+                    <Image.Source>
+                                <FileImageSource File="ic_delete" />
+                    </Image.Source>
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeleteActivityCommand}"></TapGestureRecognizer>
+                    </Image.GestureRecognizers>
+                </Image>
+                    </StackLayout>
+        </StackLayout>
         </StackLayout>
         </Grid>
     </ContentView>

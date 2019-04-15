@@ -11,11 +11,7 @@ namespace Agrotutor.Core.Persistence
 
     public class AppDataService : IAppDataService
     {
-        public AppDataService(IAppDataContext context)
-        {
-            Context = context;
-   
-        }
+        public AppDataService(IAppDataContext context) => Context = context;
         protected IAppDataContext Context { get; set; }
 
         public void DisableDetectChanges()
@@ -53,6 +49,11 @@ namespace Agrotutor.Core.Persistence
             Context.Plots.Update(plot);
             await Context.SaveChangesAsync();
         }
+        public async Task<bool> RemovePlotActivityAsync(Activity activity)
+        {
+            Context.Activities.Remove(activity);
+           return await Context.SaveChangesAsync()>0;
+        }
 
         public async Task RemovePlotAsync(Plot plot)
         {
@@ -67,8 +68,12 @@ namespace Agrotutor.Core.Persistence
 
         public async Task<IEnumerable<Plot>> GetAllPlotsAsync()
         {
-  
-            var plots = await Context.Plots.ToListAsync() ?? new List<Plot>();
+
+            var plots = await Context.Plots.Include(x => x.Activities).Include(x => x.Delineation)
+                            .Include(x => x.MediaItems).Include(x => x.PriceForecast).Include(x => x.BemData)
+                            .Include(x => x.BenchmarkingInformation).Include(x => x.CiatData)
+                            .Include(x => x.WeatherForecast).Include(x => x.WeatherHistory).ToListAsync() ??
+                        new List<Plot>();
             return plots;
         }
     }

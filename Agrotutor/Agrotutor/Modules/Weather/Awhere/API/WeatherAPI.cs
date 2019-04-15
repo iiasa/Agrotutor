@@ -23,7 +23,10 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         {
             var token = await GetToken(credentials);
             var URL = $"{ApiURL}{latitude},{longitude}/forecasts";
-            var forecast = await URL.WithOAuthBearerToken(token).GetJsonAsync<ForecastResponse>();
+            var forecast = await URL
+                .WithOAuthBearerToken(token)
+                .SetQueryParam("conditionsType", "standard")
+                .GetJsonAsync<ForecastResponse>();
             return forecast;
         }
 

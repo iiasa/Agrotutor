@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Agrotutor.Core.Components.Views.MapDataView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentView.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="0" Orientation="Horizontal">
+                <Label
+                    x:Name="MapDataLabel"
+                    FontAttributes="Bold"
+                    FontSize="Medium" />
+                <Label FontSize="Medium" Text=":" />
+            </StackLayout>
+            <Label
+                x:Name="MapDataValue"
+                Grid.Column="1"
+                FontSize="Medium" />
+        </Grid>
+    </ContentView.Content>
+</ContentView>

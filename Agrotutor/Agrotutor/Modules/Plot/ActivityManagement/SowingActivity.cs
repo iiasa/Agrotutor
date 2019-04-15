@@ -10,7 +10,7 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
         {
             ActivityDynamicUIVisibility = new ActivityDynamicUIVisibility
             {
-                ActivityNameVisibility = false,
+                ActivityNameVisibility = true,
                 ActivityDateVisibility = true,
                 ActivityNameListVisibility = true,
                 ActivityTotalCostVisibility = true,

@@ -13,49 +13,73 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Orientation="Vertical">
-                <Label FontSize="18" Text="{localization:Translate hint_parcel_name}" />
-                <Entry
-                    Margin="0,0,0,16"
-                    Placeholder="{localization:Translate hint_parcel_name_1}"
-                    Text="{Binding Plot.Name}" />
-
-                <Label FontSize="18" Text="{localization:Translate hint_crop}" />
-                <Picker
-                    Title="{localization:Translate select}"
-                    Margin="0,0,0,16"
-                    ItemsSource="{Binding CropTypes}"
-                    SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
-
-                <Label FontSize="18" Text="{localization:Translate hint_planting_date}" />
-                <DatePicker Margin="0,0,0,16" Date="{Binding PlantingDate, Mode=TwoWay}" />
-
-                <ui:MaterialCheckbox
-                    IsSelected="{Binding Plot.Irrigated}"
-                    Text="{localization:Translate irrigated}" />
-
-                <StackLayout Orientation="Vertical" IsVisible="{Binding CultivarCharacteristicsVisible}">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding ShowAbout}"/>
-                        </StackLayout.GestureRecognizers>
-
-                        <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                        <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                <Frame>
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{localization:Translate hint_parcel_name}" />
+                        <Entry Placeholder="{localization:Translate hint_parcel_name_1}" Text="{Binding Plot.Name}" />
                     </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{localization:Translate hint_crop}" />
+                        <Picker
+                            Title="{localization:Translate select}"
+                            ItemsSource="{Binding CropTypes}"
+                            SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
+                    </StackLayout>
+                </Frame>
+                <Frame>
+                    <StackLayout>
+                        <Label
+                            FontAttributes="Bold"
+                            FontSize="Medium"
+                            Text="{localization:Translate hint_planting_date}" />
+                        <DatePicker Date="{Binding PlantingDate, Mode=TwoWay}" />
+                    </StackLayout>
+                </Frame>
+                <ui:MaterialCheckbox IsSelected="{Binding Plot.Irrigated}" Text="{localization:Translate irrigated}" />
+                <StackLayout IsVisible="{Binding CultivarCharacteristicsVisible}" Orientation="Vertical">
+                    <Frame>
+                        <StackLayout>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                Text="{localization:Translate madurez}" />
+                            <Picker
+                                Title="{localization:Translate select}"
+                                ItemsSource="{Binding MaturityClasses}"
+                                SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" />
+                        </StackLayout>
+                    </Frame>
+                    <Frame>
+                        <StackLayout>
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Medium"
+                                Text="{localization:Translate tipo_clima}" />
+                            <Picker
+                                Title="{localization:Translate select}"
+                                ItemsSource="{Binding ClimateTypes}"
+                                SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" />
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding ShowAbout}" />
+                    </StackLayout.GestureRecognizers>
 
-                    <Label FontSize="18" Text="{localization:Translate madurez}" />
-                    <Picker
-                        Title="{localization:Translate select}"
-                        Margin="0,0,0,16"
-                        ItemsSource="{Binding MaturityClasses}"
-                        SelectedIndex="{Binding PickerMaturityClassesSelectedIndex}" />
-
-                    <Label FontSize="18" Text="{localization:Translate tipo_clima}" />
-                    <Picker
-                        Title="{localization:Translate select}"
-                        Margin="0,0,0,16"
-                        ItemsSource="{Binding ClimateTypes}"
-                        SelectedIndex="{Binding PickerClimateTypesSelectedIndex}" />
+                    <Label Text="{localization:Translate about}" VerticalOptions="Center" />
+                    <Image
+                        HeightRequest="32"
+                        Source="question.png"
+                        WidthRequest="32" />
                 </StackLayout>
 
                 <Button Command="{Binding ClickSave}" Text="{localization:Translate btn_save_and_new}" />

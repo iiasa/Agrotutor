@@ -1,17 +1,15 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using Agrotutor.Core.Entities;
+using Agrotutor.Modules.Benchmarking.Types;
 using Agrotutor.Modules.Ciat.Types;
+using Agrotutor.Modules.PriceForecasting.Types;
+using Agrotutor.Modules.Weather.Types;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Agrotutor.Core.Persistence
 {
-    using Microsoft.EntityFrameworkCore;
-
-    using Entities;
-    using Agrotutor.Modules.Weather.Types;
-    using Agrotutor.Modules.Benchmarking.Types;
-    using Agrotutor.Modules.PriceForecasting.Types;
-
     public class AppDataContext : DbContext, IAppDataContext
     {
         public AppDataContext(DbContextOptions<AppDataContext> options) : base(options)
@@ -29,6 +27,8 @@ namespace Agrotutor.Core.Persistence
         public DbSet<Plot> Plots { get; set; }
 
         public DbSet<Position> Positions { get; set; }
+
+        public DbSet<DelineationPosition> Delineations { get; set; }
 
         public DbSet<Profit> ProfitDatasets { get; set; }
 
@@ -61,16 +61,23 @@ namespace Agrotutor.Core.Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var splitStringConverter = new ValueConverter<IEnumerable<string>, string>(v => string.Join(";", v), v => v.Split(new[] { ';' }));
-            modelBuilder.Entity<CiatData.CiatDataDetail>().Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.OptimalCultivars)).HasConversion(splitStringConverter);
-            modelBuilder.Entity<CiatData.CiatDataDetail>().Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.SuboptimalCultivars)).HasConversion(splitStringConverter);
+            var splitStringConverter =
+                new ValueConverter<IEnumerable<string>, string>(v => string.Join(";", v), v => v.Split(';'));
+            modelBuilder.Entity<CiatData.CiatDataDetail>()
+                .Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.OptimalCultivars))
+                .HasConversion(splitStringConverter);
+            modelBuilder.Entity<CiatData.CiatDataDetail>()
+                .Property(nameof(Modules.Ciat.Types.CiatData.CiatDataDetail.SuboptimalCultivars))
+                .HasConversion(splitStringConverter);
             modelBuilder
                 .Entity<Plot>()
                 .Property(e => e.CropType)
                 .HasConversion(
                     v => v.ToString(),
-                    v => (CropType)Enum.Parse(typeof(CropType), v));
+                    v => (CropType) Enum.Parse(typeof(CropType), v));
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Plot>().OwnsOne(s => s.Position);
+            modelBuilder.Entity<DelineationPosition>().OwnsOne(s => s.Position);
         }
     }
 }
