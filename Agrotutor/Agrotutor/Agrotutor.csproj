@@ -171,6 +171,9 @@
     <None Update="Core\Components\Views\IconWithText.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
+    <None Update="Core\Components\Views\MapDataView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
     <None Update="Core\Components\Views\MenuIcon.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -265,6 +268,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\TermsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Views\WebContentPage.xaml">
