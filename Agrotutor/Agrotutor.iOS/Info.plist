@@ -27,23 +27,27 @@
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSCameraUsageDescription</key>
-	<string>This app needs access to the camera to take photos.</string>
+	<string>AgroTutor needs access to the camera to take photos.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This app needs access to photos.</string>
+	<string>AgroTutor needs access to photos.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>This app needs access to microphone.</string>
+	<string>AgroTutor needs access to microphone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>This app needs access to the photo gallery.</string>
+	<string>AgroTutor needs access to the photo gallery.</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>AgroTutor needs access to your device's calendar.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app needs to access your location.</string>
+	<string>AgroTutor needs to access your location.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>AgroTutor needs to access your location.</string>
 	<key>CFBundleName</key>
 	<string>AgroTutor</string>
 	<key>CFBundleIdentifier</key>
 	<string>at.ac.iiasa.agrotutor</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app needs to access your location.</string>
+	<string>AgroTutor needs to access your location.</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleShortVersionString</key>
