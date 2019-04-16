@@ -1,11 +1,6 @@
 {
   "images": [
     {
-      "scale": "1x",
-      "size": "1024x1024",
-      "idiom": "ios-marketing"
-    },
-    {
       "scale": "2x",
       "size": "20x20",
       "idiom": "iphone",
@@ -106,6 +101,12 @@
       "size": "83.5x83.5",
       "idiom": "ipad",
       "filename": "app_icon167x1671.png"
+    },
+    {
+      "scale": "1x",
+      "size": "1024x1024",
+      "idiom": "ios-marketing",
+      "filename": "app_icon1024x1024.png"
     }
   ],
   "properties": {},
