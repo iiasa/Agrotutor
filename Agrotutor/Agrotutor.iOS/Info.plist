@@ -23,7 +23,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Agrotutor</string>
 	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>1.0.1</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSCameraUsageDescription</key>
@@ -35,7 +35,7 @@
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>AgroTutor needs access to the photo gallery.</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>AgroTutor needs access to your device's calendar.</string>
+	<string>AgroTutor needs access to your device&apos;s calendar.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
