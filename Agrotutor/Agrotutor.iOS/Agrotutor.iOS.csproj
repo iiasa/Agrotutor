@@ -106,6 +106,9 @@
     <Compile Include="UserInterface\CustomMapRenderer.cs" />
     <Compile Include="UserInterface\CustomTileProvider.cs" />
     <Compile Include="src\HtmlBaseUrl.cs" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon1024x1024_no_alpha.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json">
@@ -321,9 +324,6 @@
     <ITunesArtwork Include="iTunesArtwork" />
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon1024x1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1202.png">
       <Visible>false</Visible>
     </ImageAsset>
