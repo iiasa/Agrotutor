@@ -605,16 +605,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand<MapClickedEventArgs>(
                 args =>
                 {
-                    try
-                    {
-                        Preferences.Set(Constants.Lat, args.Point.Latitude);
-                        Preferences.Set(Constants.Lng, args.Point.Longitude);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-
                     switch (CurrentMapTask)
                     {
                         case MapTask.CreatePlotBySelection:
@@ -622,6 +612,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                             RemoveTempPin();
                             AddTempPin(args.Point);
                             AddPlotPosition = Position.From(args.Point);
+                            RememberMapLocation(args.Point.Latitude, args.Point.Longitude);
                             break;
 
                         case MapTask.DelineationNotEnoughPoints:
@@ -639,9 +630,23 @@ namespace Agrotutor.Modules.Map.ViewModels
                             CurrentPin = pin;
                             Pins.Add(pin);
                             RenderDelineationPolygon();
+                            RememberMapLocation(args.Point.Latitude, args.Point.Longitude);
                             break;
                     }
                 });
+
+        private static void RememberMapLocation(double latitude, double longitude)
+        {
+            try
+            {
+                Preferences.Set(Constants.Lat, latitude);
+                Preferences.Set(Constants.Lng, longitude);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
 
 
         public DelegateCommand<MapLongClickedEventArgs> MapLongClicked =>
@@ -649,8 +654,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 args =>
                 {
                     AddPlotPosition = Position.From(args.Point);
-                    Preferences.Set(Constants.Lat, args.Point.Latitude);
-                    Preferences.Set(Constants.Lng, args.Point.Longitude);
+                    RememberMapLocation(args.Point.Latitude, args.Point.Longitude);
                     CreatePlot();
                 });
 
@@ -1297,6 +1301,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand NavigateToCiat =>
             new DelegateCommand(async () =>
             {
+                if (SelectedPlot != null && SelectedPlot.CropType != CropType.Corn)
+                {
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("ciat_data_not_available"));
+                    return;
+                }
+                
                 var param = new NavigationParameters
                 {
                     {CiatPageViewModel.PARAMETER_NAME_CIAT_DATA, SelectedPlot.CiatData}
@@ -1307,6 +1317,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand NavigateToPriceForecast =>
             new DelegateCommand(async () =>
             {
+                if (SelectedPlot != null && SelectedPlot.CropType != CropType.Corn)
+                {
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("price_forecast_not_available"));
+                    return;
+                }
+
                 var param = new NavigationParameters
                 {
                     {PriceForecastPageViewModel.PriceForecastParameterName, await PriceForecast.FromEmbeddedResource()}
@@ -1482,7 +1498,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             if (SelectedPlot == null) return;
             ShowPlotDetailInformation = !SelectedPlot.IsTemporaryPlot;
 
-            SelectedPlotDate = SelectedPlot.Activities?.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
+            SelectedPlotDate = SelectedPlot.Activities?.FirstOrDefault(x => x.ActivityType == ActivityType.Initialization)?.Date
                 .ToShortDateString();
             SelectedPlotIrrigation =
                 SelectedPlot.Activities?.Any(x => x.ActivityType == ActivityType.Irrigation) != null
@@ -1504,10 +1520,10 @@ namespace Agrotutor.Modules.Map.ViewModels
             var yield = SelectedPlot.BemData?.AverageYield;
             var profit = SelectedPlot.BemData?.AverageProfit;
             var income = SelectedPlot.BemData?.AverageIncome;
-            var potentialYield = SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax;
-            var nitrogenNeeded = SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen;
-            var priceForecast = await PriceForecast.FromEmbeddedResource();
-            var priceForecastNextMonth = priceForecast.First().Price;
+            var potentialYield = (SelectedPlot.CropType==CropType.Corn) ? SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax : null;
+            var nitrogenNeeded = (SelectedPlot.CropType==CropType.Corn) ? SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen : null;
+            var priceForecast = (SelectedPlot.CropType==CropType.Corn) ? await PriceForecast.FromEmbeddedResource() : null;
+            var priceForecastNextMonth = (SelectedPlot.CropType==CropType.Corn) ? priceForecast.First().Price : null;
             CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
 
             CurrentPlotCost = cost == null ? "-" : Math.Round((decimal) cost).ToString(CultureInfo.InvariantCulture);

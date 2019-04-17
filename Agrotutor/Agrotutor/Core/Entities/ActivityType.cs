@@ -2,7 +2,7 @@
 {
     public enum ActivityType
     {
-        Intialization,
+        Initialization,
         SoilImprovers,
         GroundPreperation,
         Sowing,

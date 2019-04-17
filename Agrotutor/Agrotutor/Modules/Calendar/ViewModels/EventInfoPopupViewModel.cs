@@ -94,7 +94,7 @@ namespace Agrotutor.Modules.Calendar.ViewModels
                 {
                     CropName = _calenderEvent.Plot.CropType.ToString();
                     PlotName = _calenderEvent.Plot.Name;
-                    if(_calenderEvent.Data!=null&& _calenderEvent.Data.ActivityType != ActivityType.Intialization)
+                    if(_calenderEvent.Data!=null&& _calenderEvent.Data.ActivityType != ActivityType.Initialization)
                     {
                         IsActivityInfoShown = true;
                         ActivityName = _calenderEvent.Data.ActivityType.ToString();

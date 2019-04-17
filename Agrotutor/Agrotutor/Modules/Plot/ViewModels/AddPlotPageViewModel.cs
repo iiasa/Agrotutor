@@ -128,7 +128,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         {
                             new Activity
                             {
-                                ActivityType = ActivityType.Intialization,
+                                ActivityType = ActivityType.Initialization,
                                 Date = PlantingDate
                                 // Name = StringLocalizer.GetString("sowing"),
                                 // Cost = 0
