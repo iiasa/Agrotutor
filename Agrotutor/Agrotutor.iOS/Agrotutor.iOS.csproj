@@ -451,30 +451,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\filelist.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image001.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image003.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image005.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image007.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image009.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\themedata.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\page.html" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\history_inactive.png" />
   </ItemGroup>
   <ItemGroup>
@@ -716,6 +692,51 @@
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon87x871.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\html\empty.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\image001.png" />
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\page.html" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\files\image005.png" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\page.html" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\files\image003.png" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\page.html" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\files\image009.png" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\page.html" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\files\image007.png" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\page.html" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\files\image001.png" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\page.html" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\files\image005.png" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\page.html" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\files\image003.png" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\page.html" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\files\image009.png" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\page.html" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\files\image007.png" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\page.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

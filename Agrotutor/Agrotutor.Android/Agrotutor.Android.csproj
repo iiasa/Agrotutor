@@ -623,5 +623,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\feedback.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\html\empty.html" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

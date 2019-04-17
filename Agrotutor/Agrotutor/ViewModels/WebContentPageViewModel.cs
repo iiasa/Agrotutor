@@ -22,7 +22,7 @@ namespace Agrotutor.ViewModels
             : base(navigationService, stringLocalizer)
         {
             _rootUrl = DependencyService.Get<IHtmlBaseUrl>().Get();
-            Url = $"{_rootUrl}about/page.html";
+            Url = $"{_rootUrl}empty.html";
         }
 
         private string _url;
