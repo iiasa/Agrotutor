@@ -154,7 +154,8 @@
     <value>Downloading {0} offline map</value>
   </data>
   <data name="download_offline_map_message" xml:space="preserve">
-    <value>You are about to download {0} MB. Please make sure you are on WiFi. Are you sure you want to proceed?</value>
+    <value>You are about to download {0} MB. Please make sure you are on WiFi. Are you sure you want to proceed?
+This feature is currently only available for Guanajuato.</value>
   </data>
   <data name="download_offline_map_yes" xml:space="preserve">
     <value>Yes</value>
