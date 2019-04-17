@@ -1978,7 +1978,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             WeatherLocation = location;
 
             CurrentPosition = Position.FromLocation(location);
-            if (CurrentMapTask == MapTask.CreatePlotByGPS)
+            if (CurrentMapTask == MapTask.CreatePlotByGPS || CurrentMapTask == MapTask.GetLocationForPlanner)
             {
                 AddPlotPosition = CurrentPosition;
                 MapPage.ZoomToPosition(CurrentPosition.ForMap());
@@ -1986,6 +1986,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
             var lat = Preferences.Get(Constants.Lat, 0.0);
             var lng = Preferences.Get(Constants.Lng, 0.0);
+            
             if (Region == null)
             {
                 if (!lat.Equals(0.0) && !lng.Equals(0.0))
