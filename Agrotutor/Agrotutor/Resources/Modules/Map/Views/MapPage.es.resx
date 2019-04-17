@@ -196,9 +196,17 @@
     <value>Rendimiento (Ton/ha):</value>
   </data>
   <data name="delete" xml:space="preserve">
-    <value>Borrar</value>
+    <value>Borrar parcela</value>
+  </data>
+  <data name="planner" xml:space="preserve">
+    <value>Asesoría</value>
   </data>
   <data name="plot_detail_cost" xml:space="preserve">
     <value>Costo total</value>
+  </data>
+  <data name="planner_download" xml:space="preserve">
+    <value>Rendimiento potencial
+Recomendaciones de cultivo
+Precios futuros</value>
   </data>
 </root>

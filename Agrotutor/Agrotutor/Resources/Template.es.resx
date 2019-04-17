@@ -126,6 +126,9 @@
   <data name="add_parcel_title" xml:space="preserve">
     <value>Agregar parcela</value>
   </data>
+  <data name="current_location" xml:space="preserve">
+    <value>Ubicación actual</value>
+  </data>
   <data name="delineation_cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
@@ -268,7 +271,7 @@
     <value>Año</value>
   </data>
   <data name="main_menu_advice" xml:space="preserve">
-    <value>Consejo</value>
+    <value>Asesoría</value>
   </data>
   <data name="main_menu_calendar" xml:space="preserve">
     <value>Calendario</value>
@@ -302,6 +305,9 @@
   </data>
   <data name="options_title" xml:space="preserve">
     <value>Opciones</value>
+  </data>
+  <data name="planner" xml:space="preserve">
+    <value>Asesoría</value>
   </data>
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancelar </value>

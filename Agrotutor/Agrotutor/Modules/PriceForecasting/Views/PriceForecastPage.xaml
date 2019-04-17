@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -7,11 +7,11 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.PriceForecasting.Views.PriceForecastPage"
              Padding="16,16,16,0"
-             Title="{localization:Translate title}">
-    <ScrollView>
-        <StackLayout>
+             Title="{localization:Translate title}">    
+    <StackLayout>
+        <ScrollView VerticalOptions="StartAndExpand">
             <StackLayout Orientation="Horizontal" >
-                <Image Source="calendar.png" HeightRequest="48" WidthRequest="48" Margin="16"/>
+                <Image Source="forecast_price.png" HeightRequest="48" WidthRequest="48" Margin="16"/>
                 <Label VerticalOptions="Center" FontSize="Large" Text="{localization:Translate next_month}"/>
             </StackLayout>
 
@@ -60,15 +60,14 @@
                     <StackLayout Orientation="Horizontal" x:Name="ForecastStack"/>
                 </ScrollView>
             </Grid>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+            </StackLayout.GestureRecognizers>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
-                </StackLayout.GestureRecognizers>
-
-                <Label VerticalOptions="Center" Text="About price forecasting information" />
-                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
-            </StackLayout>
+            <Label VerticalOptions="Center" Text="About price forecasting information" />
+            <Image Source="advice.png" HeightRequest="32" WidthRequest="32"/>
         </StackLayout>
-    </ScrollView>
+    </StackLayout>
 </ContentPage>

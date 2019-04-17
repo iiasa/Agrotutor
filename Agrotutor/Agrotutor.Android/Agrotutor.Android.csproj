@@ -415,6 +415,8 @@
     <AndroidResource Include="Resources\drawable\tiny_snow.png" />
     <AndroidResource Include="Resources\drawable\tiny_thunderstorms.png" />
     <AndroidResource Include="Resources\drawable\weather.png" />
+    <AndroidResource Include="Resources\drawable\calendar_crop.png" />
+    <AndroidResource Include="Resources\drawable\video_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

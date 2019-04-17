@@ -175,13 +175,22 @@
             <ContentView IsVisible="{Binding PlotDetailIsVisible}" Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
+                        <StackLayout Orientation="Horizontal" IsVisible="{Binding ShowPlotDetailInformation}">
                             <Image HeightRequest="20" Source="add.png" />
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="Large"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding SelectedPlot.Name}" />
+                       </StackLayout>
+                        
+                        <StackLayout Orientation="Horizontal" IsVisible="{Binding SelectedPlot.IsTemporaryPlot}">
+                            <Image HeightRequest="20" Source="advice.png" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{localization:Translate planner}" />
 
                         </StackLayout>
                         <views:Divider />
@@ -237,7 +246,7 @@
 
                                     <views:IconWithText
                                         Command="{Binding ShowCalendarForSelectedPlot}"
-                                        IconSource="calendar.png"
+                                        IconSource="calendar_crop.png"
                                         IconText="{localization:Translate plot_detail_calendar}" />
 
                                     <views:Divider />
@@ -269,13 +278,9 @@
                                 <Button
                                     Command="{Binding DownloadAdditionalPlotData}"
                                     IsVisible="{Binding ShowAdditionalDataButton}"
-                                    Text="Download" />
+                                    Text="{localization:Translate planner_download}" />
 
                                 <StackLayout IsVisible="{Binding AdditionalDataLoaded}">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="Large"
-                                        Text="{localization:Translate plot_detail_additional_title}" />
 
                                     <views:ValueLine
                                         Command="{Binding NavigateToPotentialYield}"

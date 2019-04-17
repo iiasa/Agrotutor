@@ -259,7 +259,7 @@ namespace Agrotutor.Modules.Map.Views
                     {
                         var layout = new AbsoluteLayout { Margin = 10 };
                         var imageSource = img.IsVideo
-                            ? "video.png"
+                            ? "video_icon.png"
                             : ImageSource.FromFile(img.Path);
 
                         var closeImage = new CachedImage

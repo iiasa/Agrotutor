@@ -8,32 +8,28 @@
              x:Class="Agrotutor.Modules.Benchmarking.Views.ViewYieldPage">
     <ContentPage.Content>
         <StackLayout>
-            <!--<Label
-                HorizontalOptions="StartAndExpand"
-                Text="Yield in this area"
-                FontSize="20" />-->
+        
+            <ScrollView VerticalOptions="StartAndExpand">
+                <views:SimpleStatsSingle
+                    AverageImageSource="prod_avg.png"
+                    MinImageSource="prod_min.png"
+                    MaxImageSource="prod_max.png"
+                    Unit="{localization:Translate unit}"
+                    AverageText="{localization:Translate average}"
+                    MinText="{localization:Translate minimum}"
+                    MaxText="{localization:Translate maximum}"
+                    AverageValue="{Binding Avg}"
+                    MinValue="{Binding Min}"
+                    MaxValue="{Binding Max}" />
+            </ScrollView>
 
-            <views:SimpleStatsSingle
-                AverageImageSource="prod_avg.png"
-                MinImageSource="prod_min.png"
-                MaxImageSource="prod_max.png"
-                Unit="tons"
-                AverageText="{localization:Translate average}"
-                MinText="{localization:Translate minimum}"
-                MaxText="{localization:Translate maximum}"
-                AverageValue="{Binding Avg}"
-                MinValue="{Binding Min}"
-                MaxValue="{Binding Max}"
-            />
-
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding ShowAbout}"/>
                 </StackLayout.GestureRecognizers>
 
                 <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                <Image Source="advice.png" HeightRequest="32" WidthRequest="32"/>
             </StackLayout>
 
         </StackLayout>
