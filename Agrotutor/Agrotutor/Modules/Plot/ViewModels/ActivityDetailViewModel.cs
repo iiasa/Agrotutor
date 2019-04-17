@@ -2,6 +2,7 @@
 
 using Agrotutor.Core.Persistence;
 using Agrotutor.ViewModels;
+using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Modules.Plot.ViewModels
 {
@@ -61,9 +62,12 @@ namespace Agrotutor.Modules.Plot.ViewModels
                 "Mejorado"
             };
             ActivityDate = DateTime.Now;
+            ActivityNameSet = false;
             _appDataService = appDataService;
         }
-        
+
+        public bool ActivityNameSet { get; set; }
+
         public DelegateCommand ShowAbout => new DelegateCommand(async () =>
         {
             var param = new NavigationParameters { { "page", WebContentPageViewModel.Activities } };
@@ -118,7 +122,11 @@ namespace Agrotutor.Modules.Plot.ViewModels
         public string ActivityName
         {
             get => _activityName;
-            set => SetProperty(ref _activityName, value);
+            set
+            {
+                SetProperty(ref _activityName, value);
+                ActivityNameSet = value != null;
+            }
         }
 
         public string ActivityComment
@@ -198,8 +206,15 @@ namespace Agrotutor.Modules.Plot.ViewModels
         /// <summary>
         ///     Gets or sets the SaveCommand
         /// </summary>
-        public DelegateCommand SaveCommand => new DelegateCommand(() =>
+        public DelegateCommand SaveCommand => new DelegateCommand(async () =>
         {
+            if (!ActivityNameSet)
+            {
+                await MaterialDialog.Instance.AlertAsync(
+                    StringLocalizer.GetString("select_activity_name_message"),
+                    StringLocalizer.GetString("select_activity_name_title"));
+                return;
+            }
             string activityName;
             if (ActivityDynamicUIVisibility.ActivityNameListVisibility ||
                 ActivityDynamicUIVisibility.ActivityNameVisibility)
@@ -231,9 +246,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
             };
             if (Plot.Activities == null) Plot.Activities = new List<Activity>();
             Plot.Activities.Add(activity);
-            _appDataService.UpdatePlotAsync(Plot);
+            await _appDataService.UpdatePlotAsync(Plot);
 
-            NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
+             await NavigationService.NavigateAsync("myapp:///NavigationPage/MapPage");
         });
 
         /// <summary>
@@ -358,7 +373,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                     break;
             }
 
-            if (baseClass != null) ActivityDynamicUIVisibility = baseClass.ActivityDynamicUIVisibility;
+            ActivityDynamicUIVisibility = baseClass?.ActivityDynamicUIVisibility;
             base.OnNavigatedTo(parameters);
         }
     }

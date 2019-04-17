@@ -213,4 +213,10 @@
   <data name="zucchini" xml:space="preserve">
     <value>Calabacín</value>
   </data>
+  <data name="select_crop_title" xml:space="preserve">
+    <value>No cultivo seleccionado</value>
+  </data>
+  <data name="select_crop_message" xml:space="preserve">
+    <value>Por favor, seleccione el cultivo que está creciendo en esta parcela.</value>
+  </data>
 </root>

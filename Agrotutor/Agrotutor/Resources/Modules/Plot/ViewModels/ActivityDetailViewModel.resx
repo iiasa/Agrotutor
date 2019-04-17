@@ -429,4 +429,10 @@
   <data name="weed_prevention_pre_sowing" xml:space="preserve">
     <value>Pre-sowing herbicides</value>
   </data>
+  <data name="select_activity_name_title" xml:space="preserve">
+    <value>Activity name not selected</value>
+  </data>
+  <data name="select_activity_name_message" xml:space="preserve">
+    <value>Please select from the list of activity names.</value>
+  </data>
 </root>

@@ -41,8 +41,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
             Plot = new Core.Entities.Plot();
             PlantingDate = DateTime.Today;
+            CropSelected = false;
 
-            // PickerCropTypesSelectedIndex = -1;
+            PickerCropTypesSelectedIndex = -1;
             PickerClimateTypesSelectedIndex = -1;
             PickerMaturityClassesSelectedIndex = -1;
 
@@ -111,6 +112,14 @@ namespace Agrotutor.Modules.Plot.ViewModels
             new DelegateCommand(
                 async () =>
                 {
+                    if (!CropSelected)
+                    {
+                        await MaterialDialog.Instance.AlertAsync(
+                            StringLocalizer.GetString("select_crop_message"),
+                            StringLocalizer.GetString("select_crop_title"));
+                        return;
+                    }
+
                     using (await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("saving_plot")))
                     {
                         SavingPlot = true;
@@ -155,18 +164,10 @@ namespace Agrotutor.Modules.Plot.ViewModels
             set
             {
                 SetProperty(ref _pickerCropTypesSelectedIndex, value);
-                //if (Plot.CropType == 0)
-                //{
-                //    if (value == -1)
-                //    {
-                //        Plot.CropType = CropType.None;
-                //    }
-                //  else
-                // {
-                if (_pickerCropTypesSelectedIndex != -1)
-                    Plot.CropType = (CropType) value; // TODO: verify
-                // }
-                //  }
+                if (value != -1){
+                    Plot.CropType = (CropType) value;
+                    CropSelected = true;
+                }
 
                 CultivarCharacteristicsVisible = Plot.CropType == CropType.Corn;
             }
@@ -189,11 +190,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
             var param = new NavigationParameters {{"page", WebContentPageViewModel.CultivarCharacteristics}};
             await NavigationService.NavigateAsync("WebContentPage", param);
         });
-
-        public override void OnNavigatedFrom(INavigationParameters parameters)
-        {
-            base.OnNavigatedFrom(parameters);
-        }
+        
+        public bool CropSelected { get; set; }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -206,7 +204,11 @@ namespace Agrotutor.Modules.Plot.ViewModels
             if (parameters.ContainsKey(PlotParameterName))
             {
                 parameters.TryGetValue(PlotParameterName, out Core.Entities.Plot plot);
-                if (plot != null) Plot = plot;
+                if (plot != null)
+                {
+                    Plot = plot;
+                    CropSelected = true;
+                }
             }
 
             base.OnNavigatedTo(parameters);

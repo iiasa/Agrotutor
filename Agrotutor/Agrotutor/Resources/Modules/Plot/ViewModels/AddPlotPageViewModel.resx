@@ -213,4 +213,10 @@
   <data name="zucchini" xml:space="preserve">
     <value>Zucchini</value>
   </data>
+  <data name="select_crop_title" xml:space="preserve">
+    <value>No crop selected</value>
+  </data>
+  <data name="select_crop_message" xml:space="preserve">
+    <value>Please select the crop which you are growing on this plot.</value>
+  </data>
 </root>

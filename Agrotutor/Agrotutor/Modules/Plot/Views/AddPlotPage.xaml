@@ -31,7 +31,7 @@
                         <Picker
                             Title="{localization:Translate select}"
                             ItemsSource="{Binding CropTypes}"
-                            SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
+                            SelectedIndex="{Binding PickerCropTypesSelectedIndex}"/>
                     </StackLayout>
                 </Frame>
                 <Frame>
