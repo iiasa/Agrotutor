@@ -1309,7 +1309,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 var param = new NavigationParameters
                 {
-                    {PriceForecastPageViewModel.PriceForecastParameterName, SelectedPlot.PriceForecast}
+                    {PriceForecastPageViewModel.PriceForecastParameterName, await PriceForecast.FromEmbeddedResource()}
                 };
                 await NavigationService.NavigateAsync("PriceForecastPage", param);
             });
