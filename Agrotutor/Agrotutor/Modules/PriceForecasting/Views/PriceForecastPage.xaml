@@ -27,11 +27,17 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
     
-                    <Label Grid.Column="0" Grid.Row="0" Text="{localization:Translate expected_price}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
-                    <Label Grid.Column="0" Grid.Row="2" Text="{localization:Translate expected_range}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange"/>
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="{localization:Translate expected_price}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
+                        <Label Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Column="0" Grid.Row="2">
+                        <Label Text="{localization:Translate expected_range}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange" />
+                        <Label Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange" />
+                    </StackLayout>
     
                     <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" LineBreakMode="NoWrap" />
                     <Label Grid.Row="2" Grid.Column="1" Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
@@ -40,8 +46,6 @@
     
                     <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#242424" HeightRequest="5"/>
     
-                    <Label Grid.Row="0" Grid.Column="4" Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" />
-                    <Label Grid.Row="2" Grid.Column="4" Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" />
                 </Grid>
     
                 <Grid>
