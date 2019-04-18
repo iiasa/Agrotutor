@@ -1493,6 +1493,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("delete_plot_failed"));
             }
+
+            RemoveDelineationPolygon();
+            RenderPlotDelineations();
         }
 
         private async void UpdateInfo()
