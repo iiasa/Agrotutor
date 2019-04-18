@@ -95,7 +95,6 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 MinTemperature = $"{value.MinTemperature}°C";
                 MaxTemperature = $"{value.MaxTemperature}°C";
                 GrowingDegreeDays = value.CalculateGdd(BaseTemperature).ToString();
-                WeatherIcon = value.GetWeatherIcon();
                 WeatherText = value.GetWeatherText();
                 SetProperty(ref _currentDay, value);
             }
@@ -111,6 +110,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             {
                 CurrentTemperature = $"{value.Temperature}°C";
                 var date = value.DateTime;
+                WeatherIcon = value.GetWeatherIcon();
                 WindSpeed = value.GetWindText();
                 CloudCover = value.CloudCoverPercent + " %";
                 SetProperty(ref _currentHour, value);

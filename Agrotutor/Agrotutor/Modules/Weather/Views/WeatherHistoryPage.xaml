@@ -34,8 +34,7 @@
                 HorizontalOptions="FillAndExpand"
                 ItemsSource="{Binding DatasetNames}"
                 SelectedIndex="{Binding SelectedDataset}" />
-            <!--<microcharts:ChartView Chart="{Binding CurrentChart}"
-                                   Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" WidthRequest="300"/>-->
+            
             <oxy:PlotView
                 Grid.Row="1"
                 Grid.Column="0"
@@ -44,13 +43,7 @@
                 Model="{Binding ChartModel}"
                 VerticalOptions="Center"
                 WidthRequest="300" />
-            <!--<Button Text="1d" Grid.Row="2" Grid.Column="0" Command="{Binding SetGraphDays}" CommandParameter="1" />
-            <Button Text="3d" Grid.Row="2" Grid.Column="1" Command="{Binding SetGraphDays}" CommandParameter="3"/>
-            <Button Text="1w" Grid.Row="2" Grid.Column="2" Command="{Binding SetGraphDays}" CommandParameter="7"/>
-            <Button Text="1mo" Grid.Row="2" Grid.Column="3" Command="{Binding SetGraphDays}" CommandParameter="31"/>
-            <Button Text="3mo" Grid.Row="2" Grid.Column="4" Command="{Binding SetGraphDays}" CommandParameter="92"/>
-            <Button Text="6mo" Grid.Row="2" Grid.Column="5" Command="{Binding SetGraphDays}" CommandParameter="183"/>
-            <Button Text="1yr" Grid.Row="2" Grid.Column="6" Command="{Binding SetGraphDays}" CommandParameter="365"/>-->
+            
         </Grid>
     </ContentPage.Content>
     <ContentPage.Behaviors>

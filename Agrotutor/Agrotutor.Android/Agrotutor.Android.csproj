@@ -422,6 +422,8 @@
     <AndroidResource Include="Resources\drawable\money_min.png" />
     <AndroidResource Include="Resources\drawable\prod_avg.png" />
     <AndroidResource Include="Resources\drawable\prod_min.png" />
+    <AndroidResource Include="Resources\drawable\forecast_historical_weather.png" />
+    <AndroidResource Include="Resources\drawable\forecast_weather.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
