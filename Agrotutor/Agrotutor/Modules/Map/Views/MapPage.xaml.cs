@@ -105,7 +105,8 @@ namespace Agrotutor.Modules.Map.Views
         {
             DelineationPolygon = new Polygon
             {
-                StrokeColor = Color.Green,
+                FillColor = new Color(253, 216, 33, 0.2),
+                StrokeColor = new Color(253, 216, 33),
                 StrokeWidth = 2f
             };
             map.Polygons.Clear();

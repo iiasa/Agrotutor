@@ -1268,6 +1268,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     CurrentDelineation = new List<DelineationPosition>();
                     CurrentMapTask = MapTask.Default;
                     EndDelineation();
+                    RemoveDelineationPolygon();
+                    RenderPlotDelineations();
                 });
 
         public DelegateCommand DelineationCancel =>
@@ -1580,7 +1582,11 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (CurrentDelineation.Count < 3) return;
             RemoveDelineationPolygon();
-            var polygon = new Polygon {FillColor = Color.Transparent};
+            var polygon = new Polygon
+            {
+                FillColor = new Color(253, 216, 33, 0.2),
+                StrokeColor = new Color(253, 216, 33)
+            };
             foreach (var position in CurrentDelineation) polygon.Positions.Add(position.Position.ForMap());
             CurrentPolygon = polygon;
             Polygons.Add(polygon);
