@@ -26,6 +26,8 @@
     <MtouchArch>i386, x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer: Mathias Karner (MAK4J666SA)</CodesignKey>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -36,6 +38,8 @@
     <MtouchLink>None</MtouchLink>
     <MtouchArch>i386, x86_64</MtouchArch>
     <ConsolePause>false</ConsolePause>
+    <CodesignKey>iPhone Developer: Mathias Karner (MAK4J666SA)</CodesignKey>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,10 +53,8 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>
-    </CodesignEntitlements>
-    <CodesignProvision>
-    </CodesignProvision>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
     <MtouchLink>None</MtouchLink>
     <MtouchFastDev>true</MtouchFastDev>
     <OptimizePNGs>true</OptimizePNGs>
@@ -68,8 +70,9 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution: Internationales Institut fuer angewandte Systemanalyse-International institute for (MY39EY4GYT)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>AgroTutor Distribution</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Ad-Hoc|iPhone' ">
     <DebugType>none</DebugType>
@@ -80,8 +83,8 @@
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
     <BuildIpa>True</BuildIpa>
-    <CodesignProvision>Automatic:AdHoc</CodesignProvision>
-    <CodesignKey>iPhone Distribution</CodesignKey>
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>iPhone Developer: Mathias Karner (MAK4J666SA)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'AppStore|iPhone' ">
@@ -92,16 +95,9 @@
     <WarningLevel>4</WarningLevel>
     <ConsolePause>False</ConsolePause>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignProvision>AgroTutor Dev1</CodesignProvision>
-    <CodesignKey>iPhone Developer: Tobias Sturn (BXN4CJG68P)</CodesignKey>
-    <CodesignEntitlements>
-    </CodesignEntitlements>
-    <CodesignExtraArgs />
-    <CodesignResourceRules />
-    <OptimizePNGs>true</OptimizePNGs>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
-    <AppExtensionDebugBundleId />
+    <CodesignProvision>VS: WildCard Development</CodesignProvision>
+    <CodesignKey>iPhone Developer: Mathias Karner (MAK4J666SA)</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DocumentViewer_iOS.cs" />
@@ -112,14 +108,67 @@
     <Compile Include="UserInterface\CustomMapRenderer.cs" />
     <Compile Include="UserInterface\CustomTileProvider.cs" />
     <Compile Include="src\HtmlBaseUrl.cs" />
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon1024x1024_no_alpha.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenLSIPAD.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenLSIPAD2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenLSRETHD.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenLSXR.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenLSXS.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenLSXSMAX.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPO2X.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPOIPAD.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPOIPAD2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPORET4.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPORETHD47.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPORETHD57.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPOXR.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPOXS.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\splashscreenPOXSMAX.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\LaunchImages.launchimage\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <ITunesArtwork Include="iTunesArtwork@1x.png" />
-    <ITunesArtwork Include="iTunesArtwork@2x.png" />
     <BundleResource Include="Resources\anim_loading.json" />
     <BundleResource Include="Resources\Icon-60%403x.png" />
-    <BundleResource Include="Resources\Icon-Small-40%403x.png" />
     <BundleResource Include="Resources\Icon-Small%403x.png" />
     <BundleResource Include="Resources\add.png" />
     <BundleResource Include="Resources\app_icon.png" />
@@ -273,6 +322,10 @@
     <BundleResource Include="Resources\tiny_snow.png" />
     <BundleResource Include="Resources\tiny_thunderstorms.png" />
     <BundleResource Include="Resources\weather.png" />
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+    <ITunesArtwork Include="iTunesArtwork" />
+    <BundleResource Include="Resources\video_icon.png" />
+    <BundleResource Include="Resources\agronomy.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1202.png">
@@ -334,11 +387,6 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\Default-568h@2x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait@2x.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default@2x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -404,30 +452,6 @@
       <Project>{8E89D8D4-12AA-4C97-AE33-7C33932EAA36}</Project>
       <Name>Agrotutor</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\filelist.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image001.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image003.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image005.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image007.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\image009.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\files\themedata.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\html\about\page.html" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\history_inactive.png" />
@@ -563,6 +587,159 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\es_6.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon1024x1024.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x120.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1202.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1203.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon152x152.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon152x1521.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon167x167.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon167x1671.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon180x180.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon180x1801.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon20x201.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon29x29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon29x291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x401.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x402.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x403.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x404.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x405.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon40x406.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon58x58.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon58x581.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon58x582.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon58x583.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon60x60.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon60x601.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon76x76.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon76x761.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon80x80.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon80x801.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon80x802.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon80x803.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon87x87.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon87x871.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\html\empty.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\image001.png" />
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\page.html" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\files\image005.png" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\localbenchmarking\page.html" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\files\image003.png" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\potentialyield\page.html" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\files\image009.png" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\priceforecasting\page.html" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\files\image007.png" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\en\recommendedpractices\page.html" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\files\image001.png" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\cultivarcharacteristics\page.html" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\files\image005.png" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\localbenchmarking\page.html" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\files\image003.png" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\potentialyield\page.html" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\files\image009.png" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\priceforecasting\page.html" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\files\filelist.xml" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\files\image007.png" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\files\themedata.xml" />
+    <AndroidAsset Include="Resources\html\es\recommendedpractices\page.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

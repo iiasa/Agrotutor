@@ -29,6 +29,7 @@ using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Awhere.API;
 using Agrotutor.Modules.Weather.ViewModels;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using Plugin.DownloadManager;
@@ -168,25 +169,25 @@ namespace Agrotutor.Modules.Map.ViewModels
             Title = "Map";
             CropTypes = new List<string>
             {
-                StringLocalizer.GetString("Maíz"),
-                StringLocalizer.GetString("Cebada"),
-                StringLocalizer.GetString("Frijol"),
-                StringLocalizer.GetString("Trigo"),
-                StringLocalizer.GetString("Triticale"),
-                StringLocalizer.GetString("Sorgo"),
-                StringLocalizer.GetString("Alfalfa"),
-                StringLocalizer.GetString("Avena"),
-                StringLocalizer.GetString("Ajonjolí"),
-                StringLocalizer.GetString("Amaranto"),
-                StringLocalizer.GetString("Arroz"),
-                StringLocalizer.GetString("Canola"),
-                StringLocalizer.GetString("Cartamo"),
-                StringLocalizer.GetString("Calabacín"),
-                StringLocalizer.GetString("Garbanzo"),
-                StringLocalizer.GetString("Haba"),
-                StringLocalizer.GetString("Soya"),
-                StringLocalizer.GetString("Ninguno"),
-                StringLocalizer.GetString("Otro")
+                StringLocalizer.GetString("maize"),
+                StringLocalizer.GetString("barley"),
+                StringLocalizer.GetString("bean"),
+                StringLocalizer.GetString("wheat"),
+                StringLocalizer.GetString("triticale"),
+                StringLocalizer.GetString("sorghum"),
+                StringLocalizer.GetString("alfalfa"),
+                StringLocalizer.GetString("oats"),
+                StringLocalizer.GetString("sesame"),
+                StringLocalizer.GetString("amaranth"),
+                StringLocalizer.GetString("rice"),
+                StringLocalizer.GetString("canola"),
+                StringLocalizer.GetString("cartamo"),
+                StringLocalizer.GetString("zucchini"),
+                StringLocalizer.GetString("chickpea"),
+                StringLocalizer.GetString("havabean"),
+                StringLocalizer.GetString("soy"),
+                StringLocalizer.GetString("none"),
+                StringLocalizer.GetString("other")
             };
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
@@ -605,16 +606,6 @@ namespace Agrotutor.Modules.Map.ViewModels
             new DelegateCommand<MapClickedEventArgs>(
                 args =>
                 {
-                    try
-                    {
-                        Preferences.Set(Constants.Lat, args.Point.Latitude);
-                        Preferences.Set(Constants.Lng, args.Point.Longitude);
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e);
-                    }
-
                     switch (CurrentMapTask)
                     {
                         case MapTask.CreatePlotBySelection:
@@ -622,6 +613,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                             RemoveTempPin();
                             AddTempPin(args.Point);
                             AddPlotPosition = Position.From(args.Point);
+                            RememberMapLocation(args.Point.Latitude, args.Point.Longitude);
                             break;
 
                         case MapTask.DelineationNotEnoughPoints:
@@ -639,9 +631,23 @@ namespace Agrotutor.Modules.Map.ViewModels
                             CurrentPin = pin;
                             Pins.Add(pin);
                             RenderDelineationPolygon();
+                            RememberMapLocation(args.Point.Latitude, args.Point.Longitude);
                             break;
                     }
                 });
+
+        private static void RememberMapLocation(double latitude, double longitude)
+        {
+            try
+            {
+                Preferences.Set(Constants.Lat, latitude);
+                Preferences.Set(Constants.Lng, longitude);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+        }
 
 
         public DelegateCommand<MapLongClickedEventArgs> MapLongClicked =>
@@ -649,8 +655,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 args =>
                 {
                     AddPlotPosition = Position.From(args.Point);
-                    Preferences.Set(Constants.Lat, args.Point.Latitude);
-                    Preferences.Set(Constants.Lng, args.Point.Longitude);
+                    RememberMapLocation(args.Point.Latitude, args.Point.Longitude);
                     CreatePlot();
                 });
 
@@ -792,9 +797,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                         SelectedPlot
                     }
                 };
-                if (SelectedPlot?.WeatherForecast != null)
+                if (SelectedPlot?.WeatherForecast != null && SelectedPlot?.WeatherForecast.Count != 0)
                     param.Add(WeatherPageViewModel.ForecastParameterName, SelectedPlot.WeatherForecast);
-                if (SelectedPlot?.WeatherHistory != null)
+                if (SelectedPlot?.WeatherHistory != null && SelectedPlot?.WeatherHistory.Count != 0)
                     param.Add(WeatherPageViewModel.HistoryParameterName, SelectedPlot.WeatherHistory);
 
                 NavigationService.NavigateAsync("WeatherPage", param);
@@ -1264,6 +1269,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     CurrentDelineation = new List<DelineationPosition>();
                     CurrentMapTask = MapTask.Default;
                     EndDelineation();
+                    RemoveDelineationPolygon();
+                    RenderPlotDelineations();
                 });
 
         public DelegateCommand DelineationCancel =>
@@ -1297,6 +1304,12 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand NavigateToCiat =>
             new DelegateCommand(async () =>
             {
+                if (SelectedPlot != null && SelectedPlot.CropType != CropType.Corn)
+                {
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("ciat_data_not_available"));
+                    return;
+                }
+                
                 var param = new NavigationParameters
                 {
                     {CiatPageViewModel.PARAMETER_NAME_CIAT_DATA, SelectedPlot.CiatData}
@@ -1307,9 +1320,15 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand NavigateToPriceForecast =>
             new DelegateCommand(async () =>
             {
+                if (SelectedPlot != null && SelectedPlot.CropType != CropType.Corn)
+                {
+                    await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("price_forecast_not_available"));
+                    return;
+                }
+
                 var param = new NavigationParameters
                 {
-                    {PriceForecastPageViewModel.PriceForecastParameterName, SelectedPlot.PriceForecast}
+                    {PriceForecastPageViewModel.PriceForecastParameterName, await PriceForecast.FromEmbeddedResource()}
                 };
                 await NavigationService.NavigateAsync("PriceForecastPage", param);
             });
@@ -1475,6 +1494,9 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 await MaterialDialog.Instance.SnackbarAsync(StringLocalizer.GetString("delete_plot_failed"));
             }
+
+            RemoveDelineationPolygon();
+            RenderPlotDelineations();
         }
 
         private async void UpdateInfo()
@@ -1482,7 +1504,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             if (SelectedPlot == null) return;
             ShowPlotDetailInformation = !SelectedPlot.IsTemporaryPlot;
 
-            SelectedPlotDate = SelectedPlot.Activities?.FirstOrDefault(x => x.ActivityType == ActivityType.Sowing)?.Date
+            SelectedPlotDate = SelectedPlot.Activities?.FirstOrDefault(x => x.ActivityType == ActivityType.Initialization)?.Date
                 .ToShortDateString();
             SelectedPlotIrrigation =
                 SelectedPlot.Activities?.Any(x => x.ActivityType == ActivityType.Irrigation) != null
@@ -1504,11 +1526,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             var yield = SelectedPlot.BemData?.AverageYield;
             var profit = SelectedPlot.BemData?.AverageProfit;
             var income = SelectedPlot.BemData?.AverageIncome;
-            var potentialYield = SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax;
-            var nitrogenNeeded = SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen;
-            var priceForecast = await PriceForecast.FromEmbeddedResource();
-            var priceForecastNextMonth = priceForecast.First().Price;
-            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
+            var potentialYield = (SelectedPlot.CropType==CropType.Corn) ? SelectedPlot.CiatData?.CiatDataIrrigated?.YieldMax : null;
+            var nitrogenNeeded = (SelectedPlot.CropType==CropType.Corn) ? SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen : null;
+            var priceForecast = (SelectedPlot.CropType==CropType.Corn) ? await PriceForecast.FromEmbeddedResource() : null;
+            var priceForecastNextMonth = (SelectedPlot.CropType==CropType.Corn) ? priceForecast.First().Price : null;
+            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : Math.Round((decimal)priceForecastNextMonth).ToString();
 
             CurrentPlotCost = cost == null ? "-" : Math.Round((decimal) cost).ToString(CultureInfo.InvariantCulture);
             CurrentPlotYield = yield == null ? "-" : Math.Round((decimal) yield).ToString(CultureInfo.InvariantCulture);
@@ -1516,8 +1538,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 profit == null ? "-" : Math.Round((decimal) profit).ToString(CultureInfo.InvariantCulture);
             CurrentPlotIncome =
                 income == null ? "-" : Math.Round((decimal) income).ToString(CultureInfo.InvariantCulture);
-            CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
-            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+            CurrentPlotPotentialYield = potentialYield == null ? "-" : Math.Round((decimal)potentialYield).ToString();
+            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : Math.Round((decimal)nitrogenNeeded).ToString();
             CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
             CurrentPlotWeatherIcon = weatherIcon ?? "";
 
@@ -1564,7 +1586,11 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             if (CurrentDelineation.Count < 3) return;
             RemoveDelineationPolygon();
-            var polygon = new Polygon {FillColor = Color.Transparent};
+            var polygon = new Polygon
+            {
+                FillColor = new Color(253, 216, 33, 0.2),
+                StrokeColor = new Color(253, 216, 33)
+            };
             foreach (var position in CurrentDelineation) polygon.Positions.Add(position.Position.ForMap());
             CurrentPolygon = polygon;
             Polygons.Add(polygon);
@@ -1724,22 +1750,29 @@ namespace Agrotutor.Modules.Map.ViewModels
             if (!IsInitDone)
             {
                 RemoveTempPin();
-                //var tasks = new List<Task>();
-                var permissionsToRequest = new List<Permission>();
-                var locationPermissionStatus =
-                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (locationPermissionStatus != PermissionStatus.Granted)
-                    permissionsToRequest.Add(Permission.Location);
-                var cameraPermissionStatus =
-                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
-                if (cameraPermissionStatus != PermissionStatus.Granted)
-                    permissionsToRequest.Add(Permission.Camera);
-                var storagePermissionStatus =
-                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                if (storagePermissionStatus != PermissionStatus.Granted)
-                    permissionsToRequest.Add(Permission.Storage);
-                if (permissionsToRequest.Count > 0)
-                    await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
+
+                try
+                {
+                    var permissionsToRequest = new List<Permission>();
+                    var locationPermissionStatus =
+                        await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                    if (locationPermissionStatus != PermissionStatus.Granted)
+                        permissionsToRequest.Add(Permission.Location);
+                    var cameraPermissionStatus =
+                        await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                    if (cameraPermissionStatus != PermissionStatus.Granted)
+                        permissionsToRequest.Add(Permission.Camera);
+                    var storagePermissionStatus =
+                        await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                    if (storagePermissionStatus != PermissionStatus.Granted)
+                        permissionsToRequest.Add(Permission.Storage);
+                    if (permissionsToRequest.Count > 0)
+                        await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
+                }
+                catch (Exception e)
+                {
+                    Crashes.TrackError(e);
+                }
 
                 //tasks.Add(EnableUserLocation());
                 await EnableUserLocation();
@@ -1814,12 +1847,13 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 foreach (var machineryPoint in MachineryPoints.Features)
                 {
+                    if (machineryPoint == null || machineryPoint.Geometry == null) continue;
                     var pin = new Pin
                     {
                         Position = new MapsPosition(
                             machineryPoint.Geometry.Coordinates[1], machineryPoint.Geometry.Coordinates[0]),
                         Tag = machineryPoint,
-                        Label = machineryPoint.Properties.Localidad,
+                        Label = machineryPoint.Properties?.Localidad,
                         Icon = BitmapDescriptorFactory.DefaultMarker(
                             (Color) PrismApplicationBase.Current.Resources["MachineryPoints"])
                     };
@@ -1962,10 +1996,15 @@ namespace Agrotutor.Modules.Map.ViewModels
             WeatherLocation = location;
 
             CurrentPosition = Position.FromLocation(location);
-            if (CurrentMapTask == MapTask.CreatePlotByGPS) AddPlotPosition = CurrentPosition;
+            if (CurrentMapTask == MapTask.CreatePlotByGPS || CurrentMapTask == MapTask.GetLocationForPlanner)
+            {
+                AddPlotPosition = CurrentPosition;
+                MapPage.ZoomToPosition(CurrentPosition.ForMap());
+            }
 
             var lat = Preferences.Get(Constants.Lat, 0.0);
             var lng = Preferences.Get(Constants.Lng, 0.0);
+            
             if (Region == null)
             {
                 if (!lat.Equals(0.0) && !lng.Equals(0.0))

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Agrotutor.Modules.Ciat.Types;
 using Agrotutor.Modules.Ciat.ViewModels;
@@ -13,6 +13,9 @@ namespace Agrotutor.Modules.Ciat.Views
     {
         private readonly CiatPageViewModel viewModel;
 
+        private readonly Color ButtonActiveColor = (Color)App.Current.Resources["PrimaryGreen"]; 
+        private readonly Color ButtonInactiveColor = (Color)App.Current.Resources["PrimaryYellow"];
+
         public CiatPage()
         {
             InitializeComponent();
@@ -23,6 +26,17 @@ namespace Agrotutor.Modules.Ciat.Views
                 
                 UpdateRecommendations();
             };
+            this.BtnIrrigated.Clicked += (sender, e) =>
+            {
+                this.BtnIrrigated.BackgroundColor = ButtonActiveColor;
+                this.BtnNonIrrigated.BackgroundColor = ButtonInactiveColor;
+            };
+            this.BtnNonIrrigated.Clicked += (sender, e) =>
+            {
+                this.BtnNonIrrigated.BackgroundColor = ButtonActiveColor;
+                this.BtnIrrigated.BackgroundColor = ButtonInactiveColor;
+            };
+            this.BtnNonIrrigated.BackgroundColor = ButtonActiveColor;
         }
 
         private void UpdateRecommendations()

@@ -18,7 +18,7 @@
                 </StackLayout>
 
 
-                <Image Source="nitrogen.png"  WidthRequest="46" HeightRequest="46" />
+                <Image Source="fertilization.png"  WidthRequest="46" HeightRequest="46" />
                 <Label x:Name="lblNitrogen"
                     Margin="0,16,0,16" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" FontSize="18"
                     Text="{localization:Translate placeholder_nitrogen}"/>

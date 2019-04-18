@@ -4,9 +4,6 @@ using System.Reflection;
 using Agrotutor.Core.Camera;
 using Agrotutor.Core.Persistence;
 using Agrotutor.Core.Tile;
-using Agrotutor.Core.Tile.Resources;
-using Agrotutor.Modules.Calendar.Components.Views;
-using Agrotutor.Modules.Calendar.ViewModels;
 using Agrotutor.ViewModels;
 using Agrotutor.Views;
 using DryIoc;
@@ -137,7 +134,7 @@ namespace Agrotutor.Core
                 .RegisterInitializer<DbContextOptionsBuilder<TileContext>>((builder, resolver) =>
                 {
                     if (!Persistence.DbContextOptionsBuilderExtension.FileExists(builder, Constants.OfflineBasemapFilename))
-                        Persistence.DbContextOptionsBuilderExtension.CopyFromStream(builder, Resources.GetIIASATiles(),
+                        Persistence.DbContextOptionsBuilderExtension.CopyFromStream(builder, Tile.Resources.Resources.GetIIASATiles(),
                             Constants.OfflineBasemapFilename);
 
                     Persistence.DbContextOptionsBuilderExtension.Configure(builder, Constants.OfflineBasemapFilename);

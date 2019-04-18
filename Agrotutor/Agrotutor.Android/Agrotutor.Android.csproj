@@ -415,6 +415,16 @@
     <AndroidResource Include="Resources\drawable\tiny_snow.png" />
     <AndroidResource Include="Resources\drawable\tiny_thunderstorms.png" />
     <AndroidResource Include="Resources\drawable\weather.png" />
+    <AndroidResource Include="Resources\drawable\calendar_crop.png" />
+    <AndroidResource Include="Resources\drawable\video_icon.png" />
+    <AndroidResource Include="Resources\drawable\money_avg.png" />
+    <AndroidResource Include="Resources\drawable\money_max.png" />
+    <AndroidResource Include="Resources\drawable\money_min.png" />
+    <AndroidResource Include="Resources\drawable\prod_avg.png" />
+    <AndroidResource Include="Resources\drawable\prod_min.png" />
+    <AndroidResource Include="Resources\drawable\forecast_historical_weather.png" />
+    <AndroidResource Include="Resources\drawable\forecast_weather.png" />
+    <AndroidResource Include="Resources\drawable\agronomy.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
@@ -620,6 +630,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\feedback.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\html\empty.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

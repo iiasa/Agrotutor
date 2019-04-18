@@ -154,13 +154,13 @@
     <value>Add a video</value>
   </data>
   <data name="costs" xml:space="preserve">
-    <value>Costs ($/ha):</value>
+    <value>Costs (MXP/ha):</value>
   </data>
   <data name="hub_contact" xml:space="preserve">
     <value>Hub contact</value>
   </data>
   <data name="income" xml:space="preserve">
-    <value>Income ($/ha):</value>
+    <value>Income (MXP/ha):</value>
   </data>
   <data name="investigation_platforms" xml:space="preserve">
     <value>Investigation platforms</value>
@@ -172,7 +172,8 @@
     <value>Machinery points</value>
   </data>
   <data name="nitrogen" xml:space="preserve">
-    <value>Nitrogen needed (kg/ha):</value>
+    <value>Nitrogen needed
+(kg N/ha):</value>
   </data>
   <data name="offline_basemap" xml:space="preserve">
     <value>Offline basemap</value>
@@ -184,19 +185,21 @@
     <value>Plot delineations</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Potential yield (Average kg/ha):</value>
+    <value>Potential yield
+(avg Ton/ha):</value>
   </data>
   <data name="price_forecast" xml:space="preserve">
-    <value>Next month trading price (Expected avg $/kg):</value>
+    <value>Next month trading price
+(avg MXP/kg):</value>
   </data>
   <data name="profit" xml:space="preserve">
-    <value>Profit ($/ha):</value>
+    <value>Profit (MXP/ha):</value>
   </data>
   <data name="yield" xml:space="preserve">
-    <value>Yield (kg/ha):</value>
+    <value>Yield (MXP/ha):</value>
   </data>
   <data name="delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>Delete plot</value>
   </data>
   <data name="plot_detail_CropType" xml:space="preserve">
     <value>Crop type</value>
@@ -210,10 +213,15 @@
   <data name="yes" xml:space="preserve">
     <value>Yes</value>
   </data>
-  <data name="average_kg_ha" xml:space="preserve">
-    <value>(Average kg/ha)</value>
-  </data>
   <data name="click_for_detail" xml:space="preserve">
     <value>(click for detail)</value>
+  </data>
+  <data name="planner" xml:space="preserve">
+    <value>Advice</value>
+  </data>
+  <data name="planner_download" xml:space="preserve">
+    <value>Potential yield
+Crop recommendations
+Future prices</value>
   </data>
 </root>

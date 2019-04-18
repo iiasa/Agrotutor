@@ -1,4 +1,4 @@
-﻿using System.IO;
+using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
@@ -50,6 +50,10 @@ namespace Agrotutor.Modules.PriceForecasting.Types
 
             return FromJson(result);
         }
+
+        public int RoundedPrice => (int)Math.Round((decimal)Price, 0);
+        public int RoundedMinPrice => (int)Math.Round((decimal)MinPrice, 0);
+        public int RoundedMaxPrice => (int)Math.Round((decimal)MaxPrice, 0);
     }
 
     public enum Crop { Corn };

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -172,7 +172,8 @@
     <value>Puntos de maquinaria</value>
   </data>
   <data name="nitrogen" xml:space="preserve">
-    <value>Fertilización recomendada (kg N/ha):</value>
+    <value>Fertilización recomendada
+(kg N/ha):</value>
   </data>
   <data name="offline_basemap" xml:space="preserve">
     <value>Mapa base sin conexión</value>
@@ -184,10 +185,12 @@
     <value>Delineaciones de las parcelas</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Rendimiento potencial (prom Ton/ha):</value>
+    <value>Rendimiento potencial
+(prom Ton/ha):</value>
   </data>
   <data name="price_forecast" xml:space="preserve">
-    <value>Precio próximo mes (Prom MXP/kg):</value>
+    <value>Precio próximo mes
+(Prom MXP/kg):</value>
   </data>
   <data name="profit" xml:space="preserve">
     <value>Utilidad (MXP/ha):</value>
@@ -196,9 +199,17 @@
     <value>Rendimiento (Ton/ha):</value>
   </data>
   <data name="delete" xml:space="preserve">
-    <value>Borrar</value>
+    <value>Borrar parcela</value>
+  </data>
+  <data name="planner" xml:space="preserve">
+    <value>Asesoría</value>
   </data>
   <data name="plot_detail_cost" xml:space="preserve">
     <value>Costo total</value>
+  </data>
+  <data name="planner_download" xml:space="preserve">
+    <value>Rendimiento potencial
+Recomendaciones de cultivo
+Precios futuros</value>
   </data>
 </root>

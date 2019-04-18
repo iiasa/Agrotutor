@@ -17,7 +17,6 @@ namespace Agrotutor.Modules.Weather.ViewModels
     public class WeatherHistoryPageViewModel : ViewModelBase, INavigatedAware
     {
         public static string WeatherHistoryParameterName = "WEATHER_HISTORY_PARAMETER";
-        private Chart _currentChart;
 
         private List<string> _datasetNames;
         private int _graphDays;
@@ -58,7 +57,6 @@ namespace Agrotutor.Modules.Weather.ViewModels
             set
             {
                 selectedValEntries = value;
-                CurrentChart = new LineChart {Entries = value};
             }
         }
 
@@ -124,16 +122,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             ChartModel?.PlotView?.InvalidatePlot();
             ChartModel?.Axes.Clear();
             ChartModel?.Series.Clear();
-            ChartModel = new PlotModel {Title = "", PlotType = PlotType.XY};
-            //var Points = new List<DataPoint>
-            //{
-            //    new DataPoint(DateTimeAxis.CreateDataPoint(), 4),
-            //    new DataPoint(10, 13),
-            //    new DataPoint(20, 15),
-            //    new DataPoint(30, 16),
-            //    new DataPoint(40, 12),
-            //    new DataPoint(50, 12)
-            //};
+            ChartModel = new PlotModel {Title = "", PlotType = PlotType.XY };
 
             var points = new List<DataPoint>();
 
@@ -145,6 +134,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 }
 
             var s = new LineSeries {ItemsSource = points};
+            // s.YAxis.Unit = "$";
             ChartModel.Axes.Add(new DateTimeAxis {Position = AxisPosition.Bottom, StringFormat = "M/d/yy"});
             ChartModel.Series.Add(s);
         }
@@ -163,12 +153,6 @@ namespace Agrotutor.Modules.Weather.ViewModels
         {
             get => _weatherData;
             set => SetProperty(ref _weatherData, value);
-        }
-
-        public Chart CurrentChart
-        {
-            get => _currentChart;
-            set => SetProperty(ref _currentChart, value);
         }
 
 

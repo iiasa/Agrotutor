@@ -70,10 +70,15 @@ namespace Agrotutor.Core.Persistence
         {
 
             var plots = await Context.Plots.Include(x => x.Activities).Include(x => x.Delineation)
-                            .Include(x => x.MediaItems).Include(x => x.PriceForecast).Include(x => x.BemData)
+                            .Include(x => x.MediaItems).Include(x => x.PriceForecast)
+                            .Include(x => x.BemData).ThenInclude(x => x.Cost)
+                            .Include(x => x.BemData).ThenInclude(x => x.Income)
+                            .Include(x => x.BemData).ThenInclude(x => x.Profit)
+                            .Include(x => x.BemData).ThenInclude(x => x.Yield)
                             .Include(x => x.BenchmarkingInformation).Include(x => x.CiatData)
                             .Include(x => x.WeatherForecast).Include(x => x.WeatherHistory).ToListAsync() ??
                         new List<Plot>();
+
             return plots;
         }
     }

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
@@ -7,68 +7,73 @@
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.PriceForecasting.Views.PriceForecastPage"
              Padding="16,16,16,0"
-             Title="{localization:Translate title}">
-    <ScrollView>
-        <StackLayout>
-            <StackLayout Orientation="Horizontal" >
-                <Image Source="calendar.png" HeightRequest="48" WidthRequest="48" Margin="16"/>
-                <Label VerticalOptions="Center" FontSize="Large" Text="{localization:Translate next_month}"/>
-            </StackLayout>
-
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition />
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-
-                <Label Grid.Column="0" Grid.Row="0" Text="{localization:Translate expected_price}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
-                <Label Grid.Column="0" Grid.Row="2" Text="{localization:Translate expected_range}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange"/>
-
-                <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" LineBreakMode="NoWrap" />
-                <Label Grid.Row="2" Grid.Column="1" Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
-                <Label Grid.Row="2" Grid.Column="2" Text="{localization:Translate to}" VerticalOptions="Center" />
-                <Label Grid.Row="2" Grid.Column="3" Text="{Binding NextMax}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
-
-                <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#242424" HeightRequest="5"/>
-
-                <Label Grid.Row="0" Grid.Column="4" Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" />
-                <Label Grid.Row="2" Grid.Column="4" Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" />
-            </Grid>
-
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-
-                <StackLayout Grid.Column="0" Grid.Row="0">
-                    <Label FontSize="Large" Text=" "/>
-                    <Label Text="{localization:Translate price}"/>
-                    <Label Text="{localization:Translate range}" VerticalOptions="Start"/>
-
+             Title="{localization:Translate title}">    
+    <StackLayout>
+        <ScrollView VerticalOptions="StartAndExpand">
+            <StackLayout>
+                <StackLayout Orientation="Horizontal" >
+                    <Image Source="forecast_price.png" HeightRequest="48" WidthRequest="48" Margin="16"/>
+                    <Label VerticalOptions="Center" FontSize="Large" Text="{localization:Translate next_month}"/>
                 </StackLayout>
-
-                <ScrollView Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
-                    <StackLayout Orientation="Horizontal" x:Name="ForecastStack"/>
-                </ScrollView>
-            </Grid>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
-                </StackLayout.GestureRecognizers>
-
-                <Label VerticalOptions="Center" Text="About price forecasting information" />
-                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+    
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+    
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label Text="{localization:Translate expected_price}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
+                        <Label Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
+                    </StackLayout>
+                    
+                    <StackLayout Grid.Column="0" Grid.Row="2">
+                        <Label Text="{localization:Translate expected_range}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange" />
+                        <Label Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange" />
+                    </StackLayout>
+    
+                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" LineBreakMode="NoWrap" />
+                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+                    <Label Grid.Row="2" Grid.Column="2" Text="{localization:Translate to}" VerticalOptions="Center" />
+                    <Label Grid.Row="2" Grid.Column="3" Text="{Binding NextMax}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+    
+                    <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#242424" HeightRequest="5"/>
+    
+                </Grid>
+    
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+    
+                    <StackLayout Grid.Column="0" Grid.Row="0">
+                        <Label FontSize="Large" Text=" "/>
+                        <Label Text="{localization:Translate price}"/>
+                        <Label Text="{localization:Translate range}" VerticalOptions="Start"/>
+    
+                    </StackLayout>
+    
+                    <ScrollView Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalScrollBarVisibility="Always">
+                        <StackLayout Orientation="Horizontal" x:Name="ForecastStack"/>
+                    </ScrollView>
+                </Grid>
             </StackLayout>
+        </ScrollView>
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End">
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+            </StackLayout.GestureRecognizers>
+
+            <Label VerticalOptions="Center" Text="About price forecasting information" />
+            <Image Source="advice.png" HeightRequest="32" WidthRequest="32"/>
         </StackLayout>
-    </ScrollView>
+    </StackLayout>
 </ContentPage>

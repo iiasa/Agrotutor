@@ -11,7 +11,7 @@
     Padding="16"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
-        <ScrollView>
+        <ScrollView VerticalScrollBarVisibility="Always" >
             <StackLayout Orientation="Vertical">
                 <Frame>
                     <StackLayout>
@@ -31,7 +31,7 @@
                         <Picker
                             Title="{localization:Translate select}"
                             ItemsSource="{Binding CropTypes}"
-                            SelectedIndex="{Binding PickerCropTypesSelectedIndex}" />
+                            SelectedIndex="{Binding PickerCropTypesSelectedIndex}"/>
                     </StackLayout>
                 </Frame>
                 <Frame>
@@ -78,7 +78,7 @@
                     <Label Text="{localization:Translate about}" VerticalOptions="Center" />
                     <Image
                         HeightRequest="32"
-                        Source="question.png"
+                        Source="advice.png"
                         WidthRequest="32" />
                 </StackLayout>
 

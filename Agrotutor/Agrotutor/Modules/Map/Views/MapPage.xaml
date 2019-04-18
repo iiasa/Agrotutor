@@ -103,7 +103,7 @@
                 Margin="13"
                 Padding="0"
                 BackgroundColor="Azure"
-                HeightRequest="38"
+                HeightRequest="48"
                 HorizontalOptions="CenterAndExpand"
                 IsVisible="{Binding CurrentMapTaskHintIsVisible}"
                 Opacity="0.75">
@@ -112,6 +112,8 @@
                         Margin="8"
                         HorizontalOptions="CenterAndExpand"
                         Text="{Binding CurrentMapTaskHint}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
                         VerticalOptions="Center" />
                 </StackLayout>
             </Frame>
@@ -175,17 +177,26 @@
             <ContentView IsVisible="{Binding PlotDetailIsVisible}" Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Image HeightRequest="20" Source="add.png" />
+                        <StackLayout Orientation="Horizontal" IsVisible="{Binding ShowPlotDetailInformation}">
+                            <Image HeightRequest="20" Source="agronomy.png" />
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="Large"
                                 HorizontalOptions="StartAndExpand"
                                 Text="{Binding SelectedPlot.Name}" />
+                       </StackLayout>
+                        
+                        <StackLayout Orientation="Horizontal" IsVisible="{Binding SelectedPlot.IsTemporaryPlot}">
+                            <Image HeightRequest="20" Source="advice.png" />
+                            <Label
+                                FontAttributes="Bold"
+                                FontSize="Large"
+                                HorizontalOptions="StartAndExpand"
+                                Text="{localization:Translate planner}" />
 
                         </StackLayout>
                         <views:Divider />
-                        <ScrollView>
+                        <ScrollView VerticalScrollBarVisibility="Always">
                             <StackLayout>
                                 <StackLayout IsVisible="{Binding ShowPlotDetailInformation}">
                                     <Frame Style="{StaticResource FrameStyle}">
@@ -237,7 +248,7 @@
 
                                     <views:IconWithText
                                         Command="{Binding ShowCalendarForSelectedPlot}"
-                                        IconSource="calendar.png"
+                                        IconSource="calendar_crop.png"
                                         IconText="{localization:Translate plot_detail_calendar}" />
 
                                     <views:Divider />
@@ -269,13 +280,9 @@
                                 <Button
                                     Command="{Binding DownloadAdditionalPlotData}"
                                     IsVisible="{Binding ShowAdditionalDataButton}"
-                                    Text="Download" />
+                                    Text="{localization:Translate planner_download}" />
 
                                 <StackLayout IsVisible="{Binding AdditionalDataLoaded}">
-                                    <Label
-                                        FontAttributes="Bold"
-                                        FontSize="Large"
-                                        Text="{localization:Translate plot_detail_additional_title}" />
 
                                     <views:ValueLine
                                         Command="{Binding NavigateToPotentialYield}"

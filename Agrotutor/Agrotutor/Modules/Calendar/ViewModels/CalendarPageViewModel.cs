@@ -64,7 +64,9 @@ namespace Agrotutor.Modules.Calendar.ViewModels
             set
             {
                 this.firstDay = value;
-                DateRangeText = value.ToString("Y");
+                var strings = value.ToString("Y").Split(' ');
+                strings[0] = strings[0].ToUpper();
+                DateRangeText = string.Join(" ", strings);
 
                 if (Events != null)
                 {
