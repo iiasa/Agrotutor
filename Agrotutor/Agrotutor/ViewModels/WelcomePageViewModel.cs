@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Microsoft.AppCenter.Crashes;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Essentials;
@@ -25,18 +27,28 @@ namespace Agrotutor.ViewModels
 
         private async Task PageAppearing()
         {
-            var permissionsToRequest = new List<Permission>();
-            var locationPermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-            if (locationPermissionStatus != PermissionStatus.Granted)
-                permissionsToRequest.Add(Permission.Location);
-            var cameraPermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
-            if (cameraPermissionStatus != PermissionStatus.Granted)
-                permissionsToRequest.Add(Permission.Camera);
-            var storagePermissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-            if (storagePermissionStatus != PermissionStatus.Granted)
-                permissionsToRequest.Add(Permission.Storage);
-            if (permissionsToRequest.Count>0)
-                await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
+            try
+            {
+                var permissionsToRequest = new List<Permission>();
+                var locationPermissionStatus =
+                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (locationPermissionStatus != PermissionStatus.Granted)
+                    permissionsToRequest.Add(Permission.Location);
+                var cameraPermissionStatus =
+                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                if (cameraPermissionStatus != PermissionStatus.Granted)
+                    permissionsToRequest.Add(Permission.Camera);
+                var storagePermissionStatus =
+                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (storagePermissionStatus != PermissionStatus.Granted)
+                    permissionsToRequest.Add(Permission.Storage);
+                if (permissionsToRequest.Count > 0)
+                    await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
         }
 
         public DelegateCommand NavigateToMainPageCommand => new DelegateCommand(

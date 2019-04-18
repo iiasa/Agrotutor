@@ -29,6 +29,7 @@ using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.Modules.Weather;
 using Agrotutor.Modules.Weather.Awhere.API;
 using Agrotutor.Modules.Weather.ViewModels;
+using Microsoft.AppCenter.Crashes;
 using Microsoft.Extensions.Localization;
 using Newtonsoft.Json;
 using Plugin.DownloadManager;
@@ -1749,22 +1750,29 @@ namespace Agrotutor.Modules.Map.ViewModels
             if (!IsInitDone)
             {
                 RemoveTempPin();
-                //var tasks = new List<Task>();
-                var permissionsToRequest = new List<Permission>();
-                var locationPermissionStatus =
-                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
-                if (locationPermissionStatus != PermissionStatus.Granted)
-                    permissionsToRequest.Add(Permission.Location);
-                var cameraPermissionStatus =
-                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
-                if (cameraPermissionStatus != PermissionStatus.Granted)
-                    permissionsToRequest.Add(Permission.Camera);
-                var storagePermissionStatus =
-                    await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                if (storagePermissionStatus != PermissionStatus.Granted)
-                    permissionsToRequest.Add(Permission.Storage);
-                if (permissionsToRequest.Count > 0)
-                    await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
+
+                try
+                {
+                    var permissionsToRequest = new List<Permission>();
+                    var locationPermissionStatus =
+                        await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                    if (locationPermissionStatus != PermissionStatus.Granted)
+                        permissionsToRequest.Add(Permission.Location);
+                    var cameraPermissionStatus =
+                        await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                    if (cameraPermissionStatus != PermissionStatus.Granted)
+                        permissionsToRequest.Add(Permission.Camera);
+                    var storagePermissionStatus =
+                        await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                    if (storagePermissionStatus != PermissionStatus.Granted)
+                        permissionsToRequest.Add(Permission.Storage);
+                    if (permissionsToRequest.Count > 0)
+                        await CrossPermissions.Current.RequestPermissionsAsync(permissionsToRequest.ToArray());
+                }
+                catch (Exception e)
+                {
+                    Crashes.TrackError(e);
+                }
 
                 //tasks.Add(EnableUserLocation());
                 await EnableUserLocation();

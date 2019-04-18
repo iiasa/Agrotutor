@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.Core
+﻿using System;
+using Microsoft.AppCenter.Crashes;
+
+namespace Agrotutor.Core
 {
     using System.Threading.Tasks;
     using Acr.UserDialogs;
@@ -26,10 +29,17 @@
                     await UserDialogs.Instance.AlertAsync(requestText, requestTitle, confirmText);
                 }
 
-                var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
+                try
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(Permission.Location);
 
-                if (results.ContainsKey(Permission.Location))
-                    permissionStatus = results[Permission.Location];
+                    if (results.ContainsKey(Permission.Location))
+                        permissionStatus = results[Permission.Location];
+                }
+                catch (Exception e)
+                {
+                    Crashes.TrackError(e);
+                }
             }
 
             if (permissionStatus == PermissionStatus.Granted)
@@ -46,8 +56,15 @@
         }
         private static async Task<PermissionStatus> CheckPermissionAsync(Permission permission)
         {
-            var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
-            return permissionStatus;
+            try
+            {
+                var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
+                return permissionStatus;
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
         }
     }
 }
