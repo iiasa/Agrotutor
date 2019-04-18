@@ -103,7 +103,7 @@
                 Margin="13"
                 Padding="0"
                 BackgroundColor="Azure"
-                HeightRequest="38"
+                HeightRequest="48"
                 HorizontalOptions="CenterAndExpand"
                 IsVisible="{Binding CurrentMapTaskHintIsVisible}"
                 Opacity="0.75">
@@ -112,6 +112,8 @@
                         Margin="8"
                         HorizontalOptions="CenterAndExpand"
                         Text="{Binding CurrentMapTaskHint}"
+                        HorizontalTextAlignment="Center"
+                        VerticalTextAlignment="Center"
                         VerticalOptions="Center" />
                 </StackLayout>
             </Frame>

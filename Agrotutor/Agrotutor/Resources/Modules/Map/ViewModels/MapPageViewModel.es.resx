@@ -268,4 +268,61 @@ Esta característica actualmente solo está disponible para Guanajuato.</value>
   <data name="yield_data_not_available" xml:space="preserve">
     <value>Los datos de rendimiento no están disponibles.</value>
   </data>
+  <data name="alfalfa" xml:space="preserve">
+    <value>Alfalfa</value>
+  </data>
+  <data name="amaranth" xml:space="preserve">
+    <value>Amaranto</value>
+  </data>
+  <data name="barley" xml:space="preserve">
+    <value>Cebada</value>
+  </data>
+  <data name="bean" xml:space="preserve">
+    <value>Frijol</value>
+  </data>
+  <data name="canola" xml:space="preserve">
+    <value>Canola</value>
+  </data>
+  <data name="cartamo" xml:space="preserve">
+    <value>Cartamo</value>
+  </data>
+  <data name="chickpea" xml:space="preserve">
+    <value>Garbanzo</value>
+  </data>
+  <data name="havabean" xml:space="preserve">
+    <value>Haba</value>
+  </data>
+  <data name="maize" xml:space="preserve">
+    <value>Maíz</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>Ninguno</value>
+  </data>
+  <data name="oats" xml:space="preserve">
+    <value>Avena</value>
+  </data>
+  <data name="other" xml:space="preserve">
+    <value>Otro</value>
+  </data>
+  <data name="rice" xml:space="preserve">
+    <value>Arroz</value>
+  </data>
+  <data name="sesame" xml:space="preserve">
+    <value>Ajonjolí</value>
+  </data>
+  <data name="sorghum" xml:space="preserve">
+    <value>Sorgo</value>
+  </data>
+  <data name="soy" xml:space="preserve">
+    <value>Soya</value>
+  </data>
+  <data name="triticale" xml:space="preserve">
+    <value>Triticale</value>
+  </data>
+  <data name="wheat" xml:space="preserve">
+    <value>Trigo</value>
+  </data>
+  <data name="zucchini" xml:space="preserve">
+    <value>Calabacín</value>
+  </data>
 </root>

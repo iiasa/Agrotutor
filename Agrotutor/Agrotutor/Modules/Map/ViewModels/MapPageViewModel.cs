@@ -168,25 +168,25 @@ namespace Agrotutor.Modules.Map.ViewModels
             Title = "Map";
             CropTypes = new List<string>
             {
-                StringLocalizer.GetString("Maíz"),
-                StringLocalizer.GetString("Cebada"),
-                StringLocalizer.GetString("Frijol"),
-                StringLocalizer.GetString("Trigo"),
-                StringLocalizer.GetString("Triticale"),
-                StringLocalizer.GetString("Sorgo"),
-                StringLocalizer.GetString("Alfalfa"),
-                StringLocalizer.GetString("Avena"),
-                StringLocalizer.GetString("Ajonjolí"),
-                StringLocalizer.GetString("Amaranto"),
-                StringLocalizer.GetString("Arroz"),
-                StringLocalizer.GetString("Canola"),
-                StringLocalizer.GetString("Cartamo"),
-                StringLocalizer.GetString("Calabacín"),
-                StringLocalizer.GetString("Garbanzo"),
-                StringLocalizer.GetString("Haba"),
-                StringLocalizer.GetString("Soya"),
-                StringLocalizer.GetString("Ninguno"),
-                StringLocalizer.GetString("Otro")
+                StringLocalizer.GetString("maize"),
+                StringLocalizer.GetString("barley"),
+                StringLocalizer.GetString("bean"),
+                StringLocalizer.GetString("wheat"),
+                StringLocalizer.GetString("triticale"),
+                StringLocalizer.GetString("sorghum"),
+                StringLocalizer.GetString("alfalfa"),
+                StringLocalizer.GetString("oats"),
+                StringLocalizer.GetString("sesame"),
+                StringLocalizer.GetString("amaranth"),
+                StringLocalizer.GetString("rice"),
+                StringLocalizer.GetString("canola"),
+                StringLocalizer.GetString("cartamo"),
+                StringLocalizer.GetString("zucchini"),
+                StringLocalizer.GetString("chickpea"),
+                StringLocalizer.GetString("havabean"),
+                StringLocalizer.GetString("soy"),
+                StringLocalizer.GetString("none"),
+                StringLocalizer.GetString("other")
             };
             _cameraService = cameraService;
             DocumentViewer = documentViewer;
@@ -1524,7 +1524,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             var nitrogenNeeded = (SelectedPlot.CropType==CropType.Corn) ? SelectedPlot.CiatData?.CiatDataIrrigated?.TotalNitrogen : null;
             var priceForecast = (SelectedPlot.CropType==CropType.Corn) ? await PriceForecast.FromEmbeddedResource() : null;
             var priceForecastNextMonth = (SelectedPlot.CropType==CropType.Corn) ? priceForecast.First().Price : null;
-            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : priceForecastNextMonth.ToString();
+            CurrentPlotPriceForecast = priceForecastNextMonth == null ? "-" : Math.Round((decimal)priceForecastNextMonth).ToString();
 
             CurrentPlotCost = cost == null ? "-" : Math.Round((decimal) cost).ToString(CultureInfo.InvariantCulture);
             CurrentPlotYield = yield == null ? "-" : Math.Round((decimal) yield).ToString(CultureInfo.InvariantCulture);
@@ -1532,8 +1532,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 profit == null ? "-" : Math.Round((decimal) profit).ToString(CultureInfo.InvariantCulture);
             CurrentPlotIncome =
                 income == null ? "-" : Math.Round((decimal) income).ToString(CultureInfo.InvariantCulture);
-            CurrentPlotPotentialYield = potentialYield == null ? "-" : potentialYield.ToString();
-            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : nitrogenNeeded.ToString();
+            CurrentPlotPotentialYield = potentialYield == null ? "-" : Math.Round((decimal)potentialYield).ToString();
+            CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : Math.Round((decimal)nitrogenNeeded).ToString();
             CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
             CurrentPlotWeatherIcon = weatherIcon ?? "";
 

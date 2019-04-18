@@ -78,7 +78,7 @@
                     <Label Text="{localization:Translate about}" VerticalOptions="Center" />
                     <Image
                         HeightRequest="32"
-                        Source="question.png"
+                        Source="advice.png"
                         WidthRequest="32" />
                 </StackLayout>
 

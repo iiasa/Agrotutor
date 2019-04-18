@@ -277,4 +277,61 @@ This feature is currently only available for Guanajuato.</value>
   <data name="yield_data_not_available" xml:space="preserve">
     <value>Yield data is not available.</value>
   </data>
+  <data name="alfalfa" xml:space="preserve">
+    <value>Alfalfa</value>
+  </data>
+  <data name="amaranth" xml:space="preserve">
+    <value>Amaranth</value>
+  </data>
+  <data name="barley" xml:space="preserve">
+    <value>Barley</value>
+  </data>
+  <data name="bean" xml:space="preserve">
+    <value>Bean</value>
+  </data>
+  <data name="canola" xml:space="preserve">
+    <value>Canola</value>
+  </data>
+  <data name="cartamo" xml:space="preserve">
+    <value>Cartamo</value>
+  </data>
+  <data name="chickpea" xml:space="preserve">
+    <value>Chickpea</value>
+  </data>
+  <data name="havabean" xml:space="preserve">
+    <value>Havabean</value>
+  </data>
+  <data name="maize" xml:space="preserve">
+    <value>Maize</value>
+  </data>
+  <data name="none" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="oats" xml:space="preserve">
+    <value>Oats</value>
+  </data>
+  <data name="other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="rice" xml:space="preserve">
+    <value>Rice</value>
+  </data>
+  <data name="sesame" xml:space="preserve">
+    <value>Sesame</value>
+  </data>
+  <data name="sorghum" xml:space="preserve">
+    <value>Sorghum</value>
+  </data>
+  <data name="soy" xml:space="preserve">
+    <value>Soy</value>
+  </data>
+  <data name="triticale" xml:space="preserve">
+    <value>Triticale</value>
+  </data>
+  <data name="wheat" xml:space="preserve">
+    <value>Wheat</value>
+  </data>
+  <data name="zucchini" xml:space="preserve">
+    <value>Zucchini</value>
+  </data>
 </root>

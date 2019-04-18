@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Agrotutor.Core;
@@ -70,9 +70,9 @@ namespace Agrotutor.Modules.PriceForecasting.ViewModels
         private void SetNextMonth(PriceForecast forecast)
         {
             if (forecast == null) return;
-            NextExpected = Math.Round((decimal)forecast.Price,0);
-            NextMin = Math.Round((decimal)forecast.MinPrice, 0);
-            NextMax = Math.Round((decimal)forecast.MaxPrice, 0);
+            NextExpected = forecast.RoundedPrice;
+            NextMin = forecast.RoundedMinPrice;
+            NextMax = forecast.RoundedMaxPrice;
         }
 
         public PriceForecastPageViewModel(INavigationService navigationService, IStringLocalizer<PriceForecastPageViewModel> stringLocalizer) 

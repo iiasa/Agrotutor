@@ -172,7 +172,8 @@
     <value>Machinery points</value>
   </data>
   <data name="nitrogen" xml:space="preserve">
-    <value>Nitrogen needed (kg N/ha):</value>
+    <value>Nitrogen needed
+(kg N/ha):</value>
   </data>
   <data name="offline_basemap" xml:space="preserve">
     <value>Offline basemap</value>
@@ -184,10 +185,12 @@
     <value>Plot delineations</value>
   </data>
   <data name="potential_yield" xml:space="preserve">
-    <value>Potential yield (avg Ton/ha):</value>
+    <value>Potential yield
+(avg Ton/ha):</value>
   </data>
   <data name="price_forecast" xml:space="preserve">
-    <value>Next month trading price (avg MXP/kg):</value>
+    <value>Next month trading price
+(avg MXP/kg):</value>
   </data>
   <data name="profit" xml:space="preserve">
     <value>Profit (MXP/ha):</value>
