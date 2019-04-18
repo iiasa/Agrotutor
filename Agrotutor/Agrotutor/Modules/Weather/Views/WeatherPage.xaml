@@ -73,7 +73,7 @@
 
                 <views:IconWithText 
                     IconText="{localization:Translate data_loading}"
-                    IconSource="history_inactive.png"
+                    IconSource="forecast_historical_weather.png"
                     IsVisible="{Binding HistoryIsLoading}" 
                     Margin="16" />
 

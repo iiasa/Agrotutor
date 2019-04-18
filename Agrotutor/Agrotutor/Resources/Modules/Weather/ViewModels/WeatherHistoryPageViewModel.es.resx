@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -162,7 +162,7 @@
   <data name="wdh" xml:space="preserve">
     <value>Max viento (día)</value>
   </data>
-  <data name="wdm" xml:space="preserve">
+  <data name="wmh" xml:space="preserve">
     <value>Max viento (mañana)</value>
   </data>
   <data name="tall_evap" xml:space="preserve">

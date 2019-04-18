@@ -1830,12 +1830,13 @@ namespace Agrotutor.Modules.Map.ViewModels
             {
                 foreach (var machineryPoint in MachineryPoints.Features)
                 {
+                    if (machineryPoint == null || machineryPoint.Geometry == null) continue;
                     var pin = new Pin
                     {
                         Position = new MapsPosition(
                             machineryPoint.Geometry.Coordinates[1], machineryPoint.Geometry.Coordinates[0]),
                         Tag = machineryPoint,
-                        Label = machineryPoint.Properties.Localidad,
+                        Label = machineryPoint.Properties?.Localidad,
                         Icon = BitmapDescriptorFactory.DefaultMarker(
                             (Color) PrismApplicationBase.Current.Resources["MachineryPoints"])
                     };

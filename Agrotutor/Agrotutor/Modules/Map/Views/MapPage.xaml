@@ -178,7 +178,7 @@
                 <Frame Style="{StaticResource MainMapPopupBackground}">
                     <StackLayout>
                         <StackLayout Orientation="Horizontal" IsVisible="{Binding ShowPlotDetailInformation}">
-                            <Image HeightRequest="20" Source="add.png" />
+                            <Image HeightRequest="20" Source="agronomy.png" />
                             <Label
                                 FontAttributes="Bold"
                                 FontSize="Large"

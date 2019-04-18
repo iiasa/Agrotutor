@@ -140,6 +140,18 @@
                         <Label Text="https://pixelbuddha.net/" />
                     </StackLayout>
                 </StackLayout>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" WidthRequest="350">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TapLinkCommand}" CommandParameter="https://www.flaticon.com/authors/phatplus" />
+                    </StackLayout.GestureRecognizers>
+
+                    <Image Source="ic_weblink.png" Margin="16" />
+                    <StackLayout Orientation="Vertical" Margin="16">
+                        <Label Text="Phatplus" />
+                        <Label Text="https://www.flaticon.com/authors/phatplus" />
+                    </StackLayout>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

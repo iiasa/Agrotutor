@@ -323,6 +323,7 @@
     <ITunesArtwork Include="iTunesArtwork%402x" />
     <ITunesArtwork Include="iTunesArtwork" />
     <BundleResource Include="Resources\video_icon.png" />
+    <BundleResource Include="Resources\agronomy.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1202.png">

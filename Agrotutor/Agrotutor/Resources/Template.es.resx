@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -238,7 +238,7 @@
     <value>Responsable técnico</value>
   </data>
   <data name="investigation_platform_title" xml:space="preserve">
-    <value>Plataforma de investigación</value>
+    <value>Plat. de investigación</value>
   </data>
   <data name="investigation_platform_year" xml:space="preserve">
     <value>Año de inicio</value>
