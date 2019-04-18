@@ -139,7 +139,31 @@
     <value>Evapotranspiración diaria de cultivos cortos</value>
   </data>
   <data name="sr" xml:space="preserve">
-    <value>Radiación solar diaria</value>
+    <value>Radiación solar</value>
+  </data>
+  <data name="precip" xml:space="preserve">
+    <value>Precipitación</value>
+  </data>
+  <data name="rhh" xml:space="preserve">
+    <value>Max humedad (%)</value>
+  </data>
+  <data name="rhl" xml:space="preserve">
+    <value>Min humedad (%)</value>
+  </data>
+  <data name="tl" xml:space="preserve">
+    <value>Min temperatura</value>
+  </data>
+  <data name="th" xml:space="preserve">
+    <value>Max temperatura</value>
+  </data>
+  <data name="wa" xml:space="preserve">
+    <value>Viento medio</value>
+  </data>
+  <data name="wdh" xml:space="preserve">
+    <value>Max viento (día)</value>
+  </data>
+  <data name="wdm" xml:space="preserve">
+    <value>Max viento (mañana)</value>
   </data>
   <data name="tall_evap" xml:space="preserve">
     <value>Evapotranspiración diaria de cultivos altos</value>

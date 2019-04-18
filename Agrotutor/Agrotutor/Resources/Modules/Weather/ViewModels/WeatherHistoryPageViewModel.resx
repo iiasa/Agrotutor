@@ -139,7 +139,31 @@
     <value>Evapotranspiration short crop</value>
   </data>
   <data name="sr" xml:space="preserve">
-    <value>Daily solar radiation</value>
+    <value>Solar radiation</value>
+  </data>
+  <data name="precip" xml:space="preserve">
+    <value>Precipitation</value>
+  </data>
+  <data name="rhh" xml:space="preserve">
+    <value>Max humidity (%)</value>
+  </data>
+  <data name="rhl" xml:space="preserve">
+    <value>Min humidity (%)</value>
+  </data>
+  <data name="tl" xml:space="preserve">
+    <value>Min temperature</value>
+  </data>
+  <data name="th" xml:space="preserve">
+    <value>Max temperature</value>
+  </data>
+  <data name="wa" xml:space="preserve">
+    <value>Average wind</value>
+  </data>
+  <data name="wdh" xml:space="preserve">
+    <value>Max wind (day)</value>
+  </data>
+  <data name="wdm" xml:space="preserve">
+    <value>Max wind (morning)</value>
   </data>
   <data name="tall_evap" xml:space="preserve">
     <value>Evapotranspiration tall crop</value>
