@@ -61,7 +61,7 @@
     
                     </StackLayout>
     
-                    <ScrollView Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+                    <ScrollView Grid.Column="1" Grid.Row="0" Orientation="Horizontal" HorizontalScrollBarVisibility="Always">
                         <StackLayout Orientation="Horizontal" x:Name="ForecastStack"/>
                     </ScrollView>
                 </Grid>

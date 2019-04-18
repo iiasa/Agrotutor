@@ -194,7 +194,7 @@
 
                         </StackLayout>
                         <views:Divider />
-                        <ScrollView>
+                        <ScrollView VerticalScrollBarVisibility="Always">
                             <StackLayout>
                                 <StackLayout IsVisible="{Binding ShowPlotDetailInformation}">
                                     <Frame Style="{StaticResource FrameStyle}">
