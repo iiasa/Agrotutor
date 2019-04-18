@@ -796,9 +796,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                         SelectedPlot
                     }
                 };
-                if (SelectedPlot?.WeatherForecast != null)
+                if (SelectedPlot?.WeatherForecast != null && SelectedPlot?.WeatherForecast.Count != 0)
                     param.Add(WeatherPageViewModel.ForecastParameterName, SelectedPlot.WeatherForecast);
-                if (SelectedPlot?.WeatherHistory != null)
+                if (SelectedPlot?.WeatherHistory != null && SelectedPlot?.WeatherHistory.Count != 0)
                     param.Add(WeatherPageViewModel.HistoryParameterName, SelectedPlot.WeatherHistory);
 
                 NavigationService.NavigateAsync("WeatherPage", param);

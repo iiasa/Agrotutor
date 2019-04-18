@@ -259,6 +259,16 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 Location = location;
             }
 
+            if (parameters.ContainsKey(PlotParameterName))
+            {
+                parameters.TryGetValue<Core.Entities.Plot>(PlotParameterName, out var plot);
+                if (plot != null) 
+                { 
+                    Plot = plot;
+                    Location = plot.Position;
+                }
+            }
+
             if (parameters.ContainsKey(HistoryParameterName))
             {
                 parameters.TryGetValue<List<WeatherHistory>>(HistoryParameterName, out var history);
@@ -266,12 +276,6 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 else Task.Run(() => LoadData());
             }
             else Task.Run(() => LoadData());
-
-            if (parameters.ContainsKey(PlotParameterName)) 
-            {
-                parameters.TryGetValue<Core.Entities.Plot>(PlotParameterName, out var plot);
-                if (plot != null) Plot = plot;
-            }
 
             if (parameters.ContainsKey(ForecastParameterName))
             {
@@ -292,8 +296,10 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 Password = Constants.AWhereWeatherAPIPassword
             };
 
-            var start = ((Activity) Plot?.Activities?.Where(x=>(x.ActivityType == ActivityType.Sowing))?.SingleOrDefault(null))?.Date;
-            if (start == null) start = DateTime.Now.AddMonths(-3);
+            DateTime start = DateTime.Now.AddMonths(-3);
+            List<Activity> activities = (Plot?.Activities == null) ? new List<Activity>() : Plot.Activities;
+            Activity startActivity = activities.Where(x => (x.ActivityType == ActivityType.Initialization))?.SingleOrDefault();
+            if (startActivity != null) start = startActivity.Date;
             var end = DateTime.Now.AddYears(((DateTime)start).Year - DateTime.Now.Year).AddDays(-1);
             var history = await WeatherAPI.GetObservationsAsync(Location.Latitude, Location.Longitude, creds, start, end);
             WeatherHistory = Converter.GetHistoryFromApiResponse(history);
