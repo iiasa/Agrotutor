@@ -56,15 +56,16 @@ namespace Agrotutor.Core
         }
         private static async Task<PermissionStatus> CheckPermissionAsync(Permission permission)
         {
+            PermissionStatus permissionStatus = PermissionStatus.Denied;
             try
             {
-                var permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
-                return permissionStatus;
+                permissionStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(permission);
             }
             catch (Exception e)
             {
                 Crashes.TrackError(e);
             }
+            return permissionStatus;
         }
     }
 }
