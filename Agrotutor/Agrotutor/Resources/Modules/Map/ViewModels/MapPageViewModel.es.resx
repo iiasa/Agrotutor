@@ -325,4 +325,13 @@ Esta característica actualmente solo está disponible para Guanajuato.</value>
   <data name="zucchini" xml:space="preserve">
     <value>Calabacín</value>
   </data>
+  <data name="wrong_email_message" xml:space="preserve">
+    <value>La dirección de correo electrónico que intenta contactar parece estar equivocada. Puede intentar enviar un mensaje con su software de correo electrónico a:</value>
+  </data>
+  <data name="wrong_email_ok" xml:space="preserve">
+    <value>Aceptar</value>
+  </data>
+  <data name="wrong_email_title" xml:space="preserve">
+    <value>Dirección de correo electrónico inválida</value>
+  </data>
 </root>

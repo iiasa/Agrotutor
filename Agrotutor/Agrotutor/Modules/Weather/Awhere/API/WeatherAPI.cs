@@ -33,6 +33,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static async Task<ObservationsResponse> GetObservationsAsync(double latitude, double longitude, UserCredentials credentials, DateTime? startDate, DateTime? endDate)
         {
             var token = await GetToken(credentials);
+            if (startDate > endDate) startDate = endDate;
             var start = startDate?.ToString("yyyy-MM-dd");
             var end = endDate?.ToString("yyyy-MM-dd");
             var dates = (start != null && end != null) ? $"{start},{end}" : "";

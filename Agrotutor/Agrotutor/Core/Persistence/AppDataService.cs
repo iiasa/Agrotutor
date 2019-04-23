@@ -1,4 +1,5 @@
 using System;
+using Microsoft.AppCenter.Crashes;
 
 namespace Agrotutor.Core.Persistence
 {
@@ -51,8 +52,18 @@ namespace Agrotutor.Core.Persistence
         }
         public async Task<bool> RemovePlotActivityAsync(Activity activity)
         {
-            Context.Activities.Remove(activity);
-           return await Context.SaveChangesAsync()>0;
+            bool result = false;
+            try
+            {
+                Context.Activities.Remove(activity);
+                result = await Context.SaveChangesAsync() > 0;
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
+
+            return result;
         }
 
         public async Task RemovePlotAsync(Plot plot)
