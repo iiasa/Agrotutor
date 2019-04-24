@@ -65,35 +65,137 @@ namespace Agrotutor.Modules.Weather
 
         public string GetWeatherIcon()
         {
-            if (RainCondition == RainCondition.ModerateRain || RainCondition == RainCondition.HeavyRain) {
-                return "rain.png";
-            }
-            switch (CloudCondition)
-            {
+            switch (CloudCondition) {
                 case CloudCondition.SunnyDay:
-                case CloudCondition.ClearNight:
-                case CloudCondition.Clear:
                     return "clear.png";
                 case CloudCondition.MostlySunnyDay:
-                case CloudCondition.MostlyClearNight:
-                case CloudCondition.MostlyClear:
-                    return "partly_cloudy.png";
+                    return RainCondition == RainCondition.NoRain ? "clear.png" : "partly_cloudy.png";
                 case CloudCondition.PartlySunnyDay:
-                case CloudCondition.PartlyCloudyNight:
-                case CloudCondition.PartlyCloudy:
-                    return "mostly_cloudy.png";
-
+                    return RainCondition == RainCondition.NoRain ? "partly_cloudy.png" : "storm.png";
                 case CloudCondition.MostlyCloudyDay:
-                case CloudCondition.MostlyCloudyNight:
-                case CloudCondition.MostlyCloudy:
-                    return "cloudy.png";
-
+                    return GetMostlyCloudyDayIcon();
                 case CloudCondition.CloudyDay:
+                    return GetCloudyIcon();
+                case CloudCondition.ClearNight:
+                    return "night.png";
+                case CloudCondition.MostlyClearNight:
+                    return RainCondition == RainCondition.NoRain ? "night.png" : "cloudy_night.png";
+                case CloudCondition.PartlyCloudyNight:
+                    return RainCondition == RainCondition.NoRain ? "cloudy_night.png" : "storm_night.png";
+                case CloudCondition.MostlyCloudyNight:
+                    return GetMostlyCloudyNightIcon();
                 case CloudCondition.CloudyNight:
+                    return GetCloudyIcon();
+                case CloudCondition.Clear:
+                    return GetClearIcon();
+                case CloudCondition.MostlyClear:
+                    return GetMostlyClearIcon();
+                case CloudCondition.PartlyCloudy:
+                    return GetPartlyCloudyIcon();
+                case CloudCondition.MostlyCloudy:
+                    return GetMostlyCloudyIcon();
                 case CloudCondition.Cloudy:
+                    return GetCloudyIcon();
+                default:
+                    return "clear.png";
+            }
+        }
+
+        private string GetCloudyIcon()
+        {
+            switch (RainCondition)
+            {
+                case RainCondition.NoRain:
+                    return "cloudy.png";
+                case RainCondition.LightRain:
+                    return "rain.png";
+                case RainCondition.ModerateRain:
+                    return "heavy_drizzle.png";
+                case RainCondition.HeavyRain:
+                    return "thunderstorms.png";
+                default:
                     return "cloudy.png";
             }
-            return "clear.png";
+        }
+
+        private string GetMostlyCloudyIcon()
+        {
+            switch (RainCondition)
+            {
+                case RainCondition.NoRain:
+                    return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+                case RainCondition.LightRain:
+                    return Types.Util.IsNight(DateTime) ? "storm.png" : "storm_night.png";  
+                case RainCondition.ModerateRain:
+                    return "rain.png";
+                case RainCondition.HeavyRain:
+                    return "heavy_drizzle.png";
+                default:
+                    return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+            }
+        }
+
+        private string GetPartlyCloudyIcon()
+        {
+            if (RainCondition == RainCondition.NoRain)
+            {
+                return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+            }
+            else
+            {
+                return Types.Util.IsNight(DateTime) ? "storm.png" : "storm_night.png";  
+            }
+        }
+
+        private string GetMostlyClearIcon()
+        {
+            if (RainCondition == RainCondition.NoRain)
+            {
+                return Types.Util.IsNight(DateTime) ? "night.png" : "clear.png";   
+            }
+            else
+            {
+                return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+            }
+        }
+
+        private string GetClearIcon()
+        {
+            return Types.Util.IsNight(DateTime) ? "night.png" : "clear.png";
+        }
+
+        private string GetMostlyCloudyNightIcon()
+        {
+            switch (RainCondition)
+            {
+                case RainCondition.NoRain:
+                    return "cloudy_night.png";
+                case RainCondition.LightRain:
+                    return "storm_night.png";
+                case RainCondition.ModerateRain:
+                    return "rain_showers.png";
+                case RainCondition.HeavyRain:
+                    return "heavy_drizzle.png";
+                default:
+                    return "cloudy_night.png";
+            }
+        }
+
+        private string GetMostlyCloudyDayIcon()
+        {
+            switch (RainCondition)
+            {
+                case RainCondition.NoRain:
+                    return "partly_cloudy.png";
+                case RainCondition.LightRain:
+                    return "storm.png";
+                case RainCondition.ModerateRain:
+                    return "rain.png";
+                case RainCondition.HeavyRain:
+                    return "heavy_drizzle.png";
+                default:
+                    return "partly_cloudy.png";
+            }
         }
 
         internal double CalculateGdd(int? baseTemperature)

@@ -697,7 +697,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon87x871.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\cloudy_night.png" />
     <Content Include="Resources\html\empty.html" />
+    <Content Include="Resources\storm.png" />
+    <Content Include="Resources\storm_night.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\filelist.xml" />
