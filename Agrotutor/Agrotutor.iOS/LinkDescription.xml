@@ -19,6 +19,7 @@
       <method name="ToUpper"></method>
       <method name="ToLower"></method>
     </type>
+    <type fullname="System.DateTime" preserve="methods" />
   </assembly>
   <assembly fullname="System.Core">
     <type fullname="System.Linq.Expressions.Expression`1"></type>

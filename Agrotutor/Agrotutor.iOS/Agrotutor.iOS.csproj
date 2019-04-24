@@ -400,7 +400,7 @@
       <Version>7.0.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite">
-      <Version>2.2.3</Version>
+      <Version>2.2.4</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization">
       <Version>2.2.0</Version>

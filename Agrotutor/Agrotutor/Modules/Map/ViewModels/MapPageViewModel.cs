@@ -1601,7 +1601,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
             {
                 var updatedPlot = false;
-                if (plot.BemData == null)
+                if (plot.BemData == null || plot.BemData.NeedsUpdate())
                 {
                     plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
                         plot.Position.Longitude, plot.CropType);

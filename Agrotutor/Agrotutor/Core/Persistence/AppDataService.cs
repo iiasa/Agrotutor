@@ -8,6 +8,8 @@ namespace Agrotutor.Core.Persistence
 
     using Entities;
     using System.Linq;
+    using Acr.UserDialogs;
+    using Microsoft.AppCenter.Crashes;
 
     public class AppDataService : IAppDataService
     {
@@ -40,7 +42,7 @@ namespace Agrotutor.Core.Persistence
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                Crashes.TrackError(e);
             }
         }
 
@@ -68,8 +70,9 @@ namespace Agrotutor.Core.Persistence
 
         public async Task<IEnumerable<Plot>> GetAllPlotsAsync()
         {
-
-            var plots = await Context.Plots.Include(x => x.Activities).Include(x => x.Delineation)
+            List<Plot> plots = null;
+            try{
+                plots = await Context.Plots.Include(x => x.Activities).Include(x => x.Delineation)
                             .Include(x => x.MediaItems).Include(x => x.PriceForecast)
                             .Include(x => x.BemData).ThenInclude(x => x.Cost)
                             .Include(x => x.BemData).ThenInclude(x => x.Income)
@@ -78,7 +81,11 @@ namespace Agrotutor.Core.Persistence
                             .Include(x => x.BenchmarkingInformation).Include(x => x.CiatData)
                             .Include(x => x.WeatherForecast).Include(x => x.WeatherHistory).ToListAsync() ??
                         new List<Plot>();
-
+            } catch (Exception e)
+            {
+                Crashes.TrackError(e);
+                plots = new List<Plot>();
+            }
             return plots;
         }
     }

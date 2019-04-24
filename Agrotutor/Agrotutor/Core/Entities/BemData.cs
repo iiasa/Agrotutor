@@ -2,6 +2,7 @@
 
 namespace Agrotutor.Core.Entities
 {
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -90,6 +91,11 @@ namespace Agrotutor.Core.Entities
 
                 return average;
             }
+        }
+
+        public bool NeedsUpdate()
+        {
+            return Cost == null && Income == null && Profit == null && Yield == null;
         }
     }
 }

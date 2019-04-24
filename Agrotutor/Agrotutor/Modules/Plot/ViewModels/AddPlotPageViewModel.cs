@@ -135,6 +135,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                             }
                         };
 
+                        Plot.BemData = new BemData();
                         Plot.PlotColor = Color.FromArgb(randomColor.Next(256), randomColor.Next(256),
                             randomColor.Next(256));
                         Plot.ArgbPlotColor = Plot.PlotColor.Value.ToArgb();
