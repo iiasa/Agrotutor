@@ -820,8 +820,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                     else
                     {
                         await MaterialDialog.Instance.AlertAsync(
-                            StringLocalizer.GetString("weather_location_missing_title"),
                             StringLocalizer.GetString("weather_location_missing_message"),
+                            StringLocalizer.GetString("weather_location_missing_title"),
                             StringLocalizer.GetString("weather_location_missing_ok"));
                         return;
                     }
@@ -832,8 +832,22 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand StartPlanner => new DelegateCommand(() => { PlannerUIIsVisible = true; });
 
         public DelegateCommand<string> WriteEmail =>
-            new DelegateCommand<string>(
-                emailAddress => { Device.OpenUri(new Uri($"mailto:{emailAddress}")); });
+            new DelegateCommand<string>(async
+                emailAddress =>
+                {
+                    try
+                    {
+                        Device.OpenUri(new Uri($"mailto:{emailAddress}"));
+                    }
+                    catch (Exception e)
+                    {
+                        var message = StringLocalizer.GetString("wrong_email_message") + emailAddress;
+                        await MaterialDialog.Instance.AlertAsync(
+                            message,
+                            StringLocalizer.GetString("wrong_email_title"),
+                            StringLocalizer.GetString("wrong_email_ok"));
+                    }
+                });
 
         public bool AddParcelIsVisible
         {

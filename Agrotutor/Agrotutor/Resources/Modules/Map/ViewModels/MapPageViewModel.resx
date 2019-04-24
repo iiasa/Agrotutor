@@ -334,4 +334,13 @@ This feature is currently only available for Guanajuato.</value>
   <data name="zucchini" xml:space="preserve">
     <value>Zucchini</value>
   </data>
+  <data name="wrong_email_message" xml:space="preserve">
+    <value>The email address you're trying to contact seems to be wrong. You can try to send a messsage with your email software to:</value>
+  </data>
+  <data name="wrong_email_ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="wrong_email_title" xml:space="preserve">
+    <value>Invalid email address</value>
+  </data>
 </root>
