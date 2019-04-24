@@ -63,11 +63,11 @@
             <Button
                 Command="{TemplateBinding Parent.BindingContext.DelineationCancel}"
                 Style="{StaticResource ButtonCancel}"
-                Text="{localization:Translate delineation_cancel}" />
+                Text="{localization:Translate delineation_cancel}" /><!--
             <Button
                 Command="{TemplateBinding Parent.BindingContext.DelineationUndo}"
                 Style="{StaticResource ButtonCancel}"
-                Text="{localization:Translate delineation_undo}" />
+                Text="{localization:Translate delineation_undo}" />-->
         </StackLayout>
     </ControlTemplate>
 
