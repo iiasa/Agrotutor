@@ -23,31 +23,31 @@
 	<key>CFBundleDisplayName</key>
 	<string>Agrotutor</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.7</string>
+	<string>1.0.8</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSCameraUsageDescription</key>
-	<string>AgroTutor needs access to the camera to take photos.</string>
+	<string>AgroTutor needs access to the camera for you to take photos and videos of your plot.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>AgroTutor needs access to photos.</string>
+	<string>AgroTutor needs access to photos so you can add photos to your plot.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>AgroTutor needs access to microphone.</string>
+	<string>AgroTutor needs access to microphone in case you choose to record a video on your plot.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>AgroTutor needs access to the photo gallery.</string>
+	<string>AgroTutor needs access to photos so you can add photos to your plot.</string>
 	<key>NSCalendarsUsageDescription</key>
-	<string>AgroTutor needs access to your device&apos;s calendar.</string>
+	<string>AgroTutor needs access to your device&apos;s calendar for showing you recommendations on fertilization.</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>AgroTutor needs to access your location.</string>
+	<string>AgroTutor needs to access your location for providing you with information at your current location.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>AgroTutor needs to access your location.</string>
+	<string>AgroTutor needs to access your location for providing you with information at your current location.</string>
 	<key>CFBundleName</key>
 	<string>AgroTutor</string>
 	<key>CFBundleIdentifier</key>
 	<string>at.ac.iiasa.agrotutor</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>AgroTutor needs to access your location.</string>
+	<string>AgroTutor needs to access your location for providing you with information at your current location.</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcons.appiconset</string>
 	<key>CFBundleShortVersionString</key>
