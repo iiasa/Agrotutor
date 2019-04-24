@@ -92,10 +92,5 @@ namespace Agrotutor.Core.Entities
                 return average;
             }
         }
-
-        public bool NeedsUpdate()
-        {
-            return Cost == null && Income == null && Profit == null && Yield == null;
-        }
     }
 }

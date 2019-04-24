@@ -122,18 +122,17 @@
                 <views:Divider />
                 <ScrollView>
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_hub}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Hub}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_manager}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Gerente}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_assistant}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Assistente}" />
-                        </StackLayout>
+                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_hub}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Hub}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_manager}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Gerente}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_assistant}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Assistente}"
+                               Margin="0,0,0,16" />
 
                         <views:Divider />
 
@@ -181,74 +180,73 @@
                 <views:Divider />
                 <ScrollView>
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_name}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.NomPlat}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_short}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Abrivicacion}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_hub}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Hub}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_year}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.AnioInst}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_state}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Estado}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_municipality}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Municipio}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_location}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Localidad}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_address}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Direccion}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_asnm}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Asnm}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_institute}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InstColab}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_campus}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Campus}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_inventory_responsible}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InvResp}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_technical_responsible}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TecResp}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_crop}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CulPrinc}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_agricultural_cycle}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CicloAgri}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_irrigation_pv}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumPv}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_oi}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumOi}" />
-                        </StackLayout>
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_name}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.NomPlat}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_short}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Abrivicacion}"
+                               Margin="0,0,0,16" />
+                    
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_hub}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Hub}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_year}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.AnioInst}" 
+                               Margin="0,0,0,16" />
+                
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_state}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Estado}"
+                               Margin="0,0,0,16" />
+                       
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_municipality}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Municipio}"
+                               Margin="0,0,0,16" />
+               
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_location}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Localidad}"
+                               Margin="0,0,0,16" />
+               
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_address}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Direccion}"
+                               Margin="0,0,0,16" />
+         
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_asnm}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Asnm}"
+                               Margin="0,0,0,16" />
+   
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_institute}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InstColab}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_campus}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.Campus}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_inventory_responsible}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.InvResp}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_technical_responsible}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.TecResp}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_crop}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CulPrinc}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_agricultural_cycle}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.CicloAgri}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_irrigation_pv}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumPv}"
+                               Margin="0,0,0,16" />
+
+                        <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_oi}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.RegHumOi}"
+                               Margin="0,0,0,16" />
 
                         <views:Divider />
 
@@ -304,31 +302,30 @@
 
                 <ScrollView>
                     <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_year}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Anio}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_hub}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Hub}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{localization:Translate machinery_point_responsible}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Responsabl}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_institute}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Entidad}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_precomodad}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Precomodad}" />
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_registry}" />
-                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Registro}" />
-                        </StackLayout>
-
+                        <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_year}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Anio}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_hub}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Hub}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label Text="{localization:Translate machinery_point_responsible}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Responsabl}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_institute}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Entidad}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_precomodad}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Precomodad}"
+                               Margin="0,0,0,16" />
+                        
+                        <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_registry}" />
+                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Registro}"
+                               Margin="0,0,0,16" />
+                            
                         <views:Divider />
 
                         <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_actions}" />

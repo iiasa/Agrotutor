@@ -1,4 +1,3 @@
-using System;
 namespace Agrotutor.Modules.Weather.Types
 {
     public enum CloudCondition

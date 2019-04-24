@@ -1602,7 +1602,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
             {
                 var updatedPlot = false;
-                if (plot.BemData == null || plot.BemData.NeedsUpdate())
+                if (plot.BemData == null)
                 {
                     plot.BemData = await BemDataDownloadHelper.LoadBEMData(plot.Position.Latitude,
                         plot.Position.Longitude, plot.CropType);
@@ -1979,7 +1979,14 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private async Task GetUserLocation()
         {
-            var location = await Geolocation.GetLastKnownLocationAsync();
+            Location location = null;
+            try
+            {
+                location = await Geolocation.GetLastKnownLocationAsync();
+            }
+            catch (Exception e) { 
+                
+            }
 
             if (location != null)
             {
@@ -1987,8 +1994,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             }
             else
             {
-                location = await Geolocation.GetLocationAsync();
-                UpdateLocation(location);
+                try
+                {
+                    location = await Geolocation.GetLocationAsync();
+                }catch(Exception e) { }
+                if  (location != null) UpdateLocation(location);
             }
         }
 

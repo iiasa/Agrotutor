@@ -422,6 +422,7 @@
     <AndroidResource Include="Resources\drawable\forecast_historical_weather.png" />
     <AndroidResource Include="Resources\drawable\forecast_weather.png" />
     <AndroidResource Include="Resources\drawable\agronomy.png" />
+    <AndroidResource Include="Resources\drawable\night.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
