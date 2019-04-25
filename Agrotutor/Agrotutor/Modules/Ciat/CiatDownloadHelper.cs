@@ -13,13 +13,15 @@ namespace Agrotutor.Modules.Ciat
 
         public static async Task<CiatData> LoadData(Position position, string crop)
         {
+            string lat = position.Latitude.ToString().Replace(",", ".");
+            string lon = position.Longitude.ToString().Replace(",", ".");
             IFlurlRequest request = Constants
                 .MatrizBaseUrl
                 .SetQueryParams(
                     new
                     {
-                        lat = position.Latitude,
-                        lon = position.Longitude,
+                        lat = lat,
+                        lon = lon,
                         type = "matriz",
                         tkn = Constants.BemToken,
                         cultivo = crop

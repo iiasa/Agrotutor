@@ -12,13 +12,10 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
             foreach (var forecastResponseItem in forecastResponse.Forecasts)
             {
-                List<WeatherForecast> forecastHours = new List<WeatherForecast>();
-                foreach (var forecastHour in forecastResponseItem.Forecast)
+                foreach (var forecastDay in forecastResponseItem.Forecast)
                 {
-                    forecastHours.Add(GetForecastFromApiResponse(forecastHour));
+                    forecasts.Add(GetForecastFromApiResponse(forecastDay));
                 }
-
-                forecasts.Add(WeatherForecast.FromHourlyForecasts(forecastHours));
             }
 
             return forecasts;

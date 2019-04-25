@@ -57,12 +57,12 @@ namespace Agrotutor.Modules.Benchmarking
                 .WithBasicAuth(Constants.BemUsername, Constants.BemPassword);
             if (lat != null)
             {
-                request.SetQueryParam("lat", lat);
+                request.SetQueryParam("lat", lat.ToString().Replace(",","."));
             }
 
             if (lon != null)
             {
-                request.SetQueryParam("lon", lon);
+                request.SetQueryParam("lon", lon.ToString().Replace(",","."));
             }
 
             if (crop != null && crop==CropType.Corn) //TODO: use crop types
