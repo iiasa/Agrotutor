@@ -16,16 +16,21 @@ namespace Agrotutor.Core.Camera
 
         private readonly IStringLocalizer<CameraService> stringLocalizer;
 
+        private bool TakePictureActive;
+
         public CameraService(IPageDialogService pageDialogService, IStringLocalizer<CameraService> stringLocalizer)
         {
             media = CrossMedia.Current;
             media.Initialize();
             this.pageDialogService = pageDialogService;
+            TakePictureActive = false;
         }
 
 
         public async Task<string> TakePicture()
         {
+            if (TakePictureActive) return string.Empty;
+            TakePictureActive = true;
             if (!media.IsCameraAvailable || !media.IsTakePhotoSupported)
             {
                 await pageDialogService.DisplayAlertAsync(
@@ -38,7 +43,7 @@ namespace Agrotutor.Core.Camera
             var fileName = $"{Guid.NewGuid().ToString()}.jpg";
             var file = await media.TakePhotoAsync(
                 new StoreCameraMediaOptions { SaveToAlbum = true, Name = fileName, AllowCropping = false, CompressionQuality = 20 });
-
+            TakePictureActive = false;
             return file == null ? string.Empty : file.Path;
         }
 

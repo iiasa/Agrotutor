@@ -1,4 +1,7 @@
-﻿namespace Agrotutor.ViewModels
+﻿using System;
+using Microsoft.AppCenter.Crashes;
+
+namespace Agrotutor.ViewModels
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -35,6 +38,7 @@
         public ProfilePageViewModel(INavigationService navigationService, IStringLocalizer<ProfilePageViewModel> stringLocalizer)
         : base(navigationService, stringLocalizer)
         {
+            TakePictureActive = false;
             TakePictureCommand = new DelegateCommand(TakePicture);
             var picture = Preferences.Get("UserPicture", null);
             if (picture != null)
@@ -153,11 +157,15 @@
             Preferences.Set("UserState", UserProfile.State);
         }
 
+        private bool TakePictureActive;
+
         /// <summary>
         ///     The TakePicture
         /// </summary>
         private async void TakePicture()
         {
+            if (TakePictureActive) return;
+            TakePictureActive = true;
             await CrossMedia.Current.Initialize();
 
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
@@ -165,11 +173,20 @@
                 return;
             }
 
-            MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+            MediaFile file = null;
+
+            try
             {
-                Directory = "Cimmyt",
-                Name = "user.jpg"
-            });
+                file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    Directory = "Cimmyt",
+                    Name = "user.jpg"
+                });
+            }
+            catch (Exception e)
+            {
+                Crashes.TrackError(e);
+            }
 
             if (file != null)
             {
@@ -177,6 +194,8 @@
                 PictureVisible = true;
                 Preferences.Set("UserPicture", file.Path);
             }
+
+            TakePictureActive = false;
         }
     }
 }
