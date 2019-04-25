@@ -1613,7 +1613,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotData(Core.Entities.Plot plot)
         {
-            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
+            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("getting_plot_data")))
             {
                 var updatedPlot = false;
                 if (plot.BemData == null)
@@ -1634,7 +1634,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotAdditionalData(Core.Entities.Plot plot)
         {
-            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
+            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("getting_plot_data")))
             {
                 var updatedPlot = false;
                 var creds = new UserCredentials

@@ -2,7 +2,6 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:views="clr-namespace:Agrotutor.Modules.PriceForecasting.Views"
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Modules.PriceForecasting.Views.PriceForecastPage"
@@ -72,7 +71,7 @@
                 <TapGestureRecognizer Command="{Binding ShowAbout}"/>
             </StackLayout.GestureRecognizers>
 
-            <Label VerticalOptions="Center" Text="About price forecasting information" />
+            <Label VerticalOptions="Center" Text="{localization:Translate about}" />
             <Image Source="advice.png" HeightRequest="32" WidthRequest="32"/>
         </StackLayout>
     </StackLayout>

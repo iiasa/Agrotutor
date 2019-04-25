@@ -312,7 +312,13 @@
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancelar </value>
   </data>
+  <data name="getting_plot_data" xml:space="preserve">
+    <value>Obteniendo datos de la parcela...</value>
+  </data>
   <data name="select_location_ok" xml:space="preserve">
     <value>Aceptar</value>
+  </data>
+  <data name="select_a_location_for_the_planner" xml:space="preserve">
+    <value>Seleccione una ubicación para el planificador</value>
   </data>
 </root>

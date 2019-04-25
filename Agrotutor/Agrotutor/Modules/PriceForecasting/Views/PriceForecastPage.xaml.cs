@@ -1,5 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Threading;
+using Agrotutor.Core.Localization;
 using Agrotutor.Modules.PriceForecasting.ViewModels;
+using Microsoft.Extensions.Localization;
 using Xamarin.Forms;
 
 namespace Agrotutor.Modules.PriceForecasting.Views
@@ -24,11 +28,32 @@ namespace Agrotutor.Modules.PriceForecasting.Views
         {
             this.ForecastStack.Children.Clear();
 
+            var supportedLang = new List<string>
+            {
+                "en", "es"
+            };
+            var lang = "en";
+            try
+            {
+                var currentLang = Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName;
+                if (supportedLang.Contains(currentLang))
+                {
+                    lang = currentLang;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            var str1 = (lang == "es") ? "en" : "in";
+            var str2 = (lang == "es") ? "meses" : "months";
+            
             foreach (var item in viewModel.FurtherItems)
             {
                 try
                 {
-                    var headerLabel = new Label{Text = $"in {item.Month} months", FontSize = 18, TextColor = Color.ForestGreen};
+                    var headerLabel = new Label{Text = $"{str1} {item.Month} {str2}", FontSize = 18, TextColor = Color.ForestGreen};
                     var expectedLabel = new Label {Text = $"{item.RoundedPrice} ($/kg)"};
                     var rangeLabel = new Label { Text = $"{item.RoundedMinPrice} to {item.RoundedMaxPrice} ($/kg)"};
                     var layout = new StackLayout();

@@ -144,4 +144,7 @@
   <data name="to" xml:space="preserve">
     <value>a</value>
   </data>
+  <data name="about" xml:space="preserve">
+    <value>Acerca de la información de precios esparados</value>
+  </data>
 </root>
