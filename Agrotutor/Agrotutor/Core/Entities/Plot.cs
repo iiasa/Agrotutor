@@ -72,6 +72,7 @@ namespace Agrotutor.Core.Entities
             {
                 foreach (Plot plot in plots)
                 {
+                    if (plot == null) continue;
                     events.AddRange(plot.GetCalendarEvents());
                 }
             }
@@ -87,6 +88,7 @@ namespace Agrotutor.Core.Entities
             {
                 foreach (Activity activity in Activities)
                 {
+                    if (activity == null) continue;
                     events.Add(
                         new CalendarEvent
                         {

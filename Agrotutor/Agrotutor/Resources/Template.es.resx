@@ -306,6 +306,9 @@
   <data name="options_title" xml:space="preserve">
     <value>Opciones</value>
   </data>
+  <data name="please_select_your_crop" xml:space="preserve">
+    <value>Por favor seleccione su cultivo</value>
+  </data>
   <data name="planner" xml:space="preserve">
     <value>Asesoría</value>
   </data>
@@ -320,5 +323,8 @@
   </data>
   <data name="select_a_location_for_the_planner" xml:space="preserve">
     <value>Seleccione una ubicación para el planificador</value>
+  </data>
+  <data name="select_on_the_map" xml:space="preserve">
+    <value>Seleccionar en el mapa</value>
   </data>
 </root>

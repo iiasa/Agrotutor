@@ -560,9 +560,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand ClickGetLocationPlanner =>
             new DelegateCommand(() =>
             {
+                if (MapPage == null) return;
                 DimBackground = false;
                 AddPlotPosition = CurrentPosition;
-                MapPage.ZoomToPosition(CurrentPosition.ForMap());
+                if (CurrentPosition != null) MapPage.ZoomToPosition(CurrentPosition.ForMap());
                 CurrentMapTask = MapTask.GetLocationForPlanner;
             });
 

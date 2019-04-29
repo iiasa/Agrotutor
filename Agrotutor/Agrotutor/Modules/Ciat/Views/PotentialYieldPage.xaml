@@ -37,7 +37,7 @@
                 </StackLayout.GestureRecognizers>
 
                 <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                <Image Source="advice.png" HeightRequest="32" WidthRequest="32"/>
             </StackLayout>
 
         </StackLayout>

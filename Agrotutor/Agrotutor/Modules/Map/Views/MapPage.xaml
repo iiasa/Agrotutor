@@ -311,7 +311,7 @@
                                 <Button
                                     Command="{Binding AddPlotCommand}"
                                     IsVisible="{Binding ShowSavePlotButton}"
-                                    Text="Save Plot" />
+                                    Text="{localization:Translate save}" />
 
 
                             </StackLayout>

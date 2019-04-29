@@ -54,8 +54,8 @@ namespace Agrotutor.Modules.PriceForecasting.Views
                 try
                 {
                     var headerLabel = new Label{Text = $"{str1} {item.Month} {str2}", FontSize = 18, TextColor = Color.ForestGreen};
-                    var expectedLabel = new Label {Text = $"{item.RoundedPrice} ($/kg)"};
-                    var rangeLabel = new Label { Text = $"{item.RoundedMinPrice} to {item.RoundedMaxPrice} ($/kg)"};
+                    var expectedLabel = new Label {Text = $"{item.RoundedPrice}"};
+                    var rangeLabel = new Label { Text = $"{item.RoundedMinPrice} to {item.RoundedMaxPrice}"};
                     var layout = new StackLayout();
 
                     layout.Children.Add(headerLabel);

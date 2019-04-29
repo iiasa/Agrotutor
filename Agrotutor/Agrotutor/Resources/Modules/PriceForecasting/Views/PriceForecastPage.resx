@@ -130,13 +130,15 @@
     <value>Next month</value>
   </data>
   <data name="peso_per_kg" xml:space="preserve">
-    <value>($/kg)</value>
+    <value>(MXP/kg)</value>
   </data>
   <data name="price" xml:space="preserve">
-    <value>Price</value>
+    <value>Price 
+(MXP/kg)</value>
   </data>
   <data name="range" xml:space="preserve">
-    <value>Range</value>
+    <value>Range
+(MXP/kg)</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Market price forecast</value>

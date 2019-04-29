@@ -207,6 +207,9 @@
   <data name="plot_detail_cost" xml:space="preserve">
     <value>Costo total</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
   <data name="planner_download" xml:space="preserve">
     <value>Rendimiento potencial
 Recomendaciones de cultivo
