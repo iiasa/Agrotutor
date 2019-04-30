@@ -964,13 +964,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (value == null) return;
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
-                var today = value.ElementAt(0);
-                var cur = today?.ForecastHours?.ElementAt(0);
+                var cur = value.ElementAt(DateTime.Now.Hour);
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.GetWeatherIcon();
                 var text = $"{cur.Temperature} °C";
-                if (today != null)
-                    text += $" | {StringLocalizer.GetString("rain")}: {today.PrecipitationProbability} %";
+                if (cur != null)
+                    text += $" | {StringLocalizer.GetString("rain")}: {cur.PrecipitationProbability} %";
                 CurrentWeatherText = text;
             }
         }
@@ -2145,9 +2144,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     Password = Constants.AWhereWeatherAPIPassword
                 };
 
-                var forecast =
-                    await WeatherAPI.GetForecastAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
-                CurrentWeather = Converter.GetForecastsFromApiResponse(forecast);
+                var current =
+                    await WeatherAPI.GetCurrentAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
+                CurrentWeather = Converter.GetForecastsFromApiResponse(current);
             }
         }
 

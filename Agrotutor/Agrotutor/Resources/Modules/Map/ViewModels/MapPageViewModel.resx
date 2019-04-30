@@ -343,4 +343,7 @@ This feature is currently only available for Guanajuato.</value>
   <data name="wrong_email_title" xml:space="preserve">
     <value>Invalid email address</value>
   </data>
+  <data name="getting_plot_data" xml:space="preserve">
+    <value>Getting plot data...</value>
+  </data>
 </root>
