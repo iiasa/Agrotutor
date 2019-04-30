@@ -42,7 +42,8 @@
                 HorizontalOptions="Center"
                 Model="{Binding ChartModel}"
                 VerticalOptions="Center"
-                WidthRequest="300" />
+                WidthRequest="300"
+                HeightRequest="400"/>
             
         </Grid>
     </ContentPage.Content>
