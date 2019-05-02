@@ -1,12 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
-     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     x:Class="Agrotutor.Core.Components.Views.SimpleStatsSingle"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True" >
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="Agrotutor.Core.Components.Views.SimpleStatsSingle"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentView.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="450">
+            <ScrollView
+                HeightRequest="450"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
                 <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Image
                         x:Name="ImageMax"
@@ -15,12 +19,12 @@
                         VerticalOptions="Center" />
                     <Image
                         x:Name="ImageAverage"
-                        AbsoluteLayout.LayoutBounds=".07,.5,40,40"
+                        AbsoluteLayout.LayoutBounds=".03,.5,40,40"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         VerticalOptions="Center" />
                     <Image
                         x:Name="ImageMin"
-                        AbsoluteLayout.LayoutBounds=".07,.9,40,40"
+                        AbsoluteLayout.LayoutBounds=".07,.9,20,20"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         VerticalOptions="Center" />
 
@@ -34,9 +38,9 @@
 
                     <Label
                         x:Name="lblAverage"
-                        AbsoluteLayout.LayoutBounds=".2,.5,100,50"
+                        AbsoluteLayout.LayoutBounds=".15,.5,100,50"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                        FontSize="25"
+                        FontSize="20"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center" />
 

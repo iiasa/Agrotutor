@@ -27,12 +27,12 @@
                         VerticalOptions="Center" />
                     <Image
                         x:Name="ImageAverage"
-                        AbsoluteLayout.LayoutBounds=".07,.5,40,40"
+                        AbsoluteLayout.LayoutBounds=".03,.5,40,40"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         VerticalOptions="Center" />
                     <Image
                         x:Name="ImageMin"
-                        AbsoluteLayout.LayoutBounds=".07,.9,40,40"
+                        AbsoluteLayout.LayoutBounds=".07,.9,20,20"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
                         VerticalOptions="Center" />
 
@@ -46,9 +46,9 @@
 
                     <Label
                         x:Name="lblAverage"
-                        AbsoluteLayout.LayoutBounds=".2,.5,100,50"
+                        AbsoluteLayout.LayoutBounds=".15,.5,100,50"
                         AbsoluteLayout.LayoutFlags="PositionProportional"
-                        FontSize="25"
+                        FontSize="20"
                         HorizontalTextAlignment="Center"
                         VerticalTextAlignment="Center" />
 

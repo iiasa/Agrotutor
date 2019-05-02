@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Threading.Tasks;
 using Agrotutor.Core.Entities;
 using Flurl.Http;
@@ -57,12 +58,12 @@ namespace Agrotutor.Modules.Benchmarking
                 .WithBasicAuth(Constants.BemUsername, Constants.BemPassword);
             if (lat != null)
             {
-                request.SetQueryParam("lat", lat.ToString().Replace(",","."));
+                request.SetQueryParam("lat", lat.Value.ToString(CultureInfo.InvariantCulture));
             }
 
             if (lon != null)
             {
-                request.SetQueryParam("lon", lon.ToString().Replace(",","."));
+                request.SetQueryParam("lon", lon.Value.ToString(CultureInfo.InvariantCulture));
             }
 
             if (crop != null && crop==CropType.Corn) //TODO: use crop types

@@ -207,10 +207,10 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 SetProperty(ref _weatherForecast, value);
                 ShowForecastIsVisible = value != null;
 
-                if (value != null)
+                if (value != null && value.Any())
                 {
                     CurrentDay = value.ElementAt(0);
-                    CurrentHour = CurrentDay.ForecastHours.ElementAt(0);
+                    CurrentHour = CurrentDay.ForecastHours?.ElementAt(0);
                 }
             }
         }
@@ -296,7 +296,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 Password = Constants.AWhereWeatherAPIPassword
             };
 
-            DateTime start = DateTime.Now.AddMonths(-3);
+            DateTime start = DateTime.Now.AddMonths(-3); 
             List<Activity> activities = (Plot?.Activities == null) ? new List<Activity>() : Plot.Activities;
             Activity startActivity = activities.Where(x => (x.ActivityType == ActivityType.Initialization))?.SingleOrDefault();
             if (startActivity != null) start = startActivity.Date;
