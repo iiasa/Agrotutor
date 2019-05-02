@@ -61,7 +61,7 @@
 
                     <Label Text="{localization:Translate cc}"  HorizontalTextAlignment="Start" VerticalOptions="Center" FontAttributes="Bold" Grid.Row="2"
                         Grid.Column="0" FontSize="Small" />
-                    <Label Text="{Binding CloudCover}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="3" Grid.Column="1" />
+                    <Label Text="{Binding CloudCover}" FontSize="Large" FontAttributes="Bold" VerticalOptions="Center" HorizontalTextAlignment="Start" Grid.Row="2" Grid.Column="1" />
                 </Grid>
                 
                 <views:IconWithText 

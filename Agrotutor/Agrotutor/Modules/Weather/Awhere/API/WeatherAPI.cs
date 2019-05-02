@@ -44,6 +44,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
                 .SetQueryParams(new
                 {
                     conditionsType = "standard",
+                    blockSize = "1",
                     limit = "1"
                 })
                 .GetJsonAsync<ForecastResponse>();
