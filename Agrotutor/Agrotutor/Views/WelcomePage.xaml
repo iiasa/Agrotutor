@@ -24,17 +24,31 @@
                         <On Platform="iOS, Android" Value="0,40,0,0" />
                     </OnPlatform>
                 </ContentPage.Padding>
-                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Image IsVisible="{Binding ShowGetStarted, Converter={StaticResource BooleanConverter}}" Source="{Binding Picture}" />
-                    <Button
-                        Margin="15"
-                        Padding="15"
-                        Command="{Binding Path=BindingContext.NavigateToMainPageCommand, Source={x:Reference Page}}"
-                        HorizontalOptions="CenterAndExpand"
-                        IsVisible="{Binding ShowGetStarted}"
-                        Text="{localization:Translate start}"
-                        VerticalOptions="CenterAndExpand" />
-                </StackLayout>
+                <ScrollView>
+                    <StackLayout
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand">
+                        <Image
+                            HeightRequest="250"
+                            Source="{Binding Picture}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Label
+                            Margin="15"
+                            FontAttributes="Bold"
+                            FontSize="Large"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Label}"
+                            VerticalOptions="CenterAndExpand" />
+                        <Button
+                            Margin="15"
+                            Padding="15"
+                            Command="{Binding Path=BindingContext.NavigateToMainPageCommand, Source={x:Reference Page}}"
+                            HorizontalOptions="CenterAndExpand"
+                            IsVisible="{Binding ShowGetStarted}"
+                            Text="{localization:Translate start}" />
+                    </StackLayout>
+                </ScrollView>
             </ContentPage>
         </DataTemplate>
     </CarouselPage.ItemTemplate>

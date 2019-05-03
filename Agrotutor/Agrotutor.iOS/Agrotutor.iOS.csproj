@@ -779,8 +779,12 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
+    <BundleResource Include="Resources\advice_intro.png" />
     <Content Include="Resources\cloudy_night.png" />
     <Content Include="Resources\html\empty.html" />
+    <BundleResource Include="Resources\Intro3_Agrotutor.png" />
+    <BundleResource Include="Resources\Intro2_Agrotutor.png" />
+    <BundleResource Include="Resources\Intro1_Agrotutor.png" />
     <Content Include="Resources\storm.png" />
     <Content Include="Resources\storm_night.png" />
   </ItemGroup>

@@ -6,104 +6,100 @@
     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
     mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentView.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-            <ScrollView
-                HeightRequest="450"
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid
+                Padding="10"
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand">
-                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="50" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0" VerticalOptions="FillAndExpand">
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Image
-                                x:Name="ImageMax"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                            <Label x:Name="lblMax" HorizontalOptions="Center" />
-                        </StackLayout>
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Image x:Name="ImageAverage" HorizontalOptions="Center" />
-                            <Label
-                                x:Name="lblAverage"
-                                FontSize="20"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Image
-                                x:Name="ImageMin"
-                                HeightRequest="50"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                WidthRequest="50" />
-                            <Label x:Name="lblMin" HorizontalOptions="Center" />
-                        </StackLayout>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120" />
+                    <ColumnDefinition Width="50" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0" VerticalOptions="FillAndExpand">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Image
+                            x:Name="ImageMax"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <Label x:Name="lblMax" HorizontalOptions="Center" />
                     </StackLayout>
-                    <StackLayout
-                        Grid.Column="1"
-                        Margin="0"
-                        Padding="0">
-                        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-                            <BoxView
-                                AbsoluteLayout.LayoutBounds=".5,.5,0.1,0.70"
-                                AbsoluteLayout.LayoutFlags="All"
-                                Color="Black" />
-                            <BoxView
-                                AbsoluteLayout.LayoutBounds=".5,.15,0.7,0.01"
-                                AbsoluteLayout.LayoutFlags="All"
-                                Color="Black" />
-                            <BoxView
-                                AbsoluteLayout.LayoutBounds=".5,.5,0.7,0.01"
-                                AbsoluteLayout.LayoutFlags="All"
-                                Color="Black" />
-                            <BoxView
-                                AbsoluteLayout.LayoutBounds=".5,.85,0.7,0.01"
-                                AbsoluteLayout.LayoutFlags="All"
-                                Color="Black" />
-                        </AbsoluteLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Image x:Name="ImageAverage" HorizontalOptions="Center" />
+                        <Label
+                            x:Name="lblAverage"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
                     </StackLayout>
-                    <StackLayout Grid.Column="2">
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Label
-                                x:Name="lblMaxValue"
-                                FontSize="Default"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                            <Label
-                                x:Name="lblMaxUnit"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Label
-                                x:Name="lblAverageValue"
-                                FontSize="30"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                            <Label
-                                x:Name="lblAverageUnit"
-                                FontSize="30"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                        </StackLayout>
-                        <StackLayout VerticalOptions="CenterAndExpand">
-                            <Label
-                                x:Name="lblMinValue"
-                                FontSize="Default"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                            <Label
-                                x:Name="lblMinUnit"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center" />
-                        </StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Image
+                            x:Name="ImageMin"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <Label x:Name="lblMin" HorizontalOptions="Center" />
                     </StackLayout>
-                </Grid>
-            </ScrollView>
-        </StackLayout>
+                </StackLayout>
+                <StackLayout
+                    Grid.Column="1"
+                    Margin="0"
+                    Padding="0">
+                    <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <BoxView
+                            AbsoluteLayout.LayoutBounds=".5,.5,0.1,0.70"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Color="Black" />
+                        <BoxView
+                            AbsoluteLayout.LayoutBounds=".5,.15,0.7,0.01"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Color="Black" />
+                        <BoxView
+                            AbsoluteLayout.LayoutBounds=".5,.5,0.7,0.01"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Color="Black" />
+                        <BoxView
+                            AbsoluteLayout.LayoutBounds=".5,.85,0.7,0.01"
+                            AbsoluteLayout.LayoutFlags="All"
+                            Color="Black" />
+                    </AbsoluteLayout>
+                </StackLayout>
+                <StackLayout Grid.Column="2">
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label
+                            x:Name="lblMaxValue"
+                            FontSize="Default"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <Label
+                            x:Name="lblMaxUnit"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label
+                            x:Name="lblAverageValue"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <Label
+                            x:Name="lblAverageUnit"
+                            FontSize="30"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                    <StackLayout VerticalOptions="CenterAndExpand">
+                        <Label
+                            x:Name="lblMinValue"
+                            FontSize="Default"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                        <Label
+                            x:Name="lblMinUnit"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentView.Content>
 </ContentView>

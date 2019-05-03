@@ -22,14 +22,14 @@
             </StackLayout>
 
             <views:SimpleStatsSingle
-                AverageImageSource="money_avg.png"
+                AverageImageSource="prod_avg.png"
                 AverageText="{localization:Translate average}"
                 AverageValue="{Binding Avg}"
                 HorizontalOptions="FillAndExpand"
-                MaxImageSource="money_max.png"
+                MaxImageSource="prod_max.png"
                 MaxText="{localization:Translate maximum}"
                 MaxValue="{Binding Max}"
-                MinImageSource="money_min.png"
+                MinImageSource="prod_min.png"
                 MinText="{localization:Translate minimum}"
                 MinValue="{Binding Min}"
                 Unit="$"
