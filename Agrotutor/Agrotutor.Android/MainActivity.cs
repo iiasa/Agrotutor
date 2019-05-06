@@ -11,6 +11,7 @@ using FFImageLoading.Forms.Platform;
 using OxyPlot.Xamarin.Forms.Platform.Android;
 using Plugin.CurrentActivity;
 using Plugin.DownloadManager;
+using Plugin.Permissions;
 using Rg.Plugins.Popup;
 using Xamarin;
 using Xamarin.Forms;
@@ -41,14 +42,14 @@ namespace Agrotutor.Droid
             [GeneratedEnum] Permission[] grantResults)
         {
             Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-
+            PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         private void InitializeLibs(Bundle bundle)
         {
             Forms.SetFlags("FastRenderers_Experimental");
-            Forms.SetFlags("CollectionView_Experimental");
+            //Forms.SetFlags("CollectionView_Experimental");
             CachedImageRenderer.Init(true);
             Popup.Init(this, bundle);
             Forms.Init(this, bundle);
