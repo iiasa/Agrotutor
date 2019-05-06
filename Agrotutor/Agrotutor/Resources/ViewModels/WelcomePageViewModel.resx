@@ -120,4 +120,16 @@
   <data name="loading" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="welcome1" xml:space="preserve">
+    <value>To start getting crop advice as well as specific benchmarking information and data descriptions press this button in the main bar</value>
+  </data>
+  <data name="welcome2" xml:space="preserve">
+    <value>If you store your parcel you can delineate it over satellite images, add agronomic activities and visualize them on the incorporated crop calendar, add pictures, videos and get crop management suggestions</value>
+  </data>
+  <data name="welcome3" xml:space="preserve">
+    <value>Benchmarking information details are specific to your plot location and the crop planted. The recommendations focus on optimizing use of fertilizer and other inputs to maximize yield and profit</value>
+  </data>
+  <data name="welcome4" xml:space="preserve">
+    <value>Click on the pre-loaded layers of AgroTutor to find further practical information close to you. Also, explore the options, crop calendar and weather reports available in the main bar</value>
+  </data>
 </root>

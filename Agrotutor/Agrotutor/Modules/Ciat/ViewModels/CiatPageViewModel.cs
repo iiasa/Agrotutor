@@ -2,9 +2,6 @@ using Agrotutor.ViewModels;
 
 namespace Agrotutor.Modules.Ciat.ViewModels
 {
-    using System.Collections.Generic;
-    using Flurl;
-    using Flurl.Http;
     using Microsoft.Extensions.Localization;
     using Prism.Commands;
     using Prism.Navigation;

@@ -334,4 +334,7 @@ Esta característica actualmente solo está disponible para Guanajuato.</value>
   <data name="wrong_email_title" xml:space="preserve">
     <value>Dirección de correo electrónico inválida</value>
   </data>
+  <data name="getting_plot_data" xml:space="preserve">
+    <value>Obteniendo datos de la parcela...</value>
+  </data>
 </root>

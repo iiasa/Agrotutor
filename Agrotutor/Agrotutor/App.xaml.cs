@@ -54,7 +54,7 @@ namespace Agrotutor
             var initialPage = "NavigationPage/MapPage";
             if (VersionTracking.IsFirstLaunchEver)
             {
-                // initialPage = "NavigationPage/WelcomePage";
+                initialPage = "NavigationPage/WelcomePage";
             }
 
             await NavigationService.NavigateAsync(initialPage);

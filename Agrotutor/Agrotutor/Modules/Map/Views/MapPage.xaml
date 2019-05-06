@@ -111,10 +111,10 @@
                     <Label
                         Margin="8"
                         HorizontalOptions="CenterAndExpand"
-                        Text="{Binding CurrentMapTaskHint}"
                         HorizontalTextAlignment="Center"
-                        VerticalTextAlignment="Center"
-                        VerticalOptions="Center" />
+                        Text="{Binding CurrentMapTaskHint}"
+                        VerticalOptions="Center"
+                        VerticalTextAlignment="Center" />
                 </StackLayout>
             </Frame>
 
@@ -176,27 +176,27 @@
 
             <ContentView IsVisible="{Binding PlotDetailIsVisible}" Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal" IsVisible="{Binding ShowPlotDetailInformation}">
-                            <Image HeightRequest="20" Source="agronomy.png" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{Binding SelectedPlot.Name}" />
-                       </StackLayout>
-                        
-                        <StackLayout Orientation="Horizontal" IsVisible="{Binding SelectedPlot.IsTemporaryPlot}">
-                            <Image HeightRequest="20" Source="advice.png" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{localization:Translate planner}" />
-
-                        </StackLayout>
-                        <views:Divider />
-                        <ScrollView VerticalScrollBarVisibility="Always">
+                    <ScrollView VerticalScrollBarVisibility="Always">
+                        <StackLayout>
+                            <StackLayout IsVisible="{Binding ShowPlotDetailInformation}" Orientation="Horizontal">
+                                <Image HeightRequest="20" Source="agronomy.png" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding SelectedPlot.Name}" />
+                            </StackLayout>
+    
+                            <StackLayout IsVisible="{Binding SelectedPlot.IsTemporaryPlot}" Orientation="Horizontal">
+                                <Image HeightRequest="20" Source="advice.png" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{localization:Translate planner}" />
+    
+                            </StackLayout>
+                            <views:Divider />
                             <StackLayout>
                                 <StackLayout IsVisible="{Binding ShowPlotDetailInformation}">
                                     <Frame Style="{StaticResource FrameStyle}">
@@ -212,7 +212,7 @@
                                     <views:ValueLine
                                         Command="{Binding NavigateToPlotWeather}"
                                         ImageSource="{Binding CurrentPlotWeatherIcon}"
-                                        Text="Current weather"
+                                        Text="{localization:Translate current_weather}"
                                         Value="{Binding CurrentPlotGdd}" />
 
                                     <ScrollView Margin="5" Orientation="Horizontal">
@@ -311,12 +311,12 @@
                                 <Button
                                     Command="{Binding AddPlotCommand}"
                                     IsVisible="{Binding ShowSavePlotButton}"
-                                    Text="Save Plot" />
+                                    Text="{localization:Translate save}" />
 
 
                             </StackLayout>
-                        </ScrollView>
-                    </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
                 </Frame>
             </ContentView>
 

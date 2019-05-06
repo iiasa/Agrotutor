@@ -133,15 +133,20 @@
     <value>(MXP/kg)</value>
   </data>
   <data name="price" xml:space="preserve">
-    <value>Precio</value>
+    <value>Precio
+(MXP/kg)</value>
   </data>
   <data name="range" xml:space="preserve">
-    <value>Distancia</value>
+    <value>Distancia
+(MXP/kg)</value>
   </data>
   <data name="title" xml:space="preserve">
     <value>Previsión de precios de mercado</value>
   </data>
   <data name="to" xml:space="preserve">
     <value>a</value>
+  </data>
+  <data name="about" xml:space="preserve">
+    <value>Acerca de la información de precios esparados</value>
   </data>
 </root>

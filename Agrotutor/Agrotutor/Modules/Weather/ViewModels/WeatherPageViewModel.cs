@@ -17,6 +17,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
     {
         public static string LocationParameterName = "WEATHER_PAGE_LOCATION";
         public static string ForecastParameterName = "WEATHER_PAGE_FORECAST";
+        public static string CurrentParameterName = "WEATHER_PAGE_CURRENT";
         public static string HistoryParameterName = "WEATHER_PAGE_HISTORY";
         public static string PlotParameterName = "WEATHER_PAGE_PLOT";
 
@@ -207,10 +208,9 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 SetProperty(ref _weatherForecast, value);
                 ShowForecastIsVisible = value != null;
 
-                if (value != null)
+                if (value != null && value.Any())
                 {
                     CurrentDay = value.ElementAt(0);
-                    CurrentHour = CurrentDay.ForecastHours.ElementAt(0);
                 }
             }
         }
@@ -245,6 +245,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         public Location Location { get; set; }
         public int? BaseTemperature { get; private set; }
 
+
         public override void OnNavigatedFrom(INavigationParameters parameters)
         {
             base.OnNavigatedFrom(parameters);
@@ -262,8 +263,8 @@ namespace Agrotutor.Modules.Weather.ViewModels
             if (parameters.ContainsKey(PlotParameterName))
             {
                 parameters.TryGetValue<Core.Entities.Plot>(PlotParameterName, out var plot);
-                if (plot != null) 
-                { 
+                if (plot != null)
+                {
                     Plot = plot;
                     Location = plot.Position;
                 }
@@ -276,6 +277,14 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 else Task.Run(() => LoadData());
             }
             else Task.Run(() => LoadData());
+
+            if (parameters.ContainsKey(CurrentParameterName))
+            {
+                parameters.TryGetValue<WeatherForecast>(CurrentParameterName, out var current);
+                if (current != null) CurrentHour = current;
+                else Task.Run(() => LoadCurrent());
+            }
+            else Task.Run(() => LoadCurrent());
 
             if (parameters.ContainsKey(ForecastParameterName))
             {
@@ -296,7 +305,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 Password = Constants.AWhereWeatherAPIPassword
             };
 
-            DateTime start = DateTime.Now.AddMonths(-3);
+            DateTime start = DateTime.Now.AddMonths(-3); 
             List<Activity> activities = (Plot?.Activities == null) ? new List<Activity>() : Plot.Activities;
             Activity startActivity = activities.Where(x => (x.ActivityType == ActivityType.Initialization))?.SingleOrDefault();
             if (startActivity != null) start = startActivity.Date;
@@ -317,6 +326,21 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
                 var forecast = await WeatherAPI.GetForecastAsync(Location.Latitude, Location.Longitude, creds);
                 WeatherForecast = Converter.GetForecastsFromApiResponse(forecast);
+            }
+        }
+
+        private async void LoadCurrent()
+        {
+            if (Location != null)
+            {
+                var creds = new UserCredentials
+                {
+                    Username = Constants.AWhereWeatherAPIUsername,
+                    Password = Constants.AWhereWeatherAPIPassword
+                };
+
+                var current = await WeatherAPI.GetCurrentAsync(Location.Latitude, Location.Longitude, creds);
+                CurrentHour = Converter.GetForecastsFromApiResponse(current).ElementAt(DateTime.Now.Hour);
             }
         }
     }

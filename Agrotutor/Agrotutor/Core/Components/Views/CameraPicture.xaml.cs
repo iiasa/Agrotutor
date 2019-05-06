@@ -1,4 +1,6 @@
-﻿namespace Agrotutor.Core.Components.Views
+﻿using Microsoft.AppCenter.Crashes;
+
+namespace Agrotutor.Core.Components.Views
 {
     using System;
     using Plugin.Media;
@@ -77,17 +79,26 @@
                     this.takePhotoActive = false;
                     return;
                 }
-                MediaFile file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
-                {
-                    Name = FileName + $"_{DateTime.Now:s}" + ".png"
-                });
+                MediaFile file = null;
 
-                this.takePhotoActive = false;
+                try
+                {
+                    file = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                    {
+                        Name = FileName + $"_{DateTime.Now:s}" + ".png"
+                    });
+                }
+                catch (Exception e)
+                {
+                    Crashes.TrackError(e);
+                }
 
                 if (file != null)
                 {
                     OnPictureTaken?.Execute(file);
                 }
+
+                this.takePhotoActive = false;
             });
         }
     }

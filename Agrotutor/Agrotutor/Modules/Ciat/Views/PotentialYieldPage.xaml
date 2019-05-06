@@ -1,43 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-             prism:ViewModelLocator.AutowireViewModel="True"
-             x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage"
-             Title="{localization:Translate title}">
+<ContentPage
+    x:Class="Agrotutor.Modules.Ciat.Views.PotentialYieldPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+    Title="{localization:Translate title}"
+    prism:ViewModelLocator.AutowireViewModel="True">
     <ScrollView>
         <StackLayout Margin="16,16,16,0">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                <Button Text="{localization:Translate non_irrigated}" 
-                        Command="{Binding NonIrrigatedClickedCommand}" 
-                        x:Name="BtnNonIrrigated" />
-                <Button Text="{localization:Translate irrigated}" 
-                        Command="{Binding IrrigatedClickedCommand}" 
-                        x:Name="BtnIrrigated" />
+            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                <Button
+                    x:Name="BtnNonIrrigated"
+                    Command="{Binding NonIrrigatedClickedCommand}"
+                    Text="{localization:Translate non_irrigated}" />
+                <Button
+                    x:Name="BtnIrrigated"
+                    Command="{Binding IrrigatedClickedCommand}"
+                    Text="{localization:Translate irrigated}" />
             </StackLayout>
 
             <views:SimpleStatsSingle
-                AverageImageSource="money_avg.png"
-                MinImageSource="money_min.png"
-                MaxImageSource="money_max.png"
-                Unit="$"
+                AverageImageSource="prod_avg.png"
                 AverageText="{localization:Translate average}"
-                MinText="{localization:Translate minimum}"
-                MaxText="{localization:Translate maximum}"
                 AverageValue="{Binding Avg}"
-                MinValue="{Binding Min}"
+                HorizontalOptions="FillAndExpand"
+                MaxImageSource="prod_max.png"
+                MaxText="{localization:Translate maximum}"
                 MaxValue="{Binding Max}"
-            />
+                MinImageSource="prod_min.png"
+                MinText="{localization:Translate minimum}"
+                MinValue="{Binding Min}"
+                Unit="$"
+                VerticalOptions="FillAndExpand" />
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    <TapGestureRecognizer Command="{Binding ShowAbout}" />
                 </StackLayout.GestureRecognizers>
 
-                <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
+                <Label Text="{localization:Translate about}" VerticalOptions="Center" />
+                <Image
+                    HeightRequest="32"
+                    Source="advice.png"
+                    WidthRequest="32" />
             </StackLayout>
 
         </StackLayout>

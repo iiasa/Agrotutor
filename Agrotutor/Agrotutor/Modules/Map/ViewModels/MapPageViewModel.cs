@@ -560,9 +560,10 @@ namespace Agrotutor.Modules.Map.ViewModels
         public DelegateCommand ClickGetLocationPlanner =>
             new DelegateCommand(() =>
             {
+                if (MapPage == null) return;
                 DimBackground = false;
                 AddPlotPosition = CurrentPosition;
-                MapPage.ZoomToPosition(CurrentPosition.ForMap());
+                if (CurrentPosition != null) MapPage.ZoomToPosition(CurrentPosition.ForMap());
                 CurrentMapTask = MapTask.GetLocationForPlanner;
             });
 
@@ -963,13 +964,13 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (value == null) return;
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
-                var today = value.ElementAt(0);
-                var cur = today?.ForecastHours?.ElementAt(0);
+                var currentHour = DateTime.Now.Hour;
+                var cur = value.Count > currentHour ? value.ElementAt(currentHour) : null;
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.GetWeatherIcon();
                 var text = $"{cur.Temperature} °C";
-                if (today != null)
-                    text += $" | {StringLocalizer.GetString("rain")}: {today.PrecipitationProbability} %";
+                if (cur != null)
+                    text += $" | {StringLocalizer.GetString("rain")}: {cur.PrecipitationProbability} %";
                 CurrentWeatherText = text;
             }
         }
@@ -1613,7 +1614,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotData(Core.Entities.Plot plot)
         {
-            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
+            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("getting_plot_data")))
             {
                 var updatedPlot = false;
                 if (plot.BemData == null)
@@ -1634,7 +1635,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         public async void LoadPlotAdditionalData(Core.Entities.Plot plot)
         {
-            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync("Getting plot data..."))
+            using (var dialog = await MaterialDialog.Instance.LoadingDialogAsync(StringLocalizer.GetString("getting_plot_data")))
             {
                 var updatedPlot = false;
                 var creds = new UserCredentials
@@ -2144,9 +2145,9 @@ namespace Agrotutor.Modules.Map.ViewModels
                     Password = Constants.AWhereWeatherAPIPassword
                 };
 
-                var forecast =
-                    await WeatherAPI.GetForecastAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
-                CurrentWeather = Converter.GetForecastsFromApiResponse(forecast);
+                var current =
+                    await WeatherAPI.GetCurrentAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
+                CurrentWeather = Converter.GetForecastsFromApiResponse(current);
             }
         }
 

@@ -289,7 +289,7 @@
     <value>Acerca de</value>
   </data>
   <data name="options_feedback" xml:space="preserve">
-    <value>Realimentación</value>
+    <value>Retroalimentación</value>
   </data>
   <data name="options_pest" xml:space="preserve">
     <value>Identificación de plagas y enfermedades</value>
@@ -306,13 +306,25 @@
   <data name="options_title" xml:space="preserve">
     <value>Opciones</value>
   </data>
+  <data name="please_select_your_crop" xml:space="preserve">
+    <value>Por favor seleccione su cultivo</value>
+  </data>
   <data name="planner" xml:space="preserve">
     <value>Asesoría</value>
   </data>
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancelar </value>
   </data>
+  <data name="getting_plot_data" xml:space="preserve">
+    <value>Obteniendo datos de la parcela...</value>
+  </data>
   <data name="select_location_ok" xml:space="preserve">
     <value>Aceptar</value>
+  </data>
+  <data name="select_a_location_for_the_planner" xml:space="preserve">
+    <value>Seleccione una ubicación para el planificador</value>
+  </data>
+  <data name="select_on_the_map" xml:space="preserve">
+    <value>Seleccionar en el mapa</value>
   </data>
 </root>

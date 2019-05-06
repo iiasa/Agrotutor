@@ -9,16 +9,14 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static List<WeatherForecast> GetForecastsFromApiResponse(ForecastResponse forecastResponse) 
         {
             List<WeatherForecast> forecasts = new List<WeatherForecast>();
+            if (forecastResponse == null) return forecasts;
 
             foreach (var forecastResponseItem in forecastResponse.Forecasts)
             {
-                List<WeatherForecast> forecastHours = new List<WeatherForecast>();
-                foreach (var forecastHour in forecastResponseItem.Forecast)
+                foreach (var forecastDay in forecastResponseItem.Forecast)
                 {
-                    forecastHours.Add(GetForecastFromApiResponse(forecastHour));
+                    forecasts.Add(GetForecastFromApiResponse(forecastDay));
                 }
-
-                forecasts.Add(WeatherForecast.FromHourlyForecasts(forecastHours));
             }
 
             return forecasts;
@@ -79,6 +77,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static List<WeatherHistory> GetHistoryFromApiResponse(ObservationsResponse historyResponse)
         {
             var history = new List<WeatherHistory>();
+            if (historyResponse == null) return history;
             foreach (var observation in historyResponse.Observations)
             {
                 history.Add(GetHistoryItemFromApiResponse(observation));
@@ -88,6 +87,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
         public static WeatherHistory GetHistoryItemFromApiResponse(ObservationResponseObservation history)
         {
+            if (history == null) return null;
             var historyElement = new WeatherHistory
             {
                 Date = ((DateTimeOffset)history.Date).UtcDateTime,

@@ -48,7 +48,7 @@
                                         Orientation="Horizontal">
                                         <Label
                                             FontAttributes="Bold"
-                                            Text="Rain"
+                                            Text="{localization:Translate rain}"
                                             VerticalOptions="Center" />
                                         <Label Text="{Binding PrecipitationAmount}" VerticalOptions="Center" />
                                     </StackLayout>

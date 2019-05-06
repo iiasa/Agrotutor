@@ -6,17 +6,19 @@ using Xamarin.Forms;
 
 namespace Agrotutor.Core
 {
-    public class ColorsDataModel
+    public class WelcomeModel
     {
         public string Name { get; set; }
 
         public string Picture { get; set; }
 
+        public string Label { get; set; }
+
         public bool ShowGetStarted { get; set; }
 
-        public static IList<ColorsDataModel> All { get; set; }
+        public static IList<WelcomeModel> All { get; set; }
 
-        static ColorsDataModel()
+        static WelcomeModel()
         {
             var supportedLang = new List<string>
             {
@@ -36,26 +38,27 @@ namespace Agrotutor.Core
                 Console.WriteLine(e);
             }
 
-            All = new ObservableCollection<ColorsDataModel> {
-                new ColorsDataModel {
-                    Picture = $"{lang}_1.jpg"
+            All = new ObservableCollection<WelcomeModel> {
+                new WelcomeModel {
+                    Picture = $"{lang}_1.jpg",
+                    Label = "Click on the pre-loaded layers of AgroTutor to find further practical information close to you. Also, explore the options, crop calendar and weather reports available in the main bar"
                 },
-                new ColorsDataModel {
+                new WelcomeModel {
                     Picture = $"{lang}_2.jpg"
                 },
-                new ColorsDataModel {
+                new WelcomeModel {
                     Picture = $"{lang}_3.jpg"
                 },
-                new ColorsDataModel {
+                new WelcomeModel {
                     Picture = $"{lang}_4.jpg"
                 },
-                new ColorsDataModel {
+                new WelcomeModel {
                     Picture = $"{lang}_5.jpg"
                 },
-                new ColorsDataModel {
+                new WelcomeModel {
                     Picture = $"{lang}_6.jpg"
                 },
-                new ColorsDataModel {
+                new WelcomeModel {
                     ShowGetStarted = true
                 }
             };

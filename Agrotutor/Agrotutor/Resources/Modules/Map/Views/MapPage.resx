@@ -219,9 +219,15 @@
   <data name="planner" xml:space="preserve">
     <value>Advice</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Save</value>
+  </data>
   <data name="planner_download" xml:space="preserve">
     <value>Potential yield
 Crop recommendations
 Future prices</value>
+  </data>
+  <data name="current_weather" xml:space="preserve">
+    <value>Current weather</value>
   </data>
 </root>

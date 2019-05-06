@@ -120,4 +120,7 @@
   <data name="title" xml:space="preserve">
     <value>Pronóstico del tiempo</value>
   </data>
+  <data name="rain" xml:space="preserve">
+    <value>Lluvia</value>
+  </data>
 </root>

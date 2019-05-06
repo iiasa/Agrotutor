@@ -207,9 +207,18 @@
   <data name="plot_detail_cost" xml:space="preserve">
     <value>Costo total</value>
   </data>
+  <data name="save" xml:space="preserve">
+    <value>Guardar</value>
+  </data>
   <data name="planner_download" xml:space="preserve">
     <value>Rendimiento potencial
 Recomendaciones de cultivo
 Precios futuros</value>
+  </data>
+  <data name="current_weather" xml:space="preserve">
+    <value>Clima actual</value>
+  </data>
+  <data name="plot_detail_CropType" xml:space="preserve">
+    <value>Tipo de cultivo</value>
   </data>
 </root>

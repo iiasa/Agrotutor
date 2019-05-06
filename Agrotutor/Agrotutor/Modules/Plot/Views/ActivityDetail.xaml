@@ -203,16 +203,6 @@
                     </StackLayout>
                 </Frame>
 
-
-                <!--<StackLayout Orientation="Horizontal" HorizontalOptions="End">
-                    <StackLayout.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ShowAbout}"/>
-                    </StackLayout.GestureRecognizers>
-
-                    <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                    <Image Source="question.png" HeightRequest="32" WidthRequest="32"/>
-                </StackLayout>-->
-
                 <StackLayout
                     Grid.Row="14"
                     HorizontalOptions="End"
@@ -224,7 +214,7 @@
                     <Label Text="{localization:Translate about}" VerticalOptions="Center" />
                     <Image
                         HeightRequest="32"
-                        Source="question.png"
+                        Source="advice.png"
                         WidthRequest="32" />
                 </StackLayout>
 

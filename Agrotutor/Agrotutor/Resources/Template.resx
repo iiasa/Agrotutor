@@ -318,6 +318,9 @@
   <data name="select_location_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="getting_plot_data" xml:space="preserve">
+    <value>Getting plot data...</value>
+  </data>
   <data name="select_location_ok" xml:space="preserve">
     <value>Ok</value>
   </data>
