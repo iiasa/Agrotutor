@@ -41,9 +41,6 @@
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidHttpClientHandlerType>
     </AndroidHttpClientHandlerType>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>false</DebugSymbols>
@@ -56,9 +53,6 @@
     <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-    <AotAssemblies>false</AotAssemblies>
-    <EnableLLVM>false</EnableLLVM>
-    <BundleAssemblies>false</BundleAssemblies>
     <AndroidSupportedAbis />
   </PropertyGroup>
   <ItemGroup>
@@ -553,6 +547,14 @@
     <AndroidAsset Include="Assets\html\es\recommendedpractices\files\image007.png" />
     <AndroidAsset Include="Assets\html\es\recommendedpractices\files\themedata.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\ic_delete.png" />
+    <AndroidAsset Include="Assets\html\en\activities\page.html" />
+    <AndroidAsset Include="Assets\html\en\activities\About Activities_en_files\colorschememapping.xml" />
+    <AndroidAsset Include="Assets\html\en\activities\About Activities_en_files\filelist.xml" />
+    <AndroidAsset Include="Assets\html\en\activities\About Activities_en_files\themedata.thmx" />
+    <AndroidAsset Include="Assets\html\es\activities\page.html" />
+    <AndroidAsset Include="Assets\html\es\activities\About Activities_files\colorschememapping.xml" />
+    <AndroidAsset Include="Assets\html\es\activities\About Activities_files\filelist.xml" />
+    <AndroidAsset Include="Assets\html\es\activities\About Activities_files\themedata.thmx" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\ic_download.png" />

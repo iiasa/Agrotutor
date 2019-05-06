@@ -331,6 +331,14 @@
     <BundleResource Include="Resources\video_icon.png" />
     <BundleResource Include="Resources\agronomy.png" />
     <BundleResource Include="Resources\night.png" />
+    <BundleResource Include="Resources\html\en\activities\page.html" />
+    <BundleResource Include="Resources\html\en\activities\About Activities_en_files\colorschememapping.xml" />
+    <BundleResource Include="Resources\html\en\activities\About Activities_en_files\filelist.xml" />
+    <BundleResource Include="Resources\html\en\activities\About Activities_en_files\themedata.thmx" />
+    <BundleResource Include="Resources\html\es\activities\page.html" />
+    <BundleResource Include="Resources\html\es\activities\About Activities_files\colorschememapping.xml" />
+    <BundleResource Include="Resources\html\es\activities\About Activities_files\filelist.xml" />
+    <BundleResource Include="Resources\html\es\activities\About Activities_files\themedata.thmx" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\app_icon120x1202.png">
@@ -782,9 +790,15 @@
     <BundleResource Include="Resources\advice_intro.png" />
     <Content Include="Resources\cloudy_night.png" />
     <Content Include="Resources\html\empty.html" />
-    <BundleResource Include="Resources\Intro3_Agrotutor.png" />
-    <BundleResource Include="Resources\Intro2_Agrotutor.png" />
-    <BundleResource Include="Resources\Intro1_Agrotutor.png" />
+    <BundleResource Include="Resources\Intro3_Agrotutor.png">
+      <Optimize>false</Optimize>
+    </BundleResource>
+    <BundleResource Include="Resources\Intro2_Agrotutor.png">
+      <Optimize>false</Optimize>
+    </BundleResource>
+    <BundleResource Include="Resources\Intro1_Agrotutor.png">
+      <Optimize>false</Optimize>
+    </BundleResource>
     <Content Include="Resources\storm.png" />
     <Content Include="Resources\storm_night.png" />
   </ItemGroup>

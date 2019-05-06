@@ -176,27 +176,27 @@
 
             <ContentView IsVisible="{Binding PlotDetailIsVisible}" Style="{StaticResource MainMapPopup}">
                 <Frame Style="{StaticResource MainMapPopupBackground}">
-                    <StackLayout>
-                        <StackLayout IsVisible="{Binding ShowPlotDetailInformation}" Orientation="Horizontal">
-                            <Image HeightRequest="20" Source="agronomy.png" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{Binding SelectedPlot.Name}" />
-                        </StackLayout>
-
-                        <StackLayout IsVisible="{Binding SelectedPlot.IsTemporaryPlot}" Orientation="Horizontal">
-                            <Image HeightRequest="20" Source="advice.png" />
-                            <Label
-                                FontAttributes="Bold"
-                                FontSize="Large"
-                                HorizontalOptions="StartAndExpand"
-                                Text="{localization:Translate planner}" />
-
-                        </StackLayout>
-                        <views:Divider />
-                        <ScrollView VerticalScrollBarVisibility="Always">
+                    <ScrollView VerticalScrollBarVisibility="Always">
+                        <StackLayout>
+                            <StackLayout IsVisible="{Binding ShowPlotDetailInformation}" Orientation="Horizontal">
+                                <Image HeightRequest="20" Source="agronomy.png" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding SelectedPlot.Name}" />
+                            </StackLayout>
+    
+                            <StackLayout IsVisible="{Binding SelectedPlot.IsTemporaryPlot}" Orientation="Horizontal">
+                                <Image HeightRequest="20" Source="advice.png" />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{localization:Translate planner}" />
+    
+                            </StackLayout>
+                            <views:Divider />
                             <StackLayout>
                                 <StackLayout IsVisible="{Binding ShowPlotDetailInformation}">
                                     <Frame Style="{StaticResource FrameStyle}">
@@ -315,8 +315,8 @@
 
 
                             </StackLayout>
-                        </ScrollView>
-                    </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
                 </Frame>
             </ContentView>
 

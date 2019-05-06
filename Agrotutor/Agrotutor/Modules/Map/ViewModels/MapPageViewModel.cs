@@ -964,7 +964,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (value == null) return;
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
-                var cur = value.ElementAt(DateTime.Now.Hour);
+                var currentHour = DateTime.Now.Hour;
+                var cur = value.Count > currentHour ? value.ElementAt(currentHour) : null;
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.GetWeatherIcon();
                 var text = $"{cur.Temperature} °C";
