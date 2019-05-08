@@ -1577,7 +1577,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(
                 StringLocalizer.GetString("rendering_delineations")))
             {
-                var plots = await AppDataService.GetAllPlotsAsync();
+                IEnumerable<Core.Entities.Plot> plots = Plots.Any() ? Plots : await AppDataService.GetAllPlotsAsync();
 
                 foreach (var plot in plots)
                 {
@@ -2105,7 +2105,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_plots")))
             {
-                Plots = await AppDataService.GetAllPlotsAsync();
+                if (!Plots.Any()) Plots = await AppDataService.GetAllPlotsAsync();
                 var plots = Plots.ToList();
                 foreach (var pin in from plot in plots
                     where plot.Position != null
