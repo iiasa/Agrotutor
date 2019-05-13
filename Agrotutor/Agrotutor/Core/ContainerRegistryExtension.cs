@@ -96,6 +96,7 @@ namespace Agrotutor.Core
                     catch (Exception e)
                     {
                         AppCenterLog.Error("DbMigration", "Error during DB Migration", e);
+                        Crashes.TrackError(e);
                         try
                         {
                             ((AppDataContext)context).Database.EnsureDeleted();

@@ -53,8 +53,8 @@ namespace Agrotutor.Modules.PriceForecasting.Views
             {
                 try
                 {
-                    var headerLabel = new Label{Text = $"{str1} {item.Month} {str2}", FontSize = 18, TextColor = Color.ForestGreen};
-                    var expectedLabel = new Label {Text = $"{item.RoundedPrice}"};
+                    var headerLabel = new Label{Text = $"{str1} {item.Month} {str2}", FontSize = 18, TextColor = Color.ForestGreen, Margin = new Thickness(0,0,0,6)};
+                    var expectedLabel = new Label {Text = $"{item.RoundedPrice}", Margin = new Thickness(0,0,0,23)};
                     var rangeLabel = new Label { Text = $"{item.RoundedMinPrice} to {item.RoundedMaxPrice}"};
                     var layout = new StackLayout();
 

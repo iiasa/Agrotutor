@@ -123,15 +123,18 @@ namespace Agrotutor.Modules.Weather
             switch (RainCondition)
             {
                 case RainCondition.NoRain:
-                    return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+                    return "partly_cloudy.png";
+                    //return Types.Util.IsNight(DateTime) ? "cloudy_night.png" : "partly_cloudy.png";  
                 case RainCondition.LightRain:
-                    return Types.Util.IsNight(DateTime) ? "storm.png" : "storm_night.png";  
+                    return "storm.png";
+                    //return Types.Util.IsNight(DateTime) ? "storm_night.png" : "storm.png";
                 case RainCondition.ModerateRain:
                     return "rain.png";
                 case RainCondition.HeavyRain:
                     return "heavy_drizzle.png";
                 default:
-                    return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+                    return "partly_cloudy.png";
+                    //return Types.Util.IsNight(DateTime) ? "cloudy_night.png" : "partly_cloudy.png";  
             }
         }
 
@@ -139,11 +142,13 @@ namespace Agrotutor.Modules.Weather
         {
             if (RainCondition == RainCondition.NoRain)
             {
-                return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+                return "partly_cloudy.png";
+                //return Types.Util.IsNight(DateTime) ? "cloudy_night.png" : "partly_cloudy.png" ;  
             }
             else
             {
-                return Types.Util.IsNight(DateTime) ? "storm.png" : "storm_night.png";  
+                return "storm.png";
+                //return Types.Util.IsNight(DateTime) ? "storm_night.png" : "storm.png";  
             }
         }
 
@@ -151,17 +156,20 @@ namespace Agrotutor.Modules.Weather
         {
             if (RainCondition == RainCondition.NoRain)
             {
-                return Types.Util.IsNight(DateTime) ? "night.png" : "clear.png";   
+                return "clear.png";
+                //return Types.Util.IsNight(DateTime) ? "night.png" : "clear.png";   
             }
             else
             {
-                return Types.Util.IsNight(DateTime) ? "partly_cloudy.png" : "cloudy_night.png";  
+                return "partly_cloudy.png";
+                //return Types.Util.IsNight(DateTime) ?  "cloudy_night.png" : "partly_cloudy.png";  
             }
         }
 
         private string GetClearIcon()
         {
-            return Types.Util.IsNight(DateTime) ? "night.png" : "clear.png";
+            return "clear.png";
+            //return Types.Util.IsNight(DateTime) ? "night.png" : "clear.png";
         }
 
         private string GetMostlyCloudyNightIcon()

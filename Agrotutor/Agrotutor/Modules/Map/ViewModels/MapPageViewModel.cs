@@ -812,7 +812,6 @@ namespace Agrotutor.Modules.Map.ViewModels
                 async () =>
                 {
                     var param = new NavigationParameters();
-                    if (CurrentWeather != null) param.Add(WeatherPageViewModel.ForecastParameterName, CurrentWeather);
 
                     if (WeatherLocation != null)
                     {

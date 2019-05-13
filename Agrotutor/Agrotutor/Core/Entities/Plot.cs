@@ -23,6 +23,7 @@ namespace Agrotutor.Core.Entities
             Delineation=new List<DelineationPosition>();
             MediaItems=new List<MediaItem>();
             PriceForecast=new List<PriceForecast>();
+            Irrigated = true;
         }
      
         public List<Activity> Activities { get; set; }

@@ -117,32 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cdd" xml:space="preserve">
-    <value>Días de grado de enfriamiento</value>
-  </data>
-  <data name="dht" xml:space="preserve">
-    <value>Temperatura máxima diaria</value>
-  </data>
-  <data name="dlt" xml:space="preserve">
-    <value>Temperatura mínima diaria</value>
-  </data>
-  <data name="dp" xml:space="preserve">
-    <value>Precipitación diaria</value>
-  </data>
-  <data name="gdd" xml:space="preserve">
-    <value>Días de grado creciente</value>
-  </data>
-  <data name="hdd" xml:space="preserve">
-    <value>Días de grado de calentamiento</value>
-  </data>
-  <data name="short_evap" xml:space="preserve">
-    <value>Evapotranspiración diaria de cultivos cortos</value>
-  </data>
   <data name="sr" xml:space="preserve">
-    <value>Radiación solar</value>
+    <value>Radiación solar (Wh/m2)</value>
   </data>
   <data name="precip" xml:space="preserve">
-    <value>Precipitación</value>
+    <value>Precipitación (mm)</value>
   </data>
   <data name="rhh" xml:space="preserve">
     <value>Max humedad (%)</value>
@@ -151,21 +130,21 @@
     <value>Min humedad (%)</value>
   </data>
   <data name="tl" xml:space="preserve">
-    <value>Min temperatura</value>
+    <value>Min temperatura (C)</value>
   </data>
   <data name="th" xml:space="preserve">
-    <value>Max temperatura</value>
+    <value>Max temperatura (C)</value>
   </data>
   <data name="wa" xml:space="preserve">
-    <value>Viento medio</value>
+    <value>Viento medio (m/s)</value>
   </data>
   <data name="wdh" xml:space="preserve">
-    <value>Max viento (día)</value>
+    <value>Max viento (día) (m/s)</value>
   </data>
   <data name="wmh" xml:space="preserve">
-    <value>Max viento (mañana)</value>
+    <value>Max viento (mañana) (m/s)</value>
   </data>
-  <data name="tall_evap" xml:space="preserve">
-    <value>Evapotranspiración diaria de cultivos altos</value>
+  <data name="select" xml:space="preserve">
+    <value>Seleccionar</value>
   </data>
 </root>

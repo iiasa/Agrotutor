@@ -15,7 +15,7 @@
                     <Label VerticalOptions="Center" FontSize="Large" Text="{localization:Translate next_month}"/>
                 </StackLayout>
     
-                <Grid>
+                <Grid Margin="0,16,0,16">
                     <Grid.RowDefinitions>
                         <RowDefinition />
                         <RowDefinition Height="Auto"/>
@@ -23,27 +23,27 @@
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
     
-                    <StackLayout Grid.Column="0" Grid.Row="0">
+                    <StackLayout Grid.Column="0" Grid.Row="0" Margin="0,0,32,0">
                         <Label Text="{localization:Translate expected_price}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
                         <Label Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" FontSize="18" TextColor="DodgerBlue" />
                     </StackLayout>
                     
-                    <StackLayout Grid.Column="0" Grid.Row="2">
+                    <StackLayout Grid.Column="0" Grid.Row="2" Margin="0,0,32,0">
                         <Label Text="{localization:Translate expected_range}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange" />
                         <Label Text="{localization:Translate peso_per_kg}" VerticalOptions="Center" FontSize="18" TextColor="DarkOrange" />
                     </StackLayout>
     
-                    <Label Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" LineBreakMode="NoWrap" />
-                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
-                    <Label Grid.Row="2" Grid.Column="2" Text="{localization:Translate to}" VerticalOptions="Center" />
-                    <Label Grid.Row="2" Grid.Column="3" Text="{Binding NextMax}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding NextExpected}" HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" LineBreakMode="NoWrap" />
+                    <BoxView Grid.Row="1" Grid.Column="1" BackgroundColor="#242424" HeightRequest="5"/>
+                    <StackLayout Grid.Row="2" Grid.Column="1" Orientation="Horizontal" HorizontalOptions="Center">
+                        <Label Text="{Binding NextMin}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+                        <Label Text="{localization:Translate to}" VerticalOptions="Center" />
+                        <Label Text="{Binding NextMax}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" />
+                    </StackLayout>
     
-                    <BoxView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" BackgroundColor="#242424" HeightRequest="5"/>
     
                 </Grid>
     
