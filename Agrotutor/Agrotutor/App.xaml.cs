@@ -52,7 +52,7 @@ namespace Agrotutor
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";
             var initialPage = "NavigationPage/MapPage";
-            if (VersionTracking.IsFirstLaunchEver)
+            if (VersionTracking.IsFirstLaunchForCurrentBuild)
             {
                 initialPage = "NavigationPage/WelcomePage";
             }
