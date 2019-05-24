@@ -1,7 +1,9 @@
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Agrotutor.Modules.Weather.Awhere.API.ResponseEntities;
 using Flurl.Http;
+using Microsoft.AppCenter.Crashes;
 using Newtonsoft.Json;
 using Xamarin.Essentials;
 
@@ -22,8 +24,11 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static async Task<ForecastResponse> GetForecastAsync(double latitude, double longitude, UserCredentials credentials)
         {
             var token = await GetToken(credentials);
-            var URL = $"{ApiURL}{latitude.ToString().Replace(",",".")},{longitude.ToString().Replace(",",".")}/forecasts";
-            var forecast = await URL
+            var URL = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/forecasts";
+            ForecastResponse forecast = null;
+            try
+            {
+                forecast = await URL
                 .WithOAuthBearerToken(token)
                 .SetQueryParams(new
                 {
@@ -31,14 +36,21 @@ namespace Agrotutor.Modules.Weather.Awhere.API
                     blockSize = "24"
                 })
                 .GetJsonAsync<ForecastResponse>();
+            } catch (Exception e) 
+            {
+                Crashes.TrackError(e);
+            }
             return forecast;
         }
 
         public static async Task<ForecastResponse> GetCurrentAsync(double latitude, double longitude, UserCredentials credentials)
         {
             var token = await GetToken(credentials);
-            var URL = $"{ApiURL}{latitude.ToString().Replace(",",".")},{longitude.ToString().Replace(",",".")}/forecasts";
-            var forecast = await URL
+            var URL = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/forecasts";
+            ForecastResponse forecast = null;
+            try
+            {
+                forecast = await URL
                 .WithOAuthBearerToken(token)
                 .SetQueryParams(new
                 {
@@ -47,6 +59,11 @@ namespace Agrotutor.Modules.Weather.Awhere.API
                     limit = "1"
                 })
                 .GetJsonAsync<ForecastResponse>();
+            }
+            catch (Exception e) 
+            {
+                Crashes.TrackError(e);
+            }
             return forecast;
         }
 
@@ -57,9 +74,16 @@ namespace Agrotutor.Modules.Weather.Awhere.API
             var start = startDate?.ToString("yyyy-MM-dd");
             var end = endDate?.ToString("yyyy-MM-dd");
             var dates = (start != null && end != null) ? $"{start},{end}" : "";
-            var url = $"{ApiURL}{latitude.ToString().Replace(",",".")},{longitude.ToString().Replace(",",".")}/observations/{dates}";
-
-            var observationsResponse = await url.WithOAuthBearerToken(token).GetJsonAsync<ObservationsResponse>();
+            var url = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/observations/{dates}";
+            ObservationsResponse observationsResponse = null;
+            try
+            {
+                observationsResponse = await url.WithOAuthBearerToken(token).GetJsonAsync<ObservationsResponse>();
+            }
+            catch (Exception ex)
+            {
+                Crashes.TrackError(ex);
+            }
             var observations = observationsResponse;
 
             while (observationsResponse.Links.Next != null) {
@@ -75,7 +99,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static async Task<object> GetNormsAsync(double latitude, double longitude, int month, int day, UserCredentials credentials)
         {
             var token = await GetToken(credentials);
-            var url = $"{ApiURL}{latitude.ToString().Replace(",",".")},{longitude.ToString().Replace(",",".")}/norms/{month}-{day}";
+            var url = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/norms/{month}-{day}";
 
             var norms = await url.WithOAuthBearerToken(token).GetJsonAsync<NormsResponse>();
 

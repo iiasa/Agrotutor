@@ -11,7 +11,7 @@ namespace Agrotutor.ViewModels
 {
     public class WebContentPageViewModel : ViewModelBase, INavigatedAware
     {
-        public static string Activities = "priceforecasting"; // TODO: add activity about page
+        public static string Activities = "activities";
         public static string CultivarCharacteristics = "cultivarcharacteristics";
         public static string PotentialYield = "potentialyield";
         public static string LocalBenchmarking = "localbenchmarking";

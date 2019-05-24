@@ -14,18 +14,8 @@
             : base(navigationService, localizer)
         {}
 
-        public DelegateCommand ShowIntroductionCommand => new DelegateCommand(
-            () => {
-                NavigationService.NavigateAsync("WelcomePage");
-            });
-
-        public DelegateCommand ShowLicensesCommand => new DelegateCommand(
-            ()=> {
-                NavigationService.NavigateAsync("CitationPage");
-            });
-
         public DelegateCommand<string> TapLinkCommand => new DelegateCommand<string>(
-            (url)=> {
+            url => {
                 Device.OpenUri(new Uri(url));
             });
     }

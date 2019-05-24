@@ -1,35 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-     xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
-     Title="{localization:Translate title}"
-             xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
-             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
-             x:Class="Agrotutor.Modules.Benchmarking.Views.ViewYieldPage">
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    x:Class="Agrotutor.Modules.Benchmarking.Views.ViewYieldPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:views="clr-namespace:Agrotutor.Core.Components.Views"
+    Title="{localization:Translate title}"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
     <ContentPage.Content>
-        <StackLayout>
-        
-            <ScrollView VerticalOptions="StartAndExpand">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <views:SimpleStatsSingle
                     AverageImageSource="prod_avg.png"
-                    MinImageSource="prod_min.png"
-                    MaxImageSource="prod_max.png"
-                    Unit="{localization:Translate unit}"
                     AverageText="{localization:Translate average}"
-                    MinText="{localization:Translate minimum}"
-                    MaxText="{localization:Translate maximum}"
                     AverageValue="{Binding Avg}"
+                    HorizontalOptions="FillAndExpand"
+                    MaxImageSource="prod_max.png"
+                    MaxText="{localization:Translate maximum}"
+                    MaxValue="{Binding Max}"
+                    MinImageSource="prod_min.png"
+                    MinText="{localization:Translate minimum}"
                     MinValue="{Binding Min}"
-                    MaxValue="{Binding Max}" />
+                    Unit="{localization:Translate unit}"
+                    VerticalOptions="FillAndExpand" />
             </ScrollView>
 
-            <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="End">
+            <StackLayout
+                HorizontalOptions="End"
+                Orientation="Horizontal"
+                VerticalOptions="End">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding ShowAbout}"/>
+                    <TapGestureRecognizer Command="{Binding ShowAbout}" />
                 </StackLayout.GestureRecognizers>
 
-                <Label VerticalOptions="Center" Text="{localization:Translate about}" />
-                <Image Source="advice.png" HeightRequest="32" WidthRequest="32"/>
+                <Label Text="{localization:Translate about}" VerticalOptions="Center" />
+                <Image
+                    HeightRequest="32"
+                    Source="advice.png"
+                    WidthRequest="32" />
             </StackLayout>
 
         </StackLayout>

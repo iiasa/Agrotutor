@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Agrotutor.Views.AboutPage"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
+             xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
+             Padding="16"
+             Title="{localization:Translate title}">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                
+                <Label HorizontalOptions="Center" FontSize="48" FontAttributes="Bold" Text="{localization:Translate app_name}" />
+                
+                <Image HorizontalOptions="Center" HeightRequest="200" WidthRequest="200" Source="app_icon_large.png" />
+                
+                <Label HorizontalOptions="Center" FontAttributes="Bold" Text="{localization:Translate app_version}" />
+                
+                <Label HorizontalOptions="Center" Text="{Binding AppVersion}" />
+                
+                <Label Text="{localization:Translate content}"
+                       VerticalOptions="CenterAndExpand"
+                       HorizontalOptions="CenterAndExpand" />
+
+                <Button Text="{localization:Translate licences}" Command="{Binding ShowLicensesCommand}" VerticalOptions="End" Margin="32" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

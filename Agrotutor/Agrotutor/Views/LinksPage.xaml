@@ -2,42 +2,27 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:Agrotutor.Core.Localization"
      xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-     mvvm:ViewModelLocator.AutowireViewModel="True"
+             mvvm:ViewModelLocator.AutowireViewModel="True"
              x:Class="Agrotutor.Views.LinksPage">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" Margin="16">
-                <Image Source="ic_weblink.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
-                            CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="{localization:Translate weblink1}" VerticalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
-                            CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <Image Source="ic_weblink.png" />
+                <Label Text="{localization:Translate weblink1}" VerticalTextAlignment="Center"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                                          CommandParameter="http://conservacion.cimmyt.org/es/protocolos-de-suelo/" />
+                </StackLayout.GestureRecognizers>
             </StackLayout>
 
             <StackLayout Orientation="Horizontal" Margin="16">
-                <Image Source="ic_weblink.png">
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
-                            CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
-                    </Image.GestureRecognizers>
-                </Image>
-                <Label Text="{localization:Translate weblink2}" VerticalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TapLinkCommand}"
-                            CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
-                    </Label.GestureRecognizers>
-                </Label>
+                <Image Source="ic_weblink.png" />
+                <Label Text="{localization:Translate weblink2}" VerticalTextAlignment="Center" />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TapLinkCommand}"
+                                          CommandParameter="http://conservacion.cimmyt.org/index.php/es/don-crecencio" />
+                </StackLayout.GestureRecognizers>
             </StackLayout>
-
-            <Button Text="{localization:Translate guide}" Command="{Binding ShowIntroductionCommand}" Margin="16" />
-            <Button Text="{localization:Translate licenses}" Command="{Binding ShowLicensesCommand}" VerticalOptions="End" Margin="16" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

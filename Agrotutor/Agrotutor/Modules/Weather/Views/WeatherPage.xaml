@@ -18,25 +18,24 @@
                         <RowDefinition Height="*" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="150" />
-                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="120" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
                     
                     
                     
-                    <Label Text="{Binding CurrentTemperature}" FontSize="36" HorizontalOptions="Center"
+                    <Label Text="{Binding CurrentTemperature}" FontSize="36" HorizontalOptions="Start"
                            VerticalOptions="Center"
                         HorizontalTextAlignment="Start" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" />
                     
-                    <views:MenuIcon 
-                        IconText="{Binding WeatherText}" 
-                        IconSource="{Binding WeatherIcon}" 
-                        Grid.Row ="0" Grid.Column="1" Grid.RowSpan="2" WidthRequest="150" />
+                    <Image 
+                        Source="{Binding WeatherIcon}" 
+                        Grid.Row ="0" Grid.Column="1" Grid.RowSpan="2" WidthRequest="120" HeightRequest="120" />
                         
-                    <Label Text="{Binding MaxTemperature}" FontSize="24" VerticalOptions="End" HorizontalOptions="EndAndExpand" 
+                    <Label Text="{Binding MaxTemperature}" FontSize="28" VerticalOptions="End" HorizontalOptions="End" 
                            HorizontalTextAlignment="End" Grid.Column="2" Grid.Row="0" />
-                    <Label Text="{Binding MinTemperature}" FontSize="24" VerticalOptions="Start" HorizontalOptions="End" 
+                    <Label Text="{Binding MinTemperature}" FontSize="28" VerticalOptions="Start" HorizontalOptions="End" 
                            HorizontalTextAlignment="End" Grid.Column="2" Grid.Row="1" />
                     
                 </Grid>

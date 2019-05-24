@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Acr.UserDialogs;
 using Agrotutor.Core;
 using Agrotutor.Core.Camera;
@@ -80,7 +81,7 @@ namespace Agrotutor.Modules.Map.ViewModels
 
         private bool _currentMapTaskHintIsVisible;
         private string _currentPlotCost;
-        private string _currentPlotGdd;
+        private string _currentPlotWeather;
         private string _currentPlotIncome;
         private string _currentPlotNitrogen;
         private string _currentPlotPotentialYield;
@@ -812,7 +813,6 @@ namespace Agrotutor.Modules.Map.ViewModels
                 async () =>
                 {
                     var param = new NavigationParameters();
-                    if (CurrentWeather != null) param.Add(WeatherPageViewModel.ForecastParameterName, CurrentWeather);
 
                     if (WeatherLocation != null)
                     {
@@ -964,7 +964,8 @@ namespace Agrotutor.Modules.Map.ViewModels
                 if (value == null) return;
                 SetProperty(ref currentWeather, value);
                 ShowWeatherWidget = true;
-                var cur = value.ElementAt(DateTime.Now.Hour);
+                var currentHour = DateTime.Now.Hour;
+                var cur = value.Count > currentHour ? value.ElementAt(currentHour) : null;
                 if (cur == null) return;
                 CurrentWeatherIconSource = cur.GetWeatherIcon();
                 var text = $"{cur.Temperature} °C";
@@ -1199,10 +1200,10 @@ namespace Agrotutor.Modules.Map.ViewModels
             set => SetProperty(ref _currentPlotWeatherIcon, value);
         }
 
-        public string CurrentPlotGdd
+        public string CurrentPlotWeather
         {
-            get => _currentPlotGdd;
-            set => SetProperty(ref _currentPlotGdd, value);
+            get => _currentPlotWeather;
+            set => SetProperty(ref _currentPlotWeather, value);
         }
 
         public string SelectedPlotClimate
@@ -1534,9 +1535,21 @@ namespace Agrotutor.Modules.Map.ViewModels
                 ? SelectedPlot?.WeatherHistory?.Sum(x => x.CalculateGdd(baseTemperature))
                 : null;
             var weatherIcon = string.Empty;
-            if (SelectedPlot.WeatherForecast?.Any() == true)
-                weatherIcon = SelectedPlot.WeatherForecast?.ElementAt(0).GetWeatherIcon();
-
+            var weatherText = "-";
+            if (SelectedPlot.CurrentWeather?.Any() == true)
+            {
+                var currentHour = DateTime.Now.Hour;
+                var cur = SelectedPlot.CurrentWeather?.Count > currentHour ? SelectedPlot.CurrentWeather.ElementAt(currentHour) : null;
+                weatherIcon = cur.GetWeatherIcon();
+                if (cur != null)
+                {
+                    CurrentWeatherIconSource = cur.GetWeatherIcon();
+                }
+                var text = $"{cur.Temperature} °C";
+                if (cur != null)
+                    text += $" | {StringLocalizer.GetString("rain")}: {cur.PrecipitationProbability} %";
+                weatherText = text;
+            }
             var cost = SelectedPlot.BemData?.AverageCost;
             var yield = SelectedPlot.BemData?.AverageYield;
             var profit = SelectedPlot.BemData?.AverageProfit;
@@ -1555,7 +1568,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 income == null ? "-" : Math.Round((decimal) income).ToString(CultureInfo.InvariantCulture);
             CurrentPlotPotentialYield = potentialYield == null ? "-" : Math.Round((decimal)potentialYield).ToString();
             CurrentPlotNitrogen = nitrogenNeeded == null ? "-" : Math.Round((decimal)nitrogenNeeded).ToString();
-            CurrentPlotGdd = gdd == null ? "-" : gdd.ToString();
+            CurrentPlotWeather = weatherText;
             CurrentPlotWeatherIcon = weatherIcon ?? "";
 
             await MapPage.UpdateImages();
@@ -1576,7 +1589,7 @@ namespace Agrotutor.Modules.Map.ViewModels
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(
                 StringLocalizer.GetString("rendering_delineations")))
             {
-                var plots = await AppDataService.GetAllPlotsAsync();
+                IEnumerable<Core.Entities.Plot> plots = Plots.Any() ? Plots : await AppDataService.GetAllPlotsAsync();
 
                 foreach (var plot in plots)
                 {
@@ -1643,11 +1656,11 @@ namespace Agrotutor.Modules.Map.ViewModels
                     Password = Constants.AWhereWeatherAPIPassword
                 };
 
-                if (plot.WeatherForecast == null)
+                if (plot.CurrentWeather == null)
                 {
                     var forecast =
-                        await WeatherAPI.GetForecastAsync(plot.Position.Latitude, plot.Position.Longitude, creds);
-                    plot.WeatherForecast = Converter.GetForecastsFromApiResponse(forecast);
+                        await WeatherAPI.GetCurrentAsync(plot.Position.Latitude, plot.Position.Longitude, creds);
+                    plot.CurrentWeather = Converter.GetForecastsFromApiResponse(forecast);
                     updatedPlot = true;
                 }
 
@@ -2104,7 +2117,7 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             using (await MaterialDialog.Instance.LoadingSnackbarAsync(StringLocalizer.GetString("rendering_plots")))
             {
-                Plots = await AppDataService.GetAllPlotsAsync();
+                if (!Plots.Any()) Plots = await AppDataService.GetAllPlotsAsync();
                 var plots = Plots.ToList();
                 foreach (var pin in from plot in plots
                     where plot.Position != null
@@ -2129,6 +2142,11 @@ namespace Agrotutor.Modules.Map.ViewModels
             };
             MapsApp.OpenAsync(location, mapOptions);
         }
+
+        public ICommand NavigateToAbout => new DelegateCommand(async () =>
+        {
+            await NavigationService.NavigateAsync("AboutPage");
+        });
 
         private async Task RefreshWeatherData()
         {

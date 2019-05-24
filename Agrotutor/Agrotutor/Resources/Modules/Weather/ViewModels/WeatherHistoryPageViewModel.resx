@@ -117,32 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="cdd" xml:space="preserve">
-    <value>Cooling degree days</value>
-  </data>
-  <data name="dht" xml:space="preserve">
-    <value>Daily high temperature</value>
-  </data>
-  <data name="dlt" xml:space="preserve">
-    <value>Daily low temperature</value>
-  </data>
-  <data name="dp" xml:space="preserve">
-    <value>Daily precipitation</value>
-  </data>
-  <data name="gdd" xml:space="preserve">
-    <value>Growing degree days</value>
-  </data>
-  <data name="hdd" xml:space="preserve">
-    <value>Heating degree days</value>
-  </data>
-  <data name="short_evap" xml:space="preserve">
-    <value>Evapotranspiration short crop</value>
-  </data>
   <data name="sr" xml:space="preserve">
-    <value>Solar radiation</value>
+    <value>Solar radiation (Wh/m2)</value>
   </data>
   <data name="precip" xml:space="preserve">
-    <value>Precipitation</value>
+    <value>Precipitation (mm)</value>
   </data>
   <data name="rhh" xml:space="preserve">
     <value>Max humidity (%)</value>
@@ -151,21 +130,21 @@
     <value>Min humidity (%)</value>
   </data>
   <data name="tl" xml:space="preserve">
-    <value>Min temperature</value>
+    <value>Min temperature (C)</value>
   </data>
   <data name="th" xml:space="preserve">
-    <value>Max temperature</value>
+    <value>Max temperature (C)</value>
   </data>
   <data name="wa" xml:space="preserve">
-    <value>Average wind</value>
+    <value>Average wind (m/s)</value>
   </data>
   <data name="wdh" xml:space="preserve">
-    <value>Max wind (day)</value>
+    <value>Max wind (day) (m/s)</value>
   </data>
   <data name="wmh" xml:space="preserve">
-    <value>Max wind (morning)</value>
+    <value>Max wind (morning) (m/s)</value>
   </data>
-  <data name="tall_evap" xml:space="preserve">
-    <value>Evapotranspiration tall crop</value>
+  <data name="select" xml:space="preserve">
+    <value>Select</value>
   </data>
 </root>

@@ -22,8 +22,6 @@
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
 	<string>Agrotutor</string>
-	<key>CFBundleVersion</key>
-	<string>1.0.8</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>NSCameraUsageDescription</key>
@@ -50,9 +48,11 @@
 	<string>AgroTutor needs to access your location for providing you with information at your current location.</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcons.appiconset</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>CFBundleShortVersionString</key>
+	<string>2</string>
+	<key>CFBundleVersion</key>
+	<string>2.0.0</string>
 </dict>
 </plist>

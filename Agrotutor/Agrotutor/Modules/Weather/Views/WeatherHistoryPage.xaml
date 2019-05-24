@@ -33,7 +33,8 @@
                 Grid.ColumnSpan="7"
                 HorizontalOptions="FillAndExpand"
                 ItemsSource="{Binding DatasetNames}"
-                SelectedIndex="{Binding SelectedDataset}" />
+                SelectedIndex="{Binding SelectedDataset}" 
+                Title="{localization:Translate select}"/>
             
             <oxy:PlotView
                 Grid.Row="1"

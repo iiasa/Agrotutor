@@ -160,7 +160,7 @@
     <value>Maturity type of the cultivar</value>
   </data>
   <data name="plot_created" xml:space="preserve">
-    <value>Plot creation successfull.</value>
+    <value>Plot creation successful.</value>
   </data>
   <data name="saving_plot" xml:space="preserve">
     <value>Saving plot</value>

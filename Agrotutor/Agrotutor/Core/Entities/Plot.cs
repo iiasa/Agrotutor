@@ -23,6 +23,7 @@ namespace Agrotutor.Core.Entities
             Delineation=new List<DelineationPosition>();
             MediaItems=new List<MediaItem>();
             PriceForecast=new List<PriceForecast>();
+            Irrigated = true;
         }
      
         public List<Activity> Activities { get; set; }
@@ -45,6 +46,9 @@ namespace Agrotutor.Core.Entities
         public bool Irrigated { get; set; }
 
         public int ArgbPlotColor { get; set; }
+
+        [NotMapped] 
+        public List<WeatherForecast> CurrentWeather { get; set; }
 
         [NotMapped]
         public Color? PlotColor { get; set; }

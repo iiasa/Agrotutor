@@ -62,7 +62,7 @@ namespace Agrotutor.Modules.Weather.Types
             new Time(18,06)
         };
 
-        class Time
+        private class Time
         {
             public Time(int hours, int minutes)
             {

@@ -15,7 +15,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
             IStringLocalizer<ActivityPageViewModel> localizer) : base(navigationService, localizer)
         {}
 
-        public DelegateCommand<string> ActivityClickedCommand => new DelegateCommand<string>((activityType) =>
+        public DelegateCommand<string> ActivityClickedCommand => new DelegateCommand<string>(activityType =>
         {
             NavigationService.NavigateAsync("ActivityDetail", new NavigationParameters
             {
@@ -26,8 +26,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         public Plot Plot
         {
-            get => this._plot;
-            private set => SetProperty(ref this._plot, value);
+            get => _plot;
+            private set => SetProperty(ref _plot, value);
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

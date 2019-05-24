@@ -6,7 +6,7 @@ namespace Agrotutor.Dev
 {
     public static class Profiler
     {
-        static readonly ConcurrentDictionary<string, Stopwatch> Watches = new ConcurrentDictionary<string, Stopwatch>();
+        private static readonly ConcurrentDictionary<string, Stopwatch> Watches = new ConcurrentDictionary<string, Stopwatch>();
 
         public static void Start(object view)
         {

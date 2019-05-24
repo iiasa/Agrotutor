@@ -120,4 +120,16 @@
   <data name="loading" xml:space="preserve">
     <value>Cargando...</value>
   </data>
+  <data name="welcome1" xml:space="preserve">
+    <value>Para empezar obteniendo asesoría para plantar su cultivo e información comparativa específica y descriptiva, presione este botón en la barra principal</value>
+  </data>
+  <data name="welcome2" xml:space="preserve">
+    <value>Si guarda su parcela, podrá delinearla sobre imágenes de satélite, agregar actividades agronómicas y verlas en el calendario agrícola, agregar fotos, vídeos y obtener sugerencias de manejo agronómico</value>
+  </data>
+  <data name="welcome3" xml:space="preserve">
+    <value>Los detalles de la información comparativa que se muestran son específicos a su ubicación y cultivo y se enfocan en optimizar el uso de fertilizantes e insumos para potenciar el rendimiento y las utilidades</value>
+  </data>
+  <data name="welcome4" xml:space="preserve">
+    <value>Utilize las capas pre-cargadas en AgroTutor para obtener más información práctica cercana a usted. Además, explore las opciones, el calendario agrícola y los reportes del clima disponibles en la barra principal</value>
+  </data>
 </root>

@@ -5,7 +5,7 @@ using Prism.Modularity;
 
 namespace Agrotutor.Modules.PriceForecasting
 {
-    class PriceForecastModule : IModule
+    public class PriceForecastModule : IModule
     {
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {

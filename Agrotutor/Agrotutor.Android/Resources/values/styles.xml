@@ -20,11 +20,12 @@
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
-
+    <item name="android:backgroundDimEnabled">false</item>
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+    <item name="android:backgroundDimEnabled">false</item>
     <item name="colorAccent">#FF4081</item>
   </style>
 

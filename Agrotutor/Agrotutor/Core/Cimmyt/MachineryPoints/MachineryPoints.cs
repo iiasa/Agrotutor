@@ -66,7 +66,7 @@ namespace Agrotutor.Core.Cimmyt.MachineryPoints
         }
     }
 
-    public partial class Crs
+    public class Crs
     {
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
@@ -75,13 +75,13 @@ namespace Agrotutor.Core.Cimmyt.MachineryPoints
         public CrsProperties Properties { get; set; }
     }
 
-    public partial class CrsProperties
+    public class CrsProperties
     {
         [JsonProperty("name", NullValueHandling = NullValueHandling.Ignore)]
         public string Name { get; set; }
     }
 
-    public partial class Feature
+    public class Feature
     {
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
@@ -93,7 +93,7 @@ namespace Agrotutor.Core.Cimmyt.MachineryPoints
         public Geometry Geometry { get; set; }
     }
 
-    public partial class Geometry
+    public class Geometry
     {
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
@@ -107,7 +107,7 @@ namespace Agrotutor.Core.Cimmyt.MachineryPoints
         }
     }
 
-    public partial class FeatureProperties
+    public class FeatureProperties
     {
         [JsonProperty("AŅO", NullValueHandling = NullValueHandling.Ignore)]
         public long? Aņo { get; set; }

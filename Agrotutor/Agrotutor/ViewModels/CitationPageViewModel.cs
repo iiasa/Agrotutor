@@ -15,7 +15,7 @@
         {}
 
         public DelegateCommand<string> TapLinkCommand => new DelegateCommand<string>(
-            (url) => {
+            url => {
                 Device.OpenUri(new Uri(url));
             });
     }

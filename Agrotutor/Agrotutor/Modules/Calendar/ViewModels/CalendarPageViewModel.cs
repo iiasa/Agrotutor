@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-
 namespace Agrotutor.Modules.Calendar.ViewModels
 {
     using System;
@@ -9,9 +7,9 @@ namespace Agrotutor.Modules.Calendar.ViewModels
     using Prism.Navigation;
 
     using Core;
+    using Core.Persistence;
     using Types;
     using Views;
-    using Agrotutor.Core.Persistence;
 
     public class CalendarPageViewModel : ViewModelBase
     {

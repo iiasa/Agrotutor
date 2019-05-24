@@ -111,6 +111,7 @@
 
     <ControlTemplate x:Key="HubContactUI">
         <Frame Style="{StaticResource MainMapPopupBackground}">
+            <ScrollView >
             <StackLayout>
                 <StackLayout Orientation="Horizontal">
                     <Image HeightRequest="20" Source="add.png" />
@@ -120,65 +121,64 @@
                         Text="{localization:Translate hub_contact_title}" />
                 </StackLayout>
                 <views:Divider />
-                <ScrollView>
-                    <StackLayout>
-                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_hub}" />
-                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Hub}"
-                               Margin="0,0,0,16" />
-                        
-                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_manager}" />
-                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Gerente}"
-                               Margin="0,0,0,16" />
-                        
-                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_assistant}" />
-                        <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Assistente}"
-                               Margin="0,0,0,16" />
+                        <StackLayout>
+                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_hub}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Hub}"
+                                   Margin="0,0,0,16" />
+                            
+                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_manager}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Gerente}"
+                                   Margin="0,0,0,16" />
+                            
+                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_assistant}" />
+                            <Label Text="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Assistente}"
+                                   Margin="0,0,0,16" />
 
-                        <views:Divider />
+                            <views:Divider />
 
-                        <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_actions}" />
+                            <Label FontAttributes="Bold" Text="{localization:Translate hub_contact_actions}" />
 
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentHubContact}"
-                            IconSource="map.png"
-                            IconText="{localization:Translate hub_contact_navigate}" />
+                            <views:IconWithText
+                                Command="{TemplateBinding Parent.BindingContext.NavigateToCurrentHubContact}"
+                                IconSource="map.png"
+                                IconText="{localization:Translate hub_contact_navigate}" />
 
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
-                            CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailGte}"
-                            IconSource="contact_email.png"
-                            IconText="{localization:Translate hub_contact_contact_manager}" />
+                            <views:IconWithText
+                                Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailGte}"
+                                IconSource="contact_email.png"
+                                IconText="{localization:Translate hub_contact_contact_manager}" />
 
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
-                            CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailAsis}"
-                            IconSource="contact_email.png"
-                            IconText="{localization:Translate hub_contact_contact_assistant}" />
+                            <views:IconWithText
+                                Command="{TemplateBinding Parent.BindingContext.WriteEmail}"
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.EmailAsis}"
+                                IconSource="contact_email.png"
+                                IconText="{localization:Translate hub_contact_contact_assistant}" />
 
-                        <views:IconWithText
-                            Command="{TemplateBinding Parent.BindingContext.PhoneCall}"
-                            CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Telefono}"
-                            IconSource="contact_call.png"
-                            IconText="{localization:Translate hub_contact_call}" />
+                            <views:IconWithText
+                                Command="{TemplateBinding Parent.BindingContext.PhoneCall}"
+                                CommandParameter="{TemplateBinding Parent.BindingContext.CurrentHubContact.Properties.Telefono}"
+                                IconSource="contact_call.png"
+                                IconText="{localization:Translate hub_contact_call}" />
 
+                        </StackLayout>
                     </StackLayout>
                 </ScrollView>
-            </StackLayout>
         </Frame>
     </ControlTemplate>
 
     <ControlTemplate x:Key="InvestigationPlatformUI">
         <Frame Style="{StaticResource MainMapPopupBackground}">
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="add.png" />
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{localization:Translate investigation_platform_title}" />
-                </StackLayout>
-                <views:Divider />
-                <ScrollView>
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="20" Source="add.png" />
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{localization:Translate investigation_platform_title}" />
+                    </StackLayout>
+                    <views:Divider />
                     <StackLayout>
                         <Label FontAttributes="Bold" Text="{localization:Translate investigation_platform_name}" />
                         <Label Text="{TemplateBinding Parent.BindingContext.CurrentInvestigationPlatform.Properties.NomPlat}"
@@ -282,25 +282,25 @@
                             IconText="{localization:Translate investigation_platform_call_tr}" />
 
                     </StackLayout>
-                </ScrollView>
-            </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </Frame>
     </ControlTemplate>
 
     <ControlTemplate x:Key="MachineryPointUI">
         <Frame Style="{StaticResource MainMapPopupBackground}">
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="add.png" />
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{localization:Translate machinery_point_title}" />
-                </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="20" Source="add.png" />
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{localization:Translate machinery_point_title}" />
+                    </StackLayout>
+    
+                    <views:Divider />
 
-                <views:Divider />
-
-                <ScrollView>
                     <StackLayout>
                         <Label FontAttributes="Bold" Text="{localization:Translate machinery_point_year}" />
                         <Label Text="{TemplateBinding Parent.BindingContext.CurrentMachineryPoint.Properties.Anio}"
@@ -336,8 +336,8 @@
                             IconText="{localization:Translate machinery_point_navigate}" />
 
                     </StackLayout>
-                </ScrollView>
-            </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </Frame>
     </ControlTemplate>
 
@@ -371,16 +371,16 @@
 
     <ControlTemplate x:Key="MenuUI">
         <Frame Style="{StaticResource MainMapPopupBackground}">
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="options.png" />
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{localization:Translate options_title}" />
-                </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="20" Source="options.png" />
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{localization:Translate options_title}" />
+                    </StackLayout>
                 <views:Divider />
-                <ScrollView>
                     <StackLayout>
                         <views:IconWithText
                             Command="{TemplateBinding Parent.BindingContext.NavigateToProfile}"
@@ -394,24 +394,28 @@
                             Command="{TemplateBinding Parent.BindingContext.ProvideFeedback}"
                             IconSource="feedback.png"
                             IconText="{localization:Translate options_feedback}" />
+                        <views:IconWithText
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToAbout}"
+                            IconSource="app_icon.png"
+                            IconText="{localization:Translate options_about}" />
                     </StackLayout>
-                </ScrollView>
-            </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </Frame>
     </ControlTemplate>
 
     <ControlTemplate x:Key="PlannerUI">
         <Frame Style="{StaticResource MainMapPopupBackground}">
-            <StackLayout>
-                <StackLayout Orientation="Horizontal">
-                    <Image HeightRequest="20" Source="advice.png" />
-                    <Label
-                        FontSize="20"
-                        HorizontalOptions="StartAndExpand"
-                        Text="{localization:Translate planner}" />
-                </StackLayout>
-                <views:Divider />
-                <ScrollView>
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Orientation="Horizontal">
+                        <Image HeightRequest="20" Source="advice.png" />
+                        <Label
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            Text="{localization:Translate planner}" />
+                    </StackLayout>
+                    <views:Divider />
                     <StackLayout>
                         <Label FontSize="18" Text="{localization:Translate please_select_your_crop}" />
                         <Picker
@@ -432,8 +436,8 @@
                             IconSource="choose_location.png"
                             IconText="{localization:Translate select_on_the_map}" />
                     </StackLayout>
-                </ScrollView>
-            </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </Frame>
     </ControlTemplate>
 </ResourceDictionary>

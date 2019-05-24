@@ -43,6 +43,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 StringLocalizer.GetString("wdh"),
                 StringLocalizer.GetString("wmh")
             };
+            SelectedDataset = -1;
         }
 
         public int GraphDays

@@ -1,17 +1,11 @@
-using System;
-using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Core.Localization;
-using Agrotutor.Modules.Ciat.ViewModels;
-using Agrotutor.Modules.PriceForecasting.ViewModels;
 using Agrotutor.ViewModels;
 using Agrotutor.Views;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
 using MonkeyCache.SQLite;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
 using Prism;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -52,9 +46,9 @@ namespace Agrotutor
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";
             var initialPage = "NavigationPage/MapPage";
-            if (VersionTracking.IsFirstLaunchEver)
+            if (VersionTracking.IsFirstLaunchForCurrentBuild)
             {
-                // initialPage = "NavigationPage/WelcomePage";
+                initialPage = "NavigationPage/WelcomePage";
             }
 
             await NavigationService.NavigateAsync(initialPage);
@@ -78,7 +72,6 @@ namespace Agrotutor
             containerRegistry.RegisterPersistence();
             containerRegistry.RegisterPages();
             containerRegistry.RegisterCameraService();
-            containerRegistry.RegisterForNavigation<DevPage, DevPageViewModel>();
             containerRegistry.RegisterTileService();
 
             containerRegistry.RegisterForNavigation<TermsPage, TermsPageViewModel>();
