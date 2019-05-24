@@ -213,7 +213,7 @@
                                         Command="{Binding NavigateToPlotWeather}"
                                         ImageSource="{Binding CurrentPlotWeatherIcon}"
                                         Text="{localization:Translate current_weather}"
-                                        Value="{Binding CurrentPlotGdd}" />
+                                        Value="{Binding CurrentPlotWeather}" />
 
                                     <ScrollView Margin="5" Orientation="Horizontal">
                                         <views:RepeaterView x:Name="AllImages" Orientation="Horizontal" />

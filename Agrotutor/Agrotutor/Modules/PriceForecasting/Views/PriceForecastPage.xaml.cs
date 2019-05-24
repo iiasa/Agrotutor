@@ -15,10 +15,10 @@ namespace Agrotutor.Modules.PriceForecasting.Views
         public PriceForecastPage()
         {
             InitializeComponent();
-            this.viewModel = (PriceForecastPageViewModel)BindingContext;
-            this.viewModel.PropertyChanged += (sender, args) =>
+            viewModel = (PriceForecastPageViewModel)BindingContext;
+            viewModel.PropertyChanged += (sender, args) =>
             {
-                if (!args.PropertyName.Equals(nameof(this.viewModel.FurtherItems))) return;
+                if (!args.PropertyName.Equals(nameof(viewModel.FurtherItems))) return;
 
                 UpdateForecastItems();
             };
@@ -26,7 +26,7 @@ namespace Agrotutor.Modules.PriceForecasting.Views
 
         private void UpdateForecastItems()
         {
-            this.ForecastStack.Children.Clear();
+            ForecastStack.Children.Clear();
 
             var supportedLang = new List<string>
             {

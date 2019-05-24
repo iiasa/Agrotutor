@@ -80,7 +80,7 @@ namespace Agrotutor.Modules.Weather.Types
 
     }
 
-    public partial class Cdd : ISeries
+    public class Cdd : ISeries
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -132,7 +132,7 @@ namespace Agrotutor.Modules.Weather.Types
         }
     }
 
-    public partial class CddSeries
+    public class CddSeries
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -148,7 +148,7 @@ namespace Agrotutor.Modules.Weather.Types
         public virtual double? Value { get; set; }
     }
 
-    public partial class Unit
+    public class Unit
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
@@ -160,7 +160,7 @@ namespace Agrotutor.Modules.Weather.Types
         public string Label { get; set; }
     }
 
-    public partial class Hd : ISeries
+    public class Hd : ISeries
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }

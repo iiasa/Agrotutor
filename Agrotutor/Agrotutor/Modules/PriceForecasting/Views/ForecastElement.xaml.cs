@@ -56,12 +56,12 @@ namespace Agrotutor.Modules.PriceForecasting.Views
         public ForecastElement()
         {
             InitializeComponent();
-            this.lblUnit1.SetBinding(Label.TextProperty, new Binding(nameof(Unit), source: this));
-            this.lblUnit2.SetBinding(Label.TextProperty, new Binding(nameof(Unit), source: this));
-            this.lblMin.SetBinding(Label.TextProperty, new Binding(nameof(Minimum), source: this));
-            this.lblMax.SetBinding(Label.TextProperty, new Binding(nameof(Maximum), source: this));
-            this.lblAverage.SetBinding(Label.TextProperty, new Binding(nameof(Average), source: this));
-            this.lblMonths.SetBinding(Label.TextProperty, new Binding(nameof(MonthText), source: this));
+            lblUnit1.SetBinding(Label.TextProperty, new Binding(nameof(Unit), source: this));
+            lblUnit2.SetBinding(Label.TextProperty, new Binding(nameof(Unit), source: this));
+            lblMin.SetBinding(Label.TextProperty, new Binding(nameof(Minimum), source: this));
+            lblMax.SetBinding(Label.TextProperty, new Binding(nameof(Maximum), source: this));
+            lblAverage.SetBinding(Label.TextProperty, new Binding(nameof(Average), source: this));
+            lblMonths.SetBinding(Label.TextProperty, new Binding(nameof(MonthText), source: this));
         }
     }
 }

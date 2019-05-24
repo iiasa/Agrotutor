@@ -646,6 +646,7 @@
   <ItemGroup>
     <Content Include="Assets\html\empty.html" />
     <AndroidResource Include="Resources\drawable\advice_intro.png" />
+    <AndroidResource Include="Resources\drawable\app_icon_large.png" />
     <Content Include="Resources\drawable\cloudy_night.png" />
     <AndroidResource Include="Resources\drawable\Intro3_Agrotutor.png" />
     <AndroidResource Include="Resources\drawable\Intro2_Agrotutor.png" />

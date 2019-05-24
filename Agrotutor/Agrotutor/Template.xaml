@@ -394,6 +394,10 @@
                             Command="{TemplateBinding Parent.BindingContext.ProvideFeedback}"
                             IconSource="feedback.png"
                             IconText="{localization:Translate options_feedback}" />
+                        <views:IconWithText
+                            Command="{TemplateBinding Parent.BindingContext.NavigateToAbout}"
+                            IconSource="app_icon.png"
+                            IconText="{localization:Translate options_about}" />
                     </StackLayout>
                 </StackLayout>
             </ScrollView>

@@ -788,6 +788,7 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\advice_intro.png" />
+    <BundleResource Include="Resources\app_icon_large.png" />
     <Content Include="Resources\cloudy_night.png" />
     <Content Include="Resources\html\empty.html" />
     <BundleResource Include="Resources\Intro3_Agrotutor.png">

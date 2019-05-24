@@ -306,7 +306,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
             };
 
             DateTime start = DateTime.Now.AddMonths(-3); 
-            List<Activity> activities = (Plot?.Activities == null) ? new List<Activity>() : Plot.Activities;
+            List<Activity> activities = Plot?.Activities ?? new List<Activity>();
             Activity startActivity = activities.Where(x => (x.ActivityType == ActivityType.Initialization))?.SingleOrDefault();
             if (startActivity != null) start = startActivity.Date;
             var end = DateTime.Now.AddYears(((DateTime)start).Year - DateTime.Now.Year).AddDays(-1);

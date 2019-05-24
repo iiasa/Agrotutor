@@ -50,6 +50,7 @@ namespace Agrotutor.Core
         public static void RegisterPages(this IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+            containerRegistry.RegisterForNavigation<AboutPage, AboutPageViewModel>();
             containerRegistry.RegisterForNavigation<CitationPage, CitationPageViewModel>();
             containerRegistry.RegisterForNavigation<LinksPage, LinksPageViewModel>();
             containerRegistry.RegisterForNavigation<ProfilePage, ProfilePageViewModel>();

@@ -54,7 +54,7 @@ namespace Agrotutor.ViewModels
         private async Task PageAppearing()
         {
             TermsSource = new HtmlWebViewSource
-                { Html = await FileHelper.ReadTextAsync("Agrotutor.Data.TermsText.txt").ConfigureAwait(false) };
+                { Html = await FileHelper.ReadTextAsync("Agrotutor.Resources.AppData.TermsText.txt").ConfigureAwait(false) };
             if (Preferences.ContainsKey(Constants.TermsAccepted))
             {
                 IsTermsAccepted = Preferences.Get(Constants.TermsAccepted, true);

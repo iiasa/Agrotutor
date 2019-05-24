@@ -11,14 +11,14 @@ namespace Agrotutor.Core.Tile.NamingConfiguration
     public static class NamingScheme
 	{
 		public static Func<string, string> ScreamingSnakeCase =>
-			(name) =>
+			name =>
 			{
 				Regex underscoreRegex = new Regex(@"(?<=[a-z0-9])([A-Z])(?![A-Z])");
 				return underscoreRegex.Replace(name, @"_$0").ToUpper();
 			};
 
 		public static Func<string, string> SnakeCase =>
-			(name) =>
+			name =>
 			{
 				Regex underscoreRegex = new Regex(@"(?<=[a-z0-9])([A-Z])(?![A-Z])");
 				return underscoreRegex.Replace(name, @"_$0").ToLower();

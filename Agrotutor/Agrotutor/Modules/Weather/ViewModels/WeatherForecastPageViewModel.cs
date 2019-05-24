@@ -17,11 +17,8 @@ namespace Agrotutor.Modules.Weather.ViewModels
 
         public List<WeatherForecast> WeatherForecast
         {
-            get => this.weatherForecast;
-            set
-            {
-                SetProperty(ref this.weatherForecast, value);
-            }
+            get => weatherForecast;
+            set => SetProperty(ref weatherForecast, value);
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

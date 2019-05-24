@@ -47,6 +47,9 @@ namespace Agrotutor.Core.Entities
 
         public int ArgbPlotColor { get; set; }
 
+        [NotMapped] 
+        public List<WeatherForecast> CurrentWeather { get; set; }
+
         [NotMapped]
         public Color? PlotColor { get; set; }
         public Position Position { get; set; }

@@ -47,11 +47,11 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Core\Tile\Resources\mexico-simple.mbtiles" />
-    <EmbeddedResource Include="Data\TermsText.txt" />
     <EmbeddedResource Include="Resources\AppData\hubs_contact.geojson" />
     <EmbeddedResource Include="Resources\AppData\investigation_platforms.geojson" />
     <EmbeddedResource Include="Resources\AppData\machinery_points.geojson" />
     <EmbeddedResource Include="Resources\AppData\priceforecast.json" />
+    <EmbeddedResource Include="Resources\AppData\TermsText.txt" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="Core\Components\Views\CameraPicture.xaml">
@@ -124,9 +124,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Template.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\DevPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
@@ -265,9 +262,6 @@
     <None Update="Views\CitationPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
-    <None Update="Views\DevPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </None>
     <None Update="Views\LinksPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
@@ -281,6 +275,9 @@
       <Generator>MSBuild:Compile</Generator>
     </None>
     <None Update="Views\WelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Update="Views\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </None>
   </ItemGroup>
