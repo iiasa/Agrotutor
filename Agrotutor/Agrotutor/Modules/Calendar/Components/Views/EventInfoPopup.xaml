@@ -1,13 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
                   xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                   xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
                   xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                   xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
                   Padding="30,235,30,235" 
-                  x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup">
-    
-
+                  x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup"
+                  mvvm:ViewModelLocator.AutowireViewModel="True">
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation
             PositionIn="Center"
@@ -20,47 +19,54 @@
             EasingOut="SinIn"
             HasBackgroundAnimation="True" />
     </pages:PopupPage.Animation>
+    
     <ContentView>
-        <Grid >
-            <!--<Grid.RowDefinitions>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>-->
-        <StackLayout HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand" BackgroundColor="White"   >
-                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Margin="10,20,10,0">
-                    <Label Text="{Binding  CropName}"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
-                    <Label Text="{Binding  PlotName}"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+        <StackLayout 
+            HorizontalOptions="Center"
+            VerticalOptions="Center" 
+            MinimumWidthRequest="300"
+            MinimumHeightRequest="400"
+            BackgroundColor="White" >
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Margin="10,20,10,0">
+                <Label
+                    Text="{Binding  CropName}"
+                    VerticalOptions="Center" 
+                    HorizontalOptions="StartAndExpand"
+                    FontAttributes="Bold" />
+                    
+                <Label 
+                    Text="{Binding  PlotName}"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+            </StackLayout>
+            
+            <StackLayout Orientation="Vertical" Margin="10,0,10,20" IsVisible="{Binding IsActivityInfoShown}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
+                <Label 
+                    Text="{Binding  ActivityName}"
+                    VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
 
+                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
+                    <Label
+                        Text="Costs ($): "
+                        VerticalOptions="StartAndExpand" 
+                        HorizontalOptions="CenterAndExpand" 
+                        FontAttributes="Bold" />
+                    <Label Text="{Binding  Cost}"
+                        VerticalOptions="CenterAndExpand" 
+                        HorizontalOptions="CenterAndExpand" 
+                        FontAttributes="Bold" />
+                
+                    <Image WidthRequest="25" HeightRequest="25" Margin="30,0,0,0" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Image.Source>
+                            <FileImageSource File="trash" />
+                        </Image.Source>
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding DeleteActivityCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
                 </StackLayout>
-                <StackLayout Orientation="Vertical" Margin="10,0,10,20" IsVisible="{Binding IsActivityInfoShown}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
-                <Label Text="{Binding  ActivityName}"
-                       VerticalOptions="CenterAndExpand" 
-                       HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
-
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
-                    <Label Text="Costs ($): "
-                       VerticalOptions="StartAndExpand" 
-                       HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-                <Label Text="{Binding  Cost}"
-                   VerticalOptions="CenterAndExpand" 
-                   HorizontalOptions="CenterAndExpand" FontAttributes="Bold" />
-                <Image  WidthRequest="25" HeightRequest="25" Margin="30,0,0,0" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Red">
-                    <Image.Source>
-                                <FileImageSource File="ic_delete" />
-                    </Image.Source>
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding DeleteActivityCommand}"></TapGestureRecognizer>
-                    </Image.GestureRecognizers>
-                </Image>
-                    </StackLayout>
+            </StackLayout>
         </StackLayout>
-        </StackLayout>
-        </Grid>
     </ContentView>
 </pages:PopupPage>

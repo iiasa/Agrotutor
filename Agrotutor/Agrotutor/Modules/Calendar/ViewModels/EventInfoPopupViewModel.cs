@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
+using Agrotutor.Modules.Calendar.Components.Views;
 using Agrotutor.Modules.Calendar.Types;
 using Microsoft.Extensions.Localization;
 using Prism.Commands;
@@ -23,6 +24,9 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         private bool _isActivityInfoShown;
         public IAppDataService AppDataService { get; set; }
         public INavigationService NavigationService { get; set; }
+
+        private EventInfoPopup Popup { get; set; }
+        
         public  EventInfoPopupViewModel(IAppDataService appDataService,INavigationService navigationService)
         {
             DeleteActivityCommand=new DelegateCommand(async () =>
@@ -113,6 +117,11 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         public void OnNavigatingTo(INavigationParameters parameters)
         {
    
+        }
+
+        public void SetView(EventInfoPopup eventInfoPopup)
+        {
+            Popup = eventInfoPopup;
         }
     }
 }

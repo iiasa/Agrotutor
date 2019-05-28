@@ -653,6 +653,7 @@
     <AndroidResource Include="Resources\drawable\Intro1_Agrotutor.png" />
     <Content Include="Resources\drawable\storm.png" />
     <Content Include="Resources\drawable\storm_night.png" />
+    <Content Include="Resources\drawable\trash.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

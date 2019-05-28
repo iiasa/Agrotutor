@@ -18,8 +18,7 @@ namespace Agrotutor.Modules.Calendar.Components.Views
 		public EventInfoPopup ()
 		{
 			InitializeComponent ();
-	
-
+			((EventInfoPopupViewModel) BindingContext).SetView(this);
 		}
 
     }

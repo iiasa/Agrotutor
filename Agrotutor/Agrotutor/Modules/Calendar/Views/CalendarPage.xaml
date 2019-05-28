@@ -40,7 +40,7 @@
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="M" FontSize="Small" />
+                <Label Grid.Column="0" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="M" />
                 <Label Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="T" />
                 <Label Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="W" />
                 <Label Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Text="T" />

@@ -23,7 +23,7 @@ namespace Agrotutor.Modules.Calendar.Components.Views
             set
             {
                 this.calendarEvent = value;
-                this.Text = CalendarEvent.Title;
+                this.Text = CalendarEvent.Title ?? "Activity";
                 if (CalendarEvent.PlotColor != null)
                 {
                     this.BackgroundColor = (Color)CalendarEvent.PlotColor;

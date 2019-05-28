@@ -762,8 +762,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                         {
                             CalendarPageViewModel.EventsParameterName,
                             Core.Entities.Plot.GetCalendarEvents(Plots)
-                        },
-                        {"Dev", true}
+                        }
                     };
                     await NavigationService.NavigateAsync("CalendarPage", navigationParameters);
                 });

@@ -802,6 +802,7 @@
     </BundleResource>
     <Content Include="Resources\storm.png" />
     <Content Include="Resources\storm_night.png" />
+    <Content Include="Resources\trash.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Resources\html\en\cultivarcharacteristics\files\filelist.xml" />
