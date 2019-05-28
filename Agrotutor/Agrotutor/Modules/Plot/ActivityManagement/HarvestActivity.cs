@@ -27,10 +27,9 @@ namespace Agrotutor.Modules.Plot.ActivityManagement
                 ProductObtainedVisibility = true,
                 ActivityNameList = new List<string>
                 {
-                    _stringLocalizer.GetString("irrigation_sprinkler"),
-                    _stringLocalizer.GetString("irrigation_drip"),
-                    _stringLocalizer.GetString("irrigation_rolled"),
-                    _stringLocalizer.GetString("irrigation_other")
+                    _stringLocalizer.GetString("harvest_manual"),
+                    _stringLocalizer.GetString("harvest_mechanical"),
+                    _stringLocalizer.GetString("harvest_other")
                 },
                 ActivityIcon = "harvest.png",
                 ActivityTitle = _stringLocalizer.GetString("harvest")
