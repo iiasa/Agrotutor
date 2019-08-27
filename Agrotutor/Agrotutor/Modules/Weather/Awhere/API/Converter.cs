@@ -90,20 +90,20 @@ namespace Agrotutor.Modules.Weather.Awhere.API
             if (history == null) return null;
             var historyElement = new WeatherHistory
             {
-                Date = ((DateTimeOffset)history.Date).UtcDateTime,
-                PrecipitationAmount = (double)history.Precipitation.Amount,
+                Date = history.Date?.DateTime ?? default,
+                PrecipitationAmount = history.Precipitation.Amount ?? default,
                 PrecipitationUnits = history.Precipitation.Units,
-                RelativeHumidityMax = (double)history.RelativeHumidity.Max,
-                RelativeHumidityMin = (double)history.RelativeHumidity.Min,
-                SolarRadiationAmount = (double)history.Solar.Amount,
+                RelativeHumidityMax = history.RelativeHumidity.Max ?? default,
+                RelativeHumidityMin = history.RelativeHumidity.Min ?? default,
+                SolarRadiationAmount = history.Solar.Amount ?? default,
                 SolarRadiationUnits = history.Solar.Units,
-                TemperatureMax = (double)history.Temperatures.Max,
-                TemperatureMin = (double)history.Temperatures.Min,
+                TemperatureMax = history.Temperatures.Max ?? default,
+                TemperatureMin = history.Temperatures.Min ?? default,
                 TemperatureUnits = history.Temperatures.Units,
-                WindAverage = (double)history.Wind.Average,
+                WindAverage = history.Wind.Average ?? default,
                 WindUnits = history.Wind.Units,
-                WindDayMax = (double)history.Wind.DayMax,
-                WindMorningMax = (double)history.Wind.MorningMax
+                WindDayMax = history.Wind.DayMax ?? default,
+                WindMorningMax = history.Wind.MorningMax ?? default
             };
             return historyElement;
         }
