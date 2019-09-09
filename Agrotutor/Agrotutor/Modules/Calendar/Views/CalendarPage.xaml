@@ -6,6 +6,7 @@
      x:Class="Agrotutor.Modules.Calendar.Views.CalendarPage"
      mvvm:ViewModelLocator.AutowireViewModel="True"
      Title="{localization:Translate title}"
+     BackgroundColor="White"
      Padding="16,16,16,0">
     <ContentPage.Content>
         <StackLayout>
