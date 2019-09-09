@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<pages:PopupPage  xmlns="http://xamarin.com/schemas/2014/forms"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                  xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
-                  xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
-                  xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
-                  Padding="30,235,30,235" 
-                  x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup"
-                  mvvm:ViewModelLocator.AutowireViewModel="True">
-    <pages:PopupPage.Animation>
+<pages:PopupPage
+    x:Class="Agrotutor.Modules.Calendar.Components.Views.EventInfoPopup"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup"
+    xmlns:mvvm="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    Padding="30,235,30,235"
+    mvvm:ViewModelLocator.AutowireViewModel="True">
+    <!--<pages:PopupPage.Animation>
         <animations:ScaleAnimation
             PositionIn="Center"
             PositionOut="Center"
@@ -18,46 +19,64 @@
             EasingIn="SinOut"
             EasingOut="SinIn"
             HasBackgroundAnimation="True" />
-    </pages:PopupPage.Animation>
-    
-    <ContentView>
-        <StackLayout 
-            HorizontalOptions="Center"
-            VerticalOptions="Center" 
-            MinimumWidthRequest="300"
-            MinimumHeightRequest="400"
-            BackgroundColor="White" >
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="Center"  Margin="10,20,10,0">
-                <Label
-                    Text="{Binding  CropName}"
-                    VerticalOptions="Center" 
-                    HorizontalOptions="StartAndExpand"
-                    FontAttributes="Bold" />
-                    
-                <Label 
-                    Text="{Binding  PlotName}"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
-            </StackLayout>
-            
-            <StackLayout Orientation="Vertical" Margin="10,0,10,20" IsVisible="{Binding IsActivityInfoShown}" HorizontalOptions="FillAndExpand" VerticalOptions="Center" >
-                <Label 
-                    Text="{Binding  ActivityName}"
-                    VerticalOptions="CenterAndExpand" 
-                    HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+    </pages:PopupPage.Animation>-->
 
-                <StackLayout Orientation="Horizontal" HorizontalOptions="StartAndExpand" >
+    <ContentView>
+        <StackLayout BackgroundColor="White">
+            <StackLayout
+                Margin="10,20,10,0"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding CropName}"
+                    VerticalOptions="Center" />
+
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    Text="{Binding PlotName}"
+                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <StackLayout
+                Margin="10,0,10,20"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsActivityInfoShown}"
+                Orientation="Vertical"
+                VerticalOptions="Center">
+                <Label
+                    FontAttributes="Bold"
+                    FontSize="Medium"
+                    HorizontalOptions="CenterAndExpand"
+                    Text="{Binding ActivityName}"
+                    VerticalOptions="CenterAndExpand" />
+
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal">
                     <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
                         Text="Costs ($): "
-                        VerticalOptions="StartAndExpand" 
-                        HorizontalOptions="CenterAndExpand" 
-                        FontAttributes="Bold" />
-                    <Label Text="{Binding  Cost}"
-                        VerticalOptions="CenterAndExpand" 
-                        HorizontalOptions="CenterAndExpand" 
-                        FontAttributes="Bold" />
-                
-                    <Image WidthRequest="25" HeightRequest="25" Margin="30,0,0,0" Aspect="AspectFit" VerticalOptions="Center" HorizontalOptions="Center">
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Medium"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="{Binding Cost}"
+                        VerticalOptions="CenterAndExpand" />
+
+                    <Image
+                        Margin="30,0,0,0"
+                        Aspect="AspectFit"
+                        HeightRequest="25"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="25">
                         <Image.Source>
                             <FileImageSource File="trash" />
                         </Image.Source>

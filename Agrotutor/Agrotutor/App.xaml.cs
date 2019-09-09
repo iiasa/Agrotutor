@@ -39,9 +39,7 @@ namespace Agrotutor
         protected override async void OnInitialized()
         {
             InitializeComponent();
-#if DEBUG
-            HotReloader.Current.Start(this);
-#endif
+
             Material.Init(this);
             InitializeLocalizer();
             Barrel.ApplicationId = "AgroTutor";

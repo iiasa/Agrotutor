@@ -46,7 +46,7 @@ namespace Agrotutor.ViewModels
                     if (Preferences.ContainsKey(Constants.TermsAccepted))
                         await NavigationService.NavigateAsync("app:///NavigationPage/MapPage");
                     else
-                        await NavigationService.NavigateAsync("TermsPage");
+                        await NavigationService.NavigateAsync("app:///NavigationPage/TermsPage");
                 }
             });
 
