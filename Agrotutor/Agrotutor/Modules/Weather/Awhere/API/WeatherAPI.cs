@@ -24,7 +24,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static async Task<ForecastResponse> GetForecastAsync(double latitude, double longitude, UserCredentials credentials)
         {
             var token = await GetToken(credentials);
-            var URL = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/forecasts";
+            var URL = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/forecasts?useLocalTime=true";
             ForecastResponse forecast = null;
             try
             {
@@ -46,7 +46,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static async Task<ForecastResponse> GetCurrentAsync(double latitude, double longitude, UserCredentials credentials)
         {
             var token = await GetToken(credentials);
-            var URL = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/forecasts";
+            var URL = $"{ApiURL}{latitude.ToString(CultureInfo.InvariantCulture)},{longitude.ToString(CultureInfo.InvariantCulture)}/forecasts?useLocalTime=true";
             ForecastResponse forecast = null;
             try
             {
