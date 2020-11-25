@@ -24,7 +24,7 @@ namespace Agrotutor.Modules.Calendar.ViewModels
         public CalendarPageViewModel(INavigationService navigationService, IStringLocalizer<CalendarPageViewModel> stringLocalizer, IAppDataService appDataService)
         :base(navigationService, stringLocalizer)
         {
-
+            Title = "CalendarPage";
             NavigationService = navigationService;
             _appDataService = appDataService;
         }

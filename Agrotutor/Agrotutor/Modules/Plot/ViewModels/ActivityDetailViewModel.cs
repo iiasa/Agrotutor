@@ -56,6 +56,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
         public ActivityDetailViewModel(INavigationService navigationService, IAppDataService appDataService,
             IStringLocalizer<ActivityDetailViewModel> localizer) : base(navigationService, localizer)
         {
+            Title = "ActivityDetail";
+
             ListSownVariety = new List<string>
             {
                 "Criollo",

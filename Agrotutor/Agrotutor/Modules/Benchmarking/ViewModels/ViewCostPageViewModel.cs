@@ -27,6 +27,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
         public ViewCostPageViewModel(IStringLocalizer<ViewCostPageViewModel> localizer, INavigationService navigator)
             : base(navigator, localizer)
         {
+            Title = "CostPage";
             Min = 0;
             Max = 0;
             Avg = 0;

@@ -13,6 +13,7 @@ namespace Agrotutor.Modules.Weather.ViewModels
         public WeatherForecastPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherForecastPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
+            Title = "WeatherForecast";
         }
 
         public List<WeatherForecast> WeatherForecast

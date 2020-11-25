@@ -263,7 +263,7 @@ namespace Agrotutor.Modules.Map.ViewModels
                 Preferences.Set(Constants.LastUploadDatePreference, value);
             }
         }
-
+        
         public ObservableCollection<Polygon> Polygons
         {
             get => _polygons;
@@ -1392,14 +1392,17 @@ namespace Agrotutor.Modules.Map.ViewModels
         {
             try
             {
-                TimeSpan dateRes;
-                if (_lastUploadDateString != null)
+                using (await MaterialDialog.Instance.LoadingSnackbarAsync("Uploading plots..."))
                 {
-                    var uploadDateTime = DateTime.Parse(_lastUploadDateString);
-                    dateRes = DateTime.UtcNow.Subtract(uploadDateTime);
-                }
+                    TimeSpan dateRes;
+                    
+                    if (_lastUploadDateString != null)
+                    {
+                        var uploadDateTime = DateTime.Parse(_lastUploadDateString);
+                        dateRes = DateTime.UtcNow.Subtract(uploadDateTime);
+                    }
 
-                if (_lastUploadDateString == null || dateRes.Days >= Constants.UploadPlotDataPeriod)
+                    if (_lastUploadDateString == null || dateRes.Days >= Constants.UploadPlotDataPeriod)
                     if (Connectivity.NetworkAccess == NetworkAccess.Internet)
                     {
                         var client = new HttpClient();
@@ -1416,10 +1419,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                             LastUploadDateString = DateTime.UtcNow.ToString();
                         }
                     }
+                }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
+                using (await MaterialDialog.Instance.LoadingDialogAsync($"Uploading plots ERROR-{e.Message}")) ;
             }
         }
 
@@ -1659,8 +1664,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                 {
                     var forecast =
                         await WeatherAPI.GetCurrentAsync(plot.Position.Latitude, plot.Position.Longitude, creds);
-                    plot.CurrentWeather = Converter.GetForecastsFromApiResponse(forecast);
-                    updatedPlot = true;
+                    var forecasts = Converter.GetForecastsFromApiResponse(forecast);
+                    if (forecasts != null)
+                    {
+                        plot.CurrentWeather = forecasts;
+                        updatedPlot = true;
+                    }
                 }
 
                 if (plot.WeatherHistory == null)
@@ -1669,8 +1678,12 @@ namespace Agrotutor.Modules.Map.ViewModels
                         creds,
                         plot.Activities.Where(x => x.ActivityType == ActivityType.Sowing)?.FirstOrDefault()?.Date,
                         DateTime.Today);
-                    plot.WeatherHistory = Converter.GetHistoryFromApiResponse(history);
-                    updatedPlot = true;
+                    var apiResponse = Converter.GetHistoryFromApiResponse(history);
+                    if (apiResponse != null)
+                    {
+                        plot.WeatherHistory = apiResponse;
+                        updatedPlot = true;
+                    }
                 }
 
                 if (plot.CiatData == null)
@@ -2163,7 +2176,12 @@ namespace Agrotutor.Modules.Map.ViewModels
 
                 var current =
                     await WeatherAPI.GetCurrentAsync(WeatherLocation.Latitude, WeatherLocation.Longitude, creds);
-                CurrentWeather = Converter.GetForecastsFromApiResponse(current);
+                var forecasts = Converter.GetForecastsFromApiResponse(current);
+                if (forecasts == null)
+                {
+                    return;
+                }
+                CurrentWeather = forecasts;
             }
         }
 

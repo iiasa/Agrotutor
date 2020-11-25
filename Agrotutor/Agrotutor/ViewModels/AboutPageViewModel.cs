@@ -14,6 +14,7 @@ namespace Agrotutor.ViewModels
             : base(navigationService, stringLocalizer)
         {
             AppVersion = $"{VersionTracking.CurrentVersion} ({VersionTracking.CurrentBuild})";
+            Title = "AboutPage";
         }
 
         public string AppVersion

@@ -13,7 +13,9 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         public ActivityPageViewModel(INavigationService navigationService,
             IStringLocalizer<ActivityPageViewModel> localizer) : base(navigationService, localizer)
-        {}
+        {
+            Title = "ActivityPage";
+        }
 
         public DelegateCommand<string> ActivityClickedCommand => new DelegateCommand<string>(activityType =>
         {

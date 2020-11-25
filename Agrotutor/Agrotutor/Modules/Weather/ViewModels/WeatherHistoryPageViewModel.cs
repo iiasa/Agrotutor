@@ -31,6 +31,8 @@ namespace Agrotutor.Modules.Weather.ViewModels
             IStringLocalizer<WeatherHistoryPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
+            Title = "WeatherHistoryPage";
+
             DatasetNames = new List<string>
             {
                 StringLocalizer.GetString("precip"),

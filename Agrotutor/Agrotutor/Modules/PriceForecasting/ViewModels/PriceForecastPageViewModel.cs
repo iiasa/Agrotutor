@@ -78,6 +78,7 @@ namespace Agrotutor.Modules.PriceForecasting.ViewModels
         public PriceForecastPageViewModel(INavigationService navigationService, IStringLocalizer<PriceForecastPageViewModel> stringLocalizer) 
             : base(navigationService, stringLocalizer)
         {
+            Title = "PriceForecastPage";
 
         }
         public override void OnNavigatedFrom(INavigationParameters parameters)

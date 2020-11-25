@@ -12,7 +12,10 @@
     {
         public LinksPageViewModel(INavigationService navigationService, IStringLocalizer<LinksPageViewModel> localizer)
             : base(navigationService, localizer)
-        {}
+        {
+            Title = "LinksPage";
+
+        }
 
         public DelegateCommand<string> TapLinkCommand => new DelegateCommand<string>(
             url => {

@@ -9,6 +9,7 @@ namespace Agrotutor.Core.Components.ViewModels
         public SimpleStatsViewModel(INavigationService navigationService, IStringLocalizer<SimpleStatsViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
+            Title = "SimpleStats";
         }
     }
 }

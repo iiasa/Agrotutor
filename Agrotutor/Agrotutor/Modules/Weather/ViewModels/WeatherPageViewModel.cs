@@ -68,6 +68,8 @@ namespace Agrotutor.Modules.Weather.ViewModels
         public WeatherPageViewModel(INavigationService navigationService, IStringLocalizer<WeatherPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
+            Title = "WeatherPage";
+
             ShowHistoryIsVisible = false;
             ShowForecastIsVisible = false;
             HistoryIsLoading = true;
@@ -310,8 +312,20 @@ namespace Agrotutor.Modules.Weather.ViewModels
             Activity startActivity = activities.Where(x => (x.ActivityType == ActivityType.Initialization))?.SingleOrDefault();
             if (startActivity != null) start = startActivity.Date;
             var end = DateTime.Now.AddYears(((DateTime)start).Year - DateTime.Now.Year).AddDays(-1);
-            var history = await WeatherAPI.GetObservationsAsync(Location.Latitude, Location.Longitude, creds, start, end);
-            WeatherHistory = Converter.GetHistoryFromApiResponse(history);
+            try
+            {
+                var history =
+                    await WeatherAPI.GetObservationsAsync(Location.Latitude, Location.Longitude, creds, start, end);
+                var apiResponse = Converter.GetHistoryFromApiResponse(history);
+                if (apiResponse != null)
+                {
+                    WeatherHistory = apiResponse;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+            }
         }
 
         private async void LoadForecast()
@@ -325,7 +339,11 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 };
 
                 var forecast = await WeatherAPI.GetForecastAsync(Location.Latitude, Location.Longitude, creds);
-                WeatherForecast = Converter.GetForecastsFromApiResponse(forecast);
+                var forecasts = Converter.GetForecastsFromApiResponse(forecast);
+                if (forecasts != null)
+                {
+                    WeatherForecast = forecasts;
+                }
             }
         }
 
@@ -340,7 +358,11 @@ namespace Agrotutor.Modules.Weather.ViewModels
                 };
 
                 var current = await WeatherAPI.GetCurrentAsync(Location.Latitude, Location.Longitude, creds);
-                CurrentHour = Converter.GetForecastsFromApiResponse(current).ElementAt(DateTime.Now.Hour);
+                var forecast = Converter.GetForecastsFromApiResponse(current);
+                if (forecast != null)
+                {
+                    CurrentHour = forecast.ElementAt(DateTime.Now.Hour);
+                }
             }
         }
     }

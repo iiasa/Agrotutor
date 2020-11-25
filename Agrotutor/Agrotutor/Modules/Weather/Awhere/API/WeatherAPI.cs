@@ -84,6 +84,11 @@ namespace Agrotutor.Modules.Weather.Awhere.API
             {
                 Crashes.TrackError(ex);
             }
+
+            if (observationsResponse == null)
+            {
+                return null;
+            }
             var observations = observationsResponse;
 
             while (observationsResponse.Links.Next != null) {
@@ -122,32 +127,29 @@ namespace Agrotutor.Modules.Weather.Awhere.API
 
             return Token;
         }
+
         private static async Task<string> RefreshToken(UserCredentials credentials)
         {
-            AuthResponse authResponse = null;
-
             try
             {
                 var responseMessage = await AuthURL
                     .WithHeader("Content-Type", "application/x-www-form-urlencoded")
                     .WithBasicAuth(credentials.Username, credentials.Password)
                     .PostUrlEncodedAsync(new {grant_type = "client_credentials"});
-                authResponse = JsonConvert.DeserializeObject<AuthResponse>(await responseMessage.Content.ReadAsStringAsync());
+                var dataString = await responseMessage.Content.ReadAsStringAsync();
+                var authResponse = JsonConvert.DeserializeObject<AuthResponse>(dataString);
+                Token = authResponse.AccessToken;
+                TokenValidityEnd = DateTime.Now + TimeSpan.FromHours(1);
+                Preferences.Set(TOKEN_PREFERENCE, Token);
+                Preferences.Set(TOKEN_VALIDITY_PREFERENCE, JsonConvert.SerializeObject(TokenValidityEnd));
+                return Token;
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
             }
 
-            if (authResponse == null) return "";
-
-            Token = authResponse.AccessToken;
-            TokenValidityEnd = DateTime.Now + TimeSpan.FromHours(1);
-            
-            Preferences.Set(TOKEN_PREFERENCE, Token);
-            Preferences.Set(TOKEN_VALIDITY_PREFERENCE, JsonConvert.SerializeObject(TokenValidityEnd));
-
-            return Token;
+            return null;
         }
     }
 }

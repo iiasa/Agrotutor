@@ -28,6 +28,7 @@ namespace Agrotutor.Modules.Benchmarking.ViewModels
             INavigationService navigator)
             : base(navigator, localizer)
         {
+            Title = "YieldPage";
             Min = 0;
             Max = 0;
             Avg = 0;

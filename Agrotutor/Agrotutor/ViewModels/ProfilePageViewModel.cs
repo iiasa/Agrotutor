@@ -38,6 +38,7 @@ namespace Agrotutor.ViewModels
         public ProfilePageViewModel(INavigationService navigationService, IStringLocalizer<ProfilePageViewModel> stringLocalizer)
         : base(navigationService, stringLocalizer)
         {
+            Title = "ProfilePage";
             TakePictureActive = false;
             TakePictureCommand = new DelegateCommand(TakePicture);
             var picture = Preferences.Get("UserPicture", null);

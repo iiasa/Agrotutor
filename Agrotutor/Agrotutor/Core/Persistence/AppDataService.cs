@@ -1,5 +1,4 @@
 using System;
-using Microsoft.AppCenter.Crashes;
 
 namespace Agrotutor.Core.Persistence
 {
@@ -9,7 +8,6 @@ namespace Agrotutor.Core.Persistence
 
     using Entities;
     using System.Linq;
-    using Acr.UserDialogs;
     using Microsoft.AppCenter.Crashes;
 
     public class AppDataService : IAppDataService

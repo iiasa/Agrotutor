@@ -75,6 +75,10 @@
         /// </summary>
         public const string LastUploadDatePreference = "LastUploadDate";
         /// <summary>
+        /// The Device ID Preference
+        /// </summary>
+        public const string DeviceIdPreference = "DeviceId";
+        /// <summary>
         /// The lat
         /// </summary>
         public const string Lat = "Lat";
@@ -172,10 +176,10 @@
         /// <summary>
         /// The upload data URL
         /// </summary>
-        public const string UploadDataUrl = "https://agrotutor.dev.geo-wiki.org/api/plots/CreatePlot";
+        public const string UploadDataUrl = "https://agrotutorapi.geo-wiki.org/api/plots/CreatePlot";
         /// <summary>
         /// The upload plot data period
         /// </summary>
-        public const int UploadPlotDataPeriod = 90;
+        public const int UploadPlotDataPeriod = 1;//7;  //days
     }
 }

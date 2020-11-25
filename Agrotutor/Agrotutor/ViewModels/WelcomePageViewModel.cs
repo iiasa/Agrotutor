@@ -26,6 +26,7 @@ namespace Agrotutor.ViewModels
             : base(navigationService, stringLocalizer)
         {
             StringLocalizer = stringLocalizer;
+            Title = "WelcomePage";
         }
 
         public ObservableCollection<WelcomeModel> Items

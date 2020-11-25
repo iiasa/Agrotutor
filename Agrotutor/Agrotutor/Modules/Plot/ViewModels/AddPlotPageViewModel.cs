@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Threading.Tasks;
 using Agrotutor.Core;
 using Agrotutor.Core.Entities;
 using Agrotutor.Core.Persistence;
@@ -9,6 +8,7 @@ using Agrotutor.ViewModels;
 using Microsoft.Extensions.Localization;
 using Prism.Commands;
 using Prism.Navigation;
+using Xamarin.Essentials;
 using XF.Material.Forms.UI.Dialogs;
 
 namespace Agrotutor.Modules.Plot.ViewModels
@@ -26,6 +26,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         private int _pickerMaturityClassesSelectedIndex;
 
+        private string _deviceIdString;
+
         private Core.Entities.Plot _plot;
 
         private DateTime plantingDate;
@@ -39,7 +41,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
         {
             randomColor = new Random();
             AppDataService = appDataService;
-
+            Title = "AddPlotPag";
             Plot = new Core.Entities.Plot();
             PlantingDate = DateTime.Today;
             CropSelected = false;
@@ -92,6 +94,16 @@ namespace Agrotutor.Modules.Plot.ViewModels
 
         public IAppDataService AppDataService { get; }
 
+        public string DeviceIdString
+        {
+            get => _deviceIdString;
+            set
+            {
+                SetProperty(ref _deviceIdString, value);
+                Preferences.Set(Constants.DeviceIdPreference, value);
+            }
+        }
+
         public bool SavingPlot
         {
             get => savingPlot;
@@ -140,6 +152,7 @@ namespace Agrotutor.Modules.Plot.ViewModels
                         Plot.PlotColor = Color.FromArgb(randomColor.Next(256), randomColor.Next(256),
                             randomColor.Next(256));
                         Plot.ArgbPlotColor = Plot.PlotColor.Value.ToArgb();
+                        DeviceIdString = Preferences.Get(Constants.DeviceIdPreference, Guid.NewGuid().ToString("N"));
                         await AppDataService.AddPlotAsync(Plot);
                         SavingPlot = false;
                     }

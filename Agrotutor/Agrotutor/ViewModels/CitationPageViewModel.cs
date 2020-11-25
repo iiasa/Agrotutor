@@ -10,9 +10,13 @@
 
     public class CitationPageViewModel : ViewModelBase
     {
-        public CitationPageViewModel(INavigationService navigationService, IStringLocalizer<LinksPageViewModel> localizer)
+        public CitationPageViewModel(INavigationService navigationService,
+            IStringLocalizer<LinksPageViewModel> localizer)
             : base(navigationService, localizer)
-        {}
+        {
+            Title = "CitationPage";
+
+        }
 
         public DelegateCommand<string> TapLinkCommand => new DelegateCommand<string>(
             url => {

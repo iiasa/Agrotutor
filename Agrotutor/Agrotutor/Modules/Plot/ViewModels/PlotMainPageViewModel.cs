@@ -36,6 +36,8 @@ namespace Agrotutor.Modules.Plot.ViewModels
             IStringLocalizer<PlotMainPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            Title = "PlotMainPage";
+
             AppDataService = appDataService;
         }
 

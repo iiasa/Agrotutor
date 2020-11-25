@@ -21,6 +21,7 @@ namespace Agrotutor.ViewModels
         public WebContentPageViewModel(INavigationService navigationService, IStringLocalizer<WebContentPageViewModel> stringLocalizer) 
             : base(navigationService, stringLocalizer)
         {
+            Title = "WebContentPage";
             _rootUrl = DependencyService.Get<IHtmlBaseUrl>().Get();
             Url = $"{_rootUrl}empty.html";
         }

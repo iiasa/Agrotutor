@@ -9,7 +9,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static List<WeatherForecast> GetForecastsFromApiResponse(ForecastResponse forecastResponse) 
         {
             List<WeatherForecast> forecasts = new List<WeatherForecast>();
-            if (forecastResponse == null) return forecasts;
+            if (forecastResponse == null) return null;
 
             foreach (var forecastResponseItem in forecastResponse.Forecasts)
             {
@@ -77,7 +77,7 @@ namespace Agrotutor.Modules.Weather.Awhere.API
         public static List<WeatherHistory> GetHistoryFromApiResponse(ObservationsResponse historyResponse)
         {
             var history = new List<WeatherHistory>();
-            if (historyResponse == null) return history;
+            if (historyResponse == null) return null;
             foreach (var observation in historyResponse.Observations)
             {
                 history.Add(GetHistoryItemFromApiResponse(observation));

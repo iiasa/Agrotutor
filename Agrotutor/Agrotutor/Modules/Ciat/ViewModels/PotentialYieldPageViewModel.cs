@@ -26,7 +26,7 @@ namespace Agrotutor.Modules.Ciat.ViewModels
             IStringLocalizer<PotentialYieldPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
-
+            Title = "PotentialYieldPage";
         }
 
         public override void OnNavigatedFrom(INavigationParameters parameters)

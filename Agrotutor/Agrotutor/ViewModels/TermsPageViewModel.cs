@@ -21,6 +21,7 @@ namespace Agrotutor.ViewModels
         public TermsPageViewModel(INavigationService navigationService, IStringLocalizer<WebContentPageViewModel> stringLocalizer)
             : base(navigationService, stringLocalizer)
         {
+            Title = "TermsPage";
             _navigationService = navigationService;
             GetStartedCommand = new DelegateCommand(OnGetStartedClick);
             IsNotAccepted = !Preferences.ContainsKey(Constants.TermsAccepted);

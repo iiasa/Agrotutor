@@ -31,8 +31,7 @@ namespace Agrotutor.Core
 
 		    return false;
 
-          
-		}
+        }
 
 		public static void DeleteOfflineCache(string url)
 		{

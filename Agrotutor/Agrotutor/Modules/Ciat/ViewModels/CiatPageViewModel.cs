@@ -35,6 +35,7 @@ namespace Agrotutor.Modules.Ciat.ViewModels
         public CiatPageViewModel(INavigationService navigationService, IStringLocalizer<CiatPageViewModel> localizer)
             : base(navigationService, localizer)
         {
+            Title = "CiatPage";
             IrrigatedClickedCommand = new DelegateCommand(IrrigatedClicked);
             NonIrrigatedClickedCommand = new DelegateCommand(NonIrrigatedClicked);
             NoData = false;
