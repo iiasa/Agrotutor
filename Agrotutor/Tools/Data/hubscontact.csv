@@ -1,21 +1,22 @@
 HUB, Manager ,Email_Gte ,Assistant ,Email_Asis ,Telephone ,Latitude ,Longitude
 HUB,Gerente,Email_Gte,Asistente,Email_Asis,Telefono,Latitud,Longitud
-VAM,Tania Alejandra Casaya Rodriguez,t.casaya@cgiar.org,Italibi Flores Rivas,i.flores@cgiar.org,18004627247,19.532978,-98.840048
-VAGP,Tania Alejandra Casaya Rodriguez,t.casaya@cgiar.org,Italibi Flores Rivas,i.flores@cgiar.org,18004627247,19.532978,-98.840048
-CHIA,Jorge Octavio García Santiago,j.o.garcia@cgiar.org,Ana Laura Manga Medina,a.manga@cgiar.org,18004627247,16.79678,-93.26906
-GCTO-Tab,Jorge Octavio García Santiago,j.o.garcia@cgiar.org,Ana Laura Manga Medina,a.manga@cgiar.org,18004627247,16.79678,-93.26906
-BAJ,Silvia Hernández,s.hernandez@cgiar.org,Laura Ponce Cernas,l.p.cernas@cgiar.org,18004627247,19.687912,-101.152928
-MasAgro Guanajuato,Erick Ortíz Hernandez,e.o.hernandez@cgiar.org,Diana Beatriz Perez Rubio,D.PEREZ@cgiar.org,18004627247,20.536998,-100.815066
-PAC,N/A,,Anabel Ochoa López,a.ochoa@cgiar.org,18004627247,27.370556,-109.930278
-EINT-Chih,N/A,,Anabel Ochoa López,a.ochoa@cgiar.org,18004627247,27.370556,-109.930278
-PSUR,Abel Jaime Leal Gonzalez,a.leal@cgiar.org,Norma Pérez Sarabia,N.P.SARABIA@cgiar.org,18004627247,17.07492,-96.71247
-GCTO-Ver,Abel Jaime Leal Gonzalez,a.leal@cgiar.org,Norma Pérez Sarabia,N.P.SARABIA@cgiar.org,18004627247,17.07492,-96.71247
-PCTO,Eliud Pérez Medel,e.p.medel@cgiar.org,Yaraset Rita Gutierrez,Y.RITA@cgiar.org,18004627247,18.688611,-99.126111
-YUC,Vladimir Nikolai May Tzun,v.may@cgiar.org,Lorena Carolina Santiago Valenti,l.santiago@cgiar.org,18004627247,21.020329,-89.617916
-OCC,Edgar Renato Olmedo Arcega,e.olmedo@cgiar.org,N/A,e.olmedo@cgiar.org,18004627247,21.931914,-102.297382
-INGP,José Alberto Cabello Cortés,j.cabello@cgiar.org,N/A,j.cabello@cgiar.org,18004627247,19.687912,-101.152928
-EINT-Dgo,José Alberto Cabello Cortés,j.cabello@cgiar.org,N/A,j.cabello@cgiar.org,18004627247,19.687912,-101.152928
-Sierra ,José Luis Zambrano,jose.zambrano@iniap.gob.ec,N/A,jose.zambrano@iniap.gob.ec,18004627247,-0.368699,-78.555186
-Sierra Norte - Imbabura,María Nieto,maria.nieto@iniap.gob.ec,N/A,maria.nieto@iniap.gob.ec,18004627247,0.343252,-78.137074
-Sierra Centro - Cotopaxi,Victoria López,victoria.lopez@iniap.gob.ec,N/A,victoria.lopez@iniap.gob.ec,18004627247,-0.936803,-78.61729
-Sierra Centro - Chimborazo,Fausto Yumisaca,fausto.yumisaca@iniap.gob.ec,N/A,fausto.yumisaca@iniap.gob.ec,18004627247,-1.657428,-78.668311
+VAM,Tania Alejandra Casaya Rodriguez,t.casaya@cgiar.org,Italibi Flores Rivas,i.flores@cgiar.org,tel:+18004627247,19.532978,-98.840048
+VAGP,Tania Alejandra Casaya Rodriguez,t.casaya@cgiar.org,Italibi Flores Rivas,i.flores@cgiar.org,tel:+18004627247,19.532978,-98.840048
+CHIA,Jorge Octavio García Santiago,j.o.garcia@cgiar.org,Ana Laura Manga Medina,a.manga@cgiar.org,tel:+18004627247,16.79678,-93.26906
+GCTO-Tab,Jorge Octavio García Santiago,j.o.garcia@cgiar.org,Ana Laura Manga Medina,a.manga@cgiar.org,tel:+18004627247,16.79678,-93.26906
+BAJ,Silvia Hernández,s.hernandez@cgiar.org,Laura Ponce Cernas,l.p.cernas@cgiar.org,tel:+18004627247,19.687912,-101.152928
+MasAgro Guanajuato,Erick Ortíz Hernandez,e.o.hernandez@cgiar.org,Diana Beatriz Perez Rubio,D.PEREZ@cgiar.org,tel:+18004627247,20.536998,-100.815066
+PAC,N/A,,Anabel Ochoa López,a.ochoa@cgiar.org,tel:+18004627247,27.370556,-109.930278
+EINT-Chih,N/A,,Anabel Ochoa López,a.ochoa@cgiar.org,tel:+18004627247,27.370556,-109.930278
+PSUR,Abel Jaime Leal Gonzalez,a.leal@cgiar.org,Norma Pérez Sarabia,N.P.SARABIA@cgiar.org,tel:+18004627247,17.07492,-96.71247
+GCTO-Ver,Abel Jaime Leal Gonzalez,a.leal@cgiar.org,Norma Pérez Sarabia,N.P.SARABIA@cgiar.org,tel:+18004627247,17.07492,-96.71247
+PCTO,Eliud Pérez Medel,e.p.medel@cgiar.org,Yaraset Rita Gutierrez,Y.RITA@cgiar.org,tel:+18004627247,18.688611,-99.126111
+YUC,Vladimir Nikolai May Tzun,v.may@cgiar.org,Lorena Carolina Santiago Valenti,l.santiago@cgiar.org,tel:+18004627247,21.020329,-89.617916
+OCC,Edgar Renato Olmedo Arcega,e.olmedo@cgiar.org,N/A,e.olmedo@cgiar.org,tel:+18004627247,21.931914,-102.297382
+INGP,José Alberto Cabello Cortés,j.cabello@cgiar.org,N/A,j.cabello@cgiar.org,tel:+18004627247,19.687912,-101.152928
+EINT-Dgo,José Alberto Cabello Cortés,j.cabello@cgiar.org,N/A,j.cabello@cgiar.org,tel:+18004627247,19.687912,-101.152928
+Sierra ,José Luis Zambrano,jose.zambrano@iniap.gob.ec,N/A,jose.zambrano@iniap.gob.ec,tel:+59323076004,-0.368699,-78.555186
+Sierra Norte - Imbabura,María Nieto,maria.nieto@iniap.gob.ec,N/A,maria.nieto@iniap.gob.ec,tel:+59323076004,0.343252,-78.137074
+Sierra Centro - Cotopaxi,Victoria López,victoria.lopez@iniap.gob.ec,N/A,victoria.lopez@iniap.gob.ec,tel:+59323076004,-0.936803,-78.61729
+Sierra Centro - Chimborazo,Fausto Yumisaca,fausto.yumisaca@iniap.gob.ec,N/A,fausto.yumisaca@iniap.gob.ec,tel:+59323076004,-1.657428,-78.668311
+Sierra Centro - Bolívar,David Silva,dsilva@ueb.edu.ec,N/A,dsilva@ueb.edu.ec,tel:+59323076004,-1.611071,-78.99835

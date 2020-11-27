@@ -117,7 +117,7 @@ namespace Agrotutor.Core.Cimmyt.HubsContact
         public string EmailAsis { get; set; }
 
         [JsonProperty("Telefono", NullValueHandling = NullValueHandling.Ignore)]
-        public long? Telefono { get; set; }
+        public string Telefono { get; set; }
 
         [JsonProperty("Latitud", NullValueHandling = NullValueHandling.Ignore)]
         public double? Latitud { get; set; }
